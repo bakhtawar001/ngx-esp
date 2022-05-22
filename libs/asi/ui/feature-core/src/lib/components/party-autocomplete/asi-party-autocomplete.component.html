@@ -1,0 +1,21 @@
+<cos-autocomplete
+  [label]="label"
+  [placeholder]="placeholder"
+  [data]="options"
+  [formControl]="value"
+  [displayKey]="'Name'"
+  (onSearch)="search($event)"
+>
+  <ng-template let-option>
+    <div class="party-item" *ngIf="asParty(option) as party">
+      <h4 class="header-style-13 mb-0">{{ party.Name }}</h4>
+      <span class="body-style-12" *ngIf="party.Email">
+        {{ option.Email }}
+      </span>
+    </div>
+  </ng-template>
+  <ng-content
+    select="[autocompleteAction]"
+    ngProjectAs="[autocompleteAction]"
+  ></ng-content>
+</cos-autocomplete>

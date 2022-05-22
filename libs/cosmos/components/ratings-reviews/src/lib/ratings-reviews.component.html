@@ -1,0 +1,69 @@
+<h2 class="cos-ratings-review-heading header-style-22">{{ headingText }}</h2>
+<div class="cos-ratings-reviews-card">
+  <div class="cos-ratings">
+    <div class="cos-overall-rating">
+      <h3 class="cos-ratings-reviews-card-heading">{{ overallHeadingText }}</h3>
+      <div class="overall-rating-value">
+        {{ getStarRating(overallRating?.Rating) }}
+      </div>
+      <cos-rating
+        class="cos-rating-overall"
+        [rating]="overallRating?.Rating"
+        size="lg"
+        >{{ getVerboseTotalCount('OverAll') }}</cos-rating
+      >
+    </div>
+    <div class="cos-categorical-ratings">
+      <div
+        *ngFor="let rating of ratingCategories"
+        class="cos-categorical-rating"
+      >
+        <div class="cos-rating-category-section">
+          <div class="cos-rating-category-label">
+            {{ getCategoryLabel(rating[0]) }}
+          </div>
+          <div class="cos-rating-review-count">
+            <span class="cos-companies cos-no-break"
+              >{{ rating[1].Companies }} {{ reportsLabel }}</span
+            >
+            <mat-divider vertical></mat-divider>
+            <span class="cos-transactions cos-no-break"
+              >{{ rating[1].Transactions }} {{ transactionsLabel }}</span
+            >
+          </div>
+        </div>
+        <cos-rating [rating]="rating[1].Rating"></cos-rating>
+      </div>
+    </div>
+  </div>
+  <div class="cos-reviews">
+    <div class="cos-reviews-header">
+      <h3 class="cos-ratings-reviews-card-heading">{{ reviewsHeadingText }}</h3>
+      <button cos-flat-button size="sm" *cosIfFeatureFlags="{ matches: 'mmp' }">
+        {{ rateButtonLabel }}
+      </button>
+    </div>
+    <div *ngFor="let review of reviews" class="cos-review">
+      <cos-rating *ngIf="review.Rating" [rating]="review.Rating">{{
+        getTimeElapsed(review.CreateDate)
+      }}</cos-rating>
+      <span *ngIf="!review.Rating" class="cos-rating-content">{{
+        getTimeElapsed(review.CreateDate)
+      }}</span>
+      <p class="cos-comment">{{ review.Comment }}</p>
+      <div>
+        <span class="cos-name">{{ review.Distributor.Name }}</span
+        ><span class="cos-asi-number"
+          >asi/{{ review.Distributor.AsiNumber }}</span
+        >
+      </div>
+    </div>
+    <div
+      class="cos-reviews-footer"
+      (click)="toggleRatings()"
+      *ngIf="data.Comments?.length! > reviews?.length!"
+    >
+      <a class="cos-button" cos-button>{{ viewMoreButtonLabel }}</a>
+    </div>
+  </div>
+</div>

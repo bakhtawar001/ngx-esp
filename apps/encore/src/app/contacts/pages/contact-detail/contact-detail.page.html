@@ -1,0 +1,64 @@
+<div class="page-container contact mt-0">
+  <ng-container *ngIf="state?.isLoading">
+    <div class="mt-16 text-center">
+      <div>Loading...</div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!state?.isLoading">
+    <esp-detail-header>
+      <esp-detail-header-img>
+        <esp-party-avatar
+          [iconUrl]="state.party?.IconMediaLink?.FileUrl"
+          [name]="state.party?.Name"
+          [square]="true"
+        ></esp-party-avatar>
+      </esp-detail-header-img>
+
+      <esp-detail-header-title>
+        <h2 class="detail-header--entity-title mb-0">
+          {{ state.party?.Name }}
+        </h2>
+      </esp-detail-header-title>
+
+      <esp-detail-header-meta class="contact-detail-header__container">
+        <div data-cy="contact-created-on">
+          <h4>Created on</h4>
+          <p>{{ state.party?.CreateDate | date: 'longDate' }}</p>
+        </div>
+
+        <div data-cy="contact-managed-by">
+          <h4>Managed by</h4>
+          <p>{{ state.party?.Owner?.Name }}</p>
+        </div>
+
+        <asi-manage-collaborators
+          [canEdit]="canManageCollaborators"
+          class="contact-detail-header__manage-collaborators"
+          data-cy="contact-collaborators"
+        ></asi-manage-collaborators>
+      </esp-detail-header-meta>
+
+      <esp-detail-header-menu class="detail-header-action-btns">
+        <asi-contact-actions-menu
+          [contact]="state.party"
+        ></asi-contact-actions-menu>
+      </esp-detail-header-menu>
+
+      <esp-detail-header-util-nav>
+        <a cos-icon-button class="contact-detail-header-link" (click)="goBack()"
+          ><i class="fa fa-arrow-left mr-2"></i>Back to Directory</a
+        >
+      </esp-detail-header-util-nav>
+    </esp-detail-header>
+
+    <div class="contact-detail grid-layout-1">
+      <div class="contact-detail-menu">
+        <cos-vertical-menu label="Contact menu" [menu]="menu">
+        </cos-vertical-menu>
+      </div>
+      <div class="contact-detail-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </ng-container>
+</div>

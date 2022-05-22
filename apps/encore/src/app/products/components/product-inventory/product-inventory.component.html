@@ -1,0 +1,26 @@
+<div class="product-inventory" *ngIf="inventory">
+  <div class="flex mb-12">
+    <div class="mr-24 w-1/2">
+      <label class="cos-form-label">Description</label>
+      <select
+        matNativeControl
+        class="cos-input description-select"
+        [(ngModel)]="selectedInventory"
+      >
+        <option
+          class="product-inventory-options"
+          *ngFor="let item of inventory"
+          [ngValue]="item"
+        >
+          {{ [item.PartCode, item.PartDescription] | formatArrayList: ' - ' }}
+        </option>
+      </select>
+    </div>
+    <div class="product-inventory-quantity w-1/2">
+      <p class="header-style-14-bold mb-12">Total Available Quantity</p>
+      <p class="product-inventory-quantity-value header-style-22">
+        {{ selectedInventory?.Label | numberString }}
+      </p>
+    </div>
+  </div>
+</div>

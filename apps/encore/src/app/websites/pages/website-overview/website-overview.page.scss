@@ -1,0 +1,41 @@
+@import 'cosmos/scss/settings/';
+
+.website-overview {
+  display: flex;
+  flex-direction: column;
+
+  @include wider-than($bp-large) {
+    display: grid;
+    grid-template-areas:
+      'a a a a a a a a a a a a'
+      'b b b b b b b b b b b b';
+  }
+
+  .header {
+    grid-area: a;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+
+  &-content {
+    grid-area: b;
+  }
+}
+.template {
+  &-options {
+    align-self: end;
+  }
+}
+.product {
+  &-list {
+    border: 1px solid $color-g-pebble-09;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  &-details strong {
+    color: $color-g-mineshaft-88;
+  }
+}
+.pages-info div {
+  border-bottom: 1px solid $color-g-pebble-09;
+}

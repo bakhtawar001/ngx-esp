@@ -1,0 +1,29 @@
+{
+  "root": "apps/contentful-preview-e2e",
+  "sourceRoot": "apps/contentful-preview-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/contentful-preview-e2e/cypress.json",
+        "tsConfig": "apps/contentful-preview-e2e/tsconfig.e2e.json",
+        "devServerTarget": "contentful-preview:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "contentful-preview:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/contentful-preview-e2e/**/*.{js,ts}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:contentful", "type:application", "platform:web"],
+  "implicitDependencies": ["contentful-preview"]
+}

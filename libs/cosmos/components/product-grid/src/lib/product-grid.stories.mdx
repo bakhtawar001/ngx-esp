@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PRODUCTS_DATA_DEMO } from './product-grid-data.demo';
+import { CosProductGridModule } from './product-grid.module';
+import { CosProductGridComponent } from './product-grid.component';
+import { CosProductGridDemoComponent } from './product-grid.component.demo';
+
+<Meta
+  title="Lists/Product Grid"
+  component={CosProductGridComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosProductGridModule],
+      declarations: [CosProductGridDemoComponent],
+    }),
+  ]}
+  args={{ products: PRODUCTS_DATA_DEMO }}
+  argTypes={{
+    products: {
+      control: 'object',
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosProductGridDemoComponent,
+});
+
+## Product Grid Component
+
+A small grid of product thumbnails for use within the Collection and Presentation Card components.
+
+It will display up to 7 products images, the final 8th slot reserved for an overflow count. It will display "+1" in that slot if exactly 8 products are passed in the `products` array.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```js
+<cos-product-gallery
+  [products]="products"
+></cos-product-gallery>
+```
+
+<ArgsTable of={CosProductGridComponent} />

@@ -1,0 +1,54 @@
+<div class="form-panel-fields">
+  <div
+    class="form-panel-row"
+    *ngFor="let phone of groups; let i = index;"
+    [formGroup]="phone"
+  >
+    <cos-input-row
+      [allowRemove]="form.controls.length > 1"
+      (remove)="removeItem(phone)"
+    >
+      <div class="form-panel-row-list">
+        <div class="cos-input-row form-panel-row-list-item">
+          <esp-lookup-select
+            type="Phones"
+            formControlName="Type"
+            placeholder="Select a type"
+            class="form-panel-field__type"
+          ></esp-lookup-select>
+          <cos-form-field class="form-panel-field__phone">
+            <cos-label>Telephone Number</cos-label>
+            <input
+              formControlName="Number"
+              cos-input
+              type="text"
+              maxlength="30"
+            />
+          </cos-form-field>
+        </div>
+        <div class="cos-form-row" *ngIf="showPrimary">
+          <cos-checkbox
+            *ngIf="!phone.value.IsPrimary"
+            formControlName="IsPrimary"
+            (change)="makePrimary(i)"
+            >Make Primary
+          </cos-checkbox>
+          <p
+            class="form-panel-field__primary-msg"
+            *ngIf="phone.value.IsPrimary"
+          >
+            This is my primary telephone number
+          </p>
+        </div>
+      </div>
+    </cos-input-row>
+  </div>
+
+  <button
+    (click)="addItem()"
+    cos-button
+    class="form-panel-field__add-field-btn"
+  >
+    <i class="fa fa-plus"></i> Add Telephone Number
+  </button>
+</div>

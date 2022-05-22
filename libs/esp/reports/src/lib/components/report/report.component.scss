@@ -1,0 +1,17 @@
+esp-report {
+  height: 100%;
+
+  .powerbi-frame {
+    height: 100%;
+    width: 100%;
+
+    iframe {
+      width: calc(100% - 40px);
+      // min-height: 1200px;
+      border: none;
+      border-collapse: collapse;
+      display: block;
+      margin: auto 0;
+    }
+  }
+}

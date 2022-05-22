@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosFeaturesModule } from './features.module';
+import { CosFeaturesComponent } from './features.component';
+import { CosFeaturedVideoModule } from '@cosmos/components/featured-video';
+import { CosFeaturesListDemoComponent } from './features.component.demo';
+
+<Meta
+  title="Lists/Features"
+  component={CosFeaturesListDemoComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [CosFeaturesModule, CosFeaturedVideoModule],
+      declarations: [CosFeaturesListDemoComponent],
+    }),
+  ]}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosFeaturesListDemoComponent,
+});
+
+# Features
+
+Features contains a list of related featured media components.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-features>
+  Content should be either Featured Video or Featured Media components.
+</cos-features>
+```
+
+<ArgsTable of={CosFeaturesComponent} />
+
+## How it's used
+
+- The Features component has a flexible width so that it can only display a single row of Featured Media that can fit within the horizontal space.
+
+- Up to two Features components can display next to each other, if an odd number of features components need to display next to each other, stack them vertically and extend them to the full width available on the page.
+- Each Features component shoud only display the same type of featured media, for example, all catalog media or all video media.

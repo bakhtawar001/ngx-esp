@@ -1,0 +1,142 @@
+<div class="proj-product-detail-variants mb-24">
+  <cos-toggle
+    class="block w-full mb-16"
+    [checked]="showImprint"
+    (toggleChange)="toggleImprint()"
+  >
+    <span class="toggle-label">Imprint Options</span>
+  </cos-toggle>
+  <cos-card *ngIf="showImprint">
+    <fieldset>
+      <legend class="p-0">
+        <p class="header-style-14-bold">Vendor Imprint Methods</p>
+      </legend>
+      <div class="mb-8">
+        <cos-checkbox
+          class="checkbox-products"
+          id="checkbox-products"
+          name="checkbox-products"
+          [checked]="checked"
+        >
+          Silk screen
+        </cos-checkbox>
+      </div>
+
+      <div class="mb-8">
+        <cos-checkbox
+          class="checkbox-products"
+          id="checkbox-products"
+          name="checkbox-products"
+          [checked]="checked"
+        >
+          Unimprinted
+        </cos-checkbox>
+      </div>
+    </fieldset>
+
+    <cos-form-field>
+      <cos-label>Other Imprint Methods</cos-label>
+      <select matNativeControl>
+        <option class="empty-option">1</option>
+        <option>2</option>
+      </select>
+      <cos-error></cos-error>
+    </cos-form-field>
+
+    <cos-form-field>
+      <cos-label>Imprint Sizes</cos-label>
+      <input
+        id="imprint-sizes"
+        cos-input
+        type="text"
+        name="imprintSizes"
+        placeholder="Enter sizes"
+      />
+      <cos-error></cos-error>
+    </cos-form-field>
+
+    <cos-form-field>
+      <cos-label>Imprint Locations</cos-label>
+      <input
+        id="imprint-locations"
+        cos-input
+        type="text"
+        name="imprintLocations"
+        placeholder="Enter locations"
+      />
+      <cos-error></cos-error>
+    </cos-form-field>
+
+    <cos-form-field>
+      <cos-label>Imprint Colors</cos-label>
+      <input
+        id="imprint-colors"
+        cos-input
+        type="text"
+        name="imprintColors"
+        placeholder="Enter colors"
+      />
+      <cos-error></cos-error>
+    </cos-form-field>
+
+    <p class="header-style-14-bold">Imprint Charges</p>
+
+    <cos-table [dataSource]="dataSource">
+      <ng-container cosColumnDef="quantity">
+        <cos-header-cell *cosHeaderCellDef> Quantity </cos-header-cell>
+        <cos-cell *cosCellDef="let element">
+          {{ element.quantity }}
+        </cos-cell>
+      </ng-container>
+
+      <ng-container cosColumnDef="catalogPrice">
+        <cos-header-cell *cosHeaderCellDef> Catalog Price </cos-header-cell>
+        <cos-cell *cosCellDef="let element">
+          {{ element.catalogPrice }}
+        </cos-cell>
+      </ng-container>
+
+      <ng-container cosColumnDef="netCost">
+        <cos-header-cell *cosHeaderCellDef> Net Cost </cos-header-cell>
+        <cos-cell *cosCellDef="let element">
+          {{ element.netCost }}
+        </cos-cell>
+      </ng-container>
+
+      <ng-container cosColumnDef="eqp">
+        <cos-header-cell *cosHeaderCellDef>
+          EQP <i class="fa fa-info-circle"></i>
+        </cos-header-cell>
+        <cos-cell *cosCellDef="let element">
+          <span class="cos-text--blue">{{ element.eqp }}</span>
+        </cos-cell>
+      </ng-container>
+
+      <ng-container cosColumnDef="profit">
+        <cos-header-cell *cosHeaderCellDef> Profit </cos-header-cell>
+        <cos-cell *cosCellDef="let element">
+          {{ element.profit }}
+        </cos-cell>
+      </ng-container>
+
+      <cos-header-row *cosHeaderRowDef="displayedColumns"></cos-header-row>
+      <cos-row *cosRowDef="let row; columns: displayedColumns"></cos-row>
+    </cos-table>
+
+    <button cos-button class="proj-product-detail-btn">
+      <i class="fa fa-plus"></i> Add a custom charge
+    </button>
+  </cos-card>
+</div>
+
+<cos-card class="proj-product-card-disabled mb-16" *ngIf="showImprint">
+  <h2 class="header-style-18">Add Vendor Imprint Charges</h2>
+  <p class="body-style-12-shark">
+    <i class="fa fa-eye-slash"></i> Available vendor imprint charges are hidden
+    from the customer presentation until they are added.
+  </p>
+  <esp-presentation-product-charges-table
+    [dataSource]="dataSource2"
+  ></esp-presentation-product-charges-table>
+  <hr />
+</cos-card>

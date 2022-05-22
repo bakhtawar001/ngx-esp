@@ -1,0 +1,8 @@
+@import './components/toolbar/toolbar.theme';
+
+@mixin esp-layout-theme($theme) {
+  esp-layout {
+    // // Layout components
+    @include toolbar-theme($theme);
+  }
+}

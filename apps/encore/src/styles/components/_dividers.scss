@@ -1,0 +1,15 @@
+hr {
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid #e7e8e9;
+  height: 0;
+}
+
+.cos-card {
+  hr.card-divider {
+    margin: 16px -16px;
+  }
+}

@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { CosContextIconDemoComponent } from './context-icon.component.demo';
+import { CosContextIconComponent } from './context-icon.component';
+
+<Meta
+  title="Attributes/Context Icon"
+  component={CosContextIconDemoComponent}
+  decorators={[
+    moduleMetadata({
+      declarations: [CosContextIconDemoComponent, CosContextIconComponent],
+    }),
+  ]}
+  argTypes={{
+    icon: {
+      control: {
+        type: 'text',
+      },
+    },
+    color: {
+      control: {
+        type: 'select',
+        options: ['grey', 'yellow', 'red', ''],
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosContextIconDemoComponent,
+});
+
+# Context Icon
+
+A simple wrapper component that uses content projection to add an icon inside of a container that floats over the transcluded content.
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      icon: 'images',
+      color: '',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-context-icon [color]="color" [icon]="icon">
+  <div class="cos-demo-circle"></div>
+</cos-context-icon>
+```
+
+<ArgsTable of={CosContextIconComponent} />

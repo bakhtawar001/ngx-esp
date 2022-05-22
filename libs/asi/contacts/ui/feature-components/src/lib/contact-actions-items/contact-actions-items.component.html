@@ -1,0 +1,38 @@
+<button
+  (click)="onTransferOwner()"
+  class="cos-menu-item transfer-ownership"
+  data-cy="transfer-ownership-button"
+  mat-menu-item
+  type="button"
+>
+  <i class="fas fa-random"></i> Transfer Ownership
+</button>
+<button
+  *ngIf="contact.IsActive"
+  (click)="onToggleStatus()"
+  class="cos-menu-item transfer-ownership"
+  data-cy="make-inactive-button"
+  mat-menu-item
+  type="button"
+>
+  <i class="fas fa-archive"></i> Make Inactive
+</button>
+<button
+  *ngIf="!contact.IsActive"
+  (click)="onToggleStatus()"
+  class="cos-menu-item transfer-ownership"
+  data-cy="make-active-button"
+  mat-menu-item
+  type="button"
+>
+  <i class="fas fa-undo-alt"></i> Make Active
+</button>
+<button
+  (click)="onDelete()"
+  class="cos-menu-item transfer-ownership text-warning"
+  data-cy="delete-button"
+  mat-menu-item
+  type="button"
+>
+  <i class="fa fa-trash delete"></i> Delete
+</button>

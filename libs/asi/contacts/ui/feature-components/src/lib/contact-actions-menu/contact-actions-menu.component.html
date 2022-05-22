@@ -1,0 +1,31 @@
+<ng-container *ngIf="contact?.IsEditable">
+  <button
+    aria-label="Actions"
+    cos-stroked-button
+    color="primary"
+    data-cy="menu-trigger"
+    type="button"
+    [matMenuTriggerFor]="actionsMenu"
+  >
+    <i class="fa fa-ellipsis-h"></i>
+    <span class="cos-accessibly-hidden">Menu</span>
+  </button>
+
+  <mat-menu
+    #actionsMenu="matMenu"
+    backdropClass="cos-global-menu-backdrop"
+    class="cos-global-me nu-panel"
+    data-cy="menu-container"
+    yPosition="below"
+  >
+    <ng-template matMenuContent>
+      <asi-contact-actions-items
+        [contact]="contact"
+        (delete)="onDeleteContact()"
+        (toggleStatus)="onToggleStatus()"
+        (transferOwner)="onTransferOwnership()"
+      >
+      </asi-contact-actions-items>
+    </ng-template>
+  </mat-menu>
+</ng-container>

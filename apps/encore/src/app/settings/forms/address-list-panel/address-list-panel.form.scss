@@ -1,0 +1,22 @@
+@import 'cosmos/scss/settings';
+
+.address-row {
+  &-actions {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  @include wider-than($bp-medium) {
+    display: flex;
+
+    &-display {
+      flex: 1 1 0%;
+    }
+
+    &-actions {
+      display: block;
+      justify-content: flex-end;
+    }
+  }
+}

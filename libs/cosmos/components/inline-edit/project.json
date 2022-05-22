@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/inline-edit",
+  "sourceRoot": "libs/cosmos/components/inline-edit/src",
+  "prefix": "cosmos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "project": "libs/cosmos/components/inline-edit/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/inline-edit/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/inline-edit/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/cosmos/components/inline-edit/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/inline-edit/src/**/*.ts",
+          "libs/cosmos/components/inline-edit/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["type:ui", "type:library", "scope:cosmos"]
+}

@@ -1,0 +1,51 @@
+<asi-panel-editable-row
+  data-cy="panel-row"
+  rowTitle="Websites"
+  [formGroup]="form"
+  [isEditable]="isEditable"
+  [isLoading]="!state.partyIsReady"
+  (addNewEvent)="websiteListForm.addItem()"
+  (onCancelEvent)="onCancel()"
+  (onSaveEvent)="onSave()"
+>
+  <div><i class="form-row-icon fa fa-globe mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive data-cy="read-view">
+    <ul
+      *ngIf="websites.length; else noWebsites"
+      class="form-row-value-list cos-list-no-style p-0"
+    >
+      <li *ngFor="let website of websites; trackBy: trackByFn">
+        <span>
+          <a
+            [href]="'//' + website.Url"
+            class="mr-8"
+            target="_blank"
+            data-cy="website-url"
+            >{{ website.Url }}</a
+          >
+        </span>
+        <span
+          *ngIf="website.IsPrimary"
+          cosPillLabel
+          class="website__primary-pill"
+          data-cy="primary-pill"
+        >
+          Primary
+        </span>
+      </li>
+    </ul>
+    <ng-template #noWebsites>
+      <p class="form-row-value" data-cy="no-websites">
+        No website addresses added
+      </p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+
+  <asi-panel-editable-row-active>
+    <esp-company-website-list-form
+      formArrayName="Websites"
+      data-cy="website-form"
+      #websiteListForm
+    ></esp-company-website-list-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

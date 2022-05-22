@@ -1,0 +1,87 @@
+<div [formGroup]="form" class="flex flex-col" data-cy="social-media-form">
+  <cos-form-field
+    [ngClass]="{'social-media-form-field--with-value': form.controls.Facebook.value}"
+    class="social-media-form-field"
+    data-cy="facebook-field"
+  >
+    <cos-label>Facebook</cos-label>
+    <span class="input-prefix">{{inputPrefix.Facebook}}</span>
+    <input
+      [maxlength]="inputMaxLength.Facebook"
+      [style.paddingLeft.px]="147"
+      cos-input
+      formControlName="Facebook"
+      type="text"
+    />
+  </cos-form-field>
+
+  <cos-form-field
+    [ngClass]="{'social-media-form-field--with-value': form.controls.Instagram.value}"
+    class="social-media-form-field"
+    data-cy="instagram-field"
+  >
+    <cos-label> Instagram</cos-label>
+    <span class="input-prefix">{{inputPrefix.Instagram}}</span>
+    <input
+      [maxlength]="inputMaxLength.Instagram"
+      [style.paddingLeft.px]="26"
+      cos-input
+      formControlName="Instagram"
+    />
+  </cos-form-field>
+
+  <cos-form-field
+    [ngClass]="{'social-media-form-field--with-value': form.controls.LinkedIn.value}"
+    class="social-media-form-field"
+    data-cy="linkedin-field"
+  >
+    <cos-label> LinkedIn</cos-label>
+    <span class="input-prefix">{{inputPrefix.LinkedIn}}</span>
+    <input
+      [maxlength]="inputMaxLength.LinkedIn"
+      [style.paddingLeft.px]="139"
+      cos-input
+      formControlName="LinkedIn"
+    />
+  </cos-form-field>
+
+  <cos-form-field
+    [ngClass]="{'social-media-form-field--with-value': form.controls.Pinterest.value}"
+    class="social-media-form-field"
+    data-cy="pinterest-field"
+  >
+    <cos-label> Pinterest</cos-label>
+    <span class="input-prefix">{{inputPrefix.Pinterest}}</span>
+    <input
+      [maxlength]="inputMaxLength.Pinterest"
+      [style.paddingLeft.px]="26"
+      cos-input
+      formControlName="Pinterest"
+    />
+  </cos-form-field>
+
+  <cos-form-field
+    [ngClass]="{'social-media-form-field--with-value': form.controls.Twitter.value}"
+    class="social-media-form-field"
+    data-cy="twitter-field"
+  >
+    <cos-label> Twitter</cos-label>
+    <span class="input-prefix">{{inputPrefix.Twitter}}</span>
+    <input
+      [maxlength]="inputMaxLength.Twitter"
+      [style.paddingLeft.px]="26"
+      cos-input
+      formControlName="Twitter"
+    />
+  </cos-form-field>
+
+  <cos-form-field class="social-media-form-field" data-cy="other-field">
+    <cos-label> Other</cos-label>
+    <input
+      cos-input
+      formControlName="Other"
+      [maxlength]="inputMaxLength.Other"
+      placeholder="Web address"
+    />
+  </cos-form-field>
+</div>

@@ -1,0 +1,89 @@
+@import '../../../../scss/settings/';
+
+.cos-notification {
+  @include spacing-inset-8();
+  display: flex;
+  border-radius: $border-radius-4;
+  box-shadow: $box-shadow-menu;
+  position: relative;
+  align-items: center;
+  background-color: $color-g-white-00;
+
+  .cos-notification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-4;
+
+    color: $color-g-white-00;
+    margin-right: $spacing-inline-16;
+    font-size: $font-size-16;
+    font-weight: $font-weight-700;
+    flex-shrink: 0;
+  }
+
+  &[type='info'] {
+    .cos-notification-icon {
+      background: $color-bl-azure-57;
+    }
+  }
+
+  &[type='confirm'] {
+    .cos-notification-icon {
+      background: $color-gn-monstera-72;
+    }
+  }
+
+  &[type='warn'] {
+    .cos-notification-icon {
+      background: $color-yl-viper-38;
+    }
+  }
+
+  &[type='error'] {
+    .cos-notification-icon {
+      background: $color-rd-macaw-52;
+    }
+  }
+}
+
+.cos-notification-title {
+  @include type-style-header-16;
+  line-height: 20px;
+}
+
+.cos-notification-body {
+  @include type-body-style-12;
+  line-height: 16px;
+}
+
+.cos-icon-button.cos-notification-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: $font-size-16;
+  font-weight: $font-weight-700;
+}
+
+.cos-notification-content {
+  flex-grow: 1;
+}
+
+.hot-toast-bar-base {
+  &.cos-toast {
+    border-radius: $border-radius-4 !important;
+    box-shadow: $box-shadow-menu !important;
+    padding: 8px !important;
+
+    .hot-toast-message {
+      margin: 0;
+
+      .cos-notification {
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+  }
+}

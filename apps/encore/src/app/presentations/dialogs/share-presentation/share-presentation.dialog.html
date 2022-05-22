@@ -1,0 +1,94 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Share with Customer</h2>
+  <p class="text-shark">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt.
+  </p>
+</header>
+
+<mat-dialog-content>
+  <div class="content-wrapper project-info-dialog-content">
+    <ng-form>
+      <div class="cos-form-field">
+        <cos-toggle [labelPosition]="'before'" class="mt-16 mb-16">
+          <span>Include configured product pricing and upcharges</span>
+        </cos-toggle>
+        <cos-toggle [labelPosition]="'before'" class="mb-16">
+          <span
+            >Allow customers to select product variants when requesting a
+            quote</span
+          >
+        </cos-toggle>
+        <hr />
+      </div>
+      <div class="cos-form-field flex justify-center my-16">
+        <cos-button-group
+          (handleSelection)="updateShareWith($event)"
+          [defaultSelection]="shareWith.value"
+          [toggleOptions]="[
+  { name: 'Share via email', value: 'email', disabled: false },
+  { name: 'Share via link', value: 'link', disabled: false },
+]"
+        >
+        </cos-button-group>
+      </div>
+      <cos-form-field *ngIf="shareWith.value === 'email'" class="w-full">
+        <span cosLabel>Recipients</span>
+        <p class="text-shark p-0 mb-8">
+          To send to multiple email addresses, seperate them with a comma
+        </p>
+        <input cos-input placeholder="Email address" />
+      </cos-form-field>
+      <cos-form-field class="mb-0">
+        <span cosLabel>Personal Note</span>
+        <textarea class="w-full" [style]="'large'" cos-input></textarea>
+      </cos-form-field>
+      <div class="cos-form-field mt-0">
+        <cos-toggle [labelPosition]="'before'" class="mt-0 ml-0">
+          <span>Include signature</span>
+        </cos-toggle>
+      </div>
+      <cos-form-field class="block mt-16" appearance="fill">
+        <span cosLabel>Expiration date</span>
+        <div class="cos-date-picker">
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <input cos-input [matDatepicker]="picker" placeholder="mm/dd/yyyy" />
+        </div>
+      </cos-form-field>
+      <cos-form-field *ngIf="shareWith.value === 'link'">
+        <span cosLabel class="cos-accessibly-hidden">Customer Email</span>
+        <span cosSuffix class="fa fa-copy project-info-copy"></span>
+        <input
+          class="readonly-email-input"
+          cos-input
+          readonly
+          type="text"
+          value="communitypublicoutreach_customername@encore.com"
+        />
+      </cos-form-field>
+    </ng-form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="flex justify-between w-full">
+    <div>
+      <button cos-stroked-button color="primary">
+        <i class="fa fa-eye mr-8"></i> Preview
+      </button>
+      <button cos-flat-button color="primary">
+        <i class="fa fa-copy mr-8"></i> Copy Presentation
+      </button>
+    </div>
+  </div>
+</mat-dialog-actions>

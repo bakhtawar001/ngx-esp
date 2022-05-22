@@ -1,0 +1,70 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close cdkFocusInitial>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Pricing Grids</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel tristique
+    libero.
+  </p>
+</header>
+<mat-dialog-content>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel tristique
+    libero. Maecenas sit amet tempor dui. Etiam fringilla eros sit amet tellus
+    vestibulum, id bibendum erat efficitur. Mauris pharetra libero erat, eget
+    tempor libero posuere in. Duis efficitur pulvinar massa, ut dapibus nibh
+    facilisis quis. Curabitur at mi quam. Proin ut condimentum dolor.
+    Suspendisse potenti. Sed semper nisi suscipit felis pharetra, at faucibus
+    mauris luctus.
+  </p>
+
+  <table cos-table [dataSource]="dataSource">
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Name Column -->
+    <ng-container cosColumnDef="quantity">
+      <th cosHeaderCell *cosHeaderCellDef>Quantity</th>
+      <td cosCell *cosCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cosColumnDef="catalogPrice">
+      <th cosHeaderCell *cosHeaderCellDef>Catalog Price</th>
+      <td cosCell *cosCellDef="let element">{{ element.catalogPrice }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container cosColumnDef="netCost">
+      <th cosHeaderCell *cosHeaderCellDef>Net Cost</th>
+      <td cosCell *cosCellDef="let element">{{ element.netCost }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container cosColumnDef="eqp">
+      <th cosHeaderCell *cosHeaderCellDef>
+        EQP
+        <i class="fa fa-info-circle"></i>
+      </th>
+      <td cosCell *cosCellDef="let element">{{ element.eqp }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container cosColumnDef="profit">
+      <th cosHeaderCell *cosHeaderCellDef>Profit</th>
+      <td cosCell *cosCellDef="let element">{{ element.profit }}</td>
+    </ng-container>
+
+    <tr cos-header-row *cosHeaderRowDef="displayedColumns"></tr>
+    <tr cos-row *cosRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button cos-flat-button color="primary" mat-dialog-close>
+    Close
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,56 @@
+@import '../../../../../../cosmos/scss/settings/';
+
+$mobile-breakpoint: $bp-large;
+$item-gap: 16px;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.cards-search {
+  width: 50%;
+  padding: $item-gap 0;
+}
+
+.cards-search-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $item-gap;
+  padding-bottom: $item-gap;
+}
+
+.create-new-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px dashed gray;
+  height: 100%;
+  font-weight: bold;
+  min-height: 100px;
+  cursor: pointer;
+
+  i {
+    font-size: 28px;
+    color: #007aec;
+  }
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .create-new-button {
+    height: 100px;
+    width: 100%;
+  }
+
+  .cards-search-results {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cards-search {
+    width: 100%;
+  }
+}

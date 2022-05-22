@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/feature-flags",
+  "sourceRoot": "libs/cosmos/feature-flags/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/feature-flags"],
+      "options": {
+        "project": "libs/cosmos/feature-flags/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/feature-flags/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/feature-flags/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/feature-flags"],
+      "options": {
+        "jestConfig": "libs/cosmos/feature-flags/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/feature-flags/src/**/*.ts",
+          "libs/cosmos/feature-flags/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"]
+}

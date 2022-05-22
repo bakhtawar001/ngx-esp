@@ -1,0 +1,94 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import data from '../../../supplier-page-header/src/lib/supplier-page-header.data.json';
+import { CosContactInfoModule } from './contact-info.module';
+import { CosContactInfoComponent } from './contact-info.component';
+
+<Meta
+  title="Layout Examples/Contact Information"
+  component={CosContactInfoComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosContactInfoModule],
+      declarations: [],
+    }),
+  ]}
+  args={{
+    heading: 'Contact Information',
+    supplier: data,
+    labels: {
+      addTo: 'Add to',
+      artwork: 'Artwork',
+      email: 'Send a message',
+      headquarters: 'Headquarters',
+      orders: 'Orders',
+      references: 'Independent Distributor References',
+      tollFree: 'Toll Free',
+    },
+    socialLinks: true,
+  }}
+  argTypes={{
+    supplier: { control: 'object' },
+    heading: { control: 'text' },
+    labels: { control: 'object' },
+    socialLinks: { control: 'boolean' },
+    contacts: { control: 'object' },
+    references: { control: 'object' },
+  }}
+/>
+
+# Contact Info Component
+
+This component shows a single section of Contact data with a single heading.
+
+This component has three different layouts based on what kind of content is coming in:
+
+- A Supplier object will result in the Primary layout, with the high level contact information. This layout requires labels. All content is conditional: to show a subset of information, provide the component a subset of the supplier object.
+- A Contacts array will result in the Company Contacts layout, with contact names and titles in two columms.
+- A References array will result in the Distributor References layout.
+
+export const Template = (args) => ({
+  props: args,
+  component: CosContactInfoComponent,
+});
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+  <Story
+    name="Company Contacts"
+    args={{
+      supplier: null,
+      contacts: data.Contacts,
+      heading: 'Company Contacts',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Distributor References"
+    args={{
+      supplier: null,
+      references: data.References,
+      heading: 'Independent Distributor References',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```js
+<cos-contact-info
+  heading:string
+  supplier:object
+  OR
+  contacts:array
+  OR
+  references:array
+  labels:object
+></cos-contact-info>
+```
+
+<ArgsTable of={CosContactInfoComponent} />

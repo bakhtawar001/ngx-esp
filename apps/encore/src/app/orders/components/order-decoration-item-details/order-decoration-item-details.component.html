@@ -1,0 +1,50 @@
+<!-- Accordion button -->
+<button class="accordion-btn flex justify-between w-full" (click)="toggle()">
+  <span class="accordion-btn__label">
+    Show {{ isContentVisible ? 'less' : 'more' }} details
+  </span>
+  <div class="accordion-btn__hr"></div>
+  <i
+    class="fa cos-accordion-chevron"
+    [ngClass]="{
+      'fa-chevron-up': isContentVisible,
+      'fa-chevron-down': !isContentVisible
+    }"
+  ></i>
+</button>
+<!-- /Accordion button -->
+
+<!-- Accordion container -->
+<div class="decoration-accordion-container mr-64" *ngIf="isContentVisible">
+  <h3 class="header-style-16 mt-16 mb-16">Decoration</h3>
+  <div class="grid grid-cols-2 grid-gap-20">
+    <div class="grid grid-cols-2">
+      <div>
+        <h4 class="header-style-14-bold mb-8">Imprint Color</h4>
+        <p class="mb-8">Black & White</p>
+      </div>
+      <div>
+        <h4 class="header-style-14-bold mb-8">Imprint Size</h4>
+        <p class="mb-8">Size</p>
+      </div>
+    </div>
+    <div>
+      <h4 class="header-style-14-bold mb-8">Instructions</h4>
+      <p class="mb-8">
+        This is instructions lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Set aliquet rus ante, sed grivda justo tincidunt quis. Sed at
+        imperdiet sem. In vitae divtricies arcu.
+      </p>
+    </div>
+  </div>
+  <h3 class="header-style-16 mt-16 mb-16">Artwork & Files (1)</h3>
+  <img
+    src="https://via.placeholder.com/120x120/EFEFEF/000000?text=coming%20soon"
+    class="border-radius-4"
+  />
+  <p class="body-style-12-shark">
+    pattern-gold.eps<br />
+    Size: 29 KB
+  </p>
+</div>
+<!-- /Accordion container -->

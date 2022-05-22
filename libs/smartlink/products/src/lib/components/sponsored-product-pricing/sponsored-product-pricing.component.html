@@ -1,0 +1,13 @@
+<div class="flex items-center sponsored-product-pricing">
+  <span class="body-style-14-shark">{{ label }}&nbsp;</span>
+  <strong class="sponsored-product-pricing__price">
+    {{ price | formatPrice: 'Price':true }}
+  </strong>
+  <span
+    class="body-style-11"
+    data-cy="sponsored-product-pricing__discount"
+    *ngIf="price.DiscountCode"
+  >
+    &nbsp;({{ price.DiscountCode }})
+  </span>
+</div>

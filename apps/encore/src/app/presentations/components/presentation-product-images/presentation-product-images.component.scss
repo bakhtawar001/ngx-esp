@@ -1,0 +1,41 @@
+@import 'cosmos/scss/settings/';
+
+.toggle-all-images {
+  margin-top: -1px;
+}
+
+.presentation-product {
+  &__img-thumbs {
+    .cos-card {
+      width: 84px;
+      height: 84px;
+    }
+
+    .img-upload-preview {
+      &--small {
+        cos-card-controls {
+          .cos-icon-button {
+            background: #fff;
+            color: $color-bl-azure-57;
+          }
+        }
+      }
+      &--hidden {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.cos-button.img-upload-previews-toggle {
+  width: 100%;
+  max-width: 210px;
+  height: 110px;
+  font-size: 12px;
+  padding: 0;
+
+  &--small {
+    width: 84px;
+    height: 84px;
+  }
+}

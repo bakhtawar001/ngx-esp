@@ -1,0 +1,127 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Template } from '@cosmos/storybook';
+
+import {
+  CosImageUploadPreviewsListComponent,
+  CosImageUploadPreviewsListModule,
+} from './image-upload-previews-list/image-upload-previews-list.component';
+import {
+  CosImageUploadFormModule,
+  CosImageUploadFormComponent,
+} from './image-upload-form.module';
+
+export const uploadControlTemplate = () => `
+  <cos-image-upload-form
+    (imgSelected)="imgSelected($event)"
+    (fileRejected)="fileRejected($event)"
+    [acceptedFileTypes]="acceptedFileTypes"
+    [maxFileBytes]="maxFileBytes"
+    [allowMultipleUploads]="allowMultipleUploads"
+    [files]="files"
+    [size]="size"
+  ></cos-image-upload-form>
+`;
+
+export const uploadPreviewsListTemplate = () => `
+<style>.demo-grid{ display:grid; grid-template-columns: repeat(auto-fit, 210px); grid-template-rows:auto; grid-gap: 16px; flex-direction:row-reverse;} .demo-grid--small{grid-template-columns: repeat(auto-fit, 84px);} </style>
+<pre>grid layout is defined in the story as a demo</pre>
+  <cos-image-upload-previews-list
+    [ngClass]="{ 'demo-grid': true, 'demo-grid--small': size === 'sm' }"
+    [files]="files"
+    [showMaxPreviews]="showMaxPreviews"
+    [size]="size"
+    (imgRemoved)="imgRemoved($event)"
+  >
+  </cos-image-upload-previews-list>
+`;
+
+export const uploadListGridWithControlTemplate = () => `
+<style>.demo-grid{ display:grid; grid-template-columns: repeat(auto-fit, 210px); grid-template-rows:auto; grid-gap: 16px; flex-direction:row-reverse;} .demo-grid--small{grid-template-columns: repeat(auto-fit, 84px);} </style>
+<pre>grid layout is defined in the story as a demo</pre>
+<cos-image-upload-previews-list
+      [ngClass]="{ 'demo-grid': true, 'demo-grid--small': size === 'sm' }"
+      [files]="files"
+      [showMaxPreviews]="showMaxPreviews"
+      [size]="size"
+      (imgRemoved)="imgRemoved($event)"
+    >
+      <cos-image-upload-form
+        (imgSelected)="imgSelected($event)"
+        (fileRejected)="fileRejected($event)"
+        [acceptedFileTypes]="acceptedFileTypes"
+        [allowMultipleUploads]="allowMultipleUploads"
+        [maxFileBytes]="maxFileBytes"
+        [files]="files"
+        [size]="size"
+      ></cos-image-upload-form>
+    </cos-image-upload-previews-list>
+`;
+
+export const files = [
+  ...new Array(10)
+    .fill(0)
+    .map(
+      (x, idx) =>
+        `https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/536/354`
+    ),
+];
+
+<Meta
+  title="Controls &amp; Inputs/Image Upload"
+  component={CosImageUploadFormComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [
+        BrowserAnimationsModule,
+        CosImageUploadFormModule,
+        CosImageUploadPreviewsListModule,
+      ],
+    }),
+  ]}
+  args={{
+    allowMultipleUploads: true,
+    size: 'default',
+    files,
+    showMaxPreviews: 4,
+    acceptedFileTypes: 'image/jpeg,image/jpg,image/png,image/gif',
+    maxFileBytes: 2097152,
+  }}
+  argTypes={{
+    allowMultipleUploads: { control: 'boolean' },
+    size: {
+      control: 'select',
+      options: ['default', 'sm'],
+    },
+    files: { control: 'array' },
+    showMaxPreviews: { control: 'number' },
+    imgClass: { control: 'text' },
+    acceptedFileTypes: { control: 'text' },
+    maxFileBytes: { control: 'number' },
+    fileRejected: {
+      action: 'fileRejected',
+    },
+    imgRemoved: {
+      action: 'imgRemoved',
+    },
+    imgSelected: {
+      action: 'imgSelected',
+    },
+    fileRejected: {
+      action: 'fileRejected',
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="Image Upload Control">
+    {Template(uploadControlTemplate()).bind({})}
+  </Story>
+  <Story name="Image Previews List">
+    {Template(uploadPreviewsListTemplate()).bind({})}
+  </Story>
+  <Story name="Image Previews with Control">
+    {Template(uploadListGridWithControlTemplate()).bind({})}
+  </Story>
+</Canvas>

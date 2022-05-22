@@ -1,0 +1,40 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/toggle",
+  "sourceRoot": "libs/cosmos/components/toggle/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "project": "libs/cosmos/components/toggle/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/toggle/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/toggle/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/cosmos/components/toggle/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/toggle/src/**/*.ts",
+          "libs/cosmos/components/toggle/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["type:ui", "type:library", "scope:cosmos"]
+}

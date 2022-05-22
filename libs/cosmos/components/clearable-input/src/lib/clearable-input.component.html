@@ -1,0 +1,25 @@
+<cos-form-field class="cos-input-clearable">
+  <cos-label>{{ label }}</cos-label>
+  <button *ngIf="value" cosSuffix cos-icon-button aria-label="Clear">
+    <span class="cos-accessibly-hidden">Button, clear input text. </span>
+    <i class="fas fa-times" (click)="clearInput()"></i>
+  </button>
+  <input
+    cos-input
+    [style]="style"
+    [type]="type"
+    [readOnly]="readOnly"
+    [attr.id]="id"
+    [required]="required"
+    [id]="id"
+    [(ngModel)]="value"
+    #name="ngModel"
+    #input
+    (ngModelChange)="_onValueChange($event)"
+    [attr.disabled]="disabled ? '' : null"
+    [placeholder]="placeholder"
+  />
+
+  <ng-content select="cos-hint" ngProjectAs="cos-hint"></ng-content>
+  <ng-content select="cos-error" ngProjectAs="cos-error"></ng-content>
+</cos-form-field>

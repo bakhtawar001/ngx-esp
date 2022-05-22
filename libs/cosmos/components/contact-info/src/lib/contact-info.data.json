@@ -1,0 +1,347 @@
+{
+  "Id": 9207,
+  "Name": "ASIQA Supplier I",
+  "AsiNumber": "30232",
+  "Phone": {
+    "Work": "(555) 555-5555",
+    "Primary": "(555) 555-5555",
+    "$index": 1
+  },
+  "Fax": {
+    "Work": "(215) 123-2343",
+    "Primary": "(215) 123-2343",
+    "$index": 1
+  },
+  "Email": "zong8963@hotmail.com",
+  "Emails": ["zong8963@hotmail.com", "bouncedprodpersonify@asicentral.com"],
+  "Websites": [
+    "http://www.asiqasupplier1.com",
+    "http://www.asiqasupplier1.com"
+  ],
+  "Contacts": [
+    {
+      "Name": "Test Contact31",
+      "Title": "Manager"
+    }
+  ],
+  "OfficeHours": "8AM - 5PM",
+  "Type": "Supplier",
+  "Addresses": {
+    "Primary": {
+      "Street1": "3028 Second Corp St",
+      "Street2": "Some Rd",
+      "City": "Boulder",
+      "State": "CO",
+      "Zip": "80314-0001",
+      "Country": "USA"
+    },
+    "Delivery": {
+      "Street1": "3028 Second Corp St",
+      "Street2": "Some Rd",
+      "City": "Boulder",
+      "State": "CO",
+      "Zip": "80314-0001",
+      "Country": "USA"
+    }
+  },
+  "Phones": [
+    {
+      "Type": "OfficePhone",
+      "Number": "(555) 555-5555",
+      "IsPrimary": true
+    },
+    {
+      "Type": "OfficeFax",
+      "Number": "(215) 123-2343",
+      "IsPrimary": true
+    }
+  ],
+  "Ratings": {
+    "OverAll": {
+      "Rating": 9,
+      "Companies": 2,
+      "Transactions": 26
+    },
+    "Quality": {
+      "Rating": 9,
+      "Companies": 2,
+      "Transactions": 25
+    },
+    "Communication": {
+      "Rating": 9,
+      "Companies": 2,
+      "Transactions": 25
+    },
+    "Delivery": {
+      "Rating": 9,
+      "Companies": 2,
+      "Transactions": 24
+    },
+    "ConflictResolution": {
+      "Rating": 9,
+      "Companies": 2,
+      "Transactions": 24
+    },
+    "Decoration": {
+      "Rating": 9,
+      "Companies": 2,
+      "Transactions": 24
+    }
+  },
+  "Artwork": {
+    "Comment": "Photoshop files must be saved as CMYK files. RGB is not acceptable. All files must contain a final product showing keylines for size & placement. Bleed must be included. All fonts, screen & printer ok. Convert fonts to outlines. All files EPS-Pict. etc. When sending e-mail, attach files, use stuffit or dish double before sending large file otherwise it will MIME & cannot be used. It will not expand. 1. A fax on company letterhead, company memo or purchase order MUST be faxed to (973) 616-4444 instructing that e-mail has been sent. 2. All text art work or art with text in it must have the text converted to outlines. On both (Ai) and (EPS) files. 3. All stitch files in Tajima format are also accepted as art. Please call for sending instructions."
+  },
+  "ProductionTime": {
+    "Name": "10-12 Days",
+    "Days": {
+      "From": 10,
+      "To": 12,
+      "$index": 1
+    }
+  },
+  "RushTime": {
+    "Name": "2-5 Days",
+    "Days": {
+      "From": 2,
+      "To": 5,
+      "$index": 1
+    }
+  },
+  "MarketingPolicy": "Supplier indicates they sell advertising specialties exclusively through distributors and/or incentive resellers",
+  "DistributionPolicy": "Territorial (within geographic area only)",
+  "YearEstablished": 2005,
+  "YearInIndustry": 2006,
+  "TotalEmployees": "40",
+  "MinorityInvolvement": "Woman Small and Disadvantaged Business",
+  "IsMinorityOwned": true,
+  "IsUnionAvailable": true,
+  "IsQcaCertified": true,
+  "IsCanadian": false,
+  "IsCanadianFriendly": false,
+  "HasDistributorAffiliation": true,
+  "Functions": ["Assembler", "Retail", "Wholesaler"],
+  "MultiLineReps": [
+    {
+      "Name": "Supplier1,Kundana"
+    }
+  ],
+  "References": [
+    {
+      "Id": 115143,
+      "Name": "ASIQA Distributor I",
+      "AsiNumber": "101574",
+      "Phone": "(555) 555-5555",
+      "Contacts": [
+        {
+          "Name": "bakhtawar malik"
+        }
+      ],
+      "Transactions": 25
+    },
+    {
+      "Id": 112792,
+      "Name": "ASIQA Distributor II",
+      "AsiNumber": "125735",
+      "Phone": "(555) 555-5555",
+      "Contacts": [
+        {
+          "Name": "Test Contact34"
+        }
+      ],
+      "Transactions": 1
+    }
+  ],
+  "Documentations": [
+    {
+      "Id": 19,
+      "Name": "Test1",
+      "Url": "http://commonmedia.asicentral.com/30000/32696/SMU PDF ImageSMU PDF Image SMU PDF Image- 14732.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 20,
+      "Name": "Test 2",
+      "Url": "http://www.asicentral.com",
+      "Type": "LINK"
+    },
+    {
+      "Id": 21,
+      "Name": "Test 3",
+      "Url": "http://commonmedia.asicentral.com/30000/32697/SMU PDF ImageSMU PDF Image SMU PDF Image- 14732.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 22,
+      "Name": "Test 4",
+      "Url": "http://cnn.com",
+      "Type": "LINK"
+    },
+    {
+      "Id": 3695,
+      "Name": "neil test",
+      "Url": "http://commonmedia.asicentral.com/560000/562134/66010 safety and compliance upload.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550461527,
+      "Name": "Safety DOC",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/Book1.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550461528,
+      "Name": "Safety link on 8 sept",
+      "Url": "http://www.yahoo.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 550467081,
+      "Name": "d1",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/18431.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550495579,
+      "Name": "SP1212-CD",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/34356%20Products.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550495580,
+      "Name": "SP1212-CL",
+      "Url": "http://www.ms.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 550547178,
+      "Name": "Test 30232 safety and compliance document",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/255.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550575764,
+      "Name": "Sanity DOc",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/21095.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550616172,
+      "Name": "J safety and compliance",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/catalog1.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550654038,
+      "Name": "Spot Check Doc",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/2.6%20Scope.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550742115,
+      "Name": "test",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/23861.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 551129443,
+      "Name": "April1stDoc",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/TEST%20file.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 551364928,
+      "Name": "TestDoc-NM",
+      "Url": "http://asicentral.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552135133,
+      "Name": "safe doc 212",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/Core-Scrum.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552257068,
+      "Name": "safma docs",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/High%20Level%20Test%20Cases%20-%20Preferences.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552361999,
+      "Name": "skyee",
+      "Url": "http://s7d4.scene7.com/s7viewers/html5/eCatalogViewer.html?emailurl=http://s7d4.scene7.com/s7/emailFriend&serverUrl=http://s7d4.scene7.com/is/image/&config=Scene7SharedAssets/Universal_HTML5_eCatalog_Adv&contenturl=http://s7d4.scene7.com/skins/&asset=ASI/2017%20American%20Calendar-m",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552391157,
+      "Name": "51917 safe docs",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/Term%20Warning.doc",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552391165,
+      "Name": "51917 safe links",
+      "Url": "http://www.aofl.net/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552391538,
+      "Name": "ABC",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/cat.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552448768,
+      "Name": "sigh safe house",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/ConfirmedAccurateRules_050317%20(1).docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552481888,
+      "Name": "061717 safehouse",
+      "Url": "http://www.amazon.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552649884,
+      "Name": "72917 safe city again",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/Catalog%20Requirements.doc",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 553750727,
+      "Name": "abcSA",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/cat.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 556896752,
+      "Name": "DocName1",
+      "Url": "https://www.youtube.com/watch?v=eFzb3ujv-W8",
+      "Type": "LINK"
+    },
+    {
+      "Id": 556896753,
+      "Name": "ORSAFEDOC",
+      "Url": "https://www.youtube.com/watch?v=eFzb3ujv-W8",
+      "Type": "LINK"
+    }
+  ],
+  "OurStory": "ASA QA Supplier1 is ready to assist you with all of your embroidery needs.  Our experience in computerized embroidery and in-house digitizing gives us the ability to provide quick economical service and creative control on all direct embroidery merchandise.  Finished products include: shirts, jackets, caps, bags, towels, aprons and much more!\r\n",
+  "ShippingPoints": [
+    {
+      "IsFOB": true,
+      "City": "Trevose",
+      "State": " PA",
+      "Zip": "19053",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "New York",
+      "State": "NY",
+      "Zip": "19053",
+      "Country": "USA"
+    }
+  ]
+}

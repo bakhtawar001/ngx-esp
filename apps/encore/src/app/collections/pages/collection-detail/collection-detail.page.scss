@@ -1,0 +1,83 @@
+@import 'cosmos/scss/settings/';
+
+.collection-detail {
+  display: flex;
+  flex-direction: column;
+
+  @include wider-than($bp-large) {
+    flex: 1 0 25%;
+    flex-grow: 0;
+  }
+
+  &-header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    display: grid;
+    grid-template-areas:
+      'a b'
+      'c c'
+      'd d';
+  }
+
+  &-title {
+    grid-area: a;
+    align-self: flex-start;
+    @include wider-than($bp-large) {
+      display: flex;
+      justify-content: left;
+      align-items: flex-start;
+      gap: 12px;
+
+      width: 600px;
+    }
+
+    cos-emoji-menu {
+      margin-top: 4px;
+    }
+  }
+
+  &-actions {
+    grid-area: b;
+
+    @include narrower-than($bp-large) {
+      justify-self: flex-end;
+    }
+    .actions-button {
+      @include spacing-inset-8();
+    }
+  }
+
+  &-description {
+    max-width: 600px;
+    margin: 0.2rem 0 1.4rem;
+    grid-area: c;
+  }
+
+  &-avatars {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    grid-area: d;
+  }
+}
+
+.collaborator-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+
+  > p {
+    margin: 0 0 0 6px;
+  }
+
+  > button {
+    padding: 0 6px;
+    height: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/cart-list",
+  "sourceRoot": "libs/cosmos/components/cart-list/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "project": "libs/cosmos/components/cart-list/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/cart-list/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/cart-list/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/cosmos/components/cart-list/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/cart-list/src/**/*.ts",
+          "libs/cosmos/components/cart-list/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["type:ui", "type:library", "scope:cosmos"]
+}

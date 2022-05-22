@@ -1,0 +1,40 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/lookup-types",
+  "sourceRoot": "libs/esp/lookup-types/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/esp/lookup-types/tsconfig.lib.json",
+        "project": "libs/esp/lookup-types/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/lookup-types/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/lookup-types/**/*.ts",
+          "libs/esp/lookup-types/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/lookup-types/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/lookup-types"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

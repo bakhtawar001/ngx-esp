@@ -1,0 +1,56 @@
+<cos-card>
+  <div class="grid grid-gap-20 customer-info">
+    <div class="border-right pr-16">
+      <h2 class="header-style-18">Customer Information</h2>
+      <esp-order-customer-info [order]="order"></esp-order-customer-info>
+    </div>
+    <div>
+      <esp-order-quote-information
+        [order]="order"
+        [locked]="locked"
+      ></esp-order-quote-information>
+    </div>
+  </div>
+</cos-card>
+<!-- <ng-container *ngIf="!isEditing">
+  <div class="flex flex-row">
+    <div class="flex-auto">
+      <b>Customer information</b>
+      <esp-order-customer-info [order]="order"></esp-order-customer-info>
+    </div>
+    <div class="flex-auto">
+      <b>{{ order?.Type | titlecase }} information</b>
+      <esp-order-quote-information
+        [order]="order"
+      ></esp-order-quote-information>
+    </div>
+    <div class="flex-initial">
+      <button (click)="onEdit()">Edit</button>
+    </div>
+  </div>
+</ng-container> -->
+<!-- TODO: Figure out wether edit state needed -->
+<!-- <ng-container *ngIf="isEditing">
+  <form (ngSubmit)="onSubmit()" #currentForm="ngForm">
+    <div class="flex flex-row">
+      <div class="flex-auto">
+        <b>Customer information</b>
+        <esp-order-customer-info-edit
+          [editableOrder]="editableOrder"
+        ></esp-order-customer-info-edit>
+      </div>
+      <div class="flex-auto">
+        <b>{{ editableOrder?.Type | titlecase }} information</b>
+        <esp-order-quote-information-edit
+          [editableOrder]="editableOrder"
+        ></esp-order-quote-information-edit>
+      </div>
+    </div>
+    <div class="flex flex-row justify-end">
+      <button class="mr-2" (click)="onCancel()">Cancel</button>
+      <button class="" type="submit" [disabled]="!currentForm.valid">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</ng-container> -->

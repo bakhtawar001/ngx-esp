@@ -1,0 +1,181 @@
+<h1 class="header-style-22">Company information</h1>
+<p class="page-description">{{pageDescription}}</p>
+
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Brand Information</h2>
+  </cos-segmented-panel-header>
+  <cos-segmented-panel-row>
+    <esp-company-name-panel-row-form
+      [isEditable]="'Administrator' | hasRole"
+    ></esp-company-name-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row class="company-settings-logo-row">
+    <esp-company-logo-panel-row-form></esp-company-logo-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-brand-color-panel-row-form></esp-company-brand-color-panel-row-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">ASI Account Information</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <esp-company-asi-number-panel-row-form></esp-company-asi-number-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row *cosIfFeatureFlags="{ matches: ['projects'] }">
+    <asi-panel-editable-row
+      rowTitle="ASI custom share URL"
+      [isEditable]="false"
+    >
+      <div><i class="form-row-icon fa fa-link mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <p class="form-row-value">{{asiCustomShareUrl}}</p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active> </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Contact Information</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <esp-company-email-panel-row-form></esp-company-email-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-phone-panel-row-form></esp-company-phone-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-website-panel-row-form></esp-company-website-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row
+      rowTitle="Social Media"
+      [isEditable]="'Administrator' | hasRole"
+    >
+      <div><i class="form-row-icon fa fa-heart mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <ul>
+            <li>
+              <span>Facebook:</span>
+              <span> {{ '' }} </span>
+            </li>
+            <li>
+              <span>Twitter:</span>
+              <span> {{ '' }} </span>
+            </li>
+            <li>
+              <span>Instagram:</span>
+              <span> {{ '' }} </span>
+            </li>
+          </ul>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <esp-social-media-form></esp-social-media-form>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-address-panel-row-form></esp-company-address-panel-row-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel
+  class="company-settings-panel"
+  *cosIfFeatureFlags="{ matches: ['orders'] }"
+>
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Market and Currency</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row rowTitle="Default Market">
+      <!--
+      [isDirty]="defaultMarket.dirty" -->
+      <div><i class="form-row-icon fa fa-sign mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <p class="form-row-value">{{defaultMarket.value}}</p>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <cos-form-field>
+          <cos-label>Default Market</cos-label>
+          <input
+            cos-input
+            id="defaultMarket"
+            [formControl]="defaultMarket"
+            placeholder="Enter a value"
+          />
+          <cos-error></cos-error>
+        </cos-form-field>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row rowTitle="Default Currency and Conversion Rate">
+      <!--
+      [isDirty]="defaultCurrency.dirty" -->
+      <div><i class="form-row-icon fa fa-atom mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <p class="form-row-value">{{currencyLabel}}</p>
+        <p class="form-row-value">
+          1 {{defaultCurrency.value }} equals {{conversionRate.value}}
+          {{defaultCurrency.value === 'USD' ? 'CAD' : defaultCurrency.value}}
+        </p>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <cos-form-field>
+          <cos-label> Default Currency </cos-label>
+          <select
+            matNativeControl
+            id="defaultCurrency"
+            [formControl]="defaultCurrency"
+          >
+            <option value="USD">USD</option>
+            <option value="USD">CAD</option>
+          </select>
+          <cos-error></cos-error>
+        </cos-form-field>
+        <cos-form-field>
+          <cos-label> Conversion Rate </cos-label>
+          <div class="conversion-rate-row">
+            <span cosPrefix
+              ><strong>1</strong> {{defaultCurrency.value}}
+              <strong>equals</strong></span
+            >
+            <input
+              cos-input
+              id="conversionRate"
+              [formControl]="conversionRate"
+              placeholder="Enter a value"
+            />
+            <span cosSuffix
+              ><strong
+                >{{defaultCurrency.value === 'USD' ? 'CAD' :
+                defaultCurrency.value}}</strong
+              ></span
+            >
+          </div>
+          <cos-error></cos-error>
+        </cos-form-field>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

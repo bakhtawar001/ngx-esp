@@ -1,0 +1,29 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.project-details-create-dialog__actions-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .project-creation-heading {
+    display: none;
+  }
+
+  .form-header {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 1px solid $color-g-pebble-09;
+    margin-bottom: 12px;
+  }
+
+  .project-details-create-dialog__actions-bar {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: -20px;
+    button:last-of-type {
+      margin-bottom: 8px;
+    }
+  }
+}

@@ -1,0 +1,506 @@
+<h1 class="header-style-22">Project Phases</h1>
+<p class="page-description">{{pageDescription}}</p>
+<ng-form [formGroup]="settingsForm">
+  <cos-segmented-panel>
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Brand Information</h2>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur labore et
+      dolore magna adipiscing elit, sed do. Quis nostrud exercitation ullamco
+      laboris nisi ut aliquip tempor incididunt ut labore et dolore magna
+      aliqua.
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        class="company-settings-name"
+        [isFullWidth]="true"
+        [rowTitle]=""
+      >
+        <div><span class="mr-16">1</span></div>
+        <asi-panel-editable-row-inactive>
+          <div class="task-row">
+            <div>
+              <p class="form-row-title">Negotiating and Pitching (Read Only)</p>
+              <ul class="form-row-value-list">
+                <li *ngFor="let task of tasks"><span>{{task}}</span></li>
+              </ul>
+            </div>
+            <div>
+              <span class="form-row-value">
+                <i class="fa fa-tasks"></i> 3 Tasks
+              </span>
+            </div>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div
+            cdkDropList
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="example-box"
+              *ngFor="let task of tasks; let i = index"
+              cdkDrag
+            >
+              <cos-segmented-panel>
+                <cos-segmented-panel-row>
+                  <asi-panel-editable-row
+                    class="company-settings-name"
+                    [isFullWidth]="true"
+                  >
+                    <asi-panel-editable-row-inactive>
+                      <div class="task-edit-row">
+                        <div class="cos-form-row">
+                          <label
+                            [ngClass]="{'cos-form-label': true, 'cos-accessibly-hidden': true}"
+                            [attr.for]="'defaultMarket'"
+                          >
+                            Task Title
+                          </label>
+                          <input
+                            cos-input
+                            id="defaultMarket"
+                            formControlName="defaultMarket"
+                            placeholder="Enter a value"
+                          />
+                          <div class="error" *ngIf="errors">
+                            This field is required
+                          </div>
+                        </div>
+
+                        <div class="task-edit-row-details">
+                          <ul class="form-row-value-list">
+                            <li><span>Assigned to: </span><span>--</span></li>
+                            <li><span>Category: </span><span>--</span></li>
+                            <li><span>Visibility: </span><span>--</span></li>
+                            <li><span>Link To: </span><span>--</span></li>
+                            <li><span>Description: </span><span>--</span></li>
+                          </ul>
+
+                          <ul class="form-row-value-list">
+                            <li><span>Document Type: </span><span>--</span></li>
+                            <li><span>Priority</span><span>--</span></li>
+                            <li><span>Per: </span><span>--</span></li>
+                            <li><span>Due: </span><span>--</span></li>
+                          </ul>
+                        </div>
+                        <p class="form-row-value">
+                          Description: This is the description of the task and
+                          if too long it goes like ...
+                        </p>
+                      </div>
+                    </asi-panel-editable-row-inactive>
+
+                    <asi-panel-editable-row-active>
+                      <div class="tracking-2-col">
+                        <div>
+                          <div class="tracking-2-col">
+                            <div class="cos-form-row">
+                              <label
+                                [ngClass]="{'cos-form-label': true, 'cos-accessibly-hidden': true}"
+                                [attr.for]="'defaultMarket'"
+                              >
+                                Task Title
+                              </label>
+                              <input
+                                cos-input
+                                id="defaultMarket"
+                                formControlName="defaultMarket"
+                                placeholder="Enter a name for the task"
+                              />
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="tracking-2-col">
+                            <div class="cos-form-row mr-16">
+                              <label
+                                [ngClass]="{'cos-form-label': true}"
+                                [attr.for]="'defaultCurrency'"
+                              >
+                                Assigned To
+                              </label>
+                              <select
+                                matNativeControl
+                                [attr.id]="'defaultCurrency'"
+                                formControlName="defaultCurrency"
+                              >
+                                <option value="USD">USD</option>
+                                <option value="USD">CAD</option>
+                              </select>
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                            <div class="cos-form-row mr-16">
+                              <label
+                                [ngClass]="{'cos-form-label': true}"
+                                [attr.for]="'defaultCurrency'"
+                              >
+                                Category
+                              </label>
+                              <select
+                                matNativeControl
+                                [attr.id]="'defaultCurrency'"
+                                formControlName="defaultCurrency"
+                              >
+                                <option value="USD">USD</option>
+                                <option value="USD">CAD</option>
+                              </select>
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="tracking-2-col">
+                            <div class="cos-form-row mr-16">
+                              <label
+                                [ngClass]="{'cos-form-label': true}"
+                                [attr.for]="'defaultCurrency'"
+                              >
+                                Visibility
+                              </label>
+                              <select
+                                matNativeControl
+                                [attr.id]="'defaultCurrency'"
+                                formControlName="defaultCurrency"
+                              >
+                                <option value="USD">USD</option>
+                                <option value="USD">CAD</option>
+                              </select>
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                            <div class="cos-form-row mr-16">
+                              <label
+                                [ngClass]="{'cos-form-label': true}"
+                                [attr.for]="'defaultCurrency'"
+                              >
+                                Priority
+                              </label>
+                              <select
+                                matNativeControl
+                                [attr.id]="'defaultCurrency'"
+                                formControlName="defaultCurrency"
+                              >
+                                <option value="USD">USD</option>
+                                <option value="USD">CAD</option>
+                              </select>
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label
+                              [ngClass]="{'cos-form-label': true} "
+                              [attr.for]="'test-radio'"
+                            >
+                              Due date
+                            </label>
+
+                            <div>
+                              <div
+                                cosRadioGroup
+                                id="test-radio"
+                                aria-label="Select an option"
+                                [required]="true"
+                              >
+                                <p>
+                                  <cos-radio-button [value]="'noDueDate'">
+                                    No Due Date
+                                  </cos-radio-button>
+                                </p>
+
+                                <div class="cos-form-row">
+                                  <div class="tracking-task-days-input">
+                                    <p class="mb-0 mr-8">
+                                      <cos-radio-button [value]="'dueDate'">
+                                        Due in
+                                        <span class="cos-accessibly-hidden">
+                                          10 days. Tab to change number of days.
+                                        </span>
+                                      </cos-radio-button>
+                                    </p>
+
+                                    <label
+                                      [ngClass]="{'cos-form-label': true, 'cos-accessibly-hidden': true}"
+                                      [attr.for]="'defaultMarket'"
+                                    >
+                                      Due Date Days
+                                    </label>
+
+                                    <input
+                                      cos-input
+                                      id="defaultMarket"
+                                      formControlName="defaultMarket"
+                                      type="number"
+                                      min="1"
+                                      autocomplete="off"
+                                    />
+                                    <span
+                                      class="
+                                        tracking-task-days-input-label
+                                        ml-8
+                                      "
+                                      >days</span
+                                    >
+                                  </div>
+                                  <div class="error" *ngIf="errors">
+                                    This field is required
+                                  </div>
+                                </div>
+                                <div class="cos-form-row">
+                                  <cos-checkbox
+                                    class="ml-16"
+                                    formControlName="showProductImages"
+                                    id="showProductImages"
+                                    name="checkbox-showProductImages"
+                                  >
+                                    Weekdays only
+                                  </cos-checkbox>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="cos-form-row">
+                              <label
+                                [ngClass]="{'cos-form-label': true}"
+                                [attr.for]="'defaultMarket'"
+                              >
+                                Description
+                              </label>
+                              <textarea
+                                cos-input
+                                id="defaultMarket"
+                                formControlName="defaultMarket"
+                                placeholder="Enter a value"
+                              ></textarea>
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="tracking-3-col">
+                            <div class="mr-16">
+                              <p class="cos-form-label">Document Type</p>
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showProductImages"
+                                  id="showProductImages"
+                                  name="checkbox-showProductImages"
+                                >
+                                  Show Product Images
+                                </cos-checkbox>
+                              </p>
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showShippingContactPhoneNumber"
+                                  id="showShippingContactPhoneNumber"
+                                  name="checkbox-showShippingContactPhoneNumber"
+                                >
+                                  Show Shipping Contact Phone Number
+                                </cos-checkbox>
+                              </p>
+
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showShippingContactEmailAddress"
+                                  id="showShippingContactEmailAddress"
+                                  name="checkbox-showShippingContactEmailAddress"
+                                >
+                                  Show Shipping Contact Email Address
+                                </cos-checkbox>
+                              </p>
+
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showPoRefernence"
+                                  id="showPoRefernence"
+                                  name="checkbox-showPoRefernence"
+                                >
+                                  Show PO Reference
+                                </cos-checkbox>
+                              </p>
+                            </div>
+
+                            <div class="mr-16">
+                              <p class="cos-form-label">Link To</p>
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showProductImages"
+                                  id="showProductImages"
+                                  name="checkbox-showProductImages"
+                                >
+                                  Show Product Images
+                                </cos-checkbox>
+                              </p>
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showShippingContactPhoneNumber"
+                                  id="showShippingContactPhoneNumber"
+                                  name="checkbox-showShippingContactPhoneNumber"
+                                >
+                                  Show Shipping Contact Phone Number
+                                </cos-checkbox>
+                              </p>
+
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showShippingContactEmailAddress"
+                                  id="showShippingContactEmailAddress"
+                                  name="checkbox-showShippingContactEmailAddress"
+                                >
+                                  Show Shipping Contact Email Address
+                                </cos-checkbox>
+                              </p>
+
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showPoRefernence"
+                                  id="showPoRefernence"
+                                  name="checkbox-showPoRefernence"
+                                >
+                                  Show PO Reference
+                                </cos-checkbox>
+                              </p>
+                            </div>
+
+                            <div class="cos-form-row">
+                              <label
+                                [ngClass]="{'cos-form-label': true}"
+                                [attr.for]="'defaultCurrency'"
+                              >
+                                Per
+                              </label>
+                              <select
+                                matNativeControl
+                                [attr.id]="'defaultCurrency'"
+                                formControlName="defaultCurrency"
+                              >
+                                <option value="USD">USD</option>
+                                <option value="USD">CAD</option>
+                              </select>
+                              <div class="error" *ngIf="errors">
+                                This field is required
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>
+                              <p class="cos-form-label">Reminders</p>
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showProductImages"
+                                  id="showProductImages"
+                                  name="checkbox-showProductImages"
+                                >
+                                  Show Product Images
+                                </cos-checkbox>
+                              </p>
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showShippingContactPhoneNumber"
+                                  id="showShippingContactPhoneNumber"
+                                  name="checkbox-showShippingContactPhoneNumber"
+                                >
+                                  Show Shipping Contact Phone Number
+                                </cos-checkbox>
+                              </p>
+
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showShippingContactEmailAddress"
+                                  id="showShippingContactEmailAddress"
+                                  name="checkbox-showShippingContactEmailAddress"
+                                >
+                                  Show Shipping Contact Email Address
+                                </cos-checkbox>
+                              </p>
+
+                              <p>
+                                <cos-checkbox
+                                  formControlName="showPoRefernence"
+                                  id="showPoRefernence"
+                                  name="checkbox-showPoRefernence"
+                                >
+                                  Show PO Reference
+                                </cos-checkbox>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <button
+                            class="remove-task"
+                            cos-icon-button
+                            [color]="'warn'"
+                            (click)="removeTask(i)"
+                          >
+                            Remove Task
+                          </button>
+                        </div>
+                      </div>
+                    </asi-panel-editable-row-active>
+                  </asi-panel-editable-row>
+                </cos-segmented-panel-row>
+              </cos-segmented-panel>
+            </div>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel>
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Project Resolution</h2>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur labore et
+      dolore magna adipiscing elit, sed do. Quis nostrud exercitation ullamco
+      laboris nisi ut aliquip tempor incididunt ut labore et dolore magna
+      aliqua.
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'On Hold'"
+        class="company-settings-name"
+      >
+        <div><span class="mr-16"></span></div>
+        <asi-panel-editable-row-active> 2 </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Closed (Won)'"
+        class="company-settings-name"
+      >
+        <div><span class="mr-16"></span></div>
+        <asi-panel-editable-row-active> 1 </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Closed (Lost)'"
+        class="company-settings-name"
+      >
+        <div><span class="mr-16"></span></div>
+
+        <asi-panel-editable-row-active> 2 </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-form>

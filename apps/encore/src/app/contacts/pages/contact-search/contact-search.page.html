@@ -1,0 +1,71 @@
+<div class="util-bar mb-16">
+  <div class="search-keywords">
+    <div class="search-form">
+      <esp-search-box
+        data-cy="search"
+        placeholder="Search Contacts"
+      ></esp-search-box>
+    </div>
+  </div>
+  <div class="search-filters">
+    <button cos-stroked-button size="sm" type="button">Filters</button>
+  </div>
+  <div class="search-sort-by util-bar-end">
+    <esp-search-sort
+      [options]="sortMenuOptions"
+      data-cy="sort"
+    ></esp-search-sort>
+  </div>
+</div>
+
+<div *ngIf="tabs" class="collection-tabs mb-12">
+  <esp-search-tab-group [tabs]="tabs" data-cy="tabs"></esp-search-tab-group>
+</div>
+
+<ng-template [ngIf]="state.contactsLoading" [ngIfElse]="results">
+  <p class="body-style-12-shark mt-16 text-center" data-cy="loader">
+    Loading...
+  </p>
+</ng-template>
+
+<ng-template #results>
+  <ng-container *ngIf="state.contacts?.length; else noParties">
+    <esp-contact-card
+      *ngFor="let party of state.contacts; trackBy: trackContact"
+      [contact]="party"
+      (click)="navigateToContact(party)"
+      (delete)="delete(party)"
+      (toggleStatus)="toggleStatus(party)"
+      (transferOwner)="transferOwnership(party)"
+      class="directory-card"
+      data-cy="contact-card"
+    >
+    </esp-contact-card>
+    <esp-search-pagination></esp-search-pagination>
+  </ng-container>
+</ng-template>
+
+<ng-template #noParties>
+  <asi-empty-state-info
+    *ngIf="!state.term; else noSearchResults"
+    mainText="No Contacts"
+    secondText="There are no contacts in your directory."
+    thirdText="Create a new contact record to begin."
+    data-cy="no-contacts-info"
+  >
+    <button
+      (click)="createContact()"
+      cos-stroked-button
+      color="primary"
+      type="button"
+      asiEmptyStateInfoButtons
+    >
+      <i class="fa fa-plus mr-8"></i>Create New Contact
+    </button>
+  </asi-empty-state-info>
+  <ng-template #noSearchResults>
+    <p class="body-style-14-shark" data-cy="no-search-results-info">
+      No contacts found.
+    </p>
+  </ng-template>
+</ng-template>

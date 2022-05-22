@@ -1,0 +1,16 @@
+@import '../../scss/settings/';
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.colorblock {
+  width: 20px;
+  height: 20px;
+  border: 1px solid grey;
+  margin-right: $spacing-inline-8;
+}
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}

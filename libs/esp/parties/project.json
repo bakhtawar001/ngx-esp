@@ -1,0 +1,41 @@
+{
+  "root": "libs/esp/parties",
+  "sourceRoot": "libs/esp/parties/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/parties"],
+      "options": {
+        "tsConfig": "libs/esp/parties/tsconfig.lib.json",
+        "project": "libs/esp/parties/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/parties/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/parties/**/*.ts",
+          "libs/esp/parties/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/parties/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/parties"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

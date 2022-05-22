@@ -1,0 +1,65 @@
+<form name="loginForm" [formGroup]="loginForm" novalidate>
+  <cos-form-field>
+    <cos-label>Username or email</cos-label>
+    <input
+      cos-input
+      tabindex="1"
+      formControlName="username"
+      class="w-full"
+      [style]="'large'"
+      placeholder="Username or email"
+    />
+  </cos-form-field>
+  <cos-form-field class="mt-12">
+    <cos-label>
+      <span class="flex justify-between">
+        <label>Password</label>
+        <label
+          ><a
+            class="lnkForgotPassword"
+            routerLink="/auth/forgotpassword"
+            tabindex="6"
+            >Forgot your password?</a
+          ></label
+        >
+      </span>
+    </cos-label>
+    <input
+      cos-input
+      tabindex="2"
+      formControlName="password"
+      [type]="passwordToggle.type"
+      class="w-full"
+      [style]="'large'"
+      placeholder="Password"
+    />
+    <cos-password-toggle
+      cosSuffix
+      #passwordToggle
+      tabindex="3"
+    ></cos-password-toggle>
+  </cos-form-field>
+  <div
+    class="cos-error"
+    *ngIf="loginForm.get('password').hasError('serverError')"
+  >
+    {{ loginForm.get('password').errors.serverError }}
+  </div>
+  <div>
+    <cos-checkbox formControlName="rememberMe" tabindex="4">
+      Keep me logged in
+    </cos-checkbox>
+  </div>
+  <div>
+    <button
+      tabindex="5"
+      cos-flat-button
+      class="w-full"
+      size="lg"
+      color="primary"
+      (click)="loginWithCredentials()"
+    >
+      Log in
+    </button>
+  </div>
+</form>

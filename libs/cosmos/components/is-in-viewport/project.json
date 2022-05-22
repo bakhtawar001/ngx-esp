@@ -1,0 +1,40 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/is-in-viewport",
+  "sourceRoot": "libs/cosmos/components/is-in-viewport/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "project": "libs/cosmos/components/is-in-viewport/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/is-in-viewport/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/is-in-viewport/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/cosmos/components/is-in-viewport/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/is-in-viewport/src/**/*.ts",
+          "libs/cosmos/components/is-in-viewport/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"]
+}

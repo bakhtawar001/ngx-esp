@@ -1,0 +1,61 @@
+<cos-card
+  class="details-card cursor-pointer"
+  [style.borderTopColor]="topBorderColor"
+  (click)="clickCallback()"
+>
+  <div class="details-card__header">
+    <div class="details-card__avatar flex items-center justify-center">
+      <ng-content select="[asiUiDetailsCardAvatar]"></ng-content>
+    </div>
+
+    <div class="details-card__title-wrapper">
+      <h3
+        class="details-card__title"
+        [matTooltip]="showTitleTooltip ? title : ''"
+        matTooltipClass="cos-tooltip"
+        data-cy="title"
+      >
+        {{ title }}
+      </h3>
+      <p
+        *ngIf="subtitleFirstLine"
+        class="details-card__subtitle"
+        [matTooltip]="showSubtitleTooltip ? subtitleFirstLine : ''"
+        matTooltipClass="cos-tooltip"
+        data-cy="first-subtitle"
+      >
+        {{ subtitleFirstLine }}
+      </p>
+      <p
+        *ngIf="subtitleSecondLine"
+        class="details-card__subtitle"
+        [matTooltip]="showSubtitleTooltip ? subtitleSecondLine : ''"
+        matTooltipClass="cos-tooltip"
+        data-cy="second-subtitle"
+      >
+        {{ subtitleSecondLine }}
+      </p>
+    </div>
+  </div>
+  <div class="details-card__footer">
+    <p
+      *ngIf="firstLineDetails"
+      class="details-card__details"
+      [matTooltip]="showFirstLineTooltip ? firstLineDetails : ''"
+      matTooltipClass="cos-tooltip"
+      data-cy="first-line-details"
+    >
+      {{ firstLineDetails }}
+    </p>
+    <p
+      *ngIf="secondLineDetails"
+      [matTooltip]="showSecondLineTooltip ? secondLineDetails : ''"
+      matTooltipClass="cos-tooltip"
+      class="details-card__details"
+      data-cy="second-line-details"
+    >
+      {{ secondLineDetails }}
+    </p>
+    <ng-content select="[asiUiDetailsCardText]"></ng-content>
+  </div>
+</cos-card>

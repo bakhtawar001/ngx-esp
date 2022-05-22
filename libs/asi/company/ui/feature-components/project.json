@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/company/ui/feature-components",
+  "sourceRoot": "libs/asi/company/ui/feature-components/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/company/ui/feature-components"],
+      "options": {
+        "project": "libs/asi/company/ui/feature-components/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/company/ui/feature-components/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/company/ui/feature-components/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/company/ui/feature-components"],
+      "options": {
+        "jestConfig": "libs/asi/company/ui/feature-components/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/company/ui/feature-components/src/**/*.ts",
+          "libs/asi/company/ui/feature-components/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "scope:ui", "type:ui"]
+}

@@ -1,0 +1,52 @@
+<cos-dialog>
+  <ng-container cosDialogHeader>Close Project</ng-container>
+  <ng-container cosDialogSubHeader>Closing a project</ng-container>
+  <ng-container cosDialogContent>
+    <div class="content-wrapper" [formGroup]="formGroup">
+      <div class="project-close-dialog__textarea mb-16">
+        <cos-form-field>
+          <cos-label data-cy="note-textarea-label">Note</cos-label>
+          <textarea
+            formControlName="Note"
+            class="w-full"
+            cos-input
+            maxlength="500"
+            rows="4"
+            data-cy="note-textarea"
+          ></textarea>
+        </cos-form-field>
+      </div>
+      <div class="mb-16">
+        <cos-form-field>
+          <cos-label data-cy="resolution-select-label"
+            >Project Resolution</cos-label
+          >
+          <select
+            formControlName="Resolution"
+            class="cos-input"
+            matNativeControl
+            data-cy="resolution-select"
+          >
+            <option *ngFor="let option of resolutionOptions">{{option}}</option>
+          </select>
+        </cos-form-field>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container cosDialogActions>
+    <div class="flex w-full">
+      <div class="w-1/2"></div>
+      <div class="w-1/2 text-right">
+        <button
+          (click)="close()"
+          color="warn"
+          cos-flat-button
+          type="button"
+          data-cy="close-project-button"
+        >
+          Close Project
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</cos-dialog>

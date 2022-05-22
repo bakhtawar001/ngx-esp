@@ -1,0 +1,97 @@
+<div class="collaborator-list-item grid">
+  <div class="account-item">
+    <cos-avatar>
+      <span *ngIf="!collaborator.IsTeam; else companyGravatar">
+        <img
+          class="cos-avatar-image"
+          [src]="collaborator.ImageUrl"
+          [attr.alt]="collaborator.Name"
+          (error)="imgError($event)"
+        />
+        {{ collaborator.Name | initials }}
+      </span>
+      <ng-template #companyGravatar>
+        <i class="fa fa-users text-light"></i>
+      </ng-template>
+    </cos-avatar>
+    <div>
+      <h4 class="header-style-13 mb-0" data-cy="collaborator-name">
+        {{ collaborator.Name }}
+      </h4>
+      <div *ngIf="collaborator.Email" class="body-style-12 truncate">
+        {{ collaborator.Email }}
+      </div>
+    </div>
+  </div>
+  <div
+    class="collaborator-role"
+    *ngIf="
+      collaborator.UserId === ownerId ||
+        collaborator.Id === ownerId ||
+        collaborator.Role === 'Administrator';
+      else noRole
+    "
+  >
+    <span
+      cosAttributeTag
+      *ngIf="collaborator.UserId === ownerId || collaborator.Id === ownerId"
+    >
+      <i class="fa fa-crown"></i> Owner
+    </span>
+    <span
+      cosAttributeTag
+      *ngIf="
+        collaborator.Role === 'Administrator' &&
+        collaborator.UserId !== ownerId &&
+        collaborator.Id !== ownerId
+      "
+    >
+      <i class="fa fa-user-cog"></i> Admin
+    </span>
+  </div>
+  <ng-template #noRole>
+    <div class="collaborator-actions">
+      <button
+        class="select-button"
+        type="button"
+        cos-stroked-button
+        size="sm"
+        [matMenuTriggerFor]="actionMenu"
+      >
+        <span>{{ accessTypes[collaborator.AccessType]?.Name }}</span>
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <mat-menu
+        #actionMenu
+        class="cos-menu action-menu"
+        backdropClass="cos-backdrop"
+        yPosition="below"
+      >
+        <div
+          class="action-menu-item"
+          mat-menu-item
+          *ngFor="let option of accessTypes | keyvalue: unsorted"
+          (click)="visibilityChanged.next($any(option).key)"
+          [disabled]="isOnlyReadWrite && option.key !== 'ReadWrite'"
+        >
+          <i
+            class="fa fa-check"
+            *ngIf="option.key === collaborator.AccessType"
+          ></i>
+          {{ option.value.Name }}<br />
+          <span class="body-style-12">{{ option.value.Description }}</span>
+        </div>
+        <ng-container *ngIf="accessTypes[collaborator.AccessType]">
+          <hr />
+          <div
+            mat-menu-item
+            class="action-menu-item"
+            (click)="removeCollaborator.next()"
+          >
+            Remove
+          </div>
+        </ng-container>
+      </mat-menu>
+    </div>
+  </ng-template>
+</div>

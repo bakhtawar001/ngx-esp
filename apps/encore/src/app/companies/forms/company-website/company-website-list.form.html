@@ -1,0 +1,55 @@
+<div class="form-panel-fields">
+  <div
+    class="form-panel-row"
+    *ngFor="let website of groups; let i = index;"
+    [formGroup]="website"
+  >
+    <cos-input-row
+      [allowRemove]="form.controls.length > 1"
+      (remove)="removeItem(website)"
+    >
+      <div class="form-panel-row-list">
+        <div class="cos-input-row form-panel-row-list-item">
+          <cos-form-field>
+            <cos-label data-cy="website-url-label">Website</cos-label>
+            <input
+              formControlName="Url"
+              cos-input
+              placeholder="Enter a value"
+              type="url"
+              maxlength="100"
+              data-cy="website-url-field"
+            />
+            <cos-error
+              [controlErrors]="{ validUrl: 'Please provide a valid website address' }"
+            ></cos-error>
+          </cos-form-field>
+        </div>
+
+        <div class="cos-form-row">
+          <cos-checkbox
+            *ngIf="!website.value.IsPrimary; else primaryLabel"
+            (change)="makePrimary(i)"
+            formControlName="IsPrimary"
+            data-cy="website-primary-checkbox"
+            >Make Primary
+          </cos-checkbox>
+          <ng-template #primaryLabel>
+            <p class="form-panel-field__primary-msg">
+              This is my primary website
+            </p>
+          </ng-template>
+        </div>
+      </div>
+    </cos-input-row>
+  </div>
+
+  <button
+    (click)="addItem()"
+    cos-button
+    data-cy="add-website-button"
+    type="button"
+  >
+    <i class="fa fa-plus mr-8"></i> Add Website
+  </button>
+</div>

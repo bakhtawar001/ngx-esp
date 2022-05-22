@@ -1,0 +1,18 @@
+<ng-select bindLabel="title"
+           [(ngModel)]="typeaheadValue"
+           [items]="results$ | async"
+           [loading]="searching"
+           [loadingText]="loadingText"
+           [minTermLength]="-1"
+           [notFoundText]="notFoundText"
+           [placeholder]="placeholder"
+           [readonly]="isDisabled"
+           [searchable]="true"
+           [typeahead]="searchValue"
+           (blur)="blur.next()"
+           (clear)="clear.next()"
+           (close)="close.next()"
+           (focus)="searchValue.next(''); focus.next()"
+           (open)="open.next()"
+           (ngModelChange)="itemSelected($event)">
+</ng-select>

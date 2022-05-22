@@ -1,0 +1,68 @@
+@import '../../scss/settings/';
+
+.cos-data-summary {
+  @include spacing-inset-24();
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-g-pearl-03;
+
+  @include narrower-than($bp-medium) {
+    flex-direction: column;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    @include narrower-than($bp-medium) {
+      width: 30%;
+    }
+  }
+
+  p {
+    margin-top: auto;
+  }
+
+  h2 {
+    margin: 0 0 $spacing-stack-4 0;
+  }
+
+  .cos-data-blue {
+    color: $color-bl-azure-57;
+  }
+
+  span {
+    display: block;
+    margin-bottom: $spacing-stack-8;
+  }
+}
+
+.cos-chart-container {
+  width: 100%;
+  max-width: 684px;
+  margin: 0 auto;
+  box-shadow: $box-shadow-default;
+}
+
+.cos-chart-wrapper {
+  padding: $spacing-stack-24 0 0 $spacing-stack-24;
+}
+
+.cos-form-filters {
+  display: flex;
+  @include narrower-than($bp-medium) {
+    display: block;
+
+    .cos-form-field {
+      width: 100%;
+      margin: 0 !important;
+    }
+  }
+
+  .cos-form-field-type-cos-native-select {
+    margin-right: $spacing-inline-8;
+  }
+}
+
+.cos-dashed-axis {
+  stroke-dasharray: 5;
+}

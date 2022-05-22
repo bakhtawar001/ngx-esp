@@ -1,0 +1,36 @@
+@import '../../../../../../../libs/cosmos/scss/settings/';
+
+.cos-mega-menu-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  margin-top: 16px;
+
+  .cos-button {
+    margin-left: 8px;
+  }
+}
+
+cos-form-field {
+  margin-bottom: 0px;
+}
+
+.cos-filters {
+  background-color: transparent;
+}
+mat-selection-list {
+  &.owner-list {
+    min-width: 250px;
+    overflow-x: hidden;
+    mat-list-option {
+      span {
+        &:first-child {
+          flex-grow: 1;
+          text-overflow: ellipsis;
+        }
+        padding: 5px;
+      }
+    }
+  }
+}

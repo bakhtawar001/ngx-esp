@@ -1,0 +1,18 @@
+<ng-container *ngIf="!item.hidden">
+  <div class="group-title" [ngClass]="item.classes || []">
+    <span class="hint-text" [translate]="item.translate">{{ item.title }}</span>
+  </div>
+
+  <div class="group-items">
+    <ng-container *ngFor="let childItem of item.children; index as i">
+      <ng-template
+        [ngTemplateOutlet]="childTemplate || fallbackTemplate"
+        [ngTemplateOutletContext]="{ $implicit: childItem, index: i }"
+      ></ng-template>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #fallbackTemplate let-item
+  >No template provided for child menu item {{ item.title }}</ng-template
+>

@@ -1,0 +1,44 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/core",
+  "sourceRoot": "libs/cosmos/core/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/cosmos/core/tsconfig.lib.json",
+        "project": "libs/cosmos/core/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/core/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/core/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/core/**/*.ts",
+          "libs/cosmos/core/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/cosmos/core/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/cosmos/core"]
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"],
+  "implicitDependencies": []
+}

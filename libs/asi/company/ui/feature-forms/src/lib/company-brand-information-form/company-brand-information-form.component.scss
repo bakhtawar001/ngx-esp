@@ -1,0 +1,19 @@
+@import 'cosmos/scss/settings';
+
+.flex-2-col {
+  display: flex;
+  grid-column-gap: 1rem;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 16px;
+
+  @include narrower-than($bp-medium) {
+    flex-direction: column;
+    margin-right: 0;
+  }
+
+  & > * {
+    flex: 1 1 auto;
+    min-width: 50%;
+  }
+}

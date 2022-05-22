@@ -1,0 +1,26 @@
+@import 'cosmos/scss/settings';
+
+.contact-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 0.6rem;
+    padding: 0;
+  }
+
+  &-item {
+    display: flex;
+
+    &__label {
+      width: 90px;
+      @include type-body-style-14-shark();
+    }
+
+    &__value {
+      flex: 1;
+      @include type-body-style-14-mineshaft();
+    }
+  }
+}

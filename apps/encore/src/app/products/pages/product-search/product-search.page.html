@@ -1,0 +1,197 @@
+<div class="product-search">
+  <div class="filter-wrapper">
+    <div class="content-container flex">
+      <esp-product-search-filters class="w-full"></esp-product-search-filters>
+    </div>
+  </div>
+  <ng-template
+    [ngIf]="!state.isLoading && state.hasLoaded && state.results"
+    [ngIfElse]="loader"
+  >
+    <div class="content-container">
+      <div class="product-results-util-bar flex justify-between">
+        <div class="body-style-14">
+          <b *ngIf="state.term">"{{ state.term }}"</b>&nbsp;<span
+            [innerHTML]="resultMessage"
+          ></span>
+        </div>
+        <div>
+          <a
+            cos-button
+            size="sm"
+            [matMenuTriggerFor]="sortMenu"
+            [ngClass]="{'is-disabled': state.results?.Results?.length <= 0}"
+          >
+            Sort by: <span class="mr-4">{{sort}}</span>
+            <i class="fa fa-chevron-down"></i>
+          </a>
+          <mat-menu
+            #sortMenu
+            class="cos-menu"
+            backdropClass="cos-backdrop"
+            yPosition="below"
+          >
+            <button
+              mat-menu-item
+              class="cos-menu-item"
+              *ngFor="let option of sortMenuOptions | keyvalue: originalOrder"
+              (click)="setSortValue(option.key)"
+            >
+              {{option.value}}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <ng-template
+      [ngIf]="state.results.Results?.length > 0"
+      [ngIfElse]="noResults"
+    >
+      <div class="content-container">
+        <div class="product-results">
+          <a
+            *ngFor="let product of state.products; let i = index; trackBy: trackProduct"
+            [routerLink]="['/products', product.Id]"
+            [queryParams]="{keywords: state.term}"
+            [state]="{navigationName: 'Back to Search Results', adId: product?.Ad?.Id}"
+          >
+            <cos-product-card
+              [product]="mapProduct(product)"
+              [selected]="checkedProducts.has(product.Id)"
+              [status]="product | productStatus"
+              [productActionsTemplate]="productCardActions"
+              (selectedChanged)="toggleChecked(product)"
+              (click)="getProductStatProps(product, i)"
+              (cosHover)="productHovered(product)"
+            >
+              <cos-supplier
+                (click.prevent)="goToSupplier(product, $event)"
+                [supplier]="product.Supplier"
+                [showImage]="false"
+                [showPreferredGroup]="true"
+              ></cos-supplier>
+            </cos-product-card>
+          </a>
+        </div>
+
+        <div
+          *ngIf="state.results?.Results?.length < state.results?.ResultsTotal"
+        >
+          <cos-pagination
+            [length]="resultLength"
+            [pageSize]="state.pageSize"
+            [pageIndex]="state.criteria.from - 1"
+            [maxPageNumbers]="maxPageNumbers"
+            (page)="pageChange($event)"
+          ></cos-pagination>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #noResults>
+      <div class="no-results-msg">
+        <h4>
+          There are no products matching the selected criteria. Please clear
+          your filters or start a new search.
+        </h4>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <esp-product-search-loader></esp-product-search-loader>
+</ng-template>
+
+<cos-action-bar *ngIf="checkedProducts.size">
+  <div class="card-actions">
+    <cos-checkbox
+      class="checkbox-products"
+      id="checkbox-products"
+      name="checkbox-products"
+      [checked]="allChecked"
+      [indeterminate]="!allChecked"
+      (change)="selectAll($event)"
+    >
+      <span cosPill>{{ checkedProducts.size| number }}</span> {{ selectedText }}
+    </cos-checkbox>
+
+    <cos-action-bar-controls>
+      <div>
+        <button
+          cos-stroked-button
+          color="primary"
+          (click)="shareProducts()"
+          *cosIfFeatureFlags="{ matches: ['presentations'] }"
+        >
+          <i class="fa fa-share mr-8"></i> Share
+        </button>
+        <button
+          cos-flat-button
+          color="primary"
+          (click)="addToCollection()"
+          class="add-to-collection-btn"
+        >
+          <i class="fa fa-archive mr-8"></i> Add to Collection
+        </button>
+        <button
+          cos-flat-button
+          color="primary"
+          type="button"
+          (click)="addToPresentation()"
+          *cosIfFeatureFlags="{ matches: ['presentations'] }"
+        >
+          <i class="fa fa-images mr-8"></i> Add to Presentation
+        </button>
+        <button
+          cos-flat-button
+          color="primary"
+          type="button"
+          (click)="addToOrder()"
+          *cosIfFeatureFlags="{ matches: ['orders'] }"
+        >
+          <i class="fa fa-file-invoice mr-8"></i> Add to Order
+        </button>
+      </div>
+    </cos-action-bar-controls>
+  </div>
+</cos-action-bar>
+
+<!-- Product card actions -->
+<ng-template #productCardActions let-product="product">
+  <!-- Add to collection button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-collection"
+    (click)="addToCollection(product)"
+  >
+    <i class="fa fa-archive"></i>
+    <span>Add to Collection </span>
+  </button>
+  <!-- /Add to collection button -->
+
+  <!-- Add to presentation button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-presentation"
+    *cosIfFeatureFlags="{ matches: ['presentations'] }"
+    (click)="addToPresentation(product)"
+  >
+    <i class="fa fa-images"></i>
+    <span>Add to Presentation</span>
+  </button>
+  <!-- /Add to presentation button -->
+
+  <!-- Add to order button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-order"
+    *cosIfFeatureFlags="{ matches: ['orders'] }"
+  >
+    <i class="fa fa-file-invoice"></i>
+    <span>Add to Order</span>
+  </button>
+  <!-- /Add to order button -->
+</ng-template>
+<!-- /Product card actions -->

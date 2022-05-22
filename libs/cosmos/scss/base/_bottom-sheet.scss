@@ -1,0 +1,90 @@
+.cos-bottom-sheet-backdrop + .cdk-global-overlay-wrapper {
+  align-items: flex-start !important;
+  .cdk-overlay-pane {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: $color-g-white-00 !important;
+    @include wider-than($bp-medium) {
+      max-width: none !important;
+    }
+  }
+}
+.mat-bottom-sheet-container-medium {
+  @include narrower-than($bp-large) {
+    min-width: 100% !important;
+  }
+}
+
+.mat-bottom-sheet-container.cos-bottom-sheet-container {
+  max-height: none;
+  padding: 0;
+  padding-bottom: $spacing-stack-8;
+  box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    fill: $color-bl-atoll-75;
+    width: 100px;
+    margin: 16px auto;
+  }
+
+  .cos-id {
+    margin: $spacing-stack-12 0 $spacing-stack-8 0;
+    text-align: center;
+  }
+
+  .mat-menu-item.cos-menu-item {
+    display: flex;
+    align-items: center;
+    height: auto;
+    @include type-body-style-14-mineshaft();
+    padding: $spacing-inline-16;
+
+    &:hover {
+      text-decoration: none;
+      background-color: $color-g-pearl-03;
+    }
+
+    > span {
+      flex-grow: 1;
+    }
+
+    > i {
+      flex: 0 0 $spacing-inline-16;
+      margin-right: $spacing-inline-16;
+      font-size: 14px;
+      flex-grow: 0;
+
+      &.right {
+        margin-right: 0;
+      }
+    }
+
+    &--unique {
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+      color: $color-rd-macaw-52;
+    }
+
+    .mat-badge-content {
+      @include cos-badge();
+      position: static;
+      display: inline-block;
+      flex: none;
+      width: 16px;
+      height: 16px;
+      min-width: auto;
+      margin-left: $spacing-inline-8;
+      border: none;
+      text-align: center;
+    }
+  }
+
+  .mat-divider {
+    height: $spacing-stack-8;
+    margin: $spacing-stack-8 0;
+    border-bottom: $border-light;
+    border-color: $color-g-pebble-09;
+    background-color: $color-g-pearl-03;
+  }
+}

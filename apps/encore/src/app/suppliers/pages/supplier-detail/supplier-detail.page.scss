@@ -1,0 +1,38 @@
+@import 'cosmos/scss/settings/';
+
+.supplier {
+  &-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    @include wider-than($bp-large) {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-areas:
+        'a a a a a a a a a a a a'
+        'b b b b b b b b b b b b';
+    }
+  }
+
+  &-ratings {
+    grid-area: b;
+
+    &-none {
+      .card-inner {
+        @include spacing-inset-16();
+        background-color: $color-g-pearl-03;
+        height: 136px;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+cos-supplier-page-header {
+  grid-area: a;
+  margin-bottom: 1rem;
+}

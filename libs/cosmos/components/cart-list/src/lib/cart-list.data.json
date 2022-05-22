@@ -1,0 +1,38 @@
+[
+  {
+    "Id": "12345",
+    "imageUrl": "media/31280153",
+    "Details": [
+      {
+        "Label": "Color:",
+        "Value": "Basic White"
+      },
+      {
+        "Label": "Size:",
+        "Value": "S: 50, M: 100, L: 100, XL: 30"
+      },
+      {
+        "Label": "Quantity:",
+        "Value": "280"
+      }
+    ]
+  },
+  {
+    "Id": "12346",
+    "imageUrl": "media/31280189",
+    "Details": [
+      {
+        "Label": "Color:",
+        "Value": "Heather Gray"
+      },
+      {
+        "Label": "Size:",
+        "Value": "S: 50, M: 100"
+      },
+      {
+        "Label": "Quantity:",
+        "Value": "280"
+      }
+    ]
+  }
+]

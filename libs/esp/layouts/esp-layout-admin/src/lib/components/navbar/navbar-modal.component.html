@@ -1,0 +1,53 @@
+<div class="navbar-modal">
+  <div class="app-list-container">
+    <div class="app-search">
+      <mat-form-field>
+        <input
+          matInput
+          sanitized=""
+          type="search"
+          id="app-search-input"
+          placeholder="Find an app"
+          aria-label="Search for apps"
+          autocapitalize="off"
+          autocorrect="off"
+          autocomplete="off"
+          tabindex="0"
+          [(ngModel)]="searchTerm"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="app-bar-items">
+      <ng-container
+        *ngFor="let item of state.applications | filter: searchTerm"
+      >
+        <cos-navigation-item [item]="item"></cos-navigation-item>
+        <!-- <button class="app-bar-items__button">
+          <mat-icon class="nav-link-icon" *ngIf="item.icon">{{
+            item.icon
+          }}</mat-icon>
+          <span class="nav-link-title" [translate]="item.translate">{{
+            item.title
+          }}</span>
+          <span
+            class="nav-link-badge"
+            *ngIf="item.badge"
+            [translate]="item.badge.translate"
+            [ngStyle]="{
+              'background-color': item.badge.bg,
+              color: item.badge.fg
+            }"
+          >
+            {{ item.badge.title }}
+          </span>
+        </button> -->
+      </ng-container>
+    </div>
+
+    <div class="footer">
+      <a href>More apps ></a>
+    </div>
+  </div>
+</div>

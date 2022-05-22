@@ -1,0 +1,75 @@
+@import 'cosmos/scss/settings/';
+
+// TBD: .cos-header-cell has text-align left and
+// helper class .text-right is not applied, added
+// here with !important.
+// Should we add important rule in _utils.scss ?
+:host ::ng-deep .text-right {
+  text-align: right !important;
+}
+
+:host ::ng-deep .text-center {
+  text-align: center !important;
+}
+
+// Since checkbox doesn't have any label remove
+// additional spacing so that it can stick to the
+// right border
+:host ::ng-deep .cos-checkbox-inner-container {
+  margin-right: 0;
+}
+
+// TBD: add as global styles?
+:host ::ng-deep tfoot tr {
+  border: 1px solid $color-g-pebble-09;
+}
+
+// This is done to remove double border between two tables
+// TBD: add as global styles?
+:host ::ng-deep .cos-table--wrapper + .cos-table--wrapper {
+  & tbody,
+  & tbody tr:first-of-type,
+  & tfoot,
+  & tfoot tr:first-of-type {
+    border-top: none;
+  }
+}
+
+.bulk-update-header-row {
+  background: $color-g-pearl-03;
+  border-bottom: 0;
+}
+
+// Do we have helper class for this?
+.w-10 {
+  width: 10%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.cos-radio-group {
+  flex-direction: row;
+}
+
+.cos-form-field ::ng-deep input {
+  text-align: right;
+}
+
+cos-form-field {
+  margin: 8px 0;
+}
+
+.cos-column-totalPrice,
+.cos-column-totalCost {
+  width: 100px;
+}
+
+.cos-column-sku {
+  width: 60px;
+}
+
+.cos-column-tax {
+  width: 60px;
+}

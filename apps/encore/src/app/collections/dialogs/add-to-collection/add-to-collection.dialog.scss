@@ -1,0 +1,17 @@
+.collection-results {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(206px, 1fr));
+  margin-bottom: 1.4rem;
+}
+
+button.create {
+  margin: 8px;
+  width: auto;
+  min-width: 100%;
+}
+
+.search-keywords {
+  max-width: 360px;
+  margin-bottom: 1rem;
+}

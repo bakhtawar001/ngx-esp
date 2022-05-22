@@ -1,0 +1,17 @@
+@import 'cosmos/scss/settings/';
+
+mat-divider {
+  border-color: $color-g-pebble-09;
+}
+// Added somewhere under _utils.scss
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.w-4\/5 {
+  @include narrower-than($bp-large) {
+    width: 100%;
+  }
+}

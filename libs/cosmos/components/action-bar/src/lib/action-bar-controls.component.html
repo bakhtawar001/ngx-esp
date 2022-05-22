@@ -1,0 +1,26 @@
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+<div *ngIf="(isDesktop$ | async)?.matches; else mobile">
+  <ng-template [ngTemplateOutlet]="content"></ng-template>
+</div>
+
+<ng-template #mobile>
+  <div (clickOutside)="onClickedOutside()">
+    <div class="cos-action-bar-menu-container">
+      <button
+        cos-flat-button
+        ngClass="cos-action-bar-menu-button"
+        color="primary"
+        (click)="toggleMenu()"
+      >
+        <i class="fa fa-ellipsis-h"></i>
+        <span class="cos-accessibly-hidden">Menu</span>
+      </button>
+      <div *ngIf="showMenu" class="cos-action-bar-menu" (click)="toggleMenu()">
+        <ng-template [ngTemplateOutlet]="content"></ng-template>
+      </div>
+    </div>
+  </div>
+</ng-template>

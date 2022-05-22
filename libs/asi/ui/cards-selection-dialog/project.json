@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/ui/cards-selection-dialog",
+  "sourceRoot": "libs/asi/ui/cards-selection-dialog/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/ui/cards-selection-dialog"],
+      "options": {
+        "project": "libs/asi/ui/cards-selection-dialog/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/ui/cards-selection-dialog/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/ui/cards-selection-dialog/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/ui/cards-selection-dialog"],
+      "options": {
+        "jestConfig": "libs/asi/ui/cards-selection-dialog/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/ui/cards-selection-dialog/src/**/*.ts",
+          "libs/asi/ui/cards-selection-dialog/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "type:ui", "platform:web"]
+}

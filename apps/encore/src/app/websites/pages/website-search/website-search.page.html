@@ -1,0 +1,62 @@
+<div class="page-container website">
+  <div class="website-search grid-layout-1">
+    <div class="header flex justify-between mt-32">
+      <h1 class="header-style-24 collection-header mb-2">Websites & Stores</h1>
+      <div class="header-actions">
+        <div class="mobile-actions lg:hidden">
+          <button
+            class="actions-button"
+            cos-stroked-button
+            color="primary"
+            aria-label="Collection actions"
+            [matMenuTriggerFor]="actionsMenu"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="fa fa-ellipsis-h"></i>
+          </button>
+          <mat-menu
+            #actionsMenu="matMenu"
+            class="cos-global-menu-panel"
+            backdropClass="cos-global-menu-backdrop"
+            xPosition="after"
+            yPosition="below"
+          >
+            <button type="button" mat-menu-item class="cos-menu-item">
+              <i class="fa fa-plus"></i> Create new Website
+            </button>
+            <button type="button" mat-menu-item class="cos-menu-item">
+              <i class="fa fa-plus"></i> Create new Store
+            </button>
+            <button type="button" mat-menu-item class="cos-menu-item">
+              <i class="fa fa-plus"></i> Create new Pop-up Shop
+            </button>
+          </mat-menu>
+        </div>
+        <div class="desktop-actions lg:block hidden">
+          <button cos-stroked-button color="primary">
+            <i class="fa fa-plus"></i> Create new Website
+          </button>
+          <button cos-stroked-button color="primary">
+            <i class="fa fa-plus"></i> Create new Store
+          </button>
+          <button cos-stroked-button color="primary">
+            <i class="fa fa-plus"></i> Create new Pop-up Shop
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="website-search-notification mt-32 mb-32 text-center">
+      <div>
+        <h1 class="header-style-24 collection-header mb-16">
+          No Websites, Stores, or Pop-up Shops
+        </h1>
+        <p>
+          You currently have no websites, stores, or pop-up shops associated
+          with Greenstone Financial.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="website-search-menu"></div>
+  <div class="website-search-content"></div>
+</div>

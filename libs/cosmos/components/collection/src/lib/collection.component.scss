@@ -1,0 +1,89 @@
+@import '../../../../scss/settings/';
+
+.cos-card.cos-collection-card {
+  display: inline-block;
+  width: 100%;
+
+  &:hover,
+  &:active {
+    z-index: 1;
+    box-shadow: $box-shadow-card;
+  }
+
+  .cos-card-main {
+    @include cos-container($color-g-pearl-03);
+    width: 100%;
+  }
+}
+
+.cos-product-grid {
+  min-height: 8rem;
+}
+
+.cos-collection.cos-collection--small {
+  @include spacing-inset-8();
+  max-width: 240px;
+
+  .cos-product-grid {
+    min-height: 6rem;
+  }
+
+  // We may need to look at product grid and determine a better approach for styling so we can avoid this
+  .cos-product-grid img.cos-product-grid-image,
+  .cos-product-grid-images > li {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+.cos-collection-product-avatars-container {
+  margin-top: $spacing-stack-16;
+}
+
+.cos-collection-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-stack-16;
+  margin-right: 20px; // for 3 dot menu
+}
+
+.cos-collection-header-text {
+  min-width: 0; // needed for text truncation to work
+}
+
+.cos-collection-icon {
+  height: 32px;
+  width: 32px;
+  margin-right: $spacing-stack-8;
+}
+
+.cos-collection-title {
+  @include type-style-header-16();
+  margin: 0;
+}
+
+.cos-collection-subtitle {
+  @include type-body-style-12();
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cos-collection-collaborators-title {
+  @include type-style-header-12-shark();
+  margin: 0 0 $spacing-stack-8 0;
+}
+
+.cos-collection-card-trigger {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  width: 100%;
+  text-align: left;
+
+  &:focus {
+    @include cos-focus;
+  }
+}

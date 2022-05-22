@@ -1,0 +1,134 @@
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { CosAutocompleteModule } from './autocomplete.module';
+import { CosAutocompleteComponent } from './autocomplete.component';
+import { CosAutocompleteDemoComponent } from './autocomplete.component.demo';
+import { ReactiveFormsModule } from '@angular/forms';
+
+<Meta
+  title="Controls &amp; Inputs/Autocomplete"
+  component={CosAutocompleteComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        CosAutocompleteModule,
+      ],
+      declarations: [CosAutocompleteDemoComponent],
+    }),
+  ]}
+  args={{
+    mode: 'search',
+    label: 'Find a person',
+    data: [
+      { person: 'One', type: 'Cat' },
+      { person: 'Two', type: 'Cat' },
+      { person: 'Three', type: 'Dog' },
+    ],
+    valueSelector: 'person',
+    placeholder: 'Search for a person',
+    searchPlaceholder: 'Search by name',
+  }}
+  argTypes={{
+    mode: {
+      control: {
+        type: 'select',
+        options: ['search', 'select'],
+      },
+    },
+    label: {
+      control: 'text',
+    },
+    data: {
+      control: {
+        type: 'object',
+      },
+    },
+    valueSelector: {
+      control: {
+        type: 'select',
+        options: ['person', 'type'],
+      },
+    },
+    disabled: { control: 'boolean' },
+    preventHomeEndKeyPropagation: { control: 'boolean' },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+    onSearch: {
+      action: 'onSearch',
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosAutocompleteDemoComponent,
+});
+
+# Autocomplete Text Input
+
+There are two types of auto complete inputs, select only and searchable text input.
+
+The autocomplete is either normal text input enhanced by a panel of suggested options or a searchable select. It also has the ability to "soft" filter by combining multiple properties of an object
+using the `filterFn` (see libs/cosmos/components/autocomplete/autocomplete.component.demo.ts)
+
+<Canvas>
+  <Story name="Search">{Template.bind({})}</Story>
+  <Story name="Select" args={{ mode: 'select' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-autocomplete
+  [disabled]="disabled"
+  [data]="data"
+  [label]="label"
+  [mode]="'search'"
+  [placeholder]="placeholder"
+  [searchPlaceholder]="searchPlaceholder"
+  [valueSelector]="prop"
+  [filterFn]="filter"
+  [valueNormalization]="normalizationFn"
+  (onSearch)="onSearch($event)"
+>
+  <ng-template let-option> {{ option }} </ng-template>
+</cos-autocomplete>
+```
+
+<ArgsTable of={CosAutocompleteComponent} />
+
+## Select Only
+
+Select only auto completes look just like select menus in their idle form.
+
+### When to use
+
+When you need the ability to search within a long list of values, and cannot enter a custom value.
+
+### When not to use
+
+- When the list of values is less than 10
+- When you need the ability to also enter a custom value, like in a scratch product.
+
+## Searchable Text Input
+
+Searchable Text Input auto completes look just like text inputs in their idle form.
+
+### When to use
+
+When you need the ability to collect a custom value in addition to the ability to search within a long list of selectable values.
+
+### When not to use
+
+- When the list of selectable values is less than 10
+- When you do not want users to enter a custom value.

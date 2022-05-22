@@ -1,0 +1,52 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close cdkFocusInitial>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Inventory Grid</h2>
+</header>
+<mat-dialog-content>
+  <table
+    class="product-inventory-modal mb-2"
+    [dataSource]="data.inventory"
+    cos-table
+  >
+    <ng-container cosColumnDef="partCode">
+      <th *cosHeaderCellDef cos-header-cell>Part Code</th>
+      <td *cosCellDef="let element" cos-cell>{{ element.PartCode }}</td>
+    </ng-container>
+
+    <ng-container cosColumnDef="description">
+      <th class="text-left" *cosHeaderCellDef cos-header-cell>Description</th>
+      <td *cosCellDef="let element" cos-cell>
+        <div class="description text-left" [attr.title]="element.description">
+          {{ element.PartDescription }}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="quantity">
+      <th class="text-left" *cosHeaderCellDef cos-header-cell>Quantity</th>
+      <td class="text-left" *cosCellDef="let element" cos-cell>
+        <span *ngIf="!element.Url; else inventoryUrl">
+          {{ element.Label | numberString }}
+        </span>
+        <ng-template #inventoryUrl>
+          <a [attr.href]="element.Url" target="_blank">View Inventory</a>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="location">
+      <th *cosHeaderCellDef cos-header-cell>Location</th>
+      <td *cosCellDef="let element" cos-cell>
+        {{ element.Location || 'N/A' }}
+      </td>
+    </ng-container>
+
+    <tr *cosHeaderRowDef="columns" cos-header-row></tr>
+    <tr *cosRowDef="let row; columns: columns" cos-row></tr>
+  </table>
+</mat-dialog-content>

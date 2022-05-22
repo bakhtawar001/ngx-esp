@@ -1,0 +1,127 @@
+@import 'cosmos/scss/settings';
+
+/*
+* @global variables
+*/
+$url: url('/assets/images/home-page-banner.jpg');
+$drop-shadow: 0px 2.8px 2.2px rgb(0 0 0 / 1%), 0 6.7px 5.3px rgb(0 0 0 / 1%),
+  0 12.5px 10px rgb(0 0 0 / 4%), 0 22.3px 17.9px rgb(0 0 0 / 0%),
+  0 41.8px 33.4px rgb(0 0 0 / 0%), 0 0px 1px rgb(0 0 0 / 1%);
+$backgroundImg: $url 100% / cover padding-box;
+
+/*
+* @style definitions 
+*/
+
+.home-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-background-image {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  display: block;
+  min-height: 360px;
+  max-height: 480px;
+  width: 100%;
+
+  @include background_gradient_img(
+    $gradiant-color-transwhite-180deg,
+    $backgroundImg
+  );
+
+  box-sizing: border-box;
+
+  @include narrower-than($bp-large) {
+    display: none;
+  }
+}
+
+.search-card {
+  width: 100%;
+  display: block;
+  align-items: center;
+  margin: 0 20px 20px;
+
+  &-container {
+    header {
+      padding: 10px;
+      p {
+        text-align: center;
+      }
+    }
+
+    esp-global-search {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+
+      .cos-global-search {
+        margin: 0 auto;
+      }
+    }
+
+    @include wider-than($bp-medium) {
+      padding: 25px;
+    }
+  }
+
+  @include wider-than($bp-large) {
+    width: 740px;
+    box-shadow: $drop-shadow;
+    margin: 90px 20px 60px;
+
+    &-container {
+      header {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.artwork-container {
+  margin: 0 20px 20px;
+
+  .cos-artwork-img {
+    width: 100%;
+    display: block;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 320px;
+      margin: 0 auto;
+    }
+  }
+
+  .cos-artwork-paragraph {
+    width: 100%;
+    display: block;
+    padding: 5px;
+  }
+
+  [cos-card-sidebar] {
+    padding: 32px;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 60%;
+    display: flex;
+    max-width: 60%;
+  }
+
+  @include wider-than($bp-large) {
+    margin: 0 auto 60px;
+    max-width: 1184px;
+
+    .cos-artwork-paragraph {
+      font-size: 14px;
+    }
+  }
+}

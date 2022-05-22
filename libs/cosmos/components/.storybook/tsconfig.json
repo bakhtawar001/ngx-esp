@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["../**/*.spec.ts"],
+  "include": ["../**/*"],
+  "files": ["./typings.d.ts"]
+}

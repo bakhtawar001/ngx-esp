@@ -1,0 +1,27 @@
+<asi-panel-editable-row
+  class="company-settings-website"
+  rowTitle="Website"
+  [isEditable]="'Administrator' | hasRole"
+  (onSaveEvent)="state.save(control.value)"
+>
+  <div><i class="form-row-icon fa fa-globe mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value">{{ control.value }}</p>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <cos-form-field>
+      <cos-label>Website</cos-label>
+      <input
+        cos-input
+        type="url"
+        id="website"
+        [formControl]="control"
+        placeholder="Enter a value"
+        maxlength="100"
+      />
+      <cos-error
+        [controlErrors]="{ validUrl: 'The Website url is invalid.' }"
+      ></cos-error>
+    </cos-form-field>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

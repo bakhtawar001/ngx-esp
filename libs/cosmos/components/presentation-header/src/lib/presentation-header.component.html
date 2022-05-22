@@ -1,0 +1,74 @@
+<div
+  [ngClass]="{
+    'cos-presentation-header-topbar': true,
+    'cos-presentation-header-topbar--expanded': showDetails
+  }"
+>
+  <div class="cos-presentation-header-topbar--container">
+    <div class="cos-presentation-header-topbar-col">
+      <div class="cos-presentation-header-client-logo">
+        <img
+          [attr.src]="presentation.eventImage"
+          [attr.alt]="presentation.eventAlt"
+        />
+      </div>
+      <div class="cos-presentation-header-event-name">
+        <h2>{{ presentation.title }}</h2>
+        <p>{{ presentation.date }}</p>
+      </div>
+    </div>
+    <div class="cos-presentation-header-topbar-col">
+      <div>
+        <nav
+          class="
+            cos-presentation-header-nav cos-presentation-header-nav--desktop
+          "
+        >
+          <ng-content select=".cos-global-nav-menu"></ng-content>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="cos-global-nav-mobile">
+  <!-- <ng-content select=".cos-global-nav-menu"></ng-content> -->
+  <ul class="cos-global-nav-menu">
+    <li class="cos-global-nav-item">
+      <a cos-button size="sm"
+        ><i class="cos-presentation-header-nav-icon fa fa-boxes"></i>
+        <span class="cos-global-nav-text"> Products</span></a
+      >
+    </li>
+    <li class="cos-global-nav-item">
+      <a cos-button size="sm"
+        ><i class="cos-presentation-header-nav-icon fa fa-shopping-cart"></i>
+        <span class="cos-global-nav-text">Cart</span>
+      </a>
+    </li>
+    <li class="cos-global-nav-item">
+      <a cos-button size="sm"
+        ><i class="cos-presentation-header-nav-icon fa fa-tags"></i>
+        <span class="cos-global-nav-text">Quotes</span>
+      </a>
+    </li>
+    <li class="cos-global-nav-item">
+      <a cos-button size="sm"
+        ><i class="cos-presentation-header-nav-icon fa fa-boxes"></i>
+        <span class="cos-global-nav-text">Orders</span>
+      </a>
+    </li>
+    <li class="cos-global-nav-item">
+      <a cos-button size="sm"
+        ><i class="cos-presentation-header-nav-icon fa fa-check-circle"></i>
+        <span class="cos-global-nav-text">Proofs</span>
+      </a>
+    </li>
+    <li class="cos-global-nav-item">
+      <a cos-button size="sm"
+        ><i class="cos-presentation-header-nav-icon fa fa-file-invoice"></i>
+        <span class="cos-global-nav-text">Invoices</span>
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,33 @@
+<div class="cos-supplier-footer">
+  <button
+    cos-button
+    (click)="toggleExpanded()"
+    size="sm"
+    [attr.aria-expanded]="isExpanded"
+  >
+    {{
+      !isExpanded ? 'Show Contact Information ' : 'Hide Contact Information '
+    }}
+
+    <i
+      class="fa"
+      [ngClass]="{
+        'fa-chevron-down': !isExpanded,
+        'fa-chevron-up': isExpanded
+      }"
+    ></i>
+  </button>
+
+  <div *ngIf="isExpanded" class="cos-supplier-details">
+    <div class="cos-supplier-contact-categories">
+      <cos-contact-info
+        [supplier]="supplier"
+        [labels]="{
+          artwork: 'Artwork',
+          orders: 'Orders',
+          tollFree: 'Toll Free'
+        }"
+      ></cos-contact-info>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3949 @@
+{
+  "Id": 551782478,
+  "Name": "Six Panel Pro Style Cap",
+  "Description": "Wool blend twill slight curve visor 6 Panel pro style cap. Features structured firm front panel, gray undervisor and plastic snap closure. Made of 85% Acrylic / 15% Wool.",
+  "ShortDescription": "85% Acrylic / 15% Wool 6 Panel pro style cap.",
+  "Number": "168-1260",
+  "Numbers": ["168-1260"],
+  "ImageUrl": "media/29022637",
+  "Images": [
+    "media/29022637",
+    "media/29022638",
+    "media/29022639",
+    "media/29022640",
+    "media/29022641",
+    "media/29022642",
+    "media/29022643",
+    "media/29022644",
+    "media/29022645",
+    "media/29022646",
+    "media/29022647",
+    "media/29022648",
+    "media/29022649",
+    "media/29022650",
+    "media/29022651"
+  ],
+  "VirtualSampleImages": [
+    {
+      "Id": 29022637,
+      "Description": "168-1260-001-ALL-001-frontview2-large.jpg",
+      "ImageUrl": "virtualsample/29022637",
+      "IsPrimary": true,
+      "IsVirtualSample": true
+    },
+    {
+      "Id": 29022640,
+      "Description": "168-1260-002-ALL-002-frontview2-large.jpg",
+      "ImageUrl": "virtualsample/29022640",
+      "IsVirtualSample": true
+    },
+    {
+      "Id": 29022643,
+      "Description": "168-1260-003-ALL-003-frontview2-large.jpg",
+      "ImageUrl": "virtualsample/29022643",
+      "IsVirtualSample": true
+    },
+    {
+      "Id": 29022648,
+      "Description": "168-1620-014-ALL-014-frontview2-large.jpg",
+      "ImageUrl": "virtualsample/29022648",
+      "IsVirtualSample": true
+    },
+    {
+      "Id": 29022650,
+      "Description": "168-1620-025-ALL-025-frontview2-large.jpg",
+      "ImageUrl": "virtualsample/29022650",
+      "IsVirtualSample": true
+    }
+  ],
+  "Supplier": {
+    "Id": 2624,
+    "Name": "Otto Intl Inc",
+    "AsiNumber": "75350",
+    "Phone": {
+      "Work": "(909) 937-1998",
+      "TollFree": "(800) 367-6886",
+      "Primary": "(909) 937-1998"
+    },
+    "Fax": {
+      "Work": "(909) 937-1916",
+      "Primary": "(909) 937-1916"
+    },
+    "Email": "mail@ottocap.com",
+    "Websites": ["https://ottocap.com/"],
+    "Rating": {
+      "Rating": 9,
+      "Companies": 28,
+      "Transactions": 80
+    },
+    "MarketingPolicy": "Supplier indicates they sell advertising specialties exclusively through distributors and/or incentive resellers",
+    "IsMinorityOwned": false,
+    "IsQcaCertified": false,
+    "IsUnionAvailable": false,
+    "Preferred": {
+      "Rank": 1,
+      "Name": "Platinum",
+      "Description": "Minus 5% applied to Net Cost",
+      "Comments": "TEXT 1",
+      "Categories": "TEXT 2"
+    }
+  },
+  "Catalog": {
+    "Id": 223286,
+    "Name": "2019 OTTO Catalog",
+    "Year": "2019",
+    "Asset": "ASI/75350 2019 OTTO Catalog",
+    "CompanyId": 0,
+    "ProductCount": 0,
+    "EndUserSafe": false,
+    "Pages": [
+      {
+        "Id": 750668717,
+        "Number": "41",
+        "SequenceNumber": "39",
+        "SpreadNumber": "20"
+      }
+    ]
+  },
+  "Catalogs": [
+    {
+      "Id": 223286,
+      "Name": "2019 OTTO Catalog",
+      "Year": "2019",
+      "Asset": "ASI/75350 2019 OTTO Catalog",
+      "CompanyId": 0,
+      "ProductCount": 0,
+      "EndUserSafe": false,
+      "Pages": [
+        {
+          "Id": 750668717,
+          "Number": "41",
+          "SequenceNumber": "39",
+          "SpreadNumber": "20"
+        }
+      ]
+    }
+  ],
+  "Categories": [
+    {
+      "Id": "B02220003",
+      "Name": "Six Panel",
+      "Parent": {
+        "Id": "B02160003",
+        "Name": "Baseball Caps"
+      }
+    },
+    {
+      "Id": "C01609903",
+      "Name": "General",
+      "Parent": {
+        "Id": "C01560003",
+        "Name": "Caps & Hats"
+      }
+    }
+  ],
+  "Themes": ["Golf", "Baseball"],
+  "ProductionTime": [
+    {
+      "Name": "3-7 business days",
+      "Description": "Embroidery - After all products, final approvals and deposits are received.",
+      "Days": {
+        "From": 3,
+        "To": 7
+      }
+    },
+    {
+      "Name": "7-10 business days",
+      "Description": "Digital Print Heat Transfer / Full Color Print Vinyl Heat Transfer - After all products, final approvals and deposits are received.",
+      "Days": {
+        "From": 7,
+        "To": 10
+      }
+    },
+    {
+      "Name": "10-13 business days",
+      "Description": "Screen Printed Plastisol Heat Transfer / Foil Transfer Print / Vinyl Applique Heat Transfer - After all products, final approvals and deposits are received.",
+      "Days": {
+        "From": 10,
+        "To": 13
+      }
+    }
+  ],
+  "Attributes": {
+    "Colors": {
+      "Values": [
+        {
+          "Code": "BLCK",
+          "Name": "Black 003",
+          "ImageUrl": "media/29022643",
+          "$index": 3
+        },
+        {
+          "Code": "DRBL",
+          "Name": "Navy 004"
+        },
+        {
+          "Code": "MERD",
+          "Name": "Red 002",
+          "ImageUrl": "media/29022640"
+        },
+        {
+          "Code": "FLBL",
+          "Name": "Royal 001",
+          "ImageUrl": "media/29022637"
+        },
+        {
+          "Code": "DRGR",
+          "Name": "Charcoal Gray 025",
+          "ImageUrl": "media/29022647"
+        },
+        {
+          "Code": "MEGR",
+          "Name": "Gray 014",
+          "ImageUrl": "media/29022646"
+        }
+      ]
+    },
+    "Sizes": {
+      "Values": [
+        {
+          "Code": "OTHE",
+          "Name": "Standard",
+          "$index": 3
+        }
+      ]
+    },
+    "Materials": {
+      "Values": [
+        {
+          "Code": "$022",
+          "Name": "Blend: Acrylic/Wool (85/15)",
+          "$index": 3
+        }
+      ]
+    }
+  },
+  "Imprinting": {
+    "Methods": {
+      "Values": [
+        {
+          "Code": "$UNI",
+          "Name": "Unimprinted",
+          "$index": 3
+        },
+        {
+          "Code": "$0TM",
+          "Name": "Embroidery",
+          "Charges": [
+            {
+              "TypeCode": "DGCH",
+              "Type": "Digitizing Charge",
+              "Description": "Embroidery",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 13.333,
+                  "Cost": 8,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per 1,000 stitches. ",
+              "IsRequired": true
+            },
+            {
+              "TypeCode": "IMCH",
+              "Type": "Imprint Method Charge",
+              "Description": "3D Embroidery",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 2.5,
+                  "Cost": 1.5,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per piece. Max size 4.5\" W x 2.25\" H on most cap styles. ",
+              "IsRequired": true
+            },
+            {
+              "TypeCode": "INCH",
+              "Type": "Change of Ink/Thread",
+              "Description": "Embroidery",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 10,
+                  "Cost": 6,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per change of thread colors during production time.",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$0TW",
+          "Name": "Screen Printed Plastisol Heat Transfer",
+          "Charges": [
+            {
+              "TypeCode": "STCH",
+              "Type": "Set-up Charge",
+              "Description": "Screen Printed Plastisol Heat Transfer",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 0,
+                    "To": 2147483647
+                  },
+                  "CurrencyCode": "USD",
+                  "IsQUR": true
+                }
+              ],
+              "PriceIncludes": "Includes artwork and screen set up fees.",
+              "IsRequired": true
+            },
+            {
+              "TypeCode": "RNCH",
+              "Type": "Run Charge",
+              "Description": "Screen Printed Plastisol Heat Transfer",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 48,
+                    "To": 71
+                  },
+                  "Price": 6.667,
+                  "Cost": 4,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 72,
+                    "To": 143
+                  },
+                  "Price": 5,
+                  "Cost": 3,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 144,
+                    "To": 287
+                  },
+                  "Price": 3.333,
+                  "Cost": 2,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 288,
+                    "To": 575
+                  },
+                  "Price": 2.5,
+                  "Cost": 1.5,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 576,
+                    "To": 1295
+                  },
+                  "Price": 2.167,
+                  "Cost": 1.3,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 1296,
+                    "To": 2999
+                  },
+                  "Price": 1.833,
+                  "Cost": 1.1,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 3000,
+                    "To": 4999
+                  },
+                  "Price": 1.667,
+                  "Cost": 1,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 5000,
+                    "To": 9999
+                  },
+                  "Price": 1.5,
+                  "Cost": 0.9,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 10000,
+                    "To": 2147483647
+                  },
+                  "Price": 1.333,
+                  "Cost": 0.8,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "1st Color",
+              "UsageLevelCode": "PQTY",
+              "UsageLevel": "Per Quantity",
+              "IsRequired": true
+            },
+            {
+              "TypeCode": "INCH",
+              "Type": "Change of Ink/Thread",
+              "Description": "Screen Printed Plastisol Heat Transfer",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 16.667,
+                  "Cost": 10,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per color change during production time.",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$0TR",
+          "Name": "Digital Print Heat Transfer"
+        },
+        {
+          "Code": "$0TQ",
+          "Name": "Full Color Print Vinyl Heat Transfer"
+        },
+        {
+          "Code": "$0TU",
+          "Name": "Foil Transfer Print",
+          "Charges": [
+            {
+              "TypeCode": "RNCH",
+              "Type": "Run Charge",
+              "Description": "Foil Transfer Print",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 48,
+                    "To": 71
+                  },
+                  "Price": 7.667,
+                  "Cost": 4.6,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 72,
+                    "To": 143
+                  },
+                  "Price": 6.167,
+                  "Cost": 3.7,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 144,
+                    "To": 287
+                  },
+                  "Price": 4.667,
+                  "Cost": 2.8,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 288,
+                    "To": 575
+                  },
+                  "Price": 3.833,
+                  "Cost": 2.3,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 576,
+                    "To": 1295
+                  },
+                  "Price": 3.5,
+                  "Cost": 2.1,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 1296,
+                    "To": 2999
+                  },
+                  "Price": 3.333,
+                  "Cost": 2,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 3000,
+                    "To": 4999
+                  },
+                  "Price": 3.167,
+                  "Cost": 1.9,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 5000,
+                    "To": 9999
+                  },
+                  "Price": 3,
+                  "Cost": 1.8,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                },
+                {
+                  "Quantity": {
+                    "From": 10000,
+                    "To": 2147483647
+                  },
+                  "Price": 2.833,
+                  "Cost": 1.7,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "UsageLevelCode": "PQTY",
+              "UsageLevel": "Per Quantity",
+              "IsRequired": true
+            }
+          ]
+        },
+        {
+          "Code": "$0TR",
+          "Name": "Vinyl Applique Heat Transfer"
+        }
+      ]
+    },
+    "Services": {
+      "Values": [
+        {
+          "Code": "$2HH",
+          "Name": "Art Services",
+          "Description": "No charge for camera ready artwork provided by customer.",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Art Services",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 66.667,
+                  "Cost": 40,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per hour for edits or re-creation of artwork. Quoted on a per-job basis.",
+              "IsRequired": false
+            }
+          ],
+          "$index": 3
+        },
+        {
+          "Code": "$2HH",
+          "Name": "Embroidery - Pre Production Sample",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Embroidery - Pre Production Sample",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 16.667,
+                  "Cost": 10,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per sample",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$2HH",
+          "Name": "Screen Printed Plastisol Heat Transfer - - Pre Production Sample",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Screen Printed Plastisol Heat Transfer - - Pre Production Sample",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 25,
+                  "Cost": 15,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per sample. Screen set up fees may apply.",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$2HH",
+          "Name": "Digital Print Heat Transfer - Pre Production Sample",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Digital Print Heat Transfer - Pre Production Sample",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 25,
+                  "Cost": 15,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per sample",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$2HH",
+          "Name": "Full Color Print Vinyl Heat Transfer - Pre Production Sample",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Full Color Print Vinyl Heat Transfer - Pre Production Sample",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 25,
+                  "Cost": 15,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per sample",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$2HH",
+          "Name": "Foil Transfer Print - Pre Production Sample",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Foil Transfer Print - Pre Production Sample",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 25,
+                  "Cost": 15,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per sample",
+              "IsRequired": false
+            }
+          ]
+        },
+        {
+          "Code": "$2HH",
+          "Name": "Vinyl Applique Heat Transfer - Pre Production Sample",
+          "Charges": [
+            {
+              "TypeCode": "ARCH",
+              "Type": "Artwork Charge",
+              "Description": "Vinyl Applique Heat Transfer - Pre Production Sample",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 25,
+                  "Cost": 15,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "IsRequired": false
+            }
+          ]
+        }
+      ]
+    },
+    "Sizes": {
+      "Values": [
+        {
+          "Code": "$2HQ",
+          "Name": "4.5\" W x 2.25\" H",
+          "Options": [
+            {
+              "Type": "Imprint Location",
+              "Values": ["Front of Cap"]
+            }
+          ],
+          "$index": 3
+        },
+        {
+          "Code": "$2HQ",
+          "Name": "3.5\" W x 1.25\" H",
+          "Options": [
+            {
+              "Type": "Imprint Location",
+              "Values": ["Back of Cap"]
+            }
+          ]
+        },
+        {
+          "Code": "$2HQ",
+          "Name": "2.5\" W x 1.5\" H",
+          "Options": [
+            {
+              "Type": "Imprint Location",
+              "Values": ["Side of Cap"]
+            }
+          ]
+        }
+      ]
+    },
+    "Locations": {
+      "Values": ["Front of Cap", "Back of Cap", "Side of Cap"]
+    },
+    "Options": [
+      {
+        "Name": "Additional Colors",
+        "Charges": [
+          {
+            "TypeCode": "COCH",
+            "Type": "Add. Color Charge",
+            "Description": "Screen Printed Plastisol Heat Transfer Additional Colors - Up to 8 Colors",
+            "Prices": [
+              {
+                "Quantity": {
+                  "From": 48,
+                  "To": 71
+                },
+                "Price": 1,
+                "Cost": 0.6,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 72,
+                  "To": 143
+                },
+                "Price": 0.833,
+                "Cost": 0.5,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 144,
+                  "To": 287
+                },
+                "Price": 0.417,
+                "Cost": 0.25,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 288,
+                  "To": 575
+                },
+                "Price": 0.25,
+                "Cost": 0.15,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 576,
+                  "To": 1295
+                },
+                "Price": 0.167,
+                "Cost": 0.1,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 1296,
+                  "To": 2999
+                },
+                "Price": 0.167,
+                "Cost": 0.1,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 3000,
+                  "To": 4999
+                },
+                "Price": 0.167,
+                "Cost": 0.1,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 5000,
+                  "To": 9999
+                },
+                "Price": 0.167,
+                "Cost": 0.1,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              },
+              {
+                "Quantity": {
+                  "From": 10000,
+                  "To": 2147483647
+                },
+                "Price": 0.167,
+                "Cost": 0.1,
+                "DiscountCode": "R",
+                "CurrencyCode": "USD",
+                "IsQUR": false
+              }
+            ],
+            "PriceIncludes": "per additional color",
+            "IsRequired": false
+          }
+        ],
+        "Values": [
+          "Screen Printed Plastisol Heat Transfer Additional Colors - Up to 8 Colors"
+        ]
+      },
+      {
+        "Name": "Imprint Options for Embroidery",
+        "Groups": [
+          {
+            "Name": "Applying Sticker / Tagging",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Applying Sticker / Tagging",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.333,
+                    "Cost": 0.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per service and item. does not include stickers or tags. Stickers and tags provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Edit Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Edit Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 58.333,
+                    "Cost": 35,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per logo. Maximum up to 10,000 stitches.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Metallic; Neon; Name Brand Thread / Colors",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Metallic; Neon; Name Brand Thread / Colors",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Oversize Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Oversize Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 4.5\" W x 2.25\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Sewing Patches",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Sewing Patches",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 4.5\" W x 2.25\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Sewing Private Label",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Sewing Private Label",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Label provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Imprint options Colors for Foil Transfer",
+        "Type": "Imprint Option",
+        "Values": ["Gold", "Rose Gold", "Silver"]
+      },
+      {
+        "Name": "Imprint Options for Embroidery Stitch Count",
+        "Groups": [
+          {
+            "Name": "5001-6000",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "5001-6000",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 6.25,
+                    "Cost": 3.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 4.583,
+                    "Cost": 2.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 3.75,
+                    "Cost": 2.25,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 3.417,
+                    "Cost": 2.05,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 3.25,
+                    "Cost": 1.95,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 2.917,
+                    "Cost": 1.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 2.75,
+                    "Cost": 1.65,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 2.583,
+                    "Cost": 1.55,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 2.417,
+                    "Cost": 1.45,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "6001-7000",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "6001-7000",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 6.667,
+                    "Cost": 4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 5,
+                    "Cost": 3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 3.833,
+                    "Cost": 2.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 3.667,
+                    "Cost": 2.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 3.333,
+                    "Cost": 2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 3.167,
+                    "Cost": 1.9,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 3,
+                    "Cost": 1.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 2.833,
+                    "Cost": 1.7,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "7001-8000",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "7001-8000",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 7.083,
+                    "Cost": 4.25,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 5.417,
+                    "Cost": 3.25,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 4.583,
+                    "Cost": 2.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 4.25,
+                    "Cost": 2.55,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 4.083,
+                    "Cost": 2.45,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 3.75,
+                    "Cost": 2.25,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 3.583,
+                    "Cost": 2.15,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 3.417,
+                    "Cost": 2.05,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 3.25,
+                    "Cost": 1.95,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "8001-9000",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "8001-9000",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 7.5,
+                    "Cost": 4.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 5.833,
+                    "Cost": 3.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 5,
+                    "Cost": 3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 4.667,
+                    "Cost": 2.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 4.5,
+                    "Cost": 2.7,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 4,
+                    "Cost": 2.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 3.833,
+                    "Cost": 2.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 3.667,
+                    "Cost": 2.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "9001-10000",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "9001-10000",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 7.917,
+                    "Cost": 4.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 6.25,
+                    "Cost": 3.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 5.417,
+                    "Cost": 3.25,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 5.083,
+                    "Cost": 3.05,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 4.917,
+                    "Cost": 2.95,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 4.583,
+                    "Cost": 2.75,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 4.417,
+                    "Cost": 2.65,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 4.25,
+                    "Cost": 2.55,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 4.083,
+                    "Cost": 2.45,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Per each additional 1K stitches",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Per each additional 1K stitches",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.417,
+                    "Cost": 0.25,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Under 5000",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Under 5000",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 5.833,
+                    "Cost": 3.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 3.333,
+                    "Cost": 2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 3,
+                    "Cost": 1.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 2.833,
+                    "Cost": 1.7,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 2.5,
+                    "Cost": 1.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 2.333,
+                    "Cost": 1.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 2.167,
+                    "Cost": 1.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 2,
+                    "Cost": 1.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Imprint Options for Silkscreen",
+        "Groups": [
+          {
+            "Name": "Applying Sticker / Tagging",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Applying Sticker / Tagging",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.333,
+                    "Cost": 0.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per service and item. does not include stickers or tags. Stickers and tags provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Emblem Patch Heat Seal",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Emblem Patch Heat Seal",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 1.5,
+                    "Cost": 0.9,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per emblem, does not include emblems. Emblem patches provided by customer. Max size 4\" W x 2.25\" H",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Oversize Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Oversize Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 5\" W x 2.75\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Digital Print Heat Transfer Print Type",
+        "Groups": [
+          {
+            "Name": "Gloss Print",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Gloss Print",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 6.333,
+                    "Cost": 3.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 4.833,
+                    "Cost": 2.9,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 3.333,
+                    "Cost": 2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 2.5,
+                    "Cost": 1.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 2.167,
+                    "Cost": 1.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 2,
+                    "Cost": 1.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 1.833,
+                    "Cost": 1.1,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 1.667,
+                    "Cost": 1,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 1.5,
+                    "Cost": 0.9,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "UsageLevelCode": "PQTY",
+                "UsageLevel": "Per Quantity",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Matte Print",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Matte Print",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 7.167,
+                    "Cost": 4.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 5.667,
+                    "Cost": 3.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 3.333,
+                    "Cost": 2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 3,
+                    "Cost": 1.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 2.833,
+                    "Cost": 1.7,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 2.667,
+                    "Cost": 1.6,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 2.5,
+                    "Cost": 1.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 2.333,
+                    "Cost": 1.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "UsageLevelCode": "PQTY",
+                "UsageLevel": "Per Quantity",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Imprint Options for Digital Print Heat Transfer",
+        "Groups": [
+          {
+            "Name": "Applying Sticker / Tagging",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Applying Sticker / Tagging",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.333,
+                    "Cost": 0.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per service and item. does not include stickers or tags. Stickers and tags provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Oversize Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Oversize Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 5\" W x 2.75\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Full Color Print Vinyl Heat Transfer Product Type",
+        "Groups": [
+          {
+            "Name": "5 Panel Cap or Flat Panel",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "5 Panel Cap or Flat Panel",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 7.5,
+                    "Cost": 4.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 6.833,
+                    "Cost": 4.1,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 5.5,
+                    "Cost": 3.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 5,
+                    "Cost": 3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 4.667,
+                    "Cost": 2.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 4.333,
+                    "Cost": 2.6,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 4,
+                    "Cost": 2.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 3.667,
+                    "Cost": 2.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "UsageLevelCode": "PQTY",
+                "UsageLevel": "Per Quantity",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "6 Panel Cap or Panel with Seam",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "6 Panel Cap or Panel with Seam",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 8,
+                    "Cost": 4.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 7.333,
+                    "Cost": 4.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 6,
+                    "Cost": 3.6,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 5.5,
+                    "Cost": 3.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 5.167,
+                    "Cost": 3.1,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 4.833,
+                    "Cost": 2.9,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 4.667,
+                    "Cost": 2.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 4.5,
+                    "Cost": 2.7,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "UsageLevelCode": "PQTY",
+                "UsageLevel": "Per Quantity",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Imprint Options for Full Color Print Vinyl Heat Transfer",
+        "Groups": [
+          {
+            "Name": "Applying Sticker / Tagging",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Applying Sticker / Tagging",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.333,
+                    "Cost": 0.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per service and item. does not include stickers or tags. Stickers and tags provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Oversize Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Oversize Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 5\" W x 2.75\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Imprint Options for Foil Transfer Print",
+        "Groups": [
+          {
+            "Name": "Applying Sticker / Tagging",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Applying Sticker / Tagging",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.333,
+                    "Cost": 0.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per service and item. does not include stickers or tags. Stickers and tags provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Oversize Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Oversize Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 4.5\" W x 2.25\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Vinyl Applique Heat Transfer Film Type",
+        "Groups": [
+          {
+            "Name": "Fashion-FILM®",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Fashion-FILM®",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 8,
+                    "Cost": 4.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 7.167,
+                    "Cost": 4.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 5.833,
+                    "Cost": 3.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 5.167,
+                    "Cost": 3.1,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 4.833,
+                    "Cost": 2.9,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 4.5,
+                    "Cost": 2.7,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 4.333,
+                    "Cost": 2.6,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 4.167,
+                    "Cost": 2.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 4,
+                    "Cost": 2.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "UsageLevelCode": "PQTY",
+                "UsageLevel": "Per Quantity",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Glitter & Glitter Flake™",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Glitter & Glitter Flake™",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 48,
+                      "To": 71
+                    },
+                    "Price": 9.167,
+                    "Cost": 5.5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 72,
+                      "To": 143
+                    },
+                    "Price": 8.333,
+                    "Cost": 5,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 144,
+                      "To": 287
+                    },
+                    "Price": 7,
+                    "Cost": 4.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 288,
+                      "To": 575
+                    },
+                    "Price": 6.333,
+                    "Cost": 3.8,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 576,
+                      "To": 1295
+                    },
+                    "Price": 6,
+                    "Cost": 3.6,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 1296,
+                      "To": 2999
+                    },
+                    "Price": 5.667,
+                    "Cost": 3.4,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 3000,
+                      "To": 4999
+                    },
+                    "Price": 5.5,
+                    "Cost": 3.3,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 5000,
+                      "To": 9999
+                    },
+                    "Price": 5.333,
+                    "Cost": 3.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  },
+                  {
+                    "Quantity": {
+                      "From": 10000,
+                      "To": 2147483647
+                    },
+                    "Price": 5.167,
+                    "Cost": 3.1,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "UsageLevelCode": "PQTY",
+                "UsageLevel": "Per Quantity",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Imprint Options for Vinyl Applique Heat Transfer",
+        "Groups": [
+          {
+            "Name": "Applying Sticker / Tagging",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Applying Sticker / Tagging",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 1,
+                      "To": 2147483647
+                    },
+                    "Price": 0.333,
+                    "Cost": 0.2,
+                    "DiscountCode": "R",
+                    "CurrencyCode": "USD",
+                    "IsQUR": false
+                  }
+                ],
+                "PriceIncludes": "per service and item. does not include stickers or tags. Stickers and tags provided by customer.",
+                "IsRequired": false
+              }
+            ]
+          },
+          {
+            "Name": "Oversize Charge",
+            "Charges": [
+              {
+                "TypeCode": "IOCH",
+                "Type": "Imprint Option Charge",
+                "Description": "Oversize Charge",
+                "Prices": [
+                  {
+                    "Quantity": {
+                      "From": 0,
+                      "To": 2147483647
+                    },
+                    "CurrencyCode": "USD",
+                    "IsQUR": true
+                  }
+                ],
+                "PriceIncludes": "Quoted on a per-job basis. Max size 5\" W x 2.75\" H on most cap styles.",
+                "IsRequired": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "FullColorProcess": true,
+    "Personalization": true,
+    "SoldUnimprinted": true,
+    "AdditionalInfo": "Screen Printed Plastisol Heat Transfer Additional PMS Matching: Due to variances in substrates, exact matches cannot be guaranteed."
+  },
+  "Packaging": [
+    {
+      "Name": "Packaging",
+      "Charges": [
+        {
+          "TypeCode": "PGCH",
+          "Type": "Packaging Charge",
+          "Description": "Poly Bag",
+          "Prices": [
+            {
+              "Quantity": {
+                "From": 0,
+                "To": 2147483647
+              },
+              "CurrencyCode": "USD",
+              "IsQUR": true
+            }
+          ],
+          "PriceIncludes": "Quoted on a per-job basis.",
+          "IsRequired": false
+        }
+      ],
+      "Values": ["Poly Bag"]
+    }
+  ],
+  "Shipping": {
+    "FOBPoints": {
+      "Values": [
+        {
+          "Code": "$2HK",
+          "Name": "Ontario,  CA 91761 USA",
+          "$index": 3
+        }
+      ]
+    },
+    "Options": {
+      "Values": [
+        {
+          "Name": "Drop Shipment",
+          "Charges": [
+            {
+              "TypeCode": "SPCH",
+              "Type": "Shipping Charge",
+              "Description": "Drop Shipment",
+              "Prices": [
+                {
+                  "Quantity": {
+                    "From": 1,
+                    "To": 2147483647
+                  },
+                  "Price": 8.333,
+                  "Cost": 5,
+                  "DiscountCode": "R",
+                  "CurrencyCode": "USD",
+                  "IsQUR": false
+                }
+              ],
+              "PriceIncludes": "per additional location.",
+              "IsRequired": false
+            }
+          ],
+          "$index": 3
+        }
+      ]
+    },
+    "Weight": {
+      "Values": [
+        "We are not responsible for the delay of any freight carrier or due to force majeure events."
+      ]
+    },
+    "BillsByWeight": false,
+    "BillsBySize": false,
+    "PackageInPlainBox": false
+  },
+  "VariantId": 0,
+  "Warnings": [
+    {
+      "Name": "Product can cause exposure to both a carcinogen and a reproductive toxicant",
+      "Description": "PROP 65 WARNING: This product can expose you to chemicals including Lead, which is known to the State of California to cause cancer,   and BBP, which is known to the State of California to cause birth defects or other reproductive harm. For more information, go to   www.P65Warnings.ca.gov.",
+      "Warning": "Product can cause exposure to both a carcinogen and a reproductive toxicant",
+      "Type": "PROP"
+    },
+    {
+      "Name": "",
+      "Description": "No safety warnings for this product",
+      "Warning": "No safety warnings for this product",
+      "Type": "SWCH"
+    }
+  ],
+  "HasProp65Warning": true,
+  "Prop65AdditionalInfo": "",
+  "Currency": "USD",
+  "Currencies": ["USD"],
+  "Prices": [
+    {
+      "Quantity": {
+        "From": 48,
+        "To": 143
+      },
+      "Price": 14.8,
+      "Cost": 7.4,
+      "DiscountCode": "P",
+      "CurrencyCode": "USD",
+      "IsQUR": false
+    },
+    {
+      "Quantity": {
+        "From": 144,
+        "To": 287
+      },
+      "Price": 11.7,
+      "Cost": 5.85,
+      "DiscountCode": "P",
+      "CurrencyCode": "USD",
+      "IsQUR": false
+    },
+    {
+      "Quantity": {
+        "From": 288,
+        "To": 575
+      },
+      "Price": 11.2,
+      "Cost": 5.6,
+      "DiscountCode": "P",
+      "CurrencyCode": "USD",
+      "IsQUR": false
+    },
+    {
+      "Quantity": {
+        "From": 576,
+        "To": 1295
+      },
+      "Price": 10.9,
+      "Cost": 5.45,
+      "DiscountCode": "P",
+      "CurrencyCode": "USD",
+      "IsQUR": false
+    },
+    {
+      "Quantity": {
+        "From": 1296,
+        "To": 2147483647
+      },
+      "Price": 10.4,
+      "Cost": 5.2,
+      "DiscountCode": "P",
+      "CurrencyCode": "USD",
+      "IsQUR": false
+    }
+  ],
+  "PriceIncludes": "Blank Product w/ Flat Embroidery up to 5K Stitches.",
+  "LowestPrice": {
+    "Quantity": {
+      "From": 1296,
+      "To": 2147483647
+    },
+    "Price": 10.4,
+    "Cost": 5.2,
+    "DiscountCode": "P",
+    "CurrencyCode": "USD",
+    "IsQUR": false
+  },
+  "HighestPrice": {
+    "Quantity": {
+      "From": 48,
+      "To": 143
+    },
+    "Price": 14.8,
+    "Cost": 7.4,
+    "DiscountCode": "P",
+    "CurrencyCode": "USD",
+    "IsQUR": false
+  },
+  "IsNew": false,
+  "IsConfirmed": false,
+  "HasFullColorProcess": true,
+  "HasRushService": false,
+  "DistributorComments": "Embroidery Only - Digitizing Minimum charge of $40 (Z)",
+  "AdditionalInfo": "Minimum Order - 48 pieces per style, size, color, and location.",
+  "UpdateDate": "2019-03-27T12:16:33.000-04:00",
+  "Values": [
+    {
+      "Id": 789986338,
+      "Name": "Material",
+      "Description": "Material",
+      "Code": "MTRL",
+      "Values": [
+        {
+          "Id": 798686301,
+          "Name": "Blend: Acrylic/Wool (85/15)",
+          "IsSelected": false
+        }
+      ],
+      "IsRequired": false,
+      "IsMultiSelect": false
+    },
+    {
+      "Id": 789986339,
+      "Name": "Color",
+      "Description": "Product Color",
+      "Code": "PRCL",
+      "Values": [
+        {
+          "Id": 798686302,
+          "Name": "Black 003",
+          "IsSelected": false
+        },
+        {
+          "Id": 798686474,
+          "Name": "Charcoal Gray 025",
+          "IsSelected": false
+        },
+        {
+          "Id": 798686473,
+          "Name": "Gray 014",
+          "IsSelected": false
+        },
+        {
+          "Id": 798686303,
+          "Name": "Navy 004",
+          "IsSelected": false
+        },
+        {
+          "Id": 798686476,
+          "Name": "Red 002",
+          "IsSelected": false
+        },
+        {
+          "Id": 798686475,
+          "Name": "Royal 001",
+          "IsSelected": false
+        }
+      ],
+      "IsRequired": false,
+      "IsMultiSelect": false
+    },
+    {
+      "Id": 789986352,
+      "Name": "Size",
+      "Description": "Size",
+      "Code": "SIZE",
+      "Values": [
+        {
+          "Id": 798686342,
+          "Name": "Standard",
+          "IsSelected": false
+        }
+      ],
+      "IsRequired": false,
+      "IsMultiSelect": false
+    }
+  ],
+  "HasInventory": true,
+  "HasVideo": true,
+  "Services": [
+    {
+      "Id": 550006048,
+      "Name": "Inventory API",
+      "Code": "IAPI"
+    }
+  ],
+  "CanEcommOrder": false,
+  "IsEcommConnected": false,
+  "HasProductFeed": false,
+  "Variants": [
+    {
+      "Id": 836357780,
+      "Name": "128MB",
+      "Description": "Size: 128MB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "128MB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 6.3,
+          "Cost": 3.78,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:481"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 4.72,
+          "Cost": 2.832,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:482"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 3.3,
+          "Cost": 1.98,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:483"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 2.65,
+          "Cost": 1.59,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:484"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 2.47,
+          "Cost": 1.482,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:485"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 2.35,
+          "Cost": 1.41,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:486"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:160"
+    },
+    {
+      "Id": 836357781,
+      "Name": "256MB",
+      "Description": "Size: 256MB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "256MB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 6.32,
+          "Cost": 3.792,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:543"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 4.76,
+          "Cost": 2.856,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:544"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 3.32,
+          "Cost": 1.992,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:545"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 2.69,
+          "Cost": 1.614,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:546"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 2.48,
+          "Cost": 1.488,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:547"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 2.37,
+          "Cost": 1.422,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:548"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:161"
+    },
+    {
+      "Id": 836357782,
+      "Name": "512MB",
+      "Description": "Size: 512MB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "512MB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 6.4,
+          "Cost": 3.84,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:605"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 4.84,
+          "Cost": 2.904,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:606"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 3.33,
+          "Cost": 1.998,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:607"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 2.74,
+          "Cost": 1.644,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:608"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 2.5,
+          "Cost": 1.5,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:609"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 2.38,
+          "Cost": 1.428,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:610"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:162"
+    },
+    {
+      "Id": 832676461,
+      "Name": "1GB",
+      "Description": "Size: 1GB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "1GB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 6.98,
+          "Cost": 4.188,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:667"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 5.48,
+          "Cost": 3.288,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:668"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 3.8,
+          "Cost": 2.28,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:669"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 3.24,
+          "Cost": 1.944,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:670"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 2.85,
+          "Cost": 1.71,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:671"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 2.7,
+          "Cost": 1.62,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:672"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:163"
+    },
+    {
+      "Id": 828394601,
+      "Name": "2GB",
+      "Description": "Size: 2GB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "2GB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 7.04,
+          "Cost": 4.224,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:729"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 5.52,
+          "Cost": 3.312,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:730"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 3.87,
+          "Cost": 2.322,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:731"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 3.3,
+          "Cost": 1.98,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:732"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 2.95,
+          "Cost": 1.77,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:733"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 2.78,
+          "Cost": 1.668,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:734"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:164"
+    },
+    {
+      "Id": 828394605,
+      "Name": "4GB",
+      "Description": "Size: 4GB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "4GB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 7.18,
+          "Cost": 4.308,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:791"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 5.6,
+          "Cost": 3.36,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:792"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 3.88,
+          "Cost": 2.328,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:793"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 3.34,
+          "Cost": 2.004,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:794"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 3.02,
+          "Cost": 1.812,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:795"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 2.85,
+          "Cost": 1.71,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:796"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:165"
+    },
+    {
+      "Id": 828394607,
+      "Name": "8GB",
+      "Description": "Size: 8GB",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "8GB",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 7.94,
+          "Cost": 4.764,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:853"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 6.18,
+          "Cost": 3.708,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:854"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 4.4,
+          "Cost": 2.64,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:855"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 3.82,
+          "Cost": 2.292,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:856"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 3.52,
+          "Cost": 2.112,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:857"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 3.35,
+          "Cost": 2.01,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:858"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:166"
+    },
+    {
+      "Id": 828394610,
+      "Name": "16G",
+      "Description": "Size: 16G",
+      "Attributes": {
+        "Sizes": {
+          "Values": [
+            {
+              "Code": "OTHE",
+              "Name": "16G",
+              "$index": 3
+            }
+          ]
+        }
+      },
+      "Shipping": {
+        "WeightUnit": "Pounds",
+        "WeightPerPackage": 35,
+        "PackageUnit": "Box",
+        "ItemsPerPackage": 500,
+        "Dimensions": {
+          "Description": "14 \" x 12 \" x 12 \"",
+          "Length": "14",
+          "LengthUnit": "Inches",
+          "Width": "12",
+          "WidthUnit": "Inches",
+          "Height": "12",
+          "HeightUnit": "Inches"
+        },
+        "BillsByWeight": false,
+        "BillsBySize": false
+      },
+      "Prices": [
+        {
+          "Quantity": {
+            "From": 25,
+            "To": 49,
+            "$index": 1
+          },
+          "Price": 8.5,
+          "Cost": 5.1,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:915"
+        },
+        {
+          "Quantity": {
+            "From": 50,
+            "To": 99,
+            "$index": 1
+          },
+          "Price": 6.76,
+          "Cost": 4.056,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:916"
+        },
+        {
+          "Quantity": {
+            "From": 100,
+            "To": 249,
+            "$index": 1
+          },
+          "Price": 4.88,
+          "Cost": 2.928,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:917"
+        },
+        {
+          "Quantity": {
+            "From": 250,
+            "To": 499,
+            "$index": 1
+          },
+          "Price": 4.34,
+          "Cost": 2.604,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:918"
+        },
+        {
+          "Quantity": {
+            "From": 500,
+            "To": 999,
+            "$index": 1
+          },
+          "Price": 4,
+          "Cost": 2.4,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:919"
+        },
+        {
+          "Quantity": {
+            "From": 1000,
+            "To": 2147483647,
+            "$index": 1
+          },
+          "Price": 3.88,
+          "Cost": 2.328,
+          "DiscountCode": "R",
+          "CurrencyCode": "USD",
+          "IsQUR": false,
+          "$$hashKey": "object:920"
+        }
+      ],
+      "PriceIncludes": "Tier 1 Chip",
+      "$$hashKey": "object:167"
+    }
+  ]
+}

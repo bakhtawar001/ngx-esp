@@ -1,0 +1,104 @@
+@import 'cosmos/scss/settings';
+
+.panel-editable-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.custom-controls {
+    @include narrower-than($bp-medium) {
+      flex-direction: column;
+      align-items: normal;
+
+      .settings-two-col-1 {
+        margin-bottom: $spacing-stack-16;
+      }
+    }
+  }
+
+  cos-form-field {
+    max-width: 500px;
+  }
+
+  .form-row-value {
+    margin-bottom: 0;
+  }
+
+  .settings-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin-top: $spacing-stack-16;
+
+    @include narrower-than($bp-medium) {
+      flex-direction: column;
+
+      button {
+        margin: 0 0 8px 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.settings-two-col-1 {
+  width: 100%;
+  min-width: 0;
+}
+
+.settings-two-col-2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.settings-display-group {
+  display: flex;
+  position: relative;
+
+  .settings-two-col-2 {
+    flex: 1;
+  }
+}
+
+.settings-main-content {
+  min-width: 0;
+}
+
+.form-row-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: $spacing-stack-8;
+  font-family: Barlow, sans-serif;
+}
+
+.panel-editable-row-is-editing {
+  @include wider-than($bp-medium) {
+    .settings-two-col-1,
+    .settings-two-col-2 {
+      flex: 1;
+    }
+  }
+
+  .settings-main-content {
+    width: 100%;
+  }
+
+  @include narrower-than($bp-medium) {
+    .cos-input,
+    input {
+      width: 100%;
+    }
+  }
+
+  .form-row-title,
+  .form-row-value {
+    margin-bottom: 1rem;
+  }
+}
+
+.full-width {
+  .settings-main-content {
+    width: 100%;
+  }
+}

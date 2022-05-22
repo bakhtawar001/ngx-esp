@@ -1,0 +1,87 @@
+<cos-dialog>
+  <ng-container cosDialogHeader>Manage collaborators</ng-container>
+  <ng-container cosDialogSubHeader
+    >Collaborate with other people in your company</ng-container
+  >
+
+  <ng-container cosDialogContent>
+    <div class="content-wrapper" [formGroup]="collaboratorForm">
+      <label
+        for="collaborators-radio"
+        class="cos-form-label"
+        id="collaborators-label"
+      >
+        Collaborators
+      </label>
+      <div
+        cosRadioGroup
+        id="collaborators-radio"
+        aria-label="Select an option"
+        aria-labelledby="example-radio-group-label"
+        class="mb-16"
+        formControlName="AccessLevel"
+        required="true"
+        labelPosition="after"
+      >
+        <cos-radio-button
+          *ngFor="let option of collaborationOptions"
+          [value]="option.Value"
+          >{{ option.Name }}
+          <div class="body-style-12">{{ option.Description }}</div>
+        </cos-radio-button>
+      </div>
+
+      <div *ngIf="accessLevel === 'Everyone'">
+        <h3 class="header-style-12 mb-8">Other settings</h3>
+        <cos-checkbox
+          id="checkbox-allow-editing"
+          name="checkbox-allow-editing"
+          [formControl]="allowEditingForm"
+        >
+          Allow editing
+        </cos-checkbox>
+      </div>
+
+      <div *ngIf="accessLevel === 'Custom'" class="results-container">
+        <div class="mb-16">
+          <asi-user-team-autocomplete
+            placeholder="Add individual"
+            [formControl]="newCollaboratorForm"
+            [excludeList]="excludeList"
+          ></asi-user-team-autocomplete>
+        </div>
+
+        <cos-card *ngIf="collaborators.length" class="mb-16">
+          <ul class="collaborator-results">
+            <li
+              *ngFor="let collaborator of collaborators; let i = index; trackBy: trackByFn"
+            >
+              <asi-collaborator-list-item
+                (visibilityChanged)="setAccessType($event, collaborator, i)"
+                (removeCollaborator)="removeCollaborator(collaborator)"
+                [collaborator]="collaborator"
+                [isOnlyReadWrite]="onlyReadWrite"
+                [ownerId]="entity.OwnerId"
+              ></asi-collaborator-list-item>
+            </li>
+          </ul>
+        </cos-card>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container cosDialogActions>
+    <div class="text-right">
+      <button
+        (click)="save()"
+        [disabled]="collaboratorForm.pristine && allowEditingForm.pristine"
+        cos-flat-button
+        type="submit"
+        color="primary"
+      >
+        <i class="fa fa-save mr-8"></i>
+        Save changes
+      </button>
+    </div>
+  </ng-container>
+</cos-dialog>

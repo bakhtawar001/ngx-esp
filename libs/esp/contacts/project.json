@@ -1,0 +1,40 @@
+{
+  "root": "libs/esp/contacts",
+  "sourceRoot": "libs/esp/contacts/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/esp/contacts/tsconfig.lib.json",
+        "project": "libs/esp/contacts/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/contacts/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/contacts/**/*.ts",
+          "libs/esp/contacts/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/contacts/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/contacts"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

@@ -1,0 +1,51 @@
+@import 'cosmos/scss/settings/';
+
+p {
+  margin-bottom: 1rem;
+}
+
+.content-section {
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.header-style-13 {
+  font-family: Barlow, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.header-style-12 {
+  font-family: Barlow, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
+.view-all-link {
+  color: rgb(22, 69, 105);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
+.strong {
+  font-weight: 600;
+}
+
+.text {
+  &-warning {
+    color: rgb(208, 68, 37) !important;
+  }
+
+  &-success {
+    color: #008000;
+  }
+
+  &-light {
+    color: $color-g-stone-41 !important;
+  }
+}

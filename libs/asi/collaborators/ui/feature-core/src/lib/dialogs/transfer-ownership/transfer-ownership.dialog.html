@@ -1,0 +1,72 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Transfer Ownership</h2>
+  <p class="body-style-12">
+    Transfer the ownership of {{ data.entity.Name }} to someone else in your
+    company.
+  </p>
+</header>
+
+<mat-dialog-content>
+  <div class="content-wrapper">
+    <div class="current-owner mb-32">
+      <label class="cos-form-label" id="current-owner-label">
+        Current Owner <span *ifAuthUser="data.entity?.OwnerId">(Me)</span>
+      </label>
+      <div class="account-item" *ngIf="owner">
+        <cos-avatar>
+          <span *ngIf="!owner?.IsTeam; else companyGravatar">
+            <img
+              class="cos-avatar-image"
+              *ngIf="owner?.ImageUrl || owner?.IconImageUrl"
+              [src]="owner?.ImageUrl || owner?.IconImageUrl"
+              [attr.alt]="owner?.Name"
+              (error)="imgError($event)"
+            />
+            {{ owner?.Name | initials }}
+          </span>
+          <ng-template #companyGravatar>
+            <i class="fa fa-users text-light"></i>
+          </ng-template>
+        </cos-avatar>
+        <div>
+          <h4 class="header-style-13 mb-0">{{ owner?.Name }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="select-new-owner">
+      <asi-user-team-autocomplete
+        label="New Owner"
+        placeholder="Select an owner"
+        [formControl]="newOwner"
+        [excludeList]="data.entity.OwnerId.toString()"
+        [excludeTeams]="true"
+      >
+      </asi-user-team-autocomplete>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="flex w-full">
+    <div class="w-1/2"></div>
+    <div class="w-1/2 text-right">
+      <button
+        class="transfer-ownership-btn"
+        cos-flat-button
+        type="submit"
+        color="primary"
+        cdkFocusInitial
+        (click)="transfer()"
+        [disabled]="!newOwnerSelected || ownershipIsBeingTransferred"
+      >
+        <span class="mr-12"><i class="fa fa-exchange-alt"></i></span>
+        Transfer
+      </button>
+    </div>
+  </div>
+</mat-dialog-actions>

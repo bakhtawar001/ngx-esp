@@ -1,0 +1,10 @@
+<img
+  *ngIf="videoObj"
+  src="{{
+    settings && settings.size === 'lg'
+      ? videoObj.imageUrl || videoObj.thumbnail
+      : videoObj.thumbnail
+  }}"
+  [attr.alt]="alt"
+  class="cos-video-thumbnail img-responsive"
+/>

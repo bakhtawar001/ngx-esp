@@ -1,0 +1,123 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosDatePickerDemoComponent } from './date-picker.component.demo';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDateFnsModule } from '@angular/material-date-fns-adapter';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { CosFormFieldModule } from '@cosmos/components/form-field';
+import { CosInputModule, InputTypes } from '@cosmos/components/input';
+
+<Meta
+  title="Controls &amp; Inputs/Date Picker"
+  component={CosDatePickerDemoComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [
+        BrowserAnimationsModule,
+        MatDatepickerModule,
+        MatDateFnsModule,
+        CosFormFieldModule,
+        CosInputModule,
+        ReactiveFormsModule,
+      ],
+      declarations: [CosDatePickerDemoComponent],
+    }),
+  ]}
+  args={{
+    label: 'Choose a date',
+    showLabel: true,
+    style: 'large',
+    value: new Date('Jan 20 2017'),
+  }}
+  argTypes={{
+    style: {
+      control: {
+        type: 'select',
+        options: ['', 'small', 'large'],
+      },
+    },
+    value: { control: 'date' },
+    label: { control: 'text' },
+    showLabel: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosDatePickerDemoComponent,
+});
+
+# Date Picker
+
+Date pickers allow a user to choose a single date to be stored within the application.
+
+### When to use a Date Picker
+
+- When a date needs to be selected and stored within the app
+- When a user needs to move a selected date to another date
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<div class="date-picker">
+  <cos-label>Choose a Date</cos-label>
+  <span
+    cosPrefix
+    class="fa fa-calendar-alt cos-text--blue"
+    (click)="picker.open()"
+  ></span>
+  <input
+    cos-input
+    class="mat-select"
+    [matDatepicker]="picker"
+    [formControl]="dateTime"
+    placeholder="mm/dd/yyyy"
+    [style]="style"
+    [disabled]="disabled"
+    [attr.disabled]="disabled ? '' : null"
+    (click)="picker.open()"
+  />
+  <mat-datepicker #picker></mat-datepicker>
+</div>
+```
+
+<ArgsTable of={CosDatePickerDemoComponent} />
+
+---
+
+## How it works
+
+### General
+
+- Only a single date can be selected
+- A date picker is presented within a contextual modal and is triggered by a select control or button.
+- Today's date is selected by default
+- Users can select a different date by click a date within the calendar picker
+
+### Actions
+
+- Users can navigate by clicking the previous or next buttons to different months/years
+- Users can navigate to specific Months & Years by interacting with the select controls
+- Users can remove any date selection with "Clear Date" button
+- Users can reset the picker to current day with "Today" button
+
+---
+
+## Visual Details
+
+### Typography
+
+- The label for each date is Body 14 Regular (Foreground Primary)
+- The selected date is Body 14 Bold (Foreground On Tint)
+- The label for each date outside of the current month is Body 14 Regular (Foreground Tertiary)
+- To show a focused state use a 2px (#0F8BFF) border.
+
+### Spacing
+
+- The contextual modal uses Inset 16

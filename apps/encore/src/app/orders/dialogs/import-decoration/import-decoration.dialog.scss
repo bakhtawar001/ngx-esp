@@ -1,0 +1,27 @@
+@import 'cosmos/scss/settings/';
+
+.import-decoration-dialog {
+  &--header {
+    border-bottom: $border-light;
+  }
+
+  &--container {
+    padding-top: $spacing-stack-16;
+    display: flex;
+  }
+
+  &--left {
+    width: 60%;
+  }
+  &--right {
+    @include spacing-inset-8;
+    background-color: $color-g-white-00;
+    width: 40%;
+    margin-top: -$spacing-stack-16;
+    margin-bottom: -$spacing-stack-16;
+
+    .header {
+      border-bottom: $border-light;
+    }
+  }
+}

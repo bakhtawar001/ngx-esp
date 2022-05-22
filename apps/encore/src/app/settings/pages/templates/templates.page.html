@@ -1,0 +1,468 @@
+<cos-card class="templates-restore-card">
+  <div class="templates-restore-card-body">
+    <div class="templates-restore-card-left">
+      <i class="fas fa-exclamation"></i>
+      <div>
+        <p class="templates-restore-card-header">
+          <strong>Override setting enabled for personal settings</strong>
+        </p>
+        <p class="templates-restore-card-text">
+          To disable override switch to admin.
+        </p>
+      </div>
+    </div>
+    <div class="templates-restore-card-right">
+      <button [color]="'primary'" cos-stroked-button (click)="switchToAdmin()">
+        Switch to Admin
+      </button>
+    </div>
+  </div>
+</cos-card>
+
+<h1 class="header-style-22">Email and message templates</h1>
+
+<ng-form [formGroup]="signatureForm">
+  <cos-segmented-panel class="templates-settings-panel">
+    <cos-segmented-panel-header>
+      <div class="salestax-settings-panel-header-row">
+        <h2 class="header-style-16 mb-0">Email Signature</h2>
+      </div>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      <p class="section-description mb-0">
+        Your email signature will appear on all emails.
+      </p>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row>
+        <asi-panel-editable-row-inactive>
+          <quill-view
+            [content]="this.signatureForm.get('body').value"
+            format="html"
+            theme="snow"
+          ></quill-view>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <p class="cos-form-label">Email Signature</p>
+            <quill-editor formControlName="body"></quill-editor>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-form>
+<ng-form [formGroup]="templatesForm">
+  <cos-segmented-panel class="templates-settings-panel">
+    <cos-segmented-panel-header>
+      <div class="salestax-settings-panel-header-row">
+        <h2 class="header-style-16 mb-0">Message Templates</h2>
+      </div>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Acknowledgement emails'"
+        [visibleControls]="{expand: true}"
+      >
+        <asi-panel-editable-row-inactive>
+          <div>
+            <ul class="settings-columnized-values">
+              <li>
+                <span>Reply to: </span>
+                <span>{{templatesForm.get('replyTo').value}}</span>
+              </li>
+              <li>
+                <span>Subject: </span>
+                <span> {{templatesForm.get('subject').value}}</span>
+              </li>
+              <li>
+                <span>Body: </span>
+                <span> {{templatesForm.get('body').value}} </span>
+              </li>
+            </ul>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{
+          'cos-form-label': true
+        }"
+              [attr.for]="'replyTo'"
+            >
+              Reply To
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'replyTo'"
+              formControlName="replyTo"
+            >
+              <option
+                *ngFor="let option of selectOptions"
+                [value]="option.value"
+              >
+                {{option.value}}
+              </option>
+            </select>
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <label [ngClass]="{'cos-form-label': true}" [attr.for]="'subject'">
+              Subject
+            </label>
+            <input
+              cos-input
+              id="subject"
+              formControlName="subject"
+              placeholder="Enter a value"
+              maxlength="100"
+            />
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <p class="cos-form-label">Body</p>
+            <quill-editor formControlName="body"></quill-editor>
+          </div>
+          <cos-card class="templates-restore-card">
+            <div class="templates-restore-card-body">
+              <div class="templates-restore-card-left">
+                <i class="fas fa-sync-alt"></i>
+                <div>
+                  <p class="templates-restore-card-header">
+                    <strong>Restore application defaults</strong>
+                  </p>
+                  <p class="templates-restore-card-text">
+                    Undo any changes you’ve made and use the defaults set by
+                    your administrator.
+                  </p>
+                </div>
+              </div>
+              <div class="templates-restore-card-right">
+                <button
+                  [color]="'primary'"
+                  cos-stroked-button
+                  (click)="restoreDefaults('acknowledgementEmails')"
+                >
+                  Restore application defaults
+                </button>
+              </div>
+            </div>
+          </cos-card>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Invoice emails'"
+        [visibleControls]="{expand: true}"
+      >
+        <asi-panel-editable-row-inactive>
+          <div>
+            <ul class="settings-columnized-values">
+              <li>
+                <span>Reply to: </span>
+                <span>{{templatesForm.get('replyTo').value}}</span>
+              </li>
+              <li>
+                <span>Subject: </span>
+                <span> {{templatesForm.get('subject').value}}</span>
+              </li>
+              <li>
+                <span>Body: </span>
+                <span> {{templatesForm.get('body').value}} </span>
+              </li>
+            </ul>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{
+          'cos-form-label': true
+        }"
+              [attr.for]="'replyTo'"
+            >
+              Reply To
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'replyTo'"
+              formControlName="replyTo"
+            >
+              <option
+                *ngFor="let option of selectOptions"
+                [value]="option.value"
+              >
+                {{option.value}}
+              </option>
+            </select>
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{'cos-form-label': true}"
+              [attr.for]="'emailSignature'"
+            >
+              Subject
+            </label>
+            <input
+              cos-input
+              id="emailSignature"
+              formControlName="subject"
+              placeholder="Enter a value"
+              maxlength="100"
+            />
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <p class="cos-form-label">Body</p>
+            <quill-editor></quill-editor>
+          </div>
+          <cos-card class="templates-restore-card">
+            <div class="templates-restore-card-body">
+              <div class="templates-restore-card-left">
+                <i class="fas fa-sync-alt"></i>
+                <div>
+                  <p class="templates-restore-card-header">
+                    <strong>Restore application defaults</strong>
+                  </p>
+                  <p class="templates-restore-card-text">
+                    Undo any changes you’ve made and use the defaults set by
+                    your administrator.
+                  </p>
+                </div>
+              </div>
+              <div class="templates-restore-card-right">
+                <button
+                  [color]="'primary'"
+                  cos-stroked-button
+                  (click)="restoreDefaults('acknowledgementEmails')"
+                >
+                  Restore application defaults
+                </button>
+              </div>
+            </div>
+          </cos-card>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Packing list'"
+        [visibleControls]="{expand: true}"
+      >
+        <asi-panel-editable-row-inactive>
+          <div>
+            <ul class="settings-columnized-values">
+              <li>
+                <span>Reply to: </span>
+                <span>{{templatesForm.get('replyTo').value}}</span>
+              </li>
+              <li>
+                <span>Subject: </span>
+                <span> {{templatesForm.get('subject').value}}</span>
+              </li>
+              <li>
+                <span>Body: </span>
+                <span> {{templatesForm.get('body').value}} </span>
+              </li>
+            </ul>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{
+          'cos-form-label': true
+        }"
+              [attr.for]="'replyTo'"
+            >
+              Reply To
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'replyTo'"
+              formControlName="replyTo"
+            >
+              <option
+                *ngFor="let option of selectOptions"
+                [value]="option.value"
+              >
+                {{option.value}}
+              </option>
+            </select>
+
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{'cos-form-label': true}"
+              [attr.for]="'emailSignature'"
+            >
+              Subject
+            </label>
+            <input
+              cos-input
+              id="emailSignature"
+              formControlName="subject"
+              placeholder="Enter a value"
+              maxlength="100"
+            />
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <p class="cos-form-label">Body</p>
+            <quill-editor></quill-editor>
+          </div>
+          <cos-card class="templates-restore-card">
+            <div class="templates-restore-card-body">
+              <div class="templates-restore-card-left">
+                <i class="fas fa-sync-alt"></i>
+                <div>
+                  <p class="templates-restore-card-header">
+                    <strong>Restore application defaults</strong>
+                  </p>
+                  <p class="templates-restore-card-text">
+                    Undo any changes you’ve made and use the defaults set by
+                    your administrator.
+                  </p>
+                </div>
+              </div>
+              <div class="templates-restore-card-right">
+                <button
+                  [color]="'primary'"
+                  cos-stroked-button
+                  (click)="restoreDefaults('acknowledgementEmails')"
+                >
+                  Restore application defaults
+                </button>
+              </div>
+            </div>
+          </cos-card>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Purchase order'"
+        [visibleControls]="{expand: true}"
+      >
+        <asi-panel-editable-row-inactive>
+          <div>
+            <ul class="settings-columnized-values">
+              <li>
+                <span>Reply to: </span>
+                <span>{{templatesForm.get('replyTo').value}}</span>
+              </li>
+              <li>
+                <span>Subject: </span>
+                <span> {{templatesForm.get('subject').value}}</span>
+              </li>
+              <li>
+                <span>Body: </span>
+                <span> {{templatesForm.get('body').value}} </span>
+              </li>
+            </ul>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{
+          'cos-form-label': true
+        }"
+              [attr.for]="'replyTo'"
+            >
+              Reply To
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'replyTo'"
+              formControlName="replyTo"
+            >
+              <option
+                *ngFor="let option of selectOptions"
+                [value]="option.value"
+              >
+                {{option.value}}
+              </option>
+            </select>
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{'cos-form-label': true}"
+              [attr.for]="'emailSignature'"
+            >
+              Subject
+            </label>
+            <input
+              cos-input
+              id="emailSignature"
+              formControlName="subject"
+              placeholder="Enter a value"
+              maxlength="100"
+            />
+            <div class="error" *ngIf="error">The email address is invalid.</div>
+          </div>
+          <div class="cos-form-row">
+            <p class="cos-form-label">Body</p>
+            <quill-editor></quill-editor>
+          </div>
+          <cos-card class="templates-restore-card">
+            <div class="templates-restore-card-body">
+              <div class="templates-restore-card-left">
+                <i class="fas fa-sync-alt"></i>
+                <div>
+                  <p class="templates-restore-card-header">
+                    <strong>Restore application defaults</strong>
+                  </p>
+                  <p class="templates-restore-card-text">
+                    Undo any changes you’ve made and use the defaults set by
+                    your administrator.
+                  </p>
+                </div>
+              </div>
+              <div class="templates-restore-card-right">
+                <button
+                  [color]="'primary'"
+                  cos-stroked-button
+                  (click)="restoreDefaults('acknowledgementEmails')"
+                >
+                  Restore application defaults
+                </button>
+              </div>
+            </div>
+          </cos-card>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-form>
+
+<cos-card class="templates-restore-card">
+  <div class="templates-restore-card-body">
+    <div class="templates-restore-card-left">
+      <i class="fas fa-sync-alt"></i>
+      <div>
+        <p class="templates-restore-card-header">
+          <strong>Restore company defaults</strong>
+        </p>
+        <p class="templates-restore-card-text">
+          Undo any changes you’ve made and use the defaults set by your
+          administrator.
+        </p>
+      </div>
+    </div>
+    <div class="templates-restore-card-right">
+      <button
+        [color]="'primary'"
+        cos-stroked-button
+        (click)="restoreApplicationdefaults()"
+      >
+        Restore company defaults
+      </button>
+    </div>
+  </div>
+</cos-card>

@@ -1,0 +1,29 @@
+@import 'cosmos/scss/settings/';
+
+.accordion-btn {
+  @include spacing-squish-8;
+  padding-left: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+
+  &__hr {
+    border-top: $border-light;
+    flex: 1;
+    align-self: center;
+    margin-left: $spacing-stack-16;
+    margin-right: $spacing-stack-16;
+  }
+
+  &__label {
+    @include type-style-header-12-mineshaft();
+  }
+
+  &:focus {
+    @include cos-focus();
+  }
+}
+
+.decoration-accordion-container {
+  border-bottom: $border-light;
+}

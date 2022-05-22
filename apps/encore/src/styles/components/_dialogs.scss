@@ -1,0 +1,28 @@
+@import 'cosmos/scss/settings/';
+
+@include narrower-than($bp-large) {
+  .cdk-global-overlay-wrapper {
+    .cdk-overlay-pane {
+      min-width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      position: absolute !important;
+      // height: 100vh !important;
+      // max-height: 100vh !important;
+
+      .mat-dialog-container {
+        border-radius: 0px !important;
+      }
+    }
+
+    .mat-dialog-container .cos-modal-close {
+      color: $color-g-mineshaft-88 !important;
+    }
+
+    // .mat-dialog-container .mat-dialog-content {
+    //   max-height: calc(100vh - 64px) !important;
+    // }
+  }
+}

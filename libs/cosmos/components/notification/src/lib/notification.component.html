@@ -1,0 +1,22 @@
+<div class="cos-notification-icon">
+  <ng-template *ngIf="!!iconChild; else noCustomIcon">
+    <ng-content select="cos-notification-icon"></ng-content>
+  </ng-template>
+
+  <ng-template #noCustomIcon>
+    <i
+      [ngClass]="{
+        fa: true,
+        'fa-info': type === 'info',
+        'fa-exclamation': type === 'warn',
+        'fa-times': type === 'error',
+        'fa-check': type === 'confirm'
+      }"
+    ></i>
+  </ng-template>
+</div>
+<div class="cos-notification-content">
+  <ng-content select="cos-notification-title"></ng-content>
+  <ng-content select="cos-notification-body"></ng-content>
+</div>
+<ng-content></ng-content>

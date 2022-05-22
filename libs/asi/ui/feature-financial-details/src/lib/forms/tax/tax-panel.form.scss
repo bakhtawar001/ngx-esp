@@ -1,0 +1,7 @@
+@import 'cosmos/scss/settings';
+
+@include narrower-than($bp-medium) {
+  .panel-editable-row.custom-controls {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/animations",
+  "sourceRoot": "libs/cosmos/animations/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/animations"],
+      "options": {
+        "tsConfig": "libs/cosmos/animations/tsconfig.lib.json",
+        "project": "libs/cosmos/animations/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/animations/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/animations/**/*.ts",
+          "libs/cosmos/animations/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/cosmos/animations/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/cosmos/animations"]
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"],
+  "implicitDependencies": []
+}

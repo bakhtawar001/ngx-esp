@@ -1,0 +1,146 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosRadioComponent } from './radio.component';
+import { CosRadioModule } from './radio.module';
+import { CosRadioDemoComponent } from './radio.component.demo';
+
+<Meta
+  title="Controls &amp; Inputs/Radio"
+  component={CosRadioComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosRadioModule],
+      declarations: [CosRadioDemoComponent],
+    }),
+  ]}
+  args={{
+    labelPosition: 'after',
+  }}
+  argTypes={{
+    labelPosition: {
+      control: {
+        type: 'radio',
+        options: ['before', 'after'],
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['', 'small'],
+      },
+    },
+    disabled: { control: 'boolean' },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosRadioDemoComponent,
+});
+
+# Radios
+
+Radios allow people to select a single option from a list.
+
+---
+
+## When to use this
+
+Use radios when you want to:
+
+- Allow a single selection
+
+### When not to use this
+
+Don't use radios when you want to:
+
+- Allow people to select multiple items from a list
+- Allow people to toggle a single selection on or off
+
+---
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```js
+ selectedAnimal = 'cat';
+    animals: string[] = ['dog', 'cat'];
+
+    trackByFn(index) {
+        return index;
+    }
+
+
+
+    <cos-radio-group
+      (change)="changeEvent($event)"
+      aria-label="Select an option"
+      [(ngModel)]="selectedAnimal"
+      [size]="size"
+    >
+      <cos-radio-button
+        *ngFor="let animal of animals; trackBy: trackByFn"
+        [value]="animal"
+        >{{ animal }}</cos-radio-button
+      >
+    </cos-radio-group>
+```
+
+<ArgsTable of={CosRadioComponent} />
+
+## Visual Details
+
+Radios are usually grouped together and used within forms or as options within a dropdown menu. It's best to always group radios together with a header of some kind. This ensures people know what they are selecting.
+
+### Sizing
+
+- Each radio is 18 x 18px
+
+### Typography
+
+- The label is Work Sans 14 Regular
+
+### Spacing
+
+- The horizontal space between the radio and label is Inline 8
+- The vertical spacing between each radio is Stack 8
+
+---
+
+## Layout
+
+Radios can be used in either inline or stacked layouts.
+
+### Inline
+
+- Use an inline layout when vertical space is limited.
+- Spacing between each radio is Inline 24
+
+### Stacked
+
+- Use a stacked layout when horizontal space is limited.
+- Spacing between each radio is Stack 8
+
+---
+
+## States
+
+### Unselected
+
+This is the default state of all radio.
+
+### Selected
+
+When someone clicks/taps a radio it becomes "selected".
+
+### Disabled
+
+Use this when an interaction with a radio should be blocked.
+
+### Focus
+
+- This is when the person has clicked or tabbed to the text field and is typing

@@ -1,0 +1,19 @@
+@import 'cosmos/scss/settings/';
+
+.account-item {
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 40px minmax(0, 1fr);
+  max-width: 180px;
+
+  @include wider-than($bp-medium) {
+    esp-lookup-select {
+      max-width: 220px;
+    }
+  }
+
+  & > * {
+    align-self: center;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,54 @@
+@import 'cosmos/scss/settings/';
+
+.orders-shipping {
+  &__add-product-btn {
+    margin-left: -$spacing-stack-16;
+  }
+  &__top-border {
+    border-top: $border-light;
+  }
+  &__has-icon i {
+    float: right;
+  }
+  &__shipping-details {
+    max-width: 700px;
+  }
+  &__products {
+    position: relative;
+
+    &__col1,
+    &__col2,
+    &__col3 {
+      width: 100%;
+    }
+    &__col3 .cos-card-controls-container {
+      right: 0px;
+    }
+    &__col3 button.cos-warn {
+      margin-left: 0px;
+    }
+
+    @include wider-than($bp-large) {
+      &__col1 {
+        width: auto;
+      }
+      &__col2 {
+        flex: 1 1 auto;
+        padding: 0 16px;
+        width: auto;
+
+        p {
+          max-width: 600px;
+        }
+      }
+      &__col3 {
+        flex: 0 0 100px;
+        width: auto;
+      }
+    }
+  }
+}
+
+.cos-card + .cos-card {
+  margin-top: 16px;
+}

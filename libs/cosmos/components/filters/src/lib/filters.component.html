@@ -1,0 +1,90 @@
+<ng-template #filters>
+  <ng-content></ng-content>
+</ng-template>
+
+<div *ngIf="(isDesktop | async)?.matches" class="cos-filters-desktop">
+  <ng-container *ngTemplateOutlet="filters"></ng-container>
+  <ng-content select="cos-filter-controls"></ng-content>
+</div>
+
+<div *ngIf="!(isDesktop | async)?.matches" class="cos-filters-mobile">
+  <button
+    cos-filter-button
+    [matMenuTriggerFor]="menu"
+    (menuOpened)="menuOpened()"
+    (menuClosed)="menuClosed()"
+    #menuTrigger="matMenuTrigger"
+  >
+    Filters
+  </button>
+  <mat-menu
+    #menu="matMenu"
+    yPosition="below"
+    backdropClass="cos-mobile-filters-backdrop"
+    overlayPanelClass="cos-mobile-filters-panel"
+    class="cos-mobile-filters-panel"
+    panelId="cos-filters-panel-mobile"
+  >
+    <div
+      class="overlap-trigger"
+      (click)="$event.stopPropagation()"
+      overlapTrigger="true"
+    >
+      <ng-template matMenuContent>
+        <div
+          class="cos-mobile-filters"
+          cdkTrapFocus
+          [cdkTrapFocusAutoCapture]="true"
+        >
+          <div class="cos-mobile-filters-header">
+            <button
+              cos-icon-button
+              size="lg"
+              #closeBtn
+              aria-label="Close"
+              (click)="closeMenu()"
+              focus
+              cdkFocusInitial
+            >
+              <i class="fa fa-times"></i>
+            </button>
+            <h2 class="cos-mobile-filters-header-text">
+              {{ title }}
+            </h2>
+          </div>
+          <div class="cos-mobile-filters-main">
+            <ng-container *ngTemplateOutlet="filters"></ng-container>
+          </div>
+          <div class="cos-mobile-filters-footer">
+            <button
+              cos-stroked-button
+              color="primary"
+              [disabled]="!hasFilters"
+              (click)="resetFilters()"
+            >
+              Reset
+            </button>
+            <button cos-flat-button color="primary" (click)="applyFilters()">
+              Apply
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </mat-menu>
+</div>
+<ng-content select=".filter-pills"></ng-content>
+<div class="cos-applied-filters" *ngIf="flatFilters?.length">
+  <div class="cos-applied-filters-list">
+    <a
+      href="#"
+      cosPill
+      *ngFor="let filter of flatFilters"
+      [matTooltip]="filter.Name.length > characterLimit && filter.Name"
+      matTooltipClass="cos-tooltip"
+      ><span>{{ filter.Name.slice(0, characterLimit) }}</span
+      ><span *ngIf="filter.Name.length > characterLimit">... </span>
+      <i class="fa fa-plus"></i
+    ></a>
+  </div>
+</div>

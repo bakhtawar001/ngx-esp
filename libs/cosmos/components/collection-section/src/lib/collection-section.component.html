@@ -1,0 +1,33 @@
+<div class="cos-collection-section" [ngClass]="{ collapsed: isCollapsed }">
+  <header>
+    <div class="cos-collection-controls-container">
+      <input type="checkbox" (click)="checkboxChange.emit($event)" />
+    </div>
+
+    <div class="cos-collection-section-title">{{ name }}</div>
+
+    <div class="cos-collection-controls-container">
+      <div class="cos-collection-section-actions">
+        <button class="cos-action" (click)="deleteClick.emit($event)">
+          <i class="fas fa-times-circle"></i>
+          <span class="cos-accessibly-hidden">Close</span>
+        </button>
+        <button class="cos-action" (click)="moveDownClick.emit($event)">
+          <i class="fas fa-arrow-down"></i>
+          <span class="cos-accessibly-hidden">Close</span>
+        </button>
+        <button class="cos-action" (click)="moveUpClick.emit($event)">
+          <i class="fas fa-arrow-up"></i>
+          <span class="cos-accessibly-hidden">Close</span>
+        </button>
+        <button class="cos-action toggle" (click)="isCollapsed = !isCollapsed">
+          <i class="fas fa-caret-square-up"></i>
+          <span class="cos-accessibly-hidden">Close</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="cos-collection-section-content">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+@import '../../../../../../../cosmos/scss/settings/';
+
+$mobile-breakpoint: $bp-medium;
+$field-margin-top: 20px;
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.customer-form {
+  width: 500px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  input:not(.mb-4) {
+    margin-bottom: 20px;
+  }
+}
+
+.customer-form-contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: $field-margin-top;
+}
+
+.customer-form-contact__name {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.customer-form-contact__selectable-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
+.customer-form-contact__phone .cos-form-field {
+  margin-bottom: 0px;
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .customer-form-contact,
+  .customer-form-contact__selectable-row {
+    grid-template-columns: unset;
+  }
+}

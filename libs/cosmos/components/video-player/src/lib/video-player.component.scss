@@ -1,0 +1,14 @@
+.cos-iframe-video-wrapper {
+  text-align: center;
+
+  & iframe,
+  & object,
+  & embed {
+    width: 100%;
+  }
+}
+
+.fb_iframe_widget_fluid_desktop span,
+.fb_iframe_widget_fluid_desktop iframe {
+  max-inline-size: fit-content !important;
+}

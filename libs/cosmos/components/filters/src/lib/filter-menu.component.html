@@ -1,0 +1,74 @@
+<div
+  *ngIf="isDesktop"
+  class="cos-filter-menu-desktop"
+  (clickOutside)="onClickedOutside()"
+>
+  <ng-container *ngIf="!disabled">
+    <button
+      data-cy="menu-button"
+      cos-filter-button
+      class="cos-filter-label"
+      [expanded]="expanded"
+      [applied]="applied"
+      (click)="toggleState()"
+      [matTooltip]="label"
+      [matTooltipDisabled]="!applied"
+      (keydown)="buttonCloseCheck($event)"
+    >
+      {{ label }}
+    </button>
+    <div
+      (keyup.enter)="applyFilters()"
+      *ngIf="expanded"
+      data-cy="filter-panel"
+      class="cos-global-menu-panel cos-filter-menu-panel"
+      #menu
+    >
+      <div (click)="$event.stopPropagation()">
+        <div class="cos-filter-menu-main">
+          <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+        <div class="cos-filter-menu-footer">
+          <button
+            cos-stroked-button
+            data-cy="filter-reset-button"
+            class="cos-filter-reset-button"
+            color="primary"
+            [disabled]="!applied"
+            (click)="resetFilters()"
+            (keydown.enter)="resetFilters()"
+          >
+            Reset
+          </button>
+          <button
+            cos-flat-button
+            data-cy="filter-apply-button"
+            class="cos-filter-apply-button"
+            color="primary"
+            (click)="applyFilters()"
+            (keydown)="modalCloseCheck($event)"
+            [disabled]="applyDisabled"
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="disabled">
+    <button
+      [disabled]="true"
+      data-cy="menu-button"
+      cos-filter-button
+      [applied]="applied"
+    >
+      {{ label }}
+    </button>
+  </ng-container>
+</div>
+
+<div *ngIf="!isDesktop" class="cos-filter-menu-mobile">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</div>
+
+<ng-template #content><ng-content></ng-content></ng-template>

@@ -1,0 +1,52 @@
+<div class="project-info__header">
+  <h3 class="header-style-16 mb-0">Project Information</h3>
+  <button
+    *ngIf="project.IsEditable"
+    cos-icon-button
+    (click)="openEditDialog()"
+    size="sm"
+    type="button"
+  >
+    <i class="fa fa-pen"></i>
+  </button>
+</div>
+
+<ul class="project-info__grid">
+  <li data-cy="project-created-on">
+    <i class="fa fa-pen-alt"></i>
+    <span>Project created on {{ project.CreateDate | displayDateValue }}</span>
+  </li>
+
+  <li data-cy="project-in-hands-date">
+    <i class="fa fa-hand-paper"></i>
+    <span>Needed in-hands by {{ project.InHandsDate | displayDateValue }}</span>
+  </li>
+
+  <li data-cy="project-event-date">
+    <i class="fa fa-calendar-alt"></i>
+    <span>Event scheduled for {{ project.EventDate | displayDateValue }}</span>
+  </li>
+
+  <li data-cy="project-budget">
+    <i class="fa fa-dollar-sign"></i>
+    <span
+      >Budget of
+      <span [innerHTML]="project.Budget | displayCurrencyValue"></span
+    ></span>
+  </li>
+
+  <li data-cy="project-event-type">
+    <i class="fa fa-star"></i>
+    <span
+      class="project-info__event-type-text"
+      [matTooltip]="'Event type ' + project.EventType"
+      [matTooltipDisabled]="!project.EventType"
+      >Event type {{ project.EventType ?? '-' }}</span
+    >
+  </li>
+
+  <li data-cy="project-attendees">
+    <i class="fa fa-users"></i>
+    <span>Attendees {{ project.NumberOfAssignees | displayNumberValue }}</span>
+  </li>
+</ul>

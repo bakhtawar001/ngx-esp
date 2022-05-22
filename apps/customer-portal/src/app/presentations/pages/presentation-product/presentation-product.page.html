@@ -1,0 +1,154 @@
+<div class="back-to-container">
+  <a cos-icon-button class="back-link" (click)="goBack()"
+    ><i class="fa fa-arrow-left mr-8"></i><strong>Back to all products</strong>
+  </a>
+</div>
+<div class="product-details grid-layout-1">
+  <div class="product-media">
+    <cos-product-media [product]="cosMediaProduct"></cos-product-media>
+  </div>
+  <div class="product-info">
+    <h1 class="product-title header-style-22">{{ product.Name }}</h1>
+    <p class="product-summary body-style-12-mine-shaft mb-8">
+      {{ product.Description }}
+    </p>
+    <cos-notification
+      type="info"
+      class="data-jest-notification my-16"
+      *ngIf="product.Note"
+    >
+      <cos-notification-title>Additional note</cos-notification-title>
+      <cos-notification-body>{{ product.Note }}</cos-notification-body>
+    </cos-notification>
+    <h2 class="header-style-16 mb-8" *ngIf="product.ShowMinMaxRange">
+      {{product.PriceRange}}
+      <span class="body-style-14">{{product.Currencies[0].Name}}</span>
+    </h2>
+    <p class="body-style-12">{{product.PriceIncludes}}</p>
+    <p class="data-jest-discount cos-attribute-tag" *ngIf="product.Discount">
+      <i class="fa fa-tag"></i> {{product.Discount}}
+    </p>
+    <div class="flex w-1/2 mb-16">
+      <div>
+        <button
+          cos-stroked-button
+          color="warn"
+          style="padding-left: 8px; padding-right: 4px"
+          class="mr-8"
+          (class)="downvote()"
+        >
+          <i class="fa fa-thumbs-down mr-8"></i>
+        </button>
+      </div>
+      <div class="w-full">
+        <button
+          cos-flat-button
+          color="primary"
+          class="w-full"
+          (click)="addToCart()"
+        >
+          <i class="fa fa-shopping-cart mr-8"></i> Add to cart
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 class="header-style-14-semibold mt-16">Pricing and Charges</h3>
+    <div
+      class="data-jest-pricing w-full mb-16"
+      *ngIf="product.dataSourcePricing.length > 0"
+    >
+      <p class="mb-2"><strong>Color: All Sizes: XS, S, M, L</strong></p>
+      <cos-table [dataSource]="product.dataSourcePricing">
+        <ng-container cosColumnDef="quantity">
+          <cos-header-cell *cosHeaderCellDef> Quantity </cos-header-cell>
+          <cos-cell *cosCellDef="let element">
+            {{ element.quantity }}
+          </cos-cell>
+        </ng-container>
+
+        <ng-container cosColumnDef="pricePerUnit">
+          <cos-header-cell *cosHeaderCellDef> Price per Unit </cos-header-cell>
+          <cos-cell *cosCellDef="let element">
+            {{ element.pricePerUnit }}
+          </cos-cell>
+        </ng-container>
+
+        <cos-header-row
+          *cosHeaderRowDef="product.displayedColumnPricing"
+        ></cos-header-row>
+        <cos-row
+          *cosRowDef="let row; columns: product.displayedColumnPricing"
+        ></cos-row>
+      </cos-table>
+    </div>
+
+    <div
+      class="data-jest-additional-charges w-full mb-16"
+      *ngIf="product.dataSourceAdditionalCharges.length > 0"
+    >
+      <cos-table [dataSource]="product.dataSourceAdditionalCharges">
+        <ng-container cosColumnDef="additionalCharges">
+          <cos-header-cell *cosHeaderCellDef>
+            Additional Charges
+          </cos-header-cell>
+          <cos-cell *cosCellDef="let element">
+            {{ element.additionalCharges }}
+          </cos-cell>
+        </ng-container>
+
+        <ng-container cosColumnDef="cost">
+          <cos-header-cell *cosHeaderCellDef> Cost </cos-header-cell>
+          <cos-cell *cosCellDef="let element"> {{ element.cost }} </cos-cell>
+        </ng-container>
+
+        <cos-header-row
+          *cosHeaderRowDef="product.displayedColumnAdditionalCharges"
+        ></cos-header-row>
+        <cos-row
+          *cosRowDef="let row; columns: product.displayedColumnAdditionalCharges"
+        ></cos-row>
+      </cos-table>
+    </div>
+    <div
+      class="data-jest-shipping-method w-full mb-16"
+      *ngIf="product.dataSourceShippingMethod.length > 0"
+    >
+      <cos-table [dataSource]="product.dataSourceShippingMethod">
+        <ng-container cosColumnDef="shippingMethod">
+          <cos-header-cell *cosHeaderCellDef> Shipping Method </cos-header-cell>
+          <cos-cell *cosCellDef="let element">
+            {{ element.shippingMethod }}
+          </cos-cell>
+        </ng-container>
+
+        <ng-container cosColumnDef="cost">
+          <cos-header-cell *cosHeaderCellDef> Cost </cos-header-cell>
+          <cos-cell *cosCellDef="let element"> {{ element.cost }} </cos-cell>
+        </ng-container>
+
+        <cos-header-row
+          *cosHeaderRowDef="product.displayedColumnShippingMethod"
+        ></cos-header-row>
+        <cos-row
+          *cosRowDef="let row; columns: product.displayedColumnShippingMethod"
+        ></cos-row>
+      </cos-table>
+    </div>
+    <ng-container *ngIf="product.Variant.length > 0">
+      <p class="mb-2"><strong>Colors</strong></p>
+      <cos-product-variants
+        class="data-jest-variant"
+        [hasImages]="true"
+        [variant]="productVariants"
+      ></cos-product-variants>
+    </ng-container>
+    <ng-container *ngIf="product.Sizes">
+      <p class="mb-2"><strong>Sizes</strong></p>
+      <p class="data-jest-size">{{product.Sizes}}</p>
+    </ng-container>
+    <ng-container *ngIf="product.ImprintMethods">
+      <p class="mb-2"><strong>Imprint Methods</strong></p>
+      <p class="data-jest-imprint-method">{{product.ImprintMethods}}</p>
+    </ng-container>
+  </div>
+</div>

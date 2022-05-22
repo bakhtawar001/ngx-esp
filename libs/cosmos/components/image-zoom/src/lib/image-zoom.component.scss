@@ -1,0 +1,38 @@
+.cos-image-zoom {
+  &-container {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    > img {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+      display: flex;
+    }
+  }
+
+  &-full {
+    position: absolute;
+    max-width: none;
+    max-height: none;
+    display: none;
+  }
+
+  &-full-container {
+    position: absolute;
+    overflow: hidden;
+    display: none;
+
+    > img {
+      display: block;
+    }
+
+    &.cos-image-zoom-lens-enabled {
+      border: 2px solid red;
+      cursor: crosshair;
+    }
+  }
+}

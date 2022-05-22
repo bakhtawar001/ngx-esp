@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/smartlink/common",
+  "sourceRoot": "libs/smartlink/common/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/smartlink/common"],
+      "options": {
+        "tsConfig": "libs/smartlink/common/tsconfig.lib.json",
+        "project": "libs/smartlink/common/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/smartlink/common/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/smartlink/common/**/*.ts",
+          "libs/smartlink/common/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/smartlink/common/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/smartlink/common"]
+    }
+  },
+  "tags": ["scope:smartlink", "type:library", "platform:web"]
+}

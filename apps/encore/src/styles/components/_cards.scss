@@ -1,0 +1,16 @@
+@import 'cosmos/scss/settings/';
+
+.cos-card {
+  &.cos-card- {
+    &p-0 {
+      .cos-card-main {
+        padding: 0;
+      }
+    }
+    &p-8 {
+      .cos-card-main {
+        padding: $spacing-stack-8;
+      }
+    }
+  }
+}

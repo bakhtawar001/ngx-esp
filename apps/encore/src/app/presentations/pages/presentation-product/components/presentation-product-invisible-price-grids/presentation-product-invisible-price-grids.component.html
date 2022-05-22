@@ -1,0 +1,99 @@
+<cos-card class="proj-product-card-disabled mb-16">
+  <span class="header-style-16">Add Price Grids</span>
+  <p class="body-style-12-shark">
+    <i class="fa fa-eye-slash mr-8"></i> Available price grids are hidden from
+    the customer presentation until they are added.
+  </p>
+
+  <p class="header-style-16">Recommended based on variant selection</p>
+
+  <cos-table [dataSource]="recommendations" class="mb-16">
+    <ng-container cosColumnDef="size">
+      <cos-header-cell *cosHeaderCellDef>Size</cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        {{ element.size }}
+      </cos-cell>
+    </ng-container>
+
+    <ng-container cosColumnDef="color">
+      <cos-header-cell *cosHeaderCellDef>Color</cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        {{ element.color }}
+      </cos-cell>
+    </ng-container>
+
+    <ng-container cosColumnDef="minprice">
+      <cos-header-cell *cosHeaderCellDef>Min Price</cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        {{ element.minprice }}
+      </cos-cell>
+    </ng-container>
+
+    <cos-header-row
+      *cosHeaderRowDef="displayedRecommendationsColumns"
+    ></cos-header-row>
+    <cos-row
+      *cosRowDef="let row; columns: displayedRecommendationsColumns"
+    ></cos-row>
+  </cos-table>
+
+  <button cos-button class="presentation-product-btn">
+    <i class="fa fa-redo"></i> Generate recommendations
+  </button>
+
+  <hr class="mt-16 mb-16" />
+
+  <p class="header-style-16 mb-16">All Price Grids</p>
+
+  <cos-table
+    [dataSource]="invisiblePriceGrids"
+    [trackBy]="trackById"
+    class="mb-16"
+  >
+    <ng-container cosColumnDef="size">
+      <cos-header-cell *cosHeaderCellDef>Size</cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        {{ element.size }}
+      </cos-cell>
+    </ng-container>
+
+    <ng-container cosColumnDef="color">
+      <cos-header-cell *cosHeaderCellDef>Color</cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        {{ element.color }}
+      </cos-cell>
+    </ng-container>
+
+    <ng-container cosColumnDef="minprice">
+      <cos-header-cell *cosHeaderCellDef>Min Price</cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        ${{ element.Prices[element.Prices.length - 1].Price }}
+      </cos-cell>
+    </ng-container>
+
+    <ng-container cosColumnDef="action">
+      <cos-header-cell *cosHeaderCellDef></cos-header-cell>
+      <cos-cell *cosCellDef="let element">
+        <button cos-icon-button (click)="makePriceGridVisible(element)">
+          <i class="fa fa-plus"></i>
+          <span class="cos-accessibly-hidden">Add</span>
+        </button>
+      </cos-cell>
+    </ng-container>
+
+    <cos-header-row
+      *cosHeaderRowDef="invisiblePriceGridsDisplayedColumns"
+    ></cos-header-row>
+    <cos-row
+      *cosRowDef="let row; columns: invisiblePriceGridsDisplayedColumns"
+    ></cos-row>
+  </cos-table>
+
+  <button
+    cos-button
+    class="presentation-product-btn"
+    (click)="addAllPriceGrids()"
+  >
+    <i class="fa fa-plus"></i> Add all price grids
+  </button>
+</cos-card>

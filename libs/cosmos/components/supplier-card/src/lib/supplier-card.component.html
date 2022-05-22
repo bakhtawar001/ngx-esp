@@ -1,0 +1,60 @@
+<cos-card class="cos-supplier-card">
+  <div class="cos-supplier-card-actions">
+    <div *ngIf="!hideContextMenu">
+      <button
+        class="actions-menu-btn"
+        cos-icon-button
+        aria-label="Supplier actions"
+        [matMenuTriggerFor]="menu"
+        (click.silent)="$event.preventDefault(); $event.stopPropagation()"
+      >
+        <i class="fa fa-ellipsis-h"></i>
+      </button>
+      <mat-menu
+        #menu="matMenu"
+        class="cos-global-menu-panel"
+        backdropClass="cos-global-menu-backdrop"
+        xPosition="after"
+        yPosition="below"
+      >
+        <ng-container>
+          <button
+            mat-menu-item
+            class="cos-menu-item"
+            (click)="viewProducts.emit()"
+          >
+            <i class="fa fa-eye"></i>
+            <span>View Products</span>
+          </button>
+          <ng-content></ng-content>
+        </ng-container>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="cos-supplier-card-img-container">
+    <img
+      class="cos-supplier-img"
+      src="https://commonmedia.asicentral.com/supplierlogos/{{
+        supplier.Id
+      }}/logo.png"
+      alt="{{ supplier.Name }}"
+      (error)="onImageError($event)"
+    />
+  </div>
+  <div class="cos-supplier-card-attributes">
+    <ng-container *ngIf="showTags && supplier.SupplierTags?.length">
+      <ul class="cos-inline-list">
+        <li *ngFor="let supplierTag of supplier.SupplierTags">
+          <span cosAttributeTag size="small">
+            <i
+              *ngIf="supplierTag.Icon"
+              class="fas fa-{{ supplierTag.Icon }}"
+            ></i>
+            {{ supplierTag.Label }}
+          </span>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+  <ng-content select="cos-supplier"></ng-content>
+</cos-card>

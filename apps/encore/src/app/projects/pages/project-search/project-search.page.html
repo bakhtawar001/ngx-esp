@@ -1,0 +1,44 @@
+<div class="page-container">
+  <div class="project-search grid-layout-1">
+    <esp-project-search-header
+      [loaded]="!!state.projects?.length"
+      (createOrder)="onCreateOrder()"
+      (createPresentation)="onCreatePresentation()"
+    ></esp-project-search-header>
+
+    <div class="mb-8">
+      <esp-search-tab-group [tabs]="state.tabs"></esp-search-tab-group>
+      <div class="mt-8 text-right">
+        <esp-search-sort [options]="sortOptions"></esp-search-sort>
+      </div>
+    </div>
+
+    <esp-projects-list>
+      <asi-empty-state-info
+        espProjectsListNoProjects
+        mainText="No Projects"
+        secondText="There are no projects."
+        thirdText="Create a new presentation to begin."
+        data-cy="no-results-found"
+      >
+        <button
+          (click)="onCreatePresentation()"
+          cos-stroked-button
+          color="primary"
+          type="button"
+          data-cy="no-results-button"
+          asiEmptyStateInfoButtons
+        >
+          <i class="fa fa-plus mr-8"></i>Create New Presentation
+        </button>
+      </asi-empty-state-info>
+      <p
+        class="body-style-14-shark"
+        data-cy="no-search-results-found"
+        espProjectsListNoSearchResults
+      >
+        No projects found.
+      </p>
+    </esp-projects-list>
+  </div>
+</div>

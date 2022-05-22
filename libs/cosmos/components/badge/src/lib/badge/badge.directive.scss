@@ -1,0 +1,10 @@
+@import '../../../../../scss/settings';
+
+.cos-badge {
+  display: inline-block;
+  border-radius: $border-radius-16;
+  box-shadow: $box-shadow-default;
+  background: $color-g-white-00;
+  padding: 0 $spacing-stack-8;
+  font-size: $font-size-11;
+}

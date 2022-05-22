@@ -1,0 +1,34 @@
+<div class="navbar-header" [ngClass]="config.layout.navbar?.header?.cssClass">
+  <div class="logo">
+    <!-- <img class="logo-icon" src="assets/images/logos/esp.png" /> -->
+    <span class="logo-icon">
+      <span class="esp-icon esp-icon-esp"></span>
+    </span>
+    <span class="logo-text">
+      <span class="esp-icon esp-icon-esp-text"></span>
+    </span>
+  </div>
+
+  <button
+    id="hamburger"
+    mat-icon-button
+    class="toggle-sidebar-folded"
+    (click)="toggleSidebarFolded()"
+    fxHide.lt-lg
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="toggle-sidebar-opened"
+    (click)="toggleSidebarOpened()"
+    fxHide.gt-md
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+
+<div class="navbar-content" [ngClass]="config.layout.navbar?.cssClass">
+  <cos-navigation name="main" layout="vertical"></cos-navigation>
+</div>

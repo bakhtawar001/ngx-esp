@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Documentation/Accessibility" />
+
+# Accessibility
+
+Components in the Cosmos pattern library must comply with [WCAG 2 Level AA](http://www.w3.org/TR/WCAG20/) accessibility standards.
+
+## Guidelines
+
+- [Web Content Accessibility Guidelines (WCAG) Quick Reference](http://www.w3.org/TR/WCAG20/)
+- [Accessible Rich Internet Application Markup (ARIA)](http://www.w3.org/WAI/intro/aria.php)
+
+## How to Test Accessibility
+
+Developers & QA testers should perform manual & automated accessibility tests on each component before integrating them into an application. The following are some first steps to testing:
+
+- **Verify basic keyboard accessibility**
+
+  A person will be able to use their keyboard to navigate through content in a logical order as well as interact with UI elements. The active focused element will be clearly indicated at all times when navigating the site with the keyboard.
+
+  For more information, see [WebAIM's Keyboard Accessibility recommendations](https://webaim.org/techniques/keyboard/)
+
+- **Perform manual and automated accessibility testing on compiled HTML**
+
+  The [aXe browser extension](https://www.deque.com/axe/axe-for-web/) for Chrome or Firefox is a good choice for this testing. It is also available as a library that integrates with automated testing scripts.
+
+- **Perform manual and automated color accessibility testing**
+
+  Certain combinations of colors are difficult to see for people with various visual disabilities. Look for obvious instances of this and then use automated processes to find the rest.
+
+  Again, the [aXe browser extension](https://www.deque.com/axe/axe-for-web/) for Chrome or Firefox is a good choice of tool for color contrast testing.
+
+- **Test manually with screen readers**
+
+  Ensure that the site's content is announced correctly and can be navigated using screen readers. Use [NVDA](https://www.nvaccess.org/download/) (with Firefox) and/or [JAWS](https://www.freedomscientific.com/products/software/jaws/) (with Internet Explorer) on Windows as the primary tools for this testing.
+
+  Use [VoiceOver](https://www.apple.com/voiceover/info/guide/_1124.html) for doing screen reader testing on a Mac, though NVDA and JAWS on Windows are preferred.
+
+- **Ensure appropriate use of ARIA attributes**
+
+  Use (ARIA attributes)[https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA] as needed to support, but not replace, semantic HTML. ARIA is particularly helpful in support of dynamic content and advanced UI controls. See Using [WAI-ARIA](https://www.w3.org/TR/using-aria/) in HTML for more information.
+
+Here are some tools that might help you during testing:
+
+- [W3C Markup Validation](https://validator.w3.org/#validate_by_input)
+- [Tenon (website URL audit)](https://tenon.io/)
+- [Wave (chrome extension)](https://wave.webaim.org/extension/)
+- [Color Contrast Analyzer (chrome extension)](https://chrome.google.com/webstore/detail/color-contrast-analyzer/dagdlcijhfbmgkjokkjicnnfimlebcll)
+- [checkmycolours](http://www.checkmycolours.com/)
+- aXe ([chrome extension](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en) | [module](https://github.com/dequelabs/axe-core))
+- [pa11y](http://pa11y.org/) ([CLI](https://github.com/pa11y/pa11y) | [CI](https://github.com/pa11y/pa11y-ci))
+
+## Storybook Accessibility Addon
+
+[@storybook/addon-a11y](https://github.com/storybookjs/storybook/tree/next/addons/a11y) is included in the project to show developers (and other team members) all the accessibility rule violations & passes for each component. In the Storybook UI, you can view the results of the addon's audit in the right-hand panel. Including this addon means that developers can validate the accessibility of the components they're building _as they're building them_. This helps make sure we are

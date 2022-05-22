@@ -1,0 +1,62 @@
+@import '../../../../scss/settings';
+
+.cos-image-upload {
+  .cos-card {
+    width: 210px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+
+    .cos-card-container,
+    .cos-card-body,
+    .cos-card-main {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+    }
+
+    .error {
+      margin-top: $spacing-stack-8;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+  &--horizontal {
+    flex-direction: row-reverse;
+  }
+  &--small {
+    .img-upload-container {
+      .img-upload-dropzone.cos-dropzone {
+        max-width: 84px;
+        height: 84px;
+      }
+    }
+  }
+}
+
+.img-upload-container {
+  display: flex;
+  max-width: 210px;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.img-upload-reqs {
+  display: block;
+  height: auto;
+  font-size: $font-size-12;
+  padding-top: 8px;
+  font-size: 11px;
+  color: $color-g-shark-54;
+}
+
+.img-upload-dropzone.cos-dropzone {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  @include spacing-inset-16();
+}

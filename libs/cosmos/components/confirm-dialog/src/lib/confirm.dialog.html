@@ -1,0 +1,21 @@
+<header>
+  <h2 mat-dialog-title *ngIf="data.title?.length">{{ data.title }}</h2>
+</header>
+<mat-dialog-content *ngIf="data.message?.length">
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button type="button" cos-flat-button mat-dialog-close>
+    {{ data.cancel || 'Cancel' }}
+  </button>
+  <button
+    type="button"
+    cos-flat-button
+    [color]="confirmationButtonColor"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    {{ data.confirm || 'Confirm' }}
+  </button>
+</mat-dialog-actions>

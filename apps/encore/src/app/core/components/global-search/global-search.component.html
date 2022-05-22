@@ -1,0 +1,62 @@
+<form
+  (ngSubmit)="
+    search.next({ keywords: input.value, searchType: select.value });
+    $event.preventDefault()
+  "
+  [formGroup]="searchForm"
+>
+  <select
+    matNativeControl
+    class="cos-global-search-select"
+    attr.id="search-select"
+    formControlName="searchType"
+    [attr.aria-label]="searchConfig.category"
+    [style]="size"
+    #select
+  >
+    <option
+      *ngFor="let category of searchConfig.categories"
+      [value]="category.value"
+    >
+      {{ category.text }}
+    </option>
+  </select>
+  <mat-divider vertical></mat-divider>
+  <input
+    cos-input
+    name="keywords"
+    [style]="size"
+    placeholder="What are you looking for?"
+    formControlName="keywords"
+    [attr.aria-label]="searchConfig.input"
+    [matAutocomplete]="keywordAutocomplete"
+    #input
+  />
+  <mat-autocomplete
+    #keywordAutocomplete="matAutocomplete"
+    (optionSelected)="
+      search.next({
+        keywords: $event.option.value,
+        searchType: select.value
+      })
+    "
+    class="keyword-suggestions-autocomplete"
+  >
+    <ng-container *ngIf="state.keywordSuggestions">
+      <mat-option
+        *ngFor="let keyword of state.keywordSuggestions"
+        [value]="keyword.KeywordForSearch"
+      >
+        <span [innerHTML]="keyword.KeywordForDisplay"></span>
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+  <button
+    type="submit"
+    cos-icon-button
+    [attr.aria-label]="searchConfig.button"
+    color="primary"
+  >
+    <i class="fa fa-search"></i>
+  </button>
+</form>

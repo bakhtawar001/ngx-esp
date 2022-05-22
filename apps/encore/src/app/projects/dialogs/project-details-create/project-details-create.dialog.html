@@ -1,0 +1,50 @@
+<cos-dialog [closeStrategy]="dialogCloseStrategy">
+  <ng-container cosDialogHeader>Create a New Presentation</ng-container>
+  <ng-container cosDialogSubHeader
+    >Enter your presentation details.</ng-container
+  >
+
+  <ng-container cosDialogContent>
+    <asi-project-form
+      [data]="data.input"
+      (formValueChange)="onFormValueChange($event)"
+      (formStatusChange)="onFormStatusChange($event)"
+      (submitForm)="onNextStep()"
+    >
+      <div asiProjectFormHeader class="form-header w-full">
+        <h2 class="header-style-18 project-creation-heading mb-8">
+          New Presentation
+        </h2>
+        <p class="body-style-14">
+          Presentations live within projects and share the same name. Projects
+          are a way to organize all of the things you share with your customer
+          and your vendors.
+        </p>
+      </div>
+    </asi-project-form>
+  </ng-container>
+  <ng-container cosDialogActions>
+    <div class="project-details-create-dialog__actions-bar w-full">
+      <button
+        (click)="onPreviousStep()"
+        data-cy="cancel-button"
+        [hidden]="!data.step.canGoPrevious()"
+        cos-button
+        type="button"
+      >
+        <i class="fa fa-arrow-left mr-8"></i> Back
+      </button>
+
+      <button
+        (click)="onNextStep()"
+        data-cy="submit-button"
+        [disabled]="!status?.valid || !status?.dirty"
+        cos-flat-button
+        color="primary"
+        type="button"
+      >
+        <i class="fa fa-magic mr-8"></i> Create
+      </button>
+    </div>
+  </ng-container>
+</cos-dialog>

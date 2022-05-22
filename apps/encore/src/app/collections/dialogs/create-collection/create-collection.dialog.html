@@ -1,0 +1,80 @@
+<form [formGroup]="createForm" (ngSubmit)="submitForm()">
+  <header class="dialog-header-section">
+    <div>
+      <button class="cos-modal-close" mat-dialog-close>
+        <i class="fas fa-times"></i>
+        <span class="cos-accessibly-hidden">Close</span>
+      </button>
+    </div>
+    <h2 mat-dialog-title>Create a new Collection</h2>
+    <p class="body-style-14-shark">
+      Add a title and description for your new Collection.
+    </p>
+  </header>
+
+  <mat-dialog-content>
+    <div class="form-wrapper">
+      <cos-form-field class="cos-form-row mb-12">
+        <cos-label class="collection-title"> Title of Collection </cos-label>
+        <div class="collection-field flex items-center">
+          <div class="mr-12">
+            <cos-emoji-menu
+              class="collection-emoji"
+              (valueChange)="changeEmoji($event)"
+              [emoji]="createForm.controls.Emoji.value"
+            ></cos-emoji-menu>
+          </div>
+          <input
+            class="collection-name-input w-full"
+            cos-input
+            id="name"
+            placeholder="Enter a name"
+            formControlName="Name"
+            maxlength="50"
+            required
+          />
+        </div>
+      </cos-form-field>
+
+      <cos-form-field class="cos-form-row mb-12">
+        <cos-label>Collection Description</cos-label>
+        <textarea
+          class="collection-description w-full"
+          cos-input
+          id="description"
+          placeholder="Enter description..."
+          formControlName="Description"
+          rows="6"
+          maxlength="100"
+        >
+        </textarea>
+      </cos-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="flex justify-between w-full">
+      <div>
+        <button
+          cos-button
+          mat-dialog-close
+          class="cancel-create-collection-btn"
+        >
+          <i class="fa fa-arrow-left"></i> Back
+        </button>
+      </div>
+      <div>
+        <button
+          cos-flat-button
+          type="submit"
+          color="primary"
+          cdkFocusInitial
+          [disabled]="createForm.invalid"
+          class="create-collection-btn"
+        >
+          <span class="mr-12"><i class="fa fa-magic"></i></span>
+          Create new Collection
+        </button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,40 @@
+{
+  "root": "libs/esp/router",
+  "sourceRoot": "libs/esp/router/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/esp/router/tsconfig.lib.json",
+        "project": "libs/esp/router/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/router/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/router/**/*.ts",
+          "libs/esp/router/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/router/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/router"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

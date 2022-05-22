@@ -1,0 +1,210 @@
+<div class="page-container">
+  <div class="collection-detail grid-layout-1">
+    <div class="collection-detail-breadcrumb" *ngIf="backToNavigationName">
+      <a (click)="goBack()" class="back-to-collections-link">
+        <i class="fa fa-arrow-left mr-8"></i>
+        <strong>{{backToNavigationName}}</strong>
+      </a>
+    </div>
+    <ng-template
+      [ngIf]="!state.isLoading && state.hasLoaded"
+      [ngIfElse]="loader"
+    >
+      <ng-template [ngIf]="state.collection" [ngIfElse]="noCollection">
+        <div class="collection-detail-header">
+          <div class="collection-detail-title">
+            <cos-emoji-menu
+              [(emoji)]="emoji"
+              [readonly]="!state.canEdit"
+            ></cos-emoji-menu>
+            <cos-inline-edit
+              class="header-style-24"
+              role="heading"
+              aria-level="1"
+              inputType="text"
+              (change)="setName($event)"
+              [required]="true"
+              [maxLength]="50"
+              [readonly]="!state.canEdit"
+            >
+              {{ state.collection.Name }}
+            </cos-inline-edit>
+          </div>
+          <div class="collection-detail-description body-style-14-shark">
+            <cos-inline-edit
+              inputType="textarea"
+              placeholder="Enter a collection description..."
+              [initalValue]="state.collection.Description"
+              (change)="setDescription($event)"
+              [maxLength]="100"
+              [readonly]="!state.canEdit"
+            >
+              {{ state.collection.Description }}
+            </cos-inline-edit>
+          </div>
+          <div class="collection-detail-actions">
+            <button
+              class="actions-button"
+              cos-stroked-button
+              color="primary"
+              aria-label="Collection actions"
+              [matMenuTriggerFor]="actionsMenu"
+              (click)="$event.stopPropagation()"
+              [disabled]="checkedProducts.size > 0"
+            >
+              <i class="fa fa-ellipsis-h"></i>
+            </button>
+            <mat-menu
+              #actionsMenu="matMenu"
+              class="cos-global-menu-panel"
+              backdropClass="cos-global-menu-backdrop"
+              xPosition="after"
+              yPosition="below"
+            >
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item lg:hidden use-collection-in-presentation"
+                (click)="addToPresentation()"
+                *cosIfFeatureFlags="{ matches: ['presentations'] }"
+              >
+                <i class="fa fa-archive mr-8"></i>
+                Add to Presentation
+              </button>
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item lg:hidden use-collection-in-order"
+                (click)="addToOrder()"
+                *cosIfFeatureFlags="{ matches: ['orders'] }"
+              >
+                <i class="fa fa-archive mr-8"></i>
+                Add to Order
+              </button>
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item transfer-collection"
+                (click)="transferOwnership()"
+                *ngIf="state.canEdit && (isAdmin || state.collection.OwnerId === userId)"
+              >
+                <i class="fa fa-user-plus"></i>
+                <span>Transfer ownership</span>
+              </button>
+              <!-- <button
+              type="button"
+              mat-menu-item
+              class="cos-menu-item share-collection"
+              *ngIf="state.collection.IsEditable"
+            >
+              <i class="fa fa-share"></i>
+              <span>Share</span>
+            </button> -->
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item archive-collection"
+                (click)="state.archive()"
+                *ngIf="this.state.collection.Status === 'Active' && this.state.collection.IsEditable"
+              >
+                <i class="fas fa-archive"></i> <span>Archive</span>
+              </button>
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item activate-collection"
+                (click)="state.activate()"
+                *ngIf="this.state.collection.Status !== 'Active' && this.state.collection.IsEditable"
+              >
+                <i class="fas fa-skating"></i> <span>Make Active</span>
+              </button>
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item duplicate-collection"
+                (click)="copy()"
+              >
+                <i class="fa fa-copy"></i>
+                <span>Duplicate Collection</span>
+              </button>
+              <button
+                type="button"
+                mat-menu-item
+                class="cos-menu-item text-warning delete-collection"
+                (click)="delete()"
+                *ngIf="state.collection.IsEditable"
+              >
+                <i class="fa fa-trash-alt"></i>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+            <button
+              cos-flat-button
+              color="primary"
+              class="lg:inline-block use-in-presentation-btn hidden"
+              [disabled]="!state.products?.Results?.length || checkedProducts.size > 0 || allProductsAreBeingAdded"
+              (click)="addAllProductsToPresentation()"
+              *cosIfFeatureFlags="{ matches: ['presentations'] }"
+            >
+              <i class="fa fa-archive mr-8"></i>
+              Add to Presentation
+            </button>
+            <button
+              cos-flat-button
+              color="primary"
+              class="lg:inline-block use-in-order-btn hidden"
+              [disabled]="!state.products?.Results?.length || checkedProducts.size > 0"
+              (click)="addToOrder()"
+              *cosIfFeatureFlags="{ matches: ['orders'] }"
+            >
+              <i class="fa fa-archive mr-8"></i>
+              Add to Order
+            </button>
+          </div>
+          <div class="collection-detail-avatars">
+            <cos-avatar-list
+              *ngIf="avatarList"
+              [avatars]="avatarList"
+            ></cos-avatar-list>
+            <div class="collaborator-settings">
+              <p
+                class="body-style-12"
+                *ngIf="state.collection.AccessLevel === 'Everyone'"
+              >
+                Anyone within your company can {{
+                state.collection.Access[0].AccessType === 'ReadWrite' ? 'edit' :
+                'view' }}
+              </p>
+              <p
+                class="body-style-12"
+                *ngIf="state.collection.AccessLevel === 'Owner'"
+              >
+                Only the owner and admins can edit or view
+              </p>
+              <button
+                cos-button
+                (click)="manageCollaborators()"
+                *ngIf="state.canEdit"
+                class="manage-collaborators-btn"
+              >
+                Manage
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #noCollection>
+        <p class="body-style-14-shark no-items">
+          Sorry, Collection was not found.
+        </p>
+      </ng-template>
+    </ng-template>
+    <ng-template #loader>
+      <esp-collection-detail-loader></esp-collection-detail-loader>
+    </ng-template>
+
+    <esp-collection-products
+      [checkedProducts]="checkedProducts"
+    ></esp-collection-products>
+  </div>
+</div>

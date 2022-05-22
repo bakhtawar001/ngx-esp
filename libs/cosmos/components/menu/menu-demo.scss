@@ -1,0 +1,57 @@
+@import '../../scss/settings/';
+.cos-filters-mega-menu {
+  padding: 0 8px;
+
+  .cos-form-row {
+    margin-bottom: $spacing-stack-16;
+
+    @include wider-than($bp-large) {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+    }
+  }
+
+  .cos-form-label {
+    width: 100px;
+
+    @include wider-than($bp-large) {
+      margin-bottom: $spacing-stack-16;
+    }
+  }
+}
+
+.cos-mega-menu-demo-radios {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 10px;
+  width: 100%;
+
+  @include wider-than($bp-large) {
+    grid-template-columns: 33.333% 33.333% 33.333%;
+
+    .cos-checkbox {
+      margin: 5px;
+    }
+  }
+}
+
+.cos-mega-menu-demo-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  margin-top: $spacing-stack-16;
+
+  .cos-button {
+    margin-left: $spacing-inline-8;
+  }
+}
+
+.cos-pointer-menu-demo-component {
+  .cos-button {
+    &[aria-expanded='true'] {
+      @include cos-menu-pointer();
+    }
+  }
+}

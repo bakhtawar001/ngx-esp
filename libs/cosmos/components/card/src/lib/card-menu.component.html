@@ -1,0 +1,18 @@
+<button
+  cos-icon-button
+  [matMenuTriggerFor]="menu"
+  (click.silent)="$event.stopPropagation()"
+  (menuOpened)="toggleExpanded()"
+  (menuClosed)="toggleExpanded()"
+>
+  <i class="fa fa-ellipsis-h"></i>
+  <span class="cos-accessibly-hidden">Menu</span>
+</button>
+<mat-menu
+  #menu="matMenu"
+  class="cos-global-menu-panel"
+  backdropClass="cos-global-menu-backdrop"
+  yPosition="below"
+>
+  <ng-content></ng-content>
+</mat-menu>

@@ -1,0 +1,97 @@
+@import 'cosmos/scss/settings';
+
+$mobile-breakpoint: $bp-large;
+$tablet-breakpoint: $bp-xlarge;
+
+:host {
+  position: relative;
+}
+
+.search-header {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  .header {
+    grid-area: a;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+
+  &__search {
+    flex: 1;
+    display: flex;
+
+    esp-search-box {
+      flex: 1;
+    }
+  }
+
+  &__actions--mobile {
+    position: absolute;
+    right: 0;
+    top: -4px;
+  }
+
+  &__sort-container {
+    position: absolute;
+    right: 0;
+    top: 86px;
+  }
+}
+
+.search-header__filters {
+  @include narrower-than($mobile-breakpoint) {
+    margin-top: 12px;
+    width: 50%;
+  }
+}
+
+.search-header__actions {
+  @include narrower-than($mobile-breakpoint) {
+    display: none;
+  }
+}
+
+@include wider-than($mobile-breakpoint) {
+  .search-header {
+    &__search {
+      esp-search-box {
+        max-width: 360px;
+        margin-right: 16px;
+      }
+    }
+
+    &__actions--mobile {
+      display: none;
+    }
+
+    &__sort-container {
+      top: 156px;
+    }
+  }
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .search-header {
+    &__search {
+      flex-direction: column;
+      &-box {
+        margin-bottom: 16px;
+      }
+    }
+
+    &__filters {
+      margin-top: 12px;
+      width: 50%;
+    }
+
+    &__actions {
+      display: none;
+    }
+
+    ::ng-deep .cos-filter-btn {
+      width: 100%;
+    }
+  }
+}

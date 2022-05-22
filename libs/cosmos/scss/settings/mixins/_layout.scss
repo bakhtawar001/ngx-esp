@@ -1,0 +1,15 @@
+.cos-container {
+  @include spacing-inset-16();
+
+  &--pearl {
+    background: $color-g-pearl-03;
+  }
+}
+
+@mixin cos-container($bg-color) {
+  @include spacing-inset-16();
+
+  @if ($bg-color) {
+    background: $bg-color;
+  }
+}

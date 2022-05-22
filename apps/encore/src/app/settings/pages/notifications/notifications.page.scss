@@ -1,0 +1,54 @@
+@import 'cosmos/scss/settings/';
+
+.page-description {
+  color: $color-g-shark-54;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-14;
+}
+
+.form-row-value,
+.form-row-icon,
+.settings-company-color-name {
+  color: $color-g-shark-54;
+}
+
+.form-row-icon {
+  font-size: $font-size-16;
+}
+
+.form-row-value {
+  font-size: $font-size-14;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.notifications-toggle-row {
+  @include wider-than($bp-small) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include narrower-than($bp-medium) {
+    .mr-32 {
+      margin: 0;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@include wider-than($bp-medium) {
+  .muted-details {
+    display: flex;
+    align-items: center;
+
+    .form-row-title {
+      width: 450px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

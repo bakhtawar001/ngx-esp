@@ -1,0 +1,360 @@
+<h1 class="header-style-22">Accounting integrations</h1>
+<p class="page-description">{{pageDescription}}</p>
+
+<ng-form [formGroup]="accountingIntegrationsForm">
+  <cos-segmented-panel
+    class="company-settings-panel"
+    *ngIf="!integrations.quickbooks.installed"
+  >
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [isEditable]="false"
+        [rowTitle]="'Intuit QuickBooks'"
+      >
+        <div>
+          <div class="mr-16">
+            <img src="https://via.placeholder.com/38" />
+          </div>
+        </div>
+        <asi-panel-editable-row-inactive>
+          <div>
+            <p class="form-row-value">
+              Quickly transfer data between ESP and your QuickBooks Company
+              file.
+            </p>
+            <p class="header-style-14-semibold">
+              Install Intuit QuickBooks Web Integration
+            </p>
+            <p class="form-row-value">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip.
+            </p>
+            <p>
+              <a class="account-integration-link"
+                >Log into Quickbooks Web
+                <i class="fa fa-external-link-square-alt"></i
+              ></a>
+            </p>
+            <p class="header-style-14-semibold">
+              Install Intuit QuickBooks Desktop Integration
+            </p>
+            <p class="form-row-value">
+              You will only have to install the Web Connector one time and it is
+              recommended to be installed on the PC where QuickBooks is
+              installed. The Web Connector is provided by QuickBooks to enable
+              data to be integrated.
+            </p>
+            <p>
+              <button cos-icon-button size="sm" (click)="showMoreToggle()">
+                Show More <i class="fa fa-angle-down"></i>
+              </button>
+            </p>
+            <div *ngIf="showMore">
+              <p>This section is optional</p>
+              <p>{{pageDescription}}</p>
+            </div>
+            <p>
+              <a class="account-integration-link"
+                >Download the Quickbooks Web Connector
+                <i class="fa fa-external-link-square-alt"></i
+              ></a>
+            </p>
+          </div>
+        </asi-panel-editable-row-inactive>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel
+    class="company-settings-panel"
+    *ngIf="integrations.quickbooks.installed"
+  >
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [isEditable]="false"
+        [rowTitle]="'Intuit QuickBooks'"
+      >
+        <div>
+          <div class="mr-16">
+            <img src="https://via.placeholder.com/38" />
+          </div>
+        </div>
+        <asi-panel-editable-row-inactive>
+          <div>
+            <p class="form-row-value">
+              Quickly transfer data between ESP and your QuickBooks Company
+              file.
+            </p>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'quickBooksActive'"
+              [name]="'quickBooksActive'"
+              [required]="true"
+              [disabled]=""
+              [checked]="integrations.quickbooks.active"
+              ><span class="cos-accessibly-hidden"
+                >Automatically calculate tax</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <div
+        class="integration-configuration-section"
+        *ngIf="integrations.quickbooks.authenticated"
+      >
+        <div>
+          <ul class="form-row-values-column-list">
+            <li><span>Last updated date:</span><span>7/29/2020</span></li>
+            <li>
+              <span>Last updated by:</span>
+              <span>John Jacob Jingleheimer-Schmidt</span>
+            </li>
+            <li><span>Expiration date:</span><span>11/7/2021</span></li>
+          </ul>
+        </div>
+        <div>
+          <button cos-button (click)="reAuth()">Re-authenticate Account</button>
+        </div>
+      </div>
+      <div
+        class="integration-configuration-section"
+        *ngIf="!integrations.quickbooks.authenticated"
+      >
+        <div>
+          <ul class="form-row-values-column-list">
+            <li><span>DWC Password:</span><span>KJSHDFKH22</span></li>
+            <li>
+              <span></span>
+              <span
+                ><button cos-icon-button>
+                  <i class="fa fa-redo-alt"></i> Generate new password
+                </button></span
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button cos-button>Download</button>
+        </div>
+      </div>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <div class="integration-configuration-section">
+        <div>
+          <span class="form-row-value"
+            >Integration visible to selected teams an individuals</span
+          >
+        </div>
+        <div class="integration-toggle-row">
+          <cos-avatar-list [avatars]="avatars"></cos-avatar-list>
+          <button cos-button>Manage</button>
+        </div>
+      </div>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <div class="integration-configuration-section">
+        <div>
+          <span class="form-row-value">Allow users to send</span>
+        </div>
+        <div class="integration-toggle-row">
+          <div class="mr-16">
+            <cos-toggle
+              [id]="'setCustomerAsBillable'"
+              [name]="'setCustomerAsBillable'"
+              [required]="true"
+              [disabled]=""
+              [checked]="setCustomerAsBillable"
+            >
+              <span> Invoices </span>
+            </cos-toggle>
+          </div>
+          <div class="mr-16">
+            <cos-toggle
+              [id]="'setCustomerAsBillable'"
+              [name]="'setCustomerAsBillable'"
+              [required]="true"
+              [disabled]=""
+              [checked]="setCustomerAsBillable"
+            >
+              <span> Bills </span>
+            </cos-toggle>
+          </div>
+          <div>
+            <cos-toggle
+              [id]="'setCustomerAsBillable'"
+              [name]="'setCustomerAsBillable'"
+              [required]="true"
+              [disabled]=""
+              [checked]="setCustomerAsBillable"
+            >
+              <span> Purchase Orders </span>
+            </cos-toggle>
+          </div>
+        </div>
+      </div>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <div class="integration-configuration-section">
+        <div>
+          <span class="form-row-value">
+            Set customer as billable when sending bills or purchase orders</span
+          >
+        </div>
+        <div>
+          <cos-toggle
+            [id]="'setCustomerAsBillable'"
+            [name]="'setCustomerAsBillable'"
+            [required]="true"
+            [disabled]=""
+            [checked]="setCustomerAsBillable"
+            ><span class="cos-accessibly-hidden"
+              >Automatically calculate tax</span
+            ></cos-toggle
+          >
+        </div>
+      </div>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <div class="integration-configuration-section">
+        <div>
+          <span class="form-row-value">
+            Map the Quickbooks Item Name field to</span
+          >
+        </div>
+        <div>
+          <cos-button-group
+            [toggleOptions]="quickBookMapOptions"
+            defaultSelection="productNumber"
+            toggleAriaLabel="Segment Options"
+            groupName="segmentOptions"
+            (handleSelection)="quickBookMapGroupSelection($event)"
+          ></cos-button-group>
+        </div>
+      </div>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <asi-panel-editable-row [rowTitle]="'Accounts'">
+        <asi-panel-editable-row-inactive>
+          <ul class="form-row-values-column-list">
+            <li>
+              <span>Accounts Receivable:</span><span>Accounts Receivable</span>
+            </li>
+            <li>
+              <span>Income Account:</span>
+              <span>Sales - Merchandise</span>
+            </li>
+            <li><span>Accounts Payable:</span><span>Accounts Payable</span></li>
+            <li>
+              <span>Cost of Goods Sold:</span><span>COGS - Merchandise</span>
+            </li>
+          </ul>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <cos-form-field>
+            <cos-label> Accounts Recievable </cos-label>
+            <select matNativeControl formControlName="accountsSelect">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+            <cos-error></cos-error>
+          </cos-form-field>
+
+          <cos-form-field>
+            <cos-label> Income Account </cos-label>
+            <select matNativeControl formControlName="accountsSelect">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+            <cos-error></cos-error>
+          </cos-form-field>
+
+          <cos-form-field>
+            <cos-label> Accounts Payable</cos-label>
+            <select matNativeControl formControlName="accountsSelect">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+            <cos-error></cos-error>
+          </cos-form-field>
+
+          <cos-form-field>
+            <cos-label> Cost of Goods Sold</cos-label>
+            <select matNativeControl formControlName="accountsSelect">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+            <cos-error></cos-error>
+          </cos-form-field>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row class="settings-nested-panel">
+      <asi-panel-editable-row [rowTitle]="'Customers'">
+        <asi-panel-editable-row-inactive>
+          <ul class="form-row-values-column-list">
+            <li><span>Linked customers:</span><span>15</span></li>
+            <li>
+              <span>Unlinked Customers:</span>
+              <span>5</span>
+            </li>
+          </ul>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <cos-form-field>
+            <cos-label>Linked Customers </cos-label>
+            <select matNativeControl formControlName="accountsSelect">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+            <cos-error></cos-error>
+          </cos-form-field>
+          <cos-form-field>
+            <cos-label> Unlinked Customers </cos-label>
+            <select matNativeControl formControlName="accountsSelect">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+            <cos-error></cos-error>
+          </cos-form-field>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-form>
+
+<div>
+  <hr />
+  <p><strong>FPO for design testing</strong></p>
+  <input
+    type="checkbox"
+    id="installed"
+    name="installed"
+    [(ngModel)]="integrations.quickbooks.installed"
+  />
+  <label for="installed"> Installed</label><br />
+
+  <input
+    type="checkbox"
+    id="active"
+    name="active"
+    [(ngModel)]="integrations.quickbooks.active"
+  />
+  <label for="active"> Active</label><br />
+
+  <input
+    type="checkbox"
+    id="authenticated"
+    name="authenticated"
+    [(ngModel)]="integrations.quickbooks.authenticated"
+  />
+  <label for="authenticated"> Authenticated</label><br />
+</div>

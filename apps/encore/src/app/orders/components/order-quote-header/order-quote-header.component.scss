@@ -1,0 +1,15 @@
+@import 'cosmos/scss/settings/';
+
+.customer-info {
+  grid-template-columns: repeat(1, 1fr);
+
+  @include wider-than($bp-large) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include wider-than($bp-large) {
+    .border-right {
+      border-right: $border-light;
+    }
+  }
+}

@@ -1,0 +1,191 @@
+<div class="page-container website">
+  <div class="website-product grid-layout-1">
+    <div class="header flex justify-between mt-32">
+      <h1 class="header-style-24 mb-2">Products</h1>
+    </div>
+
+    <div class="website-product-content">
+      <div class="grid-gap-16 flex w-full">
+        <div class="website-product-menu w-1/4">
+          <cos-vertical-menu [label]="'Settings menu'" [menu]="menu">
+          </cos-vertical-menu>
+        </div>
+        <div class="website-product-options w-1/4">
+          <cos-card>
+            <h2 class="header-style-18 mb-4">Global Product Configurations</h2>
+            <p class="body-style-12-shark">
+              All changes made here will apply to all products on this website.
+            </p>
+            <div class="website-product-toggle-options grid-gap-8 grid">
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="product-description"
+                  name="product-description"
+                  checked
+                >
+                  Product description
+                </cos-toggle>
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="product-color-variants"
+                  name="product-color-variants"
+                  checked
+                >
+                  Product color variants</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="product-size-variants"
+                  name="product-size-variants"
+                  checked
+                >
+                  Product size variants</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="available-imprint-methods"
+                  name="available-imprint-methods"
+                  checked
+                >
+                  Available imprint methods</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="prices-and-upcharges"
+                  name="prices-and-upcharges"
+                  checked
+                >
+                  Prices and upcharges</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="product-options"
+                  name="product-options"
+                  checked
+                >
+                  Product options
+                  <i class="fas fa-info-circle cos-text--black"></i
+                ></cos-toggle>
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="shipping-options"
+                  name="shipping-options"
+                  checked
+                >
+                  Shipping options</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="packaging-options"
+                  name="packaging-options"
+                  checked
+                >
+                  Packaging options</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="customer-comment"
+                  name="customer-comment"
+                  checked
+                >
+                  Customer comment box</cos-toggle
+                >
+              </div>
+              <div>
+                <cos-toggle
+                  cos-menu-item
+                  id="upload-additional-details"
+                  name="upload-additional-details"
+                  checked
+                  >Upload additional details
+                  <i class="fas fa-info-circle cos-text--black"></i
+                ></cos-toggle>
+              </div>
+              <div>
+                <strong>Upload instructions</strong>
+                <textarea
+                  id="upload-instructions"
+                  class="
+                    cdk-text-field-autofill-monitored
+                    ng-pristine ng-valid
+                    cos-input
+                    ng-touched
+                  "
+                  placeholder="Enter upload instructions"
+                ></textarea>
+              </div>
+              <div>
+                <strong>Default sort option</strong>
+                <select
+                  id="default-sort-option"
+                  class="
+                    cdk-text-field-autofill-monitored
+                    ng-untouched ng-pristine ng-valid
+                    cos-input
+                  "
+                >
+                  <option value="1">Price: Lowest to Highest</option>
+                  <option value="2">Price: Highest to Lowest</option>
+                  <option value="3">Latest</option>
+                  <option value="4">Most Popular</option>
+                </select>
+              </div>
+            </div>
+          </cos-card>
+        </div>
+        <div class="website-product-details w-1/2">
+          <cos-card>
+            <div class="grid-cols-2-auto grid">
+              <div>
+                <h2 class="header-style-18 mb-4">
+                  Product Detail Page Preview
+                </h2>
+                <p class="body-style-12-shark">
+                  Lorem ipsum dolor sit amet non consectuiur adipiscing.
+                </p>
+              </div>
+              <div class="text-right">
+                <button cos-stroked-button color="primary" class="mb-16">
+                  Preview <i class="fa fa-external-link-square-alt ml-8"></i>
+                </button>
+              </div>
+            </div>
+            <div class="template-header w-full pt-8 pb-8">
+              <h2
+                class="
+                  header-style-14-semibold
+                  cos-text--white
+                  mb-0
+                  text-center
+                "
+              >
+                This is an unpublished preview of your website.
+              </h2>
+            </div>
+            <img
+              src="https://via.placeholder.com/600x620/EFEFEF/000000?text=coming%20soon"
+              class="template-active w-full mt-0"
+            />
+          </cos-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

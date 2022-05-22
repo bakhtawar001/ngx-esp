@@ -1,0 +1,15 @@
+<header class="project-create-in-progress-dialog__header">
+  <h2 mat-dialog-title class="header-style-18">Create a new Presentation</h2>
+</header>
+
+<mat-dialog-content>
+  <span id="creatingCustomer" *ngIf="state.creatingCustomer"
+    >Creating a customer...</span
+  >
+  <span id="creatingContact" *ngIf="state.creatingContact"
+    >Creating a contact...</span
+  >
+  <span id="creatingProject" *ngIf="state.creatingProject"
+    >Creating a project...</span
+  >
+</mat-dialog-content>

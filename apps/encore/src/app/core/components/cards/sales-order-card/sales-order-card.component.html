@@ -1,0 +1,49 @@
+<cos-card
+  [ngClass]="{
+    'sales-order-card': true,
+    'sales-order-card--closed': orderClosed
+  }"
+>
+  <ng-template #inboxBtn>
+    <button cos-icon-button class="inbox-btn">
+      <span class="fa fa-inbox"></span>
+      <p class="body-style-12 inline ml-8">1</p>
+    </button>
+  </ng-template>
+
+  <header class="sales-order-card__header">
+    <span>
+      <p class="lg:hidden body-style-11 block mt-0 mb-8">
+        Last updated 3 days ago
+      </p>
+      <h4 class="header-style-16 inline-block m-0 mr-4">Sales Order CPO 200</h4>
+    </span>
+    <span class="flex">
+      <span cosPillLabel class="mr-8">Proof Hold</span>
+      <span cosPillLabel class="mr-8">Change Requested to Proof</span>
+      <button class="lg:block hidden" cos-button size="sm">View Proofs</button>
+    </span>
+  </header>
+
+  <cos-card-controls>
+    <div class="lg:hidden block mr-16">
+      <ng-container *ngTemplateOutlet="inboxBtn"></ng-container>
+    </div>
+
+    <p class="body-style-11 lg:block hidden mt-8 mb-4">
+      Last updated 3 days ago
+    </p>
+  </cos-card-controls>
+
+  <cos-card-menu>
+    <ul class="cos-list-no-style px-16 my-0">
+      <li class="mb-8">
+        <a class="cos-text--black" href="#"><i class="fa"></i> </a>
+      </li>
+      <li>
+        <a class="cos-text--red" href="#"> <i class="fa"></i> </a>
+      </li>
+    </ul>
+  </cos-card-menu>
+  <ng-content select="esp-card-metadata-list"></ng-content>
+</cos-card>

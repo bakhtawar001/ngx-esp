@@ -1,0 +1,7 @@
+@import '../../../../../../cosmos/scss/settings/';
+
+.cos-dropzone {
+  height: 110px;
+  overflow: hidden;
+  @include spacing-inset-16();
+}

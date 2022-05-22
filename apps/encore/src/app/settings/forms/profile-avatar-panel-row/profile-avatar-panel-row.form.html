@@ -1,0 +1,57 @@
+<asi-panel-editable-row
+  rowTitle="Profile Photo"
+  (onCancelEvent)="onCancel()"
+  (onSaveEvent)="state.save({ IconMediaLink: control.value })"
+  [isEditable]="isEditable"
+  [isLoading]="!state.partyIsReady"
+>
+  <div><i class="form-row-icon fas fa-grin-beam mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <ng-container *ngIf="contact?.IconMediaLink?.FileUrl; else noImage">
+      <cos-avatar>
+        <img data-cy="avatar-img" [src]="contact.IconMediaLink.FileUrl" />
+      </cos-avatar>
+    </ng-container>
+    <ng-template #noImage>
+      <p class="form-row-value" data-cy="no-photo-message">
+        No photo currently selected
+      </p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <cos-card
+      class="image-upload-card"
+      *ngIf="control.value?.FileUrl; else ImageUpload"
+    >
+      <cos-avatar>
+        <img data-cy="avatar-img" [src]="control.value?.FileUrl" />
+      </cos-avatar>
+      <cos-card-controls>
+        <button
+          cos-icon-button
+          aria-label="Remove image"
+          color="warn"
+          (click)="onRemove()"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </cos-card-controls>
+    </cos-card>
+    <ng-template #ImageUpload>
+      <cos-image-upload-form
+        acceptedFileTypes="image/jpeg,image/jpg,image/png,image/gif"
+        (imgSelected)="onSelected($event)"
+        [maxFileBytes]="2097152"
+        [allowMultipleUploads]="false"
+        data-cy="upload-control"
+      >
+        <div class="img-upload-reqs-content">
+          Square images are recommended, all others will be resized
+          automatically. Image should be minimum of 50px X 50px and under 2MB in
+          size.
+        </div>
+      </cos-image-upload-form>
+    </ng-template>
+    <input type="hidden" [formControl]="control" readonly="readonly" />
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

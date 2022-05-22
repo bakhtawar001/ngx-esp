@@ -1,0 +1,127 @@
+<form [formGroup]="form" class="cos-address-form-container">
+  <cos-form-field class="cos-form-row" *ngIf="form.contains('Name')">
+    <cos-label>Name</cos-label>
+    <input
+      class="w-full"
+      cos-input
+      id="name"
+      placeholder="Name"
+      formControlName="Name"
+      maxlength="100"
+      [required]="form.controls.Name! | controlRequired"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <cos-form-field class="cos-form-row">
+    <cos-label *ngIf="showFirstLineLabel">Address, Line 1</cos-label>
+    <input
+      type="search"
+      cos-address-typeahead
+      (addressChanged)="setAddress($event)"
+      class="w-full"
+      cos-input
+      id="line1"
+      placeholder="Enter or Choose Address"
+      maxlength="128"
+      formControlName="Line1"
+      [required]="form.controls.Line1! | controlRequired"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <cos-form-field class="cos-form-row" *ngIf="showAllFields">
+    <cos-label>Address, Line 2</cos-label>
+    <input
+      class="w-full"
+      cos-input
+      id="line2"
+      placeholder="Apt, suite, department, building, floor, etc."
+      formControlName="Line2"
+      maxlength="128"
+      [required]="form.controls.Line2! | controlRequired"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <cos-form-field class="cos-form-row" *ngIf="showAllFields">
+    <cos-label>City</cos-label>
+    <input
+      class="w-full"
+      cos-input
+      id="city"
+      placeholder="City"
+      formControlName="City"
+      maxlength="35"
+      [required]="form.controls.City! | controlRequired"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <div class="address-state-zip-row" *ngIf="showAllFields">
+    <cos-form-field class="mr-16 address-state-zip-row-input">
+      <cos-label>State/Province</cos-label>
+      <select
+        *ngIf="states; else stateInput"
+        matNativeControl
+        class="w-full"
+        id="state"
+        placeholder="State"
+        formControlName="State"
+        maxlength="40"
+        [required]="form.controls.State! | controlRequired"
+      >
+        <option></option>
+        <option *ngFor="let state of states" [value]="state.value">
+          {{ state.value }}
+        </option>
+      </select>
+
+      <ng-template #stateInput>
+        <input
+          class="w-full"
+          cos-input
+          id="state"
+          placeholder="State"
+          formControlName="State"
+          maxlength="40"
+          [required]="form.controls.State! | controlRequired"
+        />
+      </ng-template>
+    </cos-form-field>
+
+    <cos-form-field class="cos-zipcode-input address-state-zip-row-input">
+      <cos-label>Zip Code</cos-label>
+      <input
+        class="w-full"
+        cos-input
+        id="zipCode"
+        placeholder="12345"
+        formControlName="PostalCode"
+        maxlength="15"
+        [required]="form.controls.PostalCode! | controlRequired"
+      />
+    </cos-form-field>
+  </div>
+
+  <cos-form-field class="cos-form-row" *ngIf="showAllFields">
+    <cos-label>Country</cos-label>
+    <select
+      matNativeControl
+      class="w-full"
+      id="country"
+      placeholder="Country"
+      formControlName="CountryType"
+      maxlength="40"
+      [required]="form.controls.CountryType! | controlRequired"
+    >
+      <option></option>
+      <option
+        *ngFor="let country of countries$ | async | orderBy: 'Sequence':'asc'"
+        [ngValue]="country.Code"
+      >
+        {{ country.Name }}
+      </option>
+    </select>
+  </cos-form-field>
+</form>

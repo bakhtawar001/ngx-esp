@@ -1,0 +1,13 @@
+{
+  "extends": "<%= offsetFromRoot %>tsconfig.json",
+  "compilerOptions": {
+    "types": []
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ]
+}

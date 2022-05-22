@@ -1,0 +1,26 @@
+@import 'cosmos/scss/settings/';
+
+// TODO: should be as global style?
+.line-item__variants {
+  tfoot tr {
+    border: 1px solid $color-g-pebble-09;
+  }
+
+  // remove spacing when checkbox doesn't have label
+  .cos-checkbox-inner-container {
+    margin-right: 0;
+  }
+
+  .cos-cell,
+  .cos-header-cell,
+  .cos-footer-cell {
+    padding-left: 4px;
+    padding-right: 4px;
+    white-space: nowrap;
+  }
+
+  .total-units-row .cos-cell {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}

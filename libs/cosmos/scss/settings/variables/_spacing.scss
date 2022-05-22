@@ -1,0 +1,73 @@
+// This is a generated file, do not edit directly. Use the 'npm run tokens' command to rebuild.
+
+@mixin spacing-inset-4() {
+  padding: 4px;
+}
+
+@mixin spacing-inset-8() {
+  padding: 8px;
+}
+
+@mixin spacing-inset-12() {
+  padding: 12px;
+}
+
+@mixin spacing-inset-16() {
+  padding: 16px;
+}
+
+@mixin spacing-inset-24() {
+  padding: 24px;
+}
+
+@mixin spacing-inset-32() {
+  padding: 32px;
+}
+
+@mixin spacing-inset-64() {
+  padding: 64px;
+}
+
+@mixin spacing-squish-2() {
+  padding: 2px 4px;
+}
+
+@mixin spacing-squish-4() {
+  padding: 4px 8px;
+}
+
+@mixin spacing-squish-8() {
+  padding: 8px 16px;
+}
+
+@mixin spacing-squish-12() {
+  padding: 12px 24px;
+}
+
+@mixin spacing-squish-16() {
+  padding: 16px 32px;
+}
+
+@mixin spacing-squish-32() {
+  padding: 32px 64px;
+}
+
+$spacing-stack-0: 0px;
+$spacing-stack-2: 2px;
+$spacing-stack-4: 4px;
+$spacing-stack-8: 8px;
+$spacing-stack-12: 12px;
+$spacing-stack-16: 16px;
+$spacing-stack-24: 24px;
+$spacing-stack-32: 32px;
+$spacing-stack-64: 64px;
+$spacing-inline-0: 0px;
+$spacing-inline-2: 2px;
+$spacing-inline-4: 4px;
+$spacing-inline-8: 8px;
+$spacing-inline-12: 12px;
+$spacing-inline-16: 16px;
+$spacing-inline-24: 24px;
+$spacing-inline-32: 32px;
+$spacing-inline-48: 48px;
+$spacing-inline-64: 64px;

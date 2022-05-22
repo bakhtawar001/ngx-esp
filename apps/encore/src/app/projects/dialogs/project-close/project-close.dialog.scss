@@ -1,0 +1,13 @@
+@import 'cosmos/scss/settings/';
+
+.content-wrapper {
+  margin: 0.6rem 3rem;
+
+  @include narrower-than($bp-large) {
+    margin: 0.6rem 0;
+  }
+}
+
+.project-close-dialog__textarea {
+  border-bottom: 1px solid $color-g-pebble-09;
+}

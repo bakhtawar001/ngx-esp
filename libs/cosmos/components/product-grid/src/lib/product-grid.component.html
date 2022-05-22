@@ -1,0 +1,25 @@
+<div class="cos-product-grid" (isInViewport)="setImageUrls()">
+  <ul class="cos-product-grid-images">
+    <li
+      *ngFor="
+        let product of products | slice: 0:(productCount > 8 ? 7 : 8);
+        trackBy: trackByFn
+      "
+    >
+      <!--
+        We're using an `IntersectionObserver` to render the `<img>` element only when the grid container appears
+        inside the viewport. We do have many product images on the collection search page that forces to load all images at
+        once even if the user doesn't see them inside the viewport.
+      -->
+      <img
+        #img
+        class="cos-product-grid-image"
+        (error)="onImageError($event)"
+        alt="{{ $any(product).alt }}"
+      />
+    </li>
+    <li *ngIf="productCount !== 8 && productCount > 7">
+      <span class="cos-product-grid-counter">+{{ productCount - 7 }}</span>
+    </li>
+  </ul>
+</div>

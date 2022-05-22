@@ -1,0 +1,33 @@
+<ng-container
+  *ngIf="iconType === ProjectCustomerIconType.Avatar; else projectIcon"
+>
+  <ng-container
+    *ngTemplateOutlet="showAvatarIcon ? avatar : logo"
+  ></ng-container>
+  <ng-template #logo>
+    <img
+      [alt]="customer.Name"
+      [src]="customer?.LogoImageUrl || customer?.IconImageUrl"
+      loading="lazy"
+      data-cy="logo-img"
+    />
+  </ng-template>
+  <ng-template #avatar>
+    <cos-avatar>
+      <img
+        [alt]="customer.Name"
+        [src]="customer?.IconImageUrl"
+        data-cy="avatar-img"
+      />
+    </cos-avatar>
+  </ng-template>
+</ng-container>
+<ng-template #projectIcon>
+  <div
+    class="icon-wrapper flex items-center justify-center"
+    data-cy="icon"
+    [style.font-size.px]="iconSize"
+  >
+    <span class="fas fa-users"></span>
+  </div>
+</ng-template>

@@ -1,0 +1,340 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitOverride": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types", "typings"],
+    "lib": ["es2020", "dom", "dom.iterable"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@asi/auth": ["libs/asi/auth/src/index.ts"],
+      "@asi/auth/mocks": ["libs/asi/auth/__mocks__/index.ts"],
+      "@asi/collaborators/ui/feature-core": [
+        "libs/asi/collaborators/ui/feature-core/src/index.ts"
+      ],
+      "@asi/company/ui/feature-components": [
+        "libs/asi/company/ui/feature-components/src/index.ts"
+      ],
+      "@asi/company/ui/feature-core": [
+        "libs/asi/company/ui/feature-core/src/index.ts"
+      ],
+      "@asi/company/ui/feature-forms": [
+        "libs/asi/company/ui/feature-forms/src/index.ts"
+      ],
+      "@asi/contacts/ui/feature-components": [
+        "libs/asi/contacts/ui/feature-components/src/index.ts"
+      ],
+      "@asi/contacts/ui/feature-core": [
+        "libs/asi/contacts/ui/feature-core/src/index.ts"
+      ],
+      "@asi/note/ui/feature-components": [
+        "libs/asi/note/ui/feature-components/src/index.ts"
+      ],
+      "@asi/projects/ui/feature-forms": [
+        "libs/asi/projects/ui/feature-forms/src/index.ts"
+      ],
+      "@asi/ui/cards-selection-dialog": [
+        "libs/asi/ui/cards-selection-dialog/src/index.ts"
+      ],
+      "@asi/ui/details-card": ["libs/asi/ui/details-card/src/index.ts"],
+      "@asi/ui/feature-core": ["libs/asi/ui/feature-core/src/index.ts"],
+      "@asi/ui/feature-filters": ["libs/asi/ui/feature-filters/src/index.ts"],
+      "@asi/ui/feature-financial-details": [
+        "libs/asi/ui/feature-financial-details/src/index.ts"
+      ],
+      "@contentful/common": ["libs/contentful/common/src/index.ts"],
+      "@contentful/common/*": ["libs/contentful/common/src/lib/*"],
+      "@contentful/sponsored-content": [
+        "libs/contentful/sponsored-content/src/index.ts"
+      ],
+      "@contentful/sponsored-content/*": [
+        "libs/contentful/sponsored-content/src/lib/*"
+      ],
+      "@cosmos/analytics": ["libs/cosmos/analytics/src/index.ts"],
+      "@cosmos/animations": ["libs/cosmos/animations/src/index.ts"],
+      "@cosmos/common": ["libs/cosmos/common/src/index.ts"],
+      "@cosmos/common/http": ["libs/cosmos/common/http/src/public_api.ts"],
+      "@cosmos/component-loader": ["libs/cosmos/component-loader/src/index.ts"],
+      "@cosmos/components/accordion": [
+        "libs/cosmos/components/accordion/src/index.ts"
+      ],
+      "@cosmos/components/action-bar": [
+        "libs/cosmos/components/action-bar/src/index.ts"
+      ],
+      "@cosmos/components/address-form": [
+        "libs/cosmos/components/address-form/src/index.ts"
+      ],
+      "@cosmos/components/address-typeahead": [
+        "libs/cosmos/components/address-typeahead/src/index.ts"
+      ],
+      "@cosmos/components/attribute-tag": [
+        "libs/cosmos/components/attribute-tag/src/index.ts"
+      ],
+      "@cosmos/components/autocomplete": [
+        "libs/cosmos/components/autocomplete/src/index.ts"
+      ],
+      "@cosmos/components/avatar": [
+        "libs/cosmos/components/avatar/src/index.ts"
+      ],
+      "@cosmos/components/avatar-list": [
+        "libs/cosmos/components/avatar-list/src/index.ts"
+      ],
+      "@cosmos/components/badge": ["libs/cosmos/components/badge/src/index.ts"],
+      "@cosmos/components/button": [
+        "libs/cosmos/components/button/src/index.ts"
+      ],
+      "@cosmos/components/button-group": [
+        "libs/cosmos/components/button-group/src/index.ts"
+      ],
+      "@cosmos/components/card": ["libs/cosmos/components/card/src/index.ts"],
+      "@cosmos/components/card-tree": [
+        "libs/cosmos/components/card-tree/src/index.ts"
+      ],
+      "@cosmos/components/cart-list": [
+        "libs/cosmos/components/cart-list/src/index.ts"
+      ],
+      "@cosmos/components/charts": [
+        "libs/cosmos/components/charts/src/index.ts"
+      ],
+      "@cosmos/components/checkbox": [
+        "libs/cosmos/components/checkbox/src/index.ts"
+      ],
+      "@cosmos/components/clearable-input": [
+        "libs/cosmos/components/clearable-input/src/index.ts"
+      ],
+      "@cosmos/components/collection": [
+        "libs/cosmos/components/collection/src/index.ts"
+      ],
+      "@cosmos/components/collection-section": [
+        "libs/cosmos/components/collection-section/src/index.ts"
+      ],
+      "@cosmos/components/confirm-dialog": [
+        "libs/cosmos/components/confirm-dialog/src/index.ts"
+      ],
+      "@cosmos/components/contact-info": [
+        "libs/cosmos/components/contact-info/src/index.ts"
+      ],
+      "@cosmos/components/context-icon": [
+        "libs/cosmos/components/context-icon/src/index.ts"
+      ],
+      "@cosmos/components/core": ["libs/cosmos/components/core/src/index.ts"],
+      "@cosmos/components/customer-dropdown": [
+        "libs/cosmos/components/customer-dropdown/src/index.ts"
+      ],
+      "@cosmos/components/dialog": [
+        "libs/cosmos/components/dialog/src/index.ts"
+      ],
+      "@cosmos/components/dotted-button": [
+        "libs/cosmos/components/dotted-button/src/index.ts"
+      ],
+      "@cosmos/components/dropdown-filter": [
+        "libs/cosmos/components/dropdown-filter/src/index.ts"
+      ],
+      "@cosmos/components/emoji-menu": [
+        "libs/cosmos/components/emoji-menu/src/index.ts"
+      ],
+      "@cosmos/components/explore-bar": [
+        "libs/cosmos/components/explore-bar/src/index.ts"
+      ],
+      "@cosmos/components/featured-video": [
+        "libs/cosmos/components/featured-video/src/index.ts"
+      ],
+      "@cosmos/components/features": [
+        "libs/cosmos/components/features/src/index.ts"
+      ],
+      "@cosmos/components/filters": [
+        "libs/cosmos/components/filters/src/index.ts"
+      ],
+      "@cosmos/components/form-field": [
+        "libs/cosmos/components/form-field/src/index.ts"
+      ],
+      "@cosmos/components/global-header": [
+        "libs/cosmos/components/global-header/src/index.ts"
+      ],
+      "@cosmos/components/image-upload-form": [
+        "libs/cosmos/components/image-upload-form/src/index.ts"
+      ],
+      "@cosmos/components/image-zoom": [
+        "libs/cosmos/components/image-zoom/src/index.ts"
+      ],
+      "@cosmos/components/inline-edit": [
+        "libs/cosmos/components/inline-edit/src/index.ts"
+      ],
+      "@cosmos/components/input": ["libs/cosmos/components/input/src/index.ts"],
+      "@cosmos/components/input-row": [
+        "libs/cosmos/components/input-row/src/index.ts"
+      ],
+      "@cosmos/components/is-in-viewport": [
+        "libs/cosmos/components/is-in-viewport/src/index.ts"
+      ],
+      "@cosmos/components/modal": ["libs/cosmos/components/modal/src/index.ts"],
+      "@cosmos/components/new-button": [
+        "libs/cosmos/components/new-button/src/index.ts"
+      ],
+      "@cosmos/components/notification": [
+        "libs/cosmos/components/notification/src/index.ts"
+      ],
+      "@cosmos/components/pagination": [
+        "libs/cosmos/components/pagination/src/index.ts"
+      ],
+      "@cosmos/components/password-toggle": [
+        "libs/cosmos/components/password-toggle/src/index.ts"
+      ],
+      "@cosmos/components/pill": ["libs/cosmos/components/pill/src/index.ts"],
+      "@cosmos/components/presentation-card": [
+        "libs/cosmos/components/presentation-card/src/index.ts"
+      ],
+      "@cosmos/components/presentation-header": [
+        "libs/cosmos/components/presentation-header/src/index.ts"
+      ],
+      "@cosmos/components/product-card": [
+        "libs/cosmos/components/product-card/src/index.ts"
+      ],
+      "@cosmos/components/product-card-tags": [
+        "libs/cosmos/components/product-card-tags/src/index.ts"
+      ],
+      "@cosmos/components/product-gallery": [
+        "libs/cosmos/components/product-gallery/src/index.ts"
+      ],
+      "@cosmos/components/product-grid": [
+        "libs/cosmos/components/product-grid/src/index.ts"
+      ],
+      "@cosmos/components/product-media": [
+        "libs/cosmos/components/product-media/src/index.ts"
+      ],
+      "@cosmos/components/product-navigation": [
+        "libs/cosmos/components/product-navigation/src/index.ts"
+      ],
+      "@cosmos/components/product-variant-details": [
+        "libs/cosmos/components/product-variant-details/src/index.ts"
+      ],
+      "@cosmos/components/radio": ["libs/cosmos/components/radio/src/index.ts"],
+      "@cosmos/components/rating": [
+        "libs/cosmos/components/rating/src/index.ts"
+      ],
+      "@cosmos/components/ratings-reviews": [
+        "libs/cosmos/components/ratings-reviews/src/index.ts"
+      ],
+      "@cosmos/components/related-topics": [
+        "libs/cosmos/components/related-topics/src/index.ts"
+      ],
+      "@cosmos/components/segmented-panel": [
+        "libs/cosmos/components/segmented-panel/src/index.ts"
+      ],
+      "@cosmos/components/supplier": [
+        "libs/cosmos/components/supplier/src/index.ts"
+      ],
+      "@cosmos/components/supplier-card": [
+        "libs/cosmos/components/supplier-card/src/index.ts"
+      ],
+      "@cosmos/components/supplier-page-header": [
+        "libs/cosmos/components/supplier-page-header/src/index.ts"
+      ],
+      "@cosmos/components/table": ["libs/cosmos/components/table/src/index.ts"],
+      "@cosmos/components/toggle": [
+        "libs/cosmos/components/toggle/src/index.ts"
+      ],
+      "@cosmos/components/tracker": [
+        "libs/cosmos/components/tracker/src/index.ts"
+      ],
+      "@cosmos/components/tracker-accordion": [
+        "libs/cosmos/components/tracker-accordion/src/index.ts"
+      ],
+      "@cosmos/components/vertical-menu": [
+        "libs/cosmos/components/vertical-menu/src/index.ts"
+      ],
+      "@cosmos/components/video-player": [
+        "libs/cosmos/components/video-player/src/index.ts"
+      ],
+      "@cosmos/components/video-thumbnail": [
+        "libs/cosmos/components/video-thumbnail/src/index.ts"
+      ],
+      "@cosmos/core": ["libs/cosmos/core/src/index.ts"],
+      "@cosmos/cypress": ["libs/cosmos/cypress/src/index.ts"],
+      "@cosmos/feature-flags": ["libs/cosmos/feature-flags/src/index.ts"],
+      "@cosmos/flex-layout": ["libs/cosmos/flex-layout/src/index.ts"],
+      "@cosmos/forms": ["libs/cosmos/forms/src/index.ts"],
+      "@cosmos/layout": ["libs/cosmos/layout/src/index.ts"],
+      "@cosmos/layout/*": ["libs/cosmos/layout/src/lib/*"],
+      "@cosmos/meta": ["libs/cosmos/meta/src/index.ts"],
+      "@cosmos/ng-event-plugins": ["libs/cosmos/ng-event-plugins/src/index.ts"],
+      "@cosmos/router": ["libs/cosmos/router/src/index.ts"],
+      "@cosmos/state": ["libs/cosmos/state/src/index.ts"],
+      "@cosmos/storybook": ["libs/cosmos/storybook/src/index.ts"],
+      "@cosmos/testing": ["libs/cosmos/testing/src/index.ts"],
+      "@cosmos/testing/*": ["libs/cosmos/testing/src/lib/*"],
+      "@cosmos/testing/setup": ["libs/cosmos/testing/setup/setup.ts"],
+      "@cosmos/zone-less": ["libs/cosmos/zone-less/src/index.ts"],
+      "@esp/__mocks__/*": ["libs/esp/__mocks__/*"],
+      "@esp/auth": ["libs/esp/auth/src/index.ts"],
+      "@esp/auth/mocks": ["libs/esp/auth/__mocks__/index.ts"],
+      "@esp/autocomplete": ["libs/esp/autocomplete/src/index.ts"],
+      "@esp/collections": ["libs/esp/collections/src/index.ts"],
+      "@esp/collections/mocks": ["libs/esp/collections/__mocks__/index.ts"],
+      "@esp/common": ["libs/esp/common/src/index.ts"],
+      "@esp/common/http": ["libs/esp/common/http/src/public_api.ts"],
+      "@esp/companies": ["libs/esp/companies/src/index.ts"],
+      "@esp/companies/mocks": ["libs/esp/companies/__mocks__/index.ts"],
+      "@esp/contacts": ["libs/esp/contacts/src/index.ts"],
+      "@esp/contacts/mocks": ["libs/esp/contacts/__mocks__/index.ts"],
+      "@esp/files": ["libs/esp/files/src/index.ts"],
+      "@esp/layouts/encore-layout": [
+        "libs/esp/layouts/encore-layout/src/public_api.ts"
+      ],
+      "@esp/layouts/esp-layout": [
+        "libs/esp/layouts/esp-layout/src/public_api.ts"
+      ],
+      "@esp/layouts/esp-layout-admin": [
+        "libs/esp/layouts/esp-layout-admin/src/public_api.ts"
+      ],
+      "@esp/lookup-types": ["libs/esp/lookup-types/src/index.ts"],
+      "@esp/models": ["libs/esp/models/src/index.ts"],
+      "@esp/notes": ["libs/esp/notes/src/index.ts"],
+      "@esp/orders": ["libs/esp/orders/src/index.ts"],
+      "@esp/parties": ["libs/esp/parties/src/index.ts"],
+      "@esp/presentations": ["libs/esp/presentations/src/index.ts"],
+      "@esp/products": ["libs/esp/products/src/index.ts"],
+      "@esp/projects": ["libs/esp/projects/src/index.ts"],
+      "@esp/recently-viewed": ["libs/esp/recently-viewed/src/index.ts"],
+      "@esp/reports": ["libs/esp/reports/src/index.ts"],
+      "@esp/router": ["libs/esp/router/src/index.ts"],
+      "@esp/search": ["libs/esp/search/src/index.ts"],
+      "@esp/service-configs": ["libs/esp/service-configs/src/index.ts"],
+      "@esp/settings": ["libs/esp/settings/src/index.ts"],
+      "@esp/settings/mocks": ["libs/esp/settings/__mocks__/index.ts"],
+      "@esp/suppliers": ["libs/esp/suppliers/src/index.ts"],
+      "@esp/tasks": ["libs/esp/tasks/src/index.ts"],
+      "@smartlink/account": ["libs/smartlink/account/src/index.ts"],
+      "@smartlink/auth": ["libs/smartlink/auth/src/index.ts"],
+      "@smartlink/clipboard": ["libs/smartlink/clipboard/src/index.ts"],
+      "@smartlink/common": ["libs/smartlink/common/src/index.ts"],
+      "@smartlink/common/http": [
+        "libs/smartlink/common/http/src/public_api.ts"
+      ],
+      "@smartlink/models": ["libs/smartlink/models/src/index.ts"],
+      "@smartlink/products": ["libs/smartlink/products/src/index.ts"],
+      "@smartlink/products/mocks": [
+        "libs/smartlink/products/src/lib/mocks/index.ts"
+      ],
+      "@smartlink/search": ["libs/smartlink/search/src/index.ts"],
+      "@smartlink/suppliers": ["libs/smartlink/suppliers/src/index.ts"],
+      "@smartlink/suppliers/mocks": [
+        "libs/smartlink/suppliers/src/lib/mocks/index.ts"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}

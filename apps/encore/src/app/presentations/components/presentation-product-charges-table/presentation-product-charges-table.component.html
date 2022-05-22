@@ -1,0 +1,31 @@
+<table cos-table [dataSource]="dataSource">
+  <ng-container cosColumnDef="charge">
+    <th cosHeaderCell *cosHeaderCellDef class="w-1/2">charge</th>
+    <td cosCell *cosCellDef="let element">
+      {{ element.charge }}
+    </td>
+  </ng-container>
+  <ng-container cosColumnDef="quantity">
+    <th cosHeaderCell *cosHeaderCellDef>quantity</th>
+    <td cosCell *cosCellDef="let element">
+      {{ element.quantity }}
+    </td>
+  </ng-container>
+  <ng-container cosColumnDef="price">
+    <th cosHeaderCell *cosHeaderCellDef>price</th>
+    <td cosCell *cosCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <ng-container cosColumnDef="action">
+    <th cosHeaderCell *cosHeaderCellDef></th>
+    <td cosCell *cosCellDef="let element">
+      <button cos-icon-button>
+        <i class="fa fa-plus"></i>
+        <span class="cos-accessibly-hidden">Add </span>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr cos-header-row *cosHeaderRowDef="displayedColumns2"></tr>
+  <tr cos-row *cosRowDef="let row; columns: displayedColumns2"></tr>
+</table>

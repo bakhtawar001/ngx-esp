@@ -1,0 +1,33 @@
+<asi-panel-editable-row
+  rowTitle="Favicon"
+  [isEditable]="state.party?.IsEditable"
+  [isLoading]="state.isLoading && !state.hasLoaded"
+  (onSaveEvent)="state.save({IconMediaLink: control.value})"
+>
+  <div><i class="form-row-icon fa fa-atom mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <img
+      *ngIf="state.party?.IconMediaLink?.FileUrl; else noLogo"
+      class="settings-company-favicon"
+      [src]="state.party?.IconMediaLink?.FileUrl"
+    />
+    <ng-template #noLogo>
+      <p class="form-row-value">No favicon selected</p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <image-upload-form
+      [formControl]="control"
+      fileType="Artwork"
+      width="64px"
+      height="64px"
+      [maxFileBytes]="2097152"
+      size="sm"
+    >
+      <div class="custom-img-upload-reqs">
+        Square images are recommended, all others will be resized automatically.
+        Image should be minimum of 50px X 50px and under 2MB in size.
+      </div>
+    </image-upload-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

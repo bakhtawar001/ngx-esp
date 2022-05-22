@@ -1,0 +1,59 @@
+<div
+  class="form-panel-row"
+  *ngFor="let email of groups; let i = index"
+  [formGroup]="email"
+>
+  <cos-input-row
+    [allowRemove]="form.value.length > 1"
+    (remove)="removeItem(email)"
+    data-cy="input-row"
+  >
+    <div class="form-panel-row-list">
+      <div class="cos-input-row form-panel-row-list-item">
+        <esp-lookup-select
+          class="form-panel-field__type"
+          type="Emails"
+          formControlName="Type"
+          placeholder="Select a type"
+        ></esp-lookup-select>
+        <cos-form-field class="form-panel-field__email">
+          <cos-label>Email</cos-label>
+          <input
+            formControlName="Address"
+            cos-input
+            data-cy="email-address"
+            type="text"
+            maxlength="100"
+          />
+          <cos-error></cos-error>
+        </cos-form-field>
+      </div>
+      <div class="cos-form-row" *ngIf="showPrimary">
+        <ng-template
+          [ngIf]="email.value.IsPrimary"
+          [ngIfElse]="makePrimaryCheckbox"
+        >
+          <p class="form-panel-field__primary-msg" data-cy="is-primary">
+            This is my primary email address
+          </p>
+        </ng-template>
+
+        <ng-template #makePrimaryCheckbox>
+          <span class="cos-form-label cos-accessibly-hidden"> Primary </span>
+
+          <cos-checkbox
+            formControlName="IsPrimary"
+            (change)="makePrimary(i)"
+            data-cy="make-primary"
+          >
+            Make Primary
+          </cos-checkbox>
+        </ng-template>
+      </div>
+    </div>
+  </cos-input-row>
+</div>
+
+<button (click)="addItem()" cos-button data-cy="add-email-button" type="button">
+  <i class="fa fa-plus"></i> Add Email
+</button>

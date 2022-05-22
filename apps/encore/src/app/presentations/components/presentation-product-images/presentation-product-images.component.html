@@ -1,0 +1,64 @@
+<div class="flex justify-between header-style-14-bold">
+  <p class="header-style-14-bold">Product Image</p>
+  <cos-checkbox
+    class="toggle-all-images"
+    (change)="toggleAll($event)"
+    [checked]="allVisible"
+  >
+    <span class="select-all-label">Show/Hide All</span>
+  </cos-checkbox>
+</div>
+<div class="presentation-product__img-thumbs flex flex-wrap grid-gap-16 mb-16">
+  <cos-card
+    class="image-upload-card img-upload-preview--small"
+    [ngClass]="{ 'img-upload-preview--hidden': !image.IsVisible }"
+    *ngFor="let image of visibleImages; let i = index"
+  >
+    <div class="img-upload-preview-body">
+      <div class="img-upload-preview-container">
+        <img
+          alt="{{ image?.Url }} - Supplier provided image"
+          src="{{ image?.Url }}"
+        />
+      </div>
+    </div>
+    <cos-card-controls>
+      <button
+        cos-icon-button
+        class="toggle-visible"
+        (click)="toggleVisible(image)"
+      >
+        <i class="fa fa-eye{{ image?.IsVisible ? '' : '-slash' }}"></i>
+      </button>
+    </cos-card-controls>
+  </cos-card>
+
+  <button
+    class="img-upload-previews-toggle img-upload-previews-toggle--small"
+    cos-button
+    *ngIf="images?.length > maxPreviewSize"
+    (click)="togglePreviews()"
+  >
+    <ng-container *ngIf="previewsHidden">
+      <span class="fa fa-plus"></span> Show all ({{ images.length }})
+    </ng-container>
+    <ng-container *ngIf="!previewsHidden">
+      <span class="fa fa-minus"></span> Show less
+    </ng-container>
+  </button>
+
+  <cos-image-upload-form
+    [files]="uploadedImages"
+    size="sm"
+  ></cos-image-upload-form>
+</div>
+<div class="presentation-product_img-upload-hints body-style-12-shark">
+  <p>
+    To reorder how your images appear, click "Show all" and you will be able to
+    adjust the order.
+  </p>
+  <p>
+    Uploaded images should be lorem ipsum dolar in size. Allowed file types are
+    lorem ipsum dolar sit.
+  </p>
+</div>

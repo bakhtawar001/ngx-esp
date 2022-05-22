@@ -1,0 +1,296 @@
+<section *ngIf="product">
+  <div class="content-section" *ngIf="product.Description">
+    <h2 class="header-style-14-bold">Description</h2>
+    <p class="product-description">{{ product.Description }}</p>
+  </div>
+  <div class="content-section" *ngIf="product.DistributorComments">
+    <h2 class="header-style-14-bold">Distributor Comments</h2>
+    <p class="product-distributor-comments">
+      {{ product.DistributorComments }}
+    </p>
+  </div>
+  <div class="content-section" *ngIf="product.AdditionalInfo">
+    <h2 class="header-style-14-bold">Additional Information</h2>
+    <p class="product-additional-info">{{ product.AdditionalInfo }}</p>
+  </div>
+  <div class="content-section" *ngIf="product.Categories">
+    <h2 class="header-style-14-bold">Categories</h2>
+    <p>
+      <span *ngFor="let category of product.Categories; last as isLast">
+        <span class="product-categories" *ngIf="category.Parent?.Name"
+          >{{ category.Parent.Name }}-</span
+        >{{ category.Name }}{{ !isLast ? ', ' : '' }}
+      </span>
+    </p>
+  </div>
+  <div class="content-section" *ngIf="product.Themes">
+    <h2 class="header-style-14-bold">Themes</h2>
+    <p class="product-themes">
+      {{ product.Themes | formatArrayList }}
+    </p>
+  </div>
+  <div class="content-section" *ngIf="product.Attributes?.Colors">
+    <h2 class="header-style-14-bold">Colors</h2>
+    <div class="product-colors">
+      {{ product.Attributes?.Colors?.Values | formatArrayList: ', ':'Name' }}
+    </div>
+    <esp-product-charges [attributes]="product.Attributes?.Colors?.Values">
+      <ng-template let-colors>
+        <ng-container *ngFor="let color of colors">
+          <div
+            *ngIf="color.Values?.length || color.Charges?.length"
+            class="mb-16"
+          >
+            <div>
+              <span class="color-product-charges-header"
+                >{{ color.Name }}
+                <span *ngIf="color.Values">: </span>
+              </span>
+              <span *ngFor="let value of color.Values; last as isLast"
+                >{{ value.Name || value }}
+                <span *ngIf="!isLast">, </span>
+              </span>
+            </div>
+            <esp-product-charges-table
+              [method]="color"
+            ></esp-product-charges-table>
+          </div>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+  <div class="content-section" *ngIf="product.Attributes?.Sizes">
+    <h2 class="header-style-14-bold">Sizes</h2>
+    <div class="product-sizes">
+      {{ product.Attributes?.Sizes?.Values | formatArrayList: ', ':'Name' }}
+    </div>
+    <esp-product-charges [attributes]="product.Attributes?.Sizes?.Values">
+      <ng-template let-sizes>
+        <ng-container *ngFor="let size of sizes">
+          <div
+            *ngIf="size.Values?.length || size.Charges?.length"
+            class="mb-16"
+          >
+            <div>
+              <span class="size-product-charges-header"
+                >{{ size.Name }}
+                <span *ngIf="size.Values">: </span>
+              </span>
+              <span *ngFor="let value of size.Values; last as isLast"
+                >{{ value.Name || value }}
+                <span *ngIf="!isLast">, </span>
+              </span>
+            </div>
+            <esp-product-charges-table
+              [method]="size"
+            ></esp-product-charges-table>
+          </div>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+  <div class="content-section" *ngIf="product.Attributes?.Shapes">
+    <h2 class="header-style-14-bold">Shapes</h2>
+    <div class="product-shapes">
+      {{ product.Attributes?.Shapes?.Values | formatArrayList: ', ':'Name' }}
+    </div>
+    <esp-product-charges [attributes]="product.Attributes?.Shapes?.Values">
+      <ng-template let-shapes>
+        <ng-container *ngFor="let shape of shapes">
+          <div
+            class="mb-16"
+            *ngIf="shape.Values?.length || shape.Charges?.length"
+          >
+            <div>
+              <span class="shape-product-charges-header"
+                >{{ shape.Name }}
+                <span *ngIf="shape.Values">: </span>
+              </span>
+              <span *ngFor="let value of shape.Values; last as isLast"
+                >{{ value.Name || value }}
+                <span *ngIf="!isLast">, </span>
+              </span>
+            </div>
+            <esp-product-charges-table
+              [method]="shape"
+            ></esp-product-charges-table>
+          </div>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+  <div class="content-section" *ngIf="product.Attributes?.Materials">
+    <h2 class="header-style-14-bold">Materials</h2>
+    <div class="product-materials">
+      {{ product.Attributes?.Materials?.Values | formatArrayList: ', ':'Name' }}
+    </div>
+    <esp-product-charges [attributes]="product.Attributes?.Materials?.Values">
+      <ng-template let-materials>
+        <ng-container *ngFor="let material of materials">
+          <div
+            *ngIf="material.Values?.length || material.Charges?.length"
+            class="mb-16"
+          >
+            <div>
+              <span class="material-product-charges-header"
+                >{{ material.Name }}
+                <span *ngIf="material.Values">: </span>
+              </span>
+              <span *ngFor="let value of material.Values; last as isLast"
+                >{{ value.Name || value }}
+                <span *ngIf="!isLast">, </span>
+              </span>
+            </div>
+            <esp-product-charges-table
+              [method]="material"
+            ></esp-product-charges-table>
+          </div>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+  <div class="content-section" *ngIf="product.Weight?.Values">
+    <h2 class="header-style-14-bold">Item Weight</h2>
+    <p class="product-weights">
+      {{ product.Weight.Values | formatArrayList }}
+    </p>
+  </div>
+  <div class="content-section" *ngIf="product.LineNames">
+    <h2 class="header-style-14-bold">Line Name</h2>
+    <p class="product-line-names">
+      {{ product.LineNames | formatArrayList }}
+    </p>
+  </div>
+  <div class="content-section" *ngIf="product.Upc">
+    <h2 class="header-style-14-bold">UPC Code</h2>
+    <p>
+      {{ product.Upc }}
+    </p>
+  </div>
+
+  <div class="content-section" *ngIf="product.TradeNames">
+    <h2 class="header-style-14-bold">Trade Name</h2>
+    <p class="product-trade-names">
+      {{ product.TradeNames | formatArrayList }}
+    </p>
+  </div>
+  <esp-product-options
+    [options]="product.Options"
+    *ngIf="product.Options"
+    class="content-section"
+  >
+    <ng-template let-options>
+      <div class="content-section" *ngFor="let option of options">
+        <h2 class="header-style-14-bold">
+          <span>{{ option.Type }}</span>
+          <span *ngIf="option.Type && option.Name">: </span>
+          <span class="product-option-name">{{ option.Name }}</span>
+        </h2>
+        <div *ngIf="option.Description">{{ option.Description }}</div>
+        <esp-product-charges [attributes]="option.Groups" *ngIf="option.Groups">
+          <ng-template let-groups>
+            <div *ngFor="let group of groups" class="mb-16">
+              <span>
+                <span>{{ group.Name }}</span>
+                <span *ngIf="group.Values">: </span>
+              </span>
+              <span *ngFor="let value of group.Values; last as isLast">
+                <span>{{ value.Name || value }}</span>
+                <span *ngIf="!isLast">, </span>
+              </span>
+              <esp-product-charges-table
+                [method]="group"
+              ></esp-product-charges-table>
+            </div>
+          </ng-template>
+        </esp-product-charges>
+        <p *ngIf="option.isStringValues; else optionCharges">
+          <span>{{ option.formattedStringValues }}</span>
+        </p>
+        <ng-template #optionCharges>
+          <div *ngFor="let value of option.Values" class="mb-16">
+            <div>{{ value.Name || value }}</div>
+            <esp-product-charges [attributes]="value">
+              <ng-template let-valueCharges>
+                <esp-product-charges-table
+                  [method]="valueCharges"
+                ></esp-product-charges-table>
+              </ng-template>
+            </esp-product-charges>
+          </div>
+        </ng-template>
+        <div *ngIf="option.Charges" class="mb-16">
+          <esp-product-charges [attributes]="[option]">
+            <ng-template let-charges>
+              <div *ngFor="let charge of charges">
+                <esp-product-charges-table
+                  [method]="charge"
+                ></esp-product-charges-table>
+              </div>
+            </ng-template>
+          </esp-product-charges>
+        </div>
+      </div>
+    </ng-template>
+  </esp-product-options>
+
+  <div class="content-section">
+    <h2 class="header-style-14-bold">Requires Assembly</h2>
+    <p class="product-require-assembly">
+      {{ product.IsAssembled | evalDisplayValue: 'Yes':'No':'Unspecified' }}
+    </p>
+  </div>
+  <div class="content-section" *ngIf="product.WarrantyInfo?.Values">
+    <h2 class="header-style-14-bold">Warranty Information</h2>
+    <esp-product-charges
+      [attributes]="product.WarrantyInfo.Values"
+      class="product-info-esp-product-charges"
+    >
+      <ng-template let-warranties>
+        <div *ngFor="let warranty of warranties">
+          <span class="product-warranty-name"
+            >{{ warranty.Name || warranty
+            }}<span *ngIf="warranty.Description">: </span></span
+          >
+          <span class="product-warranty-description">{{
+            warranty.Description
+          }}</span>
+
+          <esp-product-charges-table
+            [method]="warranty"
+          ></esp-product-charges-table>
+        </div>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+  <div class="content-section" *ngIf="product.BatteryInfo?.Values">
+    <h2 class="header-style-14-bold">Battery Information</h2>
+    <esp-product-charges [attributes]="product.BatteryInfo.Values">
+      <ng-template let-batteries>
+        <div *ngFor="let battery of batteries" class="mb-16">
+          <div>
+            <span class="product-battery-name">
+              {{ battery.Name || battery }}
+              <span *ngIf="battery.Description">: </span>
+            </span>
+            <span class="product-battery-description">{{
+              battery.Description
+            }}</span>
+          </div>
+
+          <esp-product-charges-table
+            [method]="battery"
+          ></esp-product-charges-table>
+        </div>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+  <!-- TODO: API NEEDS VALUE FOR DISCLAIMER
+  <div class="content-section" *ngIf="product.Disclaimer">
+    <h2 class="header-style-14-bold">Product Disclaimer</h2>
+    <div>
+      {{ product.Disclaimer }}
+    </div>
+  </div>
+  -->
+</section>

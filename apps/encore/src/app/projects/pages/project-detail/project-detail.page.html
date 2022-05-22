@@ -1,0 +1,188 @@
+<ng-template #loading>
+  <esp-project-detail-loader></esp-project-detail-loader>
+</ng-template>
+
+<esp-detail-header
+  *ngIf="!state.isLoading && state.hasLoaded && state.project; else loading"
+>
+  <esp-detail-header-img>
+    <asi-company-avatar
+      [customer]="state.project.Customer"
+      [iconSize]="56"
+    ></asi-company-avatar>
+  </esp-detail-header-img>
+
+  <esp-detail-header-title>
+    <div
+      class="project-detail-header--titles"
+      [ngClass]="{'project-detail-header--titles-with-reopen-button': state.project.StatusName === ProjectStepName.Closed}"
+    >
+      <div>
+        <h2 class="detail-header--entity-title mb-0" data-cy="title">
+          {{ state.project.Name }}
+        </h2>
+        <h3
+          *ngIf="state.project.Customer"
+          class="project-detail-header--entity-subtitle w-full mb-0"
+          data-cy="customer-name"
+        >
+          {{ state.project.Customer.Name }}
+        </h3>
+      </div>
+      <span
+        *ngIf="state.project.EventType"
+        class="project-detail-header--entity-status"
+        cosPillLabel
+        data-cy="event-pill"
+        size="small"
+      >
+        {{ state.project.EventType }}
+      </span>
+    </div>
+  </esp-detail-header-title>
+
+  <esp-detail-header-notifications>
+    <esp-project-detail-notifications
+      [alertsNumber]="0"
+      [tasksNumber]="0"
+    ></esp-project-detail-notifications>
+  </esp-detail-header-notifications>
+
+  <esp-detail-header-tracker>
+    <cos-tracker [currentStep]="state.project.StatusStep" [startsOnZero]="true">
+      <cos-tracker-step [size]="'lg'">
+        <span>1</span>
+      </cos-tracker-step>
+      <cos-tracker-step [size]="'lg'">
+        <span>2</span>
+      </cos-tracker-step>
+      <cos-tracker-step [size]="'lg'">
+        <span>3</span>
+      </cos-tracker-step>
+    </cos-tracker>
+
+    <span cosPillLabel
+      >{{ ProjectStepDisplayValue[state.project.StatusName] }}</span
+    >
+  </esp-detail-header-tracker>
+
+  <esp-detail-header-meta>
+    <esp-card-metadata-list [cols]="5">
+      <li>
+        <h5 class="header-style-12" data-cy="created-label">Created on</h5>
+        <p data-cy="created-date">
+          {{ state.project.CreateDate | date: 'longDate'}}
+        </p>
+      </li>
+      <li>
+        <h5 class="header-style-12" data-cy="owner-label">Owned by</h5>
+        <p data-cy="owner-name">{{ state.project.Owner.Name }}</p>
+      </li>
+      <li>
+        <h5 class="header-style-12" data-cy="in-hands-label">In-Hands Date</h5>
+        <span
+          class="
+            project-detail-header--meta-in-hands-date
+            flex
+            items-center
+            mr-8
+          "
+        >
+          <p class="mr-8" data-cy="in-hands-date">
+            {{ (state.project.InHandsDate | date: 'longDate') || '-' }}
+          </p>
+          <esp-project-in-hands-date-pill
+            [isInHandsDateFlexible]="state.project?.IsInHandsDateFlexible"
+          ></esp-project-in-hands-date-pill>
+        </span>
+      </li>
+      <li></li>
+      <li>
+        <div class="project-detail-header--meta-collabs flex">
+          <asi-manage-collaborators
+            [canEdit]="state.canEdit"
+          ></asi-manage-collaborators>
+        </div>
+      </li>
+    </esp-card-metadata-list>
+  </esp-detail-header-meta>
+
+  <esp-detail-header-menu>
+    <ng-container *ngIf="state.project.IsEditable">
+      <button
+        *ngIf="state.project.StatusName === ProjectStepName.Closed; else menuButton"
+        (click)="onReopenProject()"
+        class="project-detail-header__reopen-button"
+        color="primary"
+        cos-stroked-button
+        type="button"
+      >
+        Reopen Project
+      </button>
+      <ng-template #menuButton>
+        <div data-cy="project-menu">
+          <button
+            [matMenuTriggerFor]="actionsMenu"
+            aria-label="Actions"
+            class="actions-button"
+            click.stop
+            color="primary"
+            cos-stroked-button
+            data-cy="actions-menu"
+          >
+            <i class="fa fa-ellipsis-h"></i>
+            <span class="cos-accessibly-hidden">Menu</span>
+          </button>
+          <mat-menu
+            #actionsMenu="matMenu"
+            backdropClass="cos-global-menu-backdrop"
+            class="cos-global-menu-panel"
+            yPosition="below"
+          >
+            <button
+              *ngIf="canTransferOwnership"
+              (click)="onTransferOwnership()"
+              class="cos-menu-item"
+              mat-menu-item
+              type="button"
+              data-cy="transfer-ownership-button"
+            >
+              Transfer Ownership
+            </button>
+            <button
+              (click)="onCloseProject()"
+              class="cos-menu-item"
+              data-cy="close-project-button"
+              mat-menu-item
+              type="button"
+            >
+              Close Project
+            </button>
+          </mat-menu>
+        </div>
+      </ng-template>
+    </ng-container>
+  </esp-detail-header-menu>
+
+  <esp-detail-header-nav>
+    <nav disableRipple mat-align-tabs="start" mat-tab-nav-bar>
+      <a
+        #rla="routerLinkActive"
+        *ngFor="let tab of tabs"
+        [active]="rla.isActive"
+        [routerLinkActiveOptions]="{exact: tab.exactMatch}"
+        [routerLink]="tab.url"
+        mat-tab-link
+        routerLinkActive
+      >
+        {{ tab.title }}
+      </a>
+    </nav>
+  </esp-detail-header-nav>
+</esp-detail-header>
+
+<div class="page-container">
+  <div class="project-detail grid-layout-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

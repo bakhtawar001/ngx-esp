@@ -1,0 +1,19 @@
+<cos-card ngClass="product-recos-card">
+  <span class="flex pt-0 pb-16">
+    <img class="mr-16" src="assets/images/{{ category }}_icon.svg" alt="" />
+    <h2 class="header-style-22 mb-0">{{ category | titlecase }} Products</h2>
+  </span>
+  <p *ngIf="categoryDesc" class="product-recos-card__desc body-style-14">
+    {{ categoryDesc }}
+  </p>
+  <cos-card-controls>
+    <button cos-button>View More</button>
+  </cos-card-controls>
+  <div class="product-recos-card__products flex">
+    <ng-container *ngFor="let product of products">
+      <cos-product-card [product]="product" [suppressActions]="true">
+        <cos-supplier [supplier]="product.Supplier"></cos-supplier
+      ></cos-product-card>
+    </ng-container>
+  </div>
+</cos-card>

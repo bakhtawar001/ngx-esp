@@ -1,0 +1,202 @@
+<div class="proj-pres">
+  <ng-template
+    [ngIf]="!state.isLoading && state.hasLoaded && state.presentation"
+    [ngIfElse]="loader"
+  >
+    <div class="project__pg-title flex justify-between">
+      <h1 class="header-style-24 mb-2">
+        Presentation
+        <cos-button-group
+          (handleSelection)="updatePhase($event)"
+          [toggleOptions]="toggleOptions"
+          [defaultSelection]="state.presentation.Status"
+          toggleAriaLabel="Segment Options"
+          groupName="segmentOptions"
+        ></cos-button-group>
+      </h1>
+
+      <div class="lg:block hidden">
+        <esp-pres-empty-state-actions
+          *ngIf="state.presentation.Status === PresentationStatus.PreShare"
+          [hasProducts]="state.presentation.Products.length > 0"
+        ></esp-pres-empty-state-actions>
+
+        <esp-pres-post-share-state-actions
+          *ngIf="[PresentationStatus.PostShare, PresentationStatus.QuoteRequested].includes(state.presentation.Status)"
+          [hasQuote]="state.presentation.Status === PresentationStatus.QuoteRequested"
+        ></esp-pres-post-share-state-actions>
+      </div>
+      <button
+        cos-flat-button
+        color="primary"
+        size="sm"
+        class="lg:hidden block"
+        [matMenuTriggerFor]="menu"
+        click.stop
+      >
+        <i class="fa fa-ellipsis-h"></i>
+        <span class="cos-accessibly-hidden">Menu</span>
+      </button>
+      <mat-menu
+        #menu="matMenu"
+        class="cos-global-menu-panel"
+        backdropClass="cos-global-menu-backdrop"
+        yPosition="below"
+      >
+        <esp-pres-empty-state-actions
+          *ngIf="state.presentation.Status === PresentationStatus.PreShare"
+          [hasProducts]="state.presentation.Products.length > 0"
+          [mobile]="true"
+        ></esp-pres-empty-state-actions>
+
+        <esp-pres-post-share-state-actions
+          *ngIf="state.presentation.Status === PresentationStatus.PostShare"
+          [hasQuote]="false"
+          [mobile]="true"
+        ></esp-pres-post-share-state-actions>
+      </mat-menu>
+    </div>
+    <main class="proj-pres__main">
+      <esp-presentation-info-card></esp-presentation-info-card>
+
+      <esp-pres-quote-request
+        *ngIf="state.presentation.Status === PresentationStatus.QuoteRequested"
+      ></esp-pres-quote-request>
+
+      <div
+        *ngIf="!['PostShare', 'Quote Requested'].includes(state.presentation.Status) "
+        class="grid-gap-16 lg:grid-cols-2 grid grid-cols-1 mt-16 mb-32"
+        [formGroup]="form"
+      >
+        <div class="proj-pres__settings">
+          <cos-card class="presentation-settings">
+            <h3 class="header-style-18 mb-8">
+              Presentation settings
+              <button
+                cos-icon-button
+                matTooltip="Hiding a product detail here will apply to all products in the presentation. You can choose to display the hidden information for specific items by editing the individual product and turning the option on."
+                matTooltipHideDelay="100"
+                aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                matTooltipClass="presentation-settings-tooltip"
+                matTooltipPosition="above"
+              >
+                <i class="fas fa-info-circle cos-text--blue"></i>
+              </button>
+            </h3>
+            <p class="text-shark proj-pres__settings-description mt-0">
+              Hide these product details on all items in your presentation.
+            </p>
+            <fieldset>
+              <legend>Product details</legend>
+              <esp-presentation-settings
+                *ngIf="state.presentation.Settings"
+                class="proj-pres__settings"
+              ></esp-presentation-settings>
+            </fieldset>
+
+            <fieldset>
+              <legend>Sharing Options</legend>
+              <div class="cos-form-field">
+                <cos-toggle
+                  data-cy="toggle-allow-product-variants"
+                  class="block w-full mb-16"
+                  [checked]="state.presentation.AllowProductVariants"
+                  [disabled]="disabledToggles.AllowProductVariants"
+                  [options]="{ disableToggleValue: true }"
+                  (click)="updateSharingOption('AllowProductVariants')"
+                >
+                  Allow customers to select product variants when requesting a
+                  quote
+                </cos-toggle>
+              </div>
+              <cos-form-field class="mb-4" [formGroup]="tempForm">
+                <cos-label>Personal note</cos-label>
+                <textarea
+                  cos-input
+                  rows="4"
+                  id="sharing-personal-note"
+                  placeholder="Here are some products that I think you might be interested in!"
+                  maxlength="250"
+                  formControlName="Note"
+                  #personalNoteRef
+                ></textarea>
+                <cos-hint align="start"
+                  >{{ personalNoteRef.value?.length ?? 0 }}/{{
+                  personalNoteRef.maxLength }}</cos-hint
+                >
+                <cos-hint align="end">
+                  <button
+                    type="button"
+                    cos-stroked-button
+                    color="primary"
+                    class="presentation-note-cancel-btn"
+                    (click)="resetNote()"
+                    [disabled]="tempForm.controls.Note.value === form.controls.Note.value"
+                  >
+                    <span>Cancel</span>
+                  </button>
+                  <button
+                    type="button"
+                    cos-flat-button
+                    color="primary"
+                    class="presentation-note-save-btn"
+                    (click)="saveNote()"
+                    [disabled]="tempForm.controls.Note.value === form.controls.Note.value"
+                  >
+                    <span>Save</span>
+                  </button>
+                </cos-hint>
+              </cos-form-field>
+              <div
+                class="cos-form-field presentation-settings-include-signature"
+              >
+                <cos-toggle
+                  data-cy="toggle-include-signature"
+                  class="block w-full mb-16"
+                  [checked]="state.presentation.ShowSignature"
+                  [disabled]="disabledToggles.ShowSignature"
+                  [options]="{ disableToggleValue: true }"
+                  (click)="updateSharingOption('ShowSignature')"
+                >
+                  Include signature
+                </cos-toggle>
+              </div>
+              <cos-form-field class="date-picker" [formGroup]="tempForm">
+                <cos-label>Expiration date</cos-label>
+                <span
+                  cosPrefix
+                  class="fa fa-calendar-alt cos-text--blue"
+                  (click)="picker.open()"
+                ></span>
+                <input
+                  cos-input
+                  data-cy="expiration-date-input"
+                  placeholder="Select a date"
+                  class="mat-select"
+                  [matDatepicker]="picker"
+                  (focus)="picker.open()"
+                  formControlName="ExpirationDate"
+                  (blur)="saveExpirationDate()"
+                />
+                <cos-error
+                  [controlErrors]="{matDatepickerParse: 'Invalid expiration date.'}"
+                ></cos-error>
+                <mat-datepicker #picker></mat-datepicker>
+              </cos-form-field>
+            </fieldset>
+          </cos-card>
+        </div>
+
+        <esp-presentation-preview
+          class="proj-pres__preview"
+        ></esp-presentation-preview>
+      </div>
+
+      <esp-presentation-products></esp-presentation-products>
+    </main>
+  </ng-template>
+
+  <ng-template #loader>
+    <esp-presentation-settings-loader></esp-presentation-settings-loader>
+  </ng-template>
+</div>

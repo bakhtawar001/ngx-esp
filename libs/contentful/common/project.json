@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/contentful/common",
+  "sourceRoot": "libs/contentful/common/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/contentful/common/**/*.ts",
+          "libs/contentful/common/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/contentful/common/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/contentful/common"]
+    }
+  },
+  "generators": {},
+  "tags": ["scope:contentful", "type:library", "platform:web"]
+}

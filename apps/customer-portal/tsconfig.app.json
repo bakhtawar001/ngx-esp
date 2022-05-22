@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "resize-observer-browser",
+      "requestidlecallback",
+      "ng-dev-mode"
+    ]
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"]
+}

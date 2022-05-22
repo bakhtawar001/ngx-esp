@@ -1,0 +1,124 @@
+@import 'cosmos/scss/settings/';
+
+$icon-font-family: 'Font Awesome 5 Free';
+
+.mat-menu-item {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-autocomplete-panel {
+  &.keyword-suggestions-autocomplete {
+    overflow: visible;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    margin-top: 4px;
+    width: calc(100% + 44px);
+
+    &::before {
+      content: '';
+      height: 4px;
+      width: 100%;
+      position: absolute;
+      top: -4px;
+      background: inherit;
+      z-index: 1;
+    }
+
+    .mat-option {
+      line-height: 36px;
+      height: 36px;
+    }
+  }
+}
+
+.filter-menu {
+  &.filter-menu-select-list fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 380px;
+    min-width: 0;
+  }
+
+  .mat-list-base {
+    width: 100%;
+    max-height: 264px;
+    overflow-y: auto;
+    padding-top: 0;
+
+    .mat-list-item,
+    .mat-list-option {
+      height: 18px;
+      margin: 16px 0;
+    }
+
+    .mat-list-item .mat-list-item-content,
+    .mat-list-option .mat-list-item-content {
+      padding: 0;
+    }
+
+    .mat-list-item.mat-list-item-with-avatar
+      .mat-list-item-content
+      .mat-list-text,
+    .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,
+    .mat-list-option.mat-list-item-with-avatar
+      .mat-list-item-content
+      .mat-list-text,
+    .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text {
+      padding-left: 8px;
+      display: flex;
+      flex-direction: row;
+      @include type-body-style-14-mineshaft();
+      line-height: 16px;
+      user-select: none;
+      white-space: nowrap;
+
+      > span:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-right: 6px;
+        flex: 1;
+        min-width: 0px;
+      }
+    }
+  }
+
+  .mat-pseudo-checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: rem(14px);
+    border: 1px solid $color-g-stone-41;
+    border-radius: 2px;
+    color: $color-g-white-00;
+
+    &.mat-pseudo-checkbox-checked,
+    &.mat-pseudo-checkbox-indeterminate {
+      background: $color-bl-azure-57;
+      border-color: $color-bl-azure-57;
+    }
+
+    &.mat-pseudo-checkbox-checked:after {
+      top: auto;
+      left: auto;
+      width: auto;
+      height: auto;
+      border-left: none;
+      transform: none;
+      opacity: 1;
+      box-sizing: content-box;
+      font-family: $icon-font-family;
+      content: '\f00c';
+      display: block;
+      font-weight: 900;
+      border-bottom: none;
+    }
+  }
+}
+
+.mat-ripple {
+  overflow: hidden;
+}

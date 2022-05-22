@@ -1,0 +1,36 @@
+@import 'cosmos/scss/settings/';
+
+.related-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 10px;
+
+  > a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  cos-supplier:hover {
+    .cos-supplier-name,
+    .cos-supplier-number {
+      text-decoration: underline;
+    }
+  }
+
+  @include narrower-than($bp-large) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    a {
+      min-width: 104px;
+    }
+  }
+}

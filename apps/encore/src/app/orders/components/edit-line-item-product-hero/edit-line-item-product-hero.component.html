@@ -1,0 +1,16 @@
+<esp-presentation-product-image
+  [image]="lineItem?.ImageUrl"
+></esp-presentation-product-image>
+
+<cos-card class="mt-16">
+  <p class="header-style-12-shark caption">
+    <i class="fa fa-eye-slash mr-8"></i> All supplier information is hidden from
+    the customer presentation.
+  </p>
+  <hr class="card-divider" />
+  <cos-supplier
+    [supplier]="lineItem?.Supplier"
+    [showImage]="true"
+    [showPreferredGroup]="true"
+  ></cos-supplier>
+</cos-card>

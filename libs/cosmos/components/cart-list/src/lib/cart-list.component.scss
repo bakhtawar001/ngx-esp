@@ -1,0 +1,65 @@
+@import '../../../../scss/settings/';
+
+.cos-cart-list {
+  @include cos-container($color-g-white-00);
+  display: block;
+  border-radius: $border-radius-4;
+
+  &-heading {
+    margin-top: 0;
+  }
+
+  &-container {
+    @include cos-container($color-g-pearl-03);
+    border-radius: $border-radius-4;
+    box-shadow: $box-shadow-menu;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    border-top: $border-light;
+    margin-top: $spacing-stack-16;
+    padding-top: $spacing-stack-16;
+
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &-item-image {
+    display: block;
+    max-width: 80px;
+    width: 80px;
+    height: 80px;
+    margin-right: $spacing-stack-16;
+
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &-item-details {
+    @include type-body-style-14-shark;
+    max-width: 80%;
+    margin: 0;
+    padding: 0;
+
+    & li {
+      margin-bottom: $spacing-stack-4;
+      list-style: none;
+    }
+  }
+
+  &-detail-label {
+    @include type-body-style-14-shark;
+    font-weight:  $font-weight-700;
+  }
+}

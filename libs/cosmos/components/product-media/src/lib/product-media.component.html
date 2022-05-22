@@ -1,0 +1,175 @@
+<div class="cos-product-media">
+  <div>
+    <div
+      class="cos-product-media-thumbnail-prev"
+      (mouseover)="scrollTrack('up', true)"
+      (mouseout)="scrollTrack('up', false)"
+      (click)="passClickToThumbnail($event)"
+      (keydown)="navigateThumbnails($event)"
+    ></div>
+    <div
+      class="cos-product-media-thumbnail-next"
+      (mouseover)="scrollTrack('down', true)"
+      (click)="passClickToThumbnail($event)"
+      (mouseout)="scrollTrack('down', false)"
+      (keydown)="navigateThumbnails($event)"
+    ></div>
+    <div
+      class="cos-product-media-thumbnail-image-container"
+      id="{{ id }}-thumbnail-container"
+    >
+      <ul class="cos-product-media-thumbnail-list">
+        <li
+          tabindex="0"
+          *ngFor="let item of _media; let i = index"
+          id="{{ _uniqueId }}-thumbnail-{{ i }}"
+          #thumbnailListItem
+          (click)="setcurrentUrl(i)"
+          (keyup.enter)="setcurrentUrl(i)"
+          (keydown)="navigateThumbnails($event)"
+          [ngClass]="{
+            'is-active': i === _currentIndex,
+            'cos-product-media-thumbnail-list-item': true,
+            'cos-product-media-thumbnail-list-item--video': item.Type === 'VD'
+          }"
+        >
+          <div
+            class="cos-product-media-thumbnail-img"
+            *ngIf="item.Type === 'IMG'; else video"
+          >
+            <ng-container *ngIf="editMode">
+              <button
+                class="cos-product-media-toggle-visibility"
+                (click)="setItemVisibility(i)"
+              >
+                <i
+                  [ngClass]="{
+                    fa: true,
+                    'fa-eye': !item.Hidden,
+                    'fa-eye-slash': item.Hidden
+                  }"
+                ></i>
+
+                <span class="cos-accessibly-hidden"
+                  >{{ !item.Hidden ? 'Disable' : 'Enable' }} Image</span
+                >
+              </button>
+            </ng-container>
+            <img
+              [ngClass]="{
+                'cos-product-media-disabled-image': item.Hidden
+              }"
+              [src]="item.Url | imageUrlPipe"
+              alt="{{ _product.Name }} {{ '- ' + item.Name }} - Image {{
+                i
+              }} of {{ _media.length - 1 }}"
+              (error)="errorHandler(i)"
+              *ngIf="!item.error; else errorBlock"
+            />
+            <ng-template #errorBlock>
+              <div class="cos-product-media-no-img">No image available</div>
+            </ng-template>
+          </div>
+          <ng-template #video>
+            <cos-video-thumbnail
+              imgContainerClass="cos-product-media-thumbnail-img-container"
+              [video]="item"
+              [alt]="item.thumbnailAlt"
+            ></cos-video-thumbnail>
+            <div class="cos-product-media-video-play"></div>
+          </ng-template>
+        </li>
+        <li
+          *ngIf="editMode"
+          class="cos-product-media-upload-container"
+          id="{{ _uniqueId }}-upload"
+          #productMediaUpload
+          (click)="drop.showFileSelector()"
+        >
+          <ngx-dropzone
+            class="cos-dropzone"
+            (change)="onSelect($event)"
+            [multiple]="false"
+            #drop
+          >
+            <cos-dropzone-preview ngProjectAs="ngx-dropzone-preview">
+              <ngx-dropzone-label>
+                <div class="cos-dropzone-display">
+                  <i class="fa fa-cloud-upload-alt"></i>
+                  <span class="cos-dropzone-upload">Upload</span>
+                </div>
+              </ngx-dropzone-label>
+            </cos-dropzone-preview>
+          </ngx-dropzone>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="cos-product-media-main-image-container">
+    <button
+      cos-stroked-button
+      color="primary"
+      [disabled]="_currentIndex === 0"
+      (click)="prevImage()"
+    >
+      <i class="fa fa-chevron-left"></i>
+      <span class="cos-accessibly-hidden">Previous Media Item</span>
+    </button>
+    <ul class="cos-product-media-main-list">
+      <li
+        *ngFor="let item of _media; let i = index"
+        id="{{ _uniqueId }}-primary-{{ i }}"
+        [ngClass]="{
+          'cos-product-media--hidden': i !== _currentIndex,
+          'cos-product-media-main-video': item.Type === 'VD'
+        }"
+      >
+        <div class="cos-product-media-main-layout">
+          <ng-container *ngIf="item.Type === 'IMG'; else video">
+            <cos-image-zoom
+              *ngIf="!item.error; else errorBlock"
+              [thumbImage]="item.Url | imageUrlPipe"
+              [fullImage]="item.Url | imageUrlPipe"
+              [alt]="item.Name + ' ' + _product.Name"
+              [ngClass]="{
+                'cos-product-media-image-zoom': true,
+                'cos-product-media-disabled-image': item.Hidden
+              }"
+            ></cos-image-zoom>
+
+            <ng-template #errorBlock>
+              <div class="cos-product-media-no-img">No image available</div>
+            </ng-template>
+
+            <a
+              *ngIf="!item.error && !editMode"
+              class="cos-product-media-download"
+              (click)="downloadImage(item)"
+            >
+              <span class="cos-accessibly-hidden"
+                >Download Image for {{ _product.Name }}</span
+              >
+              <i class="fa fa-download"></i>
+            </a>
+          </ng-container>
+
+          <ng-template #video>
+            <cos-video-player
+              *ngIf="item.Type === 'VD'"
+              [video]="item"
+            ></cos-video-player>
+          </ng-template>
+        </div>
+      </li>
+    </ul>
+    <button
+      cos-stroked-button
+      color="primary"
+      (click)="nextImage()"
+      [disabled]="_currentIndex === _media.length - 1"
+    >
+      <i class="fa fa-chevron-right"></i>
+      <span class="cos-accessibly-hidden">Next Media Item</span>
+    </button>
+  </div>
+</div>

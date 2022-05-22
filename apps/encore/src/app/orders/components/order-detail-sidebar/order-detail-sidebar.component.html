@@ -1,0 +1,24 @@
+<aside class="order-detail-sidebar">
+  <div class="order-detail-info">
+    <div class="flex justify-between">
+      <p class="body-style-12-shark mb-8">
+        {{ order?.Type | titlecase }} status
+      </p>
+    </div>
+    <p class="mb-8">
+      <span class="header-style-16 order-detail-info__status">
+        <ng-container *ngIf="order?.Type === 'order'"> Ordering </ng-container>
+        <ng-container *ngIf="order?.Type === 'quote'"> Quoting </ng-container>
+      </span>
+    </p>
+
+    <esp-order-quote-summary [order]="order"></esp-order-quote-summary>
+  </div>
+
+  <div class="settings-menu">
+    <cos-vertical-menu
+      [label]="'Orders menu'"
+      [menu]="menu"
+    ></cos-vertical-menu>
+  </div>
+</aside>

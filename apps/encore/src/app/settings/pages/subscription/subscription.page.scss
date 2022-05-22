@@ -1,0 +1,45 @@
+@import 'cosmos/scss/settings/';
+
+.page-description {
+  color: $color-g-shark-54;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-14;
+}
+
+.subscription-settings-panel-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subscription-payment {
+  @include wider-than($bp-large) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 800px;
+  }
+
+  @include narrower-than($bp-large) {
+    .subscription-automatic-payment {
+      display: inline;
+      margin-left: $spacing-inline-48;
+    }
+
+    > div {
+      &:first-of-type {
+        margin: 0;
+      }
+      margin-bottom: $spacing-stack-16;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.subscription-payment-card {
+  display: flex;
+  align-items: center;
+}

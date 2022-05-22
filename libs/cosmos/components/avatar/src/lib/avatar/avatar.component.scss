@@ -1,0 +1,46 @@
+@import '../../../../../scss/settings';
+
+.cos-avatar {
+  $size: 32px;
+
+  @include spacing-inset-12();
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: $size;
+  width: $size;
+  background: $color-g-pebble-09;
+  border-radius: 50%;
+  overflow: hidden;
+  font-family: Barlow, sans-serif;
+  color: $color-g-stone-41 !important;
+  font-size: $font-size-16;
+  font-weight: $font-weight-700;
+  position: relative;
+
+  > img,
+  .cos-avatar-image {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $color-g-pebble-09;
+    border-radius: 50%;
+  }
+}
+
+.cos-avatar--small {
+  $size: 24px;
+
+  height: $size;
+  width: $size;
+  font-size: $font-size-10;
+
+  > img,
+  .cos-avatar-image {
+    height: $size;
+    width: $size;
+  }
+}

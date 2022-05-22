@@ -1,0 +1,61 @@
+@import 'cosmos/scss/settings/';
+
+.cos-segmented-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-row-title .cos-pill-label {
+  margin-left: $spacing-inline-8;
+}
+
+.form-panel-row {
+  border-bottom: 1px solid $color-g-pebble-09;
+
+  &:not(:first-child) {
+    padding-top: $spacing-stack-16;
+  }
+
+  .cos-input-row {
+    margin-bottom: $spacing-stack-8;
+    align-items: flex-start;
+  }
+
+  .cos-form-field {
+    margin-bottom: 0;
+  }
+
+  @include wider-than($bp-medium) {
+    esp-lookup-select {
+      max-width: 300px;
+    }
+  }
+}
+
+.form-panel-field {
+  &__type {
+    padding-right: 0;
+
+    @include wider-than($bp-medium) {
+      padding-right: $spacing-inline-8;
+      flex: 0;
+      max-width: 220px;
+    }
+  }
+
+  &__add-field-btn.cos-button {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding-left: 0;
+  }
+
+  &__primary-msg {
+    font-size: $font-size-14;
+    margin-bottom: 0;
+  }
+}
+
+.form-panel-row-list {
+  max-width: 808px;
+}

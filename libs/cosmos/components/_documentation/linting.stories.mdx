@@ -1,0 +1,19 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Documentation/Linting" />
+
+# Linting
+
+You can lint your scss and typescript code with the <code>npm run lint</code> command in your terminal. This command will check all relevant files for any linting errors. You can also format all your scss and Typescript/Javascript with the command <code>npm run format</code>.
+
+## SCSS linting
+
+The pattern library uses the stylelint linter to validate the coding style of the scss files. The configuration for this linter is found in the .stylelintrcrc file at the root level of the pattern library. Any changes to scss code style should be reflected there.
+
+## TS Linting
+
+The pattern library uses the built in [angular linter](https://angular.io/cli/lint) to validate the coding style of typescript files. the configuration for this linter can be found and changed in the `tslint.json` file at the root level of the pattern library.
+
+## Code Formatting with Prettier
+
+All code style in the pattern library javascript and scss is handled with prettier. This includes tab size, quote style, and line length. None of these "code style" properties are checked by a linter to prevent collisions.

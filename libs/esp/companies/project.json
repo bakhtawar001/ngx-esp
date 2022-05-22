@@ -1,0 +1,40 @@
+{
+  "root": "libs/esp/companies",
+  "sourceRoot": "libs/esp/companies/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/esp/companies/tsconfig.lib.json",
+        "project": "libs/esp/companies/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/companies/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/companies/**/*.ts",
+          "libs/esp/companies/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/companies/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/companies"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

@@ -1,0 +1,55 @@
+@import '../../../../scss/settings/';
+
+.cos-featured-video {
+  display: block; // necessary for IE11
+  .cos-video-thumbnail-container {
+    position: relative;
+    .cos-video-thumbnail {
+      width: 100%;
+    }
+    .cos-video-play-button {
+      position: absolute;
+      top: calc(50% - 25%);
+      left: calc(50% - 25% * 9 / 16);
+      width: calc(50% * 9 / 16);
+      height: 50%;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      appearance: none;
+      background-color: transparentize($color-g-mineshaft-88, 0.3);
+      color: $color-g-white-00;
+      font-size: 50px;
+      line-height: 1;
+      text-align: center;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 71 75'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M70.195 37.086l-70 37v-74z'/%3E%3C/svg%3E")
+          60% 50% no-repeat;
+        background-size: 40% 40%;
+      }
+      &:focus {
+        @include cos-focus();
+      }
+    }
+  }
+  .cos-video-text {
+    margin-top: $spacing-stack-8;
+    .cos-video-heading {
+      @include type-style-header-16();
+      margin: 0;
+      margin-bottom: $spacing-stack-4;
+    }
+    .cos-video-description {
+      @include type-body-style-12();
+      margin: 0;
+    }
+  }
+}

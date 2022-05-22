@@ -1,0 +1,47 @@
+@import 'cosmos/scss/settings';
+$mobile-breakpoint: $bp-large;
+
+.project-detail-sidebar {
+  grid-area: b;
+
+  &--accordion {
+    & > .cos-accordion-header {
+      display: none;
+      .cos-accordion-btn {
+        padding-left: 0;
+      }
+      @include narrower-than($bp-large) {
+        display: block;
+      }
+    }
+    & > .cos-accordion-body {
+      padding: 0 !important;
+    }
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $spacing-stack-16;
+    margin-top: $spacing-stack-24;
+    border-top: $border-light;
+  }
+}
+
+.project-contact-info {
+  &-name {
+    align-items: baseline;
+  }
+  a {
+    color: $color-g-mineshaft-88;
+  }
+  .project-contact-job {
+    color: $color-g-shark-54;
+  }
+}
+
+.settings-menu {
+  margin-bottom: $spacing-stack-16;
+  border-bottom: $border-light;
+}

@@ -1,0 +1,399 @@
+<div class="cos-supplier-page-header-container" *ngIf="supplier">
+  <div class="cos-supplier-page-header-content">
+    <div class="cos-supplier-page-header-image-container">
+      <img
+        class="cos-supplier-img"
+        src="https://commonmedia.asicentral.com/supplierlogos/{{
+          supplier.Id
+        }}/logo.png"
+        alt="{{ supplier.Name }}"
+        *ngIf="!imgError"
+        (error)="errorHandler($event)"
+      />
+
+      <div *ngIf="imgError" class="cos-supplier-img cos-supplier-img-error">
+        No image available
+      </div>
+    </div>
+    <!-- Main section -->
+    <div class="cos-supplier-page-header-main">
+      <div class="cos-supplier-page-header-title-row">
+        <div>
+          <h1 class="cos-supplier-name">{{ supplier.Name }}</h1>
+          <div class="cos-supplier-number">asi/{{ supplier.AsiNumber }}</div>
+          <cos-rating
+            [rating]="supplier.Ratings?.OverAll?.Rating"
+            [totalCount]="supplier.Ratings?.OverAll?.Companies"
+          ></cos-rating>
+        </div>
+        <button
+          cos-stroked-button
+          color="primary"
+          *cosIfFeatureFlags="{ matches: 'mmp' }"
+        >
+          {{ labels.addTo }}<i class="ml-8 fa fa-angle-down"></i>
+        </button>
+      </div>
+      <p *ngIf="supplier.OurStory" class="cos-supplier-our-story body-style-12">
+        {{ supplier.OurStory }}
+      </p>
+
+      <ng-container *ngIf="supplier.MarketingPolicy">
+        <h2 class="cos-supplier-market-policy cos-supplier-subhead">
+          {{ labels.marketingPolicy }}
+        </h2>
+        <p class="cos-supplier-market-policy-value cos-supplier-detail-value">
+          {{ supplier.MarketingPolicy }}
+        </p>
+      </ng-container>
+      <ng-container
+        class="cos-supplier-awards"
+        *ngIf="supplier.Awards && supplier.Awards.length > 0"
+      >
+        <h2 class="cos-supplier-subhead">{{ labels.awards }}</h2>
+        <!-- Added Awards to mock data -->
+        <div class="cos-awards">
+          <div *ngFor="let award of supplier.Awards" class="cos-award">
+            {{ award }}
+          </div>
+        </div>
+      </ng-container>
+      <ng-container class="cos-supplier-preferred" *ngIf="supplier.Preferred">
+        <h2 class="cos-supplier-subhead">{{ labels.preferredSupplier }}</h2>
+        <p class="cos-supplier-preferred-name" cosAttributeTag>
+          {{ supplier.Preferred.Name }}
+        </p>
+        <ng-container
+          class="cos-supplier-preferred-details"
+          *ngIf="supplier.Preferred.Description"
+        >
+          <h2 class="cos-supplier-subhead">{{ labels.preferredPricing }}</h2>
+          <p class="cos-supplier-preferred-description" cosAttributeTag>
+            {{ supplier.Preferred.Description }}
+          </p>
+        </ng-container>
+
+        <p
+          class="cos-supplier-preferred-exceptions body-style-12"
+          *ngIf="supplier.Preferred.Exceptions"
+        >
+          <span *ngIf="labels.exceptions">{{ labels.exceptions }}:</span>
+          {{ supplier.Preferred.Exceptions }}
+        </p>
+      </ng-container>
+      <ng-container *ngIf="supplier.LineNames">
+        <h2 class="cos-supplier-subhead">{{ labels.productLines }}</h2>
+        <cos-related-topics
+          [topics]="lineNameSearchResults"
+        ></cos-related-topics>
+      </ng-container>
+      <div class="cos-card-expand">
+        <button
+          cos-stroked-button
+          color="primary"
+          size="sm"
+          (click)="toggleExpandedDetails()"
+          [attr.aria-expanded]="expandedDetails"
+        >
+          {{ expandedDetails ? labels.viewLess : labels.viewMore }}
+          <i
+            class="ml-8"
+            [ngClass]="[
+              'fa',
+              expandedDetails ? 'fa-angle-up' : 'fa-angle-down'
+            ]"
+          ></i>
+        </button>
+      </div>
+    </div>
+    <!-- Details expandable section -->
+    <div
+      [ngClass]="[
+        'cos-supplier-page-header-details',
+        'cos-supplier-page-header-collapsible',
+        expandedDetails ? 'expanded' : ''
+      ]"
+      [attr.aria-hidden]="!expandedDetails"
+    >
+      <mat-divider></mat-divider>
+      <h2 class="cos-supplier-label-details cos-supplier-subhead">
+        {{ labels.details }}
+      </h2>
+      <div class="cos-supplier-details">
+        <div *ngIf="supplier.YearEstablished" class="cos-supplier-detail">
+          <h3 class="cos-supplier-year-label cos-supplier-detail-heading">
+            {{ labels.yearEstablished }}
+          </h3>
+          <p class="cos-suppler-year-established cos-supplier-detail-value">
+            {{ supplier.YearEstablished }}
+          </p>
+        </div>
+        <div *ngIf="yearsInIndustry" class="cos-supplier-detail">
+          <h3 class="cos-supplier-year-in-industry cos-supplier-detail-heading">
+            {{ labels.yearsInIndustry }}
+          </h3>
+          <p class="cos-supplier-detail-value">{{ yearsInIndustry }}</p>
+        </div>
+        <div *ngIf="supplier.TotalEmployees" class="cos-supplier-detail">
+          <h3
+            class="
+              cos-supplier-total-employees-label cos-supplier-detail-heading
+            "
+          >
+            {{ labels.totalEmployees }}
+          </h3>
+          <p class="cos-supplier-total-employees cos-supplier-detail-value">
+            {{ supplier.TotalEmployees }}
+          </p>
+        </div>
+        <div
+          *ngIf="supplier.IsQcaCertified"
+          class="cos-supplier-certified cos-supplier-detail"
+        >
+          <h3 class="cos-supplier-detail-heading">
+            {{ labels.qca }}
+          </h3>
+          <p class="cos-supplier-isQca cos-supplier-detail-value">
+            {{ labels[supplier.IsQcaCertified] }}
+          </p>
+        </div>
+        <div
+          *ngIf="
+            supplier.hasOwnProperty('IsMinorityOwned') &&
+            supplier.IsMinorityOwned
+          "
+          class="cos-supplier-detail"
+        >
+          <h3 class="cos-supplier-detail-heading">
+            {{ labels.minorityOwned }}
+          </h3>
+          <p
+            *ngIf="supplier.MinorityInvolvement"
+            class="cos-supplier-minority-involvement cos-supplier-detail-value"
+          >
+            {{ supplier.MinorityInvolvement }}
+          </p>
+          <p
+            *ngIf="!supplier.hasOwnProperty('MinorityInvolvement')"
+            class="cos-supplier-isMinority cos-supplier-detail-value"
+          >
+            {{ labels[supplier.IsMinorityOwned] }}
+          </p>
+        </div>
+        <div
+          *ngIf="
+            supplier.hasOwnProperty('IsUnionAvailable') &&
+            supplier.IsUnionAvailable
+          "
+          class="cos-supplier-detail"
+        >
+          <h3 class="cos-supplier-detail-heading">
+            {{ labels.unionAffiliated }}
+          </h3>
+          <p class="cos-supplier-isUnion cos-supplier-detail-value">
+            {{ labels[supplier.IsUnionAvailable] }}
+          </p>
+        </div>
+        <div
+          *ngIf="supplier.ProductionTime"
+          class="cos-supplier-production-time-details cos-supplier-detail"
+        >
+          <h3
+            class="
+              cos-supplier-production-time-label cos-supplier-detail-heading
+            "
+          >
+            {{ labels.standardProductionTime }}
+          </h3>
+          <p class="cos-supplier-production-time cos-supplier-detail-value">
+            {{ supplier.ProductionTime.Name }}
+          </p>
+        </div>
+        <div
+          *ngIf="supplier.RushTime"
+          class="cos-supplier-rush-time-details cos-supplier-detail"
+        >
+          <h3 class="cos-supplier-detail-heading">
+            {{ labels.rushTime }}
+          </h3>
+          <p class="cos-supplier-rush-time-name cos-supplier-detail-value">
+            {{ supplier.RushTime.Name }}
+          </p>
+        </div>
+        <div
+          *ngIf="supplier.Functions && supplier.Functions.length > 0"
+          class="cos-supplier-detail --full-width"
+        >
+          <h3 class="cos-supplier-function cos-supplier-detail-heading">
+            {{ labels.functions }}
+          </h3>
+          <p class="cos-supplier-function-value cos-supplier-detail-value">
+            {{ supplier.Functions.join(', ') }}
+          </p>
+        </div>
+        <div
+          *ngIf="
+            supplier.ImprintingMethods && supplier.ImprintingMethods.length > 0
+          "
+          class="cos-supplier-detail --full-width"
+        >
+          <h3
+            class="cos-supplier-imprinting-method cos-supplier-detail-heading"
+          >
+            {{ labels.decoratingMethods }}
+          </h3>
+          <p
+            class="
+              cos-supplier-imprinting-method-value cos-supplier-detail-value
+            "
+          >
+            {{ supplier.ImprintingMethods.join(', ') }}
+          </p>
+        </div>
+        <div
+          *ngIf="fobPoints.length > 0"
+          class="cos-supplier-detail --full-width"
+        >
+          <h3 class="cos-supplier-fobPoints cos-supplier-detail-heading">
+            {{ labels.fobPoints }}
+          </h3>
+          <p class="cos-supplier-fobPoints-value cos-supplier-detail-value">
+            {{ fobPoints.join('; ') }}
+          </p>
+        </div>
+        <div
+          *ngIf="supplier.Artwork && supplier.Artwork.Comment"
+          class="cos-supplier-detail --full-width"
+        >
+          <h3 class="cos-supplier-artwork cos-supplier-detail-heading">
+            {{ labels.artworkComments }}
+          </h3>
+          <p class="cos-supplier-artwork-value cos-supplier-detail-value">
+            {{ supplier.Artwork.Comment }}
+          </p>
+        </div>
+        <div
+          *ngIf="supplier.DistributionPolicy"
+          class="cos-supplier-detail --full-width"
+        >
+          <h3
+            class="cos-supplier-distribution-policy cos-supplier-detail-heading"
+          >
+            {{ labels.distributionPolicy }}
+          </h3>
+          <p
+            class="
+              cos-supplier-distribution-policy-value cos-supplier-detail-value
+            "
+          >
+            {{ supplier.DistributionPolicy }}
+          </p>
+        </div>
+        <div
+          *ngIf="safetyComplianceDocuments.length > 0"
+          class="cos-supplier-detail --full-width"
+        >
+          <h3 class="cos-supplier-documents cos-supplier-detail-heading">
+            {{ labels.safetyCompliance }}
+          </h3>
+          <ul class="cos-supplier-doc-list">
+            <li
+              *ngFor="let doc of safetyComplianceDocuments"
+              class="cos-supplier-detail-value"
+            >
+              <a [href]="doc.Url" target="_blank">{{ doc.Name }}</a>
+            </li>
+          </ul>
+        </div>
+        <div
+          *ngIf="safetyWebpages.length > 0"
+          class="cos-supplier-detail --full-width"
+        >
+          <h3 class="cos-supplier-webPages cos-supplier-detail-heading">
+            {{ labels.webPages }}
+          </h3>
+          <ul class="cos-supplier-doc-list">
+            <li
+              *ngFor="let page of safetyWebpages"
+              class="cos-supplier-detail-value"
+            >
+              <a [href]="page.Url" target="_blank">{{ page.Name }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Info section -->
+    <div class="cos-supplier-page-header-contact-info">
+      <cos-contact-info
+        heading="Contact Information"
+        [supplier]="supplier"
+        [labels]="labels"
+        [socialLinks]="true"
+      ></cos-contact-info>
+      <div class="cos-card-expand">
+        <button
+          cos-button
+          size="sm"
+          (click)="toggleExpandedContacts()"
+          [attr.aria-expanded]="expandedContacts"
+        >
+          {{ expandedContacts ? labels.viewLess : labels.viewMore }}
+          <i
+            class="ml-8"
+            [ngClass]="[
+              'fa',
+              expandedContacts ? 'fa-angle-up' : 'fa-angle-down'
+            ]"
+          ></i>
+        </button>
+      </div>
+    </div>
+    <!-- Contacts expandable section -->
+    <div
+      [ngClass]="[
+        'cos-supplier-page-header-contacts',
+        'cos-supplier-page-header-collapsible',
+        expandedContacts ? 'expanded' : ''
+      ]"
+      [attr.aria-hidden]="!expandedContacts"
+    >
+      <div class="cos-contacts-divider">
+        <mat-divider></mat-divider>
+      </div>
+      <ng-container *ngIf="supplier.Contacts?.length > 0">
+        <cos-contact-info
+          class="cos-supplier-contacts"
+          heading="Company Contacts"
+          [contacts]="supplier.Contacts"
+        ></cos-contact-info>
+        <div class="cos-contacts-divider">
+          <mat-divider></mat-divider>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="supplier.References?.length > 0">
+        <cos-contact-info
+          class="cos-supplier-references"
+          heading="Independent Distributor References"
+          [references]="supplier.References"
+        ></cos-contact-info>
+      </ng-container>
+    </div>
+    <div class="cos-card-expand-all">
+      <button
+        cos-stroked-button
+        color="primary"
+        size="sm"
+        (click)="toggleExpandedAll()"
+        [attr.aria-expanded]="expandedAll"
+        data-test="expand"
+      >
+        {{ expandedAll ? labels.viewLess : labels.viewMore }}
+        <i
+          class="ml-8"
+          [ngClass]="['fa', expandedAll ? 'fa-angle-up' : 'fa-angle-down']"
+        ></i>
+      </button>
+    </div>
+  </div>
+</div>

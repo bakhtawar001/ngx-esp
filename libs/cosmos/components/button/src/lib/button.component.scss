@@ -1,0 +1,196 @@
+@import '../../../../scss/settings';
+
+$cos-button-line-height: 16px !default;
+$cos-button-border-radius: $border-radius-4;
+$cos-icon-button-size: 32px !default;
+
+$cos-button-disabled-text: $color-g-moth-41;
+$cos-button-disabled-bg: $color-g-pebble-09;
+
+@mixin cos-button-base {
+  box-sizing: border-box;
+  position: relative;
+
+  font-family: 'Barlow', sans-serif;
+  font-size: $font-size-14;
+  font-weight: $font-weight-700;
+  -webkit-font-smoothing: antialiased;
+
+  // Reset browser <button> styles.
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: $color-bl-atoll-75;
+
+  // Make anchors render like buttons.
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+
+  // Sizing.
+  line-height: $cos-button-line-height;
+  @include spacing-squish-8();
+  border-radius: $cos-button-border-radius;
+
+  // Explicitly set the default overflow to `visible`. It is already set
+  // on most browsers except on IE11 where it defaults to `hidden`.
+  overflow: visible;
+
+  &.cos-button-disabled {
+    cursor: default;
+    pointer-events: none;
+    color: $cos-button-disabled-text;
+  }
+
+  & ~ & {
+    margin-left: $spacing-inline-8;
+  }
+
+  &:focus {
+    @include cos-focus;
+  }
+}
+
+// Should be placed after the `:hover` styles so the focused
+// styling coming in from `cos-button-base` takes precedence.
+.cos-button,
+.cos-icon-button,
+.cos-stroked-button,
+.cos-flat-button {
+  @include cos-button-base();
+
+  i {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.cos-primary {
+  color: $color-gn-monstera-72;
+}
+
+.cos-warn {
+  color: $color-rd-macaw-52;
+}
+
+.cos-button {
+  &--sm {
+    @include spacing-squish-4();
+    font-size: $font-size-12;
+    font-weight: $font-weight-600;
+    line-height: 14px; // needed to fix weird offset issue at this size
+  }
+
+  &--lg {
+    font-size: $font-size-16;
+    @include spacing-squish-12();
+  }
+  &.cos-button-disabled {
+    color: $cos-button-disabled-text;
+  }
+}
+
+.cos-flat-button {
+  &.cos-primary {
+    background: $color-gn-monstera-72;
+    color: $color-g-white-00;
+
+    &:hover:not(.cos-button-disabled),
+    &:focus {
+      background: $color-gn-monstera-69;
+    }
+
+    &:active {
+      background: $color-gn-monstera-75;
+    }
+  }
+
+  &.cos-warn {
+    background: $color-rd-macaw-52;
+    color: $color-g-white-00;
+
+    &:hover:not(.cos-button-disabled),
+    &:focus {
+      background: $color-rd-macaw-55;
+    }
+  }
+
+  &.cos-button-disabled {
+    color: $cos-button-disabled-text;
+    background: $cos-button-disabled-bg;
+  }
+}
+
+.cos-stroked-button {
+  border: 1px solid currentColor;
+  padding: 7px 15px;
+
+  &.cos-primary {
+    background: $color-g-white-00;
+    border-color: $color-gn-monstera-72;
+    color: $color-gn-monstera-72;
+
+    &:hover:not(.cos-button-disabled),
+    &:focus {
+      background: $color-gn-monstera-69;
+      color: $color-g-white-00;
+    }
+
+    &:active {
+      background: $color-gn-monstera-75;
+    }
+  }
+
+  &.cos-warn {
+    background: transparent;
+    border-color: $color-rd-macaw-52;
+    color: $color-rd-macaw-52;
+
+    &:hover:not(.cos-button-disabled),
+    &:focus {
+      background: $color-rd-macaw-55;
+      border-color: $color-rd-macaw-52;
+      color: $color-g-white-00;
+    }
+  }
+
+  &.cos-button-disabled {
+    box-shadow: none;
+    color: $cos-button-disabled-text;
+    border-color: $cos-button-disabled-text;
+    background: $cos-button-disabled-bg;
+  }
+}
+
+.cos-icon-button {
+  padding: 0;
+
+  // Reset the min-width from the button base.
+  min-width: 0;
+
+  width: $cos-icon-button-size;
+  height: $cos-icon-button-size;
+
+  flex-shrink: 0;
+  line-height: $cos-icon-button-size;
+
+  &.cos-button--sm {
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+  }
+
+  &.cos-button--lg {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    &.cos-button-disabled {
+      color: $cos-button-disabled-text;
+      background: $cos-button-disabled-bg;
+    }
+  }
+  &.cos-button-disabled {
+    color: $cos-button-disabled-text;
+  }
+}

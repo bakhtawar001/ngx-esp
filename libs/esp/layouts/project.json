@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/layouts",
+  "sourceRoot": "libs/esp/layouts/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/esp/layouts/tsconfig.lib.json",
+        "project": "libs/esp/layouts/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/layouts/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/esp/layouts/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/layouts/**/*.ts",
+          "libs/esp/layouts/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/layouts/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

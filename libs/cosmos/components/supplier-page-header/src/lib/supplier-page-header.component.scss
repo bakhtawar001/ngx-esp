@@ -1,0 +1,212 @@
+@import '../../../../scss/settings/';
+
+/* autoprefixer grid: autoplace */
+
+.cos-supplier-page-header-content {
+  position: relative;
+  @include wider-than($bp-medium) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      'image image main main main main main main contact-info contact-info contact-info contact-info'
+      '. . details details details details details details contacts contacts contacts contacts';
+    grid-column-gap: $spacing-inline-16;
+  }
+  border-radius: $border-radius-4;
+  background: $color-g-white-00;
+  box-shadow: $box-shadow-default;
+  .cos-supplier-page-header-image-container {
+    grid-area: image;
+    @include spacing-inset-16();
+    padding-bottom: 0;
+    text-align: center;
+    @include wider-than($bp-medium) {
+      padding-right: 0;
+    }
+  }
+  .cos-supplier-page-header-main {
+    @include spacing-inset-16();
+    grid-area: main;
+    @include wider-than($bp-medium) {
+      padding: $spacing-stack-16 0;
+    }
+  }
+  .cos-supplier-page-header-details {
+    grid-area: details;
+    @include spacing-inset-16();
+    padding-top: 0;
+    @include wider-than($bp-medium) {
+      padding: 0;
+      padding-bottom: $spacing-stack-16;
+    }
+  }
+  .cos-supplier-page-header-contact-info {
+    grid-area: contact-info;
+    background-color: $color-g-pearl-03;
+  }
+  .cos-supplier-page-header-contacts {
+    grid-area: contacts;
+    background-color: $color-g-pearl-03;
+  }
+  .cos-contacts-divider {
+    margin: 0 $spacing-inline-16;
+  }
+  .cos-card-expand-all {
+    opacity: 0;
+    position: absolute;
+    bottom: -11px;
+    width: 100%;
+    text-align: center;
+    @include wider-than($bp-medium) {
+      opacity: 1;
+    }
+  }
+  .cos-card-expand {
+    padding-top: $spacing-stack-16;
+    text-align: center;
+    @include wider-than($bp-medium) {
+      display: none;
+    }
+  }
+  .cos-supplier-page-header-contact-info .cos-card-expand {
+    padding-top: 0;
+    padding-bottom: $spacing-stack-16;
+  }
+}
+.cos-supplier-page-header-title-row {
+  text-align: center;
+
+  @include wider-than($bp-medium) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: $spacing-stack-16;
+    > * {
+      flex: 0 0 auto;
+    }
+  }
+  .cos-stroked-button {
+    margin-top: $spacing-stack-16;
+    margin-bottom: $spacing-stack-16;
+    @include wider-than($bp-medium) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cos-supplier-page-header-collapsible {
+  display: none;
+  transition: height 0.3s ease-out;
+  &.expanded {
+    display: block;
+  }
+}
+
+.cos-supplier-page-header {
+  .mat-divider {
+    border-color: $color-g-pebble-09;
+  }
+
+  .cos-supplier-img {
+    width: 50%;
+    @include spacing-inset-8();
+    box-shadow: $box-shadow-default;
+    @include wider-than($bp-medium) {
+      width: 100%;
+    }
+
+    &-error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-g-pearl-03;
+      color: $color-g-shark-54;
+      flex-shrink: 0;
+      &:after {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+  }
+  .cos-supplier-name {
+    @include type-style-header-22();
+    margin: 0;
+  }
+
+  .cos-supplier-number {
+    @include type-body-style-14-shark();
+    margin: $spacing-stack-4 0;
+  }
+  .cos-rating {
+    justify-content: center;
+    @include wider-than($bp-medium) {
+      justify-content: flex-start;
+    }
+  }
+  .cos-supplier-subhead {
+    @include type-style-header-14-bold();
+    margin: $spacing-stack-16 0 $spacing-stack-8 0;
+  }
+
+  .cos-awards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .cos-award {
+    flex: 0 0 calc(50% - #{$spacing-inline-8});
+    @include wider-than($bp-medium) {
+      flex: 0 1 calc(30% - #{$spacing-inline-8});
+    }
+    margin-right: $spacing-inline-8;
+    margin-bottom: $spacing-inline-8;
+    padding: $spacing-stack-12 $spacing-inline-8;
+    padding-left: 40px;
+    border-radius: $border-radius-4;
+    background: $color-yl-viper-18 url('../../../../assets/images/icons/trophy.svg')
+      8px center no-repeat;
+    background-origin: border-box;
+    background-size: 24px 24px;
+    @include type-style-header-12-mineshaft();
+  }
+  .cos-attribute-tag {
+    margin: $spacing-stack-8 0;
+  }
+  .cos-supplier-details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .cos-supplier-detail {
+    flex: 0 0 50%;
+    padding-right: $spacing-inline-8;
+    @include wider-than($bp-medium) {
+      flex: 0 0 30%;
+    }
+    margin: $spacing-stack-8 0;
+    &.--full-width {
+      flex-basis: 100%;
+    }
+  }
+  .cos-supplier-detail-heading {
+    margin: 0;
+    margin-bottom: $spacing-stack-4;
+    @include type-style-header-12-shark();
+  }
+  .cos-supplier-detail-value {
+    margin: 0;
+    @include type-body-style-12();
+    color: $color-g-mineshaft-88;
+    a {
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+  .cos-supplier-doc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}

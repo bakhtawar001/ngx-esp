@@ -1,0 +1,34 @@
+<esp-encore-layout>
+  <cos-global-header
+    ariaLabel="string"
+    [navItemsDesktop]="navItemsDesktop"
+    [navItemsMobile]="navItemsMobile"
+  >
+    <a class="logo header-style-18" routerLink="/">
+      <esp-encore-logo title="encore">encore</esp-encore-logo>
+    </a>
+    <cos-global-search class="cos-search-container">
+      <esp-global-search *ngIf="!hideGlobalSearch"> </esp-global-search>
+    </cos-global-search>
+  </cos-global-header>
+  <esp-footer></esp-footer>
+</esp-encore-layout>
+
+<ng-template
+  (attached)="menuLoaded($event, 'collections')"
+  [cdkPortalOutlet]="collectionsMenuPortal"
+  #collectionsMenu
+>
+</ng-template>
+<ng-template
+  (attached)="menuLoaded($event, 'account')"
+  [cdkPortalOutlet]="userMenuPortal"
+  #userMenu
+>
+</ng-template>
+<ng-template
+  (attached)="menuLoaded($event, 'projects')"
+  [cdkPortalOutlet]="projectsMenuPortal"
+  #projectsMenu
+>
+</ng-template>

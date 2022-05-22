@@ -1,0 +1,97 @@
+<form [formGroup]="presenter.form" *ngIf="presenter.form">
+  <cos-filters
+    data-cy="cos-filters"
+    [hasFilters]="!!state.criteria?.filters?.Owners?.terms.length"
+    [mobileFiltersButtonLabel]="presenter.labels.owner"
+    [title]="'Filtering companies'"
+    (resetFiltersEvent)="resetFilters()"
+    (applyFiltersEvent)="applyFilter()"
+  >
+    <cos-filter-menu
+      data-cy="record-owner-filter-menu"
+      [label]="
+        disableOwnersFilter
+          ? presenter.labels.owner
+          : presenter.labelsWithCounter.owner
+      "
+      [applied]="!!state.criteria?.filters?.Owners?.terms.length"
+      [applyDisabled]="!presenter.form.value.Owners?.terms?.length"
+      [disabled]="disableOwnersFilter"
+      (apply)="applyFilter(presenter.filterFormControls.OwnersSearchTerm)"
+      (reset)="
+        resetFilter(
+          presenter.filterFormControls.Owners,
+          presenter.filterFormControls.OwnersSearchTerm
+        )
+      "
+      (clickOut)="
+        clickOut(
+          presenter.filterFormControls.Owners,
+          presenter.filterFormControls.OwnersSearchTerm
+        )
+      "
+      fullWidth
+    >
+      <div class="filter-menu filter-menu-select-list">
+        <fieldset class="cos-form-field">
+          <legend data-cy="record-owner-menu-title" class="cos-form-label">
+            Record Owner
+          </legend>
+          <input
+            data-cy="record-owner-search"
+            cos-input
+            type="search"
+            formControlName="OwnersSearchTerm"
+            name="filterOwnerSearchTerm"
+            placeholder="Record Owner"
+            aria-label="Record Owner search"
+            (click)="$event.stopPropagation()"
+            (keydown.enter)="$event.preventDefault()"
+          />
+          <div formGroupName="Owners" class="w-full">
+            <mat-selection-list class="owner-list" formControlName="terms">
+              <ng-container *ngIf="!!state.ownerFacets?.length">
+                <mat-list-option
+                  class="mb-24"
+                  checkboxPosition="before"
+                  *ngFor="
+                    let owner of state.ownerFacets
+                      | filterBy
+                        : ownersFilterProps
+                        : presenter.form.controls.OwnersSearchTerm.value
+                  "
+                  [value]="owner.Id"
+                  (keydown.enter)="$event.stopPropagation()"
+                >
+                  <div class="flex flex-row items-center">
+                    <cos-avatar>
+                      <img
+                        class="cos-avatar-image"
+                        *ngIf="owner?.IconImageUrl"
+                        [src]="owner?.IconImageUrl"
+                        [attr.alt]="owner?.Name"
+                      />
+                      <span>
+                        {{ owner?.Name | initials }}
+                      </span>
+                    </cos-avatar>
+                    <div class="flex flex-col">
+                      <span
+                        class="header-style-14-semibold"
+                        [attr.title]="owner.Name"
+                        >{{ owner.Name }}</span
+                      >
+                      <span *ngIf="owner.Email" class="body-style-12 truncate">
+                        {{ owner.Email }}
+                      </span>
+                    </div>
+                  </div>
+                </mat-list-option>
+              </ng-container>
+            </mat-selection-list>
+          </div>
+        </fieldset>
+      </div>
+    </cos-filter-menu>
+  </cos-filters>
+</form>

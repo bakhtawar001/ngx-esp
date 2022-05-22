@@ -1,0 +1,62 @@
+<cos-card
+  class="sponsored-content-product"
+  borderColor="initial"
+  [inlineControls]="false"
+>
+  <a
+    class="self-center"
+    (click)="productDetailClick.emit(product)"
+    data-cy="sponsored-product-card__product-image-link"
+  >
+    <esp-product-image [product]="product"></esp-product-image>
+  </a>
+  <div class="flex flex-col">
+    <!-- Attributes -->
+
+    <cos-product-card-tags [tags]="tags"></cos-product-card-tags>
+    <!-- /Attributes -->
+
+    <a
+      data-cy="sponsored-product-card__product-name"
+      (click)="productDetailClick.emit(product)"
+      class="header-style-18"
+      >{{ product.Name }}
+    </a>
+
+    <div
+      class="body-style-14-shark"
+      data-cy="sponsored-product-card__product-number"
+      *ngIf="product.Number"
+    >
+      {{ product.Number }}
+    </div>
+
+    <p
+      class="body-style-14-shark mt-24 mb-24"
+      data-cy="sponsored-product-card__product-short-desc"
+      *ngIf="product.ShortDescription"
+    >
+      {{ product.ShortDescription }}
+    </p>
+
+    <!-- Pricing -->
+    <esp-sponsored-product-pricing
+      [product]="product"
+      class="mb-16"
+    ></esp-sponsored-product-pricing>
+    <!-- /Pricing -->
+
+    <!-- Actions -->
+    <div class="sponsored-content-product__actions">
+      <button
+        type="button"
+        class="cos-flat-button cos-button cos-primary"
+        (click)="addToCollectionClick.emit(product)"
+        data-cy="sponsored-product-card__add-to-collection"
+      >
+        Add to Collection
+      </button>
+    </div>
+    <!-- /Actions -->
+  </div>
+</cos-card>

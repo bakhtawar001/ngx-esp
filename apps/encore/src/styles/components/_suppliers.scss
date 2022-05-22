@@ -1,0 +1,22 @@
+.supplier-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 16px;
+  width: 100%;
+  min-height: 100%;
+
+  &-util-bar {
+    margin-bottom: 1.4rem;
+  }
+
+  > a:hover {
+    text-decoration: none;
+  }
+
+  cos-supplier:hover {
+    .cos-supplier-name,
+    .cos-supplier-number {
+      text-decoration: underline;
+    }
+  }
+}

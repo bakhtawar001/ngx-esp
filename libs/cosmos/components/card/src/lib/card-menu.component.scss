@@ -1,0 +1,11 @@
+@import '../../../../scss/settings';
+
+.cos-card-menu {
+  .cos-icon-button {
+    line-height: 0;
+
+    &[aria-expanded='true'] {
+      @include cos-menu-pointer();
+    }
+  }
+}

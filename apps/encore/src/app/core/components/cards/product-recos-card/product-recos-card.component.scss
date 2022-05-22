@@ -1,0 +1,24 @@
+@import 'cosmos/scss/settings/';
+
+.product-recos-card {
+  background: $color-g-pearl-03 !important;
+  &__desc {
+    width: 50%;
+    color: $color-g-shark-54;
+  }
+  &__products {
+    width: 100%;
+    // height: 240px;
+    background: $color-g-white-00;
+    border: 1px solid $color-g-white-00;
+
+    .cos-card.cos-product-card {
+      &--small {
+        max-width: 100% !important;
+      }
+      .cos-supplier {
+        background: $color-g-white-00;
+      }
+    }
+  }
+}

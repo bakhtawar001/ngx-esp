@@ -1,0 +1,15 @@
+@mixin esp-layout-admin-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  esp-layout-admin {
+    esp-navbar {
+      .nav-link-badge {
+        border: 2px solid map-get($primary, default);
+      }
+
+      .navbar-header .esp-icon {
+        color: map-get($primary, default);
+      }
+    }
+  }
+}

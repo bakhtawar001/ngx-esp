@@ -1,0 +1,295 @@
+@import '../../../../scss/settings/';
+
+$thumbnail-width: 84px;
+$thumbnail-height: 84px;
+
+.cos-product-media {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+
+  @include wider-than($bp-medium) {
+    flex-direction: row;
+  }
+}
+
+.cos-product-media-thumbnail-image-container {
+  @include spacing-inset-4();
+  position: relative;
+  overflow: scroll;
+
+  & > div {
+    position: relative;
+    height: 100%;
+  }
+
+  outline: 0;
+
+  // Hide the scrollbar, maybe make a class for this
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include wider-than($bp-medium) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.cos-product-media-thumbnail-list {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include wider-than($bp-medium) {
+    flex-direction: column;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.cos-product-media-thumbnail-list-item {
+  position: relative;
+  width: $thumbnail-width + 4;
+  height: $thumbnail-height + 4;
+  margin-top: $spacing-stack-16;
+  margin-right: $spacing-stack-8;
+  border-radius: $border-radius-4;
+  border: 1px solid transparent;
+  overflow: hidden;
+
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  @include wider-than($bp-medium) {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: $spacing-stack-8;
+  }
+
+  &.is-active {
+    outline: none;
+    border: 1px solid rgb(22, 69, 105);
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.cos-product-media-thumbnail-list-item--video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  img {
+    width: 160px;
+  }
+}
+
+.cos-product-media-thumbnail-img-container,
+.cos-product-media-thumbnail-img {
+  width: $thumbnail-width;
+  height: $thumbnail-height;
+  border-radius: $border-radius-4;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.cos-product-media-main-image-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: $border-radius-4;
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+
+  @include wider-than($bp-medium) {
+    min-height: 600px;
+  }
+
+  @include wider-than($bp-medium) {
+    margin-top: $spacing-stack-4;
+    margin-left: $thumbnail-width + $spacing-inline-24;
+  }
+
+  > .cos-stroked-button {
+    display: none;
+    position: absolute;
+    z-index: $z-index-active;
+    left: 16px;
+    margin: auto;
+
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    padding: 0;
+    &.cos-button-disabled {
+      pointer-events: all;
+      background: $color-g-pebble-09;
+    }
+    &:last-of-type {
+      left: auto;
+      right: 16px;
+    }
+  }
+
+  &:hover {
+    > .cos-stroked-button {
+      display: block;
+    }
+  }
+}
+
+.cos-product-media-thumbnail-prev,
+.cos-product-media-thumbnail-next {
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+  transition: opacity 0.1s;
+  opacity: 0.6;
+  z-index: 88;
+  width: $thumbnail-width + 12;
+  height: $thumbnail-width + 12;
+}
+
+.cos-product-media-thumbnail-prev {
+  top: 0;
+}
+
+.cos-product-media-thumbnail-next {
+  bottom: 0;
+}
+
+.cos-product-media-download {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: $color-bl-atoll-75;
+  font-size: $font-size-24;
+  background-color: $color-g-white-00;
+  @include spacing-inset-8();
+}
+
+.cos-product-media-main-list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  > li {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    background: $color-g-white-00;
+
+    &.cos-product-media-main-video {
+      background: $color-g-white-00;
+      width: 100%;
+    }
+  }
+}
+
+.cos-product-media-image-zoom {
+  display: block;
+}
+
+.cos-product-media--hidden {
+  display: none;
+}
+
+.cos-product-media-video-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  opacity: 0.65;
+  background: $color-g-white-00;
+
+  border-radius: 100%;
+
+  &:after {
+    display: block;
+    content: '';
+    width: 30px;
+    height: 30px;
+
+    background: transparent
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 71 75'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M70.195 37.086l-70 37v-74z'/%3E%3C/svg%3E")
+      60% 50% no-repeat;
+    background-size: 40% 40%;
+  }
+}
+
+.cos-product-media-no-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: $color-g-pearl-03;
+  color: $color-g-shark-54;
+  padding: 4px;
+  text-align: center;
+  flex-shrink: 0;
+  font-size: $font-size-14;
+}
+
+.cos-product-media-upload-container {
+  margin-top: $spacing-stack-16;
+
+  @include wider-than($bp-medium) {
+    margin-top: 0;
+  }
+
+  .cos-dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 84px;
+    width: 84px;
+  }
+}
+
+.cos-product-media-toggle-visibility {
+  background: $color-g-white-00;
+  border: 0;
+  @include spacing-inset-4();
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  border-radius: 4px;
+}
+
+.cos-product-media-disabled-image {
+  opacity: 50%;
+}
+
+.cos-product-media-main-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .cos-video-player {
+    flex: none;
+  }
+}

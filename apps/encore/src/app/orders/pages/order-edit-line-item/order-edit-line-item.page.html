@@ -1,0 +1,61 @@
+<!-- TODO: Need to determine how this is going to be handled visually -->
+<div class="proj-orders grid-layout-1" *ngIf="state.isLoading">Loading...</div>
+
+<!-- TODO: Need to determine how this is going to be handled visually -->
+<!-- <div class="flex flex-row" *ngIf="state.loadErrorMessage">
+  <span *ngIf="state.lineItem">Could not refresh line item:</span>
+  <span *ngIf="!state.lineItem">Could not load line item:</span>
+  {{ state.isLoading }}
+</div> -->
+
+<div class="order-edit-product" *ngIf="product && !state.isLoading">
+  <!-- Header -->
+  <div class="order-edit-product-header border-bottom mb-24">
+    <a cos-button class="pl-0" [routerLink]="'../../'">
+      <i class="fa fa-arrow-left mr-8"></i>
+      <span>Back to Products & Pricing</span>
+    </a>
+    <h1 class="header-style-24">Configure Product</h1>
+  </div>
+
+  <!-- Details -->
+  <div class="order-edit-product-details border-bottom pb-16 mb-32">
+    <h2 class="header-style-24 mb-24">{{ product.Name }}</h2>
+    <div class="grid grid-cols-2">
+      <!-- Hero -->
+      <div class="pr-64">
+        <esp-edit-line-item-product-hero
+          [lineItem]="product"
+        ></esp-edit-line-item-product-hero>
+      </div>
+
+      <!-- Details -->
+      <esp-edit-line-item-product-details
+        [lineItem]="product"
+      ></esp-edit-line-item-product-details>
+    </div>
+  </div>
+
+  <!-- Variants -->
+  <div class="order-edit-product-variants border-bottom pb-16 mb-32">
+    <h2 class="header-style-18">Product Variants</h2>
+    <esp-edit-line-item-variants
+      [lineItem]="product"
+    ></esp-edit-line-item-variants>
+  </div>
+
+  <!-- Option & Charges -->
+  <div class="order-edit-product-variants border-bottom pb-16 mb-32">
+    <h2 class="header-style-18">Option & Charges</h2>
+  </div>
+
+  <!-- Shipping -->
+  <div class="order-edit-product-variants border-bottom pb-16 mb-32">
+    <h2 class="header-style-18">Shipping</h2>
+  </div>
+
+  <!-- Sales Tax -->
+  <div class="order-edit-product-variants border-bottom pb-16 mb-32">
+    <h2 class="header-style-18">Salex Tax</h2>
+  </div>
+</div>

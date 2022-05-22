@@ -1,0 +1,18 @@
+<div class="cos-card-container">
+  <div class="cos-card-body">
+    <div class="cos-card-main">
+      <div
+        [ngClass]="{
+          'cos-card-controls--inline': inlineControls
+        }"
+        class="cos-card-controls-container"
+      >
+        <ng-content select="cos-card-controls"></ng-content>
+        <ng-content select="cos-card-menu"></ng-content>
+      </div>
+      <ng-content></ng-content>
+    </div>
+    <ng-content select="[cos-card-sidebar]"></ng-content>
+  </div>
+  <ng-content select="[cos-card-footer]"></ng-content>
+</div>

@@ -1,0 +1,44 @@
+@import 'cosmos/scss/settings/';
+
+.page-description {
+  color: $color-g-shark-54;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-14;
+}
+
+.company-settings-panel {
+  p {
+    margin-bottom: 4px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      > span {
+        font-family: Work Sans, sans-serif;
+        font-size: $font-size-14;
+        margin-bottom: $spacing-stack-8;
+        &:first-of-type {
+          display: inline-block;
+          width: 130px;
+          margin-right: $spacing-inline-16;
+
+          color: $color-g-shark-54;
+        }
+      }
+    }
+  }
+}
+
+.conversion-rate-row {
+  display: flex;
+  align-items: center;
+
+  .cos-input {
+    margin: 0 8px;
+    max-width: 80px;
+  }
+}

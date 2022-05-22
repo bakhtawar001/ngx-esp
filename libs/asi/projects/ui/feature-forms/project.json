@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/projects/ui/feature-forms",
+  "sourceRoot": "libs/asi/projects/ui/feature-forms/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/projects/ui/feature-forms"],
+      "options": {
+        "project": "libs/asi/projects/ui/feature-forms/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/projects/ui/feature-forms/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/projects/ui/feature-forms/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/projects/ui/feature-forms"],
+      "options": {
+        "jestConfig": "libs/asi/projects/ui/feature-forms/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/projects/ui/feature-forms/src/**/*.ts",
+          "libs/asi/projects/ui/feature-forms/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "type:feature", "platform:web"]
+}

@@ -1,0 +1,40 @@
+@import '../../../../scss/settings';
+
+.cos-context-icon {
+  position: relative;
+}
+
+.cos-context-icon-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.cos-context-icon-circle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: $color-bl-azure-57;
+  color: $color-g-white-00;
+
+  .cos-context-icon-grey & {
+    background: $color-g-shark-54;
+  }
+
+  .cos-context-icon-red & {
+    background: $color-rd-macaw-52;
+  }
+
+  .cos-context-icon-yellow & {
+    background: $color-yl-viper-38;
+  }
+
+  .cos-context-icon-green & {
+    background: $color-gn-monstera-72;
+  }
+}

@@ -1,0 +1,34 @@
+<ng-container *ngIf="!order?.Notes?.length">
+  <cos-card> No messages </cos-card>
+</ng-container>
+
+<cos-card *ngFor="let note of order?.Notes; trackBy: trackNote">
+  <cos-card-controls>
+    <button class="mat-menu-trigger cos-button">View History</button>
+  </cos-card-controls>
+  <div class="order-customer-message">
+    <h2 class="header-style-18">Customer message</h2>
+    <div cos-card-footer class="cos-card-footer">
+      <div class="cos-card-controls-container">
+        <cos-card-controls class="cos-card-controls">
+          <p class="body-style-11 lg:block hidden mt-8 mb-4">
+            {{ note?.CreateDate | date: 'long' }}
+          </p>
+        </cos-card-controls>
+      </div>
+      <div class="flex">
+        <div>
+          <img
+            src="https://via.placeholder.com/70x70/EFEFEF/000000?text=coming%20soon"
+          />
+        </div>
+        <div class="ml-8">
+          <h4 class="header-style-14-bold">{{ note?.UserName }}</h4>
+          <p class="body-style-14-shark project-contact-job mb-0">
+            {{ note?.Content }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</cos-card>

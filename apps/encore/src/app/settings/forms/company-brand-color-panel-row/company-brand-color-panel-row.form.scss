@@ -1,0 +1,16 @@
+@import 'cosmos/scss/settings/';
+
+.settings-company-color {
+  display: flex;
+}
+
+.settings-color-square {
+  width: 36px;
+  height: 18px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.settings-company-color-name {
+  color: $color-g-shark-54;
+}

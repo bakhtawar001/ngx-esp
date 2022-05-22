@@ -1,0 +1,4 @@
+.website__primary-pill {
+  // needed to override styles from parent only for this pill
+  display: inline !important;
+}

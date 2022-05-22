@@ -1,0 +1,35 @@
+<cos-dialog [closeStrategy]="dialogCloseStrategy">
+  <ng-container cosDialogHeader>Create New Company</ng-container>
+  <ng-container cosDialogSubHeader>
+    Fill out the required fields below to add a company. Additional information
+    can be added later.
+  </ng-container>
+
+  <ng-container cosDialogContent>
+    <div class="dialog-content-container">
+      <hr class="my-16" />
+      <asi-company-form [companyType]="companyType" [formGroup]="formGroup">
+      </asi-company-form>
+    </div>
+  </ng-container>
+
+  <ng-container cosDialogActions>
+    <div class="flex justify-between w-full">
+      <button (click)="onClose()" cos-button type="button">
+        <i class="fa fa-arrow-left"></i> Back
+      </button>
+
+      <button
+        (click)="submit()"
+        [disabled]="formGroup.invalid || isCreating"
+        data-cy="create-button"
+        cos-flat-button
+        type="submit"
+        color="primary"
+        cdkFocusInitial
+      >
+        <i class="fa fa-magic mr-4"></i> Create
+      </button>
+    </div>
+  </ng-container>
+</cos-dialog>

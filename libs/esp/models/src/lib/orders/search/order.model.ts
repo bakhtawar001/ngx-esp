@@ -1,0 +1,40 @@
+import { Entity, Shareable } from '../../common';
+import { LineItemSearch } from './line-item.model';
+
+export interface OrderSearch extends Shareable {
+  Id: number;
+  Type: string;
+  Number: string;
+  Description: string;
+  Supplier: string;
+  Product: string;
+  Customer: string;
+  BillingContact: string;
+  ShippingContact: string;
+  AcknowledgementContact: string;
+  Date: string;
+  CreateDate: string;
+  UpdateDate?: string;
+  InHandsDate?: string;
+  Status: string;
+  StatusColor: string;
+  Total: number;
+  AmountDue: number;
+  Salespersons: Entity[];
+  ManagingCompanyId: number;
+  LineItems: LineItemSearch[];
+  CurrencyCode: string;
+  CurrencySymbol: string;
+  CanRequestPayment: boolean;
+  IsSentToQuickbooks: boolean;
+  IsSentToSmartbooks: boolean;
+  IsSentToProfitMaker: boolean;
+  ExternalSentBy: string;
+  ExternalSentDate?: string;
+  ExternalId: string;
+  References: OrderSearch[];
+  SitaDomain: string;
+  ReorderType: string;
+  POReference?: string;
+  ProjectId?: number;
+}

@@ -1,0 +1,25 @@
+<form [formGroup]="supplierFiltersForm" novalidate>
+  <div class="supplier-search-filters">
+    <cos-filters [appliedFilters]="appliedFilterPills">
+      <div
+        class="cos-inline minority-owned-container"
+        cos-filter-button
+        fullwidth
+        [ngClass]="{
+          'minority-owned-applied':
+            supplierFiltersForm.controls?.MinorityOwned?.value
+        }"
+      >
+        <cos-checkbox
+          class="minority-owned"
+          name="minorityOwned"
+          formControlName="MinorityOwned"
+          (keydown.enter)="$event.preventDefault()"
+          (change)="onChange($event)"
+        >
+          <span class="cos-checkbox-label"> Minority Owned </span>
+        </cos-checkbox>
+      </div>
+    </cos-filters>
+  </div>
+</form>

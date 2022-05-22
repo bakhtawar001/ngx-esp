@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/dotted-button",
+  "sourceRoot": "libs/cosmos/components/dotted-button/src",
+  "prefix": "cosmos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/components/dotted-button"],
+      "options": {
+        "project": "libs/cosmos/components/dotted-button/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/dotted-button/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/dotted-button/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/components/dotted-button"],
+      "options": {
+        "jestConfig": "libs/cosmos/components/dotted-button/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/dotted-button/src/**/*.ts",
+          "libs/cosmos/components/dotted-button/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:ui", "type:library", "scope:cosmos"]
+}

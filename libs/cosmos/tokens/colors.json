@@ -1,0 +1,141 @@
+[
+  {
+    "name": "G - White - 00",
+    "section": "Background Colors",
+    "color": "#ffffff"
+  },
+  {
+    "name": "G - Pearl - 03",
+    "section": "Background Colors",
+    "color": "#f7f8f9"
+  },
+  {
+    "name": "BL - Atoll - 75",
+    "section": "Background Colors",
+    "color": "#164569"
+  },
+  {
+    "name": "BL - Azure - 57",
+    "section": "Background Colors",
+    "color": "#0071db",
+    "createToken": false
+  },
+  {
+    "name": "G - Mineshaft - 88",
+    "section": "Foreground Colors",
+    "color": "#1e1f20"
+  },
+  {
+    "name": "G - Shark - 54",
+    "section": "Foreground Colors",
+    "color": "#6A7281"
+  },
+  {
+    "name": "G - Stone - 41",
+    "section": "Foreground Colors",
+    "color": "#91949c"
+  },
+  {
+    "name": "G - Pebble - 09",
+    "section": "Foreground Colors",
+    "color": "#e7e8e9"
+  },
+  {
+    "name": "G - Moth - 41",
+    "section": "Foreground Colors",
+    "color": "#bdc0c4"
+  },
+  {
+    "name": "G - Disabled - 12",
+    "section": "Foreground Colors",
+    "color": "#dedfe1"
+  },
+  {
+    "name": "GN - Monstera",
+    "section": "Tints",
+    "variants": [
+      {
+        "name": "72",
+        "color": "#0a856a"
+      },
+      {
+        "name": "07",
+        "color": "#e5f7ef"
+      },
+      {
+        "name": "69",
+        "color": "#0b9577"
+      },
+      {
+        "name": "75",
+        "color": "#09755d"
+      }
+    ]
+  },
+  {
+    "name": "BL - Azure",
+    "section": "Tints",
+    "variants": [
+      {
+        "name": "57",
+        "color": "#0071db"
+      },
+      {
+        "name": "06",
+        "color": "#e1f1ff"
+      },
+      {
+        "name": "54",
+        "color": "#007aec"
+      },
+      {
+        "name": "60",
+        "color": "#0068ca"
+      }
+    ]
+  },
+  {
+    "name": "RD - Macaw",
+    "section": "Tints",
+    "variants": [
+      {
+        "name": "52",
+        "color": "#d04425"
+      },
+      {
+        "name": "12",
+        "color": "#ffdcd3"
+      },
+      {
+        "name": "49",
+        "color": "#da4c2c"
+      },
+      {
+        "name": "55",
+        "color": "#c23f22"
+      }
+    ]
+  },
+  {
+    "name": "YL - Viper",
+    "section": "Tints",
+    "variants": [
+      {
+        "name": "38",
+        "color": "#f6c648"
+      },
+      {
+        "name": "18",
+        "color": "#fceec9"
+      },
+      {
+        "name": "34",
+        "color": "#f7cb58"
+      },
+      {
+        "name": "41",
+        "color": "#f5c138"
+      }
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "root": "apps/encore-e2e",
+  "sourceRoot": "apps/encore-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/encore-e2e/cypress.json",
+        "tsConfig": "apps/encore-e2e/tsconfig.e2e.json",
+        "devServerTarget": "encore:serve",
+        "reporter": "../../../node_modules/cypress-junit-reporter",
+        "reporterOptions": "mochaFile=../../reports/apps/encore-e2e/test-[hash].xml"
+      },
+      "configurations": {
+        "production": {
+          "cypressConfig": "apps/encore-e2e/cypress.prod.json",
+          "devServerTarget": "encore:serve:production"
+        },
+        "uat": {
+          "cypressConfig": "apps/encore-e2e/cypress.uat.json",
+          "devServerTarget": "encore:serve:uat"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/encore-e2e/**/*.{js,ts}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:encore", "type:e2e", "platform:web"],
+  "implicitDependencies": ["encore"]
+}

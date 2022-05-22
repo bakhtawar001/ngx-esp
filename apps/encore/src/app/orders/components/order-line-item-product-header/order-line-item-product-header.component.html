@@ -1,0 +1,14 @@
+<div class="flex items-start mt-0 mb-16">
+  <img src="{{ lineItem?.ImageUrl }}" />
+  <div class="ml-8">
+    <h2 class="line-item__name header-style-18 mb-0">{{ lineItem?.Name }}</h2>
+    <p class="line-item__number-cpn body-style-12-shark mb-8">
+      Product #: {{ lineItem?.Number }} | {{ lineItem?.CPN }}
+    </p>
+    <cos-supplier
+      [supplier]="lineItem?.Supplier"
+      [showImage]="true"
+      [showPreferredGroup]="false"
+    ></cos-supplier>
+  </div>
+</div>

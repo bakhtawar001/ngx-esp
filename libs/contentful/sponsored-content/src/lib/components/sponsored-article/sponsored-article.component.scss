@@ -1,0 +1,38 @@
+@import 'cosmos/scss/settings/';
+
+.sponsored-article {
+  .content-container {
+    @include wider-than($bp-xlarge) {
+      max-width: 1055px;
+    }
+
+    @include narrower-than($bp-xlarge) {
+      padding-left: 110px;
+      padding-right: 110px;
+    }
+  }
+
+  &__supplier-number {
+    @include type-body-style-11;
+    color: $color-bl-atoll-75;
+  }
+
+  &__header-title {
+    @include type-style-header-24;
+    font-size: $font-size-36;
+  }
+
+  &__product-title {
+    @include type-style-header-22;
+    margin-bottom: 52px;
+  }
+
+  .cos-supplier {
+    background-color: $color-g-white-00;
+    width: 368px;
+  }
+}
+.products-container {
+  max-width: 584px;
+  width: 100%;
+}

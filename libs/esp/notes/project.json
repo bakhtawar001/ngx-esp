@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/notes",
+  "sourceRoot": "libs/esp/notes/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/notes"],
+      "options": {
+        "tsConfig": "libs/esp/notes/tsconfig.lib.json",
+        "project": "libs/esp/notes/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/notes/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/notes/**/*.ts",
+          "libs/esp/notes/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/notes/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/notes"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

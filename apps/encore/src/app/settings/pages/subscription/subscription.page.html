@@ -1,0 +1,158 @@
+<h1 class="header-style-22">Subscription and billing</h1>
+<p class="page-description">{{pageDescription}}</p>
+
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Automatic Payments</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [rowTitle]="'Automatic payments'">
+      <div class="form-row-icon fa fa-hashtag mt-8 mr-32"></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <p class="form-row-value">Enabled</p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active [formGroup]="subscriptionForm">
+        <div>
+          <p class="order-creation-label">Automatic Payment</p>
+          <div
+            cosRadioGroup
+            id="automatic-payment-radio"
+            aria-label="Select an option"
+            [required]="true"
+            formControlName="automaticPaymentOption"
+          >
+            <p
+              *ngFor="let option of automaticPaymentOptions; trackBy: trackByFn"
+            >
+              <cos-radio-button [value]="option">
+                {{option }}
+              </cos-radio-button>
+            </p>
+          </div>
+        </div>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [rowTitle]="'Next Payment'">
+      <div class="form-row-icon fa fa-hashtag mt-8 mr-32"></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <p class="form-row-value">$96.44 on 9/24/20</p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active> </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [rowTitle]="'Payment Methods'">
+      <div class="form-row-icon fa fa-hashtag mt-8 mr-32"></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <p class="form-row-value subscription-payment-card">
+            <img class="mr-16" src="https://via.placeholder.com/30" /> Visa
+            ending in *0378
+          </p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active> </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<div class="mb-16">
+  <cos-notification [type]="'warn'" class="mb-16">
+    <cos-notification-icon class="cos-test"
+      ><div><i class="fa fa-dog"></i></div
+    ></cos-notification-icon>
+    <cos-notification-title>{{ notificationTitle }}</cos-notification-title>
+    <cos-notification-body>{{ notificationBody }}</cos-notification-body>
+
+    <div>
+      <button cos-flat-button>Dismiss</button>
+    </div>
+  </cos-notification>
+</div>
+
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <div class="subscription-settings-panel-header-row">
+      <h2 class="header-style-16 mb-0">Payment Methods</h2>
+
+      <button cos-flat-button [color]="'primary'">
+        <i class="fa fa-plus"></i> Add new payment method
+      </button>
+    </div>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [isFullWidth]="true">
+      <div class="mt-8 mr-32"></div>
+      <asi-panel-editable-row-inactive>
+        <div class="subscription-payment">
+          <div>
+            <p class="header-style-16 subscription-payment-card">
+              <img class="mr-16" src="https://via.placeholder.com/30" /> Visa
+              ending in *0378
+            </p>
+          </div>
+          <div>
+            <p cosPillLabel class="subscription-automatic-payment">
+              Automatic Payment
+            </p>
+          </div>
+          <div>
+            <p class="header-style-16">Expiration</p>
+            <p class="form-row-value">September 2023</p>
+          </div>
+          <div>
+            <p class="header-style-16">Name on Card</p>
+            <p class="form-row-value">Chuck Flanksteak</p>
+          </div>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        Needs input field design
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Subscription settings</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [rowTitle]="'Subscription  tier'">
+      <div><i class="form-row-icon fa fa-hashtag mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <p class="form-row-value">Ultramega Supreme with Cheese</p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        Needs input field design
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [rowTitle]="'Number of licenses'">
+      <div><i class="form-row-icon fa fa-link mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <div>
+          <p class="form-row-value">10</p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        Needs input field design
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

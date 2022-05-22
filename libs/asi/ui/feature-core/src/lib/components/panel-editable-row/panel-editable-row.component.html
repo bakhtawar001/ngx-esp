@@ -1,0 +1,77 @@
+<div class="settings-two-col-1">
+  <div class="settings-display-group">
+    <ng-content></ng-content>
+    <div class="settings-main-content">
+      <p *ngIf="rowTitle" class="form-row-title" data-cy="title">
+        <strong>{{ rowTitle }}</strong>
+      </p>
+
+      <ng-content
+        select="asi-panel-editable-row-title"
+        *ngIf="!rowTitle"
+      ></ng-content>
+
+      <ng-container *ngIf="isLoading">
+        <div class="body-style-12-shark">Loading...</div>
+        <!--TODO: Replace with loader -->
+      </ng-container>
+      <ng-container *ngIf="!isLoading">
+        <ng-content select="p"></ng-content>
+        <ng-container *ngIf="!state.isEditing">
+          <div [hidden]="!expanded">
+            <ng-content select="asi-panel-editable-row-inactive"></ng-content>
+          </div>
+        </ng-container>
+        <div *ngIf="state.isEditing" (keyup.enter)="saveRow()">
+          <ng-content select="asi-panel-editable-row-active"></ng-content>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div *ngIf="state.isEditing" class="settings-controls">
+    <button
+      (click)="cancelEdit()"
+      [color]="'primary'"
+      cos-stroked-button
+      data-cy="cancel-button"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      (click)="saveRow()"
+      [disabled]="!state.canSave"
+      cos-flat-button
+      color="primary"
+      data-cy="save-button"
+      type="submit"
+    >
+      {{ saveButtonText }}
+    </button>
+  </div>
+</div>
+<div
+  *ngIf="!state.isEditing && isEditable && !customControls && !isLoading"
+  class="settings-two-col-2"
+>
+  <button
+    *ngIf="controls.edit"
+    (click)="enableEdit()"
+    cos-button
+    data-cy="action-button"
+  >
+    {{ alwaysEdit || hasValue ? 'Edit' : 'Add' }}
+  </button>
+  <button *ngIf="controls.expand" (click)="toggleExpanded()" cos-icon-button>
+    <i
+      class="fa"
+      [ngClass]="{ 'fa-angle-up': expanded, 'fa-angle-down': !expanded }"
+    ></i>
+  </button>
+  <button *ngIf="controls.remove" (click)="removeRow()" cos-button color="warn">
+    Remove
+  </button>
+</div>
+<ng-container *ngIf="customControls">
+  <ng-content select="asi-panel-editable-row-controls"></ng-content>
+</ng-container>

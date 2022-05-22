@@ -1,0 +1,51 @@
+<div class="primary-contact mb-24">
+  <h4 class="header-style-12-shark mb-8">Primary contact</h4>
+  <ng-container *ngIf="order?.AcknowledgementContact; else noPrimaryContact">
+    <div class="flex items-baseline justify-between primary-contact__name">
+      <h4 class="header-style-14-bold mb-0">
+        {{ order?.AcknowledgementContact?.Name }}
+      </h4>
+      <button cos-button size="sm">Send message</button>
+    </div>
+    <!-- TODO: Primary contact role/title + company name ? -->
+    <div class="primary-contact__company-name mb-8">
+      <span class="body-style-11">{{
+        order?.AcknowledgementContact?.CompanyName
+      }}</span>
+    </div>
+    <!-- TODO: API Change needed? -->
+    <div class="primary-contact__phone">
+      <a
+        [href]="'tel:' + order?.AcknowledgementContact?.Address?.Phone?.Number"
+        class="body-style-12-mineshaft"
+      >
+        {{ order?.AcknowledgementContact?.Address?.Phone?.Number }}
+      </a>
+    </div>
+    <div class="primary-contact__email">
+      <a
+        [href]="'mailto:' + order?.AcknowledgementContact?.EmailAddress"
+        class="body-style-12-mineshaft"
+      >
+        {{ order?.AcknowledgementContact?.EmailAddress }}
+      </a>
+    </div>
+  </ng-container>
+</div>
+
+<div class="grid grid-cols-2 grid-gap-20">
+  <div>
+    <h4 class="header-style-12-shark mb-8">Shipping address</h4>
+    <esp-order-customer-address
+      [contact]="order?.ShippingContact"
+    ></esp-order-customer-address>
+  </div>
+  <div>
+    <h4 class="header-style-12-shark mb-8">Billing address</h4>
+    <esp-order-customer-address
+      [contact]="order?.BillingContact"
+    ></esp-order-customer-address>
+  </div>
+</div>
+
+<ng-template #noPrimaryContact>No Primary contact</ng-template>

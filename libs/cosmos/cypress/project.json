@@ -1,0 +1,33 @@
+{
+  "root": "libs/cosmos/cypress",
+  "sourceRoot": "libs/cosmos/cypress/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/cosmos/cypress",
+        "main": "libs/cosmos/cypress/src/index.ts",
+        "tsConfig": "libs/cosmos/cypress/tsconfig.lib.json",
+        "assets": ["libs/cosmos/cypress/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/cosmos/cypress/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/cypress"],
+      "options": {
+        "jestConfig": "libs/cosmos/cypress/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:cosmos"]
+}

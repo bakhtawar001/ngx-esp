@@ -1,0 +1,152 @@
+@import '../../../../scss/settings';
+
+.cos-presentation-card.cos-card {
+  display: inline-block;
+  width: 100%;
+  // Border-top colors are selected by the user
+  border-top: $spacing-stack-4 solid;
+
+  .cos-card-main {
+    display: block;
+    background-color: $color-g-pearl-03 !important;
+    border-radius: $border-radius-4;
+
+    text-align: left;
+
+    &:hover,
+    &:active {
+      z-index: 1;
+      box-shadow: $box-shadow-card;
+    }
+
+    .cos-product-grid {
+      margin-top: $spacing-stack-8;
+      min-height: 132px;
+      @include narrower-than($bp-xxlarge) {
+        min-height: 144px;
+      }
+    }
+  }
+}
+
+// The presentation card has a white background in certain situations
+.cos-presentation-card--white {
+  background-color: $color-g-white-00 !important;
+}
+
+.cos-presentation-card-trigger {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  width: 100%;
+  text-align: left;
+
+  &:focus {
+    @include cos-focus;
+  }
+}
+
+.cos-presentation-card-header {
+  display: flex;
+  align-items: center;
+  flex: 1 1 30%;
+  flex-wrap: nowrap;
+
+  // Enforce children of ng-content, (assuming it's a div) to add margin space.
+  // Otherwise, it collapses normally.
+  & + div {
+    margin-top: $spacing-stack-12;
+  }
+}
+
+.cos-presentation-title-wrapper {
+  width: auto;
+  max-width: 100%;
+}
+
+.cos-presentation-avatar {
+  display: block;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  // Override Avatar's circular frame
+  border-radius: $border-radius-2 !important;
+  margin-right: $spacing-inline-12;
+  background: $color-g-white-00 !important;
+  overflow: hidden;
+
+  & img {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+
+  & + .cos-presentation-title-wrapper {
+    // Take up smaller portion of space if avatar exists
+    max-width: 80%;
+    max-width: calc(100% - 80px);
+  }
+}
+
+.cos-presentation-title {
+  @include type-style-header-14-bold();
+  display: block;
+  margin: 0;
+}
+
+.cos-presentation-subtitle {
+  @include type-body-style-12;
+  display: block;
+  margin-top: $spacing-stack-4;
+  margin-bottom: 0;
+}
+
+// Truncate title and subtitle onto one line
+.cos-presentation-title,
+.cos-presentation-subtitle {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.cos-presentation-footer {
+  display: block;
+  margin-top: $spacing-stack-12;
+}
+
+.cos-presentation-meta-date {
+  @include type-body-style-12-medium;
+  display: block;
+  margin: 0;
+}
+
+// Size variant
+.cos-card-main .cos-presentation-card--small {
+  padding: $spacing-inline-8;
+
+  .cos-presentation-card-header {
+    align-items: center;
+  }
+
+  .cos-presentation-title {
+    @include type-style-header-14-bold;
+  }
+
+  .cos-presentation-avatar {
+    border: none;
+    max-width: 28px;
+    max-height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    margin-right: $spacing-inline-8;
+
+    & img {
+      display: block;
+      max-width: 28px;
+      max-height: 28px;
+    }
+  }
+}

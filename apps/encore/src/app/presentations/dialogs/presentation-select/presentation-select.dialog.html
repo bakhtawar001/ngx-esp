@@ -1,0 +1,41 @@
+<asi-cards-selection-dialog
+  (create)="onCreateNewPresentation()"
+  (search)="onSearch($event)"
+  createButtonText="Create a new Presentation"
+  header="Create a New Presentation or Select an Existing One"
+  searchPlaceholder="Search for a Presentation or Customer"
+  [subheader]="subheader"
+>
+  <ng-container asiCardsSelectionContent>
+    <ng-template
+      [ngIf]="presentations?.length && !state?.loading"
+      [ngIfElse]="loader"
+    >
+      <asi-details-card
+        *ngFor="let presentation of presentations; trackBy: trackById"
+        (cardClick)="onSelectPresentation(presentation)"
+        [title]="presentation.Project?.Name"
+        [showTitleTooltip]="true"
+        [subtitleFirstLine]="presentation.Customer?.Name"
+        [showSubtitleTooltip]="true"
+        [firstLineDetails]="'Created ' + (presentation.CreateDate | date: 'longDate')"
+        [showFirstLineTooltip]="false"
+        [secondLineDetails]="'Last Updated ' + (presentation?.UpdateDate || presentation?.CreateDate | date: 'longDate') "
+        [showSecondLineTooltip]="false"
+        [topBorderColor]="presentation.Customer?.PrimaryBrandColor"
+      >
+        <asi-company-avatar
+          [customer]="presentation.Customer"
+          [showAvatarIcon]="true"
+          [iconSize]="20"
+          asiUiDetailsCardAvatar
+        ></asi-company-avatar>
+      </asi-details-card>
+    </ng-template>
+    <ng-template #loader>
+      <asi-details-card-loader
+        *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
+      ></asi-details-card-loader>
+    </ng-template>
+  </ng-container>
+</asi-cards-selection-dialog>

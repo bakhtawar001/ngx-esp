@@ -1,0 +1,26 @@
+.cursor {
+  &-pointer {
+    cursor: pointer;
+  }
+
+  &-default {
+    cursor: default;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}

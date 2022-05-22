@@ -1,0 +1,30 @@
+<div class="cos-search-field">
+  <span class="form-field-prefix" cosPrefix><i class="fa fa-search"></i></span>
+  <input
+    cos-input
+    [formControl]="searchTerm"
+    autocapitalize="off"
+    autocorrect="off"
+    placeholder="{{ placeholder }}"
+    role="textbox"
+    spellcheck="false"
+    (focus)="focus.emit($event)"
+    (blur)="blur.emit($event)"
+    #searchBox
+  />
+  <button
+    type="button"
+    class="form-field-suffix"
+    cos-icon-button
+    aria-label="Clear"
+    *ngIf="state.term"
+    (click)="searchTerm.setValue('')"
+    cosSuffix
+  >
+    <i class="fa fa-times"></i>
+  </button>
+</div>
+
+<button type="button" (click)="search($event)" *ngIf="!searchAsYouType">
+  Search
+</button>

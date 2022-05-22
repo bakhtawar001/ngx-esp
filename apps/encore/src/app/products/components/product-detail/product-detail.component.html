@@ -1,0 +1,346 @@
+<div class="product-details grid-layout-1" *ngIf="product">
+  <div class="product-media">
+    <cos-product-media
+      [product]="cosMediaProduct"
+      (imageSelected)="imageSelected($event)"
+    ></cos-product-media>
+  </div>
+  <div class="product-info">
+    <div class="product-description">
+      <ul class="cos-inline-list mb-8" *ngIf="tags.updates.length">
+        <li *ngFor="let tag of tags.updates">
+          <span class="product-updates-tags" cosAttributeTag>
+            <i class="fa" [ngClass]="tag.Icon"></i> {{ tag.Label }}
+          </span>
+        </li>
+      </ul>
+      <h1 class="product-title header-style-22">{{ product.Name }}</h1>
+      <p class="header-style-13">
+        <ng-container *ngIf="product.Number">
+          <span class="product-number">Product #: {{ product.Number }}</span>
+          <span class="pl-4 pr-4"> | </span>
+        </ng-container>
+        <span class="product-cpn">{{ product.Id | formatCPN }}</span>
+      </p>
+      <p class="product-summary body-style-12-mine-shaft mb-8">
+        {{ product.ShortDescription }}
+      </p>
+      <ul class="product-tags cos-inline-list" *ngIf="tags.features.length">
+        <li *ngFor="let tag of tags.features">
+          <span class="product-features-tags" cosAttributeTag size="small">
+            <i class="fa" [ngClass]="tag.Icon"></i> {{ tag.Label }}
+          </span>
+        </li>
+      </ul>
+      <h2 class="product-price-range header-style-16">
+        {{ product | formatPriceRange }}
+        <span
+          class="product-currency-code header-style-12"
+          *ngIf="priceVariants"
+        >
+          {{ priceVariants[0].Prices[0]?.CurrencyCode }}
+        </span>
+      </h2>
+
+      <!-- // BUTTONS // -->
+      <ul class="button-list">
+        <li>
+          <button
+            class="add-to-collection-btn"
+            cos-flat-button
+            color="primary"
+            (click)="addToCollection()"
+          >
+            Add to Collection
+          </button>
+        </li>
+        <li>
+          <button
+            cos-flat-button
+            color="primary"
+            type="button"
+            (click)="addToPresentation()"
+            *cosIfFeatureFlags="{ matches: ['presentations'] }"
+          >
+            Add to Presentation
+          </button>
+        </li>
+        <li>
+          <button
+            cos-flat-button
+            color="primary"
+            type="button"
+            (click)="addToOrder()"
+            *cosIfFeatureFlags="{ matches: ['orders'] }"
+          >
+            Add to Order
+          </button>
+        </li>
+        <!--
+        <li>
+          <button cos-flat-button color="primary">
+            Create Order
+          </button>
+        </li>
+      --></ul>
+      <!--
+      <hr />
+      <ul class="button-list">
+        <li>
+          <button cos-stroked-button>
+            Share
+          </button>
+        </li>
+        <li>
+          <button cos-stroked-button>
+            Estimate Shipping
+          </button>
+        </li>
+      </ul>
+      -->
+    </div>
+    <cos-supplier
+      class="supplier-card mb-16 cos-card"
+      *ngIf="supplier"
+      [showImage]="true"
+      [showPreferredGroup]="!!supplier?.Preferred"
+      [supplier]="supplier"
+      (detailClick)="supplierDetail(supplier)"
+    >
+      <cos-supplier-footer [supplier]="supplier"></cos-supplier-footer>
+    </cos-supplier>
+    <div
+      class="product-attribute-colors mb-8"
+      *ngIf="colorVariants?.options?.length"
+    >
+      <cos-product-variants [variant]="colorVariants" [hasImages]="true">
+        <h2 class="header-style-14-bold product-attribute-header">Colors</h2>
+      </cos-product-variants>
+      <div class="text-center" *ngIf="isShowMoreColorsEnabled">
+        <button cos-button (click)="toggleColorLimit()">
+          <i class="fa fa-{{ !showingAllColors ? 'plus' : 'minus' }} mr-4"></i
+          >Show
+          {{ !showingAllColors ? 'more' : 'less' }}
+        </button>
+      </div>
+    </div>
+    <div
+      class="product-attribute-sizes mb-16"
+      *ngIf="sizeVariants?.options?.length"
+    >
+      <cos-product-variants [variant]="sizeVariants" [hasImages]="false">
+        <h2 class="header-style-14-bold product-attribute-header">Sizes</h2>
+      </cos-product-variants>
+      <!--
+      <ng-container
+        *ngFor="let value of product.Attributes.Sizes.Values; last as isLast"
+      >
+        <div class="">Sizes</div>
+        <div class="attribute-list-items mb-12">
+          <ng-template #stringValue>
+            {{ value }}{{ isLast ? '' : ', ' }}
+          </ng-template>
+          <ng-container
+            *ngIf="asAttributeValue(value) as attr; else stringValue"
+          >
+            <span> {{ attr.Name }}{{ isLast ? '' : ', ' }} </span>
+          </ng-container>
+        </div>
+      </ng-container>-->
+    </div>
+    <div
+      class="product-attribute-imprint-methods mb-32"
+      *ngIf="imprintVariants?.options?.length"
+    >
+      <cos-product-variants [variant]="imprintVariants" [hasImages]="false">
+        <h2 class="header-style-14-bold product-attribute-header">
+          Imprint Methods
+        </h2>
+      </cos-product-variants>
+    </div>
+
+    <div class="product-prop65 mb-16" *ngIf="product.HasProp65Warning">
+      <cos-card>
+        <div class="flex justify-center">
+          <div class="mr-16 prop-65-icon">
+            <img
+              src="../../../../assets/images/prop65icon.png"
+              alt="Prop 65 Warning"
+              class="img-responsive"
+            />
+          </div>
+          <div class="flex-1">
+            <div class="property-item" *ngFor="let warning of prop65Warnings">
+              <h2 class="header-style-14-bold product-attribute-header">
+                Prop 65 Warning
+              </h2>
+              <div
+                class="product-warning body-style-12"
+                [innerHTML]="warning.Description | prop65"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </cos-card>
+    </div>
+    <div class="product-accordion">
+      <cos-card>
+        <cos-accordion [(expanded)]="imprintAccordionExpanded">
+          <cos-accordion-header>Imprint information</cos-accordion-header>
+          <esp-product-imprint-methods
+            [product]="product"
+          ></esp-product-imprint-methods>
+          <div class="text-center">
+            <button
+              cos-stroked-button
+              size="sm"
+              (click)="imprintAccordionExpanded = !imprintAccordionExpanded"
+            >
+              Close this section
+              <i class="ml-8 fa fa-chevron-up"></i>
+            </button>
+          </div>
+        </cos-accordion>
+        <cos-accordion [(expanded)]="productInfoAccordionExpanded">
+          <cos-accordion-header>Product information</cos-accordion-header>
+          <esp-product-info [product]="product"></esp-product-info>
+          <div class="text-center">
+            <button
+              cos-stroked-button
+              size="sm"
+              (click)="
+                productInfoAccordionExpanded = !productInfoAccordionExpanded
+              "
+            >
+              Close this section
+              <i class="ml-8 fa fa-chevron-up"></i>
+            </button>
+          </div>
+        </cos-accordion>
+        <cos-accordion [(expanded)]="productionShippingAccordionExpanded">
+          <cos-accordion-header>Production and shipping</cos-accordion-header>
+          <esp-product-production-shipping
+            [product]="product"
+          ></esp-product-production-shipping>
+          <div class="text-center">
+            <button
+              cos-stroked-button
+              size="sm"
+              (click)="
+                productionShippingAccordionExpanded =
+                  !productionShippingAccordionExpanded
+              "
+            >
+              Close this section
+              <i class="ml-8 fa fa-chevron-up"></i>
+            </button>
+          </div>
+        </cos-accordion>
+        <cos-accordion [(expanded)]="safetyWarningsAccordionExpanded">
+          <cos-accordion-header>Safety warnings</cos-accordion-header>
+          <esp-product-safety-warnings
+            [product]="product"
+          ></esp-product-safety-warnings>
+          <div class="text-center">
+            <button
+              cos-stroked-button
+              size="sm"
+              (click)="
+                safetyWarningsAccordionExpanded =
+                  !safetyWarningsAccordionExpanded
+              "
+            >
+              Close this section
+              <i class="ml-8 fa fa-chevron-up"></i>
+            </button>
+          </div>
+        </cos-accordion>
+      </cos-card>
+    </div>
+  </div>
+  <div class="product-pricing-inventory">
+    <cos-card class="product-specials" *ngIf="product.Specials?.length">
+      <esp-product-specials [specials]="product.Specials">
+      </esp-product-specials>
+    </cos-card>
+
+    <ng-container *ngIf="priceVariants">
+      <cos-card>
+        <div class="mb-16">
+          <div
+            class="flex flex-wrap content-center items-center justify-between"
+          >
+            <h2 class="header-style-18 mb-0">Pricing Options</h2>
+            <div class="text-right" *ngIf="product.Variants?.length > 1">
+              <a
+                class="view-all-link view-all-price-grids"
+                (click)="openPriceGridDialog()"
+                cos-button
+                >View all Price Grids
+              </a>
+            </div>
+          </div>
+          <div
+            class="product-confirmed-through-date mt-4"
+            *ngIf="product.ConfirmThroughDate"
+          >
+            <span cosAttributeTag class="product-confirmed-through-date-text">
+              <i class="fa fa-calendar-alt"></i> All prices confirmed through
+              {{ product.ConfirmThroughDate | date: 'M/d/y' }}
+            </span>
+          </div>
+        </div>
+        <esp-product-matrix
+          [product]="product"
+          (viewAll)="openPriceGridDialog()"
+        ></esp-product-matrix>
+      </cos-card>
+    </ng-container>
+
+    <cos-card
+      class="inventory-section"
+      *ngIf="product.HasInventory && inventory && inventory.length"
+    >
+      <div
+        class="flex flex-wrap content-center items-center justify-between"
+        *ngIf="inventory.length > 1"
+      >
+        <h2 class="header-style-18">Inventory</h2>
+        <div class="text-right">
+          <a
+            class="view-all-link view-all-inventory-link"
+            (click)="openInventoryDialog()"
+            >View Inventory Grids
+          </a>
+        </div>
+      </div>
+      <!-- <div>
+          <span cosAttributeTag>
+            <i class="fa fa-clock"></i> Selling Fast
+          </span>
+        </div> -->
+      <div>
+        <esp-product-inventory [inventory]="inventory"></esp-product-inventory>
+      </div>
+    </cos-card>
+  </div>
+  <div class="product-related">
+    <esp-product-related type="related" [sourceProduct]="product">
+      <h2 class="header-style-18">Related Products</h2>
+    </esp-product-related>
+  </div>
+  <div class="product-supplier-more">
+    <esp-product-related type="supplier" [sourceProduct]="product">
+      <h2 class="header-style-18">
+        More from {{ product.Supplier?.Name || 'supplier' }}
+      </h2>
+    </esp-product-related>
+  </div>
+  <div class="product-trending-category">
+    <esp-product-related type="category" [sourceProduct]="product">
+      <h2 class="header-style-18">
+        Trending in {{ product.Categories[0]?.Name || 'category' }}
+      </h2>
+    </esp-product-related>
+  </div>
+</div>

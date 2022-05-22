@@ -1,0 +1,13 @@
+@import '../../../../../../../cosmos/scss/settings/';
+
+:host {
+  display: block;
+}
+
+.icon-wrapper {
+  color: $color-g-shark-54;
+
+  @include narrower-than($bp-large) {
+    font-size: 26px !important;
+  }
+}

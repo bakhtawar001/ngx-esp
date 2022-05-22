@@ -1,0 +1,97 @@
+<div class="page-container company mt-0">
+  <ng-container *ngIf="state?.isLoading">
+    <div class="mt-16 text-center">
+      <div>Loading...</div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!state?.isLoading">
+    <esp-detail-header>
+      <esp-detail-header-img>
+        <img
+          *ngIf="state.party?.IconMediaLink?.FileUrl; else icon"
+          [src]="state.party?.IconMediaLink?.FileUrl"
+          alt=""
+          class="h-full"
+          loading="lazy"
+        />
+
+        <ng-template #icon>
+          <i class="fa fa-building text-6xl"></i>
+        </ng-template>
+      </esp-detail-header-img>
+
+      <esp-detail-header-title>
+        <h2 class="detail-header--entity-title mb-0">
+          {{ state.party?.Name }}
+        </h2>
+      </esp-detail-header-title>
+
+      <esp-detail-header-meta>
+        <div>
+          <h4>Created on</h4>
+          <p>{{ state.party?.CreateDate | date: 'longDate'}}</p>
+        </div>
+
+        <div>
+          <h4>Managed by</h4>
+          <p>{{ state.party?.Owner?.Name }}</p>
+        </div>
+
+        <div>
+          <h4>Activity</h4>
+        </div>
+
+        <asi-manage-collaborators
+          [canEdit]="canManageCollaborators"
+          [isOnlyReadWrite]="true"
+        ></asi-manage-collaborators>
+      </esp-detail-header-meta>
+
+      <esp-detail-header-menu>
+        <div class="detail-header-action-btns" *ngIf="state.party?.IsEditable">
+          <button
+            class="actions-button detail-header-action-btns--trigger"
+            cos-stroked-button
+            color="primary"
+            aria-label="Actions"
+            [matMenuTriggerFor]="actionsMenu"
+            click.stop
+          >
+            <i class="fa fa-ellipsis-h"></i>
+            <span class="cos-accessibly-hidden">Menu</span>
+          </button>
+          <mat-menu
+            #actionsMenu="matMenu"
+            class="cos-global-menu-panel"
+            backdropClass="cos-global-menu-backdrop"
+            yPosition="below"
+          >
+            <asi-company-actions-items
+              [company]="state.party"
+              (transferOwner)="onTransferOwner()"
+              (toggleStatus)="onToggleStatus()"
+              (delete)="onDelete()"
+            >
+            </asi-company-actions-items>
+          </mat-menu>
+        </div>
+      </esp-detail-header-menu>
+
+      <esp-detail-header-util-nav>
+        <a cos-icon-button class="company-detail-header-link" (click)="goBack()"
+          ><i class="fa fa-arrow-left mr-2"></i>Back to Directory</a
+        >
+      </esp-detail-header-util-nav>
+    </esp-detail-header>
+
+    <div class="company-detail grid-layout-1">
+      <div class="company-detail-menu">
+        <cos-vertical-menu label="Company menu" [menu]="menu">
+        </cos-vertical-menu>
+      </div>
+      <div class="company-detail-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </ng-container>
+</div>

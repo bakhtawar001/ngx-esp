@@ -1,0 +1,174 @@
+<h2 *ngIf="heading" class="cos-contact-subhead">{{ heading }}</h2>
+<ng-container *ngIf="supplier">
+  <div *ngIf="supplier.Addresses?.Primary" class="cos-contact-category">
+    <i class="cos-contact-icon fa fa-map-marker-alt"></i>
+    <div class="cos-contact-content cos-contact-item">
+      <h3 class="cos-contact-label">{{ labels.headquarters }}</h3>
+      <p
+        class="cos-contact-address cos-contact-value"
+        *ngIf="supplier.Addresses!.Primary"
+      >
+        {{ supplier.Addresses!.Primary!.Street1 }}<br />
+        <span *ngIf="supplier.Addresses!.Primary!.Street2">{{
+          supplier.Addresses!.Primary!.Street2
+        }}</span>
+        {{ supplier.Addresses!.Primary!.City }},
+        {{ supplier.Addresses!.Primary!.State }}
+        {{ supplier.Addresses!.Primary!.Zip }}
+      </p>
+    </div>
+  </div>
+  <div
+    class="cos-contact-category"
+    *ngIf="supplier.Contacts && supplier.Contacts.length > 0"
+  >
+    <i class="cos-contact-icon fa fa-user"></i>
+    <div class="cos-contact-content">
+      <div class="cos-contact-item">
+        <h3 class="cos-contact-label primary-contact-title">
+          {{ supplier.Contacts[0].Title }}
+        </h3>
+        <p class="cos-contact-value primary-contact-name">
+          {{ supplier.Contacts[0].Name }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="cos-contact-category" *ngIf="supplier.OfficeHours">
+    <i class="cos-contact-icon fa fa-clock"></i>
+    <p class="cos-contact-officeHours cos-contact-value">
+      {{ supplier.OfficeHours }}
+    </p>
+  </div>
+  <div class="cos-contact-category" *ngIf="supplier.Phone">
+    <i class="cos-contact-icon fa fa-phone"></i>
+    <div class="cos-contact-content">
+      <div class="cos-contact-item" *ngIf="supplier.Phone.TollFree">
+        <h3 class="cos-contact-tollFreeNum-label cos-contact-label">
+          {{ labels.tollFree }}
+        </h3>
+        <p class="cos-contact-tollFree-Num cos-contact-value">
+          <a href="tel:{{ supplier.Phone.TollFree }}">{{
+            supplier.Phone.TollFree
+          }}</a>
+        </p>
+      </div>
+      <div
+        class="cos-contact-item"
+        *ngIf="
+          supplier.Phone.Primary &&
+          supplier.Phone.Primary !== supplier.Phone.TollFree
+        "
+      >
+        <h3 class="cos-contact-label cos-contact-primaryNum-label">Primary</h3>
+        <p class="cos-contact-primary-num cos-contact-value">
+          <a href="tel:{{ supplier.Phone.Primary }}">{{
+            supplier.Phone.Primary
+          }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="cos-contact-category"
+    *ngIf="supplier.Email || supplier.Artwork?.Email || supplier.Orders?.Email"
+  >
+    <i class="cos-contact-icon fa fa-envelope"></i>
+    <div class="cos-contact-content">
+      <div class="cos-contact-item" *ngIf="supplier.Email">
+        <h3 class="cos-primary-email-label cos-contact-label">Primary</h3>
+        <p class="cos-primary-email-value cos-contact-value">
+          <a [href]="'mailto:' + supplier.Email">
+            {{ supplier.Email }}
+          </a>
+        </p>
+      </div>
+      <div class="cos-contact-item" *ngIf="supplier.Artwork?.Email">
+        <h3 class="cos-artwork-email-label cos-contact-label">
+          {{ labels.artwork }}
+        </h3>
+        <p class="cos-artwork-email-value cos-contact-value">
+          <a [href]="'mailto:' + supplier.Artwork!.Email">
+            {{ supplier.Artwork!.Email }}
+          </a>
+        </p>
+      </div>
+      <div class="cos-contact-item" *ngIf="supplier.Orders?.Email">
+        <h3 class="cos-orders-email-label cos-contact-label">Orders</h3>
+        <p class="cos-orders-email-value cos-contact-value">
+          <a [href]="'mailto:' + supplier.Orders!.Email">
+            {{ supplier.Orders!.Email }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="cos-contact-category"
+    *ngIf="supplier.Websites && websiteAvailable"
+  >
+    <i class="cos-contact-icon fa fa-globe"></i>
+    <div class="cos-contact-item">
+      <p class="cos-contact-website cos-contact-value">
+        <a [href]="supplier.Websites[0] | websiteUrl" target="_blank">{{
+          supplier.Websites[0]
+        }}</a>
+      </p>
+    </div>
+  </div>
+  <div class="cos-contact-category" *ngIf="supplier.Email && labels.email">
+    <i class="cos-contact-icon fa fa-comment"></i>
+    <p class="cos-contact-value">
+      <a [href]="'mailto:' + supplier.Email">{{ labels.email }}</a>
+    </p>
+  </div>
+  <div class="cos-social-links" *ngIf="socialLinks && supplier.Websites">
+    <ng-container *ngFor="let url of socialLinksSorted">
+      <a
+        *ngIf="url | UrlToSocialIcon"
+        class="cos-social-link"
+        [href]="url"
+        target="_blank"
+      >
+        <span class="cos-accessibly-hidden">{{ url | UrlToDomainName }}</span>
+        <i [ngClass]="['cos-social-icon', 'fab', url | UrlToSocialIcon]"></i>
+      </a>
+    </ng-container>
+  </div>
+</ng-container>
+<ng-container *ngIf="contacts && contacts.length > 0">
+  <div class="cos-contact-category">
+    <i class="cos-contact-icon fa fa-user-tie"></i>
+    <div class="cos-contact-two-column">
+      <div *ngFor="let contact of contacts" class="cos-contact-content">
+        <p class="cos-company-contacts cos-contact-value">
+          <span>{{ contact.Name }}</span>
+          <span class="cos-contact-value --smaller">{{ contact.Title }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="references && references.length > 0">
+  <div class="cos-contact-category">
+    <i class="cos-contact-icon fa fa-building"></i>
+    <div class="cos-contact-references">
+      <div *ngFor="let reference of references" class="cos-contact-reference">
+        <p class="cos-contact-value">
+          <span class="cos-reference-name">{{ reference.Name }}</span>
+          <span class="cos-reference-asiNum cos-contact-value --smaller"
+            >asi/{{ reference.AsiNumber }}</span
+          >
+        </p>
+        <p class="cos-contact-value">
+          <span class="cos-reference-contact">{{ reference.Phone }}</span>
+          <span
+            *ngIf="reference.Contacts && reference.Contacts.length > 0"
+            class="cos-reference-contact-name cos-contact-value --smaller"
+            >{{ reference.Contacts[0].Name }}</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-container>

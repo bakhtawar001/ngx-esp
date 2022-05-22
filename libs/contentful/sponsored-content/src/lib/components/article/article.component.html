@@ -1,0 +1,72 @@
+<div class="article-wrapper" *ngIf="article$ | async as article; else loading">
+  <div class="layout-full" *ngIf="layout === 'full'; else preview">
+    <h1 class="article__header">
+      {{ article.fields.title }}
+    </h1>
+    <hr />
+    <!--
+    <div class="article-banner" *ngIf="article.fields.banner">
+      <img [src]="article.fields.banner" class="img-responsive" />
+    </div>
+    -->
+    <div
+      class="article__description"
+      [innerHtml]="parseSanitizeDocument(article.fields.description)"
+    ></div>
+    <hr />
+    <div
+      class="article__products"
+      *ngFor="let articleProduct of article.fields.products"
+    >
+      <esp-product
+        [productId]="articleProduct.fields.productId"
+        [smartlinkUrl]="smartlinkUrl"
+      >
+        <ng-template let-product="product">
+          <div *ngIf="product">
+            <h3>{{ articleProduct.fields.title }}</h3>
+            <esp-product-card
+              [product]="product"
+              [saveButtonText]="saveButtonText"
+              [orderButtonText]="orderButtonText"
+              (productDetailClick)="productDetailClick.next($event)"
+              (productBuyClick)="productBuyClick.next($event)"
+              (productSaveClick)="productSaveClick.next($event)"
+              (supplierDetailClick)="supplierDetailClick.next($event)"
+              (productCardLoaded)="productCardLoaded.next($event)"
+              [imageBaseHref]="smartlinkUrl"
+              ><ng-content></ng-content
+            ></esp-product-card>
+            <div
+              [innerHtml]="
+                parseSanitizeDocument(articleProduct.fields.description)
+              "
+            ></div>
+            <hr />
+          </div>
+        </ng-template>
+      </esp-product>
+    </div>
+
+    <div
+      *ngIf="article.fields.footer"
+      [innerHtml]="parseSanitizeDocument(article.fields.footer)"
+    ></div>
+  </div>
+  <ng-template #preview>
+    <div class="layout-preview">
+      <div class="body">
+        <div class="content">
+          <h4>{{ article.fields.title }}</h4>
+          <p>{{ article.fields.shortDescription }}</p>
+          <a (click)="articleDetailClick.next(article)">
+            {{ readMoreText }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<ng-template #loading>
+  <div class="article-loading">Loading...</div>
+</ng-template>

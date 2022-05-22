@@ -1,0 +1,235 @@
+import { CommonModule } from '@angular/common';
+import { CosSupplierFooterComponent } from './supplier.component';
+import { CosRatingModule } from '@cosmos/components/rating';
+import { CosAttributeTagModule } from '@cosmos/components/attribute-tag';
+import { CosButtonModule } from '@cosmos/components/button';
+import { CosContactInfoModule } from '@cosmos/components/contact-info';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosSupplierDemoComponent } from './supplier.component.demo';
+import { CosSupplierComponent } from './supplier.component';
+import { CosSupplierModule } from './supplier.module';
+
+export const supplier = {
+  Name: 'St Regis Group',
+  Id: '7730',
+  AsiNumber: '84592',
+  Preferred: {
+    Name: 'Platinum',
+  },
+  Phone: '',
+  Fax: null,
+  Email: '',
+  Websites: ['http://www.asiqasupplier1.com', 'http://www.asiqasupplier1.com'],
+  Address: null,
+  OfficeHours: null,
+  Orders: '',
+  Type: null,
+  Artwork: '',
+  ProductionTime: null,
+  ImprintingMethods: null,
+  MarketingPolicy: null,
+  YearEstablished: null,
+  YearInIndustry: null,
+  TotalEmployees: null,
+  IsMinorityOwned: null,
+  IsUnionAvailable: null,
+  IsCanadian: null,
+  IsCanadianFriendly: null,
+  HasDistributorAffiliation: null,
+  Functions: null,
+  Rating: {
+    Rating: 5,
+    Companies: 22,
+    Transactions: 22,
+  },
+  Ratings: {
+    OverAll: {
+      Rating: 5,
+      Companies: 22,
+      Transactions: 22,
+    },
+    Quality: { Rating: 9, Companies: 36, Transactions: 206 },
+    Communication: { Rating: 9, Companies: 35, Transactions: 202 },
+    Delivery: { Rating: 9, Companies: 34, Transactions: 201 },
+    ConflictResolution: { Rating: 8, Companies: 13, Transactions: 133 },
+    Decoration: { Rating: 9, Companies: 34, Transactions: 201 },
+  },
+};
+
+<Meta
+  title="Attributes/Supplier"
+  component={CosSupplierComponent}
+  decorators={[
+    moduleMetadata({
+      declarations: [CosSupplierDemoComponent],
+      imports: [
+        CommonModule,
+        CosAttributeTagModule,
+        CosRatingModule,
+        CosButtonModule,
+        CosContactInfoModule,
+        CosSupplierModule,
+      ],
+    }),
+  ]}
+  args={{ supplier }}
+  argTypes={{
+    supplier: {
+      control: 'object',
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosSupplierDemoComponent,
+});
+
+# Supplier Card
+
+Supplier cards are used to display information about suppliers.
+
+### When to use this component
+
+Can be used as part of other components or on it's own on a page to display supplier information.
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      showImage: true,
+      showDetails: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Unrated"
+    args={{
+      showImage: true,
+      showDetails: true,
+      showPreferredGroups: false,
+      supplier: {
+        Name: 'St Regis Group',
+        Id: '7730',
+        AsiNumber: '84592',
+        Preferred: {
+          Name: 'Platinum',
+        },
+        Phone: '',
+        Fax: null,
+        Email: '',
+        Websites: [
+          'http://www.asiqasupplier1.com',
+          'http://www.asiqasupplier1.com',
+        ],
+        Address: null,
+        OfficeHours: null,
+        Orders: '',
+        Type: null,
+        Artwork: '',
+        ProductionTime: null,
+        ImprintingMethods: null,
+        MarketingPolicy: null,
+        YearEstablished: null,
+        YearInIndustry: null,
+        TotalEmployees: null,
+        IsMinorityOwned: null,
+        IsUnionAvailable: null,
+        IsCanadian: null,
+        IsCanadianFriendly: null,
+        HasDistributorAffiliation: null,
+        Functions: null,
+        Rating: {
+          Rating: undefined,
+          Companies: undefined,
+          Transactions: undefined,
+        },
+        Ratings: {
+          OverAll: {
+            Rating: undefined,
+            Companies: undefined,
+            Transactions: undefined,
+          },
+          Quality: { Rating: 9, Companies: 36, Transactions: 206 },
+          Communication: { Rating: 9, Companies: 35, Transactions: 202 },
+          Delivery: { Rating: 9, Companies: 34, Transactions: 201 },
+          ConflictResolution: { Rating: 8, Companies: 13, Transactions: 133 },
+          Decoration: { Rating: 9, Companies: 34, Transactions: 201 },
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-supplier
+  [showImage]="showImage"
+  [showPreferredGroups]="showPreferredGroups"
+  [supplier]="supplier"
+>
+  <cos-supplier-footer [supplier]="supplier"></cos-supplier-footer>
+</cos-supplier>
+```
+
+### CosSupplierComponent Args
+
+<ArgsTable of={CosSupplierComponent} />
+
+### CosSupplierFooterComponent Args
+
+<ArgsTable of={CosSupplierFooterComponent} />
+
+---
+
+## How it works
+
+### Small
+
+Use this view when attaching to standard product cards.
+
+Small Product View:
+
+- Supplier Group
+- Supplier Name
+- ASI Number
+- Star Rating and Count
+
+### Standard
+
+This view is used in conjunction with other components to display supplier information or on it's own on the product page.
+
+Standard Product View:
+
+- Photo
+- Supplier Group
+- Supplier Name
+- ASI Number
+- Star Rating and Count
+
+### Large
+
+This view is used when you like to like to display the supplier info as the most prominent feature. This view is useful on the homepage and category landing pages.
+
+Standard Product View:
+
+- Photo
+- System tag
+- Supplier Name
+- ASI Name
+- Star Rating and Count
+- Quote
+
+_The Supplier Group is show/hide depending on system settings._
+
+---
+
+### States
+
+Hover state is an applied drop show of G25-Moth. ( 0 px, 1 px, 10px, 0px)
+
+---

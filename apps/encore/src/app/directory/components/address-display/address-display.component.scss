@@ -1,0 +1,9 @@
+.address-inline {
+  div {
+    display: inline;
+
+    &:after {
+      content: ' ';
+    }
+  }
+}

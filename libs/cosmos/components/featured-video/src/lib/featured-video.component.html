@@ -1,0 +1,19 @@
+<div class="cos-video-thumbnail-container">
+  <cos-video-thumbnail
+    [video]="{
+      Id: video.Id,
+      Type: 'VD',
+      Url: video.Url,
+      IsPrimary: false
+    }"
+  ></cos-video-thumbnail>
+  <button class="cos-video-play-button" (click)="videoPlayRequested.emit(video)">
+    <span class="cos-accessibly-hidden">Play</span>
+  </button>
+</div>
+<div class="cos-video-text">
+  <h3 *ngIf="heading" class="cos-video-heading">{{ heading }}</h3>
+  <p *ngIf="description" class="cos-video-description">
+    {{ description }}
+  </p>
+</div>

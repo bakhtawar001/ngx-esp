@@ -1,0 +1,40 @@
+@import 'cosmos/scss/settings/';
+
+.util-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-flow: wrap;
+
+  .search {
+    &-form {
+      width: 100%;
+    }
+
+    &-keywords {
+      width: 100%;
+      flex: 0 0 100%;
+      margin-bottom: 1rem;
+
+      @include wider-than($bp-large) {
+        max-width: 360px;
+        margin-right: 1rem;
+      }
+    }
+
+    &-filters,
+    &-sort {
+      @include narrower-than($bp-large) {
+        flex: 0 0 50%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &-end {
+    margin-left: auto;
+  }
+}

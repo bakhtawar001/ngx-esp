@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/common",
+  "sourceRoot": "libs/esp/common/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/common"],
+      "options": {
+        "tsConfig": "libs/esp/common/tsconfig.lib.json",
+        "project": "libs/esp/common/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/common/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/common/**/*.ts",
+          "libs/esp/common/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/common/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/common"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"],
+  "implicitDependencies": ["cosmos-common"]
+}

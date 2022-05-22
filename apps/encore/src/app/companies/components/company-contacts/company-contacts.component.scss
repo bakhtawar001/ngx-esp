@@ -1,0 +1,24 @@
+@import 'cosmos/scss/settings';
+
+.contact-row {
+  &-actions {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}
+
+@include wider-than($bp-medium) {
+  .contact-row {
+    display: flex;
+
+    &-display {
+      flex: 1 1 0%;
+    }
+
+    &-actions {
+      display: block;
+      justify-content: flex-end;
+    }
+  }
+}

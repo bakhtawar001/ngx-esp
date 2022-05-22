@@ -1,0 +1,138 @@
+<ng-container
+  *ngIf="(state.party?.Links | filterPersonTypePipe) as personLinks"
+>
+  <cos-dotted-button
+    *ngIf="personLinks?.length === 0
+      && !creatingMode
+      && state.party?.IsEditable"
+    (click)="addItem()"
+    title="Add a linked contact"
+  ></cos-dotted-button>
+
+  <cos-segmented-panel *ngIf="personLinks?.length > 0 || creatingMode">
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Contacts</h2>
+      <button
+        (click)="addItem()"
+        [disabled]="activeRow !== null || !state.party?.IsEditable"
+        cos-flat-button
+        color="primary"
+        size="sm"
+      >
+        <i class="fas fa-plus"></i> Add Contact Link
+      </button>
+    </cos-segmented-panel-header>
+
+    <cos-segmented-panel-row *ngIf="personLinks?.length === 0">
+      <div class="text-center">
+        <div>No linked contacts</div>
+      </div>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row
+      *ngFor="let contactLinkGroup of groups; let i = index"
+    >
+      <asi-panel-editable-row
+        [editingIsActive]="activeRow === i"
+        [isEditable]="
+          contactLinkGroup?.value?.To?.IsEditable &&
+          (activeRow === null || activeRow === i)
+        "
+        (onCancelEvent)="cancelEdit()"
+        (onSaveEvent)="save(contactLinkGroup)"
+      >
+        <esp-party-avatar
+          class="mr-12"
+          [iconUrl]="contactLinkGroup?.value?.To?.IconMediaLink?.FileUrl"
+          [name]="contactLinkGroup.value?.To?.Name || 'New Contact'"
+        ></esp-party-avatar>
+        <asi-panel-editable-row-title>
+          <p class="form-row-title">
+            <strong
+              >{{ contactLinkGroup.value?.To?.Name || 'New Contact' }}</strong
+            >
+          </p>
+        </asi-panel-editable-row-title>
+
+        <asi-panel-editable-row-inactive>
+          {{ contactLinkGroup.value?.Reverse ?
+          contactLinkGroup.value?.Type?.ReverseTitle :
+          contactLinkGroup.value?.Type?.ForwardTitle }}
+        </asi-panel-editable-row-inactive>
+
+        <asi-panel-editable-row-controls
+          *ngIf="activeRow !== i"
+          class="flex justify-end font-medium"
+        >
+          <button
+            cos-button
+            [routerLink]="['/contacts', contactLinkGroup.value?.To?.Id]"
+          >
+            View Full Contact
+          </button>
+          <button
+            cos-button
+            *ngIf="activeRow === null && state.party?.IsEditable"
+            (click)="activeRow = i"
+          >
+            Edit
+          </button>
+        </asi-panel-editable-row-controls>
+
+        <asi-panel-editable-row-active [formGroup]="contactLinkGroup">
+          <div class="contact-row">
+            <div class="contact-row-display">
+              <div>
+                <div
+                  class="cos-form-row grid grid-cols-2 mt-16"
+                  *ngIf="!creatingMode; else createFlow"
+                >
+                  Current role {{ contactLinkGroup?.value?.Type?.Code }}
+                </div>
+                <ng-template #createFlow>
+                  <label class="cos-form-label" data-cy="contact-name-label"
+                    >Contact name
+                    <span class="body-style-12-shark"></span>
+                  </label>
+                  <div class="md:grid">
+                    <asi-party-autocomplete
+                      data-cy="contact-autocomplete"
+                      [type]="'contact'"
+                      formControlName="To"
+                    >
+                    </asi-party-autocomplete>
+                  </div>
+                </ng-template>
+
+                <cos-autocomplete
+                  mode="search"
+                  [label]="'Relationship'"
+                  [data]="state.relationships"
+                  placeholder="Select from the list or enter relationship"
+                  [displayKey]="'Code'"
+                  formControlName="Type"
+                >
+                  <ng-template let-option> {{ option.Code }} </ng-template>
+                </cos-autocomplete>
+              </div>
+            </div>
+            <div class="contact-row-actions">
+              <button
+                *ngIf="!creatingMode"
+                (click)="removeItem(contactLinkGroup)"
+                aria-label="Remove"
+                cos-button
+                color="warn"
+                data-cy="remove-contact-button"
+                type="button"
+              >
+                <i class="fa fa-trash md:hidden mr-8"></i>
+                Remove
+              </button>
+            </div>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-container>

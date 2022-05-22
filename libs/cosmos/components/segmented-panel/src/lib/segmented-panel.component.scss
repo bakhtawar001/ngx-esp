@@ -1,0 +1,29 @@
+@import '../../../../scss/settings';
+
+.cos-segmented-panel {
+  display: block;
+  margin-bottom: $spacing-stack-16;
+}
+
+.cos-segmented-panel-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-g-pebble-09;
+  border-radius: 4px;
+  background: #fff;
+
+  .cos-segmented-panel-header {
+    background-color: $color-g-pearl-03;
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+
+  .cos-segmented-panel-header,
+  .cos-segmented-panel-row {
+    @include spacing-inset-16();
+    border-bottom: 1px solid $color-g-pebble-09;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}

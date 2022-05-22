@@ -1,0 +1,64 @@
+@import '../../../../scss/settings/';
+
+cos-form-field {
+  display: block;
+  margin-bottom: $spacing-stack-16;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.cos-error {
+  display: block;
+  margin-top: 4px;
+}
+
+.cos-form-field {
+  &-label {
+    display: block;
+    margin-bottom: $spacing-stack-8;
+    @include input-label();
+  }
+
+  &-input-wrapper {
+    position: relative;
+  }
+
+  &-invalid {
+    color: $color-rd-macaw-55;
+  }
+
+  &-flex {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &-hint-wrapper {
+    display: flex;
+  }
+
+  &-hint-spacer {
+    flex: 1 0 1em;
+  }
+
+  &-prefix,
+  &-suffix {
+    white-space: nowrap;
+    flex: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.8rem;
+    text-align: center;
+    display: inline-block;
+  }
+
+  &-prefix {
+    left: 0;
+  }
+
+  &-suffix {
+    right: 0;
+  }
+}

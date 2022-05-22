@@ -1,0 +1,94 @@
+@import '../../../../../../cosmos/scss/settings/';
+
+$avatar-size: 36px;
+
+asi-details-card {
+  width: 100%;
+  display: block;
+
+  .details-card {
+    // Border-top colors are selected by the user
+    border-top: $spacing-stack-4 solid;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: $spacing-inline-8;
+    text-align: left;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1);
+    min-height: 100px;
+  }
+
+  .cos-card-main {
+    display: block;
+    border-radius: $border-radius-4;
+    padding: 0;
+  }
+
+  .details-card__title-wrapper {
+    width: calc(100% - #{$spacing-inline-8 + $avatar-size});
+  }
+
+  .details-card__title {
+    @include type-style-header-14-bold;
+  }
+
+  .details-card__avatar {
+    border: none;
+    min-width: $avatar-size;
+    min-height: $avatar-size;
+    max-width: $avatar-size;
+    max-height: $avatar-size;
+    margin-right: $spacing-inline-8;
+    border-radius: $border-radius-2 !important;
+    background: $color-g-pebble-09;
+    align-self: flex-start;
+
+    & img {
+      display: block;
+      max-width: $avatar-size;
+      max-height: $avatar-size;
+      border-radius: $border-radius-2 !important;
+    }
+  }
+
+  .details-card__header {
+    display: flex;
+    align-items: center;
+  }
+
+  .details-card__title {
+    @include type-style-header-14-bold();
+    display: block;
+    margin: 0;
+  }
+
+  .details-card__subtitle {
+    @include type-body-style-12;
+    display: block;
+    margin-top: $spacing-stack-4;
+    margin-bottom: 0;
+  }
+
+  // Truncate title and subtitle onto one line
+  .details-card__title,
+  .details-card__subtitle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .details-card__footer {
+    display: block;
+    margin-top: $spacing-stack-12;
+  }
+
+  .details-card__details {
+    @include type-body-style-12-medium;
+    display: block;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

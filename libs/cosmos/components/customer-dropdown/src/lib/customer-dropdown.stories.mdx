@@ -1,0 +1,111 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { moduleMetadata } from '@storybook/angular';
+import { CosCustomerDropdownComponent } from './customer-dropdown.component';
+import { CosCustomerDropdownModule } from './customer-dropdown.module';
+
+export const customers = [
+  {
+    Id: 1,
+    Name: 'Bloom Co-Locations',
+    ProfileImageUrl: 'https://placebear.com/g/28/28',
+  },
+  {
+    Id: 2,
+    Name: 'Dentitect',
+    IsCompany: true,
+  },
+  {
+    Id: 3,
+    Name: 'Elastic, LLC',
+    ProfileImageUrl: 'http://placekitten.com/28/28',
+  },
+  {
+    Id: 4,
+    Name: 'Benedict Cumberbatch',
+    IsPerson: true,
+  },
+  {
+    Id: 5,
+    Name: 'Infinite Flame',
+    ProfileImageUrl: 'http://placekitten.com/28/28',
+  },
+  {
+    Id: 6,
+    Name: 'Masterwork Realty, LLC',
+    ProfileImageUrl: 'http://placekitten.com/28/28',
+  },
+];
+
+<Meta
+  title="Controls &amp; Inputs/Customer Dropdown"
+  component={CosCustomerDropdownComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosCustomerDropdownModule],
+    }),
+  ]}
+  args={{
+    customers,
+    dropdownLabel: 'Customer',
+    newCustomerButtonLabel: 'Create new customer',
+    selectedCustomerId: 3,
+  }}
+  argTypes={{
+    customers: { control: 'object' },
+  }}
+/>
+
+export const Template = (props) => ({
+  component: CosCustomerDropdownComponent,
+  props,
+});
+
+# Customer Dropdown (Dropdown with Images)
+
+The dropdown with images component allows someone to view the image associated with the values within the select menu.
+Renders a mat-select in desktop and a native select in mobile (<600px).
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+ <cos-customer-dropdown
+      dropdownLabel="Customer"
+      newCustomerButtonLabel="Create new customer"
+      [selectedCustomerId]="3"
+      [customers]="[
+        {
+            Id: 1,
+            Name: 'Bloom Co-Locations',
+            ImageSrc: 'https://placebear.com/g/28/28'
+        },
+        {
+            Id: 2,
+            Name: 'Dentitect',
+            ImageSrc: 'http://placekitten.com/28/28'
+        },
+        {
+            Id: 3,
+            Name: 'Elastic, LLC',
+            ImageSrc: 'http://placekitten.com/28/28'
+        }
+      ]"
+    </cos-customer-dropdown>
+```
+
+<ArgsTable of={CosCustomerDropdownComponent} />
+
+## How it works
+
+- Each value within the select list displays a thumbnail image and the value name to help distributors select the correct value.
+- Thumbnails are typically company logos or user images
+
+### When to use
+
+When thumbnail images are used as a unique identifer for the value, like a list of suppliers, decorators, customers or collaborators.
+
+### When not to use
+
+When there is a set number of thumbnail images or icons that might be repeated across values, like a list of collections which use a finite set of emoji.

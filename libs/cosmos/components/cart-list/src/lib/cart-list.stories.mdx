@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import data from './cart-list.data.json';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosCartListModule } from './cart-list.module';
+import { CosCartListComponent } from './cart-list.component';
+
+<Meta
+  title="Lists/Cart List"
+  component={CosCartListComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosCartListModule],
+      declarations: [],
+    }),
+  ]}
+  args={{
+    products: data,
+    heading: 'Tee Shirts',
+  }}
+  argTypes={{
+    products: { control: 'object' },
+    heading: { control: 'text' },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosCartListComponent,
+});
+
+# Card List Component
+
+This component shows a list of products in a shopping cart with a single heading.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```js
+  <cos-cart-list
+    [heading]="heading"
+    [products]="products">
+  </cos-cart-list>
+```
+
+<ArgsTable of={CosCartListComponent} />

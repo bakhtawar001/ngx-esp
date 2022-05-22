@@ -1,0 +1,24 @@
+<div class="cos-related-topics-container">
+  <ul class="cos-related-topics-list">
+    <li class="cos-related-topics-list-item" *ngFor="let topic of topics">
+      <a href="{{ topic.url }}" cosPill>
+        {{ topic.label }}
+        <i class="fa fa-arrow-right"></i>
+      </a>
+    </li>
+    <li class="cos-related-topics-list-item" *ngIf="showToggleButton">
+      <button
+        cosPill
+        class="cos-realated-topics-more"
+        (click)="toggleShowAll()"
+      >
+        <ng-template [ngIf]="!showAll"
+          ><i class="fa fa-plus"></i> Show More</ng-template
+        >
+        <ng-template [ngIf]="showAll"
+          ><i class="fa fa-minus"></i> Show Less</ng-template
+        >
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,102 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosTrackerAccordionModule } from './tracker-accordion.module';
+import { CosTrackerAccordionComponent } from './tracker-accordion.component';
+import { CosTrackerAccordionDemoComponent } from './tracker-accordion.component.demo';
+
+<Meta
+  title="Layout Components/Tracker Accordion"
+  component={CosTrackerAccordionComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosTrackerAccordionModule],
+      declarations: [CosTrackerAccordionDemoComponent],
+    }),
+  ]}
+  argTypes={{
+    size: {
+      control: {
+        type: 'select',
+        options: ['default', 'small'],
+        default: '',
+      },
+    },
+  }}
+/>
+
+# Tracker Accordion
+
+This component extends the regular accordion component with a few additional features to help it display the progress of a series of steps.
+
+## Accordion Label
+
+If you need a stylized label you can use the `cos-tracker-accordion-label` component to add custom markup to the circle
+
+export const Template = (args) => ({
+  props: args,
+  component: CosTrackerAccordionDemoComponent,
+});
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-tracker-accordion
+  accordionTitle="Negotiation & Pitching"
+  expanded=""
+  size=""
+  status="complete"
+  hideToggle=""
+>
+  <cos-tracker-accordion-label>1</cos-tracker-accordion-label>
+  <p>Veniam dolor sit sint cupidatat fugiat nulla ad sit cillum.</p>
+</cos-tracker-accordion>
+<cos-tracker-accordion
+  accordionTitle="Quoting"
+  expanded=""
+  size=""
+  status="complete"
+  hideToggle=""
+>
+  <cos-tracker-accordion-label>2</cos-tracker-accordion-label>
+  <p>Veniam dolor sit sint cupidatat fugiat nulla ad sit cillum.</p>
+</cos-tracker-accordion>
+<cos-tracker-accordion
+  accordionTitle="Ordering"
+  expanded=""
+  size=""
+  status="complete"
+  hideToggle=""
+>
+  <cos-tracker-accordion-label>3</cos-tracker-accordion-label>
+  <p>Veniam dolor sit sint cupidatat fugiat nulla ad sit cillum.</p>
+</cos-tracker-accordion>
+<cos-tracker-accordion
+  accordionTitle="Fullfillment"
+  expanded="true"
+  size=""
+  status="warn"
+  hideToggle=""
+>
+  <cos-tracker-accordion-label
+    ><i class="fa fa-exclamation-triangle cos-text--white"></i
+  ></cos-tracker-accordion-label>
+  <p>Veniam dolor sit sint cupidatat fugiat nulla ad sit cillum.</p>
+</cos-tracker-accordion>
+<cos-tracker-accordion
+  accordionTitle="Complete"
+  expanded=""
+  [expandable]="false"
+  size=""
+  hideToggle=""
+>
+  <cos-tracker-accordion-label>5</cos-tracker-accordion-label>
+  <p>Veniam dolor sit sint cupidatat fugiat nulla ad sit cillum.</p>
+</cos-tracker-accordion>
+```
+
+<ArgsTable of={CosTrackerAccordionComponent} />

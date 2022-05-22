@@ -1,0 +1,11 @@
+.logo {
+  &:focus {
+    box-shadow: none;
+  }
+
+  esp-encore-logo {
+    display: block;
+    fill: white;
+    width: 100px;
+  }
+}

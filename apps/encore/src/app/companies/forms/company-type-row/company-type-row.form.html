@@ -1,0 +1,50 @@
+<asi-panel-editable-row
+  class="company-type-row"
+  rowTitle="Company Type"
+  [isEditable]="state.party?.IsEditable"
+  (onSaveEvent)="state.save(form.value)"
+>
+  <i class="form-row-icon fas fa-building mt-8 mr-16"></i>
+  <asi-panel-editable-row-title>
+    <p class="form-row-title">
+      <strong>Company Type</strong>
+    </p>
+  </asi-panel-editable-row-title>
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value">{{companyTypes}}</p>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <ng-container [formGroup]="form">
+      <div class="cos-form-row">
+        <cos-checkbox
+          id="isCustomer"
+          formControlName="IsCustomer"
+          aria-labelledby="Is Customer"
+          labelPosition="after"
+        >
+          Customer
+        </cos-checkbox>
+      </div>
+      <div class="cos-form-row">
+        <cos-checkbox
+          id="isSupplier"
+          formControlName="IsSupplier"
+          aria-labelledby="Is Supplier"
+          labelPosition="after"
+        >
+          Supplier
+        </cos-checkbox>
+      </div>
+      <div class="cos-form-row">
+        <cos-checkbox
+          id="isDecorator"
+          formControlName="IsDecorator"
+          aria-labelledby="Is Decorator"
+          labelPosition="after"
+        >
+          Decorator
+        </cos-checkbox>
+      </div>
+    </ng-container>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

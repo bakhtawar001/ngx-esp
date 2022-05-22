@@ -1,0 +1,119 @@
+@import 'cosmos/scss/settings/';
+
+$mobile-breakpoint: $bp-large;
+$avatar-size: 36px;
+
+.project-details-card {
+  [cos-card-footer] {
+    padding: 8px;
+
+    .header-style-12 {
+      line-height: 18px;
+    }
+  }
+
+  .project-info-grid {
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .metadata-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, auto);
+    gap: 16px;
+    column-gap: 8px;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 150px 32px;
+    grid-template-rows: auto auto;
+    gap: 8px;
+    word-break: break-word;
+    margin-bottom: -14px;
+  }
+
+  &__tracker {
+    display: flex;
+
+    .cos-tracker {
+      margin-right: 24px;
+      margin-top: 9px;
+      width: 150px;
+    }
+  }
+
+  &__heading {
+    color: $color-bl-atoll-75;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &-date {
+      align-self: end;
+    }
+  }
+
+  &__details-button {
+    position: absolute;
+    top: -2px;
+  }
+}
+
+@include narrower-than($bp-large) {
+  .project-details-card {
+    .metadata-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+        &:last-of-type {
+          flex-basis: 100%;
+        }
+      }
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    &__tracker {
+      grid-area: mobile;
+    }
+
+    &__notifications {
+      width: 40%;
+      align-self: end;
+    }
+
+    &__details-button {
+      position: relative;
+      margin: 0 auto;
+    }
+
+    &__footer-date {
+      align-self: center;
+      margin-left: 8px;
+    }
+
+    &__in-hands-date {
+      flex-direction: column;
+
+      p {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}

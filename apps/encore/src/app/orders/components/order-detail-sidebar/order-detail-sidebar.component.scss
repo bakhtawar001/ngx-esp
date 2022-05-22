@@ -1,0 +1,13 @@
+@import 'cosmos/scss/settings/';
+
+.order-detail-sidebar {
+  grid-area: b;
+}
+
+.settings-menu {
+  border-top: $border-light;
+  border-bottom: $border-light;
+  margin-bottom: $spacing-stack-16;
+  margin-top: $spacing-stack-16;
+  padding-top: $spacing-stack-16;
+}

@@ -1,0 +1,63 @@
+<nav *ngIf="totalPages > 1" aria-label="pagination" class="button-container">
+  <ng-container *ngIf="currentPage !== 1">
+    <button
+      class="next-prev-button"
+      aria-label="Previous page"
+      (click)="previousPage()"
+    >
+      <i class="fa fa-angle-left"></i><span aria-hidden>Prev</span>
+    </button>
+
+    <mat-divider [vertical]="true"></mat-divider>
+  </ng-container>
+  <div
+    class="cos-pagination-page-indicator"
+    [ngClass]="{ '--small': variant === 'small' }"
+  >
+    <strong>{{ currentPage }}</strong> of {{ totalPages }}
+  </div>
+
+  <div class="cos-pagination-page-links" *ngIf="variant !== 'small'">
+    <ng-container
+      *ngFor="let page of pages[0]"
+      [ngTemplateOutlet]="pagebutton"
+      [ngTemplateOutletContext]="{ page: page }"
+    >
+    </ng-container>
+    <span *ngIf="nonConsecutive?.[0]" class="page-number ellipse">...</span>
+    <ng-container
+      *ngFor="let page of pages[1]"
+      [ngTemplateOutlet]="pagebutton"
+      [ngTemplateOutletContext]="{ page: page }"
+    >
+    </ng-container>
+    <span *ngIf="nonConsecutive?.[1]" class="page-number ellipse">...</span>
+    <ng-container
+      *ngFor="let page of pages[2]"
+      [ngTemplateOutlet]="pagebutton"
+      [ngTemplateOutletContext]="{ page: page }"
+    >
+    </ng-container>
+  </div>
+  <ng-container *ngIf="currentPage <= totalPages - 1">
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <button
+      class="next-prev-button"
+      aria-label="Next page"
+      (click)="nextPage()"
+    >
+      <span aria-hidden>Next</span><i class="fa fa-angle-right"></i>
+    </button>
+  </ng-container>
+</nav>
+
+<ng-template #pagebutton let-page="page">
+  <button
+    [class]="currentPage === page ? 'page-number --active' : 'page-number'"
+    [attr.aria-current]="currentPage === page ? true : null"
+    (click)="goToPage(page)"
+  >
+    {{ page }}
+  </button>
+</ng-template>

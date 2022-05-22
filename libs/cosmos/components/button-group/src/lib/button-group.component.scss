@@ -1,0 +1,76 @@
+@import '../../../../scss/settings';
+
+.cos-button-group {
+  display: inline-block;
+  height: auto;
+  // Taken straight from button.scss
+  font-family: 'Barlow', sans-serif;
+  font-size: $font-size-14;
+  font-weight: $font-weight-700;
+  border-radius: $border-radius-4;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
+  .mat-button-toggle-appearance-standard {
+    line-height: 1;
+  }
+
+  // Material UI Overrides
+  [mat-ripple] {
+    display: none;
+  }
+
+  .cos-button-group-toggle {
+    color: $color-bl-azure-57;
+    border: 1px solid $color-bl-azure-57;
+
+    &:focus,
+    &.cdk-focused {
+      // @include cos-focus();
+      outline: none;
+      box-shadow: inset 0px 0px 3px 2px rgba(77, 156, 230, 0.35);
+    }
+
+    &:first-child {
+      border-left: 1px solid $color-bl-azure-57;
+      border-right: none;
+      border-top-left-radius: $border-radius-4;
+      border-bottom-left-radius: $border-radius-4;
+    }
+
+    &:last-child {
+      border-right: 1px solid $color-bl-azure-57;
+      border-left: none;
+      border-top-right-radius: $border-radius-4;
+      border-bottom-right-radius: $border-radius-4;
+    }
+
+    &.mat-button-toggle-disabled {
+      color: $color-g-stone-41;
+      border-color: $color-g-stone-41;
+    }
+
+    &.mat-button-toggle-checked.mat-button-toggle-disabled {
+      color: $color-g-pebble-09;
+      border-color: $color-g-stone-41;
+      background: $color-g-stone-41;
+    }
+
+    & .mat-button-toggle-label-content {
+      @include spacing-squish-8();
+      line-height: 1;
+    }
+
+    &.mat-button-toggle-checked {
+      color: $color-g-white-00;
+      background: $color-bl-azure-57;
+      &:focus,
+      &.cdk-focused {
+        box-shadow: inset 0px 0px 3px 2px rgba($color-bl-atoll-75, 0.65);
+        // material focus override
+        .mat-button-toggle-focus-overlay {
+          opacity: 0 !important;
+        }
+      }
+    }
+  }
+}

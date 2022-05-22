@@ -1,0 +1,32 @@
+<asi-panel-editable-row
+  rowTitle="Company Logo"
+  [isEditable]="state.party?.IsEditable"
+  [isLoading]="state.isLoading && !state.hasLoaded"
+  (onSaveEvent)="state.save({LogoMediaLink: control.value})"
+>
+  <div><i class="form-row-icon fa fa-atom mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <img
+      *ngIf="state.party?.LogoMediaLink?.FileUrl; else noLogo"
+      class="settings-company-logo"
+      [src]="state.party?.LogoMediaLink?.FileUrl"
+    />
+    <ng-template #noLogo>
+      <p class="form-row-value">No logo currently selected</p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <image-upload-form
+      [formControl]="control"
+      fileType="Artwork"
+      width="200px"
+      height="200px"
+      [maxFileBytes]="10485760"
+      acceptedFileTypes="image/jpeg,image/jpg,image/png,image/gif"
+    >
+      <div class="custom-img-upload-reqs">
+        File size must be less than 10MB.
+      </div>
+    </image-upload-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

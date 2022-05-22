@@ -1,0 +1,34 @@
+<cos-autocomplete
+  [label]="label"
+  [placeholder]="placeholder"
+  [data]="options"
+  [formControl]="value"
+  [displayKey]="'Name'"
+  (onSearch)="search($event)"
+>
+  <ng-template let-option>
+    <div class="account-item">
+      <cos-avatar>
+        <span *ngIf="!option.IsTeam; else companyGravatar">
+          <img
+            class="cos-avatar-image"
+            [src]="option.IconMediaLink?.FileUrl || option.IconImageUrl"
+            [attr.alt]="option.Name"
+            *ngIf="option.IconMediaLink?.FileUrl || option.IconImageUrl"
+            (error)="imgError($event)"
+          />
+          {{ option.Name | initials }}
+        </span>
+        <ng-template #companyGravatar>
+          <i class="fa fa-users text-light"></i>
+        </ng-template>
+      </cos-avatar>
+      <div>
+        <h4 class="header-style-13 mb-0">{{ option.Name }}</h4>
+        <span class="body-style-12" *ngIf="option.Email">
+          {{ option.Email }}
+        </span>
+      </div>
+    </div>
+  </ng-template>
+</cos-autocomplete>

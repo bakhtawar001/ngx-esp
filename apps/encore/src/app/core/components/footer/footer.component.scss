@@ -1,0 +1,54 @@
+@import 'cosmos/scss/settings/';
+
+.footer {
+  border-top: 3px solid #164569;
+
+  .vert-line {
+    display: inline-block;
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 1px;
+    height: 31px;
+    border-left: 1px solid #dedfe1;
+    vertical-align: middle;
+
+    @include narrower-than($bp-medium) {
+      height: 25px;
+    }
+  }
+
+  .grid-layout-1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+    margin: 2rem 0;
+
+    @include narrower-than($bp-large) {
+      margin: 1rem 0;
+    }
+
+    @include narrower-than($bp-medium) {
+      flex-direction: column;
+    }
+  }
+
+  &-links {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  &-copyright {
+    font-size: 10px;
+    line-height: 1;
+
+    @include narrower-than($bp-medium) {
+      margin-top: 1rem;
+    }
+  }
+}

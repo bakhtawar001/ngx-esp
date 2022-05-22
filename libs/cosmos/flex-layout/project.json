@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/flex-layout",
+  "sourceRoot": "libs/cosmos/flex-layout/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/flex-layout"],
+      "options": {
+        "project": "libs/cosmos/flex-layout/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/flex-layout/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/flex-layout/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/flex-layout"],
+      "options": {
+        "jestConfig": "libs/cosmos/flex-layout/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/flex-layout/src/**/*.ts",
+          "libs/cosmos/flex-layout/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

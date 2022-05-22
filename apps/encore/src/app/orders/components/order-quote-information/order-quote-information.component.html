@@ -1,0 +1,111 @@
+<div class="flex justify-between">
+  <h2 class="header-style-18">{{ order?.Type | titlecase }} Information</h2>
+  <span *ngIf="locked" class="order-info__lock-icon">
+    <i class="fas fa-lock"></i>
+  </span>
+
+  <a cos-icon-button *ngIf="!locked" class="order-info__edit-btn">
+    <i class="fas fa-pencil-alt"></i>
+  </a>
+</div>
+
+<div class="grid-cols-2 grid gap-y-3 mb-12">
+  <div class="order-info__create-date">
+    <h4 class="header-style-12-shark mb-4">
+      {{ order?.Type | titlecase }} created
+    </h4>
+    <span class="body-style-14-mineshaft">
+      {{ order?.CreateDate | date: dateFormat }}
+    </span>
+  </div>
+  <div class="order-info__expires-date" *ngIf="order?.Type === 'quote'">
+    <h4 class="header-style-12-shark mb-4">Quote expires</h4>
+    <!-- TODO: API and backend change needed to support this date -->
+    <span class="body-style-14-mineshaft">TODO</span>
+  </div>
+</div>
+
+<div class="grid-cols-2 grid gap-y-3 mb-12">
+  <div class="order-info__contact">
+    <h4 class="header-style-12-shark mb-4">Order Contact</h4>
+    <span class="body-style-14-mineshaft">{{
+      order?.InquiryContact?.Name
+    }}</span>
+  </div>
+  <!-- TODO: Clarify what to show in tracking field -->
+  <div class="order-info__tracking">
+    <!-- <h4 class="header-style-12-shark mb-4">Order Tracking</h4>
+    <span class="body-style-14-mineshaft">TODO</span> -->
+  </div>
+</div>
+
+<div class="grid-cols-2 grid gap-y-3 mb-12">
+  <div class="order-info__in-hands-date">
+    <h4 class="header-style-12-shark mb-4">In-hands date</h4>
+    <span class="body-style-14-mineshaft mb-0">
+      {{ order?.InHandsDate | date: dateFormat }}
+    </span>
+    <div class="order-info__flexible-indicator">
+      <ng-container *ngIf="order?.IsInHandsDateFlexible === true">
+        <span cosAttributeTag size="small" class="in-hands-date__flexible">
+          <i class="fas fa-check"></i> Flexible
+        </span>
+      </ng-container>
+      <ng-container *ngIf="order?.IsInHandsDateFlexible === false">
+        <span cosAttributeTag size="small" class="in-hands-date__firm">
+          <i class="fas fa-check"></i> Firm
+        </span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="order-info__ship-date">
+    <h4 class="header-style-12-shark mb-4">Ship date</h4>
+    <span class="body-style-14-mineshaft">
+      {{ order?.ShipDate | date: dateFormat }}
+    </span>
+    <div class="order-info_blind-ship" *ngIf="order?.IsBlindShip">
+      <span cosAttributeTag size="small" class="order-info__blind-ship">
+        <i class="fas fa-check"></i> Blind ship
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="grid-cols-2 grid gap-y-3 mb-12">
+  <div class="order-info__ship-via">
+    <h4 class="header-style-12-shark mb-4">Ship via</h4>
+    <span class="body-style-14-mineshaft">
+      {{ order?.ShippingDetail?.CarrierName }}
+    </span>
+  </div>
+  <div class="order-info__shipping-account">
+    <h4 class="header-style-12-shark mb-4">Shipping account</h4>
+    <span class="body-style-14-mineshaft">
+      {{ order?.ShippingDetail?.AccountNumber }}
+    </span>
+  </div>
+</div>
+
+<div class="grid-cols-2 grid gap-y-3 mb-12">
+  <div class="order-info__number">
+    <h4 class="header-style-12-shark mb-4">
+      {{ order?.Type | titlecase }} number
+    </h4>
+    <span class="body-style-14-mineshaft">{{ order?.Number }}</span>
+  </div>
+  <div class="order-info__po-reference">
+    <h4 class="header-style-12-shark mb-4">PO reference</h4>
+    <span class="body-style-14-mineshaft">{{ order?.POReference }}</span>
+  </div>
+</div>
+
+<div class="grid-cols-2 grid gap-y-3 mb-12">
+  <div class="order-info__terms">
+    <h4 class="header-style-12-shark mb-4">Terms</h4>
+    <span class="body-style-14-mineshaft">{{ order?.CreditTerm }}</span>
+  </div>
+  <div class="order-info__currency">
+    <h4 class="header-style-12-shark mb-4">Currency</h4>
+    <span class="body-style-14-mineshaft">{{ order?.CurrencyCode }}</span>
+  </div>
+</div>

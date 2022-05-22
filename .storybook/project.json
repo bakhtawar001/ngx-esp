@@ -1,0 +1,24 @@
+{
+  "projectType": "application",
+  "root": ".storybook",
+  "sourceRoot": "./",
+  "targets": {
+    "build": {
+      "options": {
+        "tsConfig": "tsconfig.base.json",
+        "styles": ["libs/cosmos/scss/global.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs"]
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:storybook", "type:application", "platform:web"]
+}

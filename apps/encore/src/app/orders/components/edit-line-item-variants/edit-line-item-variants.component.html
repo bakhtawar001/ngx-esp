@@ -1,0 +1,196 @@
+<ng-container *ngIf="lineItem">
+  <p class="header-style-14 mb-4">When Net Cost Changes, update:</p>
+  <div cosRadioGroup class="mb-8">
+    <cos-radio-button class="mr-32">Margin</cos-radio-button>
+    <cos-radio-button>Price</cos-radio-button>
+  </div>
+
+  <table cos-table [dataSource]="lineItem?.Variants">
+    <!-- Table columns -->
+    <ng-container cosColumnDef="item">
+      <th cos-header-cell *cosHeaderCellDef>Item</th>
+      <td cos-cell *cosCellDef="let element">{{ element.Name }}</td>
+    </ng-container>
+
+    <ng-container cosColumnDef="sku">
+      <th cos-header-cell *cosHeaderCellDef>SKU</th>
+      <td cos-cell *cosCellDef="let element"></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="quantity">
+      <th cos-header-cell *cosHeaderCellDef class="text-right px-8 w-10">
+        Quantity
+      </th>
+      <td cos-cell *cosCellDef="let element" class="px-8">
+        <cos-form-field>
+          <input cos-input maxlength="150" [value]="element.Quantity" />
+        </cos-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="netCost">
+      <th cos-header-cell *cosHeaderCellDef class="text-right px-8 w-10">
+        Net Cost
+      </th>
+      <td cos-cell *cosCellDef="let element" class="px-8">
+        <cos-form-field>
+          <input
+            cos-input
+            maxlength="150"
+            [value]="element.Cost | currency: currencyCode:currencySymbol"
+          />
+        </cos-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="original">
+      <th cos-header-cell *cosHeaderCellDef class="w-10 px-8">Original</th>
+      <td cos-cell *cosCellDef="let element" class="px-8"></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="margin">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-10 px-8">
+        Margin
+      </th>
+      <td cos-cell *cosCellDef="let element" class="px-8">
+        <cos-form-field>
+          <input
+            cos-input
+            maxlength="150"
+            [value]="element.MarginPercent / 100 | percent: '1.2-2'"
+          />
+        </cos-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="price">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-10 px-8">
+        Price
+      </th>
+      <td cos-cell *cosCellDef="let element" class="px-8">
+        <cos-form-field>
+          <input
+            cos-input
+            maxlength="150"
+            [value]="element.Price | currency: currencyCode:currencySymbol"
+          />
+        </cos-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalPrice">
+      <th cos-header-cell *cosHeaderCellDef class="text-center w-10 px-8">
+        Total Price
+      </th>
+      <td cos-cell *cosCellDef="let element" class="px-8">
+        {{ element.Totals?.Amount | currency: currencyCode:currencySymbol }}
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalCost">
+      <th cos-header-cell *cosHeaderCellDef class="text-center w-10 px-8">
+        Total Cost
+      </th>
+      <td cos-cell *cosCellDef="let element">
+        {{ element.Totals?.Cost | currency: currencyCode:currencySymbol }}
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="tax">
+      <th cos-header-cell *cosHeaderCellDef class="w-10 px-8">Tax</th>
+      <td cos-cell *cosCellDef="let element" class="text-center">
+        <cos-checkbox
+          [checked]="element.IsTaxable"
+          [disabled]="element.Totals?.TaxRate === 0"
+        ></cos-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Bulk header columns -->
+    <ng-container cosColumnDef="itemBulk">
+      <th cos-header-cell *cosHeaderCellDef>Bulk Update</th>
+    </ng-container>
+
+    <ng-container cosColumnDef="skuBulk">
+      <th cos-header-cell *cosHeaderCellDef></th>
+    </ng-container>
+
+    <ng-container cosColumnDef="quantityBulk">
+      <th cos-header-cell *cosHeaderCellDef class="text-right px-8 w-10">
+        <cos-form-field>
+          <input cos-input maxlength="150" />
+        </cos-form-field>
+      </th>
+    </ng-container>
+
+    <ng-container cosColumnDef="netCostBulk">
+      <th cos-header-cell *cosHeaderCellDef class="text-right px-8 w-10">
+        <cos-form-field>
+          <input cos-input maxlength="150" />
+        </cos-form-field>
+      </th>
+    </ng-container>
+
+    <ng-container cosColumnDef="originalBulk">
+      <th cos-header-cell *cosHeaderCellDef class="w-10 px-8"></th>
+    </ng-container>
+
+    <ng-container cosColumnDef="marginBulk">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-10 px-8">
+        <cos-form-field>
+          <input cos-input maxlength="150" />
+        </cos-form-field>
+      </th>
+    </ng-container>
+
+    <ng-container cosColumnDef="priceBulk">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-10 px-8">
+        <cos-form-field>
+          <input cos-input maxlength="150" />
+        </cos-form-field>
+      </th>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalBulk">
+      <th
+        cos-header-cell
+        *cosHeaderCellDef
+        class="text-center w-10 px-8"
+        colspan="2"
+      >
+        <button
+          cos-flat-button
+          type="button"
+          color="primary"
+          class="w-100"
+          [disabled]="true"
+        >
+          Apply to all items
+        </button>
+      </th>
+    </ng-container>
+
+    <ng-container cosColumnDef="taxBulk">
+      <th cos-header-cell *cosHeaderCellDef class="px-8"></th>
+    </ng-container>
+
+    <tr cos-header-row *cosHeaderRowDef="columns"></tr>
+    <tr
+      cos-header-row
+      *cosHeaderRowDef="columnsBulkHeader"
+      class="bulk-update-header-row"
+    ></tr>
+    <tr cos-row *cosRowDef="let row; columns: columns"></tr>
+  </table>
+
+  <div class="mt-16">
+    <button cos-button type="button" class="pl-0">
+      <i class="fa fa-plus mr-8"></i>
+      Add another line item by search
+    </button>
+    <button cos-button type="button">
+      <i class="fa fa-plus mr-8"></i>
+      Add items by attribute selection
+    </button>
+  </div>
+</ng-container>

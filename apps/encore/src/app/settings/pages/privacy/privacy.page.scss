@@ -1,0 +1,29 @@
+@import 'cosmos/scss/settings/';
+
+@include narrower-than($bp-medium) {
+  .privacy-page-editable-row {
+    display: block;
+  }
+}
+
+// Make these globals?
+.page-description {
+  color: $color-g-shark-54;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-14;
+}
+
+.form-row-value,
+.form-row-icon,
+.settings-company-color-name {
+  color: $color-g-shark-54;
+}
+
+.form-row-icon {
+  font-size: $font-size-16;
+}
+
+.form-row-value {
+  font-size: $font-size-14;
+  font-family: 'Work Sans', sans-serif;
+}

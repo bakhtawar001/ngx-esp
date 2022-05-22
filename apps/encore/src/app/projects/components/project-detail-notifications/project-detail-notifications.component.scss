@@ -1,0 +1,15 @@
+@import 'cosmos/scss/settings/';
+
+.project-notifications {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-notification {
+  color: $color-g-shark-54;
+
+  &--enabled {
+    color: $color-bl-azure-57;
+  }
+}

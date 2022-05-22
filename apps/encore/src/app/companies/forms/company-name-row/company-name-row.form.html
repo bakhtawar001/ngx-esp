@@ -1,0 +1,37 @@
+<asi-panel-editable-row
+  class="contact-card-row"
+  rowTitle="Company Display Name"
+  [isEditable]="state.party?.IsEditable"
+  (onSaveEvent)="state.save({Name: control.value})"
+>
+  <i class="form-row-icon fa fa-sign mt-8 mr-16"></i>
+  <asi-panel-editable-row-title>
+    <p class="form-row-title">
+      <strong>Company Display Name</strong>
+    </p>
+  </asi-panel-editable-row-title>
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value">
+      <span class="ellipsis" [attr.title]="state.party?.Name">
+        {{ state.party?.Name }}
+      </span>
+    </p>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <cos-form-field class="form-panel-field__username">
+      <cos-label>Company Display Name</cos-label>
+      <input
+        id="companyDisplayName"
+        cos-input
+        type="text"
+        placeholder="Company Display Name"
+        [formControl]="control"
+        maxlength="50"
+        required
+      />
+      <cos-error
+        [controlErrors]="{duplicate: control.value + ' already exists. Clicking save will create a duplicate record'}"
+      ></cos-error>
+    </cos-form-field>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

@@ -1,0 +1,21 @@
+@import 'cosmos/scss/settings/';
+
+.invoice-title {
+  color: $color-bl-atoll-75;
+}
+
+.invoice-pill {
+  &[data-cos-color='warn'] {
+    color: $color-g-mineshaft-88;
+  }
+}
+
+.fa-calendar-alt {
+  color: $color-g-stone-41;
+}
+
+esp-card-metadata-list {
+  li {
+    align-self: start;
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../../../scss/settings/';
+
+.cos-filter-btn {
+  @include spacing-squish-8();
+  border-radius: $border-radius-4;
+  color: $color-bl-atoll-75;
+  font-family: 'Barlow', sans-serif;
+  font-size: $font-size-14;
+  font-weight: 600;
+  border: 1px solid $color-g-pebble-09;
+  background: $color-g-white-00;
+
+  &:focus {
+    @include cos-focus();
+  }
+
+  &:hover {
+    background-color: $color-g-pearl-03;
+    color: $color-bl-atoll-75;
+  }
+
+  &--disabled {
+    background: $color-g-moth-41;
+    color: $color-g-shark-54;
+
+    &:hover {
+      background: $color-g-moth-41;
+      color: $color-g-shark-54;
+    }
+  }
+
+  &--expanded {
+    @include cos-menu-pointer();
+    background: $color-bl-atoll-75;
+    border-color: $color-bl-atoll-75;
+    color: $color-g-white-00;
+  }
+
+  &--applied {
+    border-color: $color-bl-atoll-75;
+  }
+}

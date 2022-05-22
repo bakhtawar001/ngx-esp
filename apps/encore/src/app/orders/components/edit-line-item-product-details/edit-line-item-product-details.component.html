@@ -1,0 +1,76 @@
+<div [formGroup]="form">
+  <h2 class="header-style-18">Product Details</h2>
+  <cos-form-field>
+    <cos-label>Product Name</cos-label>
+    <input
+      id="productName"
+      cos-input
+      placeholder="Product Name"
+      maxlength="150"
+      formControlName="Name"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <p class="header-style-14-bold">Product Image</p>
+  TBD
+  <!-- <div class="product-images mb-32">
+    <cos-card *ngFor="let imgUrl of product.Images.slice(0, 5)">
+      <cos-card-controls>
+        <cos-checkbox></cos-checkbox>
+      </cos-card-controls>
+      <img [alt]="imgUrl" [src]="imgUrl | imageUrlPipe" />
+    </cos-card>
+  </div> -->
+
+  <cos-form-field>
+    <cos-label>Product Number</cos-label>
+    <input
+      id="productNumber"
+      cos-input
+      placeholder="Product Number"
+      maxlength="150"
+      formControlName="Number"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <cos-form-field>
+    <cos-label>Product Category</cos-label>
+    <input
+      id="productCategory"
+      cos-input
+      placeholder="Product Category"
+      maxlength="150"
+      formControlName="Category"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <cos-form-field>
+    <cos-label>Customer Product Number</cos-label>
+    <input
+      id="productCPN"
+      cos-input
+      placeholder="CPN"
+      maxlength="150"
+      formControlName="CPN"
+    />
+    <cos-error></cos-error>
+  </cos-form-field>
+
+  <cos-form-field>
+    <cos-label>Summary</cos-label>
+    <textarea
+      class="product-description w-full"
+      id="productDescription"
+      #productSummaryRef
+      cos-input
+      placeholder="Summary"
+      rows="6"
+      maxlength="130"
+      formControlName="Summary"
+    ></textarea>
+    <cos-error></cos-error>
+  </cos-form-field>
+</div>

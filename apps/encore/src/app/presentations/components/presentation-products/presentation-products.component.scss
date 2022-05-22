@@ -1,0 +1,23 @@
+@import 'cosmos/scss/settings/';
+
+.presentation-recommended-products {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  esp-product-gallery {
+    flex-grow: 1;
+  }
+}
+
+.presentations-products-no-products {
+  esp-pres-no-products-msg {
+    height: 300px;
+    display: block;
+  }
+}
+
+.search-sort {
+  max-width: 268px;
+  margin-bottom: 0;
+}

@@ -1,0 +1,165 @@
+@import '../../../../scss/settings';
+
+$mobile-breakpoint: $bp-large;
+
+.sb-show-main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .bottom-sheet-open {
+    .cdk-overlay-container {
+      height: calc(100% - 63px) !important;
+      max-height: calc(100% - 63px) !important;
+      overflow: hidden;
+    }
+  }
+}
+
+.cos-global-header {
+  position: fixed;
+  top: 0;
+  z-index: 15;
+  display: block;
+  width: 100%;
+  @include spacing-inset-16;
+  padding-top: $spacing-stack-12;
+  @include wider-than($mobile-breakpoint) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include spacing-inset-4;
+  }
+  background-color: $color-bl-atoll-75;
+  box-shadow: $box-shadow-nav;
+  .cos-id {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin-bottom: $spacing-stack-12;
+
+    a {
+      color: $color-g-white-00;
+    }
+    @include wider-than($mobile-breakpoint) {
+      margin: 0;
+      margin-left: $spacing-inline-4;
+      justify-content: flex-start;
+    }
+  }
+
+  .cos-global-nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include wider-than($mobile-breakpoint) {
+      justify-content: initial;
+    }
+  }
+  .cos-global-nav-item {
+    flex: 0 0 20%;
+    text-align: center;
+    margin: 0 $spacing-inline-4;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    @include wider-than($mobile-breakpoint) {
+      flex: 1 1 auto;
+    }
+    .cos-button {
+      @include type-body-style-12();
+      font-weight: $font-weight-500;
+      @include spacing-inset-4();
+      background-color: transparent;
+      color: $color-g-shark-54;
+      &:hover {
+        background-color: $color-g-pearl-03;
+        color: $color-bl-azure-57;
+        text-decoration: none;
+      }
+      &:focus {
+        background-color: transparent;
+        @include cos-focus-inset();
+      }
+      @include wider-than($mobile-breakpoint) {
+        @include spacing-inset-8();
+        color: $color-g-white-00;
+        &:hover {
+          background-color: #265f8b;
+          color: $color-g-white-00;
+        }
+        &[aria-expanded='true'] {
+          @include cos-menu-pointer();
+          background-color: #265f8b;
+          color: $color-g-white-00;
+          &:after {
+            top: unset;
+            bottom: -3px;
+          }
+        }
+      }
+    }
+    &.--expanded .cos-button {
+      color: $color-bl-azure-57;
+    }
+  }
+  .cos-global-nav-text {
+    display: block;
+  }
+  .cos-global-nav-icon {
+    position: relative;
+    margin: 0;
+    margin-top: $spacing-stack-4;
+    margin-bottom: $spacing-stack-8;
+    font-size: 18px;
+  }
+  .cos-global-nav-desktop {
+    display: none;
+    @include wider-than($mobile-breakpoint) {
+      display: block;
+      flex: 1 1 auto;
+    }
+  }
+  .cos-global-nav-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    @include spacing-inset-4;
+    background: $color-g-white-00;
+    border-top: $border-light;
+    box-shadow: $box-shadow-default;
+    @include wider-than($mobile-breakpoint) {
+      display: none;
+    }
+
+    .cos-global-nav-menu .cos-global-nav-item {
+      margin: 0;
+    }
+  }
+
+  .mat-badge-content {
+    @include cos-badge();
+    @include wider-than($mobile-breakpoint) {
+      border-color: $color-bl-atoll-75;
+    }
+  }
+  .--expanded .mat-badge-content {
+    display: none;
+  }
+}
+.cos-global-header-menu-backdrop
+  + .cdk-overlay-connected-position-bounding-box {
+  .cdk-overlay-pane {
+    clip-path: inset(0 -10px -10px -10px);
+    margin-top: $spacing-stack-4;
+  }
+}

@@ -1,0 +1,30 @@
+@import 'cosmos/scss/settings/';
+
+$metric-font-size: 32px;
+
+.proj-pres {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  &__metrics {
+    h5 {
+      color: $color-g-shark-54;
+    }
+  }
+
+  &__metric {
+    font-family: Work Sans, sans-serif;
+    font-size: $metric-font-size;
+  }
+}
+
+.presentation-info {
+  [cos-card-sidebar] {
+    flex: 0 0 400px;
+  }
+}
+
+.edit-project-botton {
+  margin: -0.2rem -0.2rem 0 0;
+}

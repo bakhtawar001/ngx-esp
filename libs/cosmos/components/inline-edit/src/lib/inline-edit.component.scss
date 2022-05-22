@@ -1,0 +1,105 @@
+@import '../../../../scss/settings';
+
+.cos-inline-edit {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+
+  textarea {
+    &.cos-input {
+      height: 200px;
+      width: 100%;
+      max-width: 100%;
+      resize: none;
+      background: $color-g-pearl-03;
+      padding: 3px 18px 3px 1px;
+    }
+  }
+
+  .cos-input {
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid $color-g-pebble-09;
+    font-family: unset;
+    font-size: unset;
+    font-weight: unset;
+    letter-spacing: unset;
+    line-height: unset;
+    color: unset;
+  }
+
+  &__display {
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    text-align: start;
+    &-placeholder {
+      color: $color-g-moth-41;
+    }
+  }
+
+  &--editState {
+    width: 100%;
+    flex-direction: column;
+
+    .cos-form-field {
+      width: 100%;
+      display: inline-block;
+      margin-bottom: 0 !important;
+      max-width: 100% !important;
+
+      &-wrapper {
+        max-width: 100% !important;
+      }
+      &-type-cos-input {
+        width: 100%;
+      }
+      .cos-form-field-required-marker {
+        display: none;
+      }
+    }
+
+    .cos-form-field-hint-wrapper {
+      position: absolute;
+      bottom: -28px;
+    }
+
+    .cos-flat-button {
+      margin-top: 0 !important;
+    }
+  }
+
+  &__edit-actions {
+    align-self: flex-end;
+  }
+
+  .cos-flat-button {
+    margin-top: $spacing-stack-8;
+    margin-left: $spacing-inline-8;
+    @include spacing-inset-8();
+
+    & ~ .cos-flat-button {
+      margin-left: 0;
+    }
+  }
+
+  .cos-edit {
+    margin-left: $spacing-inline-8;
+    padding: 0;
+    line-height: 1;
+    appearance: none;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: $color-bl-atoll-75;
+    height: 18px;
+    width: 18px;
+
+    &:focus {
+      @include cos-focus;
+      border-radius: 4px;
+    }
+  }
+}

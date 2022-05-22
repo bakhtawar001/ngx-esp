@@ -1,0 +1,13 @@
+<mat-tab-group
+  [selectedIndex]="state.tabIndex"
+  mat-align-tabs="start"
+  animationDuration="0ms"
+  [disableRipple]="true"
+  (selectedTabChange)="state.setTab($event)"
+>
+  <mat-tab *ngFor="let tab of tabs">
+    <ng-template mat-tab-label>
+      <span [ngClass]="tab.cssClass">{{ tab.name }}</span>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

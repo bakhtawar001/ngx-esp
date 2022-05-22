@@ -1,0 +1,9 @@
+<div class="cos-button-group cos-button-group-toggle" data-toggle="buttons">
+  <mat-button-toggle-group [name]="groupName" [(value)]="selectedValue" [attr.aria-label]="toggleAriaLabel">
+    <mat-button-toggle *ngFor="let item of toggleOptions;" class="cos-button-group-toggle"
+      (change)="selectionChanged($event)" [value]="item.value" [disabled]="item.disabled"
+      [checked]="item.value === defaultSelection ? true : null">
+      {{item.name}}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

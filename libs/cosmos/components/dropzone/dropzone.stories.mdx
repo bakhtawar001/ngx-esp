@@ -1,0 +1,119 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { CosDropzoneDemoComponent } from './dropzone.component.demo';
+
+<Meta
+  title="Controls &amp; Inputs/Dropzone"
+  component={CosDropzoneDemoComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, NgxDropzoneModule],
+      declarations: [CosDropzoneDemoComponent],
+    }),
+  ]}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosDropzoneDemoComponent,
+});
+
+# File Import
+
+This components allows people to upload files by either dragging a file or selecting directly from their file system.
+
+---
+
+<Canvas>
+  <Story name="Primary" args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Development
+
+The dropzone component is largely based off of this library: https://github.com/peterfreeman/ngx-dropzone
+
+```html
+<ngx-dropzone class="cos-dropzone" (change)="onSelect($event)">
+  <ngx-dropzone-label>
+    <div class="cos-dropzone-display">
+      <i class="fa fa-cloud-upload-alt"></i>
+      <span class="cos-dropzone-upload">Upload</span>
+    </div>
+  </ngx-dropzone-label>
+  <ngx-dropzone-preview
+    *ngFor="let f of files"
+    [removable]="true"
+    (removed)="onRemove(f)"
+  >
+    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+  </ngx-dropzone-preview>
+</ngx-dropzone>
+```
+
+We have a simple template that can ve added to the dropzone label as a base style
+
+```js
+<div class="cos-dropzone-display">
+  <i class="fa fa-cloud-upload-alt"></i>
+  <span class="cos-dropzone-upload">Upload</span>
+</div>
+```
+
+<ArgsTable of={CosDropzoneDemoComponent} />
+
+---
+
+## How it Works
+
+- Only a single file can be upload at a time
+
+### Dragging
+
+- A user can drag into the window and add it to be uploaded. The drag area is the size of the container card.
+
+### Selecting from File System
+
+- The user can also click the "Choose a File" button. This will open the users file system and allow them to select a file.
+
+---
+
+## Visuals
+
+By default, the icon used for file upload is a generic file symbol. A more specific icon can be used in situations where people can only upload certain files. For example:
+
+- Spreadsheets
+- Images
+- Videos
+
+---
+
+## States
+
+### Default
+
+- The default state before someone has uploaded anything
+
+### Uploading
+
+- This is when the file is in the process of being uploaded
+
+### Success
+
+- This is when the file has successfully been uploaded
+
+### Error
+
+- This is when there was a error uploading the file
+
+---
+
+## Components Used
+
+- Cards
+- Buttons
+- Iconography

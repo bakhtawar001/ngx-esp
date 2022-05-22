@@ -1,0 +1,115 @@
+<mat-menu
+  class="cos-global-menu-panel"
+  backdropClass="cos-global-header-menu-backdrop"
+  yPosition="below"
+>
+  <div matMenuContent class="collections-menu">
+    <form
+      class="collections-menu-form"
+      *ngIf="state.hasCollections"
+      [formGroup]="state.form"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="collections-menu-keywords">
+        <div class="cos-search-field">
+          <span class="form-field-prefix"><i class="fa fa-search"></i></span>
+          <input
+            cos-input
+            class="collection-search-input"
+            name="collectonKeywords"
+            formControlName="term"
+            placeholder="Search Collections"
+          />
+          <button
+            type="button"
+            class="form-field-suffix"
+            cos-icon-button
+            aria-label="Clear"
+            [hidden]="!state.searchTerm"
+            (click.stop)="clearSearch()"
+          >
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <ng-template [ngIf]="state.collections?.length" [ngIfElse]="notFound">
+      <h5
+        *ngIf="!state.searchTerm"
+        class="header-style-12-shark recent-col-heading"
+      >
+        Recent Collections
+      </h5>
+      <a
+        class="global-menu-list-item cursor-pointer"
+        *ngFor="
+          let collection of state.collections;
+          index as i;
+          trackBy: trackByFn
+        "
+        [routerLink]="['collections', collection.Id]"
+        [state]="backToNavigationName"
+        mat-menu-item
+      >
+        <div class="global-menu-list-item__emoji">
+          <cos-emoji-menu
+            [emoji]="collection.Emoji || ':package:'"
+            readonly
+          ></cos-emoji-menu>
+        </div>
+        <div class="global-menu-list-item__content">
+          <h4
+            class="collection-name header-style-14-bold ellipsis"
+            [matTooltip]="collection.Name"
+          >
+            {{ collection.Name }}
+          </h4>
+          <p class="body-style-12 ellipsis">
+            {{ collection.Products.length }} product<span
+              *ngIf="collection.Products.length !== 1"
+              >s</span
+            >
+          </p>
+        </div>
+      </a>
+    </ng-template>
+
+    <ng-template #notFound>
+      <div class="not-found">
+        <p
+          class="body-style-14-shark no-collections-in-search"
+          *ngIf="state.hasCollections"
+        >
+          No collections found. Try changing the search term.
+        </p>
+        <p
+          class="body-style-14-shark no-collections"
+          *ngIf="!state.hasCollections"
+        >
+          You don't have any Collections that you can add to yet.
+        </p>
+        <button
+          type="button"
+          cos-flat-button
+          color="primary"
+          (click)="createCollection()"
+          class="create-collection-btn"
+          #createNewCollectionButton
+        >
+          <span class="mr-12"><i class="fa fa-plus"></i></span>
+          Create new Collection
+        </button>
+      </div>
+    </ng-template>
+
+    <mat-divider></mat-divider>
+
+    <a
+      class="link-menu-item all-collections-link"
+      [routerLink]="['collections']"
+      mat-menu-item
+    >
+      <span class="cos-button">All Collections</span>
+    </a>
+  </div>
+</mat-menu>

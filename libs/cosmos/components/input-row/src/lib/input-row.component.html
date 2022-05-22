@@ -1,0 +1,20 @@
+<ng-content></ng-content>
+<div [ngClass]="{ 'btn-container': true, 'btn-hidden': !allowDisable }">
+  <button
+    cos-icon-button
+    size="lg"
+    aria-label="Toggle hidden"
+    (click)="onClickDisabled()"
+  >
+    <i
+      [ngClass]="
+        disabled ? 'fa fa-eye-slash cos-toggle-button-on' : 'fa fa-eye'
+      "
+    ></i>
+  </button>
+</div>
+<div [ngClass]="{ 'btn-container': true, 'btn-hidden': !allowRemove }">
+  <button cos-button color="warn" (click)="onClickRemove()">
+    <i class="fa fa-trash"></i><span class="ml-16 md:hidden">Remove</span>
+  </button>
+</div>

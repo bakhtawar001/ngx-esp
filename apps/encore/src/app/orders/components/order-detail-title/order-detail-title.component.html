@@ -1,0 +1,33 @@
+<div class="flex flex-row items-center">
+  <button
+    cos-button
+    class="flex items-center pl-0 order-detail__select-order"
+    [matMenuTriggerFor]="orderMenu"
+  >
+    <span class="header-style-24">
+      {{ state.orderViewModel.Type | titlecase }}
+      #{{ state.orderViewModel.Number }}
+    </span>
+    <i class="fas fa-chevron-down ml-8"></i>
+  </button>
+  <mat-menu #orderMenu="matMenu" class="orders-dropdown-menu">
+    <a
+      mat-menu-item
+      *ngFor="let order of state.sortedOrders"
+      [routerLink]="order | orderLink: route"
+      [ngClass]="{ 'cos-text--blue': isActive(order.Id) }"
+    >
+      <i class="fas fa-file-invoice mr-12"></i>
+      {{ order.Type | titlecase }} #{{ order.Number }}
+    </a>
+  </mat-menu>
+  <span *ngIf="state.isReloading">
+    <!--
+        TODO: Need to determine how this is going to be handled visually
+        Nicole to clean up once it is decided
+      -->
+    (Refreshing...)
+  </span>
+</div>
+
+<ng-container *ngComponentOutlet="componentWithActions"></ng-container>

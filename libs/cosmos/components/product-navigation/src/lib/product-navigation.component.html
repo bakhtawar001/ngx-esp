@@ -1,0 +1,68 @@
+<div class="cos-product-nav-container">
+  <div class="cos-product-navigation-card cos-product-navigation-card-back">
+    <a class="cos-product-navigation-back" (click)="navigateBack()">
+      <p>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;
+        {{ backLinkText }}
+      </p>
+    </a>
+  </div>
+  <div
+    class="cos-product-navigation-card cos-product-navigation-card-back-mobile"
+  >
+    <a
+      class="cos-product-navigation-back cos-product-navigation-back--mobile"
+      (click)="navigateBack()"
+    >
+      <p>
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <span class="cos-accessibly-hidden">{{ backLinkText }}</span>
+      </p>
+    </a>
+  </div>
+
+  <div class="cos-product-nav-items-container flex">
+    <div
+      *ngFor="let product of products"
+      class="cos-product-navigation-card"
+      [class.selected]="product.Id === selectedProductId"
+      #productCard
+    >
+      <a href="#">
+        <img [src]="product?.DefaultMedia.Url" alt="{{ product?.Name }}" />
+        <div class="cos-product-navigation-card-content">
+          <h2>{{ product?.Name }}</h2>
+          <p>
+            <strong>
+              {{ product?.LowestPrice?.Price | formatPrice }}
+              {{ product?.LowestPrice ? ' each' : '' }}
+            </strong>
+          </p>
+        </div>
+      </a>
+      <div class="edit-button-wrapper">
+        <ng-template
+          [ngIf]="product.Id === selectedProductId"
+          [ngIfElse]="editButton"
+        >
+          <div class="selected-icon">
+            <i class="fas fa-check"></i>
+          </div>
+        </ng-template>
+        <ng-template #editButton>
+          <button
+            cos-stroked-button
+            color="primary"
+            (click)="navigateToProduct(product)"
+          >
+            Edit Product <i class="fas fa-pencil-alt"></i>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-cy="cos-product-navigation-menu" class="cos-product-navigation-menu">
+  <ng-content></ng-content>
+</div>

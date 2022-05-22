@@ -1,0 +1,53 @@
+@import 'cosmos/scss/settings/';
+
+.cos-presentation__footer {
+  margin-top: 100px;
+  width: 100%;
+  // height: 60px;
+  padding: 16px 0;
+  display: block;
+  background: $color-g-white-00;
+  border-top: 3px solid #f88400;
+
+  margin-bottom: 61px;
+
+  @include wider-than($bp-large) {
+    margin-bottom: 0px;
+  }
+  &-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 16px;
+    @include wider-than($bp-large) {
+      flex-direction: row;
+    }
+  }
+  &-logo {
+    display: flex;
+    @include narrower-than($bp-large) {
+      flex-direction: column;
+    }
+    img {
+      margin-right: 16px;
+    }
+  }
+  &-contact {
+    @include wider-than($bp-large) {
+      border-left: 1px solid #e7e8e9;
+      padding-left: 16px;
+    }
+    @include narrower-than($bp-large) {
+      padding-top: 16px;
+    }
+  }
+
+  &-asi-branding {
+    margin-top: 16px;
+    display: flex;
+    align-items: flex-end;
+    text-align: right;
+  }
+}

@@ -1,0 +1,158 @@
+<ng-content select="charges-header"></ng-content>
+<ng-container *ngIf="method">
+  <table
+    class="product-single-prices-table mb-2"
+    cos-table
+    multiTemplateDataRows
+    *ngIf="method.singlePrices && method.singlePrices.length"
+    [dataSource]="method.singlePrices"
+  >
+    <ng-container cosColumnDef="description">
+      <th cos-header-cell class="w-2/5" *cosHeaderCellDef>
+        {{ method.Name }} Charges
+      </th>
+      <td cos-cell *cosCellDef="let element">
+        <div class="product-description value">
+          {{ element.Type }}
+          {{
+            element.Prices[0].Quantity.From > 1
+              ? ' For ' + element.Prices[0].Quantity.From
+              : ''
+          }}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="price">
+      <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Price</th>
+      <td cos-cell *cosCellDef="let element">
+        <div class="product-price value">
+          {{ element.Prices[0] | formatPrice: 'Price' }}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="cost">
+      <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Cost</th>
+      <td cos-cell *cosCellDef="let element">
+        <div class="product-cost value">
+          {{ element.Prices[0] | formatPrice: 'Cost' }}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="priceCode">
+      <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Price Code</th>
+      <td cos-cell *cosCellDef="let element">
+        <div class="product-price-code value">
+          {{ element.Prices[0].DiscountCode || 'N/A' }}
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Secondary Column -->
+    <ng-container cosColumnDef="priceIncludes">
+      <td
+        cos-cell
+        class="price-includes-row"
+        [attr.colspan]="optionChargeTableColumns.length"
+        *cosCellDef="let element"
+      >
+        <div *ngIf="element.PriceIncludes" class="price-includes body-style-11">
+          <span class="product-price-includes">{{
+            element.PriceIncludes.trim()
+          }}</span>
+          <span class="product-usage-level" *ngIf="element.UsageLevel"
+            >, {{ element.UsageLevel }}</span
+          >
+        </div>
+        <div
+          *ngIf="!element.PriceIncludes && element.UsageLevel"
+          class="product-usage-level price-includes body-style-11"
+        >
+          <span>{{ element.UsageLevel }}</span>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr cos-header-row *cosHeaderRowDef="chargeTableColumns"></tr>
+
+    <tr
+      cos-row
+      *cosRowDef="let row; columns: chargeTableColumns"
+      [ngClass]="{
+        'has-price-includes': !!row.PriceIncludes || !!row.UsageLevel
+      }"
+    ></tr>
+    <tr
+      cos-row
+      *cosRowDef="let row; columns: ['priceIncludes']"
+      [ngClass]="{
+        hidden: !(row.PriceIncludes || row.UsageLevel)
+      }"
+    ></tr>
+  </table>
+
+  <ng-container *ngFor="let charge of method.multiplePrices">
+    <h4 class="product-multiple-price-header header-style-12-mineshaft mt-6">
+      {{ charge.Type }} for
+      {{
+        method.Values && method.Values.length
+            ? getStringValue(method.Values)
+          : method.Name
+      }}
+    </h4>
+    <div class="mb-6" *ngIf="charge.PriceIncludes">
+      <span class="product-multiplePrice-Includes">{{
+        charge.PriceIncludes.trim()
+      }}</span>
+      <span class="product-multiplePrice-UsageLevel" *ngIf="charge.UsageLevel"
+        >, {{ charge.UsageLevel }}</span
+      >
+    </div>
+    <div class="mb-6" *ngIf="!charge.PriceIncludes && charge.UsageLevel">
+      {{ charge.UsageLevel }}
+    </div>
+    <table
+      class="product-multiple-prices-table"
+      cos-table
+      [dataSource]="charge.Prices"
+    >
+      <ng-container cosColumnDef="quantity">
+        <th cos-header-cell class="w-2/5" *cosHeaderCellDef>Quantity</th>
+        <td cos-cell *cosCellDef="let element">
+          {{ element.Quantity.From }}
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="price">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Price</th>
+        <td cos-cell *cosCellDef="let element">
+          <div class="product-price value">
+            {{ element | formatPrice: 'Price' }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="cost">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Cost</th>
+        <td cos-cell *cosCellDef="let element">
+          <div class="product-cost value">
+            {{ element | formatPrice: 'Cost' }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="priceCode">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Price Code</th>
+        <td cos-cell *cosCellDef="let element">
+          <div class="product-price-code value">
+            {{ element.DiscountCode || 'N/A' }}
+          </div>
+        </td>
+      </ng-container>
+      <tr cos-header-row *cosHeaderRowDef="optionChargeTableColumns"></tr>
+      <tr cos-row *cosRowDef="let row; columns: optionChargeTableColumns"></tr>
+    </table>
+  </ng-container>
+</ng-container>

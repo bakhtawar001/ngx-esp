@@ -1,0 +1,27 @@
+<header class="cos-dialog__header">
+  <div>
+    <button
+      (click)="onCloseDialog()"
+      class="cos-modal-close"
+      type="button"
+      data-cy="dialog-close-button"
+    >
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title class="header-style-18" data-cy="dialog-header">
+    <ng-content select="[cosDialogHeader]"></ng-content>
+  </h2>
+  <p class="body-style-12" data-cy="dialog-sub-header">
+    <ng-content select="[cosDialogSubHeader]"></ng-content>
+  </p>
+</header>
+
+<mat-dialog-content>
+  <ng-content select="[cosDialogContent]"></ng-content>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <ng-content select="[cosDialogActions]"></ng-content>
+</mat-dialog-actions>

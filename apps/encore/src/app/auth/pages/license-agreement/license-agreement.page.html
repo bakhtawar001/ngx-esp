@@ -1,0 +1,82 @@
+<div class="content w-3/4">
+  <h1 class="header-style-24">License Agreement</h1>
+  <div class="user-info w-3/4">
+    <span
+      ><label class="body-style-14-mineshaft pr-4">Email:</label
+      ><label class="body-style-14-shark">{{ email }}</label>
+    </span>
+    <span
+      ><label class="body-style-14-mineshaft pr-4">First Name:</label>
+      <label class="body-style-14-shark">{{ firstName }}</label></span
+    >
+    <span
+      ><label class="body-style-14-mineshaft pr-4">Last Name:</label>
+      <label class="body-style-14-shark">{{ lastName }}</label></span
+    >
+  </div>
+  <ng-container *ngIf="licenseAgreement$ | async as licenseAgreement">
+    <div class="header-style-14-semibold mt-12">
+      Before gaining access to this applications, you must agree to and sign the
+      following terms & conditions. Please read through the entire agreement and
+      choose either to accept or not accept at the end of the document.
+    </div>
+    <div
+      class="agreement printable body-style-14-mineshaft mt-16"
+      [innerHTML]="licenseAgreement?.Text | trustHtml"
+    ></div>
+    <form name="licenseAgreement" [formGroup]="form">
+      <div class="mt-16">
+        <cos-checkbox formControlName="termsAccepted">
+          I accept the above terms and conditions
+        </cos-checkbox>
+      </div>
+      <div>
+        <cos-checkbox formControlName="privacyPolicyAccepted">
+          I accept and agree to the
+          <a
+            cos-button
+            href="https://www.asicentral.com/privacy-policy"
+            target="_blank"
+          >
+            privacy policy
+          </a>
+          set forth herein
+        </cos-checkbox>
+      </div>
+      <div class="mt-32">
+        <cos-form-field>
+          <cos-label class="header-style-14-bold">
+            My signature indicates that I agree with the terms and conditions of
+            use</cos-label
+          >
+          <input
+            cos-input
+            required
+            formControlName="signature"
+            class="w-full"
+          />
+          <cos-error></cos-error>
+        </cos-form-field>
+      </div>
+      <div class="actions mt-64">
+        <a class="left" cos-icon-button (click)="print()">
+          <span class="mr-8">
+            <i class="fa fa-print"></i>
+          </span>
+          Print License Agreement
+        </a>
+        <button cos-stroked-button color="primary" (click)="cancelConsent()">
+          Cancel
+        </button>
+        <button
+          cos-flat-button
+          color="primary"
+          [disabled]="form.invalid"
+          (click)="saveConsent()"
+        >
+          Accept
+        </button>
+      </div>
+    </form>
+  </ng-container>
+</div>

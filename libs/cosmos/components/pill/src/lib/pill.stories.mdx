@@ -1,0 +1,78 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosPillDemoComponent } from './pill.component.demo';
+import { CosPillDirective, CosPillLabelDirective } from './pill.directive';
+
+<Meta
+  title="Buttons/Pill"
+  component={CosPillDemoComponent}
+  decorators={[
+    moduleMetadata({
+      declarations: [
+        CosPillDirective,
+        CosPillLabelDirective,
+        CosPillDemoComponent,
+      ],
+    }),
+  ]}
+  argTypes={{
+    pillType: { table: { disable: true } },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosPillDemoComponent,
+});
+
+# Pill
+
+## Basic Pill
+
+This pill is for use with anchors and buttons. It is mean to be interactive.
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      pillType: '',
+      innerText: 'Pill Text',
+      icon: 'plus',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<a href="#" cosPill>
+  {{ innerText }}
+  <i *ngIf="_icon.length > 1" class="fa" [ngClass]="_icon"></i>
+</a>
+```
+
+<ArgsTable of={CosPillDirective} />
+
+## Pill Label
+
+This pill is for use as a label and is not meant to be used as a link or button
+
+<Canvas>
+  <Story
+    name="Label"
+    args={{
+      pillType: 'label',
+      innerText: 'Pill Text',
+      icon: 'plus',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<span cosPillLabel>Example text</span>
+```
+
+<ArgsTable of={CosPillLabelDirective} />

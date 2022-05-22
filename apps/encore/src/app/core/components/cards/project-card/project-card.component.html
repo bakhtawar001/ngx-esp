@@ -1,0 +1,66 @@
+<cos-card class="project-card" [borderColor]="clientColor">
+  <cos-card-menu>
+    <ul class="cos-list-no-style px-16 my-0">
+      <li class="mb-8">
+        <a class="cos-text--black" href="#"><i class="fa"></i> </a>
+      </li>
+      <li>
+        <a class="cos-text--red" href="#"> <i class="fa"></i> </a>
+      </li>
+    </ul>
+  </cos-card-menu>
+
+  <header class="project-card__header">
+    <cos-avatar></cos-avatar>
+
+    <span>
+      <h4 class="header-style-16 mb-0">Sales Order CPO 200</h4>
+      <h5 class="body-style-12 mb-0">
+        Community Public Outreach - City of Pawnee, Indiana
+      </h5>
+    </span>
+
+    <div class="project-card__tracker ml-16">
+      <cos-tracker [startsOnZero]="false" [currentStep]="2">
+        <cos-tracker-step [size]="'lg'">
+          <i class="fa fa-check cos-text--white"></i>
+        </cos-tracker-step>
+        <cos-tracker-step [size]="'lg'">
+          <span>2</span>
+        </cos-tracker-step>
+        <cos-tracker-step [size]="'lg'">
+          <span>3</span>
+        </cos-tracker-step>
+        <cos-tracker-step [size]="'lg'">
+          <span>4</span>
+        </cos-tracker-step>
+        <cos-tracker-step [size]="'lg'">
+          <span>5</span>
+        </cos-tracker-step>
+      </cos-tracker>
+      <span cosPillLabel>Fulfillment</span>
+    </div>
+  </header>
+  <div cos-card-footer>
+    <ng-content
+      *ngIf="detailShown"
+      select="esp-card-metadata-list"
+    ></ng-content>
+
+    <div class="flex justify-between mt-8">
+      <button cos-button size="sm" (click)="toggleDetail()">
+        <span
+          [ngClass]="{
+            'fas fa-minus': detailShown,
+            'fa fa-plus': !detailShown
+          }"
+        ></span>
+        Show {{ detailShown ? 'Less' : 'More' }} Detail
+      </button>
+      <h4 class="header-style-12 align-center lg:inline hidden mt-8 mb-0">
+        Order contact: Jean-Ralphio Saperstein &nbsp;| &nbsp; Order date: Oct
+        11, 2020
+      </h4>
+    </div>
+  </div>
+</cos-card>

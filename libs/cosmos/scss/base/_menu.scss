@@ -1,0 +1,107 @@
+.mat-menu-panel {
+  min-height: 0px !important;
+}
+
+.mat-menu-panel,
+.mat-autocomplete-panel {
+  background: $color-g-white-00;
+  border-radius: $border-radius-4;
+  box-shadow: $box-shadow-menu;
+
+  .mat-active,
+  .mat-option:hover {
+    background: $color-g-pearl-03;
+  }
+}
+
+.mat-menu-panel.cos-menu--full-width {
+  max-width: 100% !important;
+  width: 100%;
+  @include spacing-inset-16();
+}
+
+.cos-backdrop--full-width
+  + .cdk-overlay-connected-position-bounding-box
+  .cdk-overlay-pane {
+  width: 100% !important;
+}
+
+.cos-global-menu-backdrop + .cdk-overlay-connected-position-bounding-box {
+  .cdk-overlay-pane {
+    // These first three lines are duplicates of Material menu css for desktop.
+    // Copying them here so they will also apply to mobile.
+    border-radius: $border-radius-4;
+    width: auto !important;
+    height: auto !important;
+    margin-top: $spacing-stack-16;
+  }
+}
+
+.cos-global-menu-panel {
+  min-width: 190px;
+  .mat-divider {
+    margin: $spacing-stack-8 $spacing-inline-12;
+    border-color: $color-g-pebble-09;
+  }
+}
+
+.mat-menu-panel .mat-menu-item {
+  background-color: transparent;
+  position: relative;
+  height: auto;
+
+  &:hover {
+    text-decoration: none;
+    background-color: $color-g-pearl-03;
+  }
+
+  &:focus {
+    @include cos-focus-inset();
+    border-radius: $border-radius-4;
+  }
+
+  &.cos-menu-item {
+    @include type-body-style-12();
+    display: flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 $spacing-inline-12;
+    line-height: 24px;
+    color: $color-g-mineshaft-88;
+
+    > i {
+      flex: 0 0 $spacing-inline-12;
+      margin-right: $spacing-inline-12;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    span {
+      flex: 1 0 auto;
+      min-width: 152px;
+    }
+
+    &--unique {
+      height: 36px;
+      margin: $spacing-stack-8 0;
+      border-top: $border-light;
+      border-bottom: $border-light;
+      background-color: $color-g-pearl-03;
+      line-height: 36px;
+      color: $color-rd-macaw-52;
+
+      &:first-child {
+        margin-top: -$spacing-stack-4;
+      }
+
+      &:last-child {
+        margin-bottom: -$spacing-stack-8;
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: $color-g-white-00;
+      }
+    }
+  }
+}

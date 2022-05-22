@@ -1,0 +1,23 @@
+<div class="project-notifications header-style-14">
+  <span
+    [ngClass]="{ 'project-notification--enabled': tasksEnabled }"
+    class="flex items-center project-notification"
+  >
+    <span class="fas fa-tasks mr-8"></span>
+    {{ tasksNumber }}
+  </span>
+  <span
+    [ngClass]="{ 'project-notification--enabled': alertsEnabled }"
+    class="flex items-center project-notification"
+  >
+    <span class="fas fa-bell mr-8"></span>
+    {{ alertsNumber }}
+  </span>
+  <span
+    [ngClass]="{ 'project-notification--enabled': messagesEnabled }"
+    class="flex items-center project-notification"
+  >
+    <span class="fas fa-inbox mr-8"></span>
+    {{ messagesNumber }}
+  </span>
+</div>

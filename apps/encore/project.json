@@ -1,0 +1,144 @@
+{
+  "projectType": "application",
+  "root": "apps/encore",
+  "sourceRoot": "apps/encore/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@angular-builders/custom-webpack:browser",
+      "options": {
+        "customWebpackConfig": {
+          "path": "tools/webpack/extra-webpack.config.js"
+        },
+        "outputPath": "dist/apps/encore",
+        "index": "apps/encore/src/index.html",
+        "main": "apps/encore/src/main.ts",
+        "polyfills": "apps/encore/src/polyfills.ts",
+        "tsConfig": "apps/encore/tsconfig.app.json",
+        "assets": [
+          "apps/encore/src/favicon.ico",
+          "apps/encore/src/assets",
+          "apps/encore/src/_redirects",
+          "apps/encore/src/manifest.webmanifest"
+        ],
+        "styles": ["apps/encore/src/styles/main.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs"]
+        },
+        "scripts": [],
+        "allowedCommonJsDependencies": ["contentful"],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/encore/src/environments/environment.ts",
+              "with": "apps/encore/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "1.6mb",
+              "maximumError": "1.8mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "100kb"
+            }
+          ],
+          "serviceWorker": true,
+          "ngswConfigPath": "apps/encore/ngsw-config.json"
+        },
+        "uat": {
+          "fileReplacements": [
+            {
+              "replace": "apps/encore/src/environments/environment.ts",
+              "with": "apps/encore/src/environments/environment.uat.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "100kb"
+            }
+          ],
+          "serviceWorker": true,
+          "ngswConfigPath": "apps/encore/ngsw-config.json"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "serve": {
+      "executor": "@angular-builders/custom-webpack:dev-server",
+      "options": {
+        "browserTarget": "encore:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "encore:build:production"
+        },
+        "uat": {
+          "browserTarget": "encore:build:uat"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "encore:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/encore/**/*.ts", "apps/encore/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/encore/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/encore"]
+    }
+  },
+  "tags": ["scope:encore", "type:application", "platform:web"]
+}

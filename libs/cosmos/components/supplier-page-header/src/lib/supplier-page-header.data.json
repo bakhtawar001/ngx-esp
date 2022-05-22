@@ -1,0 +1,439 @@
+{
+  "Id": 3264,
+  "Name": "Snugz/USA Inc",
+  "AsiNumber": "88060",
+  "Phone": {
+    "Work": "(801) 274-7346",
+    "TollFree": "(888) 447-6840",
+    "Primary": "(888) 447-6840",
+    "$index": 1
+  },
+  "Fax": {
+    "TollFree": "(888) 467-6840",
+    "Primary": "(888) 467-6840",
+    "$index": 1
+  },
+  "Email": "customercare@snugzusa.com",
+  "Websites": [
+    "http://www.snugzusa.com",
+    "https://www.linkedin.com/company/snugz-usa",
+    "https://www.facebook.com/SnugZUSA/",
+    "https://twitter.com/SnugZUSA",
+    "https://www.youtube.com/channel/UChNu78DSiaP0rdKqG0e3L_Q",
+    "https://www.instagram.com/snugzusa/"
+  ],
+  "Contacts": [
+    { "Name": "Brandon Brown", "Title": "Vice President" },
+    { "Name": "Brandon Mackay", "Title": "President" },
+    { "Name": "Chris Duncan", "Title": "Graphic Artist" },
+    { "Name": "Lindsey Williams" },
+    { "Name": "Lori Holdener", "Title": "Credit Manager" },
+    { "Name": "RaNell Lefler", "Title": "CFO" },
+    { "Name": "Rosanne Webster", "Title": "CIO" }
+  ],
+  "OfficeHours": "8:00-5:00",
+  "Type": "Supplier",
+  "Addresses": {
+    "Primary": {
+      "Street1": "9258 S Prosperity Rd",
+      "City": "West Jordan",
+      "State": "UT",
+      "Zip": "84081-6161",
+      "Country": "USA"
+    },
+    "Delivery": {
+      "Street1": "9258 S Prosperity Rd",
+      "City": "West Jordan",
+      "State": "UT",
+      "Zip": "84081-6161",
+      "Country": "USA"
+    }
+  },
+  "Phones": [
+    {
+      "Type": "OfficeFax",
+      "Number": "(888) 467-6840",
+      "IsPrimary": true,
+      "IsTollFree": true
+    },
+    { "Type": "OfficePhone", "Number": "(801) 274-7346" },
+    {
+      "Type": "OfficePhone",
+      "Number": "(888) 447-6840",
+      "IsPrimary": true,
+      "IsTollFree": true
+    }
+  ],
+  "LineNames": [
+    "Magnet LLC™",
+    "The Bag Factory®",
+    "Innovations by Magnet™",
+    "Benchmark Crystal & Clocks",
+    "The 1919 Candy Company",
+    "Perfect Line"
+  ],
+  "Brands": ["Zen (TM)", "Traverse (TM)", "ZIP-IT (TM)"],
+  "Ratings": {
+    "OverAll": { "Rating": 9, "Companies": 41, "Transactions": 247 },
+    "Quality": { "Rating": 9, "Companies": 36, "Transactions": 206 },
+    "Communication": { "Rating": 9, "Companies": 35, "Transactions": 202 },
+    "Delivery": { "Rating": 9, "Companies": 34, "Transactions": 201 },
+    "ConflictResolution": { "Rating": 8, "Companies": 13, "Transactions": 133 },
+    "Decoration": { "Rating": 9, "Companies": 34, "Transactions": 201 }
+  },
+  "Awards": [
+    "Top 50 Supplier 2019",
+    "Top 50 Supplier 2018",
+    "Top 100 Supplier 2017"
+  ],
+  "Preferred": {
+    "Rank": 2,
+    "Name": "Gold",
+    "Description": "EQP applied to Net Cost"
+  },
+  "Artwork": {
+    "Email": "artwork@snugzusa.com",
+    "Comment": "Photoshop files must be saved as CMYK files. RGB is not acceptable. All files must contain a final product showing keylines for size & placement. Bleed must be included. All fonts, screen & printer ok. Convert fonts to outlines. All files EPS-Pict. etc. When sending e-mail, attach files, use stuffit or dish double before sending large file otherwise it will MIME & cannot be used. It will not expand. 1. A fax on company letterhead, company memo or purchase order MUST be faxed to (973) 616-4444 instructing that e-mail has been sent. 2. All text art work or art with text in it must have the text converted to outlines. On both (Ai) and (EPS) files. 3. All stitch files in Tajima format are also accepted as art. Please call for sending instructions."
+  },
+  "Orders": {
+    "Fax": { "TollFree": "(888) 467-6840", "$index": 1 },
+    "Email": "purchase@snugzusa.com"
+  },
+  "ProductionTime": {
+    "Name": "3-10 Days",
+    "Days": { "From": 3, "To": 10, "$index": 1 }
+  },
+  "RushTime": { "Name": "1 Days", "Days": 1 },
+  "ImprintingMethods": [
+    "Deboss",
+    "Die Stamp",
+    "Digital",
+    "Direct Imprint",
+    "Four Color Process",
+    "Full Color Process",
+    "Labels",
+    "Laser Engraved",
+    "Pad Print",
+    "Screen Printing",
+    "Spot Color",
+    "Sublimation"
+  ],
+  "MarketingPolicy": "Supplier indicates they sell advertising specialties exclusively through distributors and/or incentive resellers",
+  "DistributionPolicy": "North America (US and Canada)",
+  "YearEstablished": 1989,
+  "YearInIndustry": 1990,
+  "TotalEmployees": "500",
+  "IsMinorityOwned": true,
+  "MinorityInvolvement": "Woman Small and Disadvantaged Business",
+  "IsUnionAvailable": false,
+  "IsQcaCertified": true,
+  "IsCanadian": false,
+  "IsCanadianFriendly": true,
+  "HasDistributorAffiliation": true,
+  "Functions": ["Assembler", "Importer", "Imprinter", "Manufacturer"],
+  "MultiLineReps": [
+    { "Name": "Ball and Black, LLC" },
+    { "Name": "Flanagan \u0026 Assoc" },
+    { "Name": "Jim Dunn \u0026 Company" },
+    { "Name": "Reinecker Marketing Assoc" },
+    { "Name": "The Maddox Company" },
+    { "Name": "WesCo Marketing" }
+  ],
+  "References": [
+    {
+      "Id": 110932,
+      "Name": "Brandvia Alliance Inc",
+      "AsiNumber": "145037",
+      "Phone": "(408) 955-0500",
+      "Contacts": [{ "Name": "Bobbi Levingston" }],
+      "Transactions": 99
+    },
+    {
+      "Id": 115841,
+      "Name": "Sonic Enterprises LLC",
+      "AsiNumber": "329865",
+      "Phone": "(301) 869-7800",
+      "Contacts": [{ "Name": "Seth Weiner" }],
+      "Transactions": 31
+    },
+    {
+      "Id": 109302,
+      "Name": "A C I Printing Services Inc",
+      "AsiNumber": "101116",
+      "Phone": "(310) 372-2456",
+      "Contacts": [{ "Name": "Charla Chase" }],
+      "Transactions": 14
+    },
+    {
+      "Id": 745865,
+      "Name": "Reno Print Store",
+      "AsiNumber": "307201",
+      "Phone": "(775) 313-9720",
+      "Contacts": [{ "Name": "Wendy Marsh" }],
+      "Transactions": 11
+    }
+  ],
+  "Documentations": [
+    {
+      "Id": 19,
+      "Name": "Test1",
+      "Url": "http://commonmedia.asicentral.com/30000/32696/SMU PDF ImageSMU PDF Image SMU PDF Image- 14732.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 20,
+      "Name": "Test 2",
+      "Url": "http://www.asicentral.com",
+      "Type": "LINK"
+    },
+    {
+      "Id": 21,
+      "Name": "Test 3",
+      "Url": "http://commonmedia.asicentral.com/30000/32697/SMU PDF ImageSMU PDF Image SMU PDF Image- 14732.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 22,
+      "Name": "Test 4",
+      "Url": "http://cnn.com",
+      "Type": "LINK"
+    },
+    {
+      "Id": 3695,
+      "Name": "neil test",
+      "Url": "http://commonmedia.asicentral.com/560000/562134/66010 safety and compliance upload.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550461527,
+      "Name": "Safety DOC",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/Book1.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550461528,
+      "Name": "Safety link on 8 sept",
+      "Url": "http://www.yahoo.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 550467081,
+      "Name": "d1",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/18431.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550495579,
+      "Name": "SP1212-CD",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/34356%20Products.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550495580,
+      "Name": "SP1212-CL",
+      "Url": "http://www.ms.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 550547178,
+      "Name": "Test 30232 safety and compliance document",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/255.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550575764,
+      "Name": "Sanity DOc",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/21095.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550616172,
+      "Name": "J safety and compliance",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/catalog1.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550654038,
+      "Name": "Spot Check Doc",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/2.6%20Scope.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 550742115,
+      "Name": "test",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/23861.xlsx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 551129443,
+      "Name": "April1stDoc",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/TEST%20file.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 551364928,
+      "Name": "TestDoc-NM",
+      "Url": "http://asicentral.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552135133,
+      "Name": "safe doc 212",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/Core-Scrum.pdf",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552257068,
+      "Name": "safma docs",
+      "Url": "http://commonmedia.asicentral.com/velocity/9207/compliance_media/High%20Level%20Test%20Cases%20-%20Preferences.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552361999,
+      "Name": "skyee",
+      "Url": "http://s7d4.scene7.com/s7viewers/html5/eCatalogViewer.html?emailurl=http://s7d4.scene7.com/s7/emailFriend&serverUrl=http://s7d4.scene7.com/is/image/&config=Scene7SharedAssets/Universal_HTML5_eCatalog_Adv&contenturl=http://s7d4.scene7.com/skins/&asset=ASI/2017%20American%20Calendar-m",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552391157,
+      "Name": "51917 safe docs",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/Term%20Warning.doc",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552391165,
+      "Name": "51917 safe links",
+      "Url": "http://www.aofl.net/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552391538,
+      "Name": "ABC",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/cat.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552448768,
+      "Name": "sigh safe house",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/ConfirmedAccurateRules_050317%20(1).docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 552481888,
+      "Name": "061717 safehouse",
+      "Url": "http://www.amazon.com/",
+      "Type": "LINK"
+    },
+    {
+      "Id": 552649884,
+      "Name": "72917 safe city again",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/Catalog%20Requirements.doc",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 553750727,
+      "Name": "abcSA",
+      "Url": "https://commonmedia.asicentral.com/velocity/9207/compliance_media/cat.docx",
+      "Type": "MEDI"
+    },
+    {
+      "Id": 556896752,
+      "Name": "DocName1",
+      "Url": "https://www.youtube.com/watch?v=eFzb3ujv-W8",
+      "Type": "LINK"
+    },
+    {
+      "Id": 556896753,
+      "Name": "ORSAFEDOC",
+      "Url": "https://www.youtube.com/watch?v=eFzb3ujv-W8",
+      "Type": "LINK"
+    }
+  ],
+  "OurStory": "6/2019\r\n\r\nMunich, Germany – AccuLink, the largest commercial printer and mail house in eastern North Carolina, will significantly increase their dye sublimation production after investing in the Panthera S4-1.8m, a revolutionary high-speed digital dye sublimation printing system, at the 2019 FESPA Global Print Expo in Munich.\r\n\r\nTom O’Brien, President of AccuLink, based in Greenville, NC, invested in the Panthera through their long-time distribution partner, Randy Peters, President and CEO of The Mosaica Group, based in Sussex, WI. The Mosaica Group is a national distributor supporting dye sublimation and wide format print processes with equipment, consumables, and services, and is the exclusive distributor of the Panthera in North America and Canada.",
+  "ShippingPoints": [
+    {
+      "IsFOB": true,
+      "City": "Salt Lake City",
+      "State": "UT",
+      "Zip": "84104",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Cranston",
+      "State": "RI",
+      "Zip": "02920",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Minneapolis",
+      "State": "MN",
+      "Zip": "55428",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Verona",
+      "State": "WI",
+      "Zip": "53593",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "North Logan",
+      "State": "UT",
+      "Zip": "84341",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "El Segundo",
+      "State": "CA",
+      "Zip": "90245",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "West Jordan",
+      "State": "UT",
+      "Zip": "84081",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Rosedale",
+      "State": "MD",
+      "Zip": "21230",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Sun Prairie",
+      "State": "WI",
+      "Zip": "53590",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Los Angeles",
+      "State": "CA",
+      "Zip": "90245",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "City of Industry",
+      "State": "CA",
+      "Zip": "91744",
+      "Country": "USA"
+    },
+    {
+      "IsFOB": true,
+      "City": "Keene",
+      "State": "NH",
+      "Zip": "03431",
+      "Country": "USA"
+    }
+  ]
+}

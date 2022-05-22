@@ -1,0 +1,22 @@
+<cos-avatar [ngClass]="{ 'avatar-square': square }">
+  <img
+    class="avatar-image"
+    *ngIf="iconUrl"
+    [src]="iconUrl"
+    [attr.alt]="name"
+    (error)="onError($event)"
+  />
+  <span
+    class="avatar-wrapper"
+    [ngClass]="{ 'avatar-wrapper-image': iconUrl && !imgError }"
+  >
+    <i
+      class="avatar-icon"
+      [ngClass]="iconClass"
+      *ngIf="iconClass; else showInitials"
+    ></i>
+    <ng-template #showInitials>
+      {{ name | initials }}
+    </ng-template>
+  </span>
+</cos-avatar>

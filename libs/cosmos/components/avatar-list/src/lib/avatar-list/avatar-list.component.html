@@ -1,0 +1,33 @@
+<ul class="cos-avatar-list" *ngIf="avatars">
+  <li
+    class="cos-avatar-list-item"
+    *ngFor="let item of avatars | slice: 0:limit; trackBy: trackByFn"
+  >
+    <cos-avatar [matTooltip]="item.toolTipText!" [size]="size">
+      <span *ngIf="item.icon; else displayImage">
+        <i class="fa" [ngClass]="item.icon"></i>
+      </span>
+      <ng-template #displayImage>
+        <img
+          class="avatar-image"
+          *ngIf="item.imgUrl"
+          [src]="item.imgUrl"
+          (error)="imgError($event)"
+        />
+        <span class="avatar-image-text">{{ item.displayText }}</span>
+      </ng-template>
+    </cos-avatar>
+  </li>
+  <li
+    class="cos-avatar-list-item cos-avatar-remaining-count"
+    *ngIf="additionalCount > 0"
+  >
+    <cos-avatar
+      [size]="size"
+      [matTooltip]="additionalCountTooltip"
+      matTooltipClass="tooltip-multi-line"
+      class="remaining-item-avatar"
+      >+{{ additionalCount }}</cos-avatar
+    >
+  </li>
+</ul>

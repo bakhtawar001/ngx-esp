@@ -1,0 +1,12 @@
+@import 'cosmos/scss/settings/';
+
+.order-quote-summary {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $spacing-stack-16;
+    margin-top: $spacing-stack-16;
+    border-top: $border-light;
+  }
+}

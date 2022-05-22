@@ -1,0 +1,51 @@
+import { CommonModule } from '@angular/common';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosNewButtonComponent } from './new-button.component';
+import { CosNewButtonModule } from './new-button.module';
+
+<Meta
+  title="Buttons/Create Button"
+  component={CosNewButtonComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [CosNewButtonModule],
+    }),
+  ]}
+/>
+
+export const Template = (props) => ({
+  template: `
+    <button cos-new-button>
+      <i class="fa fa-plus-circle"></i>{{ buttonText }}
+    </button>
+  `,
+  props,
+});
+
+# New Button
+
+This button is distinct from the button component in its styling; it's intended specifically for adding a new item of sorts (New Customer, product, etc).
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      buttonText: 'Create new Customer',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Source
+  language="jsx"
+  code={`
+  <button cos-new-button>
+    <i class="fa fa-plus-circle"></i>Create a new Customer
+  </button>
+  `}
+/>
+
+<ArgsTable of={CosNewButtonComponent} />

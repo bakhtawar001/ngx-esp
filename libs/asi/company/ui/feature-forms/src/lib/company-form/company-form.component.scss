@@ -1,0 +1,17 @@
+@import 'cosmos/scss/settings';
+
+.colorblock {
+  width: 34px;
+  height: 34px;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+}
+
+.cos-input-row {
+  align-items: flex-start;
+}

@@ -1,0 +1,37 @@
+<address [ngClass]="{ 'address-inline': inline }">
+  <ng-container *ngIf="hasAddress; else noAddress">
+    <div
+      class="address-name"
+      [ngClass]="nameClass"
+      *ngIf="address.Name && showName"
+    >
+      {{ address.Name }}
+      <span class="ml-4" *ngIf="address.IsPrimary" cosPillLabel> Primary </span>
+      <span class="ml-4" *ngIf="address.Type === 'BLNG'" cosPillLabel>
+        Billing
+      </span>
+    </div>
+    <div [ngClass]="bodyClass">
+      <div class="address-line1" *ngIf="address.Line1">{{ address.Line1 }}</div>
+      <div class="address-line2" *ngIf="address.Line2">{{ address.Line2 }}</div>
+      <div *ngIf="address.City || address.State || address.PostalCode">
+        <span class="address-city" *ngIf="address.City">
+          {{ address.City
+          }}<span class="address-city-separator" *ngIf="address.State">, </span>
+        </span>
+        <span class="address-state" *ngIf="address.State">
+          {{ address.State }}
+        </span>
+        <span class="address-postalcode" *ngIf="address.PostalCode">
+          {{ address.PostalCode }}
+        </span>
+      </div>
+      <div class="address-country" *ngIf="address.CountryType">
+        {{ address.CountryType | findLookupTypeValue: 'Countries' }}
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noAddress>
+    <ng-content></ng-content>
+  </ng-template>
+</address>

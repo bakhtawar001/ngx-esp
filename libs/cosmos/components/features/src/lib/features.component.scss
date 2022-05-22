@@ -1,0 +1,25 @@
+@import '../../../../scss/settings/';
+
+/* autoprefixer grid: autoplace */
+
+.cos-features {
+  .cos-card-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: $spacing-inline-16;
+    grid-row-gap: $spacing-stack-32;
+    width: 100%;
+    @include spacing-inset-8();
+    background-color: $color-g-white-00;
+    @include wider-than($bp-medium) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: $spacing-inline-16;
+      grid-row-gap: $spacing-stack-32;
+      @include spacing-inset-16();
+      background-color: $color-g-pearl-03;
+    }
+  }
+}

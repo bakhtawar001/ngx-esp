@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/dialog",
+  "sourceRoot": "libs/cosmos/components/dialog/src",
+  "prefix": "cos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/components/dialog"],
+      "options": {
+        "project": "libs/cosmos/components/dialog/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/dialog/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/dialog/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/components/dialog"],
+      "options": {
+        "jestConfig": "libs/cosmos/components/dialog/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/dialog/src/**/*.ts",
+          "libs/cosmos/components/dialog/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:cosmos"]
+}

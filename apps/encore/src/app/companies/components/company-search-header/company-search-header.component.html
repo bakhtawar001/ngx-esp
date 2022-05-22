@@ -1,0 +1,19 @@
+<div class="util-bar mb-16">
+  <div class="search-keywords">
+    <div class="search-form">
+      <esp-search-box [placeholder]="searchPlaceholder"></esp-search-box>
+    </div>
+  </div>
+  <esp-company-search-filters
+    data-cy="company-search-filters"
+  ></esp-company-search-filters>
+  <div class="search-sort-by util-bar-end">
+    <esp-search-sort [options]="sortMenuOptions"></esp-search-sort>
+  </div>
+  <asi-filter-pills
+    class="filter-pills"
+    [filterPills]="state.filterPills"
+    (removeFilterEvent)="onRemoveFilter($event)"
+  >
+  </asi-filter-pills>
+</div>

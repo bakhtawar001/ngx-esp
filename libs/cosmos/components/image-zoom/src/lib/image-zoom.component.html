@@ -1,0 +1,23 @@
+<div #zoomContainer class="cos-image-zoom-container">
+  <img
+    #imageThumbnail
+    class="cos-image-zoom-thumbnail"
+    [alt]="alt"
+    [src]="thumbImage"
+  />
+
+  <div
+    #fullSizeImageWrapper
+    [ngClass]="{
+      'cos-image-zoom-full-container': true,
+      'cos-image-zoom-lens-enabled': enableLens
+    }"
+  >
+    <img
+      #fullSizeImage
+      class="cos-image-zoom-full"
+      [alt]="alt"
+      [src]="fullImage"
+    />
+  </div>
+</div>

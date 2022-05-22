@@ -1,0 +1,17 @@
+<div class="page-container directory">
+  <div class="directory-search grid-layout-1">
+    <div class="header flex justify-between">
+      <h1 class="header-style-24 collection-header mb-2">Directory</h1>
+      <div class="header-actions">
+        <router-outlet name="actions"></router-outlet>
+      </div>
+    </div>
+    <div class="directory-search-menu">
+      <cos-vertical-menu label="Directory menu" [menu]="directoryMenu">
+      </cos-vertical-menu>
+    </div>
+    <div class="directory-search-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

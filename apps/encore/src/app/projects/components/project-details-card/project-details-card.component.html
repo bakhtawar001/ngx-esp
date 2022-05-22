@@ -1,0 +1,175 @@
+<cos-card
+  [borderColor]="project?.Customer?.PrimaryBrandColor || defaultColor"
+  class="project-details-card"
+  data-cy="card"
+>
+  <cos-card-menu *ngIf="project.IsEditable">
+    <button class="cos-menu-item" mat-menu-item type="button">Follow</button>
+    <button class="cos-menu-item" mat-menu-item type="button">
+      Set Reminder
+    </button>
+    <button
+      (click)="onTransferOwnership()"
+      data-cy="transfer-ownership"
+      class="cos-menu-item"
+      mat-menu-item
+    >
+      Transfer Ownership
+    </button>
+    <button
+      (click)="onReopenProject()"
+      *ngIf="project.StepName === ProjectStepName.Closed; else closeButton"
+      class="cos-menu-item"
+      mat-menu-item
+      type="button"
+      data-cy="reopen-project-button"
+    >
+      Reopen Project
+    </button>
+    <ng-template #closeButton>
+      <button
+        (click)="onCloseProject()"
+        class="cos-menu-item"
+        mat-menu-item
+        type="button"
+        data-cy="close-project-button"
+      >
+        Close Project
+      </button>
+    </ng-template>
+  </cos-card-menu>
+
+  <header class="project-details-card__header">
+    <div class="flex pr-24">
+      <asi-company-avatar
+        [customer]="project.Customer"
+        [showAvatarIcon]="true"
+      ></asi-company-avatar>
+
+      <div class="ml-12">
+        <h4
+          [routerLink]="['/projects', project.Id]"
+          class="
+            project-details-card__heading
+            header-style-16
+            mb-4
+            cursor-pointer
+          "
+          data-cy="title"
+        >
+          {{ project.Name }}
+        </h4>
+        <h5 data-cy="customer-name" class="body-style-12 mb-0">
+          {{ project.Customer.Name }}
+        </h5>
+      </div>
+    </div>
+    <div class="project-details-card__tracker ml-12">
+      <cos-tracker [currentStep]="project.Step || 1" [startsOnZero]="false">
+        <cos-tracker-step [size]="'lg'">
+          <i class="fa fa-check cos-text--white"></i>
+        </cos-tracker-step>
+        <cos-tracker-step [size]="'lg'">
+          <span>2</span>
+        </cos-tracker-step>
+      </cos-tracker>
+      <div>
+        <div cosPillLabel>{{ ProjectStepDisplayValue[project.StepName] }}</div>
+      </div>
+    </div>
+    <div class="project-details-card__notifications">
+      <esp-project-detail-notifications
+        [alertsNumber]="1"
+        [messagesEnabled]="true"
+        [messagesNumber]="5"
+        [tasksEnabled]="true"
+        [tasksNumber]="2"
+      ></esp-project-detail-notifications>
+    </div>
+  </header>
+  <div cos-card-footer>
+    <div class="project-details-card__footer">
+      <button
+        (click)="onToggleDetail()"
+        class="project-details-card__details-button"
+        cos-button
+        data-cy="details-button"
+        size="sm"
+      >
+        <span
+          [ngClass]="{
+            'fas fa-minus': detailShown,
+            'fa fa-plus': !detailShown
+          }"
+          class="mr-4"
+        ></span>
+        Show {{ detailShown ? 'less' : 'more' }} detail
+      </button>
+      <div *ngIf="detailShown" class="mt-24 ml-8" data-cy="details">
+        <esp-card-metadata-list [cols]="3">
+          <li>
+            <h5 class="header-style-12 mb-8" data-cy="in-hands-date-label">
+              In-Hands Date
+            </h5>
+            <div class="project-details-card__in-hands-date flex">
+              <p class="mb-0 mr-8" data-cy="in-hands-date">
+                {{
+                  project.InHandsDate
+                    ? (project.InHandsDate | date: 'mediumDate')
+                    : '-'
+                }}
+              </p>
+              <esp-project-in-hands-date-pill
+                [isInHandsDateFlexible]="project?.IsInHandsDateFlexible"
+              ></esp-project-in-hands-date-pill>
+            </div>
+          </li>
+
+          <li>
+            <h5 class="header-style-12 mb-8" data-cy="deal-value-label">
+              Deal Value
+            </h5>
+            <p class="mb-0" data-cy="deal-value">
+              {{ project.Budget ? (project.Budget | currency: '$') : '-' }}
+            </p>
+          </li>
+
+          <li>
+            <span class="flex mt-8">
+              <div class="mr-8">
+                <cos-avatar>
+                  <img
+                    *ngIf="project.Owner.IconImageUrl"
+                    [attr.alt]="project.Owner.Name"
+                    [attr.src]="project.Owner.IconImageUrl"
+                    data-cy="owner-avatar"
+                  />
+                  <span data-cy="owner-avatar-with-initials">{{
+                    project.Owner.Name | initials
+                  }}</span>
+                </cos-avatar>
+              </div>
+
+              <span data-cy="owner-info">
+                <p class="mb-0">Managed by</p>
+                <p class="header-style-12-shark">{{ project.Owner.Name }}</p>
+              </span>
+            </span>
+          </li>
+        </esp-card-metadata-list>
+      </div>
+      <h4
+        class="
+          project-details-card__footer-date
+          header-style-12
+          lg:inline
+          mb-0
+          mr-8
+        "
+        data-cy="create-date"
+      >
+        {{ 'Created Date: ' + (project.CreateDate | date: 'mediumDate') }}
+      </h4>
+    </div>
+  </div>
+</cos-card>

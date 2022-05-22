@@ -1,0 +1,29 @@
+{
+  "root": "apps/sponsored-content-elements-e2e",
+  "sourceRoot": "apps/sponsored-content-elements-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/sponsored-content-elements-e2e/cypress.json",
+        "tsConfig": "apps/sponsored-content-elements-e2e/tsconfig.e2e.json",
+        "devServerTarget": "sponsored-content-elements:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "sponsored-content-elements:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/sponsored-content-elements-e2e/**/*.{js,ts}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:sponsored-content", "type:e2e", "platform:web"],
+  "implicitDependencies": ["sponsored-content-elements"]
+}

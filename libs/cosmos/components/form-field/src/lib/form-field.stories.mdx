@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CosInputModule } from '@cosmos/components/input';
+import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+
+import { CosFormFieldDemoComponent } from './form-field.component.demo';
+import { CosFormFieldComponent } from './form-field.component';
+import { CosFormFieldModule } from './form-field.module';
+
+<Meta
+  title="Controls &amp;  Inputs/Form Field"
+  component={CosFormFieldComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [
+        BrowserAnimationsModule,
+        CosFormFieldModule,
+        CosInputModule,
+        ReactiveFormsModule,
+      ],
+      declarations: [CosFormFieldDemoComponent],
+    }),
+  ]}
+  argTypes={{
+    hideRequiredMarker: { control: 'boolean' },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosFormFieldDemoComponent,
+});
+
+# Form Field Component
+
+This is an example of how to use the form field component
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-form-field>
+  <cos-label>Favorite Food</cos-label>
+  <input cos-input #input maxlength="10" [formControl]="food" />
+  <cos-hint align="end">{{ input.value?.length || 0 }}/10</cos-hint>
+  <cos-error *ngIf="food.invalid">{{ getErrorMessageFood() }}</cos-error>
+</cos-form-field>
+<cos-form-field [hideRequiredMarker]="hideRequiredMarker">
+  <cos-label>Enter an email</cos-label>
+  <input placeholder="test@test.com" cos-input [formControl]="email" required />
+  <cos-error *ngIf="email.invalid">{{ getErrorMessageEmail() }}</cos-error>
+</cos-form-field>
+```
+
+<ArgsTable of={CosFormFieldComponent} />

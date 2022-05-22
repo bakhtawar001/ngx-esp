@@ -1,0 +1,10 @@
+<div class="cos-product-card-attributes">
+  <ul class="cos-inline-list" *ngIf="tags?.length">
+    <li *ngFor="let attributeTag of tags">
+      <span cosAttributeTag size="small">
+        <i *ngIf="attributeTag.Icon" class="fas fa-{{ attributeTag.Icon }}"></i>
+        {{ attributeTag.Label }}
+      </span>
+    </li>
+  </ul>
+</div>

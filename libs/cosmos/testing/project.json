@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/testing",
+  "sourceRoot": "libs/cosmos/testing/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/testing/src/**/*.ts",
+          "libs/cosmos/testing/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/testing"],
+      "options": {
+        "jestConfig": "libs/cosmos/testing/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"]
+}

@@ -1,0 +1,38 @@
+<div class="cos-product-variants">
+  <ng-content></ng-content>
+
+  <ul class="cos-product-variants-list" *ngIf="hasImages">
+    <li
+      class="cos-product-variants-list-item"
+      *ngFor="let option of variant.options"
+    >
+      <div
+        *ngIf="option.ImageUrl && !imageError"
+        class="cos-product-variants-image"
+      >
+        <img
+          [src]="option.ImageUrl | imageUrlPipe"
+          alt="{{ option.Name }}"
+          (error)="onImageError()"
+        />
+      </div>
+
+      <div
+        *ngIf="!option.ImageUrl || imageError"
+        class="cos-product-variants-image cos-product-variants-image--empty"
+      >
+        No image available
+      </div>
+
+      <p class="cos-product-variants-description">{{ option.Name }}</p>
+    </li>
+  </ul>
+
+  <ng-container *ngIf="!hasImages">
+    <p class="cos-product-variants-description">
+      <ng-container *ngFor="let option of variant.options; let isLast = last">
+        {{ option.Name }}{{ isLast ? '' : ', ' }}
+      </ng-container>
+    </p>
+  </ng-container>
+</div>

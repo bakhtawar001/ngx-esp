@@ -1,0 +1,17 @@
+/**
+  TODO: should global helper classes have important?
+*/
+.proj-orders__pg-title {
+  .flex {
+    display: flex !important;
+  }
+
+  .pl-0 {
+    padding-left: 0 !important;
+  }
+}
+
+.orders-dropdown-menu {
+  max-height: 256px;
+  min-width: 220px;
+}

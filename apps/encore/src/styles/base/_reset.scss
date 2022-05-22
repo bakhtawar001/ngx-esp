@@ -1,0 +1,171 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+html,
+body {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: normal;
+}
+
+h1,
+.h1 {
+  font-size: 24px;
+}
+
+h2,
+.h2 {
+  font-size: 20px;
+}
+
+h3,
+.h3 {
+  font-size: 16px;
+}
+
+h4,
+.h4 {
+  font-size: 15px;
+}
+
+h5,
+.h5 {
+  font-size: 13px;
+}
+
+h6,
+.h6 {
+  font-size: 12px;
+}
+
+// Links
+a {
+  text-decoration: none;
+
+  &:not(.mat-button),
+  &:not(.mat-raised-button),
+  &:not(.mat-flat-button),
+  &:not(.mat-stroked-button),
+  &:not(.mat-icon-button),
+  &:not(.mat-fab),
+  &:not(.mat-mini-fab),
+  &:not(.cos-button),
+  &:not(.cos-raised-button),
+  &:not(.cos-flat-button),
+  &:not(.cos-stroked-button),
+  &:not(.cos-icon-button) {
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Abbr
+abbr {
+  cursor: help;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.54);
+}
+
+// Address
+address {
+  font-style: normal;
+}
+
+// Blockquote
+blockquote {
+  border-left: 3px solid rgba(0, 0, 0, 0.12);
+  font-style: italic;
+  margin: 1em 0;
+  padding-left: 16px;
+
+  footer {
+    font-style: normal;
+
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+
+  &.reverse {
+    border-left: none;
+    border-right: 3px solid rgba(0, 0, 0, 0.12);
+    text-align: right;
+    padding-left: 0;
+    padding-right: 16px;
+
+    footer {
+      &:before {
+        content: '';
+      }
+
+      &:after {
+        content: '\2014 \00A0';
+      }
+    }
+  }
+}
+
+// Code
+code {
+  font-family: 'Monaco', 'Menlo', 'Consolas', 'Ubuntu Mono', monospace;
+
+  &:not(.highlight) {
+    color: #106cc8;
+    padding: 2px 3px;
+    border-radius: 2px;
+    line-height: 1.7;
+  }
+}
+
+// Definition lists
+dl {
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 4px 0 16px 0;
+  }
+}
+
+// Mark
+mark {
+  background: #f7f49a;
+}
+
+p {
+  margin-top: 0;
+}
+
+// Pre
+pre {
+  line-height: 1.6;
+  margin: 8px 16px;
+  white-space: pre-wrap;
+}
+
+// Small
+small {
+  font-size: 80%;
+}

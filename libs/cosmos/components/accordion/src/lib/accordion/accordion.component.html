@@ -1,0 +1,21 @@
+<div
+  #accordionHeader
+  class="cos-accordion-header"
+  role="button"
+  (click.silent)="toggleExpandedState()"
+  (keydown.silent)="onKeydown($any($event))"
+  [attr.aria-expanded]="expanded"
+  [attr.aria-disabled]="disabled"
+  [attr.disabled]="disabled"
+  tabindex="0"
+>
+  <div class="cos-accordion-header--label">
+    {{ accordionTitle }}
+    <ng-content select="cos-accordion-header"></ng-content>
+  </div>
+  <div class="cos-accordion-header--hr"></div>
+  <i class="fa fa-chevron-down cos-accordion-chevron" *ngIf="!hideToggle"></i>
+</div>
+<div class="cos-accordion-body" role="region" [attr.aria-hidden]="!expanded">
+  <ng-content></ng-content>
+</div>

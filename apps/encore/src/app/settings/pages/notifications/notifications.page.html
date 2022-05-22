@@ -1,0 +1,447 @@
+<h1 class="header-style-22">Notification settings</h1>
+
+<ng-form [formGroup]="notificationsForm">
+  <cos-segmented-panel>
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Notifiy Me When&hellip;</h2>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Something is shared with me'"
+        [isEditable]="false"
+      >
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive> </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div class="notifications-toggle-row">
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'emailToggle'"
+                [name]="'emailToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+              >
+                <span>Email</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'webToggle'"
+                [name]="'webToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+              >
+                <span>Web</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'desktopToggle'"
+                [name]="'shippingMethodAllowOverrides'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+              >
+                <span>Desktop</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <button cos-icon-button (click)="toggleExpanded()">
+                <i
+                  class="fa"
+                  [ngClass]="{ 'fa-angle-up': showNotificationChildren, 'fa-angle-down': !showNotificationChildren }"
+                ></i>
+                <span class="cos-accessibly-hidden"
+                  >Toggle Notification Details</span
+                >
+              </button>
+            </div>
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row *ngIf="showNotificationChildren">
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <span class="form-row-value">Collections are shared with me</span>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div class="notifications-toggle-row">
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'emailToggle'"
+                [name]="'emailToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Email</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'webToggle'"
+                [name]="'webToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Web</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'desktopToggle'"
+                [name]="'shippingMethodAllowOverrides'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Desktop</span>
+              </cos-toggle>
+            </div>
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row *ngIf="showNotificationChildren">
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <span class="form-row-value">Companies are shared with me</span>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div class="notifications-toggle-row">
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'emailToggle'"
+                [name]="'emailToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Email</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'webToggle'"
+                [name]="'webToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Web</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'desktopToggle'"
+                [name]="'shippingMethodAllowOverrides'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Desktop</span>
+              </cos-toggle>
+            </div>
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row *ngIf="showNotificationChildren">
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <span class="form-row-value">Projects are shared with me</span>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div class="notifications-toggle-row">
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'emailToggle'"
+                [name]="'emailToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Email</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'webToggle'"
+                [name]="'webToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Web</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'desktopToggle'"
+                [name]="'shippingMethodAllowOverrides'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Desktop</span>
+              </cos-toggle>
+            </div>
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row *ngIf="showNotificationChildren">
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <span class="form-row-value">Contacts are shared with me</span>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div class="notifications-toggle-row">
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'emailToggle'"
+                [name]="'emailToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Email</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'webToggle'"
+                [name]="'webToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Web</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'desktopToggle'"
+                [name]="'shippingMethodAllowOverrides'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Desktop</span>
+              </cos-toggle>
+            </div>
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row *ngIf="showNotificationChildren">
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <span class="form-row-value">A message is sent to me</span>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div class="notifications-toggle-row">
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'emailToggle'"
+                [name]="'emailToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Email</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'webToggle'"
+                [name]="'webToggle'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Web</span>
+              </cos-toggle>
+            </div>
+            <div class="mr-32">
+              <cos-toggle
+                [id]="'desktopToggle'"
+                [name]="'shippingMethodAllowOverrides'"
+                [required]="true"
+                [disabled]=""
+                [checked]="checked"
+                size="small"
+              >
+                <span>Desktop</span>
+              </cos-toggle>
+            </div>
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel>
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Web notifications</h2>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [rowTitle]="'Sounds'" [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Play a sound when each new notification is received.
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <cos-toggle
+            [id]="'emailToggle'"
+            [name]="'emailToggle'"
+            [required]="true"
+            [disabled]=""
+            [checked]="checked"
+          >
+            <span class="cos-accessibly-hidden">Play a sound</span>
+          </cos-toggle>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel>
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Email Notifications</h2>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [isEditable]="false">
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Email notifications will be sent to your primary email address. You
+            may change your primary email address.
+          </p>
+        </asi-panel-editable-row-inactive>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [rowTitle]="'Frequency'">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            All notifications, except the ones you turn off.
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <cos-form-field>
+            <cos-label> Frequency </cos-label>
+            <select matNativeControl id="frequency" formControlName="frequency">
+              <option value="1">Separate email for each notification</option>
+              <option value="2">Daily email summary</option>
+            </select>
+
+            <cos-error></cos-error>
+          </cos-form-field>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [rowTitle]="'Preferred email for notifications'">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            {{notificationsForm.get('preferredEmail').value}}
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <div>
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'prefferedEmail'"
+              >
+                Preferred Email
+              </label>
+              <input
+                id="prefferedEmail"
+                cos-input
+                type="text"
+                formControlName="preferredEmail"
+                maxlength="50"
+                required
+              />
+              <div
+                class="error error-invalid"
+                *ngIf="!notificationsForm.controls.preferredEmail.valid"
+              >
+                You must enter a value
+              </div>
+            </div>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel>
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Muted Items</h2>
+    </cos-segmented-panel-header>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [isEditable]="false">
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Items you’ve muted notifications on will appear here. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua minim veniam.
+          </p>
+        </asi-panel-editable-row-inactive>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <div class="muted-details">
+            <img src="https://via.placeholder.com/32" class="mr-16" alt="" />
+            <p class="form-row-title">Order #119293 for Setra Snowboards</p>
+            <p class="form-row-value">Muted 9/24/20</p>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <button cos-button color="warn">Unmute</button>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-form>

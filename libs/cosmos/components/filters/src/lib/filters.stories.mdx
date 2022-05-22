@@ -1,0 +1,139 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { moduleMetadata } from '@storybook/angular';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+
+import { CosFiltersComponent } from './filters.component';
+import { CosFiltersDemoComponent } from './filters.component.demo';
+import { CosFiltersModule } from './filters.module';
+import { CosFormFieldModule } from '@cosmos/components/form-field';
+import { CosInputModule } from '@cosmos/components/input';
+import { CosCheckboxModule } from '@cosmos/components/checkbox';
+import { CosButtonGroupModule } from '@cosmos/components/button-group';
+import { CosButtonModule } from '@cosmos/components/button';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatMenuModule } from '@angular/material/menu';
+import { ClickOutsideModule } from '@cosmos/common';
+
+<Meta
+  title="Composites/Filters"
+  component={CosFiltersDemoComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [
+        BrowserAnimationsModule,
+        CosFormFieldModule,
+        CosInputModule,
+        CosCheckboxModule,
+        CosButtonGroupModule,
+        CosButtonModule,
+        MatMenuModule,
+        ClickOutsideModule,
+        CosFiltersModule,
+      ],
+      declarations: [CosFiltersDemoComponent],
+    }),
+  ]}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosFiltersDemoComponent,
+});
+
+# Filters
+
+Filter are a varation of the button component to direct users to take action to guide a user to funnel down or refine results.
+
+---
+
+## When to Use Filters
+
+Filters should be used when one or more avariants need to be applied to a grouping of results such as products, suppliers, projects, etc.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable of={CosFiltersComponent} />
+
+## How it Works
+
+When clicking on the filter button a container will open and give you options on how you would like to apply this filter. There can be single or dependent dropdown, search fields, checkboxes, max-min applications.
+
+##### Single Dropdown
+
+This filter uses only one dropdown to be applied.
+
+##### Dependent Dropdown
+
+A second dropdown is used to filter results based on the first dropdown. Example Sub-Category within the category you initially chose.
+
+##### Search & Results
+
+Input needed to quickly find what you are looking for within a large array of data. Example would be picking a specific suppliers.
+
+##### Max-Min
+
+Allowing imputs to filter through a max-min of a data set array.
+
+##### Checkbox
+
+Allows users to click on multiple options to apply within the filter.
+
+---
+
+## Visual Details
+
+##### Idle
+
+| Attribute        | Value          |
+| ---------------- | -------------- |
+| Spacing          | Squish 8       |
+| Type Size        | Headerstyle 14 |
+| Type Color       | BL75 - Atoll   |
+| Background Color | G00 - White    |
+| Border           | 1px            |
+| Border Color     | G09 - Pebble   |
+
+##### Focus
+
+| Attribute        | Value          |
+| ---------------- | -------------- |
+| Spacing          | Squish 8       |
+| Type Size        | Headerstyle 14 |
+| Type Color       | BL75 - Atoll   |
+| Background Color | G00 - White    |
+| Border           | 2px            |
+| Border Color     | #0F8BFF        |
+
+##### Active
+
+| Attribute            | Value          |
+| -------------------- | -------------- |
+| Spacing              | Squish 8       |
+| Type Size            | Headerstyle 14 |
+| Type Color           | G00 - White    |
+| Background Color     | BL75 - Atoll   |
+| Container Color      | G00 - White    |
+| Container Dropshadow | (0,1,10,0)     |
+
+##### Applied
+
+| Attribute        | Value          |
+| ---------------- | -------------- |
+| Spacing          | Squish 8       |
+| Type Size        | Headerstyle 14 |
+| Type Color       | BL75 - Atoll   |
+| Background Color | G00 - White    |
+| Border           | 1px            |
+| Border Color     | BL75 - Atoll   |
+
+#####
+
+---
+
+## Layout
+
+### Application
+
+Apply/Reset buttons live at the bottom right-hand side of the open container.

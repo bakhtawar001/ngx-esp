@@ -1,0 +1,12 @@
+@import 'cosmos/scss/settings/';
+
+header {
+  border-bottom: $border-light;
+}
+
+.content-wrapper {
+  margin: 0.6rem 3rem;
+}
+.project-contact-info-addresses div {
+  width: 50%;
+}

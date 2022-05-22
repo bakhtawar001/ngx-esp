@@ -1,0 +1,76 @@
+<div class="page-container">
+  <div class="presentation-search grid-layout-1">
+    <div class="presentation-filters">
+      <h1 class="header-style-24 presentation-header mb-2">Presentations</h1>
+      <div class="presentation-actions">
+        <button
+          type="button"
+          cos-flat-button
+          color="primary"
+          (click)="createPresentation()"
+          class="create-presentation-btn"
+        >
+          <span class="mr-12"><i class="fa fa-plus"></i></span>
+          <span class="lg:inline-block hidden">Create new Presentation</span>
+          <span class="lg:hidden">Create new</span>
+        </button>
+      </div>
+
+      <div class="presentation-search-keywords">
+        <esp-search-box placeholder="Search Presentations"></esp-search-box>
+      </div>
+
+      <div class="presentation-tabs mb-8">
+        <esp-search-tab-group [tabs]="tabs"></esp-search-tab-group>
+      </div>
+      <esp-search-sort
+        class="presentation-sort mb-8"
+        [options]="sortMenuOptions"
+      ></esp-search-sort>
+    </div>
+    <ng-template
+      [ngIf]="!state.isLoading && state.hasLoaded && state.presentations"
+      [ngIfElse]="loader"
+    >
+      <ng-template
+        [ngIf]="state.presentations?.length"
+        [ngIfElse]="noPresentations"
+      >
+        <div class="presentation-results">
+          <cos-presentation-card
+            [products]="presentation?.Products"
+            [productCount]="presentation?.ProductCount"
+            [title]="presentation?.Project.Name"
+            [subtitle]="presentation.Customer?.Name"
+            [showMenu]="state.tabIndex === 0"
+            [createdDate]="presentation?.CreateDate"
+            [lastUpdatedDate]="presentation?.UpdateDate || presentation?.CreateDate"
+            [imgUrl]="presentation.Customer?.IconImageUrl"
+            [imgAlt]="presentation.Customer?.Name"
+            [topBorderColor]="presentation.Customer?.PrimaryBrandColor"
+            (handleClick)="navigateToPresentation(presentation)"
+            *ngFor="let presentation of state.presentations"
+          >
+            <esp-presentation-card-menu
+              [presentation]="presentation"
+              *ngIf="state.tabIndex === 0"
+            ></esp-presentation-card-menu>
+          </cos-presentation-card>
+        </div>
+        <div>
+          <esp-search-pagination></esp-search-pagination>
+        </div>
+      </ng-template>
+    </ng-template>
+    <ng-template #loader>
+      <esp-presentation-search-loader
+        class="presentation-results"
+      ></esp-presentation-search-loader>
+    </ng-template>
+    <ng-template #noPresentations>
+      <div class="empty-results-msg">
+        <p class="body-style-14-shark">No presentations found.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

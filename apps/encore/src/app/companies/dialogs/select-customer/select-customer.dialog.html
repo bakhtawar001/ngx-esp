@@ -1,0 +1,50 @@
+<asi-cards-selection-dialog
+  (create)="onCreateCustomer()"
+  (search)="onCustomerSearch($event)"
+  createButtonText="Create a New Customer"
+  header="Create a new Customer or Select a Customer"
+  searchPlaceholder="Search for a Customer"
+  subheader="Projects requires a customer to be selected. You can choose to create a new customer or select an existing customer."
+  [initialSearchValue]="data?.input?.searchTerm || ''"
+>
+  <ng-container asiCardsSelectionContent>
+    <ng-container
+      *ngIf="state.customers?.length && !state.loading; else loader"
+    >
+      <asi-details-card
+        *ngFor="let customer of state.customers; trackBy: trackById"
+        (cardClick)="onSelectCustomer(customer)"
+        [firstLineDetails]="customer.PrimaryAddress ? (customer.PrimaryAddress | espCustomerAddress) : ''"
+        [secondLineDetails]="customer.PrimaryEmail ?? ''"
+        [showSubtitleTooltip]="true"
+        [showTitleTooltip]="true"
+        [title]="customer.Name"
+        [topBorderColor]="customer.PrimaryBrandColor"
+        class="cursor-pointer"
+      >
+        <asi-company-avatar
+          [customer]="customer"
+          [showAvatarIcon]="true"
+          [iconSize]="20"
+          asiUiDetailsCardAvatar
+        ></asi-company-avatar>
+      </asi-details-card>
+    </ng-container>
+    <ng-template #loader>
+      <asi-details-card-loader
+        *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
+        [singleLineHeader]="true"
+      ></asi-details-card-loader>
+    </ng-template>
+  </ng-container>
+  <div asiCardsSelectionActions class="w-full">
+    <button
+      (click)="onPreviousStep()"
+      data-cy="cancel-button"
+      cos-button
+      type="button"
+    >
+      <i class="fa fa-arrow-left mr-8"></i> Back
+    </button>
+  </div>
+</asi-cards-selection-dialog>

@@ -1,0 +1,39 @@
+<asi-panel-editable-row
+  (onSaveEvent)="onSocialMediaSave()"
+  [isEditable]="state.party?.IsEditable"
+  class="contact-card-row"
+  data-cy="social-media-row"
+  rowTitle="Social Media"
+>
+  <i class="form-row-icon fa fa-heart mt-8 mr-16" data-cy="heart-icon"></i>
+  <asi-panel-editable-row-inactive>
+    <p
+      *ngIf="!isAnySocialMediaAdded; else list"
+      class="form-row-value"
+      data-cy="no-social-media-text"
+    >
+      No social media addresses added
+    </p>
+    <ng-template #list>
+      <ul
+        class="form-row-value-list cos-list-no-style"
+        data-cy="social-media-list"
+      >
+        <li *ngFor="let media of companySocialMedia | keyvalue: originalOrder">
+          <ng-container *ngIf="media.value">
+            <span>{{media.key}}:</span>
+            <a [href]="'//' + media.value.redirectUrl" target="_blank"
+              >{{media.value.displayValue}}</a
+            >
+          </ng-container>
+        </li>
+      </ul>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <esp-social-media-form
+      [formGroup]="form"
+      data-cy="social-media-form"
+    ></esp-social-media-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

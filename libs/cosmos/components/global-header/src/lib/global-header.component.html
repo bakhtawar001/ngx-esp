@@ -1,0 +1,103 @@
+<div class="cos-id"><ng-content></ng-content></div>
+<ng-content select="cos-global-search"></ng-content>
+<nav class="cos-global-nav-desktop" [attr.aria-label]="ariaLabel">
+  <ul class="cos-global-nav-menu" #menuRef>
+    <li
+      class="cos-global-nav-item"
+      *ngFor="let navItem of filterByFeatureFlags(navItemsDesktop)"
+    >
+      <a
+        cos-button
+        size="sm"
+        *ngIf="navItem.url && !navItem.externalUrl"
+        [routerLink]="navItem.url"
+        ><i
+          [matBadge]="navItem.badge && navItem.badge.title"
+          [ngClass]="'cos-global-nav-icon ' + navItem.icon"
+        ></i>
+        <span class="cos-global-nav-text">{{ navItem.title }}</span>
+      </a>
+      <a
+        cos-button
+        size="sm"
+        *ngIf="navItem.externalUrl && navItem.url"
+        [href]="navItem.url"
+        [target]="navItem.openInNewTab ? '_blank' : '_self'"
+        ><i
+          [matBadge]="navItem.badge && navItem.badge.title"
+          [ngClass]="'cos-global-nav-icon ' + navItem.icon"
+        ></i>
+        <span class="cos-global-nav-text">{{ navItem.title }}</span>
+      </a>
+      <button
+        *ngIf="navItem.menu"
+        cos-button
+        size="sm"
+        [matMenuTriggerFor]="navItem.menu"
+        (menuClosed)="(true)"
+      >
+        <i
+          [matBadge]="navItem.badge && navItem.badge.title"
+          [ngClass]="'cos-global-nav-icon ' + navItem.icon"
+        ></i>
+        <span class="cos-global-nav-text">{{ navItem.title }}</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+<nav
+  class="cos-global-nav-mobile"
+  [attr.aria-label]="ariaLabel"
+  (cosOnResize)="onResize($event)"
+>
+  <ul class="cos-global-nav-menu" #menuRef>
+    <li
+      class="cos-global-nav-item"
+      [ngClass]="{
+        '--expanded': bottomSheetOpen && navItem.type === 'collapsable'
+      }"
+      *ngFor="let navItem of filterByFeatureFlags(navItemsMobile)"
+    >
+      <a
+        cos-button
+        size="sm"
+        *ngIf="
+          navItem.type !== 'collapsable' && navItem.url && !navItem.externalUrl
+        "
+        [routerLink]="navItem.url"
+        ><i
+          [matBadge]="navItem.badge && navItem.badge.title"
+          [ngClass]="'cos-global-nav-icon ' + navItem.icon"
+        ></i>
+        <span class="cos-global-nav-text">{{ navItem.title }}</span>
+      </a>
+      <a
+        cos-button
+        size="sm"
+        *ngIf="
+          navItem.type !== 'collapsable' && navItem.url && navItem.externalUrl
+        "
+        [href]="navItem.url"
+        [target]="navItem.openInNewTab ? '_blank' : '_self'"
+        ><i
+          [matBadge]="navItem.badge && navItem.badge.title"
+          [ngClass]="'cos-global-nav-icon ' + navItem.icon"
+        ></i>
+        <span class="cos-global-nav-text">{{ navItem.title }}</span>
+      </a>
+      <button
+        *ngIf="navItem.type === 'collapsable'"
+        cos-button
+        size="sm"
+        (click)="openBottomSheet(navItem)"
+      >
+        <i
+          class="mr-8 cos-global-nav-icon"
+          [matBadge]="navItem.badge && navItem.badge.title"
+          [ngClass]="bottomSheetOpen ? 'fa fa-times' : navItem.icon"
+        ></i>
+        <span class="cos-global-nav-text">{{ navItem.title }}</span>
+      </button>
+    </li>
+  </ul>
+</nav>

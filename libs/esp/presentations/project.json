@@ -1,0 +1,39 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/presentations",
+  "sourceRoot": "libs/esp/presentations/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "project": "libs/esp/presentations/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/presentations/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/esp/presentations/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/presentations/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/presentations/src/**/*.ts",
+          "libs/esp/presentations/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

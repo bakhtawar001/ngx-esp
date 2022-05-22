@@ -1,0 +1,111 @@
+<cos-card
+  class="party-card"
+  *ngIf="company"
+  [borderColor]="company.PrimaryBrandColor || defaultColor"
+>
+  <cos-card-controls *ngIf="company['Projects']">
+    <span class="party-controls">
+      <i class="fa fa-folder"></i> Active Projects (2)
+    </span>
+  </cos-card-controls>
+  <cos-card-menu *ngIf="company.IsEditable">
+    <asi-company-actions-items
+      [company]="company"
+      (delete)="_delete()"
+      (toggleStatus)="_toggleStatus()"
+      (transferOwner)="_transferOwner()"
+    ></asi-company-actions-items>
+  </cos-card-menu>
+
+  <div class="party-card-wrapper">
+    <esp-party-avatar
+      [iconUrl]="company.IconImageUrl"
+      [name]="company.Name"
+      [iconClass]="iconClass"
+      [square]="true"
+    ></esp-party-avatar>
+    <div class="party-card-contents">
+      <div class="party-card-header">
+        <h1 class="header-style-16 party-name">
+          <span class="ellipsis" title="{{ company.Name }}">
+            {{ company.Name }}
+          </span>
+        </h1>
+        <span
+          cosPillLabel
+          class="ml-8 party-status"
+          [color]="!company.IsActive ? 'error' : 'primary'"
+        >
+          {{ company.IsActive ? 'Active' : 'Inactive' }}
+        </span>
+
+        <div class="party-type body-style-12-shark">
+          {{ company.Types?.join(', ') }}
+        </div>
+      </div>
+
+      <div class="party-card-body">
+        <div class="party-address">
+          <div class="contact-item">
+            <h3 class="header-style-12-shark">Primary Address</h3>
+            <esp-address-display
+              [showName]="false"
+              [address]="company.PrimaryAddress"
+              *ngIf="company.PrimaryAddress"
+            >
+              <div class="contact-address__no-value">&mdash;</div>
+            </esp-address-display>
+          </div>
+        </div>
+        <div class="party-contact">
+          <div class="contact-item">
+            <h3 class="header-style-12-shark">Client Contact</h3>
+            <div
+              *ngIf="
+                company.AcknowledgementContact;
+                else noAcknowledgementContact
+              "
+            >
+              <div
+                class="ellipsis contact-acknowledgement-name"
+                [title]="company.AcknowledgementContact.Name"
+              >
+                {{ company.AcknowledgementContact.Name }}
+              </div>
+              <div
+                class="ellipsis contact-acknowledgement-email"
+                *ngIf="company.AcknowledgementContact.Email"
+              >
+                <a
+                  href="mailto:{{ company.AcknowledgementContact.Email }}"
+                  [title]="company.AcknowledgementContact.Email"
+                  >{{ company.AcknowledgementContact.Email }}</a
+                >
+              </div>
+              <div
+                class="ellipsis contact-acknowledgement-phone"
+                *ngIf="company.AcknowledgementContact.Phone"
+                [title]="company.AcknowledgementContact.Phone"
+              >
+                {{ company.AcknowledgementContact.Phone }}
+              </div>
+            </div>
+            <ng-template #noAcknowledgementContact
+              ><div class="contact-acknowledgement__no-value">
+                &mdash;
+              </div></ng-template
+            >
+          </div>
+        </div>
+        <div class="party-managed">
+          <esp-record-owner class="party-record-owner" [owner]="company.Owner">
+          </esp-record-owner>
+          <p class="party-created">
+            Created Date: {{ company.CreateDate | date: 'longDate' }}
+            <!-- <span class="divider">|</span> Created by: {{ company.Owner.Name }} -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</cos-card>

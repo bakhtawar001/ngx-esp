@@ -1,0 +1,20 @@
+@import 'cosmos/scss/settings/';
+
+// TBD: Why global styles not applied?
+
+$border-style: 1px solid rgba(0, 0, 0, 0.12);
+
+.border-bottom {
+  border-bottom: $border-style;
+}
+
+.product-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 84px);
+  grid-gap: 16px;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}

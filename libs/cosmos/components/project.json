@@ -1,0 +1,68 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components",
+  "sourceRoot": "libs/cosmos/components",
+  "targets": {
+    "storybook-watch": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/cosmos/components/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "storybook-build": {
+      "executor": "@nrwl/storybook:build",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/cosmos",
+        "config": {
+          "configFolder": "libs/cosmos/components/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "libs/cosmos/components/tsconfig.lib.json",
+        "outputPath": "dist/compodoc/cosmos-components"
+      },
+      "configurations": {
+        "json": {
+          "exportFormat": "json"
+        }
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "npx nx run cosmos-components:compodoc:json --watch",
+          "npx nx run cosmos-components:storybook-watch"
+        ]
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "npx nx run cosmos-components:compodoc:json",
+          "npx nx run cosmos-components:storybook-build"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"]
+}

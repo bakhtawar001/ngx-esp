@@ -1,0 +1,20 @@
+<div [class]="imgContainerClass" #imgContainer>
+  <div class="esp-loader" *ngIf="loading" alt="loading">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <!--
+    We can't use the `loading=lazy` for now because the image has the `hidden` attribute, and it's
+    hidden inside the viewport. It uses the `IntersectionObserver` internally, which doesn't emit the
+    entry when the `hidden` is truthy.
+  -->
+  <img
+    class="responsive-img"
+    *ngIf="imgUrl && isInViewport"
+    #img
+    [hidden]="loading"
+    [src]="imgUrl"
+    alt="{{ imgAlt }}"
+  />
+</div>

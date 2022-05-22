@@ -1,0 +1,70 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosCollectionSectionModule } from './collection-section.module';
+import { CosCollectionSectionComponent } from './collection-section.component';
+
+<Meta
+  title="Layout Components/Section"
+  component={CosCollectionSectionComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosCollectionSectionModule],
+    }),
+  ]}
+  args={{
+    name: 'Collection Name',
+  }}
+  argTypes={{
+    name: { control: 'text' },
+  }}
+/>
+
+# Section of Products
+
+The section component lets users view, organize and take action on a group of products within a collection.
+
+export const Template = (props) => ({
+  component: CosCollectionSectionComponent,
+  props,
+});
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-collection-section name="Collection Name"></cos-collection-section>
+```
+
+<ArgsTable of={CosCollectionSectionComponent} />
+
+## Visual States
+
+### Idle
+
+- 1 px G-09 Pebble horizontal rule
+- Name of the collection centered
+
+### Hover
+
+- Checkbox
+- 1 px G-09 Pebble horizontal rule
+- Name of the collection centered
+- Collection Action Icons
+  - Remove section (does not delete products)
+  - Move section up
+  - Move section down
+  - Collapse/Minimize section
+
+### Editing a section title (on Hover)
+
+- 1 px G-09 Pebble horizontal rule
+- Text box containing an editable section title, centered.
+
+### Creating a section
+
+- Sections must be created by a distributor; new collections do not include any sections
+- Distributors add sections by hovering over the space between rows of products, and clicking that space to enter a section name. All products beneath the newly created section, now reside within that section.

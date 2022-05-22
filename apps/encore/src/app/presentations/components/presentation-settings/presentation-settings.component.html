@@ -1,0 +1,14 @@
+<div class="cos-form-field" *ngFor="let toggle of toggles">
+  <!--
+    `options` are provided since we want the `cos-toggle` to behave NOT as a control value accessor.
+  -->
+  <cos-toggle
+    class="block w-full mb-16"
+    [checked]="toggle.value"
+    [disabled]="toggle.disabled"
+    (click)="updateSetting(toggle)"
+    [options]="{ disableToggleValue: true }"
+  >
+    {{ toggle.label }}
+  </cos-toggle>
+</div>

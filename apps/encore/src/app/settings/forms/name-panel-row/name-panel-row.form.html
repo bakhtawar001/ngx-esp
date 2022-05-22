@@ -1,0 +1,46 @@
+<asi-panel-editable-row
+  [isEditable]="isEditable"
+  (onSaveEvent)="state.updateName(form.value)"
+  class="profile-settings-name"
+  rowTitle="Name"
+>
+  <div><i class="form-row-icon fas fa-id-card-alt mt-8 mr-16"></i></div>
+
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value">{{ state.data?.Name }}</p>
+  </asi-panel-editable-row-inactive>
+
+  <asi-panel-editable-row-active
+    [formGroup]="form"
+    class="basic-info-fields--name"
+  >
+    <cos-input-row>
+      <cos-form-field class="basic-info-fields--first_name">
+        <cos-label data-cy="first-name-label">First Name</cos-label>
+        <input
+          cos-input
+          data-cy="first-name-input"
+          type="text"
+          placeholder="First Name"
+          formControlName="GivenName"
+          maxlength="50"
+          required
+        />
+        <cos-error [controlErrors]="patternError"></cos-error>
+      </cos-form-field>
+      <cos-form-field class="basic-info-fields--last_name">
+        <cos-label data-cy="last-name-label">Last Name</cos-label>
+        <input
+          cos-input
+          data-cy="last-name-input"
+          type="text"
+          placeholder="Last Name"
+          formControlName="FamilyName"
+          maxlength="50"
+          required
+        />
+        <cos-error [controlErrors]="patternError"></cos-error>
+      </cos-form-field>
+    </cos-input-row>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

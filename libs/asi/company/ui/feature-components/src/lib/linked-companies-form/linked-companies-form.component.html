@@ -1,0 +1,29 @@
+<form [formGroup]="form" class="cos-address-form-container">
+  <label class="cos-form-label">Company</label>
+  <div class="md:grid contact-form__company">
+    <asi-party-autocomplete
+      [type]="'company'"
+      formControlName="Company"
+      [required]="true"
+    >
+    </asi-party-autocomplete>
+  </div>
+
+  <cos-form-field class="cos-form-row">
+    <cos-label>Relationship</cos-label>
+    <select
+      matNativeControl
+      class="w-f"
+      id="relationship"
+      formControlName="Relationship"
+      maxlength="50"
+    >
+      <option
+        *ngFor="let relationship of relationshipList"
+        [ngValue]="relationship"
+      >
+        {{ relationship.Name }}
+      </option>
+    </select>
+  </cos-form-field>
+</form>

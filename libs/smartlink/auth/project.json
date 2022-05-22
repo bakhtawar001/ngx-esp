@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/smartlink/auth",
+  "sourceRoot": "libs/smartlink/auth/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/smartlink/auth"],
+      "options": {
+        "tsConfig": "libs/smartlink/auth/tsconfig.lib.json",
+        "project": "libs/smartlink/auth/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/smartlink/auth/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/smartlink/auth/**/*.ts",
+          "libs/smartlink/auth/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/smartlink/auth/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/smartlink/auth"]
+    }
+  },
+  "tags": ["scope:smartlink", "type:library", "platform:web"]
+}

@@ -1,0 +1,91 @@
+@import '../../../../scss/settings';
+
+// The material select is not good below 600px
+// In this case, we revert to the native select
+.cos-customer-dropdown-mobile {
+  @include wider-than('600px') {
+    display: none;
+  }
+
+  button {
+    margin-top: $spacing-stack-8;
+    width: 100%;
+  }
+  select.cos-input {
+    width: 100%;
+    @include spacing-inset-12();
+    padding-left: 46px;
+    background-repeat: no-repeat;
+    background-position: 8px center, right $spacing-inline-12 top 50%, 0 0;
+    background-size: 28px 28px, 10px auto;
+  }
+}
+.cos-customer-dropdown-desktop {
+  display: none;
+  @include wider-than('600px') {
+    display: block;
+  }
+}
+
+.cos-customer-dropdown {
+  display: block;
+  margin-bottom: $spacing-stack-16;
+  .mat-select {
+    height: 46px;
+    @include spacing-inset-8();
+  }
+}
+.cos-customer-dropdown-panel.mat-select-panel {
+  max-height: none !important;
+  min-width: 100% !important;
+  background-color: $color-g-white-00;
+  .mat-option {
+    height: auto;
+    @include spacing-inset-12();
+    border-radius: $border-radius-4;
+    line-height: 1;
+    &.mat-active {
+      @include cos-focus-inset();
+    }
+    &:hover {
+      background-color: $color-g-pearl-03;
+    }
+  }
+  .mat-divider {
+    border-color: $color-g-pebble-09;
+    margin: 0 $spacing-inline-12;
+  }
+}
+.cos-customer-dropdown-list {
+  max-height: 214px; // This is the default max height of a mat-select, minus bottom button
+  overflow-y: auto;
+}
+.cos-customer-dropdown-item {
+  display: flex;
+  align-items: center;
+}
+.cos-customer-dropdown-name {
+  margin-left: $spacing-inline-8;
+}
+.cos-customer-dropdown-avatar {
+  flex: 0 0 auto;
+  display: block;
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  // Override Avatar's circular frame
+  overflow: hidden;
+  border-radius: 0 !important;
+
+  & img {
+    display: block;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.create-customer {
+  color: $color-bl-atoll-75;
+  font-weight:  $font-weight-700;
+}

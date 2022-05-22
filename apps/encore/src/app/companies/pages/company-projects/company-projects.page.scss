@@ -1,0 +1,12 @@
+.company-projects {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    .projects-list__item {
+      max-width: 100%;
+    }
+  }
+}

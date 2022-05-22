@@ -1,0 +1,15 @@
+@import 'cosmos/scss/settings/';
+
+.cos-header-cell,
+.cos-cell {
+  &.cos-column-price,
+  &.cos-column-cost,
+  &.cos-column-profit,
+  &.cos-column-preferred {
+    text-align: right;
+  }
+
+  &.cos-column-priceCode {
+    padding-left: $spacing-inline-16;
+  }
+}

@@ -1,0 +1,207 @@
+<form [formGroup]="presenter.form" *ngIf="presenter.form">
+  <div>
+    <cos-filters
+      data-cy="cos-filters"
+      [hasFilters]="hasFilters"
+      (resetFiltersEvent)="removeFilter()"
+      (applyFiltersEvent)="applyFilter()"
+      [title]="title"
+    >
+      <cos-filter-menu
+        data-cy="owner-filter-menu"
+        [label]="presenter.labelsWithCounter.owner"
+        (apply)="applyFilter(presenter.filterFormControls.OwnersSearchTerm)"
+        (reset)="
+          resetFilter(
+            presenter.filterFormControls.OwnerTerms,
+            presenter.filterFormControls.OwnersSearchTerm
+          )
+        "
+        (clickOut)="
+          clickOut(
+            presenter.filterFormControls.Owner,
+            presenter.filterFormControls.OwnersSearchTerm
+          )
+        "
+        [applied]="!!state.criteria?.filters?.Owners?.terms.length"
+        [applyDisabled]="!presenter.form.value.Owners?.terms?.length"
+        fullWidth
+      >
+        <div class="filter-menu filter-menu-select-list">
+          <fieldset class="cos-form-field">
+            <legend class="cos-form-label">Project owner</legend>
+            <input
+              data-cy="owner-search"
+              id="filter-menu-owner-search-term"
+              cos-input
+              type="search"
+              formControlName="OwnersSearchTerm"
+              name="filterOwnerSearchTerm"
+              placeholder="Owner name"
+              aria-label="Owner search"
+              (click)="$event.stopPropagation()"
+              (keydown.enter)="$event.preventDefault()"
+            />
+            <div formGroupName="Owners" class="w-full">
+              <mat-selection-list class="owner-list" formControlName="terms">
+                <ng-container *ngIf="!!this.state.ownerFacets?.length">
+                  <mat-list-option
+                    class="mb-24"
+                    checkboxPosition="before"
+                    *ngFor="let owner of this.state.ownerFacets"
+                    [value]="owner.Id"
+                    (keydown.enter)="$event.stopPropagation()"
+                    [hidden]="
+                      !owner.Name?.toLowerCase().includes(
+                        presenter.form.controls.OwnersSearchTerm.value.toLowerCase()
+                      )
+                    "
+                  >
+                    <div class="flex flex-row items-center">
+                      <cos-avatar>
+                        <span>
+                          <img
+                            class="cos-avatar-image"
+                            *ngIf="owner?.IconImageUrl"
+                            [src]="owner?.IconImageUrl"
+                            [attr.alt]="owner?.Name"
+                          />
+                          {{ owner?.Name | initials }}
+                        </span>
+                        <ng-template>
+                          <i class="fa fa-users text-light"></i>
+                        </ng-template>
+                      </cos-avatar>
+                      <div class="flex flex-col">
+                        <span
+                          class="pb-0 pt-0 header-style-14-semibold"
+                          [attr.title]="owner.Name"
+                          >{{ owner.Name }}</span
+                        >
+                        <span
+                          *ngIf="owner.Email"
+                          class="body-style-12 truncate pt-0 pb-0"
+                        >
+                          {{ owner.Email }}
+                        </span>
+                      </div>
+                    </div>
+                  </mat-list-option>
+                </ng-container>
+              </mat-selection-list>
+            </div>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-menu
+        [label]="presenter.labelsWithCounter.stepName"
+        (apply)="applyFilter(presenter.filterFormControls.StepNameSearchTerm)"
+        (reset)="
+          resetFilter(
+            presenter.filterFormControls.StepNameTerms,
+            presenter.filterFormControls.StepNameSearchTerm
+          )
+        "
+        (clickOut)="
+          clickOut(
+            presenter.filterFormControls.StepName,
+            presenter.filterFormControls.StepNameSearchTerm
+          )
+        "
+        [applied]="!!state.criteria?.filters?.StepName?.terms.length"
+        [applyDisabled]="!presenter.form.value.StepName?.terms?.length"
+        fullWidth
+      >
+        <div class="filter-menu filter-menu-select-list">
+          <fieldset class="cos-form-field">
+            <legend class="cos-form-label">Project Phase</legend>
+            <input
+              data-cy="step-name-search"
+              id="filter-menu-project-phase-search-term"
+              cos-input
+              type="search"
+              formControlName="StepNameSearchTerm"
+              name="filterStepNameSearchTerm"
+              placeholder="Project Phase"
+              aria-label="Project Phase"
+              (click)="$event.stopPropagation()"
+              (keydown.enter)="$event.preventDefault()"
+            />
+
+            <div formGroupName="StepName" class="w-full">
+              <mat-selection-list class="owner-list" formControlName="terms">
+                <ng-container *ngIf="!!this.state.stepNameFacets?.length">
+                  <mat-list-option
+                    checkboxPosition="before"
+                    *ngFor="let stepName of this.state.stepNameFacets"
+                    [value]="stepName"
+                    (keydown.enter)="$event.stopPropagation()"
+                    [hidden]="
+                      !stepName
+                        ?.toLowerCase()
+                        .includes(
+                          presenter.form.controls.StepNameSearchTerm.value.toLowerCase()
+                        )
+                    "
+                  >
+                    <span [attr.title]="stepName">{{ stepName }}</span>
+                  </mat-list-option>
+                </ng-container>
+              </mat-selection-list>
+            </div>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-menu
+        [label]="presenter.labels.inHandsDate"
+        (apply)="applyFilter()"
+        (reset)="resetFilter(presenter.filterFormControls.InHandsDate)"
+        [applied]="!!state.criteria?.filters?.InHandsDate?.terms.length"
+        [applyDisabled]="
+          !presenter.form.controls?.InHandsDate?.value?.end &&
+          !presenter.form.controls?.InHandsDate?.value?.start
+        "
+        fullWidth
+      >
+        <div class="filter-menu filter-menu-select-list">
+          <fieldset class="cos-form-field">
+            <legend class="cos-form-label">
+              {{ presenter.labels.inHandsDate }}
+            </legend>
+            <asi-date-range-select
+              data-cy="asi-date-range-select"
+              class="w-full"
+              [inlinePicker]="true"
+              formControlName="InHandsDate"
+            ></asi-date-range-select>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-menu
+        [label]="presenter.labels.eventDate"
+        (apply)="applyFilter()"
+        (reset)="resetFilter(presenter.filterFormControls.EventDate)"
+        [applied]="!!state.criteria?.filters?.EventDate?.terms.length"
+        [applyDisabled]="
+          !presenter.form.controls?.EventDate?.value?.end &&
+          !presenter.form.controls?.EventDate?.value?.start
+        "
+        fullWidth
+      >
+        <div class="filter-menu filter-menu-select-list">
+          <fieldset class="cos-form-field">
+            <legend class="cos-form-label">
+              {{ presenter.labels.eventDate }}
+            </legend>
+            <asi-date-range-select
+              data-cy="asi-date-range-select"
+              class="w-full"
+              [inlinePicker]="true"
+              formControlName="EventDate"
+            ></asi-date-range-select>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+    </cos-filters>
+  </div>
+</form>

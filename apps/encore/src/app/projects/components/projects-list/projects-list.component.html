@@ -1,0 +1,37 @@
+<ng-template
+  [ngIf]="!state.isLoading && state.hasLoaded && state.projects"
+  [ngIfElse]="loader"
+>
+  <ng-template [ngIf]="state.projects?.length" [ngIfElse]="noProjects">
+    <esp-project-details-card
+      *ngFor="let project of state.projects; trackBy: trackProject"
+      [project]="project"
+      (closeProject)="onCloseProject(project)"
+      (reopenProject)="onReopenProject(project)"
+      (transferOwnership)="onTransferOwnership($event)"
+      (toggleProjectDetails)="onToggleProjectDetails(project)"
+      class="projects-list__item"
+    ></esp-project-details-card>
+    <esp-search-pagination
+      class="projects-list__pagination"
+    ></esp-search-pagination>
+  </ng-template>
+  <ng-template #noProjects>
+    <div data-cy="no-projects">
+      <ng-content
+        *ngIf="!state.criteria?.term; else noSearchResults"
+        select="[espProjectsListNoProjects]"
+      ></ng-content>
+      <ng-template #noSearchResults>
+        <ng-content select="[espProjectsListNoSearchResults]"></ng-content>
+      </ng-template>
+    </div>
+  </ng-template>
+</ng-template>
+<ng-template #loader>
+  <esp-project-details-card-loader
+    *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+    class="projects-list__item"
+    data-cy="loader"
+  ></esp-project-details-card-loader>
+</ng-template>

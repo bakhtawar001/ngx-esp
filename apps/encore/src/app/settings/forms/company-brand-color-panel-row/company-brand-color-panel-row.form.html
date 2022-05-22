@@ -1,0 +1,24 @@
+<asi-panel-editable-row
+  rowTitle="Company Color"
+  class="company-settings-brand-color"
+  [isEditable]="'Administrator' | hasRole"
+  (onSaveEvent)="state.save(control.value || defaultColor)"
+  [alwaysEdit]="true"
+>
+  <div><i class="form-row-icon fa fa-palette mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <div class="settings-company-color" *ngIf="state.value; else noColor">
+      <div
+        class="settings-color-square"
+        [style.backgroundColor]="state.value"
+      ></div>
+      <span class="settings-company-color-name"> {{ state.value }} </span>
+    </div>
+    <ng-template #noColor>
+      <p class="form-row-value">No color currently selected</p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <esp-brand-color-form [formControl]="control"></esp-brand-color-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

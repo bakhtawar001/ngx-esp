@@ -1,0 +1,456 @@
+{
+  "OverAll": {
+    "Rating": 7,
+    "Companies": 73,
+    "Transactions": 139
+  },
+  "Quality": {
+    "Rating": 9,
+    "Companies": 73,
+    "Transactions": 139
+  },
+  "Communication": {
+    "Rating": 8,
+    "Companies": 60,
+    "Transactions": 120
+  },
+  "Delivery": {
+    "Rating": 7,
+    "Companies": 50,
+    "Transactions": 100
+  },
+  "ConflictResolution": {
+    "Rating": 6,
+    "Companies": 21,
+    "Transactions": 52
+  },
+  "Decoration": {
+    "Rating": 5,
+    "Companies": 68,
+    "Transactions": 131
+  },
+  "Comments": [
+    {
+      "Id": 119626,
+      "Rating": 8,
+      "Comment": "Our glasses were laser engraved and they look great! Also shipped extremely fast. Very pleased with this order!",
+      "Distributor": {
+        "Id": 8794662,
+        "Name": "Magna Wave Inc.",
+        "AsiNumber": "259740"
+      },
+      "CreateDate": "2020-02-27T13:13:00.000"
+    },
+    {
+      "Id": 119107,
+      "Comment": "Always like working with company and \r\non time.",
+      "Distributor": {
+        "Id": 107742,
+        "Name": "Celebration Promotional Prdcts",
+        "AsiNumber": "159668"
+      },
+      "CreateDate": "2020-01-30T09:18:00.000"
+    },
+    {
+      "Id": 117932,
+      "Rating": 10,
+      "Comment": "Projects delivered ahead of schedule to everyone\u0027s delight. Very friendly and wonderful to work with.",
+      "Distributor": {
+        "Id": 854060,
+        "Name": "Americolor, LLC",
+        "AsiNumber": "159090"
+      },
+      "CreateDate": "2019-11-15T11:08:00.000"
+    },
+    {
+      "Id": 117779,
+      "Comment": "We have had excellent experiences with Brighter Promotions and would recommend them.",
+      "Distributor": {
+        "Id": 114903,
+        "Name": "H M Marketing LLC",
+        "AsiNumber": "217274"
+      },
+      "CreateDate": "2019-11-08T13:01:00.000"
+    },
+    {
+      "Id": 117710,
+      "Comment": "We\u0027ve worked with Brighter Promotions over the years and have always received quality service and products. Highly recommend!",
+      "Distributor": {
+        "Id": 110723,
+        "Name": "Kerr Promotions",
+        "AsiNumber": "241650"
+      },
+      "CreateDate": "2019-11-06T10:59:00.000"
+    },
+    {
+      "Id": 117480,
+      "Comment": "Needed the order done quickly and they came through for us!",
+      "Distributor": {
+        "Id": 101944,
+        "Name": "Adventure Marketing Solutions",
+        "AsiNumber": "105292"
+      },
+      "CreateDate": "2019-10-28T10:05:00.000"
+    },
+    {
+      "Id": 117391,
+      "Comment": "Vanessa was a pleasure to work with, very thorough!",
+      "Distributor": {
+        "Id": 8787975,
+        "Name": "Southeast Laser Etching",
+        "AsiNumber": "330215"
+      },
+      "CreateDate": "2019-10-23T11:49:00.000"
+    },
+    {
+      "Id": 117240,
+      "Comment": "Super helpful team that has helped me out several times. Would definitely recommend using them as your go-to vendor!",
+      "Distributor": {
+        "Id": 548023,
+        "Name": "Lithtex Inc",
+        "AsiNumber": "379143"
+      },
+      "CreateDate": "2019-10-15T18:24:00.000"
+    },
+    {
+      "Id": 117124,
+      "Comment": "Great product and service.  Refreshing to see that the owner is involved and invested in his company and cares about service and followup.",
+      "Distributor": {
+        "Id": 5431494,
+        "Name": "TypoGraphics",
+        "AsiNumber": "348211"
+      },
+      "CreateDate": "2019-10-10T09:20:00.000"
+    },
+    {
+      "Id": 116648,
+      "Comment": "Awesome supplier!  Highly recommend!",
+      "Distributor": {
+        "Id": 116144,
+        "Name": "V I P Promotional Products",
+        "AsiNumber": "350310"
+      },
+      "CreateDate": "2019-09-18T09:29:00.000"
+    },
+    {
+      "Id": 116589,
+      "Comment": "Tony, Mike and the team always communicate well and take great care of us. They are one of our go-to, trusted suppliers.",
+      "Distributor": {
+        "Id": 101925,
+        "Name": "Morris Promotional",
+        "AsiNumber": "276880"
+      },
+      "CreateDate": "2019-09-16T10:14:00.000"
+    },
+    {
+      "Id": 116506,
+      "Comment": "Terrific products at great prices \u0026 the employees are wonderful to work with. Adam responded emails quickly \u0026 kept me in the loop thru shipping order.",
+      "Distributor": {
+        "Id": 671914,
+        "Name": "Ortho Incentives",
+        "AsiNumber": "286313"
+      },
+      "CreateDate": "2019-09-11T14:35:00.000"
+    },
+    {
+      "Id": 115776,
+      "Comment": "Excellent supplier, prompt quotes, prompt delivery.",
+      "Distributor": {
+        "Id": 1987679,
+        "Name": "Stuyvesant Press, Inc",
+        "AsiNumber": "379124"
+      },
+      "CreateDate": "2019-08-06T09:37:00.000"
+    },
+    {
+      "Id": 115736,
+      "Comment": "My order was quickly received and their team worked with me through the approval process. Very professional and they offer great products!",
+      "Distributor": {
+        "Id": 109852,
+        "Name": "The Ink Spot, Inc",
+        "AsiNumber": "164803"
+      },
+      "CreateDate": "2019-08-02T09:13:00.000"
+    },
+    {
+      "Id": 115648,
+      "Comment": "Another perfect order and excellent communications through out the process.",
+      "Distributor": {
+        "Id": 116865,
+        "Name": "Ideal Images",
+        "AsiNumber": "229530"
+      },
+      "CreateDate": "2019-07-30T12:31:00.000"
+    },
+    {
+      "Id": 115567,
+      "Comment": "They sent me my items fast each time I\u0027ve ordered, without ANY issues!  Love them and will continue using Brighter PRomotions!",
+      "Distributor": {
+        "Id": 600860,
+        "Name": "Xpand Your Brand Ltd",
+        "AsiNumber": "212304"
+      },
+      "CreateDate": "2019-07-24T10:18:00.000"
+    },
+    {
+      "Id": 115481,
+      "Comment": "The glow bracelets turned out awesome! From start to finish - they were awesome to work with!!",
+      "Distributor": {
+        "Id": 600255,
+        "Name": "Four-U Office Supplies Inc",
+        "AsiNumber": "548025"
+      },
+      "CreateDate": "2019-07-18T09:08:00.000"
+    },
+    {
+      "Id": 115248,
+      "Comment": "It\u0027s always easy ordering from them and never have any problems. Tom is great!",
+      "Distributor": {
+        "Id": 107995,
+        "Name": "Special T Unlimited",
+        "AsiNumber": "331333"
+      },
+      "CreateDate": "2019-07-05T10:23:00.000"
+    },
+    {
+      "Id": 115132,
+      "Comment": "Fantastic vendor. Prompt cares about the customer, and product was fantastic!!! Thanks",
+      "Distributor": {
+        "Id": 8824358,
+        "Name": "Greenacre Branding, LLC",
+        "AsiNumber": "213295"
+      },
+      "CreateDate": "2019-06-28T15:56:00.000"
+    },
+    {
+      "Id": 114908,
+      "Comment": "Very happy with their products!  Great customer serive!",
+      "Distributor": {
+        "Id": 122870,
+        "Name": "L \u0026 K Apparel Inc",
+        "AsiNumber": "246805"
+      },
+      "CreateDate": "2019-06-19T09:46:00.000"
+    },
+    {
+      "Id": 114872,
+      "Comment": "Great supplier of fun products. Stephanie is my rep and does an excellent in customer service.",
+      "Distributor": {
+        "Id": 102081,
+        "Name": "BTS Promotions Inc",
+        "AsiNumber": "129544"
+      },
+      "CreateDate": "2019-06-17T13:50:00.000"
+    },
+    {
+      "Id": 114839,
+      "Comment": "Vanessa was terrific at handling all communications and my order.    Product is great and I look forward to selling more.   Customers love the items.",
+      "Distributor": {
+        "Id": 8876882,
+        "Name": "It\u0027s Impressive LLC",
+        "AsiNumber": "119441"
+      },
+      "CreateDate": "2019-06-13T17:05:00.000"
+    },
+    {
+      "Id": 114804,
+      "Comment": "The ordering process was completely smooth and problem free. Great customer service and a very happy customer. Thank you!",
+      "Distributor": {
+        "Id": 104519,
+        "Name": "American Solutions For Business",
+        "AsiNumber": "120075"
+      },
+      "CreateDate": "2019-06-12T09:10:00.000"
+    },
+    {
+      "Id": 114718,
+      "Comment": "They nailed it.  I had a hot rush for sunglasses that needed to be done by the end of the next week and it was the friday pm 5 days before.",
+      "Distributor": {
+        "Id": 113086,
+        "Name": "City Press Inc",
+        "AsiNumber": "162271"
+      },
+      "CreateDate": "2019-06-07T09:56:00.000"
+    },
+    {
+      "Id": 114505,
+      "Comment": "Consistently good and reliable vendor that I have been using since 2014.",
+      "Distributor": {
+        "Id": 117589,
+        "Name": "Mr. Incentives",
+        "AsiNumber": "221490"
+      },
+      "CreateDate": "2019-05-29T08:14:00.000"
+    },
+    {
+      "Id": 114441,
+      "Comment": "Good communication and delivery was quick. Smooth to work with",
+      "Distributor": {
+        "Id": 7788045,
+        "Name": "B\u0026B Threads",
+        "AsiNumber": "128751"
+      },
+      "CreateDate": "2019-05-23T13:52:00.000"
+    },
+    {
+      "Id": 114346,
+      "Comment": "2 recent orders this year \u0026 promote replies to questions / acknowledgements etc.  Will order again.",
+      "Distributor": {
+        "Id": 101980,
+        "Name": "D \u0026 D Sales",
+        "AsiNumber": "173706"
+      },
+      "CreateDate": "2019-05-20T10:46:00.000"
+    },
+    {
+      "Id": 114228,
+      "Comment": "Always a pleasure working with Brighter Promotions \u0026 Adam \u0026 the BP Team",
+      "Distributor": {
+        "Id": 114131,
+        "Name": "Porter Wallace Corp",
+        "AsiNumber": "297307"
+      },
+      "CreateDate": "2019-05-15T13:49:00.000"
+    },
+    {
+      "Id": 114156,
+      "Comment": "Great, simple and easy to work with!",
+      "Distributor": {
+        "Id": 113296,
+        "Name": "Dowlis Inspired Branding Inc",
+        "AsiNumber": "183080"
+      },
+      "CreateDate": "2019-05-13T10:26:00.000"
+    },
+    {
+      "Id": 113995,
+      "Comment": "Always great service with a great product.",
+      "Distributor": {
+        "Id": 134662,
+        "Name": "AdMfg Inc",
+        "AsiNumber": "105165"
+      },
+      "CreateDate": "2019-05-07T09:45:00.000"
+    },
+    {
+      "Id": 113884,
+      "Comment": "Great Supplier answered all our questions and the client received them on time and was very happy",
+      "Distributor": {
+        "Id": 112958,
+        "Name": "Howard Roe Company",
+        "AsiNumber": "309700"
+      },
+      "CreateDate": "2019-05-01T13:22:00.000"
+    },
+    {
+      "Id": 113843,
+      "Comment": "top notch service! Great supplier for lighted promos.",
+      "Distributor": {
+        "Id": 116080,
+        "Name": "Advantage Promotions",
+        "AsiNumber": "109358"
+      },
+      "CreateDate": "2019-04-30T11:01:00.000"
+    },
+    {
+      "Id": 112937,
+      "Comment": "It has been such as pleasure working with Brighter Promotions, they are very efficient and with excellent customer service!",
+      "Distributor": {
+        "Id": 1442064,
+        "Name": "Liquid Screen Design, LLC",
+        "AsiNumber": "254663"
+      },
+      "CreateDate": "2019-03-18T11:22:00.000"
+    },
+    {
+      "Id": 112713,
+      "Comment": "teriffic supplier",
+      "Distributor": {
+        "Id": 7814765,
+        "Name": "Koppel Advertising",
+        "AsiNumber": "244878"
+      },
+      "CreateDate": "2019-03-06T10:03:00.000"
+    },
+    {
+      "Id": 112505,
+      "Comment": "Communication on point. Turn times are on point. Delivery is on point. Quality is on point. No complaints time after time. One of our go to vendors!",
+      "Distributor": {
+        "Id": 121215,
+        "Name": "Advanced Business Graphics Inc",
+        "AsiNumber": "108698"
+      },
+      "CreateDate": "2019-02-25T13:56:00.000"
+    },
+    {
+      "Id": 112491,
+      "Comment": "Great Service!\r\nGreat product\r\nCommunication excellent!  Thank you!",
+      "Distributor": {
+        "Id": 5999730,
+        "Name": "JD Promotions",
+        "AsiNumber": "234354"
+      },
+      "CreateDate": "2019-02-25T09:33:00.000"
+    },
+    {
+      "Id": 112254,
+      "Comment": "Tony was great to work with!",
+      "Distributor": {
+        "Id": 749943,
+        "Name": "Enhanced Performance Group",
+        "AsiNumber": "188403"
+      },
+      "CreateDate": "2019-02-12T13:04:00.000"
+    },
+    {
+      "Id": 112209,
+      "Comment": "Had a rush and only 2 days to produce and overnight ship to the customer.  The factory was on top of every email and got my order out on time.",
+      "Distributor": {
+        "Id": 604537,
+        "Name": "Semper Fi Printing \u0026 Promotions LLC",
+        "AsiNumber": "323312"
+      },
+      "CreateDate": "2019-02-11T10:03:00.000"
+    },
+    {
+      "Id": 112136,
+      "Comment": "Great product, prompt production, and great communication from this supplier. Will use again.",
+      "Distributor": {
+        "Id": 8051866,
+        "Name": "Business Solutions",
+        "AsiNumber": "153814"
+      },
+      "CreateDate": "2019-02-06T10:01:00.000"
+    },
+    {
+      "Id": 111833,
+      "Comment": "This Company is wonderful to work with and I highly recommend them!",
+      "Distributor": {
+        "Id": 8746345,
+        "Name": "Borns Group Inc.",
+        "AsiNumber": "143172"
+      },
+      "CreateDate": "2019-01-23T09:25:00.000"
+    },
+    {
+      "Id": 111714,
+      "Comment": "Always easy to work with and has always met my clients in hands dates. Enjoy working with the team!",
+      "Distributor": {
+        "Id": 5805782,
+        "Name": "Gula Promotions L.L.C.",
+        "AsiNumber": "215619"
+      },
+      "CreateDate": "2019-01-17T15:48:00.000"
+    },
+    {
+      "Id": 111440,
+      "Comment": "excellent to work with very easy. Great products",
+      "Distributor": {
+        "Id": 113688,
+        "Name": "Sunrise Promotions",
+        "AsiNumber": "339422"
+      },
+      "CreateDate": "2018-12-27T16:31:00.000"
+    }
+  ]
+}

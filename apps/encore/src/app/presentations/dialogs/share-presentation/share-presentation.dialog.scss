@@ -1,0 +1,25 @@
+@import 'cosmos/scss/settings/';
+
+header {
+  border-bottom: $border-light;
+}
+
+.content-wrapper {
+  margin: 0.6rem 3rem;
+}
+
+.project-info-dialog-content {
+  input[cos-input],
+  select {
+    width: 100%;
+  }
+}
+
+.readonly-email-input {
+  border: $border-light;
+  color: $color-g-shark-54;
+}
+
+.project-info-copy {
+  color: $color-bl-atoll-75;
+}

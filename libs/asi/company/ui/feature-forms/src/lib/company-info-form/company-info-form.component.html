@@ -1,0 +1,159 @@
+<form [formGroup]="form">
+  <section class="company-information-section">
+    <h5 class="header-style-12-shark">Company Information</h5>
+
+    <div class="cos-form-row">
+      <cos-form-field class="mb-8">
+        <cos-label data-cy="company-label">Company Name</cos-label>
+        <input
+          #companyName
+          class="w-full company-name-input"
+          cos-input
+          formControlName="Name"
+          maxlength="50"
+          placeholder="Enter company name"
+          required
+          type="text"
+          data-cy="company-input"
+        />
+        <cos-error></cos-error>
+      </cos-form-field>
+
+      <div class="cos-form-row mb-16">
+        <div class="flex flex-wrap align-items justify-start gap-x-4">
+          <ng-container *ngFor="let role of companyRoles">
+            <cos-checkbox
+              [formControlName]="role.controlName"
+              [required]="true"
+              [disabled]="isPreselectedCompanyType"
+              id="checkbox{{ role.name }}"
+              name="checkbox{{ role.name }}"
+              class="mb-8"
+            >
+              {{ role.name }}
+            </cos-checkbox>
+          </ng-container>
+        </div>
+        <p
+          *ngIf="form.errors && form.errors.requireCheckboxesToBeChecked"
+          class="error error-invalid"
+          data-cy="roles-error"
+        >
+          Please select at least one Company type.
+        </p>
+      </div>
+    </div>
+
+    <label class="cos-form-label" data-cy="primary-contact-name-label">
+      Primary Contact's Name
+      <span
+        class="cos-placeholder-required cos-form-field-required-marker"
+        aria-hidden="true"
+        >&#32;*</span
+      ></label
+    >
+    <div class="md:flex gap-x-4">
+      <cos-form-field>
+        <input
+          class="w-full"
+          cos-input
+          formControlName="GivenName"
+          maxlength="50"
+          placeholder="Enter first name"
+          required
+          type="text"
+          data-cy="primary-contact-first-name"
+        />
+        <cos-error></cos-error>
+      </cos-form-field>
+      <cos-form-field>
+        <input
+          class="w-full"
+          cos-input
+          formControlName="FamilyName"
+          maxlength="50"
+          placeholder="Enter last name"
+          required
+          type="text"
+          data-cy="primary-contact-last-name"
+        />
+        <cos-error></cos-error>
+      </cos-form-field>
+    </div>
+
+    <label class="cos-form-label" data-cy="primary-contact-email-label"
+      >Primary Contact's Email
+      <span class="body-style-12-shark">(optional)</span></label
+    >
+    <cos-input-row [formGroup]="emailFormGroup">
+      <div class="cos-input-row form-panel-row-list-item mr-0">
+        <esp-lookup-select
+          [showLabel]="false"
+          class="form-panel-field__type"
+          formControlName="Type"
+          placeholder="Select a type"
+          type="Emails"
+        ></esp-lookup-select>
+        <cos-form-field>
+          <input
+            cos-input
+            data-cy="email-address"
+            formControlName="Address"
+            maxlength="100"
+            type="text"
+            data-cy="primary-contact-email-input"
+            placeholder="Enter email address"
+          />
+          <cos-error></cos-error>
+        </cos-form-field>
+      </div>
+    </cos-input-row>
+
+    <label class="cos-form-label" data-cy="role-label"
+      >Role <span class="body-style-12-shark">(optional)</span></label
+    >
+    <div class="flex flex-wrap align-items justify-start mb-8 gap-x-4">
+      <ng-container *ngFor="let role of contactRoles">
+        <cos-checkbox
+          [formControlName]="role.controlName"
+          [required]="false"
+          id="checkbox{{ role.name }}"
+          name="checkbox{{ role.name }}"
+          class="mb-8"
+        >
+          {{ role.name }}
+        </cos-checkbox>
+      </ng-container>
+    </div>
+
+    <label class="cos-form-label" data-cy="phone-label"
+      >Phone <span class="body-style-12-shark">(optional)</span></label
+    >
+    <cos-input-row [formGroup]="phoneFormGroup">
+      <div class="cos-input-row form-panel-row-list-item mr-0">
+        <esp-lookup-select
+          [showLabel]="false"
+          class="form-panel-field__type"
+          formControlName="Type"
+          placeholder="Select a type"
+          type="Phones"
+          data-cy="phone-autocomplete"
+        ></esp-lookup-select>
+        <cos-form-field>
+          <input
+            cos-input
+            formControlName="Number"
+            maxlength="30"
+            type="text"
+          />
+          <cos-error></cos-error>
+        </cos-form-field>
+      </div>
+    </cos-input-row>
+
+    <asi-company-address-form
+      formGroupName="Address"
+      data-cy="address-form"
+    ></asi-company-address-form>
+  </section>
+</form>

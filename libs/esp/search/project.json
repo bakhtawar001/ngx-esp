@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/search",
+  "sourceRoot": "libs/esp/search/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/search"],
+      "options": {
+        "tsConfig": "libs/esp/search/tsconfig.lib.json",
+        "project": "libs/esp/search/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/search/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/search/**/*.ts",
+          "libs/esp/search/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/search/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/search"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

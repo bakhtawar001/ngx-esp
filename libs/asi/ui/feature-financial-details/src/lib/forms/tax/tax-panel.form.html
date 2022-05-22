@@ -1,0 +1,21 @@
+<asi-panel-editable-row
+  rowTitle="Tax"
+  [isEditable]="false"
+  [isLoading]="!state.partyIsReady"
+>
+  <div><i class="form-row-icon fa fa-calculator mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value" data-cy="inactive">
+      {{ state.party.IsTaxExempt ? 'Tax Exempt' : 'Not Tax Exempt' }}
+    </p>
+  </asi-panel-editable-row-inactive>
+
+  <asi-panel-editable-row-controls>
+    <cos-toggle
+      data-cy="tax-checkbox"
+      [checked]="state.party.IsTaxExempt"
+      [disabled]="!state.party.IsEditable"
+      (toggleChange)="onToggleChange()"
+    ></cos-toggle>
+  </asi-panel-editable-row-controls>
+</asi-panel-editable-row>

@@ -1,0 +1,57 @@
+<p *ngIf="!visiblePriceGrids.length">
+  Add a price grid or customize your price range.
+</p>
+
+<h3 class="header-style-18">Price Grid</h3>
+
+<!-- accordionTitle = description || product.Number -->
+
+<cos-accordion
+  *ngFor="let priceGrid of visiblePriceGrids; trackBy: trackById"
+  [accordionTitle]="priceGrid.Description"
+  (expandedChange)="onExpandedChange($event, priceGrid)"
+>
+  <p class="text-body-shark-12">{{ getAttributesToView(priceGrid) }}</p>
+
+  <esp-presentation-product-visible-price-grid-prices
+    [priceGrid]="priceGrid"
+  ></esp-presentation-product-visible-price-grid-prices>
+
+  <button
+    cos-button
+    (click)="addCustomQuantity(priceGrid)"
+    [disabled]="priceGrid.Prices.length >= maxPricesPerPriceGrid"
+  >
+    <span class="mr-4">
+      <i class="fa fa-plus"></i>
+    </span>
+    Add a Custom Quantity
+  </button>
+
+  <hr />
+
+  <cos-form-field>
+    <cos-label>Price Includes</cos-label>
+
+    <textarea
+      rows="4"
+      id="price-includes"
+      cos-input
+      [ngModel]="priceGrid.PriceIncludes"
+      (ngModelChange)="updatePriceIncludes(priceGrid, $event)"
+    ></textarea>
+  </cos-form-field>
+
+  <div class="actions">
+    <button cos-button (click)="restoreToDefault(priceGrid)">
+      Restore to Default
+    </button>
+
+    <button cos-button (click)="hidePriceGrid(priceGrid)">
+      <span class="mr-4">
+        <i class="fa fa-trash"></i>
+      </span>
+      Remove Price Grid
+    </button>
+  </div>
+</cos-accordion>

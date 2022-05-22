@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/autocomplete",
+  "sourceRoot": "libs/esp/autocomplete/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/autocomplete"],
+      "options": {
+        "tsConfig": "libs/esp/autocomplete/tsconfig.lib.json",
+        "project": "libs/esp/autocomplete/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/autocomplete/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/autocomplete/**/*.ts",
+          "libs/esp/autocomplete/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/autocomplete/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/autocomplete"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

@@ -1,0 +1,64 @@
+<nav [attr.aria-label]="ariaLabel">
+  <ul class="cos-explore-nav-menu" #menuRef>
+    <li class="cos-explore-nav-item" *ngFor="let navItem of navItems">
+      <a
+        cos-button
+        size="sm"
+        *ngIf="navItem.type !== 'collapsable'"
+        [href]="navItem.url"
+        >{{ navItem.title }}</a
+      >
+      <button
+        cos-button
+        size="sm"
+        [matMenuTriggerFor]="megamenu"
+        [matMenuTriggerData]="{ children: navItem.children }"
+        *ngIf="navItem.type === 'collapsable'"
+        (menuOpened)="onMenuOpened()"
+      >
+        {{ navItem.title }}<i class="ml-8 fa fa-angle-down"></i>
+      </button>
+      <mat-menu
+        #megamenu="matMenu"
+        class="cos-explore-megamenu-panel"
+        backdropClass="cos-explore-megamenu-backdrop"
+      >
+        <ng-template matMenuContent let-children="children">
+          <div class="cos-explore-megamenu-header">
+            <button cos-stroked-button>Close</button>
+            <h2 class="cos-explore-megamenu-heading">Categories</h2>
+          </div>
+          <div
+            class="cos-explore-megamenu-panel"
+            [style.maxWidth.px]="_panelWidth"
+            [style.marginLeft.px]="_panelLeft"
+          >
+            <ul class="cos-explore-megamenu">
+              <li
+                class="cos-explore-megamenu-group"
+                *ngFor="let group of children"
+              >
+                <a
+                  mat-menu-item
+                  class="cos-explore-megamenu-group-heading"
+                  [href]="group.url"
+                  >{{ group.title }}</a
+                >
+                <ul class="cos-explore-megamenu-items">
+                  <li *ngFor="let item of group.children">
+                    <a
+                      mat-menu-item
+                      class="cos-explore-megamenu-item"
+                      [href]="item.url"
+                      >{{ item.title }}</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </mat-menu>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,102 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosSegmentedPanelModule } from './segmented-panel.module';
+import { CosSegmentedPanelComponent } from './segmented-panel.component';
+import { CosSegmentedPanelDemoComponent } from './segmented-panel.component.demo';
+import { CosButtonModule } from '@cosmos/components/button';
+
+<Meta
+  title="Layout Components/Segmented Panel"
+  component={CosSegmentedPanelComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [
+        BrowserAnimationsModule,
+        CosSegmentedPanelModule,
+        CosButtonModule,
+      ],
+      declarations: [CosSegmentedPanelDemoComponent],
+    }),
+  ]}
+  argTypes={{
+    showButton: {
+      control: 'boolean',
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+# Segmented Panel
+
+Segmented panels are used to organize a list of related content that is either a group of controls or text and images that can edited by a collection of controls and inputs.
+
+export const Template = (args) => ({
+  props: args,
+  component: CosSegmentedPanelDemoComponent,
+});
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+  <Story name="Header With HTML" args={{ showButton: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-segmented-panel>
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Header</h2>
+  </cos-segmented-panel-header>
+  <cos-segmented-panel-row> Row 1</cos-segmented-panel-row>
+  <cos-segmented-panel-row> Row 2</cos-segmented-panel-row>
+  <cos-segmented-panel-row> Row 3</cos-segmented-panel-row>
+</cos-segmented-panel>
+```
+
+Example with html in header:
+
+```html
+<cos-segmented-panel>
+  <cos-segmented-panel-header>
+    <div class="cos-segment-panel-controls-example">
+      <h2 class="header-style-16 mb-0">Header</h2>
+      <button cos-flat-button color="primary" size="sm">
+        <i class="fas fa-plus"></i> Add section
+      </button>
+    </div>
+  </cos-segmented-panel-header>
+  <cos-segmented-panel-row> Row 1</cos-segmented-panel-row>
+  <cos-segmented-panel-row> Row 2</cos-segmented-panel-row>
+  <cos-segmented-panel-row> Row 3</cos-segmented-panel-row>
+</cos-segmented-panel>
+```
+
+<ArgsTable of={CosSegmentedPanelComponent} />
+
+## How it works
+
+There are two types of segmented panels:
+
+1. Those with HTML in the header, which can be used to contain buttons
+
+2. Those without HTML in the headers, which can only contain header text
+
+### Segmented panels can contain
+
+- as many rows as are relevant to to the grouping
+- accordions with nested segments
+- optional iconography or thumbnail imagery
+- an edit state that reveals controls and/or inputs
+- read only text that can only be edited by an admin
+- The ability to add or remove segments
+
+### Segmented panels cannot contain
+
+- Always editable form inputs, media uploads or selects -- these must live within an "edit" state
+- Full size imagery that is wider than five columns
+- Tabs or vertical menus

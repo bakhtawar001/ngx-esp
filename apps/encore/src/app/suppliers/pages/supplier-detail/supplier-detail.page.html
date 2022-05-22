@@ -1,0 +1,42 @@
+<div class="back-to-container" *ngIf="currentNavName">
+  <a cos-icon-button class="back-link" (click)="goBack()"
+    ><i class="fa fa-arrow-left mr-8"></i><strong>{{currentNavName}}</strong>
+  </a>
+</div>
+<div class="supplier-details grid-layout-1">
+  <cos-supplier-page-header
+    *ngIf="state.supplier"
+    [supplier]="state.supplier"
+    [labels]="supplierHeaderLabels"
+  ></cos-supplier-page-header>
+  <cos-ratings-reviews
+    class="supplier-ratings"
+    *ngIf="state.ratings; else noRatings"
+    [data]="state.ratings"
+    headingText="Ratings and Reviews"
+    overallHeadingText="Overall Rating"
+    overallSpecificationString="
+      Based on ${reportsLabel} reports and ${transactionsLabel} transactions"
+    reviewsHeadingText="Reviews"
+    transactionsLabel="Transactions"
+    rateButtonLabel="Rate this supplier"
+    viewMoreButtonLabel="View more reviews"
+    reportsLabel="Reports"
+    [categoryLabels]="ratingsCategoryLabels"
+  >
+  </cos-ratings-reviews>
+  <ng-template #noRatings>
+    <cos-card class="supplier-ratings supplier-ratings-none">
+      <div class="card-inner">
+        <p class="body-style-14-shark">No ratings for this supplier yet</p>
+        <button
+          cos-flat-button
+          color="primary"
+          *cosIfFeatureFlags="{ matches: ['mmp'] }"
+        >
+          Rate this supplier
+        </button>
+      </div>
+    </cos-card>
+  </ng-template>
+</div>

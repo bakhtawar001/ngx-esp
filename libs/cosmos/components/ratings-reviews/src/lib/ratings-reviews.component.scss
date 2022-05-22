@@ -1,0 +1,111 @@
+@import '../../../../scss/settings/';
+
+/* autoprefixer grid: autoplace */
+
+.cos-ratings-reviews {
+  .cos-ratings-reviews-card {
+    width: 100%;
+    background-color: $color-g-white-00;
+    @include wider-than($bp-medium) {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas: 'ratings ratings ratings ratings reviews reviews reviews reviews reviews reviews reviews reviews';
+    }
+    border-radius: 4px;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+
+    .cos-ratings {
+      grid-area: ratings;
+      @include spacing-inset-16;
+    }
+    .cos-reviews {
+      grid-area: reviews;
+      @include spacing-inset-16;
+      background-color: $color-g-pearl-03;
+    }
+  }
+  .cos-ratings-reviews-card-heading {
+    @include type-style-header-22;
+    margin: 0;
+  }
+
+  .cos-overall-rating {
+    margin-bottom: $spacing-stack-32;
+    text-align: center;
+    .overall-rating-value {
+      margin: $spacing-stack-4 0;
+      font-size: 50px;
+      font-weight: $font-weight-600;
+      line-height: 1;
+      color: $color-bl-azure-57;
+    }
+    .cos-rating {
+      display: block;
+    }
+    .cos-rating-stars {
+      display: block;
+      margin: $spacing-stack-4 0;
+    }
+  }
+
+  .cos-rating-content {
+    @include type-body-style-12;
+  }
+
+  .cos-categorical-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $spacing-stack-16 0;
+    .cos-rating-category {
+      @include type-style-header-14-bold;
+    }
+    .cos-rating-review-count {
+      @include type-body-style-12;
+    }
+  }
+
+  .cos-reviews-header {
+    margin-bottom: $spacing-stack-16;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cos-reviews-footer {
+    margin-top: $spacing-stack-16;
+    text-align: center;
+  }
+  .cos-review {
+    margin: $spacing-stack-8 0;
+    @include spacing-inset-16();
+    border-radius: 4px;
+    background-color: $color-g-white-00;
+    .cos-rating-content {
+      font-size: 11px;
+    }
+  }
+  .cos-comment {
+    @include type-body-style-12;
+    margin: $spacing-stack-8 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .cos-name {
+    display: block;
+    @include type-style-header-14-bold;
+  }
+  .cos-asi-number {
+    display: block;
+    @include type-body-style-12;
+  }
+  .cos-no-break {
+    white-space: nowrap;
+  }
+  .mat-divider {
+    display: inline;
+    margin: 0 1ch;
+    border-right: $border-light;
+  }
+}

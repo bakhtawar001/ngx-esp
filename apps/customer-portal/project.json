@@ -1,0 +1,131 @@
+{
+  "projectType": "application",
+  "root": "apps/customer-portal",
+  "sourceRoot": "apps/customer-portal/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/customer-portal",
+        "index": "apps/customer-portal/src/index.html",
+        "main": "apps/customer-portal/src/main.ts",
+        "polyfills": "apps/customer-portal/src/polyfills.ts",
+        "tsConfig": "apps/customer-portal/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/customer-portal/src/favicon.ico",
+          "apps/customer-portal/src/assets",
+          "apps/customer-portal/src/_redirects"
+        ],
+        "styles": [
+          "apps/customer-portal/src/styles.scss",
+          "apps/customer-portal/src/styles/main.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs"]
+        },
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "1.6mb",
+              "maximumError": "1.8mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "100kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/customer-portal/src/environments/environment.ts",
+              "with": "apps/customer-portal/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "uat": {
+          "fileReplacements": [
+            {
+              "replace": "apps/customer-portal/src/environments/environment.ts",
+              "with": "apps/customer-portal/src/environments/environment.uat.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "customer-portal:build:production"
+        },
+        "uat": {
+          "browserTarget": "customer-portal:build:uat"
+        },
+        "development": {
+          "browserTarget": "customer-portal:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "customer-portal:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/customer-portal/src/**/*.ts",
+          "apps/customer-portal/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/customer-portal"],
+      "options": {
+        "jestConfig": "apps/customer-portal/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:customer-portal", "type:application", "platform:web"]
+}

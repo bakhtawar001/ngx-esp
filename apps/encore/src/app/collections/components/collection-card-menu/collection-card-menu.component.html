@@ -1,0 +1,49 @@
+<button
+  mat-menu-item
+  class="cos-menu-item transfer-owner"
+  *ngIf="
+    collection.Status !== 'Archived' &&
+    collection.IsEditable &&
+    (isAdmin || collection.OwnerId === userId)
+  "
+  (click)="transferOwnership(collection)"
+>
+  <i class="fas fa-random"></i> Transfer Owner
+</button>
+<button
+  mat-menu-item
+  class="cos-menu-item duplicate-collection"
+  (click)="duplicate(collection)"
+>
+  <i class="fas fa-copy"></i> Duplicate Collection
+</button>
+<button
+  mat-menu-item
+  *ngIf="collection.Status === 'Active' && collection.IsEditable"
+  class="cos-menu-item archive-collection"
+  (click)="archive(collection)"
+>
+  <i class="fas fa-archive"></i> Archive
+</button>
+<button
+  mat-menu-item
+  *ngIf="collection.Status !== 'Active' && collection.IsEditable"
+  class="cos-menu-item activate-collection"
+  (click)="activate(collection)"
+>
+  <i class="fas fa-skating"></i> Make Active
+</button>
+<!-- <button 
+  mat-menu-item *ngIf="collection.Status !== 'Archived'"
+class="cos-menu-item share-collection"
+>
+<i class="fas fa-share"></i> Share
+</button> -->
+<button
+  mat-menu-item
+  *ngIf="collection.IsEditable"
+  class="cos-menu-item delete-collection text-warning"
+  (click)="delete(collection)"
+>
+  <i class="fa fa-trash"></i> Delete
+</button>

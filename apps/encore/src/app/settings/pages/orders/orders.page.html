@@ -1,0 +1,651 @@
+<h1 class="header-style-22">Order creation defaults</h1>
+<p class="page-description">
+  Quis nostrud exercitation ullamco laboris nisi ut aliquip tempor incididunt ut
+  labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit
+  amet, consectetur labore et dolore magna adipiscing elit, sed do.
+</p>
+
+<ng-form [formGroup]="orderCreationForm">
+  <cos-segmented-panel class="company-settings-panel">
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Order information defaults</h2>
+    </cos-segmented-panel-header>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Allow User Overrides'"
+        (onSaveEvent)="updateValue('allowUserOverrides')"
+        [isEditable]="false"
+      >
+        <div><i class="form-row-icon fa fa-sliders-h mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            If enabled, users can change their preferred shipping method.
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'shippingMethodAllowOverrides'"
+              [name]="'shippingMethodAllowOverrides'"
+              [required]="true"
+              [disabled]=""
+              [checked]="shippingMethodAllowOverrides"
+              ><span class="cos-accessibly-hidden"
+                >Automatically calculate tax</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Shipping Method'"
+        (onSaveEvent)="updateValue('email')"
+        [isEditable]="'Administrator' | hasRole"
+        class="company-settings-email"
+      >
+        <div>
+          <img class="mr-16" src="https://via.placeholder.com/20" />
+        </div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">UPS 2 Day Shipping</p>
+          <p class="mb-0">
+            <strong>Account number</strong>
+          </p>
+          <p>
+            <span class="form-row-value">2387418342 </span>
+            <a href="#">Update carrier account information</a>
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row order-creation-flex-fields">
+            <div>
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'carrier'"
+              >
+                Carrier
+              </label>
+              <select
+                matNativeControl
+                [attr.id]="'carrier'"
+                formControlName="carrier"
+              >
+                <option value="UPS">UPS</option>
+                <option value="Fedex">Fedex</option>
+              </select>
+              <div class="error" *ngIf="errors">This field is required</div>
+            </div>
+            <div>
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'shippingMethod'"
+              >
+                Shipping Method
+              </label>
+              <select
+                matNativeControl
+                [attr.id]="'shippingMethod'"
+                formControlName="shippingMethod"
+              >
+                <option value="2 Day Shipping">2 Day Shipping</option>
+                <option value="3 Day Shipping">3 Day Shipping</option>
+              </select>
+              <div class="error" *ngIf="errors">This field is required</div>
+            </div>
+          </div>
+          <div>
+            <p class="mb-0">
+              <strong>Account number</strong>
+            </p>
+            <p>
+              <span class="form-row-value">2387418342 </span>
+              <a href="#">Update carrier account information</a>
+            </p>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Payment terms'"
+        (onSaveEvent)="updateValue('email')"
+        [isEditable]="'Administrator' | hasRole"
+        class="company-settings-email"
+      >
+        <div><i class="form-row-icon fa fa-calendar mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            {{orderCreationForm.controls.paymentTerms.value}}
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{'cos-form-label': true}"
+              [attr.for]="'paymentTerms'"
+            >
+              Payment Terms
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'paymentTerms'"
+              formControlName="paymentTerms"
+            >
+              <option value="Net 60">Net 60</option>
+              <option value="Net 120">Net 120</option>
+            </select>
+            <div class="error" *ngIf="errors">This field is required</div>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Pay with'"
+        (onSaveEvent)="updateValue('paymentMethod')"
+        [isEditable]="'Administrator' | hasRole"
+        class="company-settings-email"
+      >
+        <div><i class="form-row-icon fa fa-credit-card mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            {{orderCreationForm.controls.paymentMethod.value}}
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{'cos-form-label': true}"
+              [attr.for]="'paymentMethod'"
+            >
+              Payment Method
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'paymentMethod'"
+              formControlName="paymentMethod"
+            >
+              <option value="Credit Card">Credit Card</option>
+              <option value="Bank Account">Bank Account</option>
+            </select>
+            <div class="error" *ngIf="errors">This field is required</div>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel class="company-settings-panel">
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Document numbers</h2>
+    </cos-segmented-panel-header>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [isEditable]="false">
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Control the starting number for your Sales Orders, Invoices,
+            Purchase Orders, and related Order documents. Prefixes and Suffixes
+            allow you to track documents created in ESP Orders separately from
+            other sources.
+          </p>
+          <p class="form-row-value">Admins can disable this feature</p>
+        </asi-panel-editable-row-inactive>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Allow User Overrides'"
+        (onSaveEvent)="updateValue('allowUserOverrides')"
+        [isEditable]="false"
+      >
+        <div><i class="form-row-icon fa fa-sliders-h mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            If enabled, users can edit their document numbering and naming.
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'allowOverrides'"
+              [name]="'allowOverrides'"
+              [required]="true"
+              [disabled]=""
+              [checked]="allowOverrides"
+              ><span class="cos-accessibly-hidden"
+                >Automatically calculate tax</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Starting numbers'"
+        (onSaveEvent)="updateValue('startingNumbers')"
+        [isEditable]="'Administrator' | hasRole"
+        class="company-settings-email"
+      >
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <ul class="form-row-values-column-list">
+            <li>
+              <span class="form-row-value">Starting Number: </span>
+              <span>{{orderCreationForm.get('startingNumber').value}}</span>
+            </li>
+            <li>
+              <span class="form-row-value">Prefix: </span>
+              <span>{{orderCreationForm.get('prefix').value}}</span>
+            </li>
+            <li>
+              <span class="form-row-value">Suffix: </span>
+              <span>{{orderCreationForm.get('suffix').value}}</span>
+            </li>
+            <li>
+              <span class="form-row-value">Preview: </span>
+              <span>
+                <strong>
+                  {{orderCreationForm.get('prefix').value}}{{orderCreationForm.get('startingNumber').value}}{{orderCreationForm.get('suffix').value}}
+                </strong>
+              </span>
+            </li>
+          </ul>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="order-creation-flex-fields">
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'prefix'">
+                Starting Number
+              </label>
+              <input
+                cos-input
+                id="startingNumber"
+                formControlName="startingNumber"
+                placeholder="Enter a value"
+                maxlength="100"
+              />
+              <div *ngIf="errors" class="error">Error</div>
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'prefix'">
+                Prefix
+              </label>
+              <input
+                cos-input
+                id="prefix"
+                formControlName="prefix"
+                placeholder="Enter a value"
+                maxlength="100"
+              />
+              <div *ngIf="errors" class="error">Error</div>
+            </div>
+
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'prefix'">
+                Suffix
+              </label>
+              <input
+                cos-input
+                id="prefix"
+                formControlName="suffix"
+                placeholder="Enter a value"
+                maxlength="100"
+              />
+              <div *ngIf="errors" class="error">Error</div>
+            </div>
+          </div>
+          <div class="cos-form-row">
+            <span
+              >Preview:
+              <strong
+                >{{orderCreationForm.get('prefix').value}}{{orderCreationForm.get('startingNumber').value}}{{orderCreationForm.get('suffix').value}}</strong
+              ></span
+            >
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel class="company-settings-panel">
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">PDF Settings</h2>
+    </cos-segmented-panel-header>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [isEditable]="false">
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Control the PDF settings for your documents.
+          </p>
+        </asi-panel-editable-row-inactive>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Use Company Logo'"
+        (onSaveEvent)="updateValue('useCompanyLogo')"
+        [isEditable]="false"
+      >
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            If enabled, PDFs will contain the company logo displayed here.
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'useCompanyLogo'"
+              [name]="'useCompanyLogo'"
+              [required]="true"
+              [disabled]=""
+              [checked]="useCompanyLogo"
+              ><span class="cos-accessibly-hidden"
+                >Use Company Logo</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'[Document Type] Content'"
+        [visibleControls]="{expand: true}"
+      >
+        <div class="mr-32"></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Edit the content that is displayed, the document header, and the
+            document Footer
+          </p>
+
+          <ul class="form-row-values-column-list">
+            <li>
+              <span class="form-row-value">Header: </span>
+              <span class="order-creation-html-preview">
+                <quill-view
+                  [content]="orderCreationForm.get('documentHeader').value"
+                  format="html"
+                  theme="snow"
+                ></quill-view>
+              </span>
+            </li>
+            <li>
+              <span class="form-row-value">Footer: </span>
+              <span class="order-creation-html-preview">
+                <quill-view
+                  [content]="orderCreationForm.get('documentFooter').value"
+                  format="html"
+                  theme="snow"
+                ></quill-view>
+              </span>
+            </li>
+            <li>
+              <span class="form-row-value">Display: </span>
+              <div>
+                <p *ngIf="orderCreationForm.get('showProductImages').value">
+                  Show Product Images
+                </p>
+                <p
+                  *ngIf="orderCreationForm.get('showShippingContactPhoneNumber').value"
+                >
+                  Show Shipping Contact Phone Number
+                </p>
+                <p
+                  *ngIf="orderCreationForm.get('showShippingContactEmailAddress').value"
+                >
+                  Show Shipping Contect Email Adress
+                </p>
+                <p *ngIf="orderCreationForm.get('showPoRefernence').value">
+                  Hide PO Reference
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="form-row-value">Show: </span>
+              <span
+                >{{orderCreationForm.get('currentDisplayOption').value}}</span
+              >
+            </li>
+          </ul>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <p class="mb-24">
+            Edit the content that is displayed, the document header, and the
+            document Footer
+          </p>
+          <div class="cos-form-row">
+            <div
+              class="
+                order-creation-flex-fields order-creation-document-checkboxes
+              "
+            >
+              <div>
+                <p class="order-creation-label">Display</p>
+                <p>
+                  <cos-checkbox
+                    formControlName="showProductImages"
+                    id="showProductImages"
+                    name="checkbox-showProductImages"
+                  >
+                    Show Product Images
+                  </cos-checkbox>
+                </p>
+                <p>
+                  <cos-checkbox
+                    formControlName="showShippingContactPhoneNumber"
+                    id="showShippingContactPhoneNumber"
+                    name="checkbox-showShippingContactPhoneNumber"
+                  >
+                    Show Shipping Contact Phone Number
+                  </cos-checkbox>
+                </p>
+
+                <p>
+                  <cos-checkbox
+                    formControlName="showShippingContactEmailAddress"
+                    id="showShippingContactEmailAddress"
+                    name="checkbox-showShippingContactEmailAddress"
+                  >
+                    Show Shipping Contact Email Address
+                  </cos-checkbox>
+                </p>
+
+                <p>
+                  <cos-checkbox
+                    formControlName="showPoRefernence"
+                    id="showPoRefernence"
+                    name="checkbox-showPoRefernence"
+                  >
+                    Show PO Reference
+                  </cos-checkbox>
+                </p>
+              </div>
+              <div>
+                <p class="order-creation-label">[Name for this?]</p>
+                <div
+                  cosRadioGroup
+                  id="test-radio"
+                  aria-label="Select an option"
+                  [required]="true"
+                  formControlName="currentDisplayOption"
+                >
+                  <p *ngFor="let option of displayOptions; trackBy: trackByFn">
+                    <cos-radio-button [value]="option">
+                      {{option }}
+                    </cos-radio-button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cos-form-row mb-32">
+            <p class="order-creation-label">Document Header</p>
+            <quill-editor formControlName="documentHeader"></quill-editor>
+          </div>
+          <div class="cos-form-row">
+            <p class="order-creation-label">Document Footer</p>
+            <quill-editor formControlName="documentFooter"></quill-editor>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+
+  <cos-segmented-panel class="company-settings-panel">
+    <cos-segmented-panel-header>
+      <h2 class="header-style-16 mb-0">Order permissions</h2>
+    </cos-segmented-panel-header>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Default salesperson'"
+        (onSaveEvent)="updateValue('defaultSalesPerson')"
+        [isEditable]="'Administrator' | hasRole"
+        class="company-settings-email"
+      >
+        <div><i class="form-row-icon fa fa-user-tie mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            {{orderCreationForm.get('defaultSalesPerson').value}}
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-active>
+          <div class="cos-form-row">
+            <label
+              [ngClass]="{'cos-form-label': true}"
+              [attr.for]="'defaultSalesPerson'"
+            >
+              Default Salesperson
+            </label>
+            <select
+              matNativeControl
+              [attr.id]="'defaultSalesPerson'"
+              formControlName="defaultSalesPerson"
+            >
+              <option value="Order Creator">Order Creator</option>
+              <option value="Order Creator 2">Order Creator 2</option>
+            </select>
+            <div class="error" *ngIf="errors">This field is required</div>
+          </div>
+        </asi-panel-editable-row-active>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Order payments'"
+        [isEditable]="false"
+      >
+        <div><i class="form-row-icon fa fa-dollar-sign mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">Allow users to request or enter payment</p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'orderPayments'"
+              [name]="'orderPayments'"
+              [required]="true"
+              [disabled]=""
+              [checked]="orderPayments"
+              ><span class="cos-accessibly-hidden"
+                >Order Payments</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row
+        [rowTitle]="'Order Tracking'"
+        [isEditable]="false"
+      >
+        <div><i class="form-row-icon fa fa-parachute-box mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Allow users to track revisions and re-orders
+          </p>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'orderTracking'"
+              [name]="'orderTracking'"
+              [required]="true"
+              [disabled]=""
+              [checked]="orderTracking"
+              ><span class="cos-accessibly-hidden"
+                >Order Tracking</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+
+    <cos-segmented-panel-row>
+      <asi-panel-editable-row [rowTitle]="'Order Contact'" [isEditable]="false">
+        <div><i class="form-row-icon fa fa-user-check mt-8 mr-16"></i></div>
+        <asi-panel-editable-row-inactive>
+          <p class="form-row-value">
+            Allow users to set a contact for questions about an order
+          </p>
+          <div *ngIf="orderContact">
+            <label
+              for="contactOptionsRadio"
+              class="cos-form-label"
+              id="contactOptionsRadio-radio-group-label"
+            >
+              Choose Contact
+            </label>
+            <div
+              cosRadioGroup
+              id="contactOptionsRadio"
+              aria-label="Select an option"
+              [required]="true"
+              formControlName="currentContactOption"
+            >
+              <p *ngFor="let option of contactOptions; trackBy: trackByFn">
+                <cos-radio-button [value]="option">
+                  {{option }}
+                </cos-radio-button>
+              </p>
+            </div>
+          </div>
+        </asi-panel-editable-row-inactive>
+        <asi-panel-editable-row-controls>
+          <div>
+            <cos-toggle
+              [id]="'orderContact'"
+              [name]="'orderContact'"
+              [required]="true"
+              [disabled]=""
+              [checked]="orderContact"
+              (change)="orderContactChange($event)"
+              ><span class="cos-accessibly-hidden"
+                >Order Contact</span
+              ></cos-toggle
+            >
+          </div>
+        </asi-panel-editable-row-controls>
+      </asi-panel-editable-row>
+    </cos-segmented-panel-row>
+  </cos-segmented-panel>
+</ng-form>

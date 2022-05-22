@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:wght@400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
+
+// Main Text Styles
+.header-style-24 {
+  @include type-style-header-24;
+}
+
+.header-style-22 {
+  @include type-style-header-22;
+}
+
+.header-style-18 {
+  @include type-style-header-18;
+}
+
+.header-style-16 {
+  @include type-style-header-16;
+}
+
+.header-style-14-bold {
+  @include type-style-header-14-bold;
+}
+
+.header-style-14-semibold {
+  @include type-style-header-14-semibold;
+}
+
+.header-style-12-mineshaft {
+  @include type-style-header-12-mineshaft;
+}
+
+.header-style-12-shark {
+  @include type-style-header-12-shark;
+}
+
+.body-style-12-mineshaft {
+  @include type-body-style-12-mineshaft;
+}
+
+.body-style-14-mineshaft {
+  @include type-body-style-14-mineshaft;
+}
+
+.body-style-14-shark {
+  @include type-body-style-14-shark;
+}
+
+.body-style-12-mine-shaft {
+  @include type-body-style-12-mineshaft;
+}
+.body-style-12-shark {
+  @include type-body-style-12-shark;
+}
+
+.body-style-12-medium {
+  @include type-body-style-12-medium;
+}
+
+.body-style-14 {
+  @include type-body-style-14;
+}
+
+.body-style-12 {
+  @include type-body-style-12;
+}
+
+.body-style-11 {
+  @include type-body-style-11;
+}
+
+//Input Text Styles
+.input-large-placeholder {
+  @include large-input-placeholder;
+}
+
+.input-large-filled {
+  @include large-input-filled;
+}
+
+.input-medium-placeholder {
+  @include medium-input-placeholder;
+}
+
+.input-medium-filled {
+  @include medium-input-filled();
+}
+
+.input-small-placeholder {
+  @include small-input-placeholder;
+}
+
+.input-small-filled {
+  @include small-input-filled;
+}
+
+//Pill Text Styles
+.pill-medium-text {
+  @include medium-pill-text;
+}
+
+// Text Alignment
+.cos-text--right {
+  text-align: right;
+}
+
+.cos-text--left {
+  text-align: left;
+}
+
+// Colors
+
+.cos-text--white {
+  color: $color-g-white-00;
+}
+
+.cos-text--blue {
+  color: $color-bl-azure-57;
+}
+
+.cos-text--red {
+  color: $color-rd-macaw-52;
+}
+
+.cos-text--black {
+  color: $color-g-mineshaft-88;
+}

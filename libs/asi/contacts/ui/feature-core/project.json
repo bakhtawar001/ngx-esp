@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/contacts/ui/feature-core",
+  "sourceRoot": "libs/asi/contacts/ui/feature-core/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/contacts/ui/feature-core"],
+      "options": {
+        "project": "libs/asi/contacts/ui/feature-core/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/contacts/ui/feature-core/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/contacts/ui/feature-core/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/contacts/ui/feature-core"],
+      "options": {
+        "jestConfig": "libs/asi/contacts/ui/feature-core/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/contacts/ui/feature-core/src/**/*.ts",
+          "libs/asi/contacts/ui/feature-core/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "type:feature", "platform:web"]
+}

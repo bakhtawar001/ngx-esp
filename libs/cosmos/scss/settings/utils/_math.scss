@@ -1,0 +1,14 @@
+@use 'sass:math' as *;
+
+// The reason we're doing that, for now, is Storybook which relies on the `sass-loader`.
+// Unfortunately, the `sass-loader` might be using the older version of `sass` which doesn't
+// support the `math.div` function.
+
+// Named as `divide` since the `div` is busy :)
+@function divide($number1, $number2) {
+  @if function-exists('div') {
+    @return div($number1, $number2);
+  } @else {
+    @return $number1 / $number2;
+  }
+}

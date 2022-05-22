@@ -1,0 +1,112 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosAccordionModule } from '../accordion.module';
+import { CosAccordionComponent } from './accordion.component';
+import { CosAccordionDemoComponent } from './accordion.component.demo';
+
+<Meta
+  title="Layout Components/Accordion"
+  component={CosAccordionComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosAccordionModule],
+      declarations: [CosAccordionDemoComponent],
+    }),
+  ]}
+  args={{
+    accordionTitle: 'Collapsible Section Title',
+    expanded: true,
+    size: '',
+    hideToggle: false,
+    disabled: false,
+  }}
+  argTypes={{
+    accordionTitle: {
+      name: 'Title',
+      control: 'text',
+    },
+    expanded: { control: 'boolean' },
+    size: {
+      options: ['default', 'small', 'x-small'],
+      mapping: {
+        default: '',
+        small: 'sm',
+        'x-small': 'xs',
+      },
+      control: 'select',
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosAccordionDemoComponent,
+});
+
+# Accordian
+
+The accordion component lets users show and hide sections of related content on a page.
+
+### When to use this component
+
+Only use an accordion if there’s evidence it’s helpful for users to:
+
+- see an overview of multiple, related sections of content
+- show and hide those sections as needed
+
+### When to not use this component
+
+Accordions hide content from users and not everyone will notice them or understand how they work. For this reason do not use an accordion for content which is essential to all users.
+
+Do not use the accordion component if the amount of content it would need to contain will make the page slow to load.
+
+Accordions work best for simple content and links. Do not use accordions to split up a series of questions into sections. Use separate pages instead.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+  <Story name="Small" args={{ size: 'sm' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Extra small" args={{ size: 'xs' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={CosAccordionComponent} />
+
+```html
+<cos-accordion
+  [expanded]="expanded"
+  [size]="size"
+  [hideToggle]="hideToggle"
+  [disabled]="disabled"
+>
+  <cos-accordion-header>{{ accordionTitle }}</cos-accordion-header>
+  <p>Veniam dolor sit sint cupidatat fugiat nulla ad sit cillum.</p>
+</cos-accordion>
+```
+
+---
+
+## Visual Details
+
+### Typography
+
+Header text is Barlow Bold 16pt.
+
+### Spacing
+
+Inset spacing is 16px.
+
+### States
+
+Accordians include a header title and clickable "v" to open.
+
+Once open clicking on "^" will then close the accordian filled with information.
+
+Users might need the sections they have opened to stay open if they leave and then return to the page. You can configure the accordion component to stay open.
+
+---

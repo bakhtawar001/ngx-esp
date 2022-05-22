@@ -1,0 +1,30 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Add Note</h2>
+</header>
+
+<mat-dialog-content>
+  <div class="content-wrapper project-add-note-dialog-content">
+    <ng-form>
+      <cos-form-field>
+        <span cosLabel>Note</span>
+        <textarea required cos-input></textarea>
+      </cos-form-field>
+    </ng-form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="flex justify-between w-full">
+    <button cos-icon-button><span class="fa fa-arrow-left"></span> Back</button>
+
+    <button cos-flat-button type="submit" color="primary" cdkFocusInitial>
+      Save
+    </button>
+  </div>
+</mat-dialog-actions>

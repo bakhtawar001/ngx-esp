@@ -1,0 +1,38 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/auth",
+  "sourceRoot": "libs/esp/auth/src",
+  "prefix": "esp",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/auth"],
+      "options": {
+        "tsConfig": "libs/esp/auth/tsconfig.lib.json",
+        "project": "libs/esp/auth/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/auth/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/esp/auth/**/*.ts", "libs/esp/auth/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/auth/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/auth"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

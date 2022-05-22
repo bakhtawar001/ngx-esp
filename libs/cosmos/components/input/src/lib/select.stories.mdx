@@ -1,0 +1,162 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosInputDirective } from './input.directive';
+import { CosInputModule } from './input.module';
+import { CosSelectDemoComponent } from './input-select.component.demo';
+import { InputTypes } from './input.enums';
+
+<Meta
+  title="Controls &amp; Inputs/Select"
+  component={CosInputDirective}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, FormsModule, CosInputModule],
+      declarations: [CosSelectDemoComponent],
+    }),
+  ]}
+  args={{
+    label: 'Name',
+    placeholder: 'Enter a value',
+    value: '2',
+  }}
+  argTypes={{
+    value: { control: 'text' },
+    label: { control: 'text' },
+    showLabel: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    style: { control: 'text' },
+    disabled: { control: 'boolean' },
+    readonly: { control: 'boolean' },
+    errorStateMatcher: {
+      table: {
+        disable: true,
+      },
+    },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosSelectDemoComponent,
+});
+
+# Selects
+
+Selects are typically used within forms and therefore visually similar to text fields. When clicking on a select a menu of options expand from within a popover.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+  <Story name="Small" args={{ style: InputTypes.SMALL }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{ style: InputTypes.LARGE }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<select
+  matNativeControl
+  [error]="error"
+  [style]="style"
+  [attr.id]="id"
+  [(ngModel)]="value"
+  #name="ngModel"
+  [attr.disabled]="disabled ? '' : null"
+>
+  <option value="1">Apples</option>
+  <option value="2">Bananas</option>
+  <option value="3">Grapes</option>
+  <option value="4">Oranges</option>
+</select>
+```
+
+<ArgsTable of={CosSelectDemoComponent} />
+
+## Visual Details
+
+### Sizes
+
+There are three sizes for selects: large, medium and small.
+
+#### Large
+
+| Attribute         | Value                         |
+| ----------------- | ----------------------------- |
+| Spacing           | Squish 12-16                  |
+| Type Size         | Body 14 Semibold              |
+| Type & Icon Color | Tint Violet Primary           |
+| Background Color  | Background Primary            |
+| Border            | 1px Solid Foreground Tertiary |
+
+#### Medium
+
+| Attribute         | Value                         |
+| ----------------- | ----------------------------- |
+| Spacing           | Squish 8-12                   |
+| Type Size         | Body 14 Semibold              |
+| Type & Icon Color | Tint Violet Primary           |
+| Background Color  | Background Primary            |
+| Border            | 1px Solid Foreground Tertiary |
+
+#### Small
+
+| Attribute         | Value                         |
+| ----------------- | ----------------------------- |
+| Spacing           | Squish 4-8                    |
+| Type Size         | Body 12 Semibold              |
+| Type & Icon Color | Tint Violet Primary           |
+| Background Color  | Background Primary            |
+| Border            | 1px Solid Foreground Tertiary |
+
+---
+
+## States
+
+### Default
+
+- An unpopulated selection field that displays placeholder text as “Select an option” or “Select option(s)
+- Best practice: use the Default Filled state with the most frequently used option preselected when possible.
+
+### Hover
+
+- When a user’s cursor is overtop of the component
+
+### Focus
+
+- When a user has tabbed the selection field into focus
+- Hitting enter will expand the field to the active state
+
+### Active
+
+- This is when a user has clicked or hit enter on the selection field
+- The popover will expand to display the list of selectable options
+
+### Default Filled
+
+- An option has been selected or pre-filled and the component is not in focus
+
+### Disabled
+
+- Interaction with the component is blocked
+
+### Error
+
+- Something has been selected incorrectly
+- Most commonly used if a required selection has not been made
+
+---
+
+## Research
+
+- [Nielsen Norman Group article on Drop Down Menus](https://www.nngroup.com/articles/drop-down-menus/)
+- [Dropdown Usability](https://baymard.com/blog/drop-down-usability)

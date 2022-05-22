@@ -1,0 +1,5 @@
+libs/cosmos/assets/*
+libs/cosmos/build/*
+libs/cosmos/scss/*
+libs/cosmos/tokens/*
+libs/esp/__mocks__/*

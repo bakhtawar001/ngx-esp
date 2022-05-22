@@ -1,0 +1,26 @@
+<div id="main" *ngIf="config$ | async as config">
+  <!-- NAVBAR -->
+  <ng-content
+    select="cos-global-header"
+    *ngIf="config.layout?.navbar?.position === 'top'"
+  ></ng-content>
+  <!-- / NAVBAR -->
+
+  <div id="container-1" class="container container-wrapper">
+    <div id="container-2" class="container container-outer">
+      <div id="container-3" class="container container-inner">
+        <!-- CONTENT -->
+        <div id="content" class="inner-scroll">
+          <router-outlet></router-outlet>
+        </div>
+        <!-- / CONTENT -->
+        <!-- FOOTER: Below static -->
+        <ng-content
+          select="esp-footer"
+          *ngIf="config.layout.footer?.position === 'below-static'"
+        ></ng-content>
+        <!-- / FOOTER: Below static -->
+      </div>
+    </div>
+  </div>
+</div>

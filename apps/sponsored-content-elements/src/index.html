@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Contentful Element</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="/websites/ngx-esp/elements/contentful/contentful-styles.css"
+    />
+  </head>
+  <body>
+    <div id="typeahead">
+      <h1 style="color: red;">Typeahead</h1>
+      <div>
+        <h2>Element Properties</h2>
+        <ul>
+          <li>debounce (default 300) - time limit between searches</li>
+          <li>is-disabled (default false) - disable input</li>
+          <li>loading-text (default 'loading') - Text to show when loading</li>
+          <li>
+            not-found-text (default 'No results') - text for no results from
+            search
+          </li>
+          <li>
+            number-of-results (default 5) - number of results to show in
+            typeahead
+          </li>
+          <li>
+            placeholder (default 'Select an article') - placeholder for input
+          </li>
+          <li>value (optional) - prefill a value</li>
+          <li>
+            content-type - Contentful content type
+          </li>
+          <li>
+            <p>contentful-config</p>
+            <pre>
+export interface CreateClientParams {
+    space: string;
+    accessToken: string;
+    environment?: string;
+    insecure?: boolean;
+    host?: string;
+    basePath?: string;
+    httpAgent?: any;
+    httpsAgent?: any;
+    proxy?: AxiosProxyConfig;
+    headers?: any;
+    adapter?: any;
+    application?: string;
+    integration?: string;
+    resolveLinks?: boolean;
+    removeUnresolved?: boolean;
+    retryOnError?: boolean;
+    logHandler?: (level: ClientLogLevel, data?: any) => void;
+    timeout?: number;
+    retryLimit?: number;
+}
+            </pre>
+          </li>
+          <li>
+            sponsored-by-asi-number - ASI number of supplier
+            <span style="color: red"
+              ><b
+                >**In order for this to work the content-type parameter OR
+                contentType property in contentful-config must be provided in</b
+              ></span
+            >
+          </li>
+        </ul>
+
+        <h3>Advanced config</h3>
+        <ul>
+          <li>
+            sponsoredById - ID for sponsoredBy content type. Default 'sponsor'
+          </li>
+          <li>
+            sponsoredByIdQueryPath - Path for sponsoredBy ID when querying
+            contentful. Default 'fields.sponsoredBy.sys.contentType.sys.id'
+          </li>
+          <li>
+            asiNumberQueryPath - Path for querying by sponsoredBy.asiNumber.
+            Default 'fields.sponsoredBy.fields.asiNumber'
+          </li>
+        </ul>
+
+        <h2>Events</h2>
+        <ul>
+          <li>blur - onblur event</li>
+          <li>clear - clear event</li>
+          <li>close - close options event</li>
+          <li>focus - focus event</li>
+          <li>open - open options event</li>
+          <li>
+            <p>selected - emits an object describing the article</p>
+            <pre>
+interface ContentfulProductEntry {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface ContentfulTypeaheadEvent {
+  article: {
+    title: string,
+    description: string,
+    shortDescription: string,
+    footer: string,
+    products: ContentfulProductEntry[],
+    sponsoredBy: {
+        asiNumber: number,
+        companyName: string
+    },
+  };
+  contentfulArticle: Entry&lt;unknown&gt;;
+}
+            </pre>
+          </li>
+          <li>
+            load - emits a ContentfulTypeaheadEvent when article is loaded from
+            contentful IF value prop is provided to element
+          </li>
+          <li>error - emits error object</li>
+        </ul>
+      </div>
+      <div style="border: 1px solid #ccc;">
+        <pre>
+&lt;sponsored-content-typeahead 
+  placeholder="Select an article man"
+  content-type="article"
+  contentful-config='{"token": "A4eCRB1F6iHLLEhqebYZbx1zvuwT5LSK626RiW6Rj-0", "space": "fika9b2zervd"}'
+&gt;&lt;sponsored-content-typeahead&gt;
+        </pre>
+        <sponsored-content-typeahead
+          placeholder="Select an article man"
+          content-type="article"
+          contentful-config='{"token": "A4eCRB1F6iHLLEhqebYZbx1zvuwT5LSK626RiW6Rj-0", "space": "fika9b2zervd"}'
+        ></sponsored-content-typeahead>
+        <p></p>
+      </div>
+      <h2 style="color: red;">Typeahead with default value</h2>
+      <div style="border: 1px solid #ccc;">
+        <pre>
+&lt;sponsored-content-typeahead
+  placeholder="Select an article yo"
+  content-type="article"
+  value="2MYgIuvawPbIg0nutEhhRS"
+  contentful-config='{"token": "A4eCRB1F6iHLLEhqebYZbx1zvuwT5LSK626RiW6Rj-0", "space": "fika9b2zervd"}'
+&gt;&lt;sponsored-content-typeahead&gt;
+        </pre>
+        <sponsored-content-typeahead
+          placeholder="Select an article yo"
+          content-type="article"
+          value="2MYgIuvawPbIg0nutEhhRS"
+          contentful-config='{"token": "A4eCRB1F6iHLLEhqebYZbx1zvuwT5LSK626RiW6Rj-0", "space": "fika9b2zervd"}'
+        ></sponsored-content-typeahead>
+        <p></p>
+      </div>
+    </div>
+
+    <div id="article">
+      <h1 style="color: red;">Article</h1>
+      <div>
+        <h2>Element Properties</h2>
+        <ul>
+          <li>article-id - article's ID</li>
+          <li>
+            read-more-text (default 'Read full article') - Set text for read
+            more
+          </li>
+          <li>
+            asi-auth-header - Authorization header value for smartlink API ex
+            "Bearer ASDF" or "AsiMemberAuth ASDF"
+          </li>
+          <li>layout (default 'preview') - full | preview</li>
+          <li>
+            <p>contentful-config</p>
+            <pre>
+export interface CreateClientParams {
+    space: string;
+    accessToken: string;
+    environment?: string;
+    insecure?: boolean;
+    host?: string;
+    basePath?: string;
+    httpAgent?: any;
+    httpsAgent?: any;
+    proxy?: AxiosProxyConfig;
+    headers?: any;
+    adapter?: any;
+    application?: string;
+    integration?: string;
+    resolveLinks?: boolean;
+    removeUnresolved?: boolean;
+    retryOnError?: boolean;
+    logHandler?: (level: ClientLogLevel, data?: any) => void;
+    timeout?: number;
+    retryLimit?: number;
+}
+            </pre>
+          </li>
+          <li>
+            smartlink-url - Smartlink URL without trailing slash. Default:
+            https://api.uat-asicentral.com/v1
+          </li>
+        </ul>
+
+        <h2>Element events</h2>
+        <ul>
+          <li>error - emits error object</li>
+        </ul>
+      </div>
+
+      <h2 style="color: red">Preview layout</h2>
+
+      <div style="border: 1px solid #ccc;">
+        <pre>
+&lt;sponsored-content 
+  layout="preview" 
+  article-id="2MYgIuvawPbIg0nutEhhRS"
+  smartlink-url="https://api.dev-asicentral.com/v1" 
+  contentful-config='{"token": "A4eCRB1F6iHLLEhqebYZbx1zvuwT5LSK626RiW6Rj-0", "space": "fika9b2zervd"}'
+  asi-auth-header="Bearer eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00iLCJrZXlpZCI6IkRBU0gifQ.OTRTPXYst6HdRxt3YW4K_3bWrOIYN_emc0k2HBZkh9XPgkzuv4X8GBoFbUbjejzSDBguVrA6V68-bY5ZOem3EUmNlkLls5z8x9TcRbplOTfcATKlHYhzDP5KC5ChhpGig4fVLdlkA9Pvf997uEVdjUqvWjV9ABpVNlGgWeXfxGM.L6y3B_vOWExjt9Um.N8KQ7-of98snYKprhSzGGLE8UdQ-GVFQyxgZB82yRa9ngdjq0Y-0ooIIVq-yim8iFnpLzhoc2PApRokn5b2n5gCds8I-8hJONpSYpduO2IhuoqqmHoobrpUqsUaNDWC5en9nERzUayUZwbAhaaeN0OIWIRN-XWvtlXUqocVkKcEs3yFOlNpBGVwFBJwxvMTU-ph3OqkG9j47X3-vclW8I-NRndG1ZK5yV7TazIF2jCyLryHuLaBfY-wvQCCAm_HqG0hq-qxaLCYdhxjnFTtM-KOZfqweX2s9uWUNcTV_ZQkdgNMYIQcNlpTusEUpyQtNSGQIG8gGcY0q04txaKDaYqYV9m3RkhgJLYPm2RVNg8Y5qpuJnhXHrPJtsk2xtx52Y6jU9kfiUOduupEEsQGksAH12a-QNRd5vs5Y4fa7d79wXZsbRnx7wGI0yV8a__bY4O0KBx07ZrnC5HmtvME1k-BnBgRsBWZmnyI6Po9i9uFryxhZVWCx_LEyJg_6SKFK.SirARfxKCfynFliiW9lZWA"
+&gt;&lt;sponsored-content&gt;
+        </pre>
+        <sponsored-content
+          layout="preview"
+          article-id="2MYgIuvawPbIg0nutEhhRS"
+          smartlink-url="https://api.dev-asicentral.com/v1"
+          contentful-config='{"token": "A4eCRB1F6iHLLEhqebYZbx1zvuwT5LSK626RiW6Rj-0", "space": "fika9b2zervd"}'
+          asi-auth-header="Bearer eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00iLCJrZXlpZCI6IkRBU0gifQ.OTRTPXYst6HdRxt3YW4K_3bWrOIYN_emc0k2HBZkh9XPgkzuv4X8GBoFbUbjejzSDBguVrA6V68-bY5ZOem3EUmNlkLls5z8x9TcRbplOTfcATKlHYhzDP5KC5ChhpGig4fVLdlkA9Pvf997uEVdjUqvWjV9ABpVNlGgWeXfxGM.L6y3B_vOWExjt9Um.N8KQ7-of98snYKprhSzGGLE8UdQ-GVFQyxgZB82yRa9ngdjq0Y-0ooIIVq-yim8iFnpLzhoc2PApRokn5b2n5gCds8I-8hJONpSYpduO2IhuoqqmHoobrpUqsUaNDWC5en9nERzUayUZwbAhaaeN0OIWIRN-XWvtlXUqocVkKcEs3yFOlNpBGVwFBJwxvMTU-ph3OqkG9j47X3-vclW8I-NRndG1ZK5yV7TazIF2jCyLryHuLaBfY-wvQCCAm_HqG0hq-qxaLCYdhxjnFTtM-KOZfqweX2s9uWUNcTV_ZQkdgNMYIQcNlpTusEUpyQtNSGQIG8gGcY0q04txaKDaYqYV9m3RkhgJLYPm2RVNg8Y5qpuJnhXHrPJtsk2xtx52Y6jU9kfiUOduupEEsQGksAH12a-QNRd5vs5Y4fa7d79wXZsbRnx7wGI0yV8a__bY4O0KBx07ZrnC5HmtvME1k-BnBgRsBWZmnyI6Po9i9uFryxhZVWCx_LEyJg_6SKFK.SirARfxKCfynFliiW9lZWA"
+        ></sponsored-content>
+      </div>
+
+      <h2 style="color: red;">Default layout</h2>
+      <div style="border: 1px solid #ccc;">
+        <pre>
+&lt;sponsored-content
+  article-id="2XRut264yVKnRbHV3h0mxA"
+  smartlink-url="https://api.uat-asicentral.com/v1"
+  contentful-config='{"token": "8cYBuA-MLtP1WiGtp6qGBXAZ1cNY9df-IZciGhB7PPg", "space": "b0i267aobexu"}'
+  asi-auth-header="Bearer eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00iLCJrZXlpZCI6IkRBU0gifQ.OyLz7leakcDb5OJxblPNZboCWeKPmXrEtBSrCuBGDVDez09uptd1GKayR4HoYBbSwMwGn6q3k8ACPNyEqMzeOA4nZ_bpb-HFG9arMKYCUfHLT7YqNGyNLEs_qIJZLTKK0anVk2T1a-qLmiRPKt84sTv0trpEe3dGZdEKg5ooKQ8.U1Mz2DcfuQSvzNkT.HRGI8U95VxQJCulHT5JiaxtsEQ1O4smvASimxq20PzU9YIXffKTwj72ZoGUCwUPjto_R8VHvEr1UxjC4PvChmVIgMkGWNcgu12uKn5uKSmIgi04sowHO8K8O786zymCtCNu0V1D1EGZ3pJWffH1SFZDJ1mN64629L3t4Oi0EAwrf65yDGPY8qlNoOyx3flXLj55ALeHAR71q5DwvEAy9vSCoIT15bC2Sue2qgdi8YyI8ZpuvgdmOTM-QqLdJgu8xXGU2Sn4fZ8YNVtqsC3xiFBo-BZWxHE0pXcDpy1boDZazzSSEwDaTPvMW5tO6LZFhC4p-6UcToVL1ks5L9SLRG9xhtaU0YVtFfHJ5T9YXim-pxQDklXBbibMHgbWlnMNb3DOqoSX90jdf9BuGzqnO6bVopqZeO3vj7W-6LAQJ7I4QXiukPN4BllyVsGcgDIfKZhDXcptHkh_sCyFGmwwQqZlAM9gcoJD_gEgi_Wmd_J9qIAHhg2T3muFlovETzjkS.tn2-lA6yaZttvGpiKQazMQ"
+&gt;&lt;sponsored-content&gt;
+        </pre>
+        <sponsored-content
+          article-id="2XRut264yVKnRbHV3h0mxA"
+          smartlink-url="https://api.uat-asicentral.com/v1"
+          contentful-config='{"token": "8cYBuA-MLtP1WiGtp6qGBXAZ1cNY9df-IZciGhB7PPg", "space": "b0i267aobexu"}'
+          asi-auth-header="Bearer eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00iLCJrZXlpZCI6IkRBU0gifQ.OyLz7leakcDb5OJxblPNZboCWeKPmXrEtBSrCuBGDVDez09uptd1GKayR4HoYBbSwMwGn6q3k8ACPNyEqMzeOA4nZ_bpb-HFG9arMKYCUfHLT7YqNGyNLEs_qIJZLTKK0anVk2T1a-qLmiRPKt84sTv0trpEe3dGZdEKg5ooKQ8.U1Mz2DcfuQSvzNkT.HRGI8U95VxQJCulHT5JiaxtsEQ1O4smvASimxq20PzU9YIXffKTwj72ZoGUCwUPjto_R8VHvEr1UxjC4PvChmVIgMkGWNcgu12uKn5uKSmIgi04sowHO8K8O786zymCtCNu0V1D1EGZ3pJWffH1SFZDJ1mN64629L3t4Oi0EAwrf65yDGPY8qlNoOyx3flXLj55ALeHAR71q5DwvEAy9vSCoIT15bC2Sue2qgdi8YyI8ZpuvgdmOTM-QqLdJgu8xXGU2Sn4fZ8YNVtqsC3xiFBo-BZWxHE0pXcDpy1boDZazzSSEwDaTPvMW5tO6LZFhC4p-6UcToVL1ks5L9SLRG9xhtaU0YVtFfHJ5T9YXim-pxQDklXBbibMHgbWlnMNb3DOqoSX90jdf9BuGzqnO6bVopqZeO3vj7W-6LAQJ7I4QXiukPN4BllyVsGcgDIfKZhDXcptHkh_sCyFGmwwQqZlAM9gcoJD_gEgi_Wmd_J9qIAHhg2T3muFlovETzjkS.tn2-lA6yaZttvGpiKQazMQ"
+        ></sponsored-content>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="/websites/ngx-esp/elements/contentful/contentful-element-es5.js"
+    ></script>
+    <script>
+      /**
+       * Callback for typeahead select event
+       */
+      function onselect(event) {
+        console.log(event);
+
+        var pre = document.createElement('pre');
+        pre.textContent = JSON.stringify(event.detail, null, 2);
+
+        var after = document.createElement('p');
+        after.textContent = 'See console for more';
+
+        var content = document.createElement('div');
+        content.innerHTML = 'event.detail: <br>';
+        content.append(pre);
+        content.append(document.createElement('br'));
+        content.append(after);
+
+        event.target.nextElementSibling.append(content);
+      }
+
+      /**
+       * Callback for product detail click
+       */
+      function productDetailClick(event) {
+        event.preventDefault();
+        console.log(event.detail);
+
+        alert('Product detail clicked: ' + event.detail);
+      }
+
+      /**
+       * Callback for product buy click
+       */
+      function productBuyClick(event) {
+        event.preventDefault();
+        console.log(event.detail);
+
+        alert('Product buy clicked: ' + event.detail);
+      }
+
+      /**
+       * Callback for product save click
+       */
+      function productSaveClick(event) {
+        event.preventDefault();
+        console.log(event.detail);
+
+        alert('Product save clicked: ' + event.detail);
+      }
+
+      /**
+       * Callback for supplier detail click
+       */
+      function supplierDetailClick(event) {
+        event.preventDefault();
+        console.log(event.detail);
+
+        alert('Supplier detail clicked: ' + event.detail);
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var elements = document.getElementsByTagName(
+          'sponsored-content-typeahead'
+        );
+
+        Array.prototype.slice.call(elements).forEach(function(element) {
+          element.addEventListener('selected', onselect);
+        });
+
+        var articles = document.getElementsByTagName('sponsored-content');
+
+        Array.prototype.slice.call(articles).forEach(function(element) {
+          element.addEventListener('productDetailClick', productDetailClick);
+          element.addEventListener('productBuyClick', productBuyClick);
+          element.addEventListener('productSaveClick', productSaveClick);
+          element.addEventListener('supplierDetailClick', supplierDetailClick);
+        });
+      });
+    </script>
+  </body>
+</html>

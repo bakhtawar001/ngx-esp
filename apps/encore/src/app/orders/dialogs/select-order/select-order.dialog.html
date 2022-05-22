@@ -1,0 +1,54 @@
+<asi-cards-selection-dialog
+  (create)="onCreateOrder()"
+  (search)="onOrderSearch($event)"
+  createButtonText="Create a New Order"
+  header="Use Products in an Order"
+  searchPlaceholder="Search for an Order, Project or Customer"
+  subheader="Create a new order or add products to an existing one."
+>
+  <ng-container asiCardsSelectionContent>
+    <!-- @TODO uncomment and add correct values when OrderSearch api is completed -->
+    <!--    <ng-container *ngIf="!state.loading; else loader">-->
+    <!--      <asi-details-card-->
+    <!--        *ngFor="let order of state.orders; trackBy: trackById"-->
+    <!--        (cardClick)="onSelectOrder(order)"-->
+    <!--        [subtitleFirstLine]="order.Customer"-->
+    <!--        [subtitleSecondLine]="order.Customer"-->
+    <!--        [title]="'Sales Order ' + order.Number"-->
+    <!--        [topBorderColor]="order.StatusColor"-->
+    <!--        class="cursor-pointer"-->
+    <!--      >-->
+    <!--        <asi-company-avatar-->
+    <!--          [customer]="order"-->
+    <!--          [showAvatarIcon]="true"-->
+    <!--          [iconSize]="20"-->
+    <!--          asiUiDetailsCardAvatar-->
+    <!--        ></asi-company-avatar>-->
+    <!--        <div-->
+    <!--          class="body-style-12"-->
+    <!--          [ngClass]="{'mt-32': !order.Customer}"-->
+    <!--          asiUiDetailsCardText-->
+    <!--        >-->
+    <!--          <span *ngIf="order.POReference"-->
+    <!--            >PO#: <b>{{order.POReference}}</b></span-->
+    <!--          >-->
+    <!--          Date: <b>{{order.Date | date: 'shortDate'}}</b>-->
+    <!--        </div>-->
+    <!--      </asi-details-card>-->
+    <!--    </ng-container>-->
+    <asi-details-card-loader
+      *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
+      [singleLineHeader]="true"
+    ></asi-details-card-loader>
+  </ng-container>
+  <div asiCardsSelectionActions class="w-full">
+    <button
+      (click)="onPreviousStep()"
+      data-cy="cancel-button"
+      cos-button
+      type="button"
+    >
+      <i class="fa fa-arrow-left mr-8"></i> Back
+    </button>
+  </div>
+</asi-cards-selection-dialog>

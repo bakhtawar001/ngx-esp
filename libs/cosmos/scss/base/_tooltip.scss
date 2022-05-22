@@ -1,0 +1,12 @@
+.mat-tooltip-panel {
+  height: auto !important;
+  width: auto !important;
+}
+
+.mat-tooltip,
+.mat-tooltip.cos-tooltip {
+  margin: 0;
+  padding: $spacing-stack-4 $spacing-stack-8;
+  background-color: $color-g-shark-54;
+  max-width: unset !important;
+}

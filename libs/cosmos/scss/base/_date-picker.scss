@@ -1,0 +1,101 @@
+$cos-disabled-text: $color-g-moth-41;
+$cos-disabled-bg: $color-g-pebble-09;
+
+.cos-date-picker {
+  position: relative;
+
+  .cos-input {
+    padding-left: $spacing-inline-32;
+  }
+
+  .mat-datepicker-toggle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: none;
+
+    .mat-icon-button {
+      background: none;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 4px;
+      color: $color-bl-azure-57;
+      &:disabled {
+        color: $cos-disabled-text;
+      }
+    }
+  }
+
+  .mat-datepicker-toggle-default-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.cos-date-picker--large {
+  .mat-datepicker-toggle-default-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.cos-date-picker--small {
+  .mat-datepicker-toggle-default-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Styles for Mat Date Picker */
+.mat-datepicker-popup {
+  .mat-datepicker-content {
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+      0 1px 10px 0 rgb(0 0 0 / 12%);
+    background-color: $color-g-white-00;
+    overflow: auto;
+  }
+
+  .mat-calendar-body-cell,
+  .mat-calendar-body-cell-content {
+    border-color: transparent;
+    border-radius: 999px;
+    border: 0;
+  }
+
+  .mat-button-base {
+    background: transparent;
+    &.cdk-keyboard-focused {
+      @include cos-focus;
+    }
+  }
+
+  .mat-calendar-body-selected {
+    background: $color-bl-azure-57;
+    color: $color-g-white-00;
+  }
+
+  .mat-datepicker-content.mat-accent .mat-calendar-body-selected {
+    background: $color-bl-azure-57;
+  }
+
+  .mat-calendar-body-active {
+    &:focus {
+      @include cos-focus-inset;
+    }
+  }
+
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover,
+  .cdk-keyboard-focused
+    .mat-calendar-body-active
+    > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+    background: $color-g-pebble-09;
+
+    &:focus {
+      @include cos-focus;
+    }
+  }
+}

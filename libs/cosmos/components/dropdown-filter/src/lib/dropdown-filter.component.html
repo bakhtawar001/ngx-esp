@@ -1,0 +1,33 @@
+<fieldset class="cos-form-field">
+  <legend class="cos-form-label">{{ labelText }}</legend>
+  <input
+    cos-input
+    type="search"
+    [(ngModel)]="searchString"
+    [id]="id"
+    [placeholder]="placeholderText"
+    [attr.aria-label]="labelText + ' search'"
+    (click)="$event.stopPropagation()"
+  />
+  <cos-checkbox
+    *ngFor="let filteredItem of filteredItems; index as i"
+    [ngStyle]="{
+      display: showAllCheckboxes || i < checkboxLimit ? 'block' : 'none'
+    }"
+    [id]="'filteredItem-' + filteredItem.Id"
+    [name]="filteredItem.Id"
+    [value]="filteredItem.Id"
+    [checked]="filteredItem.checked"
+    (change)="checkboxChange(filteredItem.Id)"
+  >
+    <span>{{ filteredItem.Name }}</span
+    ><span class="cos-filter-menu-count"> ({{ filteredItem.Products }})</span>
+  </cos-checkbox>
+  <button
+    *ngIf="!isDesktop"
+    cos-button
+    (click.stop)="toggleShowAllCheckboxes()"
+  >
+    {{ showAllCheckboxesText }}
+  </button>
+</fieldset>

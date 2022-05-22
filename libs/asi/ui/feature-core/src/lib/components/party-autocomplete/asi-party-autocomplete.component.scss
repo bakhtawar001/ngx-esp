@@ -1,0 +1,12 @@
+.party-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__body {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

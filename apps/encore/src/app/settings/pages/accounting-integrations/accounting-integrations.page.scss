@@ -1,0 +1,94 @@
+@import 'cosmos/scss/settings/';
+
+.page-description {
+  color: $color-g-shark-54;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-14;
+}
+
+.account-integration-link {
+  color: $color-bl-atoll-75;
+  font-family: 'Barlow', sans-serif;
+  font-size: rem(14px);
+  font-weight: bold;
+}
+
+.integration-configuration-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include narrower-than($bp-medium) {
+    flex-direction: column;
+    align-items: unset;
+
+    .form-row-value {
+      display: block;
+      margin-bottom: $spacing-stack-16;
+    }
+  }
+}
+
+.form-row-values-column-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  > li {
+    @include narrower-than($bp-medium) {
+      margin-bottom: $spacing-stack-16;
+    }
+    > span {
+      font-family: Work Sans, sans-serif;
+      font-size: $font-size-14;
+      margin-bottom: $spacing-stack-8;
+      &:first-of-type {
+        display: inline-block;
+        width: 150px;
+        margin-right: $spacing-inline-16;
+        color: $color-g-shark-54;
+
+        @include narrower-than($bp-medium) {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.form-row-value,
+.form-row-icon,
+.settings-company-color-name {
+  color: $color-g-shark-54;
+}
+
+.form-row-icon {
+  font-size: $font-size-16;
+}
+
+.form-row-value {
+  font-size: $font-size-14;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.settings-nested-panel {
+  @include wider-than($bp-small) {
+    margin: 0 16px 0 54px;
+  }
+}
+
+.integration-toggle-row {
+  @include narrower-than($bp-medium) {
+    .mr-16 {
+      margin: 0;
+    }
+  }
+  @include wider-than($bp-small) {
+    display: flex;
+  }
+}
+
+.cos-input {
+  width: 100%;
+  max-width: 375px;
+}

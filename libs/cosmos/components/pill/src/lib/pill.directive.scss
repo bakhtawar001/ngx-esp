@@ -1,0 +1,80 @@
+@import '../../../../scss/settings/';
+
+$cos-pill-hover-bg-color: #bfe1ff;
+
+.cos-pill {
+  padding: $spacing-stack-4 $spacing-stack-12;
+  border-radius: $border-radius-16;
+  border: 0;
+  background-color: $color-bl-azure-06;
+  color: $color-bl-atoll-75;
+  font-size: $font-size-14;
+  text-decoration: none;
+
+  &[data-cos-color='error'] {
+    background-color: $color-rd-macaw-12;
+  }
+
+  &[data-cos-color='success'] {
+    background-color: $color-gn-monstera-07;
+  }
+
+  &[data-cos-color='warn'] {
+    background-color: $color-yl-viper-18;
+  }
+
+  i {
+    font-size: $font-size-11;
+  }
+}
+
+a.cos-pill,
+button.cos-pill {
+  &:hover {
+    background-color: $cos-pill-hover-bg-color;
+  }
+
+  &:focus {
+    border-radius: $border-radius-16;
+    @include cos-focus();
+  }
+}
+
+.cos-pill-label {
+  padding: 2px $spacing-stack-12;
+  border-radius: $border-radius-16;
+  border: 0;
+  background-color: $color-bl-azure-57;
+  color: $color-g-white-00;
+  font-size: $font-size-11;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &[data-cos-color='error'] {
+    background-color: $color-rd-macaw-52;
+  }
+
+  &[data-cos-color='success'] {
+    background-color: $color-gn-monstera-72;
+  }
+
+  &[data-cos-color='warn'] {
+    background-color: $color-yl-viper-38;
+  }
+
+  .fa {
+    transform: translateY(1px);
+
+    font-size: $font-size-14;
+    margin-left: $spacing-inline-16;
+  }
+
+  i {
+    font-size: $font-size-11;
+  }
+
+  &:focus {
+    @include cos-focus();
+  }
+}

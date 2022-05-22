@@ -1,0 +1,17 @@
+// Caretaker note: this config is used only for type-checking tests on the CI level.
+// This is extremely faster to run the type-checking as a separate process and not during
+// the execution of each test.
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["jest", "node", "resize-observer-browser", "ng-dev-mode"],
+    "allowJs": true,
+    "strict": false
+  },
+  "include": [
+    "apps/encore/**/*.spec.ts",
+    "apps/customer-portal/**/*.spec.ts",
+    "libs/**/*.spec.ts",
+    "**/*.d.ts"
+  ]
+}

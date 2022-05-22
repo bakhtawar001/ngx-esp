@@ -1,0 +1,34 @@
+<label
+  [attr.for]="inputId"
+  [class.cos-radio-label-before]="labelPosition === 'before'"
+  class="cos-radio-label"
+  #label
+>
+  <div class="cos-radio-container">
+    <div class="cos-radio-outer-circle"></div>
+    <div class="cos-radio-inner-circle"></div>
+    <input
+      #input
+      class="cos-radio-input cos-accessibly-hidden"
+      type="radio"
+      [id]="inputId"
+      [checked]="checked"
+      [disabled]="disabled"
+      [tabIndex]="tabIndex"
+      [attr.name]="name"
+      [attr.value]="value"
+      [required]="required"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-labelledby]="ariaLabelledby"
+      [attr.aria-describedby]="ariaDescribedby"
+      (change)="_onInputChange($event)"
+      (click)="_onInputClick($event)"
+    />
+  </div>
+
+  <div class="cos-radio-label-content">
+    <!-- Add an invisible span so JAWS can read the label -->
+    <span class="cos-hidden">&nbsp;</span>
+    <ng-content></ng-content>
+  </div>
+</label>

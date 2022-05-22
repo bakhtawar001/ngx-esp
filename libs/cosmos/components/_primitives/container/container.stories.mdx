@@ -1,0 +1,11 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { CONTAINER_MARKUP } from './_container.utils';
+import { Template } from '@cosmos/storybook';
+
+<Meta title="Primitives/Container" />
+
+<Canvas>
+  <Story height={540} name="All">
+    {Template(CONTAINER_MARKUP).bind({})}
+  </Story>
+</Canvas>

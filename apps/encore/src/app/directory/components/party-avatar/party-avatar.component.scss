@@ -1,0 +1,37 @@
+@import 'cosmos/scss/settings/';
+
+cos-avatar {
+  padding: 0;
+
+  &.avatar-square {
+    border: 0;
+    border-radius: 4px;
+  }
+
+  .avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    background-color: $color-g-pearl-03;
+
+    .avatar-icon {
+      color: $color-g-disabled-12;
+    }
+
+    &-image {
+      > i {
+        display: none;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

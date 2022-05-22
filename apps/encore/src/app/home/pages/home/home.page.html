@@ -1,0 +1,52 @@
+<div class="home-container">
+  <div class="home-background-image"></div>
+  <cos-card [inlineControls]="false" class="search-card">
+    <div class="search-card-container">
+      <header>
+        <h1 class="header-style-24 mb-16 text-center">
+          Welcome to Encore's Private Beta!
+        </h1>
+        <p class="text-center">
+          ASI brings you exclusive access to Encore, with exciting new features
+          and a fresh look and feel based on feedback from users like you.
+        </p>
+      </header>
+      <esp-global-search
+        [size]="'large'"
+        searchType="products"
+        [(keywords)]="keywords"
+      >
+      </esp-global-search>
+    </div>
+  </cos-card>
+</div>
+<div class="artwork-container">
+  <cos-card
+    [inlineControls]="false"
+    *ngIf="homepageContent$ | async as content"
+    class="artwork-card"
+  >
+    <div class="cos-artwork-img">
+      <img [src]="content.fields?.contentmainimage?.fields?.file?.url" />
+    </div>
+    <div cos-card-sidebar>
+      <div class="cos-artwork-paragraph">
+        <h1 class="header-style-24 mb-16">{{content.fields?.title}}</h1>
+        <div
+          [innerHTML]="content.fields?.mainContent | documentToHtml"
+          class="main-content"
+        ></div>
+        <div>
+          <a
+            cos-flat-button
+            class=""
+            color="primary"
+            href="mailto:Support@Encore-VIP.com?subject=Encore%20Feedback"
+          >
+            Send feedback
+          </a>
+        </div>
+      </div>
+    </div>
+  </cos-card>
+</div>

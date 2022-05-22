@@ -1,0 +1,51 @@
+@import '../../../../scss/settings/';
+
+.cos-product-grid {
+  @include spacing-inset-8();
+  background: $color-g-white-00;
+  padding-bottom: 0;
+  padding-right: 0;
+
+  .cos-product-grid-images {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 $spacing-inline-8 $spacing-inline-8 0;
+      overflow: hidden;
+      max-width: 60px;
+      max-height: 60px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .cos-product-grid-image,
+  .cos-product-grid-counter {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+
+    @include wider-than($bp-xxlarge) {
+      width: 54px;
+      height: 54px;
+    }
+  }
+
+  .cos-product-grid-counter {
+    @include type-style-header-16();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-g-pearl-03;
+    color: $color-g-mineshaft-88;
+  }
+}

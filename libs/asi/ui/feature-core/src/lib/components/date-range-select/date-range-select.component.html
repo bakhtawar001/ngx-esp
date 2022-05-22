@@ -1,0 +1,83 @@
+<ng-container *ngIf="inlinePicker; else modalPicker">
+  <div class="date-picker mb-16">
+    <cos-form-field class="mb-0">
+      <cos-label>{{ label }}</cos-label>
+      <div class="cos-date-picker">
+        <mat-date-range-input
+          [formGroup]="rangeGroup"
+          class="cos-input date-range-input"
+        >
+          <input
+            class="date-input"
+            cos-input
+            formControlName="start"
+            matStartDate
+            placeholder="Start date"
+          />
+          <input
+            class="date-input"
+            cos-input
+            formControlName="end"
+            matEndDate
+            placeholder="End date"
+          />
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle
+          (click)="toggleInlinePicker()"
+          matSuffix
+        ></mat-datepicker-toggle>
+      </div>
+    </cos-form-field>
+    <cos-card
+      [style.maxHeight.px]="showInlinePicker ? 500 : 0"
+      class="inline-picker-calendar-card"
+    >
+      <div class="mat-datepicker-popup">
+        <mat-calendar
+          (selectedChange)="inlinePickerRangeChange($event)"
+          [selected]="inlinePickerSelectedRange"
+        >
+        </mat-calendar>
+      </div>
+    </cos-card>
+  </div>
+</ng-container>
+
+<ng-template #modalPicker>
+  <cos-form-field class="date-picker">
+    <cos-label>{{ label }}</cos-label>
+    <div class="cos-date-picker">
+      <mat-date-range-input
+        [formGroup]="rangeGroup"
+        [rangePicker]="datePicker"
+        class="cos-input date-range-input"
+      >
+        <input
+          class="date-input"
+          cos-input
+          formControlName="start"
+          matStartDate
+          placeholder="Start date"
+        />
+        <input
+          class="date-input"
+          cos-input
+          formControlName="end"
+          matEndDate
+          placeholder="End date"
+        />
+      </mat-date-range-input>
+
+      <mat-datepicker-toggle
+        [for]="datePicker"
+        matSuffix
+      ></mat-datepicker-toggle>
+
+      <mat-date-range-picker
+        #datePicker
+        [restoreFocus]="false"
+      ></mat-date-range-picker>
+    </div>
+  </cos-form-field>
+</ng-template>

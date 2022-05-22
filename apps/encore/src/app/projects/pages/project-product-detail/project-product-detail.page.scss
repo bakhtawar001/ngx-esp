@@ -1,0 +1,147 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.proj-product-detail__pg-content {
+  width: 100%;
+
+  padding: 0 0;
+  margin: 0 auto;
+
+  // @include wider-than($bp-medium) {
+  //   padding: 0 48px;
+  // }
+
+  .cos-form-field-wrapper,
+  select {
+    width: 100%;
+    max-width: 100% !important;
+  }
+
+  .proj-product-detail-btn {
+    margin-bottom: $spacing-stack-16;
+    padding: 0;
+  }
+}
+
+.proj-product-detail__back {
+  font-family: $font-stack-sans;
+  font-weight: bold;
+  font-size: $font-size-14;
+}
+
+.proj-product-detail__pg-content-body {
+  @include wider-than($bp-medium) {
+    display: flex;
+
+    > div {
+      width: 50%;
+
+      &:first-of-type {
+        margin-right: 55px;
+      }
+    }
+  }
+}
+
+.proj-product-detail__mobile-menu {
+  @include wider-than($bp-medium) {
+    display: none;
+  }
+}
+
+.proj-product-detail__mobile-controls {
+  display: flex;
+  flex-direction: column;
+  @include spacing-inset-8();
+
+  .cos-stroked-button {
+    margin: 0 0 $spacing-stack-8;
+  }
+}
+
+.proj-product-detail__desktop-controls {
+  @include narrower-than($bp-medium) {
+    display: none;
+  }
+}
+
+.proj-product-detail-header {
+  padding: 24px 0 0;
+  width: 100%;
+  margin: 0 auto 25px;
+  border-bottom: $border-light;
+}
+
+.proj-product-detail-img-container {
+  &--empty {
+    width: 100%;
+    // height: 100%;
+    // width: 644px;
+    // height: 644px;
+    padding: 30% 0;
+    background: #fff;
+    display: flex;
+    color: $color-g-shark-54;
+  }
+  display: block;
+
+  position: relative;
+
+  .cos-icon-button {
+    position: absolute;
+    bottom: 8px;
+  }
+
+  .proj-product-detail-img-edit {
+    left: 10px;
+  }
+
+  .proj-product-detail-img-delete {
+    right: 10px;
+  }
+}
+
+.cos-card.proj-product-card-disabled {
+  background: $color-g-pearl-03;
+}
+
+.cos-table--wrapper .cos-table {
+  text-align: left;
+
+  td,
+  .cos-cell {
+    padding: 16px 8px;
+    border-bottom: $border-light;
+  }
+
+  .cos-row {
+    height: auto;
+
+    &:last-of-type {
+      td,
+      .cos-cell {
+        border: 0;
+      }
+    }
+  }
+}
+
+.cos-table--wrapper {
+  margin-bottom: $spacing-stack-16;
+}
+
+.proj-product-detail__img-thumbs {
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, 84px);
+  margin-bottom: $spacing-stack-16;
+  grid-gap: 16px;
+  .img-upload-preview--small {
+    .cos-card-controls--inline.cos-card-controls-container {
+      position: absolute;
+      .cos-icon-button {
+        background: #fff;
+        color: $color-g-shark-54;
+      }
+    }
+  }
+}

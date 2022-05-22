@@ -1,0 +1,29 @@
+@import '../../../../scss/settings/';
+
+.cos-related-topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cos-related-topics-list-item {
+  margin-right: $spacing-inline-4;
+  margin-bottom: $spacing-stack-4;
+
+  > a {
+    display: block;
+  }
+}
+
+.cos-related-topics-title {
+  color: $color-g-mineshaft-88;
+
+  font-weight: $font-weight-600;
+  font-size: $font-size-18;
+}
+
+.cos-realated-topics-more.cos-pill {
+  background-color: transparent;
+}

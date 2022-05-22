@@ -1,0 +1,438 @@
+import { moduleMetadata } from '@storybook/angular';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { CosButtonComponent, CosAnchorComponent } from './button.component';
+import { CosButtonModule } from '@cosmos/components/button';
+import { ButtonSize, ThemePalette } from './button.constants';
+import { Template } from '@cosmos/storybook';
+
+export const buttonTemplate = (selector = 'cos-button') =>
+  `<button ${selector} [size]="size" [color]="color" [disabled]="disabled" (click)="onClick($event)"><i [ngClass]="['fa', 'fa-camera']"></i> {{ text }} <i class="ml-8" [ngClass]="['fa', iconRight]" *ngIf="iconRight"></i></button>`;
+
+export const linkButtonTemplate = () =>
+  `<a href cos-button [size]="size" [color]="color" [disabled]="disabled"><i [ngClass]="['fa', iconLeft, text.length ? 'mr-8' : '']" *ngIf="iconLeft"></i> {{ text }} <i class="ml-8" [ngClass]="['fa', iconRight]" *ngIf="iconRight"></i></a>`;
+
+<Meta
+  title="Buttons/Button"
+  component={CosButtonComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [CosButtonModule],
+    }),
+  ]}
+  args={{ text: 'Button Text' }}
+  argTypes={{
+    color: {
+      control: {
+        type: 'select',
+        options: ['primary', 'warn'],
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['default', 'sm', 'lg'],
+      },
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    onClick: {
+      table: {
+        disable: true,
+      },
+      action: 'click',
+    },
+  }}
+/>
+
+# Buttons
+
+Buttons direct users to take action within an app. Buttons come in many forms and styles and help guide a user in completing a task or navigating an experience.
+
+---
+
+## When to Use Buttons
+
+Buttons should be used when one or more actions need to be taken or a user needs to be directed to another location within the application. The different types of buttons can be used on any hierarchy group.
+
+### Inputs
+
+<ArgsTable of={CosButtonComponent} />
+
+### Text Buttons
+
+- Used when an action is straightforward and doesn't need a supporting icon
+
+<Canvas>
+  <Story name="Basic">{Template(buttonTemplate()).bind({})}</Story>
+  <Story
+    name="Flat"
+    args={{
+      color: 'primary',
+    }}
+  >
+    {Template(buttonTemplate('cos-flat-button')).bind({})}
+  </Story>
+  <Story name="Stroked">
+    {Template(buttonTemplate('cos-stroked-button')).bind({})}
+  </Story>
+  <Story name="Link">{Template(linkButtonTemplate()).bind({})}</Story>
+</Canvas>
+
+#### Regular Button
+
+<Source
+  language="jsx"
+  code={`
+  <button cos-flat-button size="lg">
+    Regular Button
+  </button>
+  `}
+/>
+
+#### Stroked Button
+
+<Source
+  language="jsx"
+  code={`
+  <button cos-stroked-button size="lg">
+    Button Text
+  </button>
+  `}
+/>
+
+### Icon + Text Buttons
+
+- Used when a visual indicator will help clarify the action described in the label
+
+<Canvas>
+  <Story
+    name="Icon + Text"
+    args={{
+      text: 'Add Address',
+    }}
+  >
+    {Template(buttonTemplate()).bind({})}
+  </Story>
+</Canvas>
+
+<Source
+  language="jsx"
+  code={`
+  <button cos-button>
+    <i class="fa fa-plus mr-8"> Add Address
+  </button>
+  `}
+/>
+
+### Icon Only Buttons
+
+- These should only be used to align with a platform pattern. There are certain icons that are naturally understood by a user of the platform and don't require a text label to be understood.
+
+<Canvas>
+  <Story
+    name="Icon"
+    args={{
+      buttonType: 'icon',
+      icon: 'fa-camera',
+      text: '',
+    }}
+  >
+    {Template(buttonTemplate('cos-icon-button')).bind({})}
+  </Story>
+</Canvas>
+
+<Source
+  language="jsx"
+  code={`
+  <button cos-icon-button>
+    <i class="fa fa-camera">
+  </button>
+  `}
+/>
+
+---
+
+## Use Guidelines for contextual & page level actions
+
+- **Page Level Actions:** Primary & Secondary actions are reserved for "global" or page/project level actions
+
+- **Contextual Actions:** Tertiary and icon actions are reserved things are contextual to that content/container
+
+### Only ever display a max of two contextual actions
+
+When there is the space, display icon and tertiary icon text. When there is no room, condense to just icon only or tuck under three-dot menu.
+
+Permitted combinations of contextual actions:
+
+1. One action
+2. One meatball
+3. One action, one meatball
+
+### Three-dot (Meatball Menu) Use Guidelines
+
+1. there are multiple actions and there is only room to display one icon
+2. There is one primary action which is displayed outside of the meatball, and the rest are similarly secondary and are nested within
+3. when you are hungry
+4. There are multiple actions with similar priority and they can all nest within the meatballs.
+
+---
+
+## How it Works
+
+Because there are often many buttons on a single screen or page, hierarchy is important to know what buttons are most useful in a situation.
+
+### Primary
+
+Generally there should only be one primary button on the screen at a time. This is reserved for the most relevant and important action to take.
+
+_Example labels: Save, Submit, Create_
+
+### Secondary
+
+If there is more than one button on the page, every button after the primary button will be styled as secondary.
+
+_Example labels: Edit, Add, Cancel_
+
+### Tertiary
+
+If the action is not a prominent action on the page and needs less attention, these action buttons will be styled as tertiary.
+
+_Example labels: View More, Explore, Back to Search_
+
+### Danger
+
+Danger buttons are meant for destructive actions that cannot be recovered.
+
+#### When not to use Destroy Buttons
+
+- Don't use destroy buttons for basic “cancel” actions.
+- Don't use destroy buttons for non-destructive actions.
+- Don't use multiple destroy buttons within a single page, component, or modal.
+
+_Example labels: Delete, Remove_
+
+---
+
+## Visual Details
+
+### Sizes
+
+There are three sizes for buttons: large, standard and small.
+
+#### Large
+
+##### Primary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 12      |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 16 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | GN72-Monsterra |
+| Border                      | None           |
+
+##### Secondary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 12      |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 16 |
+| Type & Icon Color           | GN72-Monsterra |
+| Background Color            | G00-White      |
+| Border                      | 1px Solid      |
+
+##### Tertiary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 12      |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 16 |
+| Type & Icon Color           | BL75-Atoll     |
+| Background Color            | None           |
+| Border                      | None           |
+
+##### Danger
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 12      |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 16 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | RD52-Macaw     |
+| Border                      | None           |
+
+#### Medium
+
+##### Primary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 8       |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 14 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | GN72-Monsterra |
+| Border                      | None           |
+
+##### Secondary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 8       |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 14 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | GN72-Monsterra |
+| Border                      | 1px            |
+
+##### Tertiary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 8       |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 14 |
+| Type & Icon Color           | BL75-Atoll     |
+| Background Color            | None           |
+| Border                      | None           |
+
+##### Danger
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 8       |
+| Spacing between Icon & Text | Inline 12      |
+| Type Size                   | Headerstyle 14 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | RD52-Macaw     |
+| Border                      | None           |
+
+#### Small
+
+##### Primary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 4       |
+| Spacing between Icon & Text | Inline 8       |
+| Type Size                   | Headerstyle 12 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | GN72-Monsterra |
+| Border                      | None           |
+
+##### Secondary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 4       |
+| Spacing between Icon & Text | Inline 8       |
+| Type Size                   | Headerstyle 12 |
+| Type & Icon Color           | GN72-Monsterra |
+| Background Color            | G00-White      |
+| Border                      | 1px Solid      |
+
+##### Tertiary
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 4       |
+| Spacing between Icon & Text | Inline 8       |
+| Type Size                   | Headerstyle 12 |
+| Type & Icon Color           | BL75-Atoll     |
+| Background Color            | None           |
+| Border                      | None           |
+
+##### Danger
+
+| Attribute                   | Value          |
+| --------------------------- | -------------- |
+| Spacing                     | Squish 4       |
+| Spacing between Icon & Text | Inline 8       |
+| Type Size                   | Headerstyle 12 |
+| Type & Icon Color           | G00-White      |
+| Background Color            | RD52-Macaw     |
+| Border                      | None           |
+
+##### Icon Only
+
+##### Large
+
+| Attribute     | Value        |
+| ------------- | ------------ |
+| Icon Size     | 30px by 30px |
+| Inset Spacing | 5px          |
+
+##### Medium
+
+| Attribute     | Value        |
+| ------------- | ------------ |
+| Icon Size     | 24px by 24px |
+| Inset Spacing | 4px          |
+
+##### Small
+
+| Attribute     | Value        |
+| ------------- | ------------ |
+| Icon Size     | 14px by 14px |
+| Inset Spacing | 4px          |
+
+---
+
+## Layout
+
+### Stacked Buttons
+
+Primary buttons should be furthest to the top when stacked with secondary button(s) or text links.
+
+### Inline Buttons
+
+Primary buttons should be furthest to the right when used inline with secondary buttons.
+
+---
+
+## States
+
+### Primary
+
+| State    | Background Color      |
+| -------- | --------------------- |
+| Default  | GN72-Monsterra        |
+| Hover    | GN65-Jungle           |
+| Focus    | Outline Color: 0F8BFF |
+| Active   | GN75-Monsterra        |
+| Disabled | G12-Disabled          |
+
+### Secondary
+
+| State    | Background Color      |
+| -------- | --------------------- |
+| Default  | G00-White             |
+| Hover    | GN72-Monsterra        |
+| Focus    | Outline Color: 0F8BFF |
+| Active   | #09755D               |
+| Disabled | Text is G12-Disabled  |
+
+### Tertiary
+
+| State    | Background Color      |
+| -------- | --------------------- |
+| Default  | None                  |
+| Hover    | Underline             |
+| Focus    | Outline Color: 0F8BFF |
+| Active   | None                  |
+| Disabled | Text is G12-Disabled  |
+
+### Danger
+
+| State    | Background Color      |
+| -------- | --------------------- |
+| Default  | RD52-Macaw            |
+| Hover    | RD-49 Macaw           |
+| Focus    | Outline Color: 0F8BFF |
+| Active   | RD-55 Macaw           |
+| Disabled | G12-Disabled          |

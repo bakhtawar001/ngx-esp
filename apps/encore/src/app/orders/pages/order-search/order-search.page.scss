@@ -1,0 +1,8 @@
+@import 'cosmos/scss/settings/';
+
+.order-search {
+  &__header {
+    border-bottom: $border-light;
+    padding-bottom: rem($spacing-stack-16);
+  }
+}

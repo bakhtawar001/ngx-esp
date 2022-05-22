@@ -1,0 +1,137 @@
+@import 'cosmos/scss/settings/';
+
+.project {
+  &__pg-title {
+    padding-bottom: rem($spacing-stack-16);
+    border-bottom: $border-light;
+  }
+
+  &-detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-info-grid {
+    font-size: $font-size-12;
+    display: grid;
+    flex-direction: row;
+    grid-template-rows: repeat(6, auto);
+    row-gap: 8px;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: grid;
+      color: $color-g-shark-54;
+      grid-template-columns: 25px 1fr;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+}
+
+.project-detail-header {
+  &--titles {
+    display: flex;
+  }
+
+  &--entity-subtitle {
+    @include type-body-style-12-shark;
+    padding-top: 4px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 200;
+  }
+
+  &--entity-status {
+    display: inline-flex;
+    margin-right: 8px;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  &__reopen-button {
+    font-size: 12px;
+    padding: 3px 12px;
+  }
+
+  &--meta-in-hands-date {
+    height: 18px;
+  }
+}
+
+.entity-last-action {
+  position: relative;
+  display: flex;
+
+  &--avatar {
+    margin-right: 16px;
+    display: inline-block;
+  }
+
+  &--info {
+    display: inline-block;
+  }
+
+  &--time {
+    font-size: 11px;
+    color: $color-g-shark-54;
+  }
+}
+
+esp-detail-header-meta .metadata-list {
+  padding: 0;
+  margin: 0;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(4, 0.8fr) 1fr;
+  gap: 16px;
+  column-gap: 8px;
+
+  p,
+  h5 {
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+@include wider-than($bp-large) {
+  .project-detail {
+    flex: 1 0 25%;
+    flex-grow: 0;
+  }
+}
+
+@include narrower-than($bp-large) {
+  .project-detail-header {
+    &--titles {
+      flex-direction: column;
+      margin-right: 40px;
+
+      &-with-reopen-button {
+        margin-right: 70px;
+      }
+    }
+
+    &--entity-status {
+      margin-top: 6px;
+    }
+
+    &--meta-in-hands-date {
+      flex-direction: column;
+      align-items: unset;
+    }
+
+    &--meta-collabs {
+      margin-top: 16px;
+    }
+
+    &__reopen-button {
+      padding: 3px;
+      width: 60px;
+      white-space: normal;
+    }
+  }
+}

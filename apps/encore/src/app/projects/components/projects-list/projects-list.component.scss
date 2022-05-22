@@ -1,0 +1,43 @@
+@import 'cosmos/scss/settings';
+
+$mobile-breakpoint: $bp-large;
+
+:host {
+  display: block;
+}
+
+.projects {
+  &-list {
+    display: flex;
+    flex-direction: column;
+
+    &__item,
+    &__pagination {
+      display: block;
+      max-width: 80%;
+    }
+
+    &__item {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-tabs {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .projects {
+    &-list {
+      flex: 1 0 25%;
+      flex-grow: 0;
+
+      &__item {
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+}

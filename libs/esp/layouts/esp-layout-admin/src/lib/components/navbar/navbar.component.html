@@ -1,0 +1,35 @@
+<div
+  class="navbar-header"
+  *ngIf="state.config.layout.toolbar?.position !== 'above'"
+>
+  <div class="logo">
+    <span class="logo__text">
+      <span class="esp-icon esp-icon-esp"></span>
+    </span>
+  </div>
+</div>
+
+<div class="navbar-menu primary" (cosOnResize)="measureAppbar($event)" #navbar>
+  <nav class="navbar-menu__items">
+    <cos-navigation
+      [navigation]="applications"
+      layout="vertical-admin"
+    ></cos-navigation>
+  </nav>
+  <div class="navbar__more" *ngIf="showMore$ | async">
+    <div class="nav-item">
+      <button class="nav-link" (click)="showAppDialog()">
+        <mat-icon class="nav-link-icon"> more_horiz </mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="navbar-menu__spacer"></div>
+  <!-- <nav class="navbar-menu__footer">
+    <div class="nav-item">
+      <button class="nav-link">
+        <mat-icon class="nav-link-icon">help_outline</mat-icon>
+        <span class="nav-link-title">Help</span>
+      </button>
+    </div>
+  </nav> -->
+</div>

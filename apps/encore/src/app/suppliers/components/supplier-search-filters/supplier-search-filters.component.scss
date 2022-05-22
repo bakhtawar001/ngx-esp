@@ -1,0 +1,43 @@
+@import 'cosmos/scss/settings/';
+
+.supplier-search-filters {
+  @include spacing-squish-8();
+}
+
+.minority-owned-container {
+  padding: 7px $spacing-stack-12;
+  border-radius: $spacing-stack-4;
+  border: 1px solid $color-g-pebble-09;
+  background: $color-g-white-00;
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &:hover {
+    background-color: $color-g-pearl-03;
+  }
+
+  cos-checkbox {
+    &.minority-owned {
+      .cos-checkbox-label {
+        color: $color-bl-atoll-75;
+        font-family: 'Barlow', sans-serif;
+        font-size: 0.875rem;
+        font-weight: $font-weight-600;
+      }
+    }
+  }
+}
+
+.minority-owned-applied {
+  border-color: $color-bl-atoll-75;
+}
+
+.cos-filter-menu {
+  &.cos-filter-location,
+  &.cos-filter-minority {
+    &:last-of-type {
+      margin-right: $spacing-stack-8;
+    }
+  }
+}

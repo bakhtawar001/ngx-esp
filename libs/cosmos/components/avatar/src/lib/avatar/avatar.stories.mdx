@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosAvatarModule } from '../avatar.module';
+import { CosAvatarComponent } from './avatar.component';
+import { CosAvatarDemoComponent } from './avatar.component.demo';
+
+<Meta
+  title="Objects/Avatar"
+  component={CosAvatarComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosAvatarModule],
+      declarations: [CosAvatarDemoComponent],
+    }),
+  ]}
+  args={{ imageUrl: 'https://via.placeholder.com/64', text: '+1' }}
+  argTypes={{
+    size: {
+      control: 'select',
+      options: ['default', 'small'],
+    },
+    mode: {
+      control: 'select',
+      options: ['text', 'image'],
+      table: { disable: true },
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosAvatarDemoComponent,
+});
+
+## Avatar Component
+
+<Canvas>
+  <Story name="Primary" args={{ mode: 'text' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Image" args={{ mode: 'image' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```js
+<cos-avatar [size]="size">
+ text or image here
+</cos-avatar>
+
+```
+
+<ArgsTable of={CosAvatarComponent} />

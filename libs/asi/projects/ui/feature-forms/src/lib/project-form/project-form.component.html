@@ -1,0 +1,161 @@
+<form
+  *ngIf="presenter.form"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="presenter.form"
+  class="project-form"
+>
+  <ng-content select="[asiProjectFormHeader]"></ng-content>
+
+  <cos-form-field class="project-form__main-info-field">
+    <cos-label>Title of Project</cos-label>
+    <input
+      data-cy="title"
+      cos-input
+      formControlName="Name"
+      placeholder="Enter title of project"
+      required
+      [maxlength]="presenterValidation.name.maxLength"
+    />
+    <cos-error data-cy="title-error"></cos-error>
+  </cos-form-field>
+
+  <cos-autocomplete
+    (onSearch)="onEventTypeSearch($event)"
+    [data]="presenter.eventTypes"
+    [maxLength]="presenterValidation.eventType.maxLength"
+    [required]="true"
+    [withCustomOption]="true"
+    formControlName="EventType"
+    label="Event Type"
+    placeholder="Select a type of event"
+    class="w-full project-form__main-info-field--autocomplete"
+    data-cy="event-type"
+    mode="search"
+  >
+    <ng-template let-option>
+      <span class="project-form__event-type-option">{{ option }} </span>
+    </ng-template>
+  </cos-autocomplete>
+  <div
+    *ngIf="
+      !presenter.form.controls.EventType.pristine &&
+      presenter.form.controls.EventType.invalid
+    "
+    data-cy="event-type-error"
+    class="project-form__event-type--error w-full cos-error"
+  >
+    You must enter a value.
+  </div>
+
+  <div class="project-form__divider w-full"></div>
+
+  <h2 class="project-form__details-header header-style-12-shark w-full">
+    Project Details
+  </h2>
+
+  <div class="project-form__details w-full">
+    <cos-form-field class="project-form__details-field">
+      <cos-label data-cy="in-hands-date-label">In-Hands Date </cos-label>
+      <div class="cos-date-picker">
+        <mat-datepicker-toggle
+          [for]="inHandsDatePicker"
+          matSuffix
+        ></mat-datepicker-toggle>
+        <mat-datepicker #inHandsDatePicker></mat-datepicker>
+        <input
+          data-cy="in-hands-date"
+          [matDatepicker]="inHandsDatePicker"
+          cos-input
+          formControlName="InHandsDate"
+          placeholder="Select a date"
+        />
+      </div>
+      <div class="flex align-items justify-start my-8 gap-x-4">
+        <ng-container>
+          <cos-checkbox
+            [checked]="!!presenter.form.controls.IsInHandsDateFlexible!.value"
+            (change)="onFlexibleChange($event)"
+            data-cy="flexible-checkbox"
+          >
+            Flexible
+          </cos-checkbox>
+          <cos-checkbox
+            [checked]="
+              presenter.form.controls.IsInHandsDateFlexible!.value === false
+            "
+            (change)="onFirmChange($event)"
+            data-cy="firm-checkbox"
+          >
+            Firm
+          </cos-checkbox>
+        </ng-container>
+      </div>
+    </cos-form-field>
+
+    <cos-form-field class="project-form__details-field">
+      <cos-label data-cy="event-date-label">Event Date</cos-label>
+      <div class="cos-date-picker">
+        <mat-datepicker-toggle
+          [for]="eventDatePicker"
+          matSuffix
+        ></mat-datepicker-toggle>
+        <mat-datepicker #eventDatePicker></mat-datepicker>
+        <input
+          data-cy="event-date"
+          [matDatepicker]="eventDatePicker"
+          cos-input
+          formControlName="EventDate"
+          placeholder="Select a date"
+        />
+      </div>
+    </cos-form-field>
+
+    <cos-form-field class="project-form__details-field">
+      <cos-label>Budget</cos-label>
+      <span
+        [hidden]="budgetInputFocused"
+        data-cy="dollar-sign"
+        class="fa fa-dollar-sign"
+        cosPrefix
+      ></span>
+      <input
+        (blur)="budgetInputFocused = false"
+        (focus)="budgetInputFocused = true"
+        maxlength="{{ presenterValidation.budget.maxLength }}"
+        data-cy="budget"
+        class="details-input"
+        cos-currency-input
+        formControlName="Budget"
+        type="text"
+      />
+      <cos-error
+        *ngIf="presenter.form.controls.Budget.hasError('maxlength')"
+        data-cy="budget-error"
+        controlErrorsIgnore
+      >
+        {{ presenterFormErrors.budgetMaxValue }}
+      </cos-error>
+    </cos-form-field>
+
+    <cos-form-field class="project-form__details-field">
+      <cos-label>Attendees</cos-label>
+      <input
+        [inputMask]="attendeesInputMask"
+        maxlength="{{ presenterValidation.numberOfAssignees.maxLength }}"
+        data-cy="assignees"
+        class="details-input"
+        cos-input
+        formControlName="NumberOfAssignees"
+        placeholder="Number of attendees"
+        type="text"
+      />
+      <cos-error
+        *ngIf="presenter.form.controls.NumberOfAssignees.hasError('maxlength')"
+        data-cy="assignees-error"
+        controlErrorsIgnore
+      >
+        {{ presenterFormErrors.assigneesMaxValue }}
+      </cos-error>
+    </cos-form-field>
+  </div>
+</form>

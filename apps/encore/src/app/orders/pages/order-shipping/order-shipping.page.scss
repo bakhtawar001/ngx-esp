@@ -1,0 +1,29 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.project-card {
+  &__metadata-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+.proj-orders {
+  &__pg-section {
+    margin-bottom: 16px;
+  }
+}
+
+.cos-card-inner {
+  width: 100%;
+}
+
+.flexbox {
+  display: flex;
+  padding: 0px;
+  align-items: flex-start;
+}
+.flexbox li {
+  list-style: none;
+}

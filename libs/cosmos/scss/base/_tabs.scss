@@ -1,0 +1,88 @@
+@import '../../scss/settings/';
+
+.mat-tab-nav-bar,
+.mat-tab-header {
+  border-bottom: $border-light;
+}
+
+// Attaching !important to these pairs isn't the best solution.
+// It would be better to attach a class to the tab component or some part of it.
+// However, this is not supported for the tabs component.
+.mat-tab-label,
+.mat-tab-link {
+  overflow: hidden;
+  height: auto !important;
+  min-width: auto !important;
+  margin: 0 12px !important;
+  padding: 8px 4px !important;
+  opacity: 1 !important;
+  &:first-child {
+    margin-left: 0 !important;
+  }
+  &:last-child {
+    margin-right: 0 !important;
+  }
+}
+
+.mat-tab-label-content,
+.mat-tab-link {
+  @include type-style-header-16();
+}
+
+// Styles for the Single Route component
+.mat-tab-label {
+  &.mat-tab-label-active {
+    .mat-tab-label-content {
+      color: $color-g-mineshaft-88;
+    }
+  }
+  border-bottom: 1px solid transparent;
+  &:not(.mat-tab-label-active) {
+    .mat-tab-label-content {
+      font-weight: 400;
+      color: $color-g-shark-54;
+    }
+  }
+  &:hover:not(.mat-tab-disabled) {
+    border-color: $color-bl-azure-57;
+    .mat-tab-label-content {
+      color: $color-g-mineshaft-88;
+    }
+  }
+  &.mat-tab-disabled {
+    .mat-tab-label-content {
+      color: $color-g-disabled-12;
+    }
+  }
+  &:focus {
+    .mat-tab-label-content {
+      @include cos-focus();
+    }
+  }
+}
+
+// Styles for the Navigation component
+.mat-tab-link {
+  &.mat-tab-label-active {
+    color: $color-g-mineshaft-88;
+  }
+  border-bottom: 1px solid transparent;
+  &:not(.mat-tab-label-active) {
+    font-weight: 400;
+    color: $color-g-shark-54;
+  }
+  &:hover:not(.mat-tab-disabled) {
+    border-color: $color-bl-azure-57;
+    color: $color-g-mineshaft-88;
+  }
+  &.mat-tab-disabled {
+    color: $color-g-disabled-12;
+  }
+  &:focus {
+    @include cos-focus-inset();
+  }
+}
+
+.mat-ink-bar {
+  background: $color-bl-azure-57;
+}

@@ -1,0 +1,151 @@
+@import 'cosmos/scss/settings/';
+
+.party-card {
+  &-wrapper {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &-contents {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &-header {
+    margin-right: 1.2rem;
+  }
+
+  &-body {
+    @include wider-than($bp-medium) {
+      display: flex;
+    }
+
+    & > div {
+      flex: 1 1 auto;
+      font-size: 12px;
+      line-height: 14px;
+
+      @include wider-than($bp-medium) {
+        padding-right: 1rem;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  esp-party-avatar {
+    flex: 0 0 36px;
+    margin-right: 16px;
+  }
+
+  .party {
+    &-name {
+      display: inline-block;
+      margin-bottom: 0;
+      max-width: 63%;
+    }
+
+    &-type {
+      margin-bottom: 1rem;
+    }
+
+    &-status {
+      vertical-align: top;
+    }
+
+    &-controls {
+      font-size: 12px;
+      color: $color-bl-atoll-75;
+      font-weight: 700;
+      margin-right: 0.6rem;
+    }
+
+    &-managed {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-created {
+      margin-top: 1rem;
+      margin-bottom: 0;
+      align-self: flex-start;
+      @include type-style-header-12-mineshaft;
+
+      .divider {
+        margin: 0 0.6rem;
+      }
+    }
+
+    &-address,
+    &-contact {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .contact-item {
+    h3 {
+      margin-bottom: 0.6rem;
+    }
+
+    &-content {
+      max-width: 100%;
+    }
+  }
+
+  @include wider-than($bp-medium) {
+    .party {
+      &-created {
+        align-self: flex-end;
+      }
+
+      &-address,
+      &-contact,
+      &-record-owner {
+        margin-bottom: 0;
+      }
+
+      &-address,
+      &-contact {
+        width: 30%;
+        max-width: 260px;
+      }
+
+      &-address {
+        margin-right: 1rem;
+        border-right: 1px solid #e9e9e9;
+      }
+
+      &-managed {
+        width: 40%;
+      }
+
+      &-record-owner {
+        padding-left: 1rem;
+        border-left: 1px solid #e9e9e9;
+      }
+    }
+  }
+}
+
+.directory-card {
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.directory-search {
+  &-keywords {
+    width: 68%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &-form {
+    width: 100%;
+    max-width: 348px;
+  }
+}

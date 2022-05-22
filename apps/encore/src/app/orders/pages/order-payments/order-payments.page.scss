@@ -1,0 +1,122 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+// Nicole's custom css
+
+.metadata-list .inbox-btn {
+  color: #0071db;
+}
+
+.grid-cols-7-auto {
+  grid-template-columns: repeat(7, auto) !important;
+}
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  align-items: flex-start;
+}
+.flexbox li {
+  list-style: none;
+}
+
+.ml-26 {
+  margin-left: 26px;
+}
+
+@include wider-than($bp-large) {
+  .border-right {
+    border-right: 1px solid #e7e8e9;
+  }
+}
+.cos-card-main.p-0 {
+  padding: 0px;
+}
+
+.metadata-list {
+  & > li:nth-child(6) {
+    border: none !important;
+  }
+
+  @include narrower-than($mobile-breakpoint) {
+    grid-row-gap: 16px;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(3, auto);
+    grid-template-areas:
+      'info-grid  info-grid  info-grid'
+      'meta1       meta2       meta3'
+      'contact    contact    contact';
+
+    > li {
+      border: none;
+      &:nth-child(2) {
+        grid-area: meta1;
+      }
+    }
+  }
+}
+
+.project-card {
+  .cos-card-main {
+    padding-bottom: $spacing-stack-8;
+  }
+
+  &__metadata-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    gap: 16px;
+
+    @include wider-than($bp-large) {
+      grid-template-rows: auto;
+      grid-template-columns: repeat(4, auto);
+      column-gap: 8px;
+    }
+  }
+  .metadata-list {
+    & > li {
+      padding: 0;
+      margin: 0;
+      h5 {
+        color: $color-g-shark-54;
+      }
+      &:not(:last-child) {
+        padding-bottom: $spacing-stack-16;
+        border-bottom: $border-light;
+        border-right: none;
+        @include wider-than($bp-large) {
+          border-bottom: none;
+          border-right: $border-light;
+        }
+      }
+    }
+  }
+}
+
+.metadata-list {
+  padding-left: 0;
+  // margin: 0;
+  list-style: none;
+  display: grid;
+
+  & > li {
+    padding: 0;
+    margin: 0;
+    h5 {
+      color: $color-g-shark-54;
+    }
+    &:not(:last-child) {
+      padding-bottom: $spacing-stack-16;
+      border-bottom: $border-light;
+      border-right: none;
+      @include wider-than($bp-large) {
+        padding-bottom: 0px;
+        border-bottom: none;
+        border-right: $border-light;
+      }
+    }
+  }
+}

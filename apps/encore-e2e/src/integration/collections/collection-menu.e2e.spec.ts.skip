@@ -1,0 +1,246 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { Collection } from '@esp/collections';
+import {
+  ConfirmDialog,
+  GlobalHeader,
+  ManageCollaboratorsDialog,
+  Toast,
+  TransferOwnershipDialog,
+} from '../../shared';
+import { randomStringGenerator, standardSetup } from '../../utils';
+import { generateCollection } from './factories';
+import { collectionDetail } from './fixtures';
+import { CollectionDetailPage, CollectionSearchPage } from './pages';
+import {
+  createCollection,
+  deleteCollection,
+  getCollection,
+  recentCollections,
+} from './utils';
+import { Intercept } from './utils/intercept';
+
+const fixture = collectionDetail(Cypress.env('environment'));
+const page = new CollectionDetailPage();
+const collectionSearchPage = new CollectionSearchPage();
+let collection: Collection;
+let recentCollectionList: Array<Collection>;
+
+standardSetup(fixture);
+
+describe('Collections Menu', () => {
+  afterEach(() => {
+    cy.get('body').click({ force: true });
+  });
+
+  before('Create new collection', () => {
+    createCollection(
+      generateCollection({ Name: randomStringGenerator(10) }),
+      false
+    )
+      .then((res) => (collection = res))
+      .then((collection) =>
+        cy.log(`Created new collection (${collection.Id}:${collection.Name}).`)
+      );
+  });
+
+  it.only('Collections should be displayed in descending order by "last accessed" date/time when there are 5 collections in the system.', function () {
+    //EN 209 : Collections should be displayed in descending order by "last accessed" date/time multiple collections in the system.
+    Intercept.searchRecent().getCollectionDetails(collection.Id);
+    page.open(collection.Id);
+    cy.wait('@getCollectionDetails');
+    GlobalHeader.collections()
+      .getHref()
+      .should('contain', `/collections/${collection.Id}`);
+    GlobalHeader.get('recentCollectionList').should('have.length', 5);
+    GlobalHeader.collections();
+  });
+
+  it('EN 209 : Only Active collections should be available in the menu descending order by "last accessed" date/time.', () => {
+    Intercept.searchRecent();
+    page.open(collection.Id);
+    cy.wait('@searchRecent').then(
+      ({
+        response: {
+          body: { Results },
+        },
+      }) => {
+        Results.forEach((element: Collection) => {
+          getCollection(element.Id).then(({ Status, IsVisible }) => {
+            assert.equal(Status, 'Active');
+            // EN 209: Only collections that the user has access should be displayed under the recent menu.
+            expect(IsVisible).to.be.true;
+          });
+        });
+      }
+    );
+  });
+
+  it('EN 209 : Deleted collection should NOT be displayed in the menu.', () => {
+    Intercept.searchRecent();
+    page.open(collection.Id);
+    cy.wait('@searchRecent').then(
+      ({
+        response: {
+          body: { Results },
+        },
+      }) => {
+        expect(collection.Id).to.be.equal(Results[0].Id);
+        page.delete();
+        ConfirmDialog.confirm();
+        cy.wait('@searchRecent').then(
+          ({
+            response: {
+              body: { Results },
+            },
+          }) => {
+            expect(collection.Id).to.be.equal(Results[0].Id);
+
+            Toast.component.should('exist').and('be.visible');
+            Toast.title.should('eq', 'Success!');
+            Toast.component.should('not.exist');
+            cy.wait('@searchRecent').then(
+              ({
+                response: {
+                  body: { Results },
+                },
+              }) => {
+                expect(collection.Id).not.to.be.equal(Results[0].Id);
+                cy.log('End of the test.');
+              }
+            );
+          }
+        );
+      }
+    );
+  });
+  it('EN 421 : Deleted Collection should NO longer be available at the collections landing page.', () => {
+    // EN 431 : Deleted Collection should NO longer be available at the collections landing page.
+    collectionSearchPage.open();
+    // EN 421 : Deleted collection should NOT result in the search on collection landing page.
+    // EN 431 : Deleted collection should NOT result in the search on collection landing page.
+    Intercept.searchCollection({ term: collection.Name });
+    collectionSearchPage.search(collection.Name);
+    cy.wait('@searchCollection');
+    collectionSearchPage.get('collectionList').should('have.length', 0);
+  });
+});
+
+describe('Take away the access rights from the user', () => {
+  before('Get an Random collection', () => {
+    createCollection(
+      generateCollection({ Name: randomStringGenerator(10) }),
+      false
+    )
+      .then((res) => (collection = res))
+      .then((collection) => {
+        cy.log(`Created new collection (${collection.Id}:${collection.Name}).`);
+      });
+  });
+
+  it('EN 209 : Collections that show up under recent menu should no longer be available if the user rights for that collection are taken away(no access).', () => {
+    page.open(collection.Id).manage();
+    ManageCollaboratorsDialog.onlyOwner().save();
+    page.transferOwnership();
+    const {
+      data: { newOwner },
+    } = fixture;
+    TransferOwnershipDialog.newOwner(newOwner)
+      .selectNewOwner(newOwner)
+      .transfer();
+    ConfirmDialog.confirm();
+    Toast.component.should('exist').and('be.visible');
+    Toast.title.should('eq', 'Ownership Transferred!');
+    Toast.component.should('not.exist');
+    // EN 429: User should be redirected to the All Collections tab on the collections landing page when collection permissions is set as "only the owner"
+    cy.url().should('be.equal', `${new CollectionSearchPage().uri}`);
+    Intercept.searchCollection();
+    collectionSearchPage.open();
+    cy.wait('@searchCollection');
+    Intercept.searchCollection({ term: collection.Name });
+    collectionSearchPage.allCollectionsTab().search(collection.Name);
+    cy.wait('@searchCollection');
+    collectionSearchPage.get('collectionList').should('have.length', 0);
+  });
+
+  it('Only collections that user has access to, should be available in the search results.', () => {
+    collectionSearchPage.open();
+    // EN 209: Only Active collections should be available in the search results
+    Intercept.searchCollection({
+      term: collection.Name,
+      status: 'Active',
+      type: 'default',
+    });
+    GlobalHeader.searchCollection(collection.Name);
+    // EN 209 : Only collections user has access to should be available in the search results.
+    cy.wait('@searchCollection').then(
+      ({
+        response: {
+          body: { Results },
+        },
+      }) => {
+        Results.forEach((element) => {
+          expect(element.IsEditable).to.be.true;
+          // EN 209: Collections from other users that are not shared should not display.
+          expect(element.Id).to.not.equal(collection.Id);
+        });
+      }
+    );
+  });
+});
+
+describe('Collection Menu :- Archive Collection', () => {
+  before('Create new collection', () => {
+    createCollection(
+      generateCollection({ Name: randomStringGenerator(10) }),
+      false
+    )
+      .then((res) => (collection = res))
+      .then((collection) =>
+        cy.log(`Created new collection (${collection.Id}:${collection.Name}).`)
+      );
+  });
+  after('Remove the Collection', () => deleteCollection(collection.Id));
+  it('EN 209 : Archive collection should NOT be displayed in the menu when user updates the status of an active collection to Archive.', () => {
+    page.open(collection.Id);
+    recentCollections().then(({ Results }) =>
+      expect(Results[0].Id).to.be.equal(collection.Id)
+    );
+    page.archive();
+    Toast.component.should('exist').and('be.visible');
+    Toast.title.should('eq', `Collection ${collection.Name} Archived!`);
+    Toast.component.should('not.exist');
+
+    recentCollections().then(({ Results }) => {
+      expect(Results.length).to.be.equal(5);
+      Results.forEach((Individual) => {
+        expect(Individual.Id).not.to.be.equal(collection.Id);
+      });
+      cy.log('End of the test.');
+    });
+  });
+  it('EN 209 : Archive collection should NOT be displayed in the menu when user accesses an Archive collection.', () => {
+    page.open(collection.Id);
+    recentCollections().then(({ Results }) => {
+      Results.forEach((element) => {
+        expect(element.Id).not.to.be.equal(collection.Id);
+      });
+    });
+  });
+
+  it('EN 209 : Archive collections should NOT be available in the search results.', () => {
+    Intercept.searchCollection({ term: collection.Name });
+    page.open(collection.Id);
+    GlobalHeader.searchCollection(collection.Name);
+    cy.wait('@searchCollection').then(
+      ({
+        response: {
+          body: { Results },
+        },
+      }) => {
+        Results.forEach((element) => {
+          expect(element.Id).not.to.equal(collection.Id);
+        });
+      }
+    );
+  });
+});

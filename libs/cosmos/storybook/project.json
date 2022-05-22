@@ -1,0 +1,43 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/storybook",
+  "sourceRoot": "libs/cosmos/storybook/src",
+  "prefix": "cos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/storybook"],
+      "options": {
+        "project": "libs/cosmos/storybook/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/storybook/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/storybook/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/storybook"],
+      "options": {
+        "jestConfig": "libs/cosmos/storybook/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/storybook/src/**/*.ts",
+          "libs/cosmos/storybook/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"]
+}

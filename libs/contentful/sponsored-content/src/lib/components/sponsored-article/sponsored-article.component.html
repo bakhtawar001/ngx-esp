@@ -1,0 +1,89 @@
+<div class="sponsored-article">
+  <div
+    class="content-container"
+    *ngIf="article$ | async as article; else loading"
+  >
+    <div class="mt-32">
+      <div
+        class="body-style-14-shark mb-16"
+        data-cy="sponsored-article__sponsored-by"
+      >
+        Sponsored by: {{ article.fields.sponsoredBy.fields.companyName }}
+        <a
+          *ngIf="supplier$ | async as supplier"
+          (click)="supplierDetailClick.emit(supplier)"
+          class="sponsored-article__supplier-number"
+          data-cy="sponsored-article__asi-number"
+          >asi/{{ article.fields.sponsoredBy.fields.asiNumber }}
+        </a>
+      </div>
+      <!-- Title -->
+      <h1 class="sponsored-article__header-title">
+        {{ article.fields.title }}
+      </h1>
+      <!-- /Title -->
+
+      <hr class="mt-24 mb-32" />
+      <!-- Description -->
+      <div
+        class="body-style-14-mineshaft"
+        data-cy="sponsored-article__content-text"
+        [innerHtml]="article.fields.description | documentToHtml"
+      ></div>
+      <!-- /Description -->
+      <hr class="mt-24 mb-32" />
+      <!-- Products -->
+      <div
+        *ngFor="
+          let articleProduct of article.fields.products;
+          let isLast = last
+        "
+        class="mb-32"
+      >
+        <div class="flex flex-col">
+          <h3
+            class="sponsored-article__product-title"
+            data-cy="sponsored-article__product-title"
+          >
+            {{ articleProduct.fields.title }}
+          </h3>
+
+          <div class="products-container self-center">
+            <esp-sponsored-product
+              [productId]="articleProduct.fields.productId"
+            >
+              <ng-template let-product="product">
+                <ng-container *ngIf="product">
+                  <esp-sponsored-product-card
+                    [product]="product"
+                    (productDetailClick)="productDetailClick.emit($event)"
+                    (addToCollectionClick)="addToCollectionClick.emit($event)"
+                  ></esp-sponsored-product-card>
+                </ng-container>
+              </ng-template>
+            </esp-sponsored-product>
+          </div>
+
+          <div
+            class="mt-64"
+            data-cy="sponsored-article__product-content"
+            [innerHtml]="articleProduct.fields.description | documentToHtml"
+          ></div>
+          <hr *ngIf="!isLast" class="mt-24 mb-32" />
+        </div>
+      </div>
+      <!-- /Products -->
+
+      <a
+        *ngIf="supplier$ | async as supplier"
+        (click)="supplierDetailClick.emit(supplier)"
+        data-cy="sponsored-article__supplier-card"
+      >
+        <cos-supplier [supplier]="supplier" [showImage]="true"></cos-supplier>
+      </a>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div>Loading...</div>
+  </ng-template>
+</div>

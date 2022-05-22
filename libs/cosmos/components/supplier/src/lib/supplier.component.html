@@ -1,0 +1,39 @@
+<div class="cos-supplier-wrapper" *ngIf="supplier">
+  <div
+    class="cos-supplier-body cursor-pointer"
+    (click)="detailClick.emit(supplier)"
+  >
+    <div class="cos-supplier-img-container" *ngIf="showImage && !imgError">
+      <img
+        class="cos-supplier-img"
+        src="https://commonmedia.asicentral.com/supplierlogos/{{
+          supplier.Id
+        }}/logo.png"
+        alt="{{ supplier.Name }}"
+        (error)="errorHandler()"
+      />
+    </div>
+
+    <div *ngIf="imgError" class="cos-supplier-no-img">No image available</div>
+
+    <div class="cos-supplier-content">
+      <span cosAttributeTag size="small">
+        <ng-container *ngIf="showPreferredGroup && supplier.Preferred">
+          {{ supplier.Preferred?.Name }}
+        </ng-container>
+      </span>
+
+      <span class="cos-supplier-name" data-cy="supplier-name">{{
+        supplier.Name
+      }}</span>
+      <span class="cos-supplier-number">asi/{{ supplier.AsiNumber }} </span>
+
+      <cos-rating
+        class="cos-supplier-rating"
+        [rating]="supplier.Rating?.Rating"
+        [totalCount]="supplier.Rating?.Transactions"
+      ></cos-rating>
+    </div>
+  </div>
+  <ng-content select="cos-supplier-footer"></ng-content>
+</div>

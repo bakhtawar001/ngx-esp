@@ -1,0 +1,85 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import {
+  allColors,
+  genAllColors,
+  tintColors,
+  genColorType,
+  backgroundColors,
+  foregroundColors,
+} from './colors.utils';
+import { Template } from '@cosmos/storybook';
+
+<Meta title="Primitives/Colors" />
+
+# Colors
+
+The colors outlined below are based on the Encore Brand Guidelines and will provide a cohesive and consistent aesthetic for its products across various platforms.
+
+To ensure Encore digital products are accessible for all users, the chosen colors/text + background combinations have been adjusted to provide acceptable color contrast for optimal readability. The contrast ratio of text and interactive elements in Encore products meet [level AA of the Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/#contrast-minimum).
+
+_User Agent is defined as the browser or platform OS. If you use the default styles provided by the User Agent, then these contrast requirements do not apply. See [WCAG contrast guidelines](https://webaim.org/articles/contrast/#sc143) for more info._
+
+| Title         | Ratio                 | Details                                               |
+| ------------- | --------------------- | ----------------------------------------------------- |
+| Text \*       | 4.5:1                 | Text 23px and smaller. No smaller than 10px.          |
+| Large Text \* | 3.0:1                 | Text 24px and larger                                  |
+| Interactive   | 3:1 or User Agent\*   | Button shapes, text inputs, radio buttons, icons, etc |
+| General UI    | 1.2:1 or User Agent\* | Borders and background colors                         |
+
+A flexible role-based color system is used to bring structure to the decision making process. Color values are given specific names derived from their purpose.
+
+---
+
+## Color Groups
+
+The three color groups suggest when colors should be used:
+
+| Semantic Group | Description                                                                                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tints          | Tint colors will primarily signify action or call attention to different parts of the UI.                                                                                     |
+| Backgrounds    | Background colors are meant to be a surface for tints, foregrounds or other backgrounds to be placed upon.                                                                    |
+| Foregrounds    | Foreground colors are primarily used for non-interactive text or elements that support text such as dividers, text fields, etc. They are meant to be placed onto backgrounds. |
+
+---
+
+## The Colors
+
+Using the color groups and assigned colors defined in this section, you can apply colors to UI objects based on the function of the object and what layer it is placed on.
+
+### Tints
+
+<Canvas>
+  <Story height={540} name="Tints">
+    {Template(genColorType(tintColors)).bind({})}
+  </Story>
+</Canvas>
+
+### Backgrounds
+
+<Canvas>
+  <Story height={540} name="Background">
+    {Template(genColorType(backgroundColors)).bind({})}
+  </Story>
+</Canvas>
+
+### Foregrounds
+
+<Canvas>
+  <Story height={540} name="Foreground">
+    {Template(genColorType(foregroundColors)).bind({})}
+  </Story>
+</Canvas>
+
+---
+
+## Research on Color
+
+### Color contrast
+
+- The contrast ratio of text and interactive elements in Encore will meet [level AA of the Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/#contrast-minimum).
+
+### Other Research
+
+- [Re-approaching Color: Lyft ColorBox](https://design.lyft.com/re-approaching-color-9e604ba22c88)
+- [Color Box Tint Primary Example](https://www.colorbox.io/#steps=5#hue_start=175#hue_end=129#hue_curve=easeInQuad#sat_start=91#sat_end=6#sat_curve=easeOutQuad#sat_rate=130#lum_start=26#lum_end=100#lum_curve=easeOutQuad#lock_hex=067D71#minor_steps_map=none)
+- [A new way to explore generative design systems](https://components.ai/color-scale)

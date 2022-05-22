@@ -1,0 +1,437 @@
+<form [formGroup]="filtersForm">
+  <div class="product-search-filters">
+    <cos-filters
+      [appliedFilters]="appliedFiltersPills"
+      [hasFilters]="hasFilters"
+      (resetFiltersEvent)="resetAllFilters()"
+      (applyFiltersEvent)="applyFilter()"
+      [title]="title"
+    >
+      <cos-filter-menu
+        [label]="labels.category"
+        (apply)="applyFilter()"
+        (reset)="resetCategory()"
+        (clickOut)="categoryClickOut()"
+        [applied]="!!state.criteria.filters['CategoryGroup']?.terms.length"
+        [applyDisabled]="!filtersForm.controls?.CategoryGroup?.value?.length"
+        fullWidth
+        class="cos-filter-category-menu"
+      >
+        <div class="filter-menu filter-menu-select-list filter-menu-category">
+          <cos-form-field>
+            <cos-label>Category</cos-label>
+            <select
+              matNativeControl
+              id="filter-menu-category"
+              (click)="$event.stopPropagation()"
+              formControlName="CategoryGroup"
+              class="cos-filter-category-select"
+            >
+              <option value="">All Categories</option>
+              <option
+                [selected]="
+                  state.criteria.filters?.CategoryGroup?.terms[0].toString()
+                    | includes: category.Value
+                "
+                *ngFor="
+                  let category of state.facets?.CategoryGroup
+                    | orderBy: 'Count':'desc';
+                  trackBy: trackByName
+                "
+                [value]="category.Value"
+                class="category-name"
+              >
+                <span [attr.title]="category.Value">{{ category.Value }}</span>
+              </option>
+            </select>
+          </cos-form-field>
+
+          <fieldset
+            *ngIf="
+              !!filtersForm.controls?.CategoryGroup?.value?.length &&
+              !!state.facets?.CategoryValue?.length
+            "
+            class="cos-form-field"
+          >
+            <legend class="cos-form-label">Sub-Category</legend>
+            <input
+              id="filter-menu-category-search-term"
+              cos-input
+              type="search"
+              formControlName="CategorySearchTerm"
+              name="filterCategorySearchTerm"
+              placeholder="Sub category"
+              aria-label="Category search"
+              (click.silent)="$event.stopPropagation()"
+              class="cos-filter-menu-sub-category-search"
+            />
+            <mat-selection-list
+              formControlName="CategoryValue"
+              class="cos-category-selection"
+            >
+              <mat-list-option
+                checkboxPosition="before"
+                [value]="subCategory.Value"
+                *ngFor="
+                  let subCategory of state.facets?.CategoryValue
+                    | orderBy: 'Products':'desc';
+                  trackBy: trackByName
+                "
+                [hidden]="
+                  !(
+                    subCategory.Value
+                    | includes: filtersForm.controls.CategorySearchTerm.value
+                  )
+                "
+                (keydown.enter)="$event.stopPropagation()"
+              >
+                <span
+                  [attr.title]="subCategory.Value"
+                  class="cos-sub-category"
+                  >{{ subCategory.Value }}</span
+                >
+              </mat-list-option>
+            </mat-selection-list>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-menu
+        [label]="labels.supplier"
+        (apply)="applyFilter('SupplierSearchTerm')"
+        (reset)="resetFilter('Supplier', 'SupplierSearchTerm')"
+        (clickOut)="clickOut('Supplier', 'SupplierSearchTerm')"
+        [applied]="!!state.criteria.filters.Supplier?.terms?.length"
+        [applyDisabled]="!filtersForm.controls?.Supplier?.value?.length"
+        fullWidth
+      >
+        <div class="filter-menu filter-menu-select-list filter-menu-supplier">
+          <fieldset class="cos-form-field">
+            <legend class="cos-form-label">Suppliers</legend>
+            <input
+              id="filter-menu-supplier-search-term"
+              cos-input
+              type="search"
+              formControlName="SupplierSearchTerm"
+              name="filterSupplierSearchTerm"
+              placeholder="Supplier name"
+              aria-label="Supplier search"
+              (click)="$event.stopPropagation()"
+              (keydown.enter)="$event.preventDefault()"
+            />
+
+            <mat-selection-list
+              class="supplier-list"
+              formControlName="Supplier"
+            >
+              <ng-container *ngIf="!!supplierOptions?.length">
+                <mat-list-option
+                  checkboxPosition="before"
+                  *ngFor="let supplier of supplierOptions"
+                  [value]="supplier?.Value"
+                  (click)="selectFilter(supplier, 'Supplier')"
+                  (keydown.enter)="$event.stopPropagation()"
+                  [hidden]="
+                    !(
+                      supplier.Value
+                      | includes: filtersForm.controls.SupplierSearchTerm.value
+                    )
+                  "
+                >
+                  <span [attr.title]="supplier.Value">{{
+                    supplier.Value
+                  }}</span>
+                </mat-list-option>
+              </ng-container>
+            </mat-selection-list>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+      <ng-container formGroupName="PriceFilter">
+        <cos-filter-menu
+          [label]="labels.quantity"
+          (apply)="applyFilter()"
+          (reset)="resetPriceFilter('Quantity')"
+          (clickOut)="clickOut('PriceFilter')"
+          [applied]="!!state.criteria.priceFilter?.Quantity"
+          [applyDisabled]="
+            filtersForm.get('PriceFilter.Quantity').errors?.inValid ||
+            !filtersForm.get('PriceFilter.Quantity')?.value
+          "
+          fullWidth
+        >
+          <div class="filter-menu filter-menu-quantity">
+            <cos-form-field>
+              <cos-label>Quantity</cos-label>
+              <input
+                id="filter-menu-quantity"
+                class="w-full"
+                name="filterQuantity"
+                type="text"
+                cosDigitsOnly
+                maxlength="8"
+                formControlName="Quantity"
+                placeholder="Quantity"
+                cos-input
+                (keydown.enter)="$event.preventDefault()"
+              />
+            </cos-form-field>
+          </div>
+        </cos-filter-menu>
+        <cos-filter-menu
+          [label]="labels.price"
+          (apply)="applyFilter()"
+          (reset)="resetPriceFilter('PriceFilter')"
+          (clickOut)="clickOut('PriceFilter')"
+          [applied]="
+            !!state.criteria.priceFilter?.From ||
+            !!state.criteria.priceFilter?.To
+          "
+          [applyDisabled]="
+            filtersForm.get('PriceFilter.From').invalid ||
+            filtersForm.get('PriceFilter.To').invalid ||
+            (!filtersForm.get('PriceFilter.From').value &&
+              !filtersForm.get('PriceFilter.To').value)
+          "
+          fullWidth
+        >
+          <div class="filter-menu filter-menu-price">
+            <cos-form-field>
+              <cos-label>Price Per Unit Range</cos-label>
+              <div class="cos-inline">
+                <input
+                  id="filter-menu-price-from"
+                  name="filterPriceFrom"
+                  type="number"
+                  cosDigitsOnly
+                  [allowDecimals]="true"
+                  min="0"
+                  max="9999999"
+                  step=".001"
+                  cos-input
+                  formControlName="From"
+                  placeholder="Min price"
+                  (keydown.enter)="$event.preventDefault()"
+                />
+                <span>-</span>
+                <input
+                  id="filter-menu-price-to"
+                  name="filterPriceTo"
+                  type="number"
+                  cosDigitsOnly
+                  [allowDecimals]="true"
+                  min="0"
+                  max="9999999"
+                  step=".001"
+                  cos-input
+                  formControlName="To"
+                  placeholder="Max price"
+                  (keydown.enter)="$event.preventDefault()"
+                />
+              </div>
+            </cos-form-field>
+          </div>
+        </cos-filter-menu>
+      </ng-container>
+      <cos-filter-menu
+        [label]="labels.rating"
+        (apply)="applyFilter()"
+        (reset)="resetFilter('SupplierRating')"
+        (clickOut)="clickOut('SupplierRating')"
+        [applied]="hasSupplierRating"
+        [applyDisabled]="!filtersForm.get('SupplierRating').value"
+        fullWidth
+        class="cos-filter-rating-menu"
+      >
+        <div class="filter-menu filter-menu-rating">
+          <cos-form-field>
+            <cos-label>Supplier Rating</cos-label>
+            <select
+              id="filter-menu-rating"
+              name="filterRating"
+              matNativeControl
+              class="cos-input rating-select"
+              formControlName="SupplierRating"
+            >
+              <option
+                *ngFor="let rating of ratingsMenuOptions"
+                [value]="rating.value"
+              >
+                {{ rating.name }}
+              </option>
+            </select>
+          </cos-form-field>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-menu
+        [label]="labels.color"
+        (apply)="applyFilter('ColorSearchTerm')"
+        (reset)="resetFilter('Color', 'ColorSearchTerm')"
+        (clickOut)="clickOut('Color', 'ColorSearchTerm')"
+        [applied]="!!state.criteria.filters.Color?.terms?.length"
+        [applyDisabled]="!filtersForm.controls?.Color?.value?.length"
+        fullWidth
+        class="cos-filter-colors-menu"
+      >
+        <div class="filter-menu filter-menu-select-list filter-menu-color">
+          <fieldset class="cos-form-field">
+            <legend class="cos-form-label">Colors</legend>
+            <input
+              id="filter-menu-color-search-term"
+              cos-input
+              type="search"
+              formControlName="ColorSearchTerm"
+              name="filterColorSearchTerm"
+              placeholder="Color"
+              aria-label="Color search"
+              (click)="$event.stopPropagation()"
+              (keydown.enter)="$event.preventDefault()"
+            />
+            <ng-container *ngIf="!!colorOptions.length">
+              <mat-selection-list class="colors-list" formControlName="Color">
+                <mat-list-option
+                  checkboxPosition="before"
+                  *ngFor="let color of colorOptions"
+                  [value]="color.Value"
+                  (click)="selectFilter(color, 'Color')"
+                  (keydown.enter)="$event.stopPropagation()"
+                  [hidden]="
+                    !(
+                      color.Value
+                      | includes: filtersForm.controls.ColorSearchTerm.value
+                    )
+                  "
+                >
+                  <span [attr.title]="color.Value">{{ color.Value }}</span>
+                </mat-list-option>
+              </mat-selection-list>
+            </ng-container>
+          </fieldset>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-menu
+        [label]="labels.excludeTerms"
+        (apply)="applyFilter()"
+        (reset)="resetFilter('ExcludeTerms')"
+        (clickOut)="clickOut('ExcludeTerms')"
+        [applied]="!!state.criteria.excludeTerm"
+        [applyDisabled]="!filtersForm.controls?.ExcludeTerms?.value"
+        fullWidth
+        class="cos-filter-exclude-menu"
+      >
+        <div class="filter-menu filter-menu-exclude">
+          <cos-form-field>
+            <cos-label>Exclude Keywords</cos-label>
+            <input
+              id="filter-menu-exclude"
+              class="w-full filter-menu-exclude-input"
+              name="filterMenuExclude"
+              type="text"
+              formControlName="ExcludeTerms"
+              placeholder="Keywords"
+              cos-input
+              (keydown.enter)="$event.preventDefault()"
+            />
+          </cos-form-field>
+        </div>
+      </cos-filter-menu>
+      <cos-filter-controls (clickOutside)="onClickedOutside()">
+        <button
+          cos-button
+          (click)="toggleShowAllFilters()"
+          (keydown)="checkShiftTabOff($event)"
+        >
+          {{ filterDisplay }}
+        </button>
+
+        <span
+          (click)="$event.stopPropagation()"
+          *ngIf="showAllFilters && isDesktop"
+        >
+          <ng-container *ngTemplateOutlet="moreFiltersPanel"></ng-container>
+        </span>
+      </cos-filter-controls>
+
+      <div *ngIf="!isDesktop">
+        <ng-container *ngTemplateOutlet="moreFiltersPanel"></ng-container>
+      </div>
+      <asi-filter-pills
+        class="filter-pills"
+        [filterPills]="state.filterPills"
+        (removeFilterEvent)="removeFilter($event)"
+        *ngIf="hasFilters"
+      >
+      </asi-filter-pills>
+    </cos-filters>
+  </div>
+
+  <ng-template #moreFiltersPanel>
+    <div class="cos-filters-mega-menu" (click)="$event.stopPropagation()">
+      <div class="cos-filter-menu cos-form-row cos-form-row-dimensions">
+        <div class="type-ahead-row" formGroupName="TypeAheads">
+          <ng-container
+            *ngFor="
+              let typeAhead of typeAheads | keyvalue: unsorted;
+              let i = index
+            "
+          >
+            <div class="type-ahead-container">
+              <esp-aggregation-typeahead
+                placeholder="Enter a value"
+                [formControlName]="typeAhead?.key"
+                [label]="typeAhead?.value"
+                [aggregationName]="typeAhead?.key"
+                [aggregationValues]="state.facets?.[typeAhead?.key] || []"
+                [params]="typeAheadParams"
+                (keydown.enter)="$event.preventDefault()"
+              ></esp-aggregation-typeahead>
+            </div>
+          </ng-container>
+        </div>
+        <div class="cos-filter-rush-time">
+          <cos-checkbox
+            name="IncludeRushTime"
+            formControlName="IncludeRushTime"
+            (keydown.enter)="$event.preventDefault()"
+          >
+            Include Rush Time</cos-checkbox
+          >
+        </div>
+      </div>
+
+      <div class="cos-filter-menu cos-form-row cos-form-row-other-stuff">
+        <span class="cos-form-label"> Other Stuff </span>
+        <div class="cos-mega-menu-radios" [formGroup]="checkboxForm">
+          <ng-template ngFor [ngForOf]="checkBoxes" let-checkBox let-i="index">
+            <cos-checkbox
+              id="checkbox-{{ i }}"
+              name="checkbox-{{ i }}"
+              [formControlName]="checkBox.value"
+              [value]="checkBox.value"
+              (keydown.enter)="$event.preventDefault()"
+            >
+              {{ checkBox.label }}
+            </cos-checkbox>
+          </ng-template>
+        </div>
+      </div>
+      <div class="cos-mega-menu-controls" *ngIf="isDesktop">
+        <button
+          cos-stroked-button
+          color="primary"
+          (click)="
+            resetShowMoreFilters([
+              'CheckBoxes',
+              'TypeAheads',
+              'IncludeRushTime'
+            ])
+          "
+        >
+          Reset
+        </button>
+        <button cos-flat-button color="primary" (click)="applyFilter()">
+          Apply
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</form>

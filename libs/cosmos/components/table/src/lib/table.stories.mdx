@@ -1,0 +1,84 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ELEMENT_DEMO_DATA } from './table.demo.data';
+import { CosTableModule } from './table.module';
+import { CosTableComponent } from './table.component';
+import { CosTableDemoComponent } from './table.component.demo';
+
+<Meta
+  title="Layout Components/Table"
+  component={CosTableComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosTableModule],
+      declarations: [CosTableDemoComponent],
+    }),
+  ]}
+  args={{
+    dataSource: ELEMENT_DEMO_DATA,
+    displayedColumns: ['quantity', 'catalogPrice', 'netCost', 'eqp', 'profit'],
+  }}
+  argTypes={{
+    dataSource: {
+      control: 'object',
+    },
+    displayedColumns: {
+      control: 'array',
+    },
+    mode: {
+      table: { disable: true, hidden: true },
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosTableDemoComponent,
+});
+
+## Tables
+
+Tables are used to display info such as pricings, available quanitites.
+
+---
+
+## When to use this
+
+Use this component when
+
+- You want to display pricing grids.
+
+<Canvas>
+  <Story name="Directive" args={{ mode: 'directive' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Component" args={{ mode: 'component' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={CosTableComponent} />
+
+## Visual Details
+
+### Sizing
+
+| Attribute | Value | Type                 | Alignment             |
+| --------- | ----- | -------------------- | --------------------- |
+| Header    | 24px  | Barlow Bold 11       | Left or Right Aligned |
+| Row       | 29px  | Work Sans Regular 12 | Left or Right Aligned |
+
+-
+
+### Spacing
+
+- Each table cell has spacing of Squish 4
+
+---
+
+## Resources
+
+- [Design better data tables](https://uxdesign.cc/design-better-data-tables-4ecc99d23356)
+- [Ultimate guide to table UI patterns](http://www.jankoatwarpspeed.com/ultimate-guide-to-table-ui-patterns/)

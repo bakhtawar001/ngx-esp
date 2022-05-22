@@ -1,0 +1,41 @@
+@import '../../../../scss/settings/';
+
+.cos-tracker-step {
+  position: absolute;
+  z-index: 1;
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+  background: $color-g-white-00;
+  border: 1px solid $color-g-moth-41;
+  font-size: rem(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%) scale(1);
+  color: $color-g-moth-41;
+  font-weight: 500;
+
+  &.cos-tracker-step--lg {
+    width: 25px;
+    height: 25px;
+    font-size: rem(14px);
+  }
+}
+
+.cos-tracker-step--green.completed,
+.cos-tracker-step.completed {
+  background: $color-bl-azure-57;
+  border: $color-bl-azure-57;
+  color: $color-g-white-00;
+}
+
+.cos-tracker-step--yellow.completed {
+  background: $color-yl-viper-38;
+  border: $color-yl-viper-38;
+}
+
+.cos-tracker-step--red.completed {
+  background: $color-rd-macaw-52;
+  border: $color-rd-macaw-52;
+}

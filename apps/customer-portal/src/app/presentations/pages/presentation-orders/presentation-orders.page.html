@@ -1,0 +1,474 @@
+<section class="cos-presentation-main presentation-orders__pg-wrapper">
+  <cos-card class="cos-card">
+    <div class="cos-card-container">
+      <h1 class="header-style-24">Orders</h1>
+
+      <p>
+        Lorem ipsum dolor sit emet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna alique. Ut enim ad minim
+        veniam.
+      </p>
+
+      <div class="grid-gap-16 grid grid-cols-3">
+        <div>
+          <p class="body-style-12-shark">Orders</p>
+          <p class="body-style-32">2</p>
+        </div>
+        <div>
+          <p class="body-style-14-shark">Shipments</p>
+          <p class="body-style-32">0</p>
+        </div>
+        <div>
+          <p class="body-style-14-shark">Shipments Delivered</p>
+          <p class="body-style-32">0</p>
+        </div>
+      </div>
+    </div>
+    <div cos-card-sidebar class="cos-card-sidebar">
+      <h3 class="header-style-14-bold">Project details</h3>
+
+      <div class="cos-presentation-project-info-grid">
+        <div>
+          <i class="fa fa-hand-paper"></i>Needed in-hands by November 13, 2020
+        </div>
+        <div>
+          <i class="fa fa-calendar-alt"></i>Event scheduled for November 20,
+          2020
+        </div>
+        <div>
+          <i class="fa fa-dollar-sign"></i
+          ><span>Budget <span> < $15,000 </span> </span>
+        </div>
+        <div class="mb-0">
+          <i class="fa fa-users"></i><span>Attendees 2,500</span>
+        </div>
+      </div>
+    </div>
+  </cos-card>
+</section>
+
+<section class="presentation-orders__pg-section mt-16 mb-32">
+  <h2 class="header-style-18">Order # 1002</h2>
+
+  <div class="border-bottom grid-gap-32 flex mb-16">
+    <div class="w-1/4">
+      <p class="body-style-14-shark mt-0 mb-0">Order Status</p>
+      <h1 class="header-style-24 mt-0 mb-8">Awaiting Proof Creation</h1>
+      <p class="body-style-14 mt-0 mb-0">
+        <strong>Updated:</strong> 10/22/2020
+      </p>
+    </div>
+
+    <div class="presentation-orders__tracker w-3/5 mt-16 mb-16">
+      <div class="project-card__tracker ml-32">
+        <cos-tracker
+          class="cos-tracker"
+          ng-reflect-starts-on-zero="false"
+          ng-reflect-current-step="2"
+        >
+          <div class="cos-tracker-container">
+            <cos-tracker-step
+              class="
+                cos-tracker-step cos-tracker-step--lg
+                completed
+                active-step
+              "
+              ng-reflect-size="lg"
+              style="left: calc(0%)"
+              ><i class="fa fa-check cos-text--white ng-star-inserted"></i
+            ></cos-tracker-step>
+
+            <cos-tracker-step
+              class="
+                cos-tracker-step cos-tracker-step--lg
+                completed
+                active-step
+              "
+              ng-reflect-size="lg"
+              style="left: calc(20%)"
+              ><span class="ng-star-inserted"
+                ><i
+                  class="fa fa-check cos-text--white ng-star-inserted"
+                ></i></span
+            ></cos-tracker-step>
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg active-step"
+              ng-reflect-size="lg"
+              style="left: calc(40%)"
+              ><span class="ng-star-inserted">3</span></cos-tracker-step
+            >
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(60%)"
+            >
+              <span class="ng-star-inserted">4</span>
+            </cos-tracker-step>
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(80%)"
+            >
+              <span class="ng-star-inserted">5</span>
+            </cos-tracker-step>
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(100%)"
+            >
+              <span class="ng-star-inserted">6</span>
+            </cos-tracker-step>
+
+            <div
+              class="cos-tracker-progress"
+              ng-reflect-ng-style="[object Object]"
+              style="width: 40%"
+            ></div>
+          </div>
+        </cos-tracker>
+        <div
+          class="grid-gap-32 hide-mobile flex mt-32"
+          style="margin-right: -16px; margin-left: -16px"
+        >
+          <div class="track-label first text-left">
+            <p class="body-style-14-shark">Order Processing</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark">Awaiting Proof Creation</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark">Awaiting Proof Approval</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark">In Production</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark inactive">Ship by 11/10/2020</p>
+          </div>
+          <div class="track-label last text-right">
+            <p class="body-style-14-shark inactive">Est delivery 11/10/2020</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="text-right">
+    <button cos-button (click)="trackShipment()">Track shipment</button>
+  </div>
+
+  <div class="grid grid-cols-2 mt-16 mb-16">
+    <div>
+      <p class="body-style-12-shark mb-8"><strong>Ship to</strong></p>
+      <p class="body-style-14 mb-8">John Smith</p>
+      <p class="body-style-14 mb-0">1234 Anywhere St, Anytown, US 12345</p>
+    </div>
+    <div>
+      <p class="body-style-12-shark mb-8"><strong>Shipping Method</strong></p>
+      <p class="body-style-14 mb-0">UPS Priority</p>
+    </div>
+  </div>
+  <cos-card class="cos-card">
+    <div class="cos-card-container">
+      <div class="grid-cols-2-auto grid">
+        <div>
+          <h2 class="header-style-16">
+            Saturn Jumbo Sized Non-Woven Grocery Tote
+            <span cosPillLabel style="margin-top: -8px" class="ml-8">
+              Proof ready
+            </span>
+          </h2>
+        </div>
+        <div class="quote-button text-right">
+          <button
+            type="button"
+            cos-flat-button
+            color="primary"
+            [routerLink]="'../invoices'"
+          >
+            View proof
+          </button>
+        </div>
+      </div>
+      <div class="grid-gap-16 grid grid-cols-2">
+        <div class="grid-gap-16 flex">
+          <div class="quote-image">
+            <img
+              src="https://via.placeholder.com/100x100/EFEFEF/000000?text=coming%20soon"
+            />
+          </div>
+          <div class="quote-details">
+            <div class="grid-gap-4 grid-rows-5-auto body-style-14-shark grid">
+              <div>Quantity: 500</div>
+              <div>Color: Green</div>
+              <div>Imprint method: Dye sublimation</div>
+              <div>Artwork: <a href="#">greenstone_icon_white.png</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cos-card>
+</section>
+
+<section class="presentation-orders__pg-section mt-16 mb-32">
+  <h2 class="header-style-18">Order # 1002</h2>
+
+  <div class="border-bottom flex mb-16">
+    <div class="w-1/4">
+      <p class="body-style-14-shark mt-0 mb-0">Order Status</p>
+      <h1 class="header-style-24 mt-0 mb-8">Awaiting Proof Creation</h1>
+      <p class="body-style-14 mt-0 mb-0">
+        <strong>Updated:</strong> 10/22/2020
+      </p>
+    </div>
+
+    <div class="presentation-orders__tracker w-3/5 mt-16 mb-16">
+      <div class="project-card__tracker ml-32">
+        <cos-tracker
+          class="cos-tracker"
+          ng-reflect-starts-on-zero="false"
+          ng-reflect-current-step="2"
+        >
+          <div class="cos-tracker-container">
+            <cos-tracker-step
+              class="
+                cos-tracker-step cos-tracker-step--lg
+                completed
+                active-step
+              "
+              ng-reflect-size="lg"
+              style="left: calc(0%)"
+              ><i class="fa fa-check cos-text--white ng-star-inserted"></i
+            ></cos-tracker-step>
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg active-step"
+              ng-reflect-size="lg"
+              style="left: calc(20%)"
+              ><span class="ng-star-inserted">2</span></cos-tracker-step
+            >
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(40%)"
+              ><span class="ng-star-inserted">3</span></cos-tracker-step
+            >
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(60%)"
+            >
+              <span class="ng-star-inserted">4</span>
+            </cos-tracker-step>
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(80%)"
+            >
+              <span class="ng-star-inserted">5</span>
+            </cos-tracker-step>
+
+            <cos-tracker-step
+              class="cos-tracker-step cos-tracker-step--lg"
+              ng-reflect-size="lg"
+              style="left: calc(100%)"
+            >
+              <span class="ng-star-inserted">6</span>
+            </cos-tracker-step>
+
+            <div
+              class="cos-tracker-progress"
+              ng-reflect-ng-style="[object Object]"
+              style="width: 20%"
+            ></div>
+          </div>
+        </cos-tracker>
+        <div
+          class="grid-gap-32 hide-mobile flex mt-32"
+          style="margin-right: -16px; margin-left: -16px"
+        >
+          <div class="track-label first text-left">
+            <p class="body-style-14-shark">Order Processing</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark">Awaiting Proof Creation</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark">Awaiting Proof Approval</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark">In Production</p>
+          </div>
+          <div class="track-label text-center">
+            <p class="body-style-14-shark inactive">Ship by 11/10/2020</p>
+          </div>
+          <div class="track-label last text-right">
+            <p class="body-style-14-shark inactive">Est delivery 11/10/2020</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="grid grid-cols-2 mt-16 mb-16">
+    <div>
+      <p class="body-style-12-shark mb-8"><strong>Ship to</strong></p>
+      <p class="body-style-14 mb-8">John Smith</p>
+      <p class="body-style-14 mb-0">1234 Anywhere St, Anytown, US 12345</p>
+    </div>
+    <div>
+      <p class="body-style-12-shark mb-8"><strong>Shipping Method</strong></p>
+      <p class="body-style-14 mb-0">UPS Priority</p>
+    </div>
+  </div>
+  <cos-card class="cos-card">
+    <div class="cos-card-container">
+      <div class="grid-cols-2-auto grid">
+        <div>
+          <h2 class="header-style-16">
+            Risky Business Shades
+            <span cosPillLabel style="margin-top: -8px" class="ml-8">
+              Proof ready
+            </span>
+          </h2>
+        </div>
+        <div class="quote-button text-right">
+          <button type="button" cos-flat-button color="primary" disabled>
+            View proof
+          </button>
+        </div>
+      </div>
+      <div class="grid-gap-16 grid grid-cols-2 mb-16">
+        <div class="grid-gap-16 flex">
+          <div class="quote-image">
+            <img
+              src="https://via.placeholder.com/100x100/EFEFEF/000000?text=coming%20soon"
+            />
+          </div>
+          <div class="quote-details">
+            <div class="grid-gap-4 grid-rows-5-auto body-style-14-shark grid">
+              <div>Quantity: 250</div>
+              <div>Color: Lime Green</div>
+              <div>Imprint method: Pad print</div>
+              <div>Artwork: <a href="#">greenstone_full_white.png</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cos-card-container">
+      <div class="grid-gap-16 grid grid-cols-2">
+        <div class="grid-gap-16 flex">
+          <div class="quote-image">
+            <img
+              src="https://via.placeholder.com/100x100/EFEFEF/000000?text=coming%20soon"
+            />
+          </div>
+          <div class="quote-details">
+            <div class="grid-gap-4 grid-rows-5-auto body-style-14-shark grid">
+              <div>Quantity: 250</div>
+              <div>Color: Dark Grey</div>
+              <div>Imprint method: Pad print</div>
+              <div>Artwork: <a href="#">greenstone_full_white.png</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-button text-right">
+          <button type="button" cos-flat-button color="primary" disabled>
+            View proof
+          </button>
+        </div>
+      </div>
+    </div>
+  </cos-card>
+
+  <cos-card class="cos-card">
+    <div class="cos-card-container">
+      <div class="grid-cols-2-auto grid">
+        <div>
+          <h2 class="header-style-16">
+            Just Your Basic Regular Ol'Clicky Pen
+            <span cosPillLabel style="margin-top: -8px" class="warn ml-8">
+              Production delayed
+            </span>
+          </h2>
+        </div>
+        <div class="quote-button text-right">
+          <button type="button" cos-flat-button color="primary" disabled>
+            View proof
+          </button>
+        </div>
+      </div>
+      <div class="grid-gap-16 grid grid-cols-2">
+        <div class="grid-gap-16 flex">
+          <div class="quote-image">
+            <img
+              src="https://via.placeholder.com/100x100/EFEFEF/000000?text=coming%20soon"
+            />
+          </div>
+          <div class="quote-details">
+            <div class="grid-gap-4 grid-rows-5-auto body-style-14-shark grid">
+              <div>Quantity: 1,000</div>
+              <div>Color: White - Black</div>
+              <div>Ink: Black</div>
+              <div>Imprint method: Pad print</div>
+              <div>Artwork: <a href="#">greenstone_full_fullcolor.png</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cos-card>
+
+  <cos-card class="cos-card">
+    <div class="cos-card-container">
+      <div class="grid-cols-2-auto grid">
+        <div>
+          <h2 class="header-style-16">
+            Adult Softspun Semi-Fitted Tee
+            <span cosPillLabel style="margin-top: -8px" class="ml-8">
+              Proof ready
+            </span>
+          </h2>
+        </div>
+        <div class="quote-button text-right">
+          <button
+            type="button"
+            cos-flat-button
+            color="primary"
+            [routerLink]="'../invoices'"
+          >
+            View proof
+          </button>
+        </div>
+      </div>
+      <div class="grid-gap-16 grid grid-cols-2">
+        <div class="grid-gap-16 flex">
+          <div class="quote-image">
+            <img
+              src="https://via.placeholder.com/100x100/EFEFEF/000000?text=coming%20soon"
+            />
+          </div>
+          <div class="quote-details">
+            <div class="grid-gap-4 grid-rows-5-auto body-style-14-shark grid">
+              <div>Quantity: 280</div>
+              <div>Color: Basic White</div>
+              <div>Sizes: S: 50, M: 100, L: 100, XL: 30</div>
+              <div>Imprint method: Screenprint</div>
+              <div>Artwork: <a href="#">greenstone_icon_green.png</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cos-card>
+</section>

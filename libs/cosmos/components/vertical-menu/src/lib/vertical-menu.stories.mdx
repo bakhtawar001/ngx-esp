@@ -1,0 +1,67 @@
+import { moduleMetadata } from '@storybook/angular';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { withA11y } from '@storybook/addon-a11y';
+import { MENU_DATA_DEMO } from './vertical-menu-data.demo';
+
+import { CosVerticalMenuModule } from './vertical-menu.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CosVerticalMenuComponent } from './vertical-menu.component';
+import { CosVerticalMenuDemoComponent } from './vertical-menu.component.demo';
+
+<Meta
+  title="Navigation / Vertical Menu"
+  component={CosVerticalMenuComponent}
+  decorators={[
+    withA11y,
+    moduleMetadata({
+      imports: [RouterTestingModule.withRoutes([]), CosVerticalMenuModule],
+      declarations: [CosVerticalMenuDemoComponent],
+    }),
+  ]}
+  args={{ menu: MENU_DATA_DEMO }}
+  argTypes={{
+    menu: {
+      control: 'object',
+    },
+    activeItem: {
+      control: 'object',
+    },
+  }}
+/>
+
+# Vertical Menu
+
+Vertical menus provide access to sub destinations within an entity.
+
+### When to use
+
+Veritcal menus are recommended for:
+
+- Quick navigation between unrelated content types, like within the Directory and Add Product modals
+- Entities with five or more second-level areas that contain different types of content, like within a Customer
+- Entites with two or more levels of navigation hierarchy where a combination of the vertical nav and tabs may be used, like within Orders within Projects
+
+### When not to use
+
+- Where page navigation is needed to group one content type; like on Collections and Presentations pages. In these instances use tabs.
+- Where the top level of navigation witin the entity is already a vertical nav, do not use an additional vertical nav as the secondary; in these instances use
+  - tabs as the secondary, or
+  - replace the top level with tabs before a vertical nav as the secondary
+
+export const Template = (args) => ({
+  props: args,
+  component: CosVerticalMenuDemoComponent,
+});
+
+<Canvas>
+  <Story
+    args={{
+      activeItem: MENU_DATA_DEMO[0].children[0],
+    }}
+    name="Primary"
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={CosVerticalMenuComponent} />

@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="flex flex-col">
+  <cos-form-field>
+    <span cosLabel>Name</span>
+    <input cos-input class="w-full" formControlName="Name" />
+  </cos-form-field>
+
+  <cos-form-field>
+    <span cosLabel>Company Name</span>
+    <input cos-input class="w-full" formControlName="CompanyName" />
+  </cos-form-field>
+
+  <cos-form-field>
+    <span cosLabel>Email Address</span>
+    <input cos-input class="w-full" formControlName="EmailAddress" />
+  </cos-form-field>
+
+  <ng-container formGroupName="Address">
+    <cos-form-field formGroupName="Phone">
+      <span cosLabel>Phone</span>
+      <input cos-input class="w-full" formControlName="Number" />
+    </cos-form-field>
+  </ng-container>
+
+  <cos-address-form formGroupName="Address"></cos-address-form>
+</form>

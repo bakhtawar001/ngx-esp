@@ -1,0 +1,33 @@
+/* ------------------------------------*\
+    #SCREEN-WIDTH
+\*------------------------------------ */
+
+@mixin wider-than($screen-size) {
+  @if $screen-size {
+    @media (min-width: $screen-size) {
+      @content;
+    }
+  } @else {
+    @warn "[@mixin wider-than]: "#{$screen-size}" has not been declared as a breakpoint.";
+  }
+}
+
+@mixin narrower-than($screen-size) {
+  @if $screen-size {
+    @media (max-width: $screen-size) {
+      @content;
+    }
+  } @else {
+    @warn "[@mixin narrower-than]: "#{$screen-size}" has not been declared as a breakpoint.";
+  }
+}
+
+@mixin in-between($screen-size-min, $screen-size-max) {
+  @if $screen-size-min and $screen-size-max {
+    @media (min-width: $screen-size-min) and (max-width: $screen-size-max) {
+      @content;
+    }
+  } @else {
+    @warn "[@mixin in-between]: "#{$screen-size-max}" or "#{$screen-size-min}" has not been declared as a breakpoint.";
+  }
+}

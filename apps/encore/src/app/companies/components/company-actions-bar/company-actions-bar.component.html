@@ -1,0 +1,45 @@
+<div class="mobile-actions lg:hidden">
+  <button
+    class="actions-button"
+    cos-stroked-button
+    color="primary"
+    aria-label="Collection actions"
+    [matMenuTriggerFor]="actionsMenu"
+    (click)="$event.stopPropagation()"
+  >
+    <i class="fa fa-ellipsis-h"></i>
+  </button>
+  <mat-menu
+    #actionsMenu="matMenu"
+    class="cos-global-menu-panel"
+    backdropClass="cos-global-menu-backdrop"
+    xPosition="after"
+    yPosition="below"
+  >
+    <button
+      type="button"
+      mat-menu-item
+      class="cos-menu-item"
+      (click)="createCompany()"
+    >
+      <i class="fa fa-plus"></i> Create New {{ state.searchType?.type }}
+    </button>
+    <button type="button" mat-menu-item class="cos-menu-item">
+      <i class="fa fa-table"></i> Import from File
+    </button>
+    <button type="button" mat-menu-item class="cos-menu-item">
+      <i class="fa fa-link"></i> Import from Account
+    </button>
+  </mat-menu>
+</div>
+<div class="desktop-actions lg:block hidden">
+  <button cos-stroked-button color="primary">
+    <i class="fa fa-link"></i> Import from Account
+  </button>
+  <button cos-stroked-button color="primary">
+    <i class="fa fa-table"></i> Import from File
+  </button>
+  <button cos-stroked-button color="primary" (click)="createCompany()">
+    <i class="fa fa-plus"></i> Create New {{ state.searchType?.type }}
+  </button>
+</div>

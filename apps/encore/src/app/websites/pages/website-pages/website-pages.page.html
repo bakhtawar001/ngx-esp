@@ -1,0 +1,313 @@
+<div class="page-container website">
+  <div class="website-pages grid-layout-1">
+    <div class="header flex justify-between mt-32">
+      <div>
+        <h1 class="header-style-24 mb-2">Pages</h1>
+      </div>
+      <div class="text-right">
+        <button cos-stroked-button color="primary" class="mr-16">
+          Add Content Library <i class="fa fa-plus ml-8"></i>
+        </button>
+        <button cos-stroked-button color="primary" class="mr-16">
+          Add Custom Page <i class="fa fa-plus ml-8"></i>
+        </button>
+        <button cos-stroked-button color="primary" class="mr-16">
+          Add Product Collection Page <i class="fa fa-plus ml-8"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="website-pages-content">
+      <div class="grid-gap-16 flex w-full">
+        <div class="website-page-menu w-1/4">
+          <cos-vertical-menu [label]="'Pages menu'" [menu]="menu">
+          </cos-vertical-menu>
+        </div>
+        <div class="w-3/4">
+          <div class="nested-grid flex w-full pl-16 pr-16">
+            <div class="nested-grid-col1">
+              <h4 class="header-style-14-semibold">Page Name</h4>
+            </div>
+            <div class="nested-grid-col2">
+              <h4 class="header-style-14-semibold">Active</h4>
+            </div>
+            <div class="nested-grid-col3">
+              <h4 class="header-style-14-semibold">Status</h4>
+            </div>
+          </div>
+          <cos-card-tree>
+            <cos-card-tree-parent>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">
+                      Home
+                      <span cosPillLabel class="ml-16"> Landing Page </span>
+                    </h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle cos-menu-item id="home" name="home" checked>
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <span cosPillLabel class="bg-important"
+                          >Unpublished edits</span
+                        >
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="home"
+                          class="actions-button"
+                          cos-button
+                          aria-label="Home actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-parent>
+          </cos-card-tree>
+          <cos-card-tree>
+            <cos-card-tree-parent>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">Products</h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle
+                      cos-menu-item
+                      id="products"
+                      name="products"
+                      checked
+                    >
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="produts"
+                          class="actions-button"
+                          cos-button
+                          aria-label="Products actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-parent>
+            <cos-card-tree-child>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">
+                      Back to School
+                      <span cosPillLabel class="shark ml-16">
+                        Product Collection
+                      </span>
+                    </h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle
+                      cos-menu-item
+                      id="products"
+                      name="products"
+                      checked
+                    >
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="school"
+                          class="actions-button"
+                          cos-button
+                          aria-label="Back to school actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-child>
+            <cos-card-tree-child>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">
+                      Fall Favorites
+                      <span cosPillLabel class="shark ml-16"
+                        >Product Collection</span
+                      >
+                    </h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle
+                      cos-menu-item
+                      id="products"
+                      name="products"
+                      checked
+                    >
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="fall"
+                          class="actions-button"
+                          cos-button
+                          aria-label="Fall favourites actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-child>
+            <cos-card-tree-child>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">
+                      Mugs
+                      <span cosPillLabel class="shark ml-16"
+                        >Product Collection</span
+                      >
+                    </h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle
+                      cos-menu-item
+                      id="products"
+                      name="products"
+                      checked
+                    >
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="mugs"
+                          class="actions-button"
+                          cos-button
+                          aria-label="Mugs actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-child>
+          </cos-card-tree>
+          <cos-card-tree>
+            <cos-card-tree-parent>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">About</h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle cos-menu-item id="products" name="products">
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="about"
+                          class="actions-button"
+                          cos-button
+                          aria-label="About actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-parent>
+            <cos-card-tree-parent>
+              <cos-card>
+                <div class="nested-grid flex w-full">
+                  <div class="nested-grid-col1">
+                    <h2 class="header-style-18">Contact</h2>
+                  </div>
+                  <div class="nested-grid-col2">
+                    <cos-toggle cos-menu-item id="products" name="products">
+                    </cos-toggle>
+                  </div>
+                  <div class="nested-grid-col3">
+                    <div class="grid-cols-2-auto grid">
+                      <div>
+                        <p class="body-style-12-shark">
+                          Last updated Oct 1, 2021 at 2:21 p.m.
+                        </p>
+                      </div>
+                      <div class="text-right">
+                        <button
+                          id="contact"
+                          class="actions-button"
+                          cos-button
+                          aria-label="Contact actions"
+                        >
+                          <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </cos-card>
+            </cos-card-tree-parent>
+          </cos-card-tree>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<header class="import-decoration-dialog--header">
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Import Saved Decoration</h2>
+  <p class="body-style-12-shark">
+    Import from Collection, Presentation or Order or use Quick Add
+  </p>
+</header>
+
+<mat-dialog-content class="import-decoration-dialog--container">
+  <!-- Left section -->
+  <section class="import-decoration-dialog--left flex">
+    <!-- TODO: Not sure if the cos-vertical-menu is the right component -->
+    <cos-vertical-menu class="mr-16" [label]="'Orders menu'" [menu]="menu">
+    </cos-vertical-menu>
+    <div class="flex-1">PANEL</div>
+  </section>
+  <!-- /Left section -->
+
+  <!-- Right section -->
+  <section class="import-decoration-dialog--right flex">
+    <!-- Header -->
+    <div class="header flex justify-between flex-1">
+      <div class="header-style-12-shark pb-8">
+        Selected decoration information
+      </div>
+      <div class="header-style-12-shark cos-text--red">Unselect all</div>
+    </div>
+    <!-- /Header -->
+  </section>
+  <!-- /Right section -->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="flex justify-end w-full">
+    <button cos-flat-button type="submit" color="primary" cdkFocusInitial>
+      <span class="mr-12"><i class="fa fa-magic"></i></span>
+      Import Decoration
+    </button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,11 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { GRID_MARKUP } from './grid.utils';
+import { Template } from '@cosmos/storybook';
+
+<Meta title="Primitives/Grid" />
+
+<Canvas>
+  <Story height={540} name="All">
+    {Template(GRID_MARKUP).bind({})}
+  </Story>
+</Canvas>

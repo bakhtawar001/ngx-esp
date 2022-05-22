@@ -1,0 +1,73 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.cos-global-nav-mobile {
+  z-index: 1000;
+  border: 2px solid red;
+}
+.presentation-activity {
+  &__pg-section {
+    box-shadow: 0px 1px 10px 0px rgb(0 0 0 / 5%);
+    background-color: #f7f8f9;
+    padding: 16px;
+  }
+  &__pg-section .cos-card:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  &__order input.cos-input {
+    width: 100%;
+  }
+  &__order .grid-border {
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+  &__order .grid-border > div {
+    &:nth-child(-n + 2) {
+      border-top: 0px;
+    }
+    &:not(:nth-child(-n + 2)) {
+      border-top: 1px solid $color-g-pebble-09;
+    }
+    &:nth-child(even) {
+      border-left: 1px solid $color-g-pebble-09;
+    }
+  }
+}
+mat-divider {
+  border-color: $color-g-pebble-09;
+}
+
+@include wider-than($bp-medium) {
+  .activity-image {
+    max-width: 100px;
+    width: 100%;
+  }
+  .activity-details {
+    min-width: 400px;
+    width: 100%;
+  }
+  .activity-comments {
+    min-width: 560px;
+    width: 100%;
+  }
+  .activity-actions {
+    max-width: 150px;
+    width: 100%;
+  }
+  .activity-actions button {
+    width: 100%;
+  }
+}
+
+.customer-portal {
+  &__products-grid {
+    padding: 0 16px;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(244px, 1fr));
+    grid-auto-flow: row;
+
+    width: 100%;
+    max-width: 1280px;
+    margin: 40px auto;
+  }
+}

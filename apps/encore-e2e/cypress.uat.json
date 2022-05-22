@@ -1,0 +1,29 @@
+{
+  "fileServerFolder": ".",
+  "fixturesFolder": "./src/fixtures",
+  "integrationFolder": "./src/integration",
+  "testFiles": "**/*.spec.ts",
+  "modifyObstructiveCode": false,
+  "pluginsFile": "./src/plugins/index",
+  "supportFile": "./src/support/index.ts",
+  "video": false,
+  "videosFolder": "../../dist/cypress/apps/encore-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/encore-e2e/screenshots",
+  "screenshotOnRunFailure": false,
+  "chromeWebSecurity": false,
+  "restartBrowserBetweenSpecFile": false,
+  "defaultCommandTimeout": 60000,
+  "pageLoadTimeout": 60000,
+  "viewportWidth": 1280,
+  "viewportHeight": 800,
+  "retries": { "runMode": 0, "openMode": 0 },
+  "baseUrl": "https://asi-encore.netlify.app",
+  "env": {
+    "environment": "uat",
+    "email": "",
+    "username": "",
+    "password": "",
+    "asiServiceUrl": "https://asiservice.uat-asicentral.com",
+    "apiUrl": "https://asiservice.uat-asicentral.com/babou/api/zeal"
+  }
+}

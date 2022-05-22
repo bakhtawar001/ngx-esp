@@ -1,0 +1,12 @@
+@use '@angular/cdk' as cdk;
+@import '@angular/cdk/overlay-prebuilt.css';
+@import '@ctrl/ngx-emoji-mart/picker.css';
+
+@import 'settings';
+@import 'base';
+
+@import '../components/attribute-tag/src/lib/attribute-tag.directive.scss';
+@import '../components/badge/src/lib/badge/badge.directive.scss';
+@import '../components/pill/src/lib/pill.directive.scss';
+
+@include cdk.overlay();

@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TOPICS_DATA_DEMO } from './related-topics-data.demo';
+import { CosRelatedTopicsModule } from './related-topics.module';
+import { CosRelatedTopicsComponent } from './related-topics.component';
+
+<Meta
+  title="Lists/Related Topics"
+  component={CosRelatedTopicsComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosRelatedTopicsModule],
+    }),
+  ]}
+  args={{ topics: TOPICS_DATA_DEMO }}
+  argTypes={{
+    topics: { control: 'object' },
+  }}
+/>
+
+# Related Topics List
+
+export const Template = (props) => ({
+  component: CosRelatedTopicsComponent,
+  props,
+});
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```js
+ <cos-related-topics
+  [topics]="topics"
+  [visibleTopics]="visibleTopics"
+></cos-related-topics>
+```
+
+<ArgsTable of={CosRelatedTopicsComponent} />

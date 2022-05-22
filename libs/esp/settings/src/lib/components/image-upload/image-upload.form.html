@@ -1,0 +1,34 @@
+<cos-card
+  class="image-upload-card"
+  *ngIf="control.value; else ImageUpload"
+  [ngStyle]="{ width: width, height: height }"
+>
+  <img
+    class="settings-company-logo"
+    [src]="fileProperty ? control.value : control.value['FileUrl']"
+  />
+  <cos-card-controls>
+    <button
+      cos-icon-button
+      aria-label="Remove image"
+      color="warn"
+      (click)="remove()"
+    >
+      <i class="fa fa-trash"></i>
+    </button>
+  </cos-card-controls>
+</cos-card>
+<ng-template #ImageUpload>
+  <cos-image-upload-form
+    (imgSelected)="onSelected($event)"
+    [acceptedFileTypes]="acceptedFileTypes"
+    [allowMultipleUploads]="allowMultipleUploads"
+    [maxFileBytes]="maxFileBytes"
+    [size]="size"
+  >
+    <div class="img-upload-reqs-content">
+      <ng-content select=".custom-img-upload-reqs"></ng-content>
+    </div>
+  </cos-image-upload-form>
+</ng-template>
+<input type="hidden" [formControl]="control" readonly="readonly" />

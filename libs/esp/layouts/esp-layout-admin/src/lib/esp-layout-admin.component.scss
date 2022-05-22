@@ -1,0 +1,113 @@
+@import 'cosmos/assets/scss/cosmos';
+
+$w-sidebar: 68px;
+
+esp-layout-admin {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+
+  #main {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    min-width: 0;
+
+    // Container 1
+    > .container {
+      position: relative;
+      display: flex;
+      flex: 1 1 0%;
+      width: 100%;
+      min-height: 0;
+      min-width: 0;
+
+      // Container 2
+      > .container {
+        position: relative;
+        display: flex;
+        flex: 1 1 0%;
+        flex-direction: column;
+        min-width: 0;
+
+        // Container 3 (Scrollable)
+        > .container {
+          position: relative;
+          display: flex;
+          flex: 1 1 0%;
+          flex-direction: column;
+          overflow-x: hidden;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+
+          // Content component
+          #content {
+            position: relative;
+            display: flex;
+            z-index: 1;
+            flex: 1 0 auto;
+
+            > *:not(router-outlet) {
+              display: flex;
+              flex: 1 0 auto;
+              width: 100%;
+              min-width: 100%;
+            }
+
+            &.inner-scroll {
+              flex: 1 1 0%;
+              min-height: 0;
+
+              > *:not(router-outlet) {
+                display: flex;
+                flex: 1 0 auto;
+                width: 100%;
+                min-width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .page-layout {
+    &.simple.left-sidebar > .sidebar,
+    &.simple.right-sidebar > .sidebar {
+      max-width: 360px;
+      width: 360px;
+    }
+  }
+
+  cos-sidebar {
+    width: $w-sidebar;
+    min-width: $w-sidebar;
+    max-width: $w-sidebar;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+    &.navbar-sidebar {
+      overflow: hidden;
+    }
+
+    &.right-positioned {
+      order: 2;
+    }
+  }
+}
+
+body.sidebar-hover {
+  .page-layout {
+    cos-sidebar {
+      &.sidebar:not(.locked-open) {
+        position: absolute !important;
+        transform: translateX(0) !important;
+        visibility: visible !important;
+      }
+    }
+  }
+}

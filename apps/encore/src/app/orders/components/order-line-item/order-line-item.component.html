@@ -1,0 +1,37 @@
+<cos-card>
+  <cos-card-controls>
+    <a
+      cos-icon-button
+      *ngIf="!locked"
+      class="line-item__edit-btn mr-4"
+      [routerLink]="[lineItem?.Id, 'edit']"
+    >
+      <i class="fas fa-pencil-alt"></i>
+    </a>
+    <cos-card-menu>
+      <a
+        mat-menu-item
+        *ngIf="!locked"
+        class="line-item-menu__edit"
+        [routerLink]="[lineItem?.Id, 'edit']"
+      >
+        Edit
+      </a>
+      <a mat-menu-item *ngIf="locked" class="line-item-menu__view"> View </a>
+    </cos-card-menu>
+  </cos-card-controls>
+  <ng-container *ngIf="productLineItem">
+    <esp-order-line-item-product-header
+      [lineItem]="productLineItem"
+    ></esp-order-line-item-product-header>
+    <esp-order-line-item-variants-list
+      [lineItem]="productLineItem"
+    ></esp-order-line-item-variants-list>
+  </ng-container>
+
+  <ng-container *ngIf="serviceLineItem">
+    <esp-order-line-item-service-header
+      [lineItem]="serviceLineItem"
+    ></esp-order-line-item-service-header>
+  </ng-container>
+</cos-card>

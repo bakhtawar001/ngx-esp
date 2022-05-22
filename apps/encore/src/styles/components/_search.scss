@@ -1,0 +1,69 @@
+@import 'cosmos/scss/settings/';
+
+/* COS FORM FIELD STYLING */
+.cos-search-field {
+  position: relative;
+  text-align: left;
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #91949c;
+  border-radius: 4px;
+  background: #fff;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0f8bff;
+  }
+
+  input {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    padding-left: 0;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .form-field-prefix {
+    color: rgb(189, 192, 196);
+  }
+
+  .form-field-prefix,
+  .form-field-suffix {
+    line-height: inherit;
+    white-space: nowrap;
+    flex: none;
+    position: relative;
+    width: 30px;
+    text-align: center;
+  }
+}
+
+button.actions-button {
+  @include spacing-inset-8();
+}
+
+.search-filters button {
+  border: 1px solid $color-g-pebble-09;
+  background-color: #ffffff;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+}
+
+.filter-wrapper {
+  background: #fff;
+  margin: 0 0 2rem;
+  border-bottom: 1px solid #e7e8e9;
+
+  > div {
+    margin-bottom: -1px;
+  }
+}

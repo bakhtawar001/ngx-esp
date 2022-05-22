@@ -1,0 +1,23 @@
+<ngx-emoji
+  *ngIf="readonly; else editable"
+  [emoji]="emoji"
+  (size)="(36)"
+></ngx-emoji>
+
+<ng-template #editable>
+  <ngx-emoji
+    [useButton]="true"
+    [emoji]="emoji"
+    [matMenuTriggerFor]="emojimenu"
+    #menuTrigger="matMenuTrigger"
+    (size)="(36)"
+  ></ngx-emoji>
+  <mat-menu #emojimenu="matMenu" yPosition="below" class="cos-emoji-menu-panel">
+    <div (click)="$event.stopPropagation()">
+      <emoji-mart
+        (emojiClick)="selectEmoji($event)"
+        [showPreview]="false"
+      ></emoji-mart>
+    </div>
+  </mat-menu>
+</ng-template>

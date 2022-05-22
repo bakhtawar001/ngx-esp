@@ -1,0 +1,75 @@
+import { Story, Meta, Canvas } from '@storybook/addon-docs';
+import { HEADERS, BODY, INPUT, PILL } from './typography.utils';
+import { Template } from '@cosmos/storybook';
+
+<Meta title="Primitives/Typography" />
+
+# Typography
+
+## The Type Stack
+
+Encore uses [Barlow](https://fonts.google.com/specimen/Barlow) and [Work Sans](https://fonts.google.com/specimen/Work+Sans) by Google Fonts.
+
+### Headers
+
+| Name            | Font Size | Line Height | Typeface | Weights         |
+| --------------- | --------: | ----------: | -------- | --------------- |
+| Header Style 24 |      24px |        30px | Barlow   | Bold            |
+| Header Style 22 |      22px |        24px | Barlow   | Bold            |
+| Header Style 18 |      18px |        22px | Barlow   | Bold            |
+| Header Style 16 |      16px |        18px | Barlow   | Bold            |
+| Header Style 14 |      14px |        16px | Barlow   | SemiBold & Bold |
+| Header Style 12 |      12px |        14px | Barlow   | SemiBold        |
+
+<Canvas>
+  <Story height={700} name="Headers">
+    {Template(HEADERS).bind({})}
+  </Story>
+</Canvas>
+
+### Body Styles
+
+| Name          | Font Size | Line Height | Typeface  | Weights          |
+| ------------- | --------: | ----------: | --------- | ---------------- |
+| Body Style 14 |      14px |        18px | Work Sans | Regular          |
+| Body Style 12 |      12px |        16px | Work Sans | Medium & Regular |
+| Body Style 11 |      11px |        11px | Work Sans | Regular          |
+
+<Canvas>
+  <Story height={700} name="Body">
+    {Template(BODY).bind({})}
+  </Story>
+</Canvas>
+
+### Input
+
+<Canvas>
+  <Story height={700} name="Input">
+    {Template(INPUT).bind({})}
+  </Story>
+</Canvas>
+
+### Pill
+
+<Canvas>
+  <Story height={400} name="Pill">
+    {Template(PILL).bind({})}
+  </Story>
+</Canvas>
+
+---
+
+## Font Colors
+
+| Name           | Value   |
+| -------------- | ------- |
+| G53- Shark     | #6C7584 |
+| G88- Mineshaft | #1E1F20 |
+
+---
+
+## Resources
+
+- [Beyond Blue Links: Making Clickable Elements Recognizable](https://www.nngroup.com/articles/clickable-elements/)
+- [Is the Underlined Link Hurting Readability?](http://www.uxbooth.com/articles/is-the-underlined-link-hurting-readability/)
+- [Should All Links be Underlined?](https://www.usability.gov/get-involved/blog/2007/05/underlining-links.html)

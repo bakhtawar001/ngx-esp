@@ -1,0 +1,24 @@
+<div class="cos-form-row">
+  <cos-form-field>
+    <cos-label>{{ label || 'Enter a Color Value' }}</cos-label>
+    <div class="color-picker-container">
+      <div
+        class="colorblock"
+        [style.backgroundColor]="control.value || defaultColor"
+        (click)="colorPicker.focus()"
+      ></div>
+      <input
+        #colorPicker
+        type="text"
+        cos-input
+        [formControl]="control"
+        cpPosition="bottom"
+        cpOutputFormat="hex"
+        cpAlphaChannel="disabled"
+        [colorPicker]="control.value || defaultColor"
+        (colorPickerChange)="control.markAsDirty(); control.setValue($event)"
+      />
+    </div>
+    <cos-error [controlErrors]="{'pattern': 'Invalid hex code'}"></cos-error>
+  </cos-form-field>
+</div>

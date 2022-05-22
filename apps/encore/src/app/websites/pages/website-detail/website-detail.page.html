@@ -1,0 +1,92 @@
+<esp-detail-header>
+  <esp-detail-header-img>
+    <asi-company-avatar
+      [customer]="state.website.Customer"
+      [iconSize]="56"
+    ></asi-company-avatar>
+  </esp-detail-header-img>
+
+  <esp-detail-header-title>
+    <div class="project-detail-header--titles">
+      <div>
+        <h2 class="detail-header--entity-title mb-0" data-cy="title">
+          {{ state.website.Name }}
+        </h2>
+        <h3
+          *ngIf="state.website.Customer"
+          class="project-detail-header--entity-subtitle w-full mb-0"
+          data-cy="customer-name"
+        >
+          {{ state.website.Customer.Name }}
+        </h3>
+      </div>
+    </div>
+  </esp-detail-header-title>
+  <!-- 
+  <esp-detail-header-meta>
+    <esp-card-metadata-list [cols]="2">
+      <li>
+        <h5 class="header-style-12" data-cy="created-label">Created on</h5>
+        <p data-cy="created-date">
+          {{ state.website.CreateDate | date: 'longDate'}}
+        </p>
+      </li>
+      <li>
+        <div class="project-detail-header--meta-collabs flex">
+          <esp-manage-collaborators
+            [canEdit]="state.canEdit"
+          ></esp-manage-collaborators>
+        </div>
+      </li>
+    </esp-card-metadata-list>
+  </esp-detail-header-meta>
+-->
+  <esp-detail-header-menu>
+    <button
+      class="project-detail-header__reopen-button"
+      color="primary"
+      cos-stroked-button
+      type="button"
+    >
+      Not yet published
+    </button>
+    <button
+      class="project-detail-header__reopen-button"
+      color="primary"
+      cos-stroked-button
+      type="button"
+    >
+      Preview Website
+    </button>
+    <button
+      class="project-detail-header__reopen-button"
+      color="primary"
+      cos-stroked-button
+      type="button"
+    >
+      Publish Site
+    </button>
+  </esp-detail-header-menu>
+
+  <esp-detail-header-nav>
+    <nav disableRipple mat-align-tabs="start" mat-tab-nav-bar>
+      <a
+        #rla="routerLinkActive"
+        *ngFor="let tab of tabs"
+        [active]="rla.isActive"
+        [routerLinkActiveOptions]="{exact: tab.exactMatch}"
+        [routerLink]="tab.url"
+        mat-tab-link
+        routerLinkActive
+      >
+        {{ tab.title }}
+      </a>
+    </nav>
+  </esp-detail-header-nav>
+</esp-detail-header>
+
+<div class="page-container">
+  <div class="website-detail content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

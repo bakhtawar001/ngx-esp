@@ -1,0 +1,18 @@
+<ul class="contact-info-list">
+  <li class="contact-info-list-item">
+    <span class="contact-info-list-item__label">Phone:</span>
+    <span class="contact-info-list-item__value">{{
+      link?.To | asiDisplayPrimaryPhone
+    }}</span>
+  </li>
+  <li class="contact-info-list-item">
+    <span class="contact-info-list-item__label">Email:</span>
+    <span class="contact-info-list-item__value">{{
+      link?.To | asiDisplayPrimaryEmail
+    }}</span>
+  </li>
+  <li class="contact-info-list-item">
+    <span class="contact-info-list-item__label">Title:</span>
+    <span class="contact-info-list-item__value">{{ link?.Title || '-' }}</span>
+  </li>
+</ul>

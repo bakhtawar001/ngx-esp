@@ -1,0 +1,21 @@
+<ng-container
+  [ngTemplateOutlet]="childItemTemplate"
+  [ngTemplateOutletContext]="{ $implicit: item }"
+></ng-container>
+
+<ng-template #childItemTemplate let-item>
+  <cos-navigation-item-group
+    *ngIf="item.type == 'group'"
+    [item]="item"
+    [childTemplate]="childItemTemplate"
+  ></cos-navigation-item-group>
+  <cos-vertical-navigation-collapsable-item
+    *ngIf="item.type == 'collapsable'"
+    [item]="item"
+    [childTemplate]="childItemTemplate"
+  ></cos-vertical-navigation-collapsable-item>
+  <cos-navigation-item
+    *ngIf="item.type == 'item'"
+    [item]="item"
+  ></cos-navigation-item>
+</ng-template>

@@ -1,0 +1,12 @@
+<ng-container
+  *ngFor="let roleKey of allowedRolesKeys | keyvalue: originalOrder"
+>
+  <span
+    cosPillLabel
+    class="ml-8"
+    *ngIf="company?.[roleKey.key] && company?.[roleKey.key]?.Id === contactId"
+    data-cy="role-pill"
+  >
+    {{ allowedRolesKeys[roleKey.key] }}
+  </span>
+</ng-container>

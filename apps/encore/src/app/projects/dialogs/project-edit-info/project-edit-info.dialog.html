@@ -1,0 +1,38 @@
+<cos-dialog [closeStrategy]="dialogCloseStrategy">
+  <ng-container cosDialogHeader>Edit Project Information</ng-container>
+
+  <ng-container cosDialogContent>
+    <asi-project-form
+      [data]="formData"
+      (formStatusChange)="onFormStatusChange($event)"
+      (formValueChange)="onFormValueChange($event)"
+      (submitForm)="onSubmit()"
+    ></asi-project-form>
+  </ng-container>
+
+  <ng-container cosDialogActions>
+    <div class="flex justify-between w-full">
+      <button
+        (click)="onClose()"
+        data-cy="back-button"
+        cos-button
+        class="p-0"
+        type="button"
+      >
+        <i class="fa fa-arrow-left mr-8"></i> Back
+      </button>
+
+      <button
+        (click)="onSubmit()"
+        data-cy="submit-button"
+        [disabled]="!formStatus?.valid || !formStatus?.dirty"
+        cos-flat-button
+        type="submit"
+        color="primary"
+        cdkFocusInitial
+      >
+        Save
+      </button>
+    </div>
+  </ng-container>
+</cos-dialog>

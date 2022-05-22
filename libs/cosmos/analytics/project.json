@@ -1,0 +1,44 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/analytics",
+  "sourceRoot": "libs/cosmos/analytics/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/cosmos/analytics/tsconfig.lib.json",
+        "project": "libs/cosmos/analytics/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/analytics/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/analytics/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/analytics/src/**/*.ts",
+          "libs/cosmos/analytics/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/analytics"],
+      "options": {
+        "jestConfig": "libs/cosmos/analytics/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "platform:web"],
+  "implicitDependencies": ["esp-auth"]
+}

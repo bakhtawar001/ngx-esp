@@ -1,0 +1,63 @@
+@import '../../../../scss/settings/';
+
+.cos-filters-mega-menu {
+  .cos-form-row {
+    @include wider-than($bp-large) {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+    }
+  }
+
+  .cos-form-label {
+    width: 100px;
+    @include wider-than($bp-large) {
+      margin-bottom: $spacing-stack-16;
+    }
+    flex-shrink: 0;
+  }
+}
+
+.cos-mega-menu-demo-radios {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 10px;
+  width: 100%;
+  overflow: hidden;
+
+  .cos-checkbox {
+    margin: 5px;
+  }
+
+  @include wider-than($bp-large) {
+    grid-template-columns: 33.333% 33.333% 33.333%;
+  }
+}
+
+.cos-mega-menu-demo-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  margin-top: $spacing-stack-16;
+
+  .cos-button {
+    margin-left: $spacing-inline-8;
+  }
+}
+
+.cos-pointer-menu-demo-component {
+  .cos-button {
+    &[aria-expanded='true'] {
+      @include cos-menu-pointer();
+    }
+  }
+}
+
+.cos-filter-show-more {
+  margin-left: 10px; // var not defined, ignoring this hardcoded value
+  @include narrower-than($bp-large) {
+    padding: 0;
+    margin: 0;
+  }
+}

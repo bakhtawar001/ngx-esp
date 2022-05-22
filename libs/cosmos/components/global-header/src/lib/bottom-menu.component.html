@@ -1,0 +1,59 @@
+<div class="cos-id" *ngIf="data.logoSrc">
+  <img [src]="data.logoSrc" />
+</div>
+<a href="#" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-tachometer-alt"></i>
+  <span>My Dashboard</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<a href="#" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-bell"></i>
+  <span [matBadge]="data.notifications">Notifications</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<mat-divider></mat-divider>
+<a href="#" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-user"></i>
+  <span>Manage my account</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<a routerLink="/settings" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-cog"></i>
+  <span>Settings</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<mat-divider></mat-divider>
+<a href="#" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-align-left"></i>
+  <span>Suppliers and Notes</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<a href="#" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-newspaper"></i>
+  <span>ESP updates</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<a href="#" mat-menu-item class="cos-menu-item">
+  <i class="fa fa-question-circle"></i>
+  <span>Help Center</span>
+  <i class="fa fa-chevron-right right"></i>
+</a>
+<mat-divider></mat-divider>
+<button
+  mat-menu-item
+  class="cos-menu-item"
+  (click)="toggleClientSafeMode($event)"
+>
+  <cos-toggle
+    cos-menu-item
+    id="client-safe-toggle"
+    name="client-safe-toggle"
+    [checked]="data.clientSafeMode"
+    >Client Safe Mode</cos-toggle
+  >
+</button>
+<mat-divider></mat-divider>
+<a (click)="logout()" mat-menu-item class="cos-menu-item cos-menu-item--unique">
+  <i class="fa fa-sign-out-alt"></i>
+  <span>Logout</span>
+</a>

@@ -1,0 +1,151 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@nrwl/nx", "rxjs", "rxjs-angular"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": ["@cosmos/testing", "@asi/(.*)/mocks", "@esp/(.*)/mocks"],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "type:application",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "type:library",
+                "onlyDependOnLibsWithTags": ["type:library"]
+              },
+              {
+                "sourceTag": "scope:asi",
+                "onlyDependOnLibsWithTags": [
+                  "scope:asi",
+                  "scope:cosmos",
+                  "scope:esp"
+                ]
+              },
+              {
+                "sourceTag": "scope:contentful",
+                "onlyDependOnLibsWithTags": ["scope:contentful"]
+              },
+              {
+                "sourceTag": "scope:cosmos",
+                "onlyDependOnLibsWithTags": ["scope:cosmos", "scope:esp"]
+              },
+              {
+                "sourceTag": "scope:encore",
+                "onlyDependOnLibsWithTags": [
+                  "scope:encore",
+                  "scope:cosmos",
+                  "scope:esp",
+                  "scope:contentful",
+                  "scope:smartlink",
+                  "scope:asi"
+                ]
+              },
+              {
+                "sourceTag": "scope:esp",
+                "onlyDependOnLibsWithTags": [
+                  "scope:asi",
+                  "scope:esp",
+                  "scope:cosmos"
+                ]
+              },
+              {
+                "sourceTag": "scope:smartlink",
+                "onlyDependOnLibsWithTags": [
+                  "scope:asi",
+                  "scope:smartlink",
+                  "scope:cosmos"
+                ]
+              },
+              {
+                "sourceTag": "scope:sponsored-content",
+                "onlyDependOnLibsWithTags": [
+                  "scope:sponsored-content",
+                  "type:library",
+                  "platform:web",
+                  "scope:encore"
+                ]
+              },
+              {
+                "sourceTag": "scope:storybook",
+                "onlyDependOnLibsWithTags": ["scope:storybook"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "parserOptions": {
+        "project": ["tsconfig.*?.json"],
+        "warnOnUnsupportedTypeScriptVersion": false
+      },
+      "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Component", "Dialog", "Page", "Form"]
+          }
+        ],
+        "@angular-eslint/no-attribute-decorator": "error",
+        "@angular-eslint/no-forward-ref": "off",
+        "@angular-eslint/no-lifecycle-call": "error",
+        "@angular-eslint/no-output-native": "off",
+        "@angular-eslint/no-pipe-impure": "error",
+        "@angular-eslint/no-queries-metadata-property": "error",
+        "@angular-eslint/prefer-output-readonly": "off",
+        "@angular-eslint/use-component-selector": "warn",
+        "@angular-eslint/no-host-metadata-property": "off",
+        "@angular-eslint/prefer-on-push-component-change-detection": "error",
+        "@angular-eslint/use-component-view-encapsulation": "off",
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/triple-slash-reference": "off",
+        "id-blacklist": "off",
+        "id-match": "off",
+        "rxjs/no-unsafe-takeuntil": [
+          "error",
+          {
+            "alias": ["untilDestroyed"]
+          }
+        ],
+        "rxjs-angular/prefer-takeuntil": [
+          "error",
+          {
+            "alias": ["untilDestroyed"],
+            "checkComplete": false,
+            "checkDecorators": ["Component"],
+            "checkDestroy": false
+          }
+        ],
+        "no-underscore-dangle": "off"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    }
+  ]
+}

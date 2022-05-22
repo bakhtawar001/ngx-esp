@@ -1,0 +1,26 @@
+<div *ngIf="products" class="cos-cart-list-container">
+  <h2 *ngIf="heading" class="cos-cart-list-heading">{{ heading }}</h2>
+  <div class="cos-cart-list">
+    <div *ngFor="let product of products" class="cos-cart-list-item">
+      <div class="cos-cart-list-item-image">
+        <!--
+          Property 'imageUrl' does not exist on type 'Product'. Did you mean 'ImageUrl'?
+        -->
+        <img
+          *ngIf="$any(product).imageUrl"
+          [src]="$any(product).imageUrl | imageUrlPipe"
+          alt="{{ $any(product).alt }}"
+        />
+      </div>
+      <ul class="cos-cart-list-item-details">
+        <!--
+          Property 'Details' does not exist on type 'Product'.
+        -->
+        <li *ngFor="let Detail of $any(product).Details">
+          <span class="cos-cart-list-detail-label">{{ Detail.Label }}</span>
+          {{ Detail.Value }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

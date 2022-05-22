@@ -1,0 +1,54 @@
+<div class="order-quote-summary__header">
+  <h3 class="header-style-16">{{ order?.Type | titlecase }} summary</h3>
+</div>
+<div class="grid grid-cols-2-auto grid-gap-20">
+  <div class="order-quote-summary__vendor-cost">
+    <p class="body-style-12-shark mb-8">Vendor cost</p>
+    <h4 class="header-style-14-bold mb-0">
+      {{ order?.TotalCost | orderPrice: order }}
+    </h4>
+  </div>
+  <div class="order-quote-summary__sales-tax">
+    <p class="body-style-12-shark mb-8">Sales tax</p>
+    <h4 class="header-style-14-bold mb-0">
+      {{ order?.TotalSalesTaxAmount | orderPrice: order }}
+    </h4>
+  </div>
+  <div class="order-quote-summary__margin">
+    <p class="body-style-12-shark mb-8">Margin</p>
+    <h4 class="header-style-14-bold mb-0">
+      {{ order?.TotalMargin | orderPrice: order }}
+      ({{ order?.TotalMarginPercent / 100 | orderPercent }})
+    </h4>
+  </div>
+  <div class="order-quote-summary__shipping-cost">
+    <p class="body-style-12-shark mb-8">Shipping cost</p>
+    <h4 class="header-style-14-bold mb-0">TODO</h4>
+  </div>
+  <div class="order-quote-summary__customer-price">
+    <p class="body-style-12-shark mb-8">Customer price</p>
+    <h4 class="header-style-14-bold mb-0">
+      {{ order?.Subtotal | orderPrice: order }}
+    </h4>
+  </div>
+  <div class="order-quote-summary__customer-discounts">
+    <p class="body-style-12-shark mb-8">Customer discounts</p>
+    <h4 class="header-style-14-bold mb-0">
+      {{ order?.TotalDiscountAmount | orderPrice: order }}
+    </h4>
+  </div>
+  <div class="order-quote-summary__balance-due">
+    <p class="body-style-12-shark mb-8">Balance due</p>
+    <h4 class="header-style-14-bold mb-0">
+      {{ order?.AmountDue | orderPrice: order }}
+    </h4>
+  </div>
+  <ng-container *ngIf="order?.Type === 'order'">
+    <div class="order-quote-summary__amount-paid">
+      <p class="body-style-12-shark mb-8">Amount paid</p>
+      <h4 class="header-style-14-bold mb-0">
+        {{ order?.AmountPaid | orderPrice: order }}
+      </h4>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,56 @@
+<div>
+  <cos-toggle
+    class="block w-full mb-16"
+    [checked]="showAdditionalCharges"
+    (toggleChange)="toggleAdditionalCharges()"
+  >
+    <span class="header-style-18">Additional Charges</span>
+  </cos-toggle>
+
+  <ng-container *ngIf="showAdditionalCharges">
+    <cos-card class="mb-16">
+      <table cos-table [dataSource]="charges">
+        <ng-container cosColumnDef="chargename">
+          <th cosHeaderCell *cosHeaderCellDef>Charge Name</th>
+          <td cosCell *cosCellDef="let element">
+            {{ element.chargename }}
+          </td>
+        </ng-container>
+        <ng-container cosColumnDef="chargeqty">
+          <th cosHeaderCell *cosHeaderCellDef>Charge Qty</th>
+          <td cosCell *cosCellDef="let element">
+            {{ element.chargeqty }}
+          </td>
+        </ng-container>
+        <ng-container cosColumnDef="price">
+          <th cosHeaderCell *cosHeaderCellDef>Price</th>
+          <td cosCell *cosCellDef="let element">
+            {{ element.price }}
+          </td>
+        </ng-container>
+        <tr cos-header-row *cosHeaderRowDef="chargesColumns"></tr>
+        <tr cos-row *cosRowDef="let row; columns: chargesColumns"></tr>
+      </table>
+
+      <button cos-button class="presentation-product-btn">
+        <i class="fa fa-plus"></i> Add a custom charge
+      </button>
+
+      <hr class="mb-16" />
+    </cos-card>
+    <cos-card class="proj-product-card-disabled mb-16">
+      <span class="header-style-16">Add Vendor Charges</span>
+
+      <p class="body-style-12-shark">
+        <i class="fa fa-eye-slash mr-8"></i> Available vendor charges are hidden
+        from the customer presentation until they are added.
+      </p>
+
+      <esp-presentation-product-charges-table
+        [dataSource]="dataSource"
+      ></esp-presentation-product-charges-table>
+
+      <hr />
+    </cos-card>
+  </ng-container>
+</div>

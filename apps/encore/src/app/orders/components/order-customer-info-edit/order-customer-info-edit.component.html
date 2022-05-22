@@ -1,0 +1,32 @@
+<div *ngIf="editableOrder">
+  <ng-form [formGroup]="form">
+    <esp-editable-order-contact
+      label="Primary Contact (Order Approver)"
+      placeholder="Select the primary contact"
+      formGroupName="AcknowledgementContact"
+      name="primaryContact"
+    >
+      <!-- [formControl]="newOwner" [excludeList]="state.owner.UserId" -->
+    </esp-editable-order-contact>
+
+    <esp-order-customer-address
+      [contact]="editableOrder?.AcknowledgementContact"
+    ></esp-order-customer-address>
+  </ng-form>
+</div>
+
+<div>
+  <div><i>Shipping address</i></div>
+  <esp-order-customer-address [contact]="editableOrder?.ShippingDetail?.To">
+  </esp-order-customer-address>
+</div>
+<div>
+  <div><i>Billing address</i></div>
+  // parties - orderContact
+  <esp-order-customer-address [contact]="editableOrder?.BillingContact">
+  </esp-order-customer-address>
+</div>
+<pre>Acknowledgement Contact:{{ form.value | json }}</pre>
+<pre>Inquiry Contact:{{ editableOrder?.InquiryContact | json }}</pre>
+<pre>Billing Contact:{{ editableOrder?.BillingContact | json }}</pre>
+<pre>Shipping Contact:{{ editableOrder?.ShippingContact | json }}</pre>

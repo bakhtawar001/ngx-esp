@@ -1,0 +1,22 @@
+<cos-card class="esp-product-gallery">
+  <ng-content></ng-content>
+
+  <cos-card class="esp-product-gallery--card" *ngIf="products?.length > 0">
+    <div class="esp-product-gallery--products">
+      <cos-product-card
+        *ngFor="let product of products; let i = index"
+        (click)="clicked.emit({product, index:i})"
+        [product]="product"
+        [suppressActions]="true"
+        (cosHover)="productHovered(product)"
+      >
+        <cos-supplier
+          [supplier]="product.Supplier"
+          [showImage]="false"
+          [showPreferredGroup]="true"
+          (click.prevent)="goToSupplier(product.Supplier?.Id)"
+        ></cos-supplier>
+      </cos-product-card>
+    </div>
+  </cos-card>
+</cos-card>

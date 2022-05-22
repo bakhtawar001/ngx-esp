@@ -1,0 +1,120 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosSlideToggleModule } from './toggle.module';
+import { CosSlideToggleComponent } from './toggle.component';
+import { CosSlideToggleDemoComponent } from './toggle.component.demo';
+
+<Meta
+  title="Controls &amp; Inputs/Toggle"
+  component={CosSlideToggleComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosSlideToggleModule],
+      declarations: [CosSlideToggleDemoComponent],
+    }),
+  ]}
+  args={{
+    labelText: 'Allow anonymous reporting',
+    labelPosition: 'after',
+    size: '',
+  }}
+  argTypes={{
+    size: {
+      control: 'select',
+      options: ['', 'small'],
+    },
+    labelPosition: {
+      control: 'select',
+      options: ['before', 'after'],
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosSlideToggleDemoComponent,
+});
+
+# Toggle
+
+Toggles allow users to turn controls on or off.
+
+### When to use this component
+
+Use toggles when you want to:
+
+- Allow a binary choice, for example, on or off.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-toggle
+  [id]="id"
+  [name]="name"
+  [size]="size"
+  [required]="required"
+  [aria-labelledby]="ariaLabelledBy"
+  [aria-label]="ariaLabel"
+  [labelPosition]="labelPosition"
+  [checked]="checked"
+  [disabled]="disabled"
+  (change)="changeEvent($event)"
+  (toggleChange)="toggleChangeEvent($event)"
+>
+  {{ labelText }}
+</cos-toggle>
+```
+
+<ArgsTable of={CosSlideToggleComponent} />
+
+## Visual Details
+
+Toggles are used mostly for turning something on or off. That could be a setting or filter.
+
+### Sizing
+
+- Each toggle is 28 x 14 px
+
+### Typography
+
+- The text label uses Work Sans Regualr 12
+
+### Spacing
+
+- The horizontal space between the toggle and label is Inline 8
+- The vertical spacing between each toggle is Stack 16
+
+---
+
+## Layout
+
+Toggles can be used in either inline or stacked layouts.
+
+- ### Inline
+
+  - Use an inline layout when vertical space is limited. Spacing between each toggle is Inline 24
+
+  ### Stacked
+
+  - Use a stacked layout when horizontal space is limited. Spacing between each toggle is Stack 16
+
+---
+
+## States
+
+### Off
+
+This is the default state of all radio.
+
+### On
+
+When someone clicks/taps a radio it becomes “selected”.
+
+### Disabled
+
+Use this when a interaction with a radio should be blocked

@@ -1,0 +1,44 @@
+@import 'cosmos/scss/settings/';
+
+.proj-orders {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  @include wider-than($bp-large) {
+    display: grid;
+
+    grid-template-areas:
+      'a a a a a a a a a a a a'
+      'b b b c c c c c c c c c';
+  }
+
+  &__pg-title {
+    grid-area: a;
+  }
+
+  esp-project-order-sidebars,
+  esp-order-detail-sidebar,
+  &__sidebar {
+    grid-area: b;
+  }
+
+  &__pg-content {
+    grid-area: c;
+  }
+  &__pg-section {
+    margin-bottom: 36px;
+  }
+}
+
+.order {
+  &-detail {
+    display: flex;
+    flex-direction: column;
+
+    @include wider-than($bp-large) {
+      flex: 1 0 25%;
+      // flex-grow: 0;
+    }
+  }
+}

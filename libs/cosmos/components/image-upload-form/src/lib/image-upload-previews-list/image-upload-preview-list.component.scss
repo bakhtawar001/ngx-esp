@@ -1,0 +1,61 @@
+@import '../../../../../../cosmos/scss/settings/';
+
+$width-default: 210px;
+$width-sm: 84px;
+
+.cos-card.image-upload-card {
+  width: 100%;
+  height: 110px;
+  max-width: $width-default;
+
+  background-color: $color-g-white-00;
+  border: 1px solid $color-g-moth-41;
+
+  .cos-card-container,
+  .cos-card-body,
+  .cos-card-main {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .cos-card-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--small {
+    width: $width-sm;
+    height: $width-sm;
+
+    img {
+      max-width: $width-sm;
+    }
+  }
+
+  .cos-card-controls-container {
+    top: 0;
+    right: 0;
+  }
+
+  .cos-card-body img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.cos-button.img-upload-previews-toggle {
+  width: 100%;
+  max-width: 210px;
+  height: 110px;
+  font-size: 12px;
+  padding: 0;
+
+  &--small {
+    width: 84px;
+    height: 84px;
+  }
+}

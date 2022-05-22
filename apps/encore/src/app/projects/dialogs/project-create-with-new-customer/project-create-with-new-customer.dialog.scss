@@ -1,0 +1,49 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-medium;
+
+.project-create-customer-dialog__actions-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-content-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 16px;
+}
+
+.form-tracker__labels {
+  margin: 0 auto 6px;
+  width: calc(100% - 176px);
+}
+
+.form-tracker {
+  height: 25px;
+  width: calc(100% - 200px);
+  align-items: center;
+  margin: 0 auto 6px;
+  display: flex;
+
+  cos-tracker {
+    width: 100%;
+  }
+}
+
+@include narrower-than($mobile-breakpoint) {
+  .form-tracker {
+    width: calc(100% - 24px);
+  }
+
+  .form-tracker__labels {
+    width: 100%;
+  }
+
+  .project-create-customer-dialog__actions-bar {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: -20px;
+    button:last-of-type {
+      margin-bottom: 8px;
+    }
+  }
+}

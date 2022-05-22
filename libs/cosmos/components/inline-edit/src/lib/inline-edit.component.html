@@ -1,0 +1,74 @@
+<div
+  class="cos-inline-edit"
+  [ngClass]="{ 'cos-inline-edit--editState': isEditState }"
+>
+  <ng-container>
+    <cos-form-field
+      [ngClass]="{
+        'cos-accessibly-hidden': !isEditState
+      }"
+    >
+      <input
+        cos-input
+        [attr.placeholder]="placeholder"
+        #input
+        [required]="required"
+        [formControl]="editValue"
+        [attr.maxLength]="maxLength"
+        *ngIf="inputType === 'text'"
+        (click.silent)="$event.stopPropagation()"
+      />
+      <textarea
+        *ngIf="inputType === 'textarea'"
+        cos-input
+        #inputTextarea
+        [placeholder]="placeholder"
+        [required]="required"
+        [formControl]="editValue"
+        [attr.maxLength]="maxLength"
+        (click.silent)="$event.stopPropagation()"
+      ></textarea>
+      <cos-hint class="mr-12" *ngIf="maxLength">
+        {{ editValue.value.length }}/{{ maxLength }}</cos-hint
+      >
+      <cos-hint *ngIf="required">Required</cos-hint>
+      <cos-error controlErrorsIgnore *ngIf="editValue.invalid">{{
+        getErrorMessage()
+      }}</cos-error>
+    </cos-form-field>
+    <div class="cos-inline-edit__edit-actions" *ngIf="isEditState">
+      <button class="cancel" cos-flat-button (click)="cancelEdit($event)">
+        Cancel
+      </button>
+      <button class="save" cos-flat-button (click)="updateDisplayValue($event)">
+        Save
+      </button>
+    </div>
+  </ng-container>
+  <ng-container>
+    <span
+      [ngClass]="{
+        'cos-inline-edit__display': true,
+        'cos-accessibly-hidden': isEditState && editValue.value.length
+      }"
+    >
+      <span #display><ng-content></ng-content></span>
+    </span>
+    <span
+      class="cos-inline-edit__display-placeholder"
+      *ngIf="!isEditState && editValue.value.length === 0 && !readonly"
+      >{{ placeholder }}</span
+    >
+    <button
+      *ngIf="!readonly"
+      (click)="updateInputValue($event)"
+      [ngClass]="{
+        'cos-edit': true,
+        'cos-accessibly-hidden': isEditState
+      }"
+    >
+      <i class="fas fa-pencil-alt"></i>
+      <span class="cos-accessibly-hidden">Edit</span>
+    </button>
+  </ng-container>
+</div>

@@ -1,0 +1,160 @@
+@import '../../../../scss/settings/';
+
+.cos-explore-bar {
+  display: block;
+  box-shadow: $box-shadow-nav;
+  clip-path: inset(0 -10px -10px -10px);
+}
+.cos-explore-nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.cos-explore-nav-item {
+  flex: 0 0 auto;
+  text-align: center;
+  .cos-button {
+    padding: $spacing-stack-12 $spacing-inline-12;
+    background-color: transparent;
+    &:hover {
+      background-color: transparent;
+      color: $color-g-shark-54;
+      text-decoration: underline;
+    }
+    &:focus {
+      background-color: transparent;
+      @include cos-focus-inset();
+    }
+    &[aria-expanded='true'] {
+      color: $color-bl-azure-57;
+      .fa {
+        transform: rotate(180deg);
+      }
+    }
+    @include type-body-style-14-shark();
+    @include wider-than($bp-medium) {
+      padding: $spacing-stack-16 $spacing-inline-12;
+      @include type-body-style-12-medium();
+    }
+  }
+  &:first-child {
+    .cos-button {
+      padding-left: $spacing-inline-8;
+    }
+  }
+  &:last-child {
+    .cos-button {
+      padding-right: $spacing-inline-8;
+    }
+  }
+}
+.cos-explore-megamenu-backdrop
+  + .cdk-overlay-connected-position-bounding-box
+  .cdk-overlay-pane {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-shadow: none;
+  background-color: transparent !important;
+}
+.cos-explore-megamenu-panel.mat-menu-panel {
+  width: 100%;
+  max-width: 100% !important;
+  height: 100vh;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: inset(0 -10px -10px -10px);
+}
+.cos-explore-megamenu-panel {
+  position: fixed;
+  width: 100%;
+  background-color: $color-g-white-00;
+  // This is a pretty ugly calculation.
+  // If we have more time, it would be better to find out how to get the native element when the menu opens.
+  height: calc(100vh - 66px);
+  overflow-y: auto;
+  .mat-menu-content:not(:empty) {
+    padding: 0;
+  }
+  @include wider-than($bp-medium) {
+    position: static;
+    width: auto;
+    height: auto;
+    box-shadow: $box-shadow-default;
+    clip-path: inset(0 -10px -10px -10px);
+    .mat-menu-content:not(:empty) {
+      padding: 0 0 10px 0; // leaving room for the shadow
+    }
+  }
+  @include narrower-than($bp-medium) {
+    max-width: none !important;
+    margin-left: 0 !important;
+  }
+}
+.cos-explore-megamenu,
+.cos-explore-megamenu-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cos-explore-megamenu {
+  width: 100%;
+  padding: 0 $spacing-inline-16;
+  @include wider-than($bp-medium) {
+    padding: 0 $spacing-inline-8;
+    column-count: 6;
+    column-width: 180px;
+  }
+}
+.cos-explore-megamenu-header {
+  position: relative;
+  @include spacing-inset-24();
+  background-color: $color-g-pearl-03;
+  .cos-button {
+    position: absolute;
+    top: $spacing-stack-16;
+    right: $spacing-inline-16;
+  }
+  @include wider-than($bp-medium) {
+    display: none;
+  }
+}
+.cos-explore-megamenu-heading {
+  margin: 0;
+  @include type-style-header-16();
+  text-align: center;
+}
+.cos-explore-megamenu-group {
+  padding: $spacing-stack-12 0;
+  break-inside: avoid;
+}
+.cos-explore-megamenu-group-heading {
+  display: block;
+  margin: 0;
+  @include type-style-header-16();
+}
+.cos-explore-megamenu-item {
+  display: block;
+  margin: $spacing-stack-4 0;
+  @include type-body-style-14-shark();
+}
+
+.cos-explore-megamenu-group-heading,
+.cos-explore-megamenu-item {
+  // Unsetting the styles we won't be using.
+  &.mat-menu-item {
+    line-height: inherit;
+    height: auto;
+    padding: 0;
+    white-space: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

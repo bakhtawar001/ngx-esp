@@ -1,0 +1,51 @@
+<div class="cos-form-row">
+  <div class="company-img-upload-container">
+    <cos-card
+      *ngIf="img; else noImg"
+      class="company-img-preview"
+      [ngStyle]="{
+        'background-image': 'url(' + img + ')',
+        width: width,
+        height: height
+      }"
+    >
+      <div class="company-img-preview-body">
+        <button
+          cos-icon-button
+          aria-label="Remove image"
+          color="warn"
+          (click)="removeImage()"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+    </cos-card>
+    <ng-template #noImg>
+      <div>
+        <ngx-dropzone class="cos-dropzone" (change)="onSelect($event)">
+          <ngx-dropzone-label>
+            <div class="cos-dropzone-display">
+              <i class="fa fa-cloud-upload-alt"></i>
+              <span class="cos-dropzone-upload"> Choose image to upload </span>
+              <span class="body-style-12">or drag and drop here.</span>
+            </div>
+          </ngx-dropzone-label>
+          <ngx-dropzone-preview
+            *ngFor="let f of files"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <div class="error error-invalid" *ngIf="true">
+          This field is required
+        </div>
+      </div>
+      <div class="company-img-upload-reqs">
+        <p>Images should be over 50px x 50px and under 512 GB in size.</p>
+        <p>Allowed file types are .jpg, .png, .gif.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+@import '../../../../scss/settings/';
+
+.cos-new-button {
+  @include spacing-inset-12();
+  @include type-style-header-14-bold();
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 222px;
+  padding-right: 0;
+  appearance: none;
+  background-color: transparent;
+  border: 1px dashed $color-g-moth-41;
+  border-radius: $border-radius-4;
+
+  .cos-new-button-text {
+    display: block;
+    flex: 1 0 auto;
+  }
+
+  &:hover {
+    .cos-new-button-text {
+      text-decoration: underline;
+    }
+  }
+
+  &:focus {
+    @include cos-focus();
+  }
+}
+
+.cos-new-button-icon {
+  flex: 0 0 28px;
+  font-size: 28px;
+  color: $color-bl-azure-57;
+}

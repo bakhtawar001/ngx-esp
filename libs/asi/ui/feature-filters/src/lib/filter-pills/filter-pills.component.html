@@ -1,0 +1,25 @@
+<div class="filter-pills mt-8">
+  <div data-cy="filter-pill" *ngFor="let pill of filterPills" cosPill>
+    <span data-cy="filter-pill-label">{{ pill.Label }}</span>
+    <a
+      ><i
+        data-cy="remove-filter-icon"
+        class="fa fa-times"
+        (click)="
+          pill.Value
+            ? removePill({ ControlName: pill.ControlName, Value: pill.Value })
+            : removePill({ ControlName: pill.ControlName })
+        "
+      ></i
+    ></a>
+  </div>
+  <button
+    data-cy="remove-all-filters"
+    cos-button
+    class="mt-n2 remove-all-button"
+    *ngIf="filterPills?.length"
+    (click)="removePill({ ClearAll: true })"
+  >
+    Clear All Filters
+  </button>
+</div>

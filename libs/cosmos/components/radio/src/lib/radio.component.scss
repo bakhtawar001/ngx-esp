@@ -1,0 +1,131 @@
+@import '../../../../scss/settings';
+
+$cos-radio-height: 18px;
+$cos-radio-width: 18px;
+$cos-radio-height-small: 14px;
+$cos-radio-width-small: 14px;
+
+$cos-disabled-text: $color-g-moth-41;
+$cos-disabled-bg: $color-g-pebble-09;
+
+:host {
+  display: inline;
+  margin-bottom: $spacing-stack-8;
+  .cos-radio-label {
+    padding: 2px;
+    margin-left: -$spacing-inline-2;
+    &:focus {
+      @include cos-focus();
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      padding: 2px;
+    }
+  }
+  &.cdk-focused {
+    .cos-radio-label {
+      @include cos-focus();
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      padding: 2px;
+    }
+  }
+}
+
+.cos-radio-label-content {
+  @include type-body-style-14-mineshaft();
+  padding-left: $spacing-inline-8;
+  line-height: 16px;
+  user-select: none;
+  :host.cos-radio--small & {
+    @include type-body-style-12();
+    line-height: 14px;
+    color: $color-g-mineshaft-88;
+  }
+}
+
+.cos-radio-label {
+  user-select: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 3px;
+
+  &-before {
+    .cos-radio-label-content {
+      padding: 0;
+      padding-right: 8px;
+      order: -1;
+    }
+  }
+}
+
+.cos-radio-container {
+  display: inline-block;
+  position: relative;
+  width: $cos-radio-width;
+  height: $cos-radio-height;
+  flex-shrink: 0;
+
+  :host.cos-radio--small & {
+    width: $cos-radio-width-small;
+    height: $cos-radio-height-small;
+  }
+}
+
+.cos-radio-outer-circle {
+  background: $color-g-white-00;
+  border: 1px solid $color-g-stone-41;
+  width: $cos-radio-width;
+  height: $cos-radio-height;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: border-color ease 280ms;
+  border-radius: 50%;
+
+  :host.cos-radio--small & {
+    width: $cos-radio-width-small;
+    height: $cos-radio-height-small;
+  }
+
+  :host.cos-radio--checked & {
+    background: $color-bl-azure-57;
+    border-color: $color-bl-azure-57;
+  }
+
+  :host.cos-radio--disabled & {
+    background: $cos-disabled-bg;
+    border-color: $cos-disabled-text;
+  }
+
+  :host.cos-radio--disabled.cos-radio--checked & {
+    background: $cos-disabled-bg;
+    // background: $color-g-shark-54;
+  }
+}
+
+.cos-radio-inner-circle {
+  width: $cos-radio-width;
+  height: $cos-radio-height;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  transition: transform ease 280ms, background-color ease 280ms;
+
+  :host.cos-radio--small & {
+    width: $cos-radio-width-small;
+    height: $cos-radio-height-small;
+  }
+
+  :host.cos-radio--checked & {
+    background-color: $color-g-white-00;
+    transform: scale(0.4);
+  }
+
+  :host.cos-radio--disabled.cos-radio--checked & {
+    background-color: $color-g-moth-41;
+  }
+}

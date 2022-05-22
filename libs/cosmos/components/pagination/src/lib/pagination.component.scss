@@ -1,0 +1,75 @@
+@import '../../../../scss/settings';
+
+.cos-pagination {
+  .cos-pagination-page-links {
+    display: none;
+    @include wider-than($bp-small) {
+      display: block;
+    }
+  }
+  .cos-pagination-page-indicator {
+    @include wider-than($bp-small) {
+      display: none;
+      &.--small {
+        display: block;
+        color: $color-g-shark-54;
+        strong {
+          color: $color-bl-atoll-75;
+        }
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    border-top: $border-light;
+    border-bottom: $border-light;
+
+    > * {
+      margin: 0 1px;
+    }
+  }
+
+  .cos-pagination-page-indicator,
+  .page-number {
+    padding: 2px 4px;
+    font-family: Work Sans, sans-serif;
+    font-size: 14px;
+    color: $color-bl-atoll-75;
+  }
+
+  .page-number {
+    border: none;
+    background: none;
+    &.--active {
+      font-weight:  $font-weight-700;
+    }
+  }
+
+  .next-prev-button {
+    padding: 2px 4px;
+    border: none;
+    background: none;
+    font-family: Barlow, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-bl-atoll-75;
+    .fa {
+      margin: 0;
+      font-size: 11px;
+      &:first-child {
+        margin-right: $spacing-inline-4;
+      }
+      &:last-child {
+        margin-left: $spacing-inline-4;
+      }
+    }
+  }
+
+  .mat-divider {
+    margin: 0 12px;
+    border-right: $border-light;
+  }
+}

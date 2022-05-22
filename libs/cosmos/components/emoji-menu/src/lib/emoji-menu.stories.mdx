@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CosEmojiMenuComponent } from './emoji-menu.component';
+import { CosEmojiMenuModule } from './emoji-menu.module';
+
+<Meta
+  title="Controls &amp; Inputs/Emoji Menu"
+  component={CosEmojiMenuComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosEmojiMenuModule],
+    }),
+  ]}
+  argTypes={{
+    readonly: { control: 'boolean' },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosEmojiMenuComponent,
+});
+
+# Emoji Menu
+
+Implementation of https://github.com/scttcper/ngx-emoji-mart
+
+Option for removing menu functionality and only showing a single emoji with `readonly` property
+
+Option for showing the initial value of the emoji with `emoji` property, the default is set as `:package:`
+
+An event is triggered on making a selection with a payload of `{ newValue: string }`
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable of={CosEmojiMenuComponent} />

@@ -1,0 +1,27 @@
+@import 'cosmos/scss/settings';
+
+$avatar-size: 40px;
+
+.projects-menu {
+  padding: 0 0.6rem;
+  width: 280px;
+
+  mat-divider {
+    margin: 8px 0;
+  }
+}
+
+.not-found {
+  background-color: $color-g-pearl-03;
+  padding: 1.6rem;
+  margin: 0.2rem auto;
+  text-align: center;
+
+  > p {
+    margin-bottom: 0.2rem;
+  }
+}
+
+.global-menu-list-item__icon {
+  background: $color-g-pebble-09;
+}

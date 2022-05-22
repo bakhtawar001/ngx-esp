@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <label class="cos-form-label"
+      >Address, Line 1
+      <span class="body-style-12-shark">(optional)</span></label
+    >
+    <cos-address-form
+      [showAllFields]="
+        form.controls.Line1?.dirty || !!form.controls.Line1?.value
+      "
+      [showFirstLineLabel]="false"
+      [formGroup]="form"
+      data-cy="address-form"
+    ></cos-address-form>
+  </div>
+</div>

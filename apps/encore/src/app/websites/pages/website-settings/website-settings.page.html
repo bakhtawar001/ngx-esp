@@ -1,0 +1,279 @@
+<div class="page-container website">
+  <div class="website-settings grid-layout-1">
+    <div class="header flex justify-between mt-32">
+      <h1 class="header-style-24 mb-2">Settings</h1>
+    </div>
+
+    <div class="website-settings-content">
+      <div class="grid-gap-16 flex w-full">
+        <div class="website-settings-menu w-1/4">
+          <cos-vertical-menu [label]="'Settings menu'" [menu]="settingsmenu">
+          </cos-vertical-menu>
+        </div>
+        <div class="website-settings-options w-3/4">
+          <cos-segmented-panel>
+            <cos-segmented-panel-header>
+              <h2 class="header-style-16 mb-0">Site Information</h2>
+            </cos-segmented-panel-header>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-heading"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">Site Title</h2>
+                  <p class="body-style-14-shark mb-0">
+                    East Coast Promotional Products
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-align-left"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">Site Description</h2>
+                  <p class="body-style-14-shark mb-0">Lorem ipsum</p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-tags"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">Site Keywords</h2>
+                  <p class="body-style-14-shark mb-0">
+                    Keyword 1, Keyword 1, Keyword 3, Keyword 4, Keyword 5
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-crown"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">Website Owner</h2>
+                  <h4 class="header-style-14-semibold">Anthony Nguyen</h4>
+                  <p class="body-style-12-shark mb-0">
+                    anthony.nguyen@kraftwerk.com
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+          </cos-segmented-panel>
+
+          <cos-segmented-panel>
+            <cos-segmented-panel-header>
+              <h2 class="header-style-16 mb-0">Company Information</h2>
+            </cos-segmented-panel-header>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-sign"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">Company name</h2>
+                  <p class="body-style-14-shark mb-0">
+                    East Coast Promotional Products
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-atom"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-8">Company logo</h2>
+                  <img
+                    src="https://via.placeholder.com/80x80/EFEFEF/000000?text=coming%20soon"
+                  />
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-palette"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-8">Company color</h2>
+                  <p class="body-style-14-shark mb-0">
+                    <img
+                      src="https://via.placeholder.com/50x20/EFEFEF/000000?text=coming%20soon"
+                    />
+                    #FFAD00
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+          </cos-segmented-panel>
+
+          <cos-segmented-panel>
+            <cos-segmented-panel-header>
+              <h2 class="header-style-16 mb-0">Media</h2>
+            </cos-segmented-panel-header>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-icons"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-8">Favicon</h2>
+                  <img
+                    src="https://via.placeholder.com/20x20/EFEFEF/000000?text=coming%20soon"
+                  />
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-photo-video"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-8">
+                    Social Media Sharing Images
+                  </h2>
+                  <div class="grid-gap-16 grid grid-cols-2">
+                    <div>
+                      <p class="body-style-14-shark mb-8">Facebook</p>
+                      <img
+                        src="https://via.placeholder.com/300x150/EFEFEF/000000?text=coming%20soon"
+                      />
+                    </div>
+                    <div>
+                      <p class="body-style-14-shark mb-8">Twitter</p>
+                      <img
+                        src="https://via.placeholder.com/300x150/EFEFEF/000000?text=coming%20soon"
+                      />
+                    </div>
+                    <div>
+                      <p class="body-style-14-shark mb-8">Instagram</p>
+                      <img
+                        src="https://via.placeholder.com/150x150/EFEFEF/000000?text=coming%20soon"
+                      />
+                    </div>
+                    <div>
+                      <p class="body-style-14-shark mb-8">LinkedIn</p>
+                      <img
+                        src="https://via.placeholder.com/300x150/EFEFEF/000000?text=coming%20soon"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <button class="actions-button" cos-button aria-label="">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+          </cos-segmented-panel>
+
+          <cos-segmented-panel>
+            <cos-segmented-panel-header>
+              <h2 class="header-style-16 mb-0">Enable Progressive Web App</h2>
+            </cos-segmented-panel-header>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-mobile"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">
+                    Activate Progressive Web App
+                  </h2>
+                  <p class="body-style-14-shark mb-0">
+                    Progressive Web Apps (PWAs) enable your sites to load
+                    instantly on mobile devices for a smooth, native app
+                    experience that increases engagement.
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <cos-toggle
+                    cos-menu-item
+                    id="enable-app"
+                    name="enable-app"
+                    checked
+                  ></cos-toggle>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+            <cos-segmented-panel-row>
+              <div class="panel-grid flex">
+                <div class="panel-grid-col1 nav-link">
+                  <i class="fa fa-download"></i>
+                </div>
+                <div class="panel-grid-col2">
+                  <h2 class="header-style-16 mb-0">
+                    Enable mobiel browsers to install the site as an app
+                  </h2>
+                  <p class="body-style-14-shark mb-0">
+                    Primum igitur, inquit, modo dixi, constituto, ui ita ruant
+                    itaque turbent, ut alterum. Sed ut de commodis, suis
+                    cogitarent? At id ne interiret at vero eos.
+                  </p>
+                </div>
+                <div class="panel-grid-col3 text-right">
+                  <cos-toggle
+                    cos-menu-item
+                    id="enable-mobile"
+                    name="enable-mobile"
+                  ></cos-toggle>
+                </div>
+              </div>
+            </cos-segmented-panel-row>
+          </cos-segmented-panel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

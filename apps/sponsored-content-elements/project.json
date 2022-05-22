@@ -1,0 +1,121 @@
+{
+  "projectType": "application",
+  "generators": {},
+  "root": "apps/sponsored-content-elements",
+  "sourceRoot": "apps/sponsored-content-elements/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/sponsored-content-elements",
+        "index": "apps/sponsored-content-elements/src/index.html",
+        "main": "apps/sponsored-content-elements/src/main.ts",
+        "polyfills": "apps/sponsored-content-elements/src/polyfills.ts",
+        "tsConfig": "apps/sponsored-content-elements/tsconfig.app.json",
+        "assets": [
+          "apps/sponsored-content-elements/src/favicon.ico",
+          "apps/sponsored-content-elements/src/assets"
+        ],
+        "styles": ["apps/sponsored-content-elements/src/styles.css"],
+        "scripts": [],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/sponsored-content-elements/src/environments/environment.ts",
+              "with": "apps/sponsored-content-elements/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        },
+        "uat": {
+          "fileReplacements": [
+            {
+              "replace": "apps/sponsored-content-elements/src/environments/environment.ts",
+              "with": "apps/sponsored-content-elements/src/environments/environment.uat.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "sponsored-content-elements:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "sponsored-content-elements:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "sponsored-content-elements:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/sponsored-content-elements/**/*.ts",
+          "apps/sponsored-content-elements/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/sponsored-content-elements/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/sponsored-content-elements"]
+    }
+  },
+  "tags": ["scope:sponsored-content", "type:application", "platform:web"]
+}

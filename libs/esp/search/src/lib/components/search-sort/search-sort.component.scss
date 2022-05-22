@@ -1,0 +1,11 @@
+@import '../../../../../../cosmos/scss/settings';
+
+$mobile-breakpoint: $bp-large;
+
+.search-sort-button {
+  padding: 0;
+  @include narrower-than($mobile-breakpoint) {
+    font-size: 11px;
+    letter-spacing: -0.3px;
+  }
+}

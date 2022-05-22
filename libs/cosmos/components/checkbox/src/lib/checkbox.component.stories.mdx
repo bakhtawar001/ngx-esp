@@ -1,0 +1,162 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { CosCheckboxComponent } from './checkbox.component';
+import { CosCheckboxModule } from './checkbox.module';
+
+<Meta
+  title="Controls &amp; Inputs/Checkbox"
+  component={CosCheckboxComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [CosCheckboxModule],
+    }),
+  ]}
+  args={{
+    label: 'This is a checkbox',
+  }}
+  argTypes={{
+    label: { control: 'text' },
+    size: {
+      control: {
+        type: 'select',
+        options: ['', 'small'],
+      },
+    },
+    change: {
+      action: 'change',
+    },
+  }}
+/>
+
+export const Template = (props) => ({
+  component: CosCheckboxComponent,
+  template: `<cos-checkbox
+      [id]="id"
+      [name]="name"
+      [value]="value"
+      [labelHidden]="labelHidden"
+      [size]="size"
+      [required]="required"
+      [aria-labelledby]="aria-labelledby"
+      [labelPosition]="labelPosition"
+      [checked]="checked"
+      [disabled]="disabled"
+      [indeterminate]="indeterminate"
+      (change)="change($event)"
+    >
+      {{ label }}
+    </cos-checkbox>`,
+  props,
+});
+
+# Checkboxes
+
+Checkboxes allow people to select a single or multiple options from a list.
+
+---
+
+## When to use this
+
+Use checkboxes when you want to:
+
+- Allow people to select multiple items from a list
+- Allow people to toggle a single selection on or off
+
+### When not to use this
+
+Don't use checkboxes when you want to:
+
+- Allow a single selection
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      id: 'checkbox-1',
+      name: 'checkbox-1',
+      label: 'This is a checkbox',
+      value: 'checkbox-1',
+      ariaLabelledBy: '',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-checkbox
+  [id]="id"
+  [name]="name"
+  [value]="value"
+  [labelHidden]="labelHidden"
+  [size]="size"
+  [required]="required"
+  [aria-labelledby]="ariaLabelledBy"
+  [labelPosition]="labelPosition"
+  [checked]="checked"
+  [disabled]="disabled"
+  [indeterminate]="indeterminate"
+  (change)="changeEvent($event)"
+>
+  {{ label }}
+</cos-checkbox>
+```
+
+<ArgsTable of={CosCheckboxComponent} />
+
+## Visual Details
+
+Checkboxes are usually grouped together and used within forms or as options within a dropdown menu. It's best to always group checkboxes together with a header of some kind. This ensures people know what they are selecting.
+
+### Sizing
+
+- Each checkbox is 18 x 18px
+
+### Typography
+
+- The label is Work Sans 14 Regular
+
+### Spacing
+
+- The horizontal space between the checkbox and label is Inline 8
+- The vertical spacing between each checkbox is Stack 8
+
+---
+
+## Layout
+
+Checkboxes can be used in either inline or stacked layouts.
+
+### Inline
+
+- Use an inline layout when vertical space is limited.
+- Spacing between each checkbox is Inline 24
+
+### Stacked
+
+- Use a stacked layout when horizontal space is limited.
+- Spacing between each checkbox is Stack 8
+
+---
+
+## States
+
+### Unselected
+
+This is the default state of all checkboxes.
+
+### Selected
+
+When someone clicks/taps a checkbox it becomes “selected”.
+
+### Partially Selected
+
+There are some cases where you can have a partially selected checkbox. You usually see this when you can select multiple rows in a table. There is a parent-level checkbox that is used to select/deselect all rows. If some rows are selected the parent-level checkbox will be partially selected.
+
+### Focused
+
+A focused state communicates when a user has highlighted an element, using an input method such as a keyboard or voice. To show a focused state use a 2px (#0F8BFF) oline with Inset-4 spacing.
+
+### Disabled
+
+Use this when an interaction with a checkbox should be blocked.

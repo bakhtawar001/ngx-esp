@@ -1,0 +1,92 @@
+<div class="supplier-search">
+  <div class="filter-wrapper">
+    <div class="content-container flex">
+      <esp-supplier-search-filters class="w-full"></esp-supplier-search-filters>
+    </div>
+  </div>
+
+  <ng-template
+    [ngIf]="!state.isLoading && state.hasLoaded && state.results"
+    [ngIfElse]="loader"
+  >
+    <div class="content-container">
+      <div class="supplier-results-util-bar flex justify-between">
+        <div class="body-style-14">
+          <b *ngIf="state.term">"{{ state.term }}"</b>&nbsp;<span
+            [innerHTML]="resultMessage"
+          ></span>
+        </div>
+        <div>
+          <a
+            cos-button
+            size="sm"
+            [matMenuTriggerFor]="sortMenu"
+            [ngClass]="{'is-disabled': state.results?.Results?.length <= 0}"
+          >
+            Sort by: <span class="mr-4">{{sort}}</span>
+            <i class="fa fa-chevron-down"></i>
+          </a>
+          <mat-menu
+            #sortMenu
+            class="cos-menu"
+            backdropClass="cos-backdrop"
+            yPosition="below"
+          >
+            <button
+              mat-menu-item
+              class="cos-menu-item"
+              *ngFor="let option of sortMenuOptions | keyvalue: originalOrder"
+              (click)="setSortValue(option.key)"
+            >
+              {{option.value}}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <ng-template [ngIf]="state.results?.Results?.length" [ngIfElse]="noResults">
+      <div class="content-container">
+        <div class="supplier-results">
+          <a
+            *ngFor="let supplier of state.suppliers; let i = index; trackBy: trackSupplier"
+            [routerLink]="['/suppliers', supplier.Id]"
+            [queryParams]="{keywords: state.term}"
+          >
+            <cos-supplier-card
+              [supplier]="mapSupplier(supplier)"
+              [showTags]="true"
+              (viewProducts)="gotoProduts(supplier)"
+            >
+              <cos-supplier [supplier]="supplier"></cos-supplier>
+            </cos-supplier-card>
+          </a>
+        </div>
+        <div
+          *ngIf="state.results?.Results?.length < state.results?.ResultsTotal"
+        >
+          <cos-pagination
+            [length]="resultLength"
+            [pageSize]="state.pageSize"
+            [pageIndex]="state.criteria.from - 1"
+            [maxPageNumbers]="maxPageNumbers"
+            (page)="pageChange($event)"
+          ></cos-pagination>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #noResults>
+      <div class="no-results-msg">
+        <h4>
+          There are no suppliers matching the selected criteria. Please clear
+          your filters or start a new search.
+        </h4>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <esp-supplier-search-loader></esp-supplier-search-loader>
+</ng-template>

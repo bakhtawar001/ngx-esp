@@ -1,0 +1,22 @@
+// This looks like a comment, but it's not. It enables grid autoplace support for IE11.
+/* autoprefixer grid: autoplace */
+
+// Grid styles are repeated seemingly unnecessarily to make the autoplace work properly for IE11.
+.grid-layout-1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-gap: $spacing-inline-16;
+  width: 100%;
+  padding: 0 $spacing-inline-16;
+  margin: 0 auto;
+
+  @include wider-than($bp-medium) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include wider-than($bp-large) {
+    grid-template-columns: repeat(12, 1fr);
+    max-width: $bp-xxlarge;
+  }
+}

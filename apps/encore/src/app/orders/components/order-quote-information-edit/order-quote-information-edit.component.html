@@ -1,0 +1,37 @@
+<div>Order created: {{ editableOrder?.CreateDate | date: dateFormat }}</div>
+<div>
+  <div>
+    In-hands date:
+    {{
+      editableOrder?.InHandsDate || editableOrder?.ShippingDetail?.InHandsDate
+        | date: dateFormat
+    }}
+  </div>
+  <div *ngIf="editableOrder?.ShippingDetail?.IsInHandsDateFlexible">
+    ✔ Flexible
+  </div>
+</div>
+<div>
+  <div>
+    Ship date:
+    {{
+      editableOrder?.ShipDate || editableOrder?.ShippingDetail?.ShipDate
+        | date: dateFormat
+    }}
+  </div>
+  <div
+    *ngIf="
+      editableOrder?.IsBlindShip || editableOrder?.ShippingDetail?.IsBlindShip
+    "
+  >
+    ✔ Blind ship
+  </div>
+</div>
+<div>Ship via???: {{ editableOrder?.ShippingDetail?.CarrierName }}</div>
+<div>
+  Shipping account???: {{ editableOrder?.ShippingDetail?.AccountNumber }}
+</div>
+<div>Quote number???: ???</div>
+<div>PO Reference???: ???</div>
+<div>Terms: {{ editableOrder?.CreditTerm }}</div>
+<div>Currency: {{ editableOrder?.CurrencyCode }}</div>

@@ -1,0 +1,22 @@
+.documentation-typography {
+  align-items: flex-start;
+
+  .type-block {
+    padding-right: $documentation-padding;
+    padding-left: $documentation-padding;
+  }
+
+  .type-block--demo {
+    margin-top: $documentation-padding;
+    padding-top: $documentation-padding;
+    border-top: 1px solid $documentation-gray;
+
+    > div {
+      background: $documentation-pink;
+
+      p {
+        background: $documentation-white;
+      }
+    }
+  }
+}

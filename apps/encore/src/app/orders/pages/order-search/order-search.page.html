@@ -1,0 +1,57 @@
+<div class="order-search">
+  <div class="order-search__header">
+    <h1 class="header-style-24 mb-0">Quote/Order</h1>
+  </div>
+  <!--
+    TBD: Currently show only empty state,
+    if there are orders - first one will be selected
+  -->
+  <ng-container *ngIf="!state.orders?.length || true; else ordersList">
+    <asi-empty-state-info
+      *ngIf="!state.term; else noSearchResults"
+      mainText="No Quote or Order"
+      secondText="There is no quote or order yet."
+      thirdText="Create either a quote or an order to begin."
+    >
+      <div asiEmptyStateInfoButtons>
+        <button
+          cos-stroked-button
+          color="primary"
+          [disabled]="state.creatingOrder"
+          (click)="createOrder('quote')"
+          type="button"
+        >
+          <i class="fa fa-plus mr-8"></i>
+          Create a Quote
+        </button>
+        <button
+          cos-stroked-button
+          color="primary"
+          [disabled]="state.creatingOrder"
+          (click)="createOrder('order')"
+          type="button"
+        >
+          <i class="fa fa-plus mr-8"></i>
+          Create an Order
+        </button>
+      </div>
+    </asi-empty-state-info>
+    <ng-template #noSearchResults>
+      <p class="body-style-14-shark">No orders found.</p>
+    </ng-template>
+  </ng-container>
+</div>
+
+<ng-template #ordersList>
+  <ng-container *ngFor="let order of state.orders">
+    <a [routerLink]="['/orders', order.Id]">
+      <pre>
+        Id: {{ order.Id }}
+        Type: {{ order.Type }}
+        Number: {{ order.Number }}
+      </pre>
+    </a>
+    <hr />
+  </ng-container>
+  <esp-search-pagination></esp-search-pagination>
+</ng-template>

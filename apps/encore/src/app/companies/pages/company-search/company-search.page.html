@@ -1,0 +1,55 @@
+<esp-company-search-header></esp-company-search-header>
+
+<div class="collection-tabs mb-12" *ngIf="tabs">
+  <esp-search-tab-group [tabs]="tabs"></esp-search-tab-group>
+</div>
+
+<p
+  class="body-style-12-shark mt-16 text-center"
+  *ngIf="state.companiesLoading || !state.hasLoaded; else results
+      "
+>
+  Loading...
+</p>
+
+<ng-template #results>
+  <ng-container *ngIf="state.companies?.length; else noParties">
+    <esp-company-card
+      *ngFor="let party of state.companies; trackBy: trackCompany"
+      [company]="party"
+      (click)="navigateToCompany(party)"
+      (delete)="delete(party)"
+      (toggleStatus)="toggleStatus(party)"
+      (transferOwner)="transferOwnership(party)"
+      class="directory-card"
+    >
+    </esp-company-card>
+
+    <esp-search-pagination></esp-search-pagination>
+  </ng-container>
+</ng-template>
+
+<ng-template #noParties>
+  <asi-empty-state-info
+    *ngIf="!state?.term; else noSearchResults"
+    [mainText]="emptyStateInfoOption.mainText"
+    [secondText]="emptyStateInfoOption.secondText"
+    [thirdText]="emptyStateInfoOption.thirdText"
+    data-cy="no-parties-info"
+  >
+    <button
+      (click)="createNewParty()"
+      cos-stroked-button
+      color="primary"
+      type="button"
+      asiEmptyStateInfoButtons
+    >
+      <i class="fa fa-plus mr-8"></i>{{ emptyStateInfoOption.ctaText }}
+    </button>
+  </asi-empty-state-info>
+  <ng-template #noSearchResults>
+    <p class="body-style-14-shark" data-cy="no-search-results-info">
+      No companies found.
+    </p>
+  </ng-template>
+</ng-template>

@@ -1,0 +1,97 @@
+<div class="search-header grid-layout-1">
+  <div class="header flex justify-between">
+    <h1 class="header-style-24 mb-2 bold" data-cy="header">Projects</h1>
+    <div class="header-actions">
+      <!-- visible only in mobile -->
+      <button
+        class="search-header__actions--mobile actions-button"
+        cos-stroked-button
+        color="primary"
+        aria-label="Collection actions"
+        [matMenuTriggerFor]="actionsMenu"
+      >
+        <i class="fa fa-ellipsis-h"></i>
+      </button>
+      <mat-menu
+        #actionsMenu="matMenu"
+        class="cos-global-menu-panel"
+        backdropClass="cos-global-menu-backdrop"
+        xPosition="after"
+        yPosition="below"
+      >
+        <button
+          *cosIfFeatureFlags="{ matches: ['presentations'] }"
+          (click)="onCreateNewPresentation()"
+          mat-menu-item
+          class="cos-menu-item"
+          type="button"
+        >
+          <ng-container
+            *ngTemplateOutlet="createPresentationLabel"
+          ></ng-container>
+        </button>
+        <button
+          (click)="onCreateNewOrder()"
+          mat-menu-item
+          class="cos-menu-item"
+          type="button"
+        >
+          <ng-container *ngTemplateOutlet="createNewOrderLabel"></ng-container>
+        </button>
+      </mat-menu>
+      <div class="search-header__actions">
+        <button
+          *cosIfFeatureFlags="{ matches: ['presentations'] }"
+          (click)="onCreateNewPresentation()"
+          cos-flat-button
+          color="primary"
+          type="button"
+        >
+          <ng-container
+            *ngTemplateOutlet="createPresentationLabel"
+          ></ng-container>
+        </button>
+        <button
+          (click)="onCreateNewOrder()"
+          cos-flat-button
+          color="primary"
+          type="button"
+        >
+          <ng-container *ngTemplateOutlet="createNewOrderLabel"></ng-container>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="search-header__container">
+    <div class="search-header__search">
+      <esp-search-box
+        placeholder="Search All Projects"
+        class="search-header__search-box"
+      ></esp-search-box>
+      <esp-project-search-filters
+        data-cy="project-search-filters"
+      ></esp-project-search-filters>
+    </div>
+
+    <asi-filter-pills
+      class="filter-pills"
+      [filterPills]="state.filterPills"
+      (removeFilterEvent)="onRemoveFilter($event)"
+    >
+    </asi-filter-pills>
+  </div>
+</div>
+
+<ng-template #createPresentationLabel>
+  <span data-cy="create-new-presentation">
+    <i class="fa fa-plus mr-8"></i>
+    Create a New Presentation
+  </span>
+</ng-template>
+
+<ng-template #createNewOrderLabel>
+  <span data-cy="create-new-order">
+    <i class="fa fa-plus mr-8"></i>
+    Create New Order
+  </span>
+</ng-template>

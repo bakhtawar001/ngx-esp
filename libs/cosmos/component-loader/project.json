@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/component-loader",
+  "sourceRoot": "libs/cosmos/component-loader/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/component-loader"],
+      "options": {
+        "project": "libs/cosmos/component-loader/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/component-loader/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/component-loader/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/component-loader"],
+      "options": {
+        "jestConfig": "libs/cosmos/component-loader/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/component-loader/src/**/*.ts",
+          "libs/cosmos/component-loader/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

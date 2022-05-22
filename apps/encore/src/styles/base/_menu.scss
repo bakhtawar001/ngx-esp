@@ -1,0 +1,61 @@
+@import 'cosmos/scss/settings';
+
+$avatar-size: 40px;
+
+.mat-menu-panel .global-menu-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: -3px -1px 0.4rem;
+  padding: 3px 1px;
+
+  &__emoji {
+    background-color: $color-g-pearl-03;
+    margin-right: 0.6rem;
+    width: $avatar-size;
+    height: $avatar-size;
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    flex-basis: $avatar-size;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    border: none;
+    min-width: $avatar-size;
+    min-height: $avatar-size;
+    max-width: $avatar-size;
+    max-height: $avatar-size;
+    margin-right: $spacing-inline-8;
+    border-radius: $border-radius-2 !important;
+
+    & img {
+      display: block;
+      max-width: $avatar-size;
+      max-height: $avatar-size;
+      border-radius: $border-radius-2 !important;
+    }
+  }
+
+  h4,
+  p {
+    margin-bottom: 0;
+  }
+
+  &__content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mat-menu-item {
+  &.link-menu-item {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+}

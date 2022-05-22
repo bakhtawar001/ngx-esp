@@ -1,0 +1,12 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.decoration-card-header {
+  margin-left: -$spacing-stack-16;
+  margin-right: -$spacing-stack-16;
+  margin-top: -$spacing-stack-16;
+}
+
+.add-product-btn {
+  margin-left: -$spacing-stack-16;
+}

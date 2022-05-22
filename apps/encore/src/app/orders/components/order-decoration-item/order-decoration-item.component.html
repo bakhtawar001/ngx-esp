@@ -1,0 +1,48 @@
+<cos-card class="mb-16">
+  <div class="cos-card-container decoration-card-header">
+    <div cos-card-footer>
+      <!-- Controls -->
+      <div class="cos-card-controls-container">
+        <cos-card-menu class="cos-card-menu"> TBD </cos-card-menu>
+        <button cos-icon-button class="cos-warn">
+          <i class="fa fa-trash"></i
+          ><span class="cos-accessibly-hidden">Delete</span>
+        </button>
+      </div>
+      <!-- /Controls -->
+
+      <div class="flex items-center">
+        <h2 class="header-style-18 pl-16 mb-0">
+          Greenstone Apparel Decoration
+        </h2>
+        <span cosAttributeTag size="small" class="ml-8">Imported</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cos-card-main">
+    <!-- Info -->
+    <section class="mr-64">
+      <esp-order-decoration-item-info></esp-order-decoration-item-info>
+    </section>
+    <!-- /Info -->
+
+    <!-- More details -->
+    <esp-order-decoration-item-details></esp-order-decoration-item-details>
+    <!-- /More details -->
+
+    <!-- Listed products -->
+    <h3 class="header-style-16 pt-16 mt-16 mb-0">
+      Products with this decoration
+    </h3>
+    <esp-order-decoration-item-product></esp-order-decoration-item-product>
+    <esp-order-decoration-item-product></esp-order-decoration-item-product>
+    <!-- /Listed products -->
+
+    <!-- Add product button -->
+    <button cos-flat-button class="add-product-btn">
+      <i class="fa fa-plus mr-8"></i>
+      Add Product
+    </button>
+  </div>
+</cos-card>

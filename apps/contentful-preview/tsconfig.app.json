@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["ng-dev-mode"]
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"]
+}

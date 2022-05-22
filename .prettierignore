@@ -1,0 +1,6 @@
+/.firebase
+/dist
+node_modules
+/package.json
+/.vscode
+/.idea

@@ -1,0 +1,18 @@
+<div class="cos-rating" [ngClass]="size ? 'cos-rating--' + size : []">
+  <ng-container *ngIf="rating; else noRating">
+    <div class="cos-rating-stars">
+      <div class="stars" [attr.aria-label]="ratingDisplay"></div>
+    </div>
+    <span class="cos-rating-text cos-accessibly-hidden">
+      {{ ratingDisplay }}
+    </span>
+    <div *ngIf="totalCount && totalCount !== 0" class="cos-rating-review-count">
+      ({{ totalCount }})
+      <span class="cos-rating-text cos-accessibly-hidden">total reviews</span>
+    </div>
+    <div class="cos-rating-content"><ng-content></ng-content></div>
+  </ng-container>
+  <ng-template #noRating>
+    <span class="cos-rating-no-rating">Not yet rated</span>
+  </ng-template>
+</div>

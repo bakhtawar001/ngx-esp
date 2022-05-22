@@ -1,0 +1,43 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close cdkFocusInitial>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Pricing Grids</h2>
+</header>
+<mat-dialog-content>
+  <div class="mt-4">
+    <div class="mb-4" *ngFor="let variant of data.variants; let i = index">
+      <div class="header-style-12-mineshaft variant-name">
+        {{ variant.Name }}
+      </div>
+      <div class="flex mb-2">
+        <div class="w-2/3">
+          <ng-container *ngIf="variant.Values?.length">
+            <div class="flex" *ngFor="let value of variant.Values">
+              <span class="body-style-12-shark variant-value pr-1"
+                >{{ value.Name }}:
+              </span>
+              <cos-product-variants
+                [variant]="{ options: value.Values }"
+                [hasImages]="false"
+              >
+              </cos-product-variants>
+            </div>
+          </ng-container>
+        </div>
+        <div class="flex items-end justify-end w-1/3" *ngIf="variant.Number">
+          <span class="body-style-12-shark pr-1">Product #: </span>
+          <span class="variant-number">{{ variant.Number }}</span>
+        </div>
+      </div>
+
+      <esp-product-pricing-table
+        [preferred]="data.preferred"
+        [pricing]="variant"
+      ></esp-product-pricing-table>
+    </div>
+  </div>
+</mat-dialog-content>

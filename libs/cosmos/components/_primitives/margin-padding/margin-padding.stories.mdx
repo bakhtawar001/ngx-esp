@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { margin_top_bottom, margin_left_right } from './margin-padding.utils';
+import { Template } from '@cosmos/storybook';
+
+<Meta title="Primitives/Margin" />
+
+# Margin and Padding Classes
+
+## Notation
+
+Each margin and padding class follows this format: `{property}{side}-{*negative*}{size}`
+
+Property is defined with:
+
+**m** - for setting margin <br/>
+**p** - for setting padding
+
+Side is defined with:
+
+**t** - for margin-top or padding-top <br/>
+**b** - for margin-bottom or padding-bottom <br/>
+**l** - for margin-left or padding-left <br/>
+**r** - for margin-right or padding-right
+
+Size is defined with:
+
+**0**: for 0px <br/>
+**4**: for 4px <br/>
+**8**: for 8px <br/>
+**12**: for 12px <br/>
+**16**: for 16px <br/>
+**24**: for 24px <br/>
+**32**: for 32px <br/>
+**64**: for 64px
+
+Negative will set any of the defined numbers to their respective negative value. These values can be updated or added to in the `spacing.json` token gen file.
+
+## Top and Bottom
+
+<Canvas>
+  <Story height={700} name="Top and Bottom">
+    {Template(margin_top_bottom).bind({})}
+  </Story>
+</Canvas>
+
+## Left and Right
+
+<Canvas>
+  <Story height={700} name="Left and Right">
+    {Template(margin_left_right).bind({})}
+  </Story>
+</Canvas>

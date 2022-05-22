@@ -1,0 +1,197 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosInputDirective } from './input.directive';
+import { CosInputModule } from './input.module';
+import { CosInputDemoComponent } from './input.component.demo';
+
+<Meta
+  title="Controls &amp; Inputs/Input"
+  component={CosInputDirective}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, FormsModule, CosInputModule],
+      declarations: [CosInputDemoComponent],
+    }),
+  ]}
+  args={{
+    label: 'Name',
+    type: 'text',
+    placeholder: 'Enter a value',
+  }}
+  argTypes={{
+    value: { control: 'text' },
+    label: { control: 'text' },
+    showLabel: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    readonly: { control: 'boolean' },
+    placeholder: { control: 'text' },
+    type: {
+      control: {
+        type: 'select',
+        options: ['text', 'tel', 'email', 'number', 'password', 'url', 'color'],
+      },
+    },
+    style: {
+      control: 'select',
+      options: ['small', 'large', ''],
+    },
+    errorStateMatcher: {
+      table: {
+        disable: true,
+      },
+    },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosInputDemoComponent,
+});
+
+# Text Field
+
+Text fields allow customers to enter a single line of text. This can be used for names, email addresses, home addresses, passwords, and more.
+
+### When to use this component
+
+Use text fields when you want to:
+
+- Allow people to enter a short or single line of text
+
+### When not to use this component
+
+Don't use text fields when you want to:
+
+- Allow people to enter a long or multi-line text
+
+---
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+  <Story name="Small" args={{ style: 'small' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{ style: 'large' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{ disabled: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<input
+  cos-input
+  [error]="error"
+  [style]="style"
+  [type]="type"
+  [readOnly]="readOnly"
+  [attr.id]="id"
+  [id]="id"
+  [(ngModel)]="value"
+  [attr.disabled]="disabled ? '' : null"
+  #name="ngModel"
+  placeholder="Enter a value"
+/>
+```
+
+<ArgsTable of={CosInputDirective} />
+
+## Visual Details
+
+### Sizing
+
+| Size             | Spacing  |
+| ---------------- | -------- |
+| Large & Standard | Inset 12 |
+| Small            | Inset 8  |
+
+### Typography
+
+| Size     | Label              | Text         |
+| -------- | ------------------ | ------------ |
+| Large    | Barlow SemiBold 16 | Work Sans 16 |
+| Standard | Barlow SemiBold 14 | Work Sans 14 |
+| Small    | Barlow SemiBold 12 | Work Sans 12 |
+
+###
+
+### Spacing
+
+- The vertical spacing between the label and text field is Stack 4
+- The vertical spacing between each individual text field is Stack 16
+- The inset of the text field is Inset 8
+
+---
+
+## Layout
+
+Text fields can be laid out in stack or inline form.
+
+### Inline
+
+- Use an inline layout when vertical space is limited.
+- Spacing between each text field is Inline 16
+
+### Stack
+
+- Use a stack layout when horizontal space is limited.
+- Spacing between each text field is Stack 16
+
+---
+
+## States
+
+### Empty
+
+- This is the default state of all text fields
+- Placeholder text is not a replacement for labels. If any instructions are required, use labels or hints outside of the text field. Use placeholder text to show examples of the input.
+
+### Focus
+
+- This is when the person has clicked or tabbed to the text field and is typing
+
+### Filled
+
+- This is when the person has entered text but is no longer focused on the text field
+
+### Error
+
+- This is when the person has entered something incorrectly into the text field
+- Error text should succinctly explain how to resolve the error
+- Errors are triggered on blur of an input, select, or control
+
+### Validated
+
+- This is when the person has resolved an error. A good example of this is for a password field. If the user mistypes their password, and then fixes it, it would show a validated state.
+- Validation is triggered on blur of an input, select, or control
+
+### Hint
+
+- This state is used when the user might need help filling in the field. Example: This could be used if a field is optional.
+
+### Required
+
+- This is when the person has entered something incorrectly into the text field
+- Within a form group, the primary button remains disabled until all required fields are completed correctly
+
+### Disabled
+
+- Use this when interaction should be blocked
+
+---
+
+## Research
+
+- [W3C Labeling Controls](https://www.w3.org/WAI/tutorials/forms/labels/)
+- [W3C Form Instructions](https://www.w3.org/WAI/tutorials/forms/instructions/)
+- [Placeholders in Form Fields Are Harmful](https://www.nngroup.com/articles/form-design-placeholders/)

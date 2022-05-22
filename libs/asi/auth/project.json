@@ -1,0 +1,38 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/auth",
+  "sourceRoot": "libs/asi/auth/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/auth"],
+      "options": {
+        "tsConfig": "libs/asi/auth/tsconfig.lib.json",
+        "project": "libs/asi/auth/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/auth/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/asi/auth/**/*.ts", "libs/asi/auth/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/asi/auth/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/asi/auth"]
+    }
+  },
+  "tags": ["scope:asi", "type:library", "platform:web"]
+}

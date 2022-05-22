@@ -1,0 +1,289 @@
+<div class="content-section" *ngIf="imprintMethods">
+  <h2 class="header-style-14-bold imprint-method-label">Imprint Methods</h2>
+  <div class="imprint-method-section mb-6">{{ imprintMethods }}</div>
+  <div *ngIf="_product.Imprinting?.Methods?.Values">
+    <esp-product-charges [attributes]="_product.Imprinting.Methods.Values">
+      <ng-template let-methods>
+        <ng-container *ngFor="let method of methods">
+          <esp-product-charges-table
+            [method]="method"
+          ></esp-product-charges-table>
+
+          <ng-container *ngIf="method.options">
+            <h4 class="header-style-12-mineshaft">
+              <span
+                class="product-imprint-method-name"
+                *ngIf="method.Type === 'Imprint Option'"
+                >Imprint Option:&nbsp;
+              </span>
+              {{ method.Name }}
+            </h4>
+            <div *ngFor="let option of method.options" class="mb-16">
+              <h4 class="header-style-12-mineshaft">
+                <span *ngIf="option.Type === 'Imprint Option'"
+                  >Imprint Option:&nbsp;
+                </span>
+                {{ option.Name || option.Type }}
+              </h4>
+              <div>{{ option?.values }}</div>
+              <esp-product-charges
+                class="mt-6"
+                *ngIf="option?.Values.length"
+                [attributes]="option?.Values"
+              >
+                <ng-template let-values>
+                  <esp-product-charges-table
+                    *ngFor="let value of values"
+                    [method]="value"
+                  ></esp-product-charges-table>
+                </ng-template>
+              </esp-product-charges>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+</div>
+
+<esp-product-charges
+  *ngIf="_product.Imprinting?.Colors?.Values"
+  [attributes]="_product.Imprinting?.Colors?.Values"
+  class="content-section imprint-methods-esp-product-charges"
+>
+  <ng-template let-colors>
+    <ng-container *ngIf="colors && colors.length">
+      <h2 class="header-style-14-bold">Imprint Colors</h2>
+      <ul
+        class="color-value-list"
+        [ngClass]="{ 'item-list-columns': colors.length > 10 }"
+      >
+        <li *ngFor="let color of colors" class="color-value">
+          {{ color.Name || color }}
+        </li>
+      </ul>
+
+      <ng-container *ngFor="let color of colors">
+        <esp-product-charges-table [method]="color"></esp-product-charges-table>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+</esp-product-charges>
+
+<ng-container *ngIf="imprintLocations">
+  <div class="content-section">
+    <h2 class="header-style-14-bold imprint-locations-heading">
+      Imprint Locations
+    </h2>
+    <p class="imprint-locations mb-6">{{ imprintLocations }}</p>
+
+    <esp-product-charges [attributes]="_product.Imprinting?.Locations?.Values">
+      <ng-template let-locations>
+        <ng-container *ngFor="let location of locations">
+          <esp-product-charges-table
+            [method]="location"
+          ></esp-product-charges-table>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="imprintSizes">
+  <div class="content-section">
+    <h2 class="header-style-14-bold imprint-sizes-label">Imprint Sizes</h2>
+    <p class="imprint-sizes mb-6">{{ imprintSizes }}</p>
+
+    <esp-product-charges [attributes]="_product.Imprinting?.Sizes?.Values">
+      <ng-template let-sizes>
+        <ng-container *ngFor="let size of sizes">
+          <div class="content-section" *ngIf="size.Options || size.Charges">
+            <ng-container>
+              <h2 class="header-style-14-bold">{{ size.Name || size }}</h2>
+              <ng-container *ngIf="!isString(size)">
+                <div *ngFor="let option of size.Options">
+                  <div>
+                    <b class="imprint-size-type">{{ option.Type }}</b>
+                  </div>
+                  <div *ngFor="let value of option?.Values">
+                    {{ value }}
+                  </div>
+                </div>
+
+                <esp-product-charges-table
+                  *ngIf="size.Charges"
+                  [method]="size"
+                ></esp-product-charges-table>
+              </ng-container>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-template>
+    </esp-product-charges>
+  </div>
+</ng-container>
+
+<esp-product-options
+  class="content-section"
+  *ngIf="_product.Imprinting?.Options"
+  [options]="_product.Imprinting?.Options"
+>
+  <ng-template let-options>
+    <ng-container *ngIf="options && options.length">
+      <div class="content-section" *ngFor="let option of options">
+        <ng-container *ngIf="option.nonGroupOption; else groupOption">
+          <h2 class="imprint-option-name-no-group header-style-14-bold">
+            <span *ngIf="option.Type === 'Imprint Option'"
+              >Imprint Option:&nbsp;
+            </span>
+            {{ option.Name || option.Type }}
+          </h2>
+          <esp-product-charges [attributes]="[option]">
+            <ng-template let-options>
+              <ng-container *ngFor="let option of options">
+                <div class="option-val-no-group" *ngIf="option?.values">
+                  {{ option.values }}
+                </div>
+
+                <esp-product-charges-table [method]="option">
+                </esp-product-charges-table>
+              </ng-container>
+            </ng-template>
+          </esp-product-charges>
+        </ng-container>
+
+        <ng-template #groupOption>
+          <div class="content-section">
+            <h2 class="imprint-option-name-group header-style-14-bold">
+              <span *ngIf="option.Type === 'Imprint Option'"
+                >Imprint Option:&nbsp;
+              </span>
+              {{ option.Name || option.Type }}
+            </h2>
+            <div class="mb-6 option-val-with-group group option option values">
+              {{ option?.values }}
+            </div>
+
+            <esp-product-charges [attributes]="option.Groups">
+              <ng-template let-groups>
+                <ng-container *ngFor="let group of groups">
+                  <esp-product-charges-table [method]="group">
+                  </esp-product-charges-table>
+                  <esp-product-charges
+                    *ngIf="group.Values?.length"
+                    [attributes]="group.Values"
+                  >
+                    <ng-template let-values>
+                      <ng-container *ngFor="let value of values">
+                        <esp-product-charges-table
+                          [method]="value"
+                        ></esp-product-charges-table>
+                      </ng-container>
+                    </ng-template>
+                  </esp-product-charges>
+                </ng-container>
+              </ng-template>
+            </esp-product-charges>
+          </div>
+        </ng-template>
+      </div>
+    </ng-container>
+  </ng-template>
+</esp-product-options>
+
+<div class="content-section">
+  <h2 class="header-style-14-bold">Full Color Process</h2>
+  <p class="full-color-process">
+    {{
+      _product.Imprinting?.FullColorProcess
+        | evalDisplayValue: 'Yes':'No':'Supplier has not specified'
+    }}
+  </p>
+</div>
+
+<div class="content-section">
+  <h2 class="header-style-14-bold">Personalization</h2>
+  <p class="personalization">
+    {{
+      _product.Imprinting?.Personalization
+        | evalDisplayValue: 'Yes':'No':'Supplier has not specified'
+    }}
+  </p>
+</div>
+
+<div class="content-section">
+  <h2 class="header-style-14-bold">Sold Unimprinted</h2>
+  <p class="sold-unimprinted">
+    {{
+      _product.Imprinting?.SoldUnimprinted
+        | evalDisplayValue: 'Yes':'No':'Supplier has not specified'
+    }}
+  </p>
+</div>
+
+<div class="content-section" *ngIf="_product.Imprinting?.AdditionalInfo">
+  <h2 class="header-style-14-bold product-additional-information">
+    Additional Information
+  </h2>
+  <p class="additional-information">
+    {{ _product.Imprinting?.AdditionalInfo }}
+  </p>
+</div>
+
+<esp-product-charges
+  class="content-section"
+  *ngIf="_product.Imprinting?.Services?.Values"
+  [attributes]="_product.Imprinting?.Services?.Values"
+>
+  <ng-template let-artwork>
+    <div class="content-section" *ngIf="artwork && artwork.length">
+      <h2 class="header-style-14-bold product-imprint-artwork">
+        Artwork & Proofs
+      </h2>
+      <div *ngFor="let art of artwork">
+        <div>
+          <ng-container *ngIf="isString(art); else serviceObject">
+            {{ art }}
+          </ng-container>
+          <ng-template #serviceObject>
+            <b class="product-imprint-artwork-values">{{ art.Name }}</b>
+            <div>{{ art.Description }}</div>
+          </ng-template>
+        </div>
+
+        <esp-product-charges-table [method]="art"></esp-product-charges-table>
+      </div>
+    </div>
+  </ng-template>
+</esp-product-charges>
+
+<esp-product-charges
+  class="content-section"
+  *ngIf="_product.Samples?.Values"
+  [attributes]="_product.Samples?.Values"
+>
+  <ng-template let-samples>
+    <div
+      *ngIf="samples && samples.length"
+      class="product-imprint-samples content-section"
+    >
+      <h2 class="header-style-14-bold">Samples</h2>
+      <div *ngFor="let sample of samples">
+        <ng-container *ngIf="isString(sample); else sampleObject">
+          {{ sample }}
+        </ng-container>
+        <ng-template #sampleObject>
+          <div class="sample-name">
+            <b>
+              {{ sample.Name }}
+            </b>
+          </div>
+          <div>{{ sample.Description }}</div>
+          <esp-product-charges-table
+            [method]="sample"
+          ></esp-product-charges-table>
+        </ng-template>
+      </div>
+    </div>
+  </ng-template>
+</esp-product-charges>

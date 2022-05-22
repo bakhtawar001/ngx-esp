@@ -1,0 +1,46 @@
+<cos-dialog [closeStrategy]="closeDialogStrategy">
+  <ng-container cosDialogHeader>
+    {{ header }}
+  </ng-container>
+  <ng-container cosDialogSubHeader>{{ subheader }} </ng-container>
+  <ng-container cosDialogContent>
+    <div class="cards-search">
+      <div class="cos-search-field">
+        <span class="form-field-prefix"><i class="fa fa-search"></i></span>
+        <input
+          cos-input
+          [placeholder]="searchPlaceholder"
+          [formControl]="searchControl"
+          data-cy="dialog-search"
+        />
+        <button
+          type="button"
+          class="form-field-suffix"
+          cos-icon-button
+          aria-label="Clear"
+          [hidden]="!searchControl.value"
+          (click)="onSearchClear()"
+          data-cy="search-clear"
+        >
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="cards-search-results">
+      <button
+        cos-new-button
+        class="cards-search-results__item create-new-button"
+        type="button"
+        data-cy="dialog-new-item-button"
+        (click)="onCreateClick()"
+      >
+        <i class="fa fa-plus-circle mr-16"></i>{{ createButtonText }}
+      </button>
+      <ng-content select="[asiCardsSelectionContent]"></ng-content>
+    </div>
+  </ng-container>
+  <ng-container cosDialogActions>
+    <ng-content select="[asiCardsSelectionActions]"></ng-content>
+  </ng-container>
+</cos-dialog>

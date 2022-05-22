@@ -1,0 +1,38 @@
+<label [attr.for]="inputId" class="cos-checkbox-layout" #label>
+  <div
+    class="cos-checkbox-inner-container"
+    [ngClass]="{ 'cos-checkbox-label-hidden': labelHidden }"
+  >
+    <div class="cos-checkbox-background">
+      <i class="cos-checkbox-checkmark fa fa-check"></i>
+      <i class="cos-checkbox-mixedmark fa fa-minus"></i>
+    </div>
+
+    <input
+      #input
+      class="cos-checkbox-input cos-accessibly-hidden"
+      type="checkbox"
+      [id]="inputId"
+      [required]="required"
+      [checked]="checked"
+      [attr.value]="value"
+      [disabled]="disabled"
+      [attr.name]="name"
+      [tabIndex]="tabIndex"
+      [attr.aria-label]="ariaLabel || null"
+      [attr.aria-labelledby]="ariaLabelledby"
+      [attr.aria-checked]="_getAriaChecked()"
+      (change)="_onInteractionEvent($event)"
+      (click)="_onInputClick($event)"
+      (focus)="_onFocus($event)"
+      (blur)="_onBlur($event)"
+    />
+  </div>
+  <span
+    class="cos-checkbox-label"
+    #checkboxLabel
+    (cdkObserveContent)="_onLabelTextChange()"
+  >
+    <ng-content></ng-content>
+  </span>
+</label>

@@ -1,0 +1,14 @@
+/* START: documentation specific styles */
+$documentation-black: #000;
+$documentation-white: #fff;
+$documentation-gray: #efefef;
+$documentation-pink: #fb0091;
+$documentation-padding: 20px;
+
+@import '../../scss/global.scss';
+
+@import './base/base.documentation';
+@import './colors/colors.documentation';
+@import './grid/grid.documentation';
+@import './spacing/spacing.documentation';
+@import './typography/typography.documentation';

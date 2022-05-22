@@ -1,0 +1,141 @@
+<!-- SIDE PANEL -->
+
+<!-- CHAT PANEL -->
+<!-- <cos-sidebar
+  name="chatPanel"
+  position="left"
+  class="chat-panel left-chat-panel"
+  [folded]="true"
+  [foldedWidth]="70"
+  [foldedAutoTriggerOnHover]="false"
+  lockedOpen="gt-md"
+  *ngIf="config.layout.sidepanel?.position === 'left'"
+>
+  <chat-panel></chat-panel>
+</cos-sidebar> -->
+<!-- / CHAT PANEL -->
+
+<!-- / SIDE PANEL -->
+
+<div id="main" *ngIf="config$ | async as config">
+  <!-- TOOLBAR: Above -->
+  <ng-container *ngIf="config.layout.toolbar?.position === 'above'">
+    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+  </ng-container>
+  <!-- / TOOLBAR: Above -->
+
+  <div id="container-1" class="container">
+    <!-- NAVBAR: Left -->
+    <cos-sidebar
+      name="navbar"
+      class="navbar-sidebar"
+      lockedOpen="gt-md"
+      [folded]="config.layout.navbar?.folded"
+      *ngIf="config.layout.navbar?.position === 'left'"
+    >
+      <esp-navbar class="left-navbar"></esp-navbar>
+    </cos-sidebar>
+    <!-- / NAVBAR: Left -->
+
+    <div id="container-2" class="container">
+      <!-- TOOLBAR: Below fixed -->
+      <ng-container *ngIf="config.layout.toolbar?.position === 'below-fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+      </ng-container>
+      <!-- / TOOLBAR: Below fixed -->
+
+      <div id="container-3" class="container">
+        <!-- TOOLBAR: Below static -->
+        <ng-container
+          *ngIf="config.layout.toolbar?.position === 'below-static'"
+        >
+          <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+        <!-- / TOOLBAR: Below static -->
+
+        <!-- CONTENT -->
+        <div id="content" class="inner-scroll">
+          <router-outlet></router-outlet>
+        </div>
+        <!-- / CONTENT -->
+
+        <!-- FOOTER: Below static -->
+        <ng-container *ngIf="config.layout.footer?.position === 'below-static'">
+          <ng-container *ngTemplateOutlet="footer"></ng-container>
+        </ng-container>
+        <!-- / FOOTER: Below static -->
+      </div>
+
+      <!-- FOOTER: Below fixed -->
+      <ng-container *ngIf="config.layout.footer?.position === 'below-fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+      </ng-container>
+      <!-- / FOOTER: Below fixed -->
+    </div>
+
+    <!-- NAVBAR: Right -->
+    <cos-sidebar
+      name="navbar"
+      position="right"
+      class="navbar-sidebar"
+      lockedOpen="gt-md"
+      [folded]="config.layout.navbar?.folded"
+      *ngIf="config.layout.navbar?.position === 'right'"
+    >
+      <esp-navbar class="right-navbar"></esp-navbar>
+    </cos-sidebar>
+    <!-- / NAVBAR: Right -->
+  </div>
+
+  <!-- FOOTER: Above -->
+  <ng-container *ngIf="config.layout.footer?.position === 'above'">
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </ng-container>
+  <!-- FOOTER: Above -->
+</div>
+
+<!-- SIDE PANEL -->
+
+<!-- CHAT PANEL -->
+<!-- <cos-sidebar
+  name="chatPanel"
+  position="right"
+  class="chat-panel right-chat-panel"
+  [folded]="true"
+  [foldedWidth]="70"
+  [foldedAutoTriggerOnHover]="false"
+  lockedOpen="gt-md"
+  *ngIf="config.layout.sidepanel?.position === 'right'"
+>
+  <chat-panel></chat-panel>
+</cos-sidebar>-->
+<!-- / CHAT PANEL -->
+
+<!-- / SIDE PANEL -->
+
+<!-- QUICK PANEL -->
+<!-- <cos-sidebar name="quickPanel" position="right" class="quick-panel">
+  <quick-panel></quick-panel>
+</cos-sidebar> -->
+<!-- / QUICK PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+  <esp-toolbar
+    [ngClass]="[
+      (config$ | async)?.layout.toolbar?.position || '',
+      (config$ | async)?.layout.toolbar?.cssClass || ''
+    ]"
+  ></esp-toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+  <ng-content select="esp-footer"></ng-content>
+</ng-template>
+<!-- / FOOTER -->

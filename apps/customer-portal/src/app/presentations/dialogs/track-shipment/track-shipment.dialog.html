@@ -1,0 +1,76 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Track shipment</h2>
+</header>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <div class="w-4/5 mt-16 ml-auto mr-auto">
+    <h3 class="header-style-16">Order # 12345 - Shipment 1</h3>
+    <div class="flex mb-16">
+      <div class="w-3/4">
+        <p class="body-style-12-shark mb-8"><strong>Ship to</strong></p>
+        <p class="body-style-14 mb-0">1234 Anywhere St, Anytown, US 12345</p>
+      </div>
+      <div class="w-1/4">
+        <p class="body-style-12-shark mb-8"><strong>Shipped</strong></p>
+        <p class="body-style-14 mb-0">11/10/2020</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="mt-16">
+      <div class="flex mb-16">
+        <div class="w-3/4">
+          <p class="body-style-12-shark mb-8"><strong>Tracking Info</strong></p>
+          <div class="grid-gap-16 flex">
+            <div>
+              <img
+                src="https://via.placeholder.com/35x40/EFEFEF/000000?text=coming%20soon"
+              />
+            </div>
+            <div>
+              <h4 class="header-style-18">
+                UPS Ground Shipping<br />#9215643589465
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/4">
+          <p class="body-style-12-shark mb-8"><strong>Order Status</strong></p>
+          <h4 class="header-style-18 mb-8">In transit</h4>
+          <p class="body-style-11 cos-text--blue mb-0">
+            <strong>Updated: 9/25/2020</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <cos-card class="cos-card">
+      <div class="cos-card-container">
+        <div class="grid-cols-3-auto grid">
+          <div>
+            <p class="body-style-12-shark mb-8">
+              <strong>Scheduled Delivery</strong>
+            </p>
+            <p class="header-style-16 mb-0">Friday, 11/30/2020</p>
+          </div>
+          <div>
+            <p class="body-style-12-shark mb-8">
+              <strong>Estimated Time</strong>
+            </p>
+            <p class="header-style-16 mb-0">by 9:00 P.M</p>
+          </div>
+          <div>
+            <p class="body-style-12-shark mb-8"><strong>Status</strong></p>
+            <p class="body-style-14 mb-0">
+              <span cosPillLabel> On Time </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </cos-card>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,14 @@
+<cos-autocomplete
+  [label]="label"
+  [placeholder]="placeholder"
+  [data]="aggregationValues"
+  [displayKey]="'Value'"
+  (onSearch)="search($event)"
+  [formControl]="value"
+>
+  <ng-template let-option>
+    <div>
+      <span>{{ option.Value }} </span>
+    </div>
+  </ng-template>
+</cos-autocomplete>

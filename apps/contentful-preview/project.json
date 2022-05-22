@@ -1,0 +1,95 @@
+{
+  "projectType": "application",
+  "root": "apps/contentful-preview",
+  "sourceRoot": "apps/contentful-preview/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/contentful-preview",
+        "index": "apps/contentful-preview/src/index.html",
+        "main": "apps/contentful-preview/src/main.ts",
+        "polyfills": "apps/contentful-preview/src/polyfills.ts",
+        "tsConfig": "apps/contentful-preview/tsconfig.app.json",
+        "assets": [
+          "apps/contentful-preview/src/favicon.ico",
+          "apps/contentful-preview/src/assets"
+        ],
+        "styles": ["apps/contentful-preview/src/styles.scss"],
+        "scripts": [],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/contentful-preview/src/environments/environment.ts",
+              "with": "apps/contentful-preview/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "contentful-preview:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "contentful-preview:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "contentful-preview:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/contentful-preview/**/*.ts",
+          "apps/contentful-preview/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/contentful-preview/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/contentful-preview"]
+    }
+  },
+  "tags": ["scope:contentful", "type:application", "platform:web"]
+}

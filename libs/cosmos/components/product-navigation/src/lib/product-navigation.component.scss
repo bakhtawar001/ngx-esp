@@ -1,0 +1,215 @@
+@import '../../../../scss/settings/';
+
+.cos-product-nav-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: max-content;
+
+  & .cos-action-bar--products {
+    background: $color-g-pearl-03;
+  }
+
+  .cos-product-navigation-card {
+    margin: $spacing-stack-4 $spacing-stack-8;
+    box-shadow: $box-shadow-menu;
+    border-radius: $border-radius-4;
+    background: $color-g-white-00;
+    position: relative;
+
+    &-back {
+      background: none;
+      box-shadow: none;
+    }
+
+    a {
+      @include spacing-inset-8;
+      display: flex;
+      align-items: center;
+      border-radius: $border-radius-4;
+
+      flex: 0 0 256px;
+      width: 256px;
+      height: 100%;
+
+      &:focus {
+        box-shadow: $box-shadow-default;
+        box-shadow: 0 0 0 1px #0f8bff, 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    h2 {
+      @include type-style-header-14-bold;
+      margin: 0;
+    }
+
+    img {
+      width: 72px;
+      height: 72px;
+    }
+
+    .edit-button-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-content: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgb(236 236 236 / 56%);
+      border-radius: $border-radius-4;
+      border: 1px solid $color-bl-azure-54;
+      .selected-icon i.fas {
+        font-size: 40px;
+        color: #164569;
+      }
+    }
+
+    &:hover,
+    &.selected {
+      .edit-button-wrapper {
+        display: flex;
+      }
+    }
+  }
+}
+
+.cos-product-navigation {
+  overflow: scroll;
+  display: grid;
+  grid-auto-flow: column;
+  box-shadow: $box-shadow-menu;
+  padding: $spacing-inline-8;
+  margin-bottom: $spacing-stack-24;
+  background-color: $color-g-pearl-03;
+
+  position: sticky;
+  z-index: 14;
+
+  top: 68px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &-menu {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+  }
+
+  .cos-product-nav-items-container {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-g-stone-41;
+      border-radius: 20px;
+    }
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: $color-g-stone-41 $color-g-white-00;
+
+    .cos-product-navigation-card {
+      &:first-child {
+        margin-left: $spacing-inline-8;
+      }
+
+      &:last-child {
+        margin-right: $spacing-inline-8;
+      }
+    }
+  }
+
+  .cos-product-navigation-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 72px;
+    padding: $spacing-stack-8 0 $spacing-stack-8 $spacing-stack-8;
+
+    p {
+      margin: 0;
+      @include type-body-style-12-medium();
+    }
+
+    a {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  a.cos-product-navigation-back {
+    display: none;
+    justify-content: center;
+    align-content: center;
+
+    @include wider-than($bp-medium) {
+      display: flex;
+    }
+
+    p {
+      font-family: $font-stack-sans;
+      font-size: $font-size-14;
+      font-weight: $font-weight-700;
+      margin-bottom: 0;
+    }
+  }
+
+  a.cos-product-navigation-back--mobile {
+    display: flex;
+    width: auto;
+    padding: 0;
+
+    p {
+      font-size: 24px;
+    }
+
+    @include wider-than($bp-medium) {
+      display: flex;
+    }
+  }
+
+  .cos-product-navigation-card-back {
+    display: none;
+
+    @include wider-than($bp-medium) {
+      display: flex;
+    }
+  }
+
+  .cos-product-navigation-card-back-mobile {
+    display: block;
+    position: relative;
+    margin-left: $spacing-inline-16 !important;
+    background: none;
+    box-shadow: none;
+
+    @include wider-than($bp-medium) {
+      display: none;
+    }
+  }
+
+  &.is-docked {
+    .cos-product-navigation-menu {
+      display: block;
+    }
+
+    .cos-product-nav-items-container {
+      margin-right: 2.8rem;
+    }
+  }
+}

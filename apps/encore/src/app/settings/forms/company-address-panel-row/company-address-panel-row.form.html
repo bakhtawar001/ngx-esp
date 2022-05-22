@@ -1,0 +1,16 @@
+<asi-panel-editable-row
+  rowTitle="Address"
+  [isEditable]="'Administrator' | hasRole"
+  (onSaveEvent)="save()"
+>
+  <i class="form-row-icon fa fa-map-marker-alt mt-8 mr-16"></i>
+
+  <asi-panel-editable-row-inactive>
+    <esp-address-display class="form-row-value" [address]="form.value">
+      <p class="form-row-value">No address currently set.</p>
+    </esp-address-display>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <cos-address-form [formGroup]="form"></cos-address-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

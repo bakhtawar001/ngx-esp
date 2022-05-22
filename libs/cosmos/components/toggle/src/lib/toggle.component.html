@@ -1,0 +1,43 @@
+<label [attr.for]="inputId" class="cos-slide-toggle-label" #label>
+  <div
+    #toggleBar
+    class="cos-slide-toggle-bar"
+    [class.cos-slide-toggle-bar-no-side-margin]="
+      !labelContent.textContent || !labelContent.textContent.trim()
+    "
+  >
+    <input
+      #input
+      class="cos-slide-toggle-input cos-accessibly-hidden"
+      type="checkbox"
+      role="switch"
+      [id]="inputId"
+      [required]="required"
+      [tabIndex]="tabIndex"
+      [checked]="checked"
+      [disabled]="disabled"
+      [attr.name]="name"
+      [attr.aria-checked]="checked.toString()"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-labelledby]="ariaLabelledby"
+      (change)="_onChangeEvent($event)"
+      (click.silent)="_onInputClick($event)"
+    />
+
+    <div class="cos-slide-toggle-thumb-container" #thumbContainer>
+      <div class="cos-slide-toggle-thumb">
+        <i class="cos-slide-toggle-checkmark fa fa-check"></i>
+      </div>
+    </div>
+  </div>
+
+  <span
+    class="cos-slide-toggle-content"
+    #labelContent
+    (cdkObserveContent)="_onLabelTextChange()"
+  >
+    <!-- Add an invisible span so JAWS can read the label -->
+    <span style="display: none">&nbsp;</span>
+    <ng-content></ng-content>
+  </span>
+</label>

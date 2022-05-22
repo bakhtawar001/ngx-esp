@@ -1,0 +1,48 @@
+@import 'cosmos/scss/settings/';
+
+.note-card {
+  &_textarea {
+    resize: vertical;
+    overflow-y: hidden;
+    padding-bottom: 40px;
+  }
+
+  &_content {
+    white-space: pre-line;
+  }
+
+  &_letter-counter {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+  }
+
+  &_footer-buttons {
+    display: none;
+  }
+}
+
+@include narrower-than($bp-large) {
+  .note-card {
+    &_menu {
+      display: none;
+    }
+
+    &_footer-buttons {
+      display: flex;
+    }
+
+    &_action {
+      flex-direction: column;
+
+      &_buttons {
+        display: flex;
+        flex-direction: column-reverse;
+
+        & > button {
+          margin: 15px 0 0 0;
+        }
+      }
+    }
+  }
+}

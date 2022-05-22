@@ -1,0 +1,21 @@
+<asi-panel-editable-row rowTitle="Username" [saveClick]="updateUsername">
+  <div><i class="form-row-icon fas fa-user mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value">{{ state.user?.UserName }}</p>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <cos-form-field class="form-panel-field__username">
+      <cos-label>Username</cos-label>
+      <input
+        id="profileUsername"
+        cos-input
+        type="text"
+        placeholder="Username"
+        [formControl]="control"
+        maxlength="50"
+        required
+      />
+      <cos-error [controlErrors]="patternError"></cos-error>
+    </cos-form-field>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

@@ -1,0 +1,1881 @@
+<div class="proj-orders grid-layout-1">
+  <div class="project__pg-title proj-orders__pg-title flex justify-between">
+    <h1 class="header-style-24 mb-2">
+      Order #CPO 55678
+      <button cos-icon-button [matMenuTriggerFor]="orderMenu">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <mat-menu #orderMenu="matMenu">
+        <button mat-menu-item>
+          <i class="fas fa-file-invoice"></i> Order #CPO 55678
+        </button>
+        <button mat-menu-item>
+          <i class="fas fa-file-invoice"></i> Order #SEB 5000
+        </button>
+        <button mat-menu-item>
+          <i class="fas fa-file-invoice"></i> Order #LIL 1222
+        </button>
+        <button mat-menu-item>
+          <i class="fas fa-file-invoice"></i> Quote #2002
+        </button>
+      </mat-menu>
+    </h1>
+    <div class="button-wrapper">
+      <button cos-stroked-button color="primary">
+        <i class="fas fa-lock"></i> Unlock for editing
+        <!---->
+      </button>
+      <button cos-flat-button color="primary">
+        <i class="fas fa-reply flip-icon"></i> Send POs
+        <!---->
+      </button>
+      <button cos-flat-button color="primary">
+        <i class="fas fa-reply flip-icon"></i> Send Invoices
+        <!---->
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <!-- <esp-project-order-sidebar
+    [project]="project"
+    class="proj-orders__sidebar"
+  ></esp-project-order-sidebar> -->
+
+  <!-- Main content -->
+  <main class="proj-orders__pg-content">
+    <!-- Customer / Order information -->
+    <section class="proj-orders__pg-section">
+      <!-- Customer information -->
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <ul
+                class="grid-cols-2-auto customer-order grid-gap-20 grid pl-0 mt-0 mb-0"
+              >
+                <li class="border-right">
+                  <h2 class="header-style-18">Customer Information</h2>
+                  <div class="project-contact-info mb-24">
+                    <h4 class="header-style-12-shark mb-8">Primary contact</h4>
+                    <div
+                      class="align-center project-contact-info-name flex justify-between"
+                    >
+                      <h4 class="header-style-14-bold mb-0">Leslie Knope</h4>
+                      <button cos-button size="sm">Send message</button>
+                    </div>
+                    <p class="body-style-12-shark project-contact-job mb-8">
+                      DEPDIR Pawnee City <br />
+                      Dept. of Parks and Rec.
+                    </p>
+                    <a href="tel:800-867-5309" class="body-style-12 block mt-0">
+                      800-867-5309
+                    </a>
+                    <a
+                      href="mailto:lknope@pawneecity.com"
+                      class="body-style-12 block"
+                    >
+                      lknope@pawneecity.com
+                    </a>
+                  </div>
+                  <ul
+                    class="grid-cols-2-auto customer-order grid pl-0 mt-0 mb-0"
+                  >
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">
+                        Shipping address
+                      </h4>
+                      <address>
+                        Leslie Knope <br />
+                        123 Main Street <br />
+                        Pawnee, Indiana <br />
+                        55432
+                      </address>
+                    </li>
+                    <li>
+                      <h4 class="header-style-12-shark mb-8">
+                        Billing address
+                      </h4>
+                      <address>
+                        Leslie Knope <br />
+                        x 123 Main Street <br />
+                        Pawnee, Indiana <br />
+                        55432
+                      </address>
+                    </li>
+                  </ul>
+                </li>
+                <li class="">
+                  <h2 class="header-style-18">Order Information</h2>
+                  <div class="">
+                    <h4 class="header-style-12-shark mb-8">Order created</h4>
+                    <p>November 23, 2020</p>
+                  </div>
+                  <!-- Alternating Columns -->
+                  <ul
+                    class="grid-cols-2-auto customer-order grid pl-0 mt-0 mb-0"
+                  >
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">In-hands date</h4>
+                      <p class="mb-0">December 28, 2020</p>
+                      <p>
+                        <span cosAttributeTag size="small">
+                          <i class="fas fa-check"></i> Flexible
+                        </span>
+                      </p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">Ship date</h4>
+                      <p class="mb-0">December 23, 2020</p>
+                      <p>
+                        <span cosAttributeTag size="small">
+                          <i class="fas fa-check"></i> Blind ship
+                        </span>
+                      </p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">Ship via</h4>
+                      <p>FedEx Overnight</p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">
+                        Shipping account
+                      </h4>
+                      <p>445668292892884</p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">Quote number</h4>
+                      <p>COP 55678</p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">PO reference</h4>
+                      <p>COP 20989</p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">Terms</h4>
+                      <p>Net 60</p>
+                    </li>
+                    <li class="">
+                      <h4 class="header-style-12-shark mb-8">Currency</h4>
+                      <p>USD</p>
+                    </li>
+                  </ul>
+                  <!---->
+                </li>
+              </ul>
+            </div>
+            <!---->
+          </div>
+          <!---->
+        </div>
+      </cos-card>
+    </section>
+    <!-- Customer message -->
+    <section class="proj-orders__pg-section">
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <div class="cos-card-controls-container">
+                <button class="mat-menu-trigger cos-button">
+                  View History
+                </button>
+              </div>
+              <h2 class="header-style-18">Customer message</h2>
+              <div cos-card-footer="" style="position: relative">
+                <div class="cos-card-controls-container">
+                  <cos-card-controls class="cos-card-controls">
+                    <p class="body-style-11 lg:block hidden mt-8 mb-4">
+                      Sent November 25, 2020 at 10:17am
+                    </p>
+                  </cos-card-controls>
+                </div>
+                <ul class="flexbox mt-0 mb-0">
+                  <li>
+                    <img
+                      src="https://via.placeholder.com/70x70/EFEFEF/000000?text=coming%20soon"
+                    />
+                  </li>
+                  <li class="ml-8">
+                    <h4 class="header-style-14-bold">Leslie Knope</h4>
+                    <p class="body-style-14-shark project-contact-job mb-0">
+                      Looks great! Let's do it!
+                    </p>
+                  </li>
+                </ul>
+                <!---->
+              </div>
+            </div>
+            <!---->
+          </div>
+          <!---->
+        </div>
+      </cos-card>
+    </section>
+    <!-- Adult Softspun Semi-Fitted Tee product card -->
+    <section class="proj-orders__pg-section">
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <div class="cos-card-controls-container">
+                <cos-card-menu class="cos-card-menu">
+                  <button
+                    aria-haspopup="true"
+                    cos-icon-button=""
+                    class="mat-menu-trigger cos-icon-button"
+                  >
+                    <i class="fa fa-ellipsis-h"></i
+                    ><span class="cos-accessibly-hidden">Menu</span>
+                  </button>
+                  <!--container-->
+                  <mat-menu
+                    backdropclass="cos-global-menu-backdrop"
+                    yposition="below"
+                    class=""
+                    ng-reflect-backdrop-class="cos-global-menu-backdrop"
+                    ng-reflect-y-position="below"
+                  >
+                    something
+                    <!--container-->
+                  </mat-menu>
+                </cos-card-menu>
+              </div>
+              <ul class="flexbox mt-0 mb-16">
+                <li>
+                  <img
+                    src="https://via.placeholder.com/160x160/EFEFEF/000000?text=coming%20soon"
+                  />
+                </li>
+                <li class="ml-8">
+                  <h2 class="header-style-18 mb-0">
+                    Adult Softspun Semi-Fitted Tee (info in progress)
+                  </h2>
+                  <p class="body-style-12-shark mb-8">
+                    Product #: 7232 | CPN-561142775
+                  </p>
+                  <!--supplier-->
+                  <!-- <cos-supplier [supplier]="supplier"></cos-supplier> -->
+                  <div cos-card-footer="" class="supplier-card">
+                    <ul class="flexbox mt-0 mb-0">
+                      <li>
+                        <img
+                          src="https://via.placeholder.com/70x70/EFEFEF/000000?text=coming%20soon"
+                        />
+                      </li>
+                      <li class="ml-8">
+                        <h4 class="header-style-14-bold mb-0">
+                          Axe Me About T-Shirts
+                        </h4>
+                        <p class="body-style-11-shark mb-0">asi/57956</p>
+                      </li>
+                    </ul>
+                    <!---->
+                  </div>
+                  <!---->
+                </li>
+              </ul>
+              <!---->
+              <!-- Adult Softspun Semi-Fitted Tee product table -->
+              <table class="cdk-table product-prices-table cos-table mb-2">
+                <thead>
+                  <tr class="cdk-header-row cos-header-row ng-star-inserted">
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted"
+                    >
+                      Item
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Quantity
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Net Cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Margin
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Tax
+                    </th>
+                    <!---->
+                  </tr>
+                  <!---->
+                </thead>
+                <tbody>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">S - Basic White (5001)</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">56</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$8.68</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">40%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.85</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$486.08</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$607.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">M - Basic White (5002)</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">75</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$8.68</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">40%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.85</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$651.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$813.75</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">L - Basic White (5003)</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">70</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$8.68</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">40%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.85</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$607.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$759.50</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">XL - Basic White (5004)</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">40</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$8.68</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">40%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.85</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$347.20</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$434.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">2XL - Basic White (5005)</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">20</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$8.68</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">40%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$11.85</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$189.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$237.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">3XL - Basic White (5006)</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">10</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$8.68</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">40%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$12.85</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$100.80</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$128.50</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-units"
+                        ><strong>Total Units</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity"><strong>265</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="setup-charge">Setup charge</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$15.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$15.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">PMS color matching</span>
+                      <p class="m-0">
+                        <span cosAttributeTag size="small">
+                          <i class="fas fa-check"></i> Included in customer
+                          total
+                        </span>
+                      </p>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$15.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$15.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-usd"
+                        ><strong>Total (USD)</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$2,412.28</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$3.000.35</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>6.00%</strong></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <!---->
+                </tbody>
+              </table>
+              <!-- end of table -->
+            </div>
+          </div>
+        </div>
+      </cos-card>
+    </section>
+    <!-- Stadium Cup - 32oz. product card -->
+    <section class="proj-orders__pg-section">
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <div class="cos-card-controls-container">
+                <cos-card-menu class="cos-card-menu">
+                  <button
+                    aria-haspopup="true"
+                    cos-icon-button=""
+                    class="mat-menu-trigger cos-icon-button"
+                  >
+                    <i class="fa fa-ellipsis-h"></i
+                    ><span class="cos-accessibly-hidden">Menu</span>
+                  </button>
+                  <!--container-->
+                  <mat-menu
+                    backdropclass="cos-global-menu-backdrop"
+                    yposition="below"
+                    class=""
+                    ng-reflect-backdrop-class="cos-global-menu-backdrop"
+                    ng-reflect-y-position="below"
+                  >
+                    something
+                    <!--container-->
+                  </mat-menu>
+                </cos-card-menu>
+              </div>
+              <ul class="flexbox mt-0 mb-16">
+                <li>
+                  <img
+                    src="https://via.placeholder.com/160x160/EFEFEF/000000?text=coming%20soon"
+                  />
+                </li>
+                <li class="ml-8">
+                  <h2 class="header-style-18 mb-0">Stadium Cup - 32oz.</h2>
+                  <p class="body-style-12-shark mb-8">
+                    Product #: 7232 | CPN-561142775
+                  </p>
+                  <!--supplier-->
+                  <!-- <cos-supplier [supplier]="supplier"></cos-supplier> -->
+                  <div cos-card-footer="" class="supplier-card">
+                    <ul class="flexbox mt-0 mb-0">
+                      <li>
+                        <img
+                          src="https://via.placeholder.com/70x70/EFEFEF/000000?text=coming%20soon"
+                        />
+                      </li>
+                      <li class="ml-8">
+                        <h4 class="header-style-14-bold mb-0">Merch City</h4>
+                        <p class="body-style-11-shark mb-0">asi/58182</p>
+                      </li>
+                    </ul>
+                    <!---->
+                  </div>
+                  <!---->
+                </li>
+              </ul>
+              <!---->
+              <!-- Product table -->
+              <table class="cdk-table product-prices-table cos-table mb-2">
+                <thead>
+                  <tr class="cdk-header-row cos-header-row ng-star-inserted">
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted"
+                    >
+                      Item
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Quantity
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Net Cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Margin
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Tax
+                    </th>
+                    <!---->
+                  </tr>
+                  <!---->
+                </thead>
+                <tbody>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">Stadium Cup - 32 oz., Teal</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1,000</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$0.40</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$0.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$400.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$600.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-units"
+                        ><strong>Total Units</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity"><strong>1,000</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="setup-charge">Setup charge</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$15.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-usd"
+                        ><strong>Total (USD)</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$410.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$615.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>6.00%</strong></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <!---->
+                </tbody>
+              </table>
+              <!-- end of table -->
+            </div>
+          </div>
+        </div>
+      </cos-card>
+    </section>
+    <!-- Large Cotton Canvas Sailing Tote Bag product card -->
+    <section class="proj-orders__pg-section">
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <div class="cos-card-controls-container">
+                <cos-card-menu class="cos-card-menu">
+                  <button
+                    aria-haspopup="true"
+                    cos-icon-button=""
+                    class="mat-menu-trigger cos-icon-button"
+                  >
+                    <i class="fa fa-ellipsis-h"></i
+                    ><span class="cos-accessibly-hidden">Menu</span>
+                  </button>
+                  <!--container-->
+                  <mat-menu
+                    backdropclass="cos-global-menu-backdrop"
+                    yposition="below"
+                    class=""
+                    ng-reflect-backdrop-class="cos-global-menu-backdrop"
+                    ng-reflect-y-position="below"
+                  >
+                    something
+                    <!--container-->
+                  </mat-menu>
+                </cos-card-menu>
+              </div>
+              <ul class="flexbox mt-0 mb-16">
+                <li>
+                  <img
+                    src="https://via.placeholder.com/160x160/EFEFEF/000000?text=coming%20soon"
+                  />
+                </li>
+                <li class="ml-8">
+                  <h2 class="header-style-18 mb-0">
+                    Large Cotton Canvas Sailing Tote Bag
+                  </h2>
+                  <p class="body-style-12-shark mb-8">
+                    Product #: 7232 | CPN-561142775
+                  </p>
+                  <!--supplier-->
+                  <!-- <cos-supplier [supplier]="supplier"></cos-supplier> -->
+                  <div cos-card-footer="" class="supplier-card">
+                    <ul class="flexbox mt-0 mb-0">
+                      <li>
+                        <img
+                          src="https://via.placeholder.com/70x70/EFEFEF/000000?text=coming%20soon"
+                        />
+                      </li>
+                      <li class="ml-8">
+                        <h4 class="header-style-14-bold mb-0">Merch City</h4>
+                        <p class="body-style-11-shark mb-0">asi/58182</p>
+                      </li>
+                    </ul>
+                    <!---->
+                  </div>
+                  <!---->
+                </li>
+              </ul>
+              <!---->
+              <!-- Product table -->
+              <table class="cdk-table product-prices-table cos-table mb-2">
+                <thead>
+                  <tr class="cdk-header-row cos-header-row ng-star-inserted">
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted"
+                    >
+                      Item
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Quantity
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Net Cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Margin
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Tax
+                    </th>
+                    <!---->
+                  </tr>
+                  <!---->
+                </thead>
+                <tbody>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">Tote - Canvas Sailing - BL</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">240</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$11.59</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$19.33</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$2,781.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$4,639.20</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-units"
+                        ><strong>Total Units</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity"><strong>240</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="setup-charge">Setup charge</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$2,781.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$4,649.20</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-usd"
+                        ><strong>Total (USD)</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$2,781.60.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$4,649.20</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>6.00%</strong></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <!---->
+                </tbody>
+              </table>
+              <!-- end of table -->
+            </div>
+          </div>
+        </div>
+      </cos-card>
+    </section>
+    <!-- Just Your Basic Regular Ol' Clicky Pen product card -->
+    <section class="proj-orders__pg-section">
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <div class="cos-card-controls-container">
+                <cos-card-menu class="cos-card-menu">
+                  <button
+                    aria-haspopup="true"
+                    cos-icon-button=""
+                    class="mat-menu-trigger cos-icon-button"
+                  >
+                    <i class="fa fa-ellipsis-h"></i
+                    ><span class="cos-accessibly-hidden">Menu</span>
+                  </button>
+                  <!--container-->
+                  <mat-menu
+                    backdropclass="cos-global-menu-backdrop"
+                    yposition="below"
+                    class=""
+                    ng-reflect-backdrop-class="cos-global-menu-backdrop"
+                    ng-reflect-y-position="below"
+                  >
+                    something
+                    <!--container-->
+                  </mat-menu>
+                </cos-card-menu>
+              </div>
+              <ul class="flexbox mt-0 mb-16">
+                <li>
+                  <img
+                    src="https://via.placeholder.com/160x160/EFEFEF/000000?text=coming%20soon"
+                  />
+                </li>
+                <li class="ml-8">
+                  <h2 class="header-style-18 mb-0">
+                    Just Your Basic Regular Ol' Clicky Pen
+                  </h2>
+                  <p class="body-style-12-shark mb-8">
+                    Product #: 7232 | CPN-561142775
+                  </p>
+                  <!--supplier-->
+                  <!-- <cos-supplier [supplier]="supplier"></cos-supplier> -->
+                  <div cos-card-footer="" class="supplier-card">
+                    <ul class="flexbox mt-0 mb-0">
+                      <li>
+                        <img
+                          src="https://via.placeholder.com/70x70/EFEFEF/000000?text=coming%20soon"
+                        />
+                      </li>
+                      <li class="ml-8">
+                        <h4 class="header-style-14-bold mb-0">Merch City</h4>
+                        <p class="body-style-11-shark mb-0">asi/58182</p>
+                      </li>
+                    </ul>
+                    <!---->
+                  </div>
+                  <!---->
+                </li>
+              </ul>
+              <!---->
+              <!-- Product table -->
+              <table class="cdk-table product-prices-table cos-table mb-2">
+                <thead>
+                  <tr class="cdk-header-row cos-header-row ng-star-inserted">
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted"
+                    >
+                      Item
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Quantity
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Net Cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Margin
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Tax
+                    </th>
+                    <!---->
+                  </tr>
+                  <!---->
+                </thead>
+                <tbody>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item"
+                        >White Body - Black Clip - 0.375" x 5.5625</span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1,000</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$0.40</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$0.60</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$400.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$600.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-units"
+                        ><strong>Total Units</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity"><strong>1,000</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="setup-charge">Setup charge</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">50%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$10.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$15.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-usd"
+                        ><strong>Total (USD)</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$420.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$630.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>6.00%</strong></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <!---->
+                </tbody>
+              </table>
+              <!-- end of table -->
+            </div>
+          </div>
+        </div>
+      </cos-card>
+    </section>
+    <!-- Artwork Design product card -->
+    <section class="proj-orders__pg-section">
+      <cos-card class="cos-card">
+        <div class="cos-card-container">
+          <div class="cos-card-body">
+            <div class="cos-card-main p-0">
+              <div class="cos-card-controls-container">
+                <cos-card-menu class="cos-card-menu">
+                  <button
+                    aria-haspopup="true"
+                    cos-icon-button=""
+                    class="mat-menu-trigger cos-icon-button"
+                  >
+                    <i class="fa fa-ellipsis-h"></i
+                    ><span class="cos-accessibly-hidden">Menu</span>
+                  </button>
+                  <!--container-->
+                  <mat-menu
+                    backdropclass="cos-global-menu-backdrop"
+                    yposition="below"
+                    class=""
+                    ng-reflect-backdrop-class="cos-global-menu-backdrop"
+                    ng-reflect-y-position="below"
+                  >
+                    something
+                    <!--container-->
+                  </mat-menu>
+                </cos-card-menu>
+              </div>
+              <ul class="flexbox mt-0 mb-16">
+                <li>
+                  <h2 class="header-style-18 mb-0">Artwork Design</h2>
+                </li>
+              </ul>
+
+              <!---->
+              <!-- Product table -->
+              <table class="cdk-table product-prices-table cos-table mb-2">
+                <thead>
+                  <tr class="cdk-header-row cos-header-row ng-star-inserted">
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted"
+                    >
+                      Item
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Quantity
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Net Cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Margin
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total cost
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Total price
+                    </th>
+                    <th
+                      class="cdk-header-cell cdk-column-quantity cos-column-quantity cos-header-cell ng-star-inserted w-1/10"
+                    >
+                      Tax
+                    </th>
+                    <!---->
+                  </tr>
+                  <!---->
+                </thead>
+                <tbody>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="item">Artwork Design</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="quantity">1</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="net-cost">$500.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="margin">0%</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="catalog-price">$500.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-cost">$500.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-price">$500.00</span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="tax"
+                        ><input type="checkbox" name="tax" value="tax" checked
+                      /></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <tr class="cdk-row cos-row ng-star-inserted">
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class="total-usd"
+                        ><strong>Total (USD)</strong></span
+                      >
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$500.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>$500.00</strong></span>
+                    </td>
+                    <td
+                      class="cdk-cell cdk-column-quantity cos-column-quantity cos-cell ng-star-inserted"
+                    >
+                      <span class=""><strong>6.00%</strong></span>
+                    </td>
+                    <!---->
+                  </tr>
+                  <!---->
+                </tbody>
+              </table>
+              <!-- end of table -->
+            </div>
+          </div>
+        </div>
+      </cos-card>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,58 @@
+{
+  "projectType": "library",
+  "root": "libs/contentful/sponsored-content",
+  "sourceRoot": "libs/contentful/sponsored-content/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/contentful/sponsored-content/**/*.ts",
+          "libs/contentful/sponsored-content/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/contentful/sponsored-content/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/contentful/sponsored-content"]
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/contentful/sponsored-content/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/contentful/sponsored-content",
+        "config": {
+          "configFolder": "libs/contentful/sponsored-content/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "generators": {},
+  "tags": ["scope:sponsored-content", "type:library", "platform:web"]
+}

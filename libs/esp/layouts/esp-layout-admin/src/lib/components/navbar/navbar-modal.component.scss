@@ -1,0 +1,92 @@
+.navbar-modal {
+  display: block;
+  height: 100%;
+
+  .app-list-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .footer {
+    padding: 2rem 0;
+    width: 100%;
+    margin: 0 auto;
+    border-top: 0.2rem solid rgba(37, 36, 35, 0.05);
+    text-align: right;
+  }
+
+  .app-bar-items {
+    flex: 1 1 auto;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0 -1em;
+
+    cos-navigation-item {
+      flex: 0 0 25%;
+      cursor: pointer;
+      height: 9.2rem;
+    }
+
+    a.nav-link {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0.6rem;
+      height: 9.2rem;
+      width: 7.2rem;
+      margin: auto;
+      border-radius: 0.3rem;
+      overflow: hidden;
+      border: none;
+      position: relative;
+      color: black;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .mat-icon {
+      height: 4rem;
+      width: 4rem;
+      opacity: 0.9;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .nav-link {
+      &-badge {
+        position: absolute;
+        left: 3.8em;
+        top: 0.1em;
+        border-radius: 20px;
+        font-size: 10px;
+        margin-left: 0;
+        padding: 1px 2px;
+        text-align: center;
+        display: block;
+        border: 0.2rem solid #fff;
+      }
+
+      &-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        font-size: 1rem;
+        text-rendering: optimizeLegibility;
+        margin-top: -0.8rem;
+        text-decoration: none;
+        opacity: 0.63;
+      }
+    }
+  }
+}

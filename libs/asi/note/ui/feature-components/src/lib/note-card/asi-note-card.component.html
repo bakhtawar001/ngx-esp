@@ -1,0 +1,102 @@
+<cos-card class="card" *ngIf="note?.IsVisible">
+  <cos-card-menu
+    class="note-card_menu"
+    *ngIf="!isEditState && note?.IsEditable"
+  >
+    <asi-note-actions-items
+      (edit)="onEdit()"
+      (delete)="onDelete()"
+    ></asi-note-actions-items>
+  </cos-card-menu>
+
+  <div *ngIf="!isEditState; else edit">
+    <div class="card-header body-style-12-medium">
+      Updated
+      {{ this.note?.UpdateDate || this.note?.CreateDate | cosElapsedTime }} ago
+    </div>
+
+    <div class="card-wrapper note-card_content my-5">
+      {{ note?.Content }}
+    </div>
+
+    <div class="card-footer flex" *ngIf="!isPrivate; else private">
+      <cos-avatar-list
+        size="small"
+        [avatars]="avatars"
+        class="manage-collaborators__avatar-list"
+      ></cos-avatar-list>
+      <span class="body-style-12-medium ml-12">{{ note?.CreatedBy }}</span>
+    </div>
+  </div>
+
+  <div class="note-card_footer-buttons justify-end" *ngIf="!isEditState">
+    <button (click)="onEdit()" cos-button data-cy="edit-button" type="button">
+      <i class="fas fa-pen"></i> Edit
+    </button>
+    <button
+      (click)="onDelete()"
+      class="text-warning"
+      cos-button
+      data-cy="delete-button"
+      type="button"
+    >
+      <i class="fa fa-trash delete"></i> Delete
+    </button>
+  </div>
+</cos-card>
+
+<ng-template #edit>
+  <div class="card-wrapper mt-5">
+    <cos-form-field>
+      <textarea
+        class="note-card_textarea w-full"
+        cos-input
+        cdkTextareaAutosize
+        maxlength="2000"
+        autofocus
+        [formControl]="noteValue"
+        #noteRef
+      ></textarea>
+      <cos-hint align="start" class="fixed note-card_letter-counter">
+        {{ noteRef.maxLength - noteRef.value?.length || 0 }} of
+        {{ noteRef.maxLength }} characters remaining
+      </cos-hint>
+    </cos-form-field>
+  </div>
+  <div class="card-footer flex justify-between note-card_action">
+    <cos-toggle [formControl]="isShared">
+      Share this note with other users in company
+    </cos-toggle>
+    <div class="note-card_action_buttons">
+      <button
+        (click)="onCancel()"
+        [color]="'primary'"
+        cos-stroked-button
+        data-cy="cancel-button"
+        type="button"
+      >
+        Cancel
+      </button>
+      <button
+        (click)="onSave()"
+        cos-flat-button
+        color="primary"
+        data-cy="save-button"
+        type="submit"
+        [disabled]="
+          !noteValue.valid || (noteValue.pristine && isShared.pristine)
+        "
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #private>
+  <div class="card-footer">
+    <i class="fa fa-lock"></i>
+    <span class="ml-4 body-style-12-medium">Private</span>
+    <span class="body-style-12-medium ml-12">{{ note?.CreatedBy }}</span>
+  </div>
+</ng-template>

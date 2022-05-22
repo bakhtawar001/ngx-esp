@@ -1,0 +1,15 @@
+@import 'cosmos/scss/settings/';
+
+.cos-card {
+  &.sponsored-content-product {
+    .cos-card-main {
+      display: grid;
+      grid-template-columns: 30% auto;
+      gap: $spacing-inline-24;
+
+      .sponsored-content-product__actions {
+        margin-top: auto;
+      }
+    }
+  }
+}

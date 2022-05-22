@@ -1,0 +1,43 @@
+<div *ngIf="specials">
+  <ng-container *ngFor="let special of specials">
+    <h2 class="product-specials-header header-style-18">
+      Special: {{ special.TypeDescription }}
+    </h2>
+    <div
+      *ngIf="special.ThroughDate"
+      class="product-confirmed-through-date mb-8"
+    >
+      <span cosAttributeTag>
+        <i class="fa fa-calendar-alt"></i> Expires
+        {{ special.ThroughDate | date: 'M/d/y' }}
+      </span>
+    </div>
+    <div *ngIf="special.Code" class="special-promoCode mb-8">
+      <span class="header-style-12-mineshaft">Promo Code: </span>
+      {{ special.Code }}
+    </div>
+    <div *ngIf="special.Description" class="special-description mb-8">
+      {{ special.Description }}
+    </div>
+    <div *ngIf="special.Discount" class="special-discount mb-8">
+      <span *ngIf="special.DiscountUnit === 'PERS'; else currencyOff">
+        {{ special.Discount }}% off
+      </span>
+      <ng-template #currencyOff>
+        <span> ${{ special.Discount }} {{ special.CurrencyCode }} off </span>
+      </ng-template>
+    </div>
+    <div *ngIf="special.DateDisplay" class="mb-8">
+      {{ special.DateDisplay }}
+    </div>
+    <div *ngIf="special.ImageUrl" class="mb-8 flyer">
+      <span class="header-style-12-mineshaft">Flyer: </span>
+      <a [href]="htmlDecode(special.ImageUrl)" target="_blank" class="mr-8">{{
+        special.Name
+      }}</a>
+      <!-- // TODO: Share link
+        <a href="" class="header-style-12"><i class="fa fa-share"></i> Share</a>
+      -->
+    </div>
+  </ng-container>
+</div>

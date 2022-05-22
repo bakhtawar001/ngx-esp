@@ -1,0 +1,119 @@
+<ng-container *ngIf="lineItem">
+  <table
+    cos-table
+    class="line-item__variants"
+    [dataSource]="lineItem | variantsGirdDataSource"
+  >
+    <ng-container cosColumnDef="item">
+      <th cos-header-cell *cosHeaderCellDef>Item</th>
+      <td cos-cell *cosCellDef="let element">
+        <ng-container *ngIf="element | isTotalUnitsRow">
+          <strong>Total Units</strong>
+        </ng-container>
+        {{ element.Description }}
+        <div
+          cosAttributeTag
+          size="small"
+          *ngIf="(element | isServiceChargeRow) && element.IsVisible"
+        >
+          <i class="fas fa-check"></i> Included in customer total
+        </div>
+      </td>
+      <td cos-footer-cell *cosFooterCellDef>
+        <strong>Total ({{ lineItem?.CurrencyCode }})</strong>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="quantity">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Quantity
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        {{ element.Quantity }}
+        <ng-container *ngIf="element | isTotalUnitsRow">
+          <strong>{{ element.Value }}</strong>
+        </ng-container>
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="netCost">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Net Cost
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        {{ element.Cost | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="margin">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Margin
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        {{ element.MarginPercent / 100 | orderPercent }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="price">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">Price</th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        {{ element.Price | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalCost">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Total Cost
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        {{ element.Totals?.Cost | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef class="text-right">
+        <strong>{{ lineItem.Totals?.Cost | orderPrice: lineItem:4 }}</strong>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalPrice">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Total Price
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        {{ element.Totals?.Amount | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef class="text-right">
+        <strong>{{ lineItem.Totals?.Amount | orderPrice: lineItem:4 }}</strong>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="tax">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">Tax</th>
+      <td cos-cell *cosCellDef="let element" class="text-right">
+        <ng-container *ngIf="!(element | isTotalUnitsRow)">
+          <cos-checkbox
+            [checked]="element.IsTaxable"
+            [disabled]="element.Totals?.TaxRate === 0"
+          ></cos-checkbox>
+        </ng-container>
+      </td>
+      <td cos-footer-cell *cosFooterCellDef class="text-right">
+        <strong>{{ lineItem.Totals?.SalesTax | orderPercent }}</strong>
+      </td>
+    </ng-container>
+
+    <tr cos-header-row *cosHeaderRowDef="columns"></tr>
+    <tr
+      cos-row
+      *cosRowDef="let row; columns: columns"
+      [ngClass]="{
+        'service-charge-row': row | isServiceChargeRow,
+        'total-units-row': row | isTotalUnitsRow,
+        'variant-row': row | isVariantRow
+      }"
+    ></tr>
+    <tr cos-footer-row *cosFooterRowDef="columns"></tr>
+  </table>
+</ng-container>

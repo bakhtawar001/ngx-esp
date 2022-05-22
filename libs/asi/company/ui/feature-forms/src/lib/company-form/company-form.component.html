@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <asi-company-info-form
+    [companyType]="companyType"
+    [isPreselectedCompanyType]="isPreselectedCompanyType"
+    formGroupName="CompanyInformation"
+  >
+  </asi-company-info-form>
+
+  <hr class="my-16" />
+
+  <button
+    (click)="toggleBrandInfo()"
+    class="form-panel-field__add-field-btn mt-0"
+    cos-button
+    data-cy="toggle-brand-info"
+    type="button"
+  >
+    <i
+      [ngClass]="{
+        'fa-plus': !showBrandInfo,
+        'fa-minus': showBrandInfo
+      }"
+      class="fa"
+    ></i>
+    Brand Information
+  </button>
+
+  <asi-company-brand-information-form
+    *ngIf="showBrandInfo"
+    formGroupName="BrandInformation"
+    data-cy="brand-information"
+  ></asi-company-brand-information-form>
+</form>

@@ -1,0 +1,81 @@
+<cos-card *ngIf="contact" class="party-card">
+  <cos-card-menu *ngIf="contact.IsEditable">
+    <asi-contact-actions-items
+      [contact]="contact"
+      (delete)="onDelete()"
+      (toggleStatus)="onToggleStatus()"
+      (transferOwner)="onTransferOwner()"
+    >
+    </asi-contact-actions-items>
+  </cos-card-menu>
+
+  <div class="party-card-wrapper">
+    <esp-party-avatar
+      [iconUrl]="contact.IconImageUrl"
+      [name]="contact.Name"
+      [square]="true"
+    ></esp-party-avatar>
+    <div class="party-card-contents">
+      <div class="party-card-header">
+        <h1 class="header-style-16 party-name">
+          <span class="ellipsis">{{ contact.Name }}</span>
+        </h1>
+        <span
+          cosPillLabel
+          class="ml-8 party-status"
+          [color]="!contact.IsActive ? 'error' : 'primary'"
+        >
+          {{ contact.IsActive ? 'Active' : 'Inactive' }}
+        </span>
+      </div>
+      <div class="party-card-body">
+        <div class="party-address">
+          <div class="contact-item">
+            <h3 class="header-style-12-shark">Primary Address</h3>
+            <esp-address-display
+              [showName]="false"
+              [address]="contact.PrimaryAddress"
+              *ngIf="contact.PrimaryAddress"
+            >
+              <div class="contact-address__no-value">&mdash;</div>
+            </esp-address-display>
+          </div>
+        </div>
+        <div class="party-contact">
+          <div class="contact-item">
+            <h3 class="header-style-12-shark">Contact Information</h3>
+            <ng-container
+              *ngIf="
+                contact.PrimaryPhone || contact.PrimaryEmail;
+                else noContactInfo
+              "
+            >
+              <div class="contact-phone" *ngIf="contact.PrimaryPhone">
+                {{ contact.PrimaryPhone }}
+              </div>
+              <div class="contact-email" *ngIf="contact.PrimaryEmail">
+                <a
+                  class="ellipsis"
+                  [attr.title]="contact.PrimaryEmail"
+                  href="mailto:{{ contact.PrimaryEmail }}"
+                  >{{ contact.PrimaryEmail }}</a
+                >
+              </div>
+            </ng-container>
+            <ng-template #noContactInfo>
+              <div class="contact-info__no-value">&mdash;</div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="party-managed">
+          <esp-record-owner class="party-record-owner" [owner]="contact.Owner">
+          </esp-record-owner>
+          <p class="party-created">
+            Created Date: {{ contact.CreateDate | date: 'longDate' }}
+            <!-- <span class="divider">|</span> Created by: {{ company.Owner.Name }} -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</cos-card>

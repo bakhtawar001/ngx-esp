@@ -1,0 +1,9 @@
+@import '../../../../scss/settings';
+
+.cos-product-card-attributes {
+  margin: $spacing-stack-8 0;
+  height: 1em;
+  .cos-inline-list {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,66 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosRatingModule } from './rating.module';
+import { CosRatingComponent } from './rating.component';
+
+<Meta
+  title="Attributes/Rating"
+  component={CosRatingComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [CosRatingModule],
+    }),
+  ]}
+  args={{
+    size: 'sm',
+    totalCount: 22,
+    rating: 7,
+  }}
+  argTypes={{
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['sm', 'lg'],
+      },
+    },
+    totalCount: { control: 'number' },
+    rating: { control: 'number' },
+  }}
+/>
+
+export const Template = (props) => ({
+  component: CosRatingComponent,
+  props,
+});
+
+## Rating
+
+The rating component takes a single integer input between 0 and 10 then normalizes that to a 5 star rating.
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      size: 'sm',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Unrated"
+    args={{
+      totalCount: undefined,
+      rating: undefined,
+      size: 'sm',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-rating [rating]="rating" [totalCount]="totalCount"></cos-rating>
+```
+
+<ArgsTable of={CosRatingComponent} />

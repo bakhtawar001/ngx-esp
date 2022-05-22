@@ -1,0 +1,81 @@
+<div id="main" *ngIf="config$ | async as config">
+  <!-- TOOLBAR: Above -->
+  <ng-container *ngIf="config.layout.toolbar?.position === 'above'">
+    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+  </ng-container>
+  <!-- / TOOLBAR: Above -->
+
+  <div id="container-1" class="container ps">
+    <cos-sidebar
+      (mouseenter)="sideBarMouseEnter()"
+      (mouseleave)="sideBarMouseLeave()"
+      name="main"
+      [position]="config.layout.navbar?.position"
+      lockedOpen="lt-xs,xs,gt-xs"
+      *ngIf="
+        config.layout.navbar?.position === 'left' ||
+        config.layout.navbar?.position === 'right'
+      "
+    >
+      <esp-navbar></esp-navbar>
+    </cos-sidebar>
+
+    <div id="container-2" class="container">
+      <!-- TOOLBAR: Below fixed -->
+      <ng-container *ngIf="config.layout.toolbar?.position === 'below-fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+      </ng-container>
+      <!-- / TOOLBAR: Below fixed -->
+
+      <div id="container-3" class="container">
+        <!-- TOOLBAR: Below static -->
+        <ng-container
+          *ngIf="config.layout.toolbar?.position === 'below-static'"
+        >
+          <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+        <!-- / TOOLBAR: Below static -->
+
+        <!-- CONTENT -->
+        <div id="content" class="inner-scroll">
+          <router-outlet></router-outlet>
+        </div>
+        <!-- / CONTENT -->
+
+        <!-- FOOTER: Below static -->
+        <ng-container *ngIf="config.layout.footer?.position === 'below-static'">
+          <ng-container *ngTemplateOutlet="footer"></ng-container>
+        </ng-container>
+        <!-- / FOOTER: Below static -->
+      </div>
+
+      <!-- FOOTER: Below fixed -->
+      <ng-container *ngIf="config.layout.footer?.position === 'below-fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+      </ng-container>
+      <!-- / FOOTER: Below fixed -->
+    </div>
+  </div>
+
+  <!-- FOOTER: Above -->
+  <ng-container *ngIf="config.layout.footer?.position === 'above'">
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </ng-container>
+  <!-- FOOTER: Above -->
+</div>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+  <ng-content select="esp-toolbar"></ng-content>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+  <ng-content select="esp-footer"></ng-content>
+</ng-template>
+<!-- / FOOTER -->

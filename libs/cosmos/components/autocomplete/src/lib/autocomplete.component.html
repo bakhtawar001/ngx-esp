@@ -1,0 +1,120 @@
+<cos-form-field>
+  <span aria-live="assertive" class="cos-accessibly-hidden">
+    {{ filteredData.length }} results are available.
+    {{
+      activatedOption
+        ? activatedOption.value +
+          ' ' +
+          activatedOption.index +
+          ' of ' +
+          filteredData.length +
+          ' is Highlighted'
+        : ''
+    }}
+  </span>
+  <cos-label *ngIf="label?.length">{{ label }}</cos-label>
+  <span *ngIf="mode === 'search'" cosPrefix><i class="fa fa-search"></i></span>
+  <button
+    *ngIf="
+      searchControl.value && mode === 'search' && searchControl.value.length
+    "
+    (click)="clear()"
+    cosSuffix
+    cos-icon-button
+    aria-label="Clear"
+    type="button"
+  >
+    <span class="cos-accessibly-hidden">Button, clear input text. </span>
+    <i class="fas fa-times"></i>
+  </button>
+  <ng-container *ngIf="mode === 'search'">
+    <input
+      cos-input
+      type="text"
+      #input="matAutocompleteTrigger"
+      [attr.disabled]="disabled ? disabled : null"
+      [placeholder]="placeholder"
+      [required]="required"
+      [matAutocomplete]="auto"
+      [formControl]="searchControl"
+      [maxLength]="maxLength"
+    />
+
+    <mat-autocomplete
+      [attr.disabled]="disabled ? disabled : null"
+      #auto="matAutocomplete"
+      [class]="panelClass"
+      (optionActivated)="onActivatedOption($event)"
+      (optionSelected)="_onValueChanged($event.option.value)"
+      [displayWith]="getDisplayName()"
+    >
+      <div class="options-wrapper">
+        <mat-option
+          *ngFor="let datum of filteredData"
+          [value]="datum[valueSelector] ? datum[valueSelector] : datum"
+        >
+          <ng-container
+            *ngTemplateOutlet="
+              template;
+              context: {
+                $implicit: datum
+              }
+            "
+          ></ng-container>
+        </mat-option>
+      </div>
+      <ng-content select="[autocompleteAction]"></ng-content>
+    </mat-autocomplete>
+  </ng-container>
+
+  <mat-select
+    disableOptionCentering
+    multiple="false"
+    *ngIf="mode === 'select'"
+    [attr.disabled]="disabled ? disabled : null"
+    [placeholder]="placeholder"
+    [(ngModel)]="selectedOption"
+    (ngModelChange)="_onValueChanged($event)"
+    [panelClass]="panelClass"
+  >
+    <cos-form-field>
+      <span cosPrefix><i class="fa fa-search"></i></span>
+      <cos-label class="cos-accessibly-hidden">{{ label }}</cos-label>
+      <button
+        *ngIf="searchControl.value"
+        (click)="searchControl.setValue('')"
+        cosSuffix
+        cos-icon-button
+        aria-label="Clear"
+      >
+        <span class="cos-accessibly-hidden">Button, clear input text. </span>
+        <i class="fas fa-times"></i>
+      </button>
+      <input
+        cos-input
+        type="text"
+        #input
+        [attr.disabled]="disabled ? disabled : null"
+        [placeholder]="searchPlaceholder"
+        [required]="required"
+        [formControl]="searchControl"
+        (keyup)="_handleKeyup($event)"
+        (keydown)="_handleKeydown($event)"
+      />
+    </cos-form-field>
+
+    <mat-option
+      *ngFor="let datum of filteredData"
+      [value]="datum[valueSelector] ? datum[valueSelector] : datum"
+    >
+      <ng-container
+        *ngTemplateOutlet="
+          template;
+          context: {
+            $implicit: datum
+          }
+        "
+      ></ng-container>
+    </mat-option>
+  </mat-select>
+</cos-form-field>

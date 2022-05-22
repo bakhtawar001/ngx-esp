@@ -1,0 +1,14 @@
+<div class="back-to-container" *ngIf="currentNavName">
+  <a cos-icon-button class="back-link" (click)="goBack()"
+    ><i class="fa fa-arrow-left mr-8"></i><strong>{{currentNavName}}</strong>
+  </a>
+</div>
+<div class="page-container">
+  <esp-product-detail
+    *ngIf="state.product"
+    [product]="state.product"
+    [supplier]="state.supplier"
+    [media]="state.media"
+    [inventory]="state.inventory"
+  ></esp-product-detail>
+</div>

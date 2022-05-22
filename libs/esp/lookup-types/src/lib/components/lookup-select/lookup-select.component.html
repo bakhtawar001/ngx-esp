@@ -1,0 +1,13 @@
+<cos-form-field *ngIf="state.types">
+  <cos-label *ngIf="showLabel">Type</cos-label>
+  <select
+    matNativeControl
+    [formControl]="selectValue"
+    [placeholder]="placeholder"
+  >
+    <option *ngFor="let type of state.types" [value]="type.Code">
+      {{ type.Name }}
+    </option>
+  </select>
+  <cos-error></cos-error>
+</cos-form-field>

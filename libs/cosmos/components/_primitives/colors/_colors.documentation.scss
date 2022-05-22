@@ -1,0 +1,35 @@
+.documentation-color {
+  justify-content: space-between;
+  padding-top: 0;
+
+  footer {
+    margin-top: 0;
+  }
+
+  .color-block {
+    min-height: 150px;
+  }
+
+  .text {
+    font-size: rem(64);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    span {
+      align-self: center;
+    }
+  }
+
+  .a11y-tag-container {
+    white-space: nowrap;
+  }
+
+  .a11y-tag {
+    display: inline-block;
+    background: $documentation-black;
+    color: $documentation-white;
+    padding: 5px;
+    margin-top: 5px;
+  }
+}

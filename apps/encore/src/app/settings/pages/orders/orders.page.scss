@@ -1,0 +1,77 @@
+@import 'cosmos/scss/settings/';
+
+.page-description {
+  color: $color-g-shark-54;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-14;
+}
+
+.form-row-value,
+.form-row-icon,
+.settings-company-color-name {
+  color: $color-g-shark-54;
+}
+
+.form-row-icon {
+  font-size: $font-size-16;
+}
+
+.form-row-value {
+  font-size: $font-size-14;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.order-creation-flex-fields {
+  @include wider-than($bp-medium) {
+    display: flex;
+
+    > div {
+      margin-right: $spacing-inline-12;
+    }
+  }
+}
+
+.order-creation-document-checkboxes {
+  margin-bottom: $spacing-stack-16;
+  @include wider-than($bp-medium) {
+    > div {
+      margin-right: $spacing-inline-64;
+    }
+  }
+}
+
+.form-row-values-column-list {
+  list-style: none;
+  padding: 0;
+
+  > li {
+    display: flex;
+    > span {
+      font-family: Work Sans, sans-serif;
+      font-size: $font-size-14;
+      margin-bottom: $spacing-stack-8;
+
+      &:first-of-type {
+        display: inline-block;
+        width: 130px;
+        margin-right: $spacing-inline-16;
+
+        color: $color-g-shark-54;
+      }
+    }
+  }
+}
+
+.order-creation-label {
+  @include type-style-header-12-mineshaft;
+  font-size: $font-size-14;
+}
+
+p {
+  font-size: $font-size-14;
+}
+
+.order-creation-html-preview {
+  margin-left: -15px;
+  margin-top: -15px;
+}

@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/ui/feature-financial-details",
+  "sourceRoot": "libs/asi/ui/feature-financial-details/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/ui/feature-financial-details"],
+      "options": {
+        "project": "libs/asi/ui/feature-financial-details/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/ui/feature-financial-details/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/ui/feature-financial-details/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/ui/feature-financial-details"],
+      "options": {
+        "jestConfig": "libs/asi/ui/feature-financial-details/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/ui/feature-financial-details/src/**/*.ts",
+          "libs/asi/ui/feature-financial-details/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "type:feature", "platform:web"]
+}

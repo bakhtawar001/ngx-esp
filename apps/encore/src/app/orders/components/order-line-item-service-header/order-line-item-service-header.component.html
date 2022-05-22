@@ -1,0 +1,96 @@
+<h2 class="line-item__name header-style-18 mb-16">{{ lineItem?.Name }}</h2>
+
+<ng-container *ngIf="lineItem">
+  <table cos-table class="line-item__charges" [dataSource]="[lineItem]">
+    <ng-container cosColumnDef="item">
+      <th cos-header-cell *cosHeaderCellDef>Item</th>
+      <td cos-cell *cosCellDef="let element">
+        {{ element.Description }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef>
+        <strong>Total ({{ lineItem?.CurrencyCode }})</strong>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="quantity">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Quantity
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-1/10">
+        {{ element.Quantity }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="netCost">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Net Cost
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-10">
+        {{ element.Cost | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="margin">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-10">Margin</th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-10">
+        {{ element.Totals?.Margin / 100 | orderPercent }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="price">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-10">Price</th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-10">
+        {{ element.Price | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef></td>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalCost">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Total Cost
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-10">
+        {{ element.Totals?.Cost | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef class="text-right w-10">
+        <strong>{{ lineItem.Totals?.Cost | orderPrice: lineItem }}</strong>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="totalPrice">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">
+        Total Price
+      </th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-10">
+        {{ element.Totals?.Amount | orderPrice: lineItem:4 }}
+      </td>
+      <td cos-footer-cell *cosFooterCellDef class="text-right w-10">
+        <strong>{{ lineItem.Totals?.Amount | orderPrice: lineItem }}</strong>
+      </td>
+    </ng-container>
+
+    <ng-container cosColumnDef="tax">
+      <th cos-header-cell *cosHeaderCellDef class="text-right w-1/10">Tax</th>
+      <td cos-cell *cosCellDef="let element" class="text-right w-1/10">
+        <cos-checkbox
+          [checked]="element.IsTaxable"
+          [disabled]="element.Totals?.TaxRate === 0"
+        ></cos-checkbox>
+      </td>
+      <td cos-footer-cell *cosFooterCellDef class="text-right w-10">
+        <strong>{{ lineItem.Totals?.SalesTax / 100 | orderPercent }}</strong>
+      </td>
+    </ng-container>
+
+    <tr cos-header-row *cosHeaderRowDef="columns"></tr>
+    <tr cos-row *cosRowDef="let row; columns: columns"></tr>
+    <tr
+      cos-footer-row
+      *cosFooterRowDef="columns"
+      class="line-item__total-row"
+    ></tr>
+  </table>
+</ng-container>

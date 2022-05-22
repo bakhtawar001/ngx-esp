@@ -1,0 +1,43 @@
+{
+  "projectType": "library",
+  "root": "libs/cosmos/components/dropdown-filter",
+  "sourceRoot": "libs/cosmos/components/dropdown-filter/src",
+  "prefix": "cosmos",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/cosmos/components/dropdown-filter"],
+      "options": {
+        "project": "libs/cosmos/components/dropdown-filter/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/cosmos/components/dropdown-filter/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/cosmos/components/dropdown-filter/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cosmos/components/dropdown-filter"],
+      "options": {
+        "jestConfig": "libs/cosmos/components/dropdown-filter/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/cosmos/components/dropdown-filter/src/**/*.ts",
+          "libs/cosmos/components/dropdown-filter/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:cosmos", "type:library", "type:ui"]
+}

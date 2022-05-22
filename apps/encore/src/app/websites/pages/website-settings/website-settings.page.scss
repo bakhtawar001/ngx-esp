@@ -1,0 +1,42 @@
+@import 'cosmos/scss/settings/';
+
+.website-settings {
+  display: flex;
+  flex-direction: column;
+
+  @include wider-than($bp-large) {
+    display: grid;
+    grid-template-areas:
+      'a a a a a a a a a a a a'
+      'b b b b b b b b b b b b';
+  }
+
+  .header {
+    grid-area: a;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+
+  &-content {
+    grid-area: b;
+  }
+}
+.panel-grid {
+  &-col1 {
+    @include wider-than($bp-large) {
+      width: 60px;
+    }
+  }
+  &-col2 {
+    @include wider-than($bp-large) {
+      width: 90%;
+      float: left;
+    }
+  }
+  &-col3 {
+    @include wider-than($bp-large) {
+      width: 5%;
+      float: right;
+    }
+  }
+}

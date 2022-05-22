@@ -1,0 +1,16 @@
+@import 'cosmos/scss/settings/';
+
+header {
+  border-bottom: $border-light;
+}
+
+.content-wrapper {
+  margin: 0.6rem 3rem;
+}
+
+.project-add-note-dialog-content {
+  input[cos-input],
+  select {
+    width: 100%;
+  }
+}

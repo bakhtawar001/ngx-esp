@@ -1,0 +1,52 @@
+<div class="detail-header flex">
+  <div
+    [ngClass]="{
+      'detail-header-content': true,
+      'detail-header-content--w-nav': _subNav.length,
+      'detail-header-content--w-tracker': _tracker.length
+    }"
+  >
+    <div *ngIf="_utilNav.length" class="detail-header-util-nav">
+      <ng-content select="esp-detail-header-util-nav"></ng-content>
+    </div>
+
+    <div class="detail-header-info flex-1 sm:w-1/4 relative">
+      <div class="detail-header-img">
+        <ng-content select="esp-detail-header-img"></ng-content>
+      </div>
+
+      <div class="detail-header-info-top flex w-full border-b border-gray-30">
+        <div class="flex detail-header-title-container">
+          <ng-content select="esp-detail-header-title"></ng-content>
+        </div>
+
+        <div *ngIf="_tracker.length" class="detail-header-tracker">
+          <ng-content select="esp-detail-header-tracker"></ng-content>
+        </div>
+
+        <div *ngIf="_tracker.length" class="detail-header-notifications">
+          <ng-content select="esp-detail-header-notifications"></ng-content>
+        </div>
+
+        <div class="detail-header-actions flex items-start align-center">
+          <ng-content select="esp-detail-header-menu"></ng-content>
+        </div>
+      </div>
+
+      <div class="detail-header-info-bottom flex flex-wrap">
+        <ng-content select="esp-detail-header-meta"></ng-content>
+      </div>
+    </div>
+
+    <div *ngIf="_subNav.length" class="detail-header-nav">
+      <ng-content select="esp-detail-header-nav"></ng-content>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="detail-header--meta" *ngFor="let meta of entityMetaData">
+  <h4 class="detail-header--meta-title mb-0">{{ meta.title }}</h4>
+  <p class="detail-header--meta-content mb-0">
+    {{ meta.content }}
+  </p>
+</div> -->

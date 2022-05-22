@@ -1,0 +1,63 @@
+@import '../../../scss/settings/';
+
+// GLOBAL
+body {
+  padding: $documentation-padding;
+}
+
+.documentation-grid {
+  display: grid;
+  grid-gap: divide($documentation-padding, 2);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.documentation-grid--large {
+  display: grid;
+  grid-gap: $documentation-padding;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.documentation-grid--list {
+  display: grid;
+  grid-gap: $documentation-padding;
+  grid-template-columns: 1fr;
+  justify-items: flex-start;
+}
+
+.documentation-grid--feature {
+  display: grid;
+  grid-gap: divide($documentation-padding, 2);
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+}
+
+.documentation-block {
+  padding-top: $documentation-padding;
+  border: 1px solid $documentation-gray;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column wrap;
+  line-height: 1;
+
+  footer {
+    font-size: rem(12);
+    background: rgba($documentation-white, 0.8);
+    border-top: 1px solid $documentation-gray;
+    justify-self: flex-end;
+    padding: divide($documentation-padding, 2);
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: $documentation-padding;
+    font-family: sans-serif;
+    width: 100%;
+
+    p {
+      overflow: auto;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin: 0 0 2px 0;
+    }
+  }
+}

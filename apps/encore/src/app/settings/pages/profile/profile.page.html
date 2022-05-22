@@ -1,0 +1,113 @@
+<h1 class="header-style-22">Profile and Login Settings</h1>
+
+<cos-segmented-panel class="basic-info-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Basic Information</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <esp-name-panel-row-form [isUser]="true"></esp-name-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-username-panel-row-form></esp-username-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-signon-email-panel-row-form></esp-signon-email-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-profile-avatar-panel-row-form></esp-profile-avatar-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-name-panel-row-form
+      [isEditable]="false"
+    ></esp-company-name-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-asi-number-panel-row-form></esp-company-asi-number-panel-row-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel>
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Password</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <esp-password-panel-row-form></esp-password-panel-row-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel *cosIfFeatureFlags="{ matches: ['mmp'] }">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Language</h2>
+  </cos-segmented-panel-header>
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row rowTitle="Preferred language">
+      <div>
+        <i class="form-row-icon fas fa-language lang-icon mt-8 mr-16"></i>
+      </div>
+      <asi-panel-editable-row-inactive>
+        <p class="form-row-value lang-value">{{lang.preference}}</p>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <select class="mb-16" matNativeControl>
+          <option *ngFor="let option of lang.options" [value]="option">
+            {{option}}
+          </option>
+        </select>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel>
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Contact Information</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <esp-email-list-panel-row-form></esp-email-list-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-phone-list-panel-row-form></esp-phone-list-panel-row-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<esp-address-list-panel-form></esp-address-list-panel-form>
+
+<cos-segmented-panel *cosIfFeatureFlags="{ matches: ['directory'] }">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Social media</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row rowTitle="Social Media">
+      <div>
+        <i class="form-row-icon fa fa-heart social-info-icon mt-8 mr-16"></i>
+      </div>
+
+      <asi-panel-editable-row-inactive>
+        <div>
+          <ul class="form-row-value-list">
+            <li><span>Facebook:</span><span></span></li>
+            <li>
+              <span>Twitter:</span>
+              <span></span>
+            </li>
+            <li><span>Instagram:</span><span></span></li>
+          </ul>
+        </div>
+      </asi-panel-editable-row-inactive>
+
+      <asi-panel-editable-row-active>
+        <esp-social-media-form></esp-social-media-form>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

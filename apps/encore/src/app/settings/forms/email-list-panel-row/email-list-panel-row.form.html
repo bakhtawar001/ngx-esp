@@ -1,0 +1,43 @@
+<asi-panel-editable-row
+  rowTitle="Email"
+  [formGroup]="form"
+  (addNewEvent)="emailList.addItem()"
+  (onSaveEvent)="save()"
+  [isEditable]="state.party?.IsEditable"
+  [isLoading]="!state.partyIsReady"
+>
+  <div><i class="form-row-icon fa fa-at mt-8 mr-16"></i></div>
+
+  <asi-panel-editable-row-inactive>
+    <ul
+      *ngIf="emails?.length; else noEmails"
+      class="form-row-value-list cos-list-no-style p-0"
+    >
+      <li *ngFor="let email of emails; trackBy: trackByFn">
+        <span class="mr-8" data-cy="email-type"
+          >{{ email.Type | findLookupTypeValue: 'Emails' }}:</span
+        ><span>
+          <a
+            [href]="'mailto:' + email.Address"
+            class="row__email-address mr-8"
+            data-cy="email-address"
+            >{{ email.Address }}</a
+          >
+          <span *ngIf="email.IsPrimary" cosPillLabel data-cy="email-primary"
+            >Primary</span
+          >
+        </span>
+      </li>
+    </ul>
+    <ng-template #noEmails>
+      <p class="form-row-value">No email addresses added</p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+
+  <asi-panel-editable-row-active>
+    <esp-email-list-form
+      formArrayName="Emails"
+      #emailList
+    ></esp-email-list-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CosAvatarListModule } from '../avatar-list.module';
+import { CosAvatarListComponent } from './avatar-list.component';
+import { CosAvatarListDemoComponent } from './avatar-list.demo.component';
+import data from './avatars-data.json';
+
+<Meta
+  title="Lists/Avatar list"
+  component={CosAvatarListComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosAvatarListModule],
+      declarations: [CosAvatarListDemoComponent],
+    }),
+  ]}
+  args={{
+    avatars: data,
+    rulesDisplay: 'fivePlus',
+  }}
+  argTypes={{
+    avatars: {
+      control: 'object',
+    },
+    rulesDisplay: {
+      control: 'select',
+      options: ['fiveOnly', 'fivePlus'],
+    },
+  }}
+/>
+
+export const Template = (props) => ({
+  component: CosAvatarListDemoComponent,
+  props,
+});
+
+## Avatar List
+
+This component is used on pages that have permissions to be viewed and colloaborators need to be added/removed.
+
+---
+
+## When to use this
+
+This component should be used on any page that is needs to be seen based on collaboration permissions. Examples might be collection or client pages.
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-avatar-list [avatars]="avatars"></cos-avatar-list>
+```
+
+<ArgsTable of={CosAvatarListComponent} />
+
+## Visual Details
+
+### Sizing
+
+| Attribute       | Value        |
+| --------------- | ------------ |
+| Size            | 36px by 36px |
+| Spacing between | -8px         |
+
+### Rules
+
+**Number of Avatars Displayed for Desktop & Mobile**
+
+- Display a maximum of 5 circles of avatars
+
+- 1 - 5 USERS: Display every user's avatar.
+
+- 5 + USERS: Display four users' avatars and an overflow amount (+#) circle totalling the number of users hidden
+
+- On hover of the overflow amount circle, display a tooltip with the name of the hidden users
+
+- If there is a photo, use the photo provided.
+
+- If no photo is available display initials.

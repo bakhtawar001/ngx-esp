@@ -1,0 +1,194 @@
+<aside *ngIf="project" class="project-detail-sidebar">
+  <div class="settings-menu">
+    <cos-vertical-menu [label]="'Settings menu'" [menu]="menu">
+    </cos-vertical-menu>
+  </div>
+  <cos-accordion
+    class="project-detail-sidebar--accordion"
+    [expanded]="isDesktop"
+  >
+    <cos-accordion-header>
+      Project Information, Contacts, and Timeline
+    </cos-accordion-header>
+    <esp-project-sidebar-info [project]="project"></esp-project-sidebar-info>
+
+    <div class="project-contact-info">
+      <div class="project-detail-sidebar-header">
+        <h3 class="header-style-16">Contact information</h3>
+        <button cos-icon-button (click)="openDialog('contact')" size="sm">
+          <i class="fa fa-pen"></i>
+        </button>
+      </div>
+
+      <div class="mb-24">
+        <h4 class="header-style-12-shark mb-8">Primary contact</h4>
+        <div
+          class="align-center project-contact-info-name flex justify-between"
+        >
+          <h4 class="header-style-14-bold mb-0">Leslie Knope</h4>
+          <button cos-button size="sm">Send message</button>
+        </div>
+        <p class="body-style-11-shark project-contact-job mb-8">
+          DEPDIR Pawnee City <br />
+          Dept. of Parks and Rec.
+        </p>
+        <a href="tel:800-867-5309" class="body-style-12 block mt-0"
+          >800-867-5309</a
+        >
+        <a href="mailto:lknope@pawneecity.com" class="body-style-12 block"
+          >lknope@pawneecity.com</a
+        >
+      </div>
+      <div class="mb-24">
+        <h4 class="header-style-12-shark mb-8">Shipping address</h4>
+        <address>
+          Leslie Knope <br />
+          123 Main Street <br />
+          Pawnee, Indiana <br />
+          55432
+        </address>
+      </div>
+
+      <div class="mb-24">
+        <h4 class="header-style-12-shark mb-8">Billing address</h4>
+        <address>
+          Leslie Knope <br />x 123 Main Street <br />
+          Pawnee, Indiana <br />
+          55432
+        </address>
+      </div>
+    </div>
+
+    <div class="project-timeline">
+      <div class="project-detail-sidebar-header">
+        <h3 class="header-style-16">Project timeline</h3>
+      </div>
+      <cos-tracker-accordion
+        accordionTitle="Negotiation & Pitching"
+        [expanded]="true"
+        status="complete"
+      >
+        <cos-tracker-accordion-label>1</cos-tracker-accordion-label>
+        <cos-card>
+          <div class="entity-last-action">
+            <div class="entity-last-action--avatar">
+              <span>
+                <cos-avatar> </cos-avatar>
+                <cos-context-icon [icon]="'photo'"> </cos-context-icon>
+              </span>
+            </div>
+
+            <span class="entity-last-action--info">
+              <p class="entity-last-action--title mb-0">
+                Linda Miranda created the PCI Tradeshow Presentation.
+              </p>
+              <p class="entity-last-action--time mb-0">2 hours ago</p>
+            </span>
+          </div>
+        </cos-card>
+      </cos-tracker-accordion>
+      <cos-tracker-accordion accordionTitle="Processing" [expanded]="false">
+        <cos-tracker-accordion-label>2</cos-tracker-accordion-label>
+        <cos-card>
+          <div class="entity-last-action">
+            <div class="entity-last-action--avatar">
+              <span>
+                <cos-avatar> </cos-avatar>
+                <cos-context-icon [icon]="'photo'"> </cos-context-icon>
+              </span>
+            </div>
+
+            <span class="entity-last-action--info">
+              <p class="entity-last-action--title mb-0">
+                Linda Miranda created the PCI Tradeshow Presentation.
+              </p>
+              <p class="entity-last-action--time mb-0">2 hours ago</p>
+            </span>
+          </div>
+        </cos-card>
+      </cos-tracker-accordion>
+      <cos-tracker-accordion accordionTitle="Fulfillment" [expanded]="false">
+        <cos-tracker-accordion-label>3</cos-tracker-accordion-label>
+        <cos-card>
+          <div class="entity-last-action">
+            <div class="entity-last-action--avatar">
+              <span>
+                <cos-avatar> </cos-avatar>
+                <cos-context-icon [icon]="'photo'"> </cos-context-icon>
+              </span>
+            </div>
+
+            <span class="entity-last-action--info">
+              <p class="entity-last-action--title mb-0">
+                Linda Miranda created the PCI Tradeshow Presentation.
+              </p>
+              <p class="entity-last-action--time mb-0">2 hours ago</p>
+            </span>
+          </div>
+        </cos-card>
+      </cos-tracker-accordion>
+      <cos-tracker-accordion accordionTitle="Fullfilled" [expanded]="false">
+        <cos-tracker-accordion-label>4</cos-tracker-accordion-label>
+
+        <cos-card>
+          <div class="entity-last-action">
+            <div class="entity-last-action--avatar">
+              <span>
+                <cos-avatar> </cos-avatar>
+                <cos-context-icon [icon]="'photo'"> </cos-context-icon>
+              </span>
+            </div>
+
+            <span class="entity-last-action--info">
+              <p class="entity-last-action--title mb-0">
+                Linda Miranda created the PCI Tradeshow Presentation.
+              </p>
+              <p class="entity-last-action--time mb-0">2 hours ago</p>
+            </span>
+          </div>
+        </cos-card>
+      </cos-tracker-accordion>
+      <cos-tracker-accordion accordionTitle="Pending final payment">
+        <cos-tracker-accordion-label>5</cos-tracker-accordion-label>
+
+        <cos-card>
+          <div class="entity-last-action">
+            <div class="entity-last-action--avatar">
+              <span>
+                <cos-avatar> </cos-avatar>
+                <cos-context-icon [icon]="'photo'"> </cos-context-icon>
+              </span>
+            </div>
+
+            <span class="entity-last-action--info">
+              <p class="entity-last-action--title mb-0">
+                Linda Miranda created the PCI Tradeshow Presentation.
+              </p>
+              <p class="entity-last-action--time mb-0">2 hours ago</p>
+            </span>
+          </div>
+        </cos-card>
+      </cos-tracker-accordion>
+      <cos-tracker-accordion accordionTitle="Complete" [expanded]="false">
+        <cos-tracker-accordion-label>6</cos-tracker-accordion-label>
+        <cos-card>
+          <div class="entity-last-action">
+            <div class="entity-last-action--avatar">
+              <span>
+                <cos-avatar> </cos-avatar>
+                <cos-context-icon [icon]="'photo'"> </cos-context-icon>
+              </span>
+            </div>
+
+            <span class="entity-last-action--info">
+              <p class="entity-last-action--title mb-0">
+                Linda Miranda created the PCI Tradeshow Presentation.
+              </p>
+              <p class="entity-last-action--time mb-0">2 hours ago</p>
+            </span>
+          </div>
+        </cos-card>
+      </cos-tracker-accordion>
+    </div>
+  </cos-accordion>
+</aside>

@@ -1,0 +1,57 @@
+@import 'cosmos/scss/settings/';
+
+.company-img-upload-container {
+  @include wider-than($bp-medium) {
+    display: flex;
+    align-items: center;
+  }
+
+  > div,
+  .cos-card {
+    width: 100%;
+    max-width: 210px;
+    margin-right: 16px;
+    height: 110px;
+
+    @include narrower-than($bp-medium) {
+      margin-bottom: $spacing-stack-16;
+    }
+  }
+
+  > div {
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  .company-img-upload-reqs {
+    height: auto;
+    font-size: $font-size-12;
+  }
+}
+
+.company-img-preview-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.company-img-preview {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $color-g-pearl-03;
+  border: 1px solid $color-g-moth-41;
+}
+
+.cos-dropzone {
+  height: 110px;
+  overflow: hidden;
+  @include spacing-inset-16();
+}

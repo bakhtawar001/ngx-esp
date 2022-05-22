@@ -1,0 +1,87 @@
+@import '../../../../../../../cosmos/assets/scss/cosmos';
+
+:host {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  z-index: 4;
+
+  &.below {
+    z-index: 2;
+  }
+
+  .mat-toolbar {
+    position: relative;
+    background: inherit !important;
+    color: inherit !important;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+      width: 38px;
+    }
+  }
+
+  .user-button,
+  cos-search-bar,
+  .language-button,
+  .chat-panel-toggle-button,
+  .quick-panel-toggle-button {
+    min-width: 64px;
+    height: 64px;
+
+    @include media-breakpoint('xs') {
+      height: 56px;
+    }
+  }
+
+  .navbar-toggle-button {
+    min-width: 56px;
+    height: 56px;
+  }
+
+  .toolbar-separator {
+    height: 64px;
+    width: 1px;
+
+    @include media-breakpoint('xs') {
+      height: 56px;
+    }
+  }
+
+  .search-box {
+    width: 100%;
+    margin: 0 10px 0 20px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    border-right: 1px solid #ccc;
+    padding-right: 30px;
+
+    mat-icon {
+      width: 26px;
+      height: 38px;
+      vertical-align: middle;
+      font-size: 30px;
+      padding-top: 8px;
+    }
+
+    input {
+      height: 46px;
+      min-height: 46px;
+      max-height: 46px;
+      padding: 0 12px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+
+    .mat-button {
+      background-color: #039be5;
+      color: #fff;
+    }
+  }
+}

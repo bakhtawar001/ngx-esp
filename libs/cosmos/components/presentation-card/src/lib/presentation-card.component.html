@@ -1,0 +1,71 @@
+<cos-card
+  class="cos-presentation-card"
+  [style.borderTopColor]="topBorderColor"
+  [ngClass]="{
+    'cos-presentation-card--small': size === 'small',
+    'cos-presentation-card--white': whiteBg
+  }"
+>
+  <cos-card-menu *ngIf="showMenu">
+    <ng-content></ng-content>
+  </cos-card-menu>
+
+  <button
+    type="button"
+    class="cos-presentation-card-trigger"
+    (click)="clickCallback($event)"
+  >
+    <div class="cos-presentation-card-header">
+      <cos-avatar class="cos-presentation-avatar">
+        <ng-template [ngIf]="imgUrl" [ngIfElse]="companyIcon">
+          <img src="{{ imgUrl }}" alt="{{ imgAlt }}" />
+        </ng-template>
+        <ng-template #companyIcon>
+          <span class="fas fa-users"></span>
+        </ng-template>
+      </cos-avatar>
+
+      <div class="cos-presentation-title-wrapper">
+        <h3
+          class="cos-presentation-title"
+          [matTooltip]="title"
+          matTooltipClass="cos-tooltip"
+          data-cy="title"
+        >
+          {{ title }}
+        </h3>
+        <p
+          *ngIf="subtitle"
+          class="cos-presentation-subtitle"
+          [matTooltip]="subtitle"
+          matTooltipClass="cos-tooltip"
+          data-cy="subtitle"
+        >
+          {{ subtitle }}
+        </p>
+      </div>
+    </div>
+    <cos-product-grid
+      *ngIf="products && size !== 'small'"
+      [products]="products"
+      [productCount]="productCount"
+      [transformImageUrl]="false"
+    ></cos-product-grid>
+    <div *ngIf="createdDate || lastUpdatedDate" class="cos-presentation-footer">
+      <p
+        *ngIf="createdDate"
+        class="cos-presentation-meta-date"
+        data-cy="create-date"
+      >
+        Created {{ createdDate | date: 'longDate' }}
+      </p>
+      <p
+        *ngIf="lastUpdatedDate"
+        class="cos-presentation-meta-date"
+        data-cy="last-updated-date"
+      >
+        Last updated {{ lastUpdatedDate | date: 'longDate' }}
+      </p>
+    </div>
+  </button>
+</cos-card>

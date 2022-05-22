@@ -1,0 +1,60 @@
+@import '../../../../scss/settings/';
+
+.cos-product-variants {
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 33.333%;
+      min-width: 100px;
+      margin-bottom: rem($spacing-stack-8);
+
+      @include narrower-than($bp-medium) {
+        width: 50%;
+      }
+
+      > p {
+        margin: 0;
+      }
+    }
+  }
+
+  &-title {
+    margin: $spacing-stack-8 0;
+    font-size: $font-size-14;
+  }
+
+  &-description {
+    font-size: $font-size-12;
+    margin: 0;
+  }
+
+  &-image {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    margin-right: $spacing-inline-8;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &--empty {
+      display: flex;
+      align-items: center;
+      font-size: 7px; // this should only be a one off
+      line-height: 8px;
+      text-align: center;
+      background: $color-g-white-00;
+    }
+  }
+}

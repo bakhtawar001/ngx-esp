@@ -1,0 +1,35 @@
+<div class="cos-accordion-header">
+  <div class="cos-accordion-tracker-step">
+    <ng-content select="cos-tracker-accordion-label"></ng-content>
+  </div>
+
+  <button
+    *ngIf="expandable; else notExpandable"
+    cos-button
+    class="cos-accordion-btn"
+    (click.silent)="toggleExpandedState()"
+    [attr.aria-expanded]="expanded"
+    [attr.aria-disabled]="disabled"
+    [disabled]="disabled"
+  >
+    {{ accordionTitle }}
+    <ng-content select="cos-accordion-header"></ng-content>
+    <i class="fa fa-chevron-down cos-accordion-chevron" *ngIf="!hideToggle"></i>
+  </button>
+</div>
+
+<div class="cos-accordion-vertical-line">
+  <div
+    *ngIf="expandable"
+    class="cos-accordion-body"
+    [attr.aria-hidden]="!expanded"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<ng-template #notExpandable>
+  <div class="cos-accordion-static-title">
+    {{ accordionTitle }}
+  </div>
+</ng-template>

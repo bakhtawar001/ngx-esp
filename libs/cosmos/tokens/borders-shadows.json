@@ -1,0 +1,19 @@
+{
+  "radius": {
+    "round": "50%",
+    "2": "2px",
+    "4": "4px",
+    "16": "16px"
+  },
+  "shadow": {
+    "default": "0px 0px 6px 1px rgba(0, 0, 0, 0.1)",
+    "menu": "0px 1px 10px 0px rgba(0, 0, 0, 0.1)",
+    "nav": "0px 0px 10px 0px rgba(0, 0, 0, 0.2)"
+  },
+  "border": {
+    "default": "1px solid #000",
+    "white-s-4": "4px solid $color-g-white-00",
+    "input": "1px solid $color-g-stone-41",
+    "light": "1px solid $color-g-pebble-09"
+  }
+}

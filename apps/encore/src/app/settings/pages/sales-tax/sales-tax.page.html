@@ -1,0 +1,389 @@
+<h1 class="header-style-22">Sales tax</h1>
+
+<cos-segmented-panel class="salestax-settings-panel">
+  <cos-segmented-panel-header>
+    <div class="salestax-settings-panel-header-row">
+      <h2 class="header-style-16 mb-0">Sales Tax Calculation</h2>
+      <button
+        cos-flat-button
+        color="primary"
+        size="sm"
+        (click)="toggleAddAddress()"
+      >
+        <i class="fas fa-plus"></i> Add New Address
+      </button>
+    </div>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row
+      [rowTitle]="'Automatically calculate taxes'"
+      [isEditable]="false"
+    >
+      <div><i class="form-row-icon fa fa-calculator mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <p class="form-row-value">
+          Taxes will be determined based on the states where you do business.
+        </p>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-controls class="sales-tax-settings-row">
+        <div>
+          <cos-toggle
+            [id]="'autoCalculation'"
+            [name]="'autoCalculation'"
+            [required]="true"
+            [disabled]="!isToggleable"
+            [checked]="autoCalculation"
+            (change)="changeEvent($event)"
+            (toggleChange)="toggleChangeEvent($event)"
+            ><span class="cos-accessibly-hidden"
+              >Automatically calculate tax</span
+            ></cos-toggle
+          >
+        </div>
+      </asi-panel-editable-row-controls>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row
+    *ngFor="let address of addressForms.controls; index as i"
+  >
+    <asi-panel-editable-row [rowTitle]="'Address ' + (i + 1) ">
+      <div><i class="form-row-icon fa fa-map-marker-alt mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <p class="form-row-value">{{displayAddress(address) }}</p>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <button
+          cos-button
+          [color]="'warn'"
+          class="salestax-remove-address"
+          (click)="removeAddressAtIndex(i)"
+        >
+          Remove
+        </button>
+        <cos-address-form [formGroup]="getFormGroupAt(i)"></cos-address-form>
+        <!-- <ng-container [formGroup]="getFormGroupAt(i)">
+          <div class="salestax-address-fields">
+            <div class="cos-form-row">
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'addressLine1'"
+              >
+                Address Line 1
+              </label>
+              <input
+                id="addressLine1"
+                cos-input
+                type="text"
+                formControlName="addressLine1"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'addressLine2'"
+              >
+                Address Line 2
+              </label>
+              <input
+                id="addressLine2"
+                cos-input
+                type="text"
+                formControlName="addressLine2"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'city'">
+                City
+              </label>
+              <input
+                id="city"
+                cos-input
+                type="text"
+                formControlName="city"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'state'">
+                State
+              </label>
+              <input
+                id="state"
+                cos-input
+                type="text"
+                formControlName="state"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'country'"
+              >
+                Country
+              </label>
+              <input
+                id="country"
+                cos-input
+                type="text"
+                formControlName="country"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'zip'">
+                Zip
+              </label>
+              <input
+                id="zip"
+                cos-input
+                type="text"
+                formControlName="zip"
+                required
+              />
+            </div>
+            <div class="error" *ngIf="errors">This field is required</div>
+          </div>
+        </ng-container> -->
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row *ngIf="addAddress">
+    <asi-panel-editable-row
+      [isEditable]="true"
+      (onSaveEvent)="saveNewAddress()"
+      (onCancelEvent)="toggleAddAddress()"
+      [editingIsActive]="addAddress"
+      [rowTitle]="'Add Address' "
+    >
+      <asi-panel-editable-row-inactive>
+        Add address
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <ng-container [formGroup]="newAddress">
+          <div class="salestax-address-fields">
+            <div class="cos-form-row">
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'addressLine1'"
+              >
+                Address Line 1
+              </label>
+              <input
+                id="addressLine1"
+                cos-input
+                type="text"
+                formControlName="addressLine1"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'addressLine2'"
+              >
+                Address Line 2
+              </label>
+              <input
+                id="addressLine2"
+                cos-input
+                type="text"
+                formControlName="addressLine2"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'city'">
+                City
+              </label>
+              <input
+                id="city"
+                cos-input
+                type="text"
+                formControlName="city"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'state'">
+                State
+              </label>
+              <input
+                id="state"
+                cos-input
+                type="text"
+                formControlName="state"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label
+                [ngClass]="{'cos-form-label': true}"
+                [attr.for]="'country'"
+              >
+                Country
+              </label>
+              <input
+                id="country"
+                cos-input
+                type="text"
+                formControlName="country"
+                required
+              />
+            </div>
+            <div class="cos-form-row">
+              <label [ngClass]="{'cos-form-label': true}" [attr.for]="'zip'">
+                Zip
+              </label>
+              <input
+                id="zip"
+                cos-input
+                type="text"
+                formControlName="zip"
+                required
+              />
+            </div>
+
+            <div class="error" *ngIf="errors">This field is required</div>
+          </div>
+        </ng-container>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel class="salestax-settings-panel">
+  <cos-segmented-panel-header>
+    <div>
+      <h2 class="header-style-16 mb-0">Tax Rates</h2>
+    </div>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <asi-panel-editable-row [isFullWidth]="true">
+      <div class="mr-32"></div>
+      <asi-panel-editable-row-inactive>
+        <p class="form-row-value">
+          Get the rates for each state that you pay sales tax to.
+        </p>
+        <table cos-table [dataSource]="dataSource" class="salestax-table">
+          <ng-container cosColumnDef="state">
+            <th cos-header-cell *cosHeaderCellDef>State</th>
+            <td cos-cell *cosCellDef="let element">{{ element.state }}</td>
+          </ng-container>
+
+          <ng-container cosColumnDef="taxName">
+            <th cos-header-cell *cosHeaderCellDef>Tax Name</th>
+            <td cos-cell *cosCellDef="let element">{{ element.taxName }}</td>
+          </ng-container>
+
+          <ng-container cosColumnDef="taxRate">
+            <th cos-header-cell *cosHeaderCellDef>Tax Rate</th>
+            <td cos-cell *cosCellDef="let element">{{ element.taxRate }}</td>
+          </ng-container>
+
+          <ng-container cosColumnDef="chargeTaxOnShipping">
+            <th cos-header-cell *cosHeaderCellDef>Charge Tax on Shipping</th>
+            <td cos-cell *cosCellDef="let element">
+              <cos-checkbox
+                id="checkbox-allow-editing"
+                name="checkbox-allow-editing"
+                [checked]="element.chargeTaxOnShipping"
+                (change)="chargeTaxOnShippingChecked($event)"
+                [disabled]="true"
+              >
+                <span class="cos-accessibly-hidden"
+                  >Charge tax on shipping</span
+                >
+              </cos-checkbox>
+            </td>
+          </ng-container>
+          <tr cos-header-row *cosHeaderRowDef="displayedColumns"></tr>
+          <tr cos-row *cosRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <p class="form-row-value">
+          Get the rates for each state that you pay sales tax to.
+        </p>
+        <table cos-table [dataSource]="dataSource" class="salestax-table">
+          <ng-container cosColumnDef="state">
+            <th cos-header-cell *cosHeaderCellDef>State</th>
+            <td cos-cell *cosCellDef="let element">{{ element.state }}</td>
+          </ng-container>
+
+          <ng-container cosColumnDef="taxName">
+            <th cos-header-cell *cosHeaderCellDef>Tax Name</th>
+            <td cos-cell *cosCellDef="let element">
+              <div>
+                <ng-container>
+                  <label
+                    [ngClass]="{'cos-form-label': true, 'cos-accessibly-hidden': true}"
+                    [attr.for]="'taxName'"
+                  >
+                    Tax Name
+                  </label>
+                  <input
+                    id="taxName"
+                    cos-input
+                    type="text"
+                    [style]="'small'"
+                    required
+                  />
+                  <!-- formControlName="taxName" -->
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container cosColumnDef="taxRate">
+            <th cos-header-cell *cosHeaderCellDef>Tax Rate</th>
+            <td cos-cell *cosCellDef="let element">
+              <div>
+                <ng-container>
+                  <label
+                    [ngClass]="{'cos-form-label': true, 'cos-accessibly-hidden': true}"
+                    [attr.for]="'taxRate'"
+                  >
+                    Tax Name
+                  </label>
+                  <input
+                    id="taxRate"
+                    cos-input
+                    type="text"
+                    [style]="'small'"
+                    required
+                  />
+                  <!-- formControlName="taxRate" -->
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container cosColumnDef="chargeTaxOnShipping">
+            <th cos-header-cell *cosHeaderCellDef>Charge Tax on Shipping</th>
+            <td cos-cell *cosCellDef="let element">
+              <cos-checkbox
+                id="checkbox-allow-editing"
+                name="checkbox-allow-editing"
+                [checked]="element.chargeTaxOnShipping"
+                (change)="chargeTaxOnShippingChecked($event)"
+              >
+                <span class="cos-accessibly-hidden"
+                  >Charge tax on shipping</span
+                >
+              </cos-checkbox>
+            </td>
+          </ng-container>
+          <tr cos-header-row *cosHeaderRowDef="displayedColumns"></tr>
+          <tr cos-row *cosRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

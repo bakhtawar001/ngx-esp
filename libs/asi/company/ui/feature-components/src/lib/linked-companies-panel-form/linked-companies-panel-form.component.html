@@ -1,0 +1,64 @@
+<div
+  class="panel-no-linked-companies"
+  *ngIf="!companyLinks?.length && !editMode"
+>
+  <button (click)="addItem()">
+    <i class="fas fa-plus"></i>
+    <span>Add a Linked Company</span>
+  </button>
+</div>
+
+<cos-segmented-panel *ngIf="companyLinks?.length || editMode">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Company Linked</h2>
+    <button
+      *ngIf="this.state.party?.IsEditable"
+      (click)="addItem()"
+      [disabled]="activeRow !== null"
+      cos-flat-button
+      color="primary"
+      size="sm"
+      type="button"
+    >
+      <i class="fas fa-plus"></i>
+      Add Company
+    </button>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row
+    *ngFor="let company of groups; let i = index"
+    [formGroup]="company"
+  >
+    <asi-panel-editable-row
+      [editingIsActive]="activeRow === i"
+      [isEditable]="
+        state.party?.IsEditable && (activeRow === null || activeRow === i)
+      "
+      [isLoading]="!state.partyIsReady"
+      (onCancelEvent)="cancelEdit()"
+      (onEditEvent)="activeRow = i"
+      (onSaveEvent)="save(i)"
+    >
+      <div><i class="form-row-icon fa fa-building mt-8 mr-16"></i></div>
+      <asi-panel-editable-row-inactive>
+        <div class="settings-main-content">
+          <h4 class="header-style-14-bold mb-2">
+            {{ linkedCompanies[i]?.Company.Name }}
+          </h4>
+          <p class="form-row-value">
+            {{ linkedCompanies[i]?.Relationship.ForwardTitle }}
+          </p>
+        </div>
+      </asi-panel-editable-row-inactive>
+      <asi-panel-editable-row-active>
+        <div class="address-row">
+          <div class="address-row-display">
+            <asi-linked-companies-form
+              [formGroup]="company"
+            ></asi-linked-companies-form>
+          </div>
+        </div>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

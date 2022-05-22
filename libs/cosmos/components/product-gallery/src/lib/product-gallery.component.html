@@ -1,0 +1,65 @@
+<div
+  class="cos-product-gallery"
+  [class.cos-product-gallery--small]="size === 'small'"
+>
+  <div class="cos-product-gallery-header">
+    <div class="cos-product-gallery-header-main">
+      <img
+        class="cos-product-gallery-icon"
+        *ngIf="galleryIconUrl"
+        src="{{ galleryIconUrl }}"
+      />
+      <h2 class="cos-product-gallery-heading">{{ heading }}</h2>
+    </div>
+
+    <a class="cos-product-gallery-link" [attr.href]="viewMoreUrl"
+      ><span>View More</span> <i class="fa fa-chevron-right"></i
+    ></a>
+  </div>
+  <div *ngIf="description">
+    <p class="cos-product-gallery-description">{{ description }}</p>
+  </div>
+  <div class="cos-product-gallery-products">
+    <cos-product-card
+      *ngFor="let product of products"
+      [product]="product"
+      [productActionsTemplate]="productCardActions"
+      class="cos-product-gallery-product"
+    >
+      <cos-supplier [supplier]="product.Supplier"></cos-supplier>
+    </cos-product-card>
+  </div>
+</div>
+
+<!-- Product card actions -->
+<ng-template #productCardActions let-product="product">
+  <!-- Add to collection button -->
+  <button mat-menu-item class="cos-menu-item add-to-collection">
+    <i class="fa fa-archive"></i>
+    <span>Add to Collection </span>
+  </button>
+  <!-- /Add to collection button -->
+
+  <!-- Add to presentation button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-presentation"
+    *cosIfFeatureFlags="{ matches: ['presentations'] }"
+  >
+    <i class="fa fa-images"></i>
+    <span>Add to Presentation</span>
+  </button>
+  <!-- /Add to presentation button -->
+
+  <!-- Add to order button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-order"
+    *cosIfFeatureFlags="{ matches: ['orders'] }"
+  >
+    <i class="fa fa-file-invoice"></i>
+    <span>Add to Order</span>
+  </button>
+  <!-- /Add to order button -->
+</ng-template>
+<!-- /Product card actions -->

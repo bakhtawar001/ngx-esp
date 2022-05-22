@@ -1,0 +1,137 @@
+@use '@angular/material' as mat;
+@import 'cosmos/assets/scss/cosmos';
+
+$appbarLogoSize: 64px;
+$appbarHeight: calc(100vh - #{$appbarLogoSize});
+$appbarWidth: 6.8rem;
+
+:host {
+  transition: all 0.22s;
+  user-select: none;
+
+  display: flex;
+  flex-direction: column;
+
+  width: $appbarWidth;
+  height: 100%;
+  position: relative;
+
+  &--left {
+    float: left !important;
+  }
+
+  &--right {
+    float: right !important;
+  }
+}
+
+.navbar {
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $appbarLogoSize;
+    min-height: $appbarLogoSize;
+    padding: 0 16px 0 24px;
+    transition: padding 200ms ease;
+    @include mat.elevation(1);
+
+    .logo {
+      display: flex;
+      align-items: center;
+
+      .logo__text {
+        margin-left: 8px;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 0.4px;
+
+        .esp-icon {
+          font-size: 40px;
+          margin-left: -18px;
+          margin-top: 5px;
+          line-height: $appbarLogoSize;
+          height: $appbarLogoSize;
+          position: relative;
+          overflow: hidden;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  &-menu {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: $appbarHeight;
+    width: $appbarWidth;
+    min-height: 0;
+    min-width: 0;
+
+    &__spacer {
+      flex: 1;
+    }
+  }
+}
+
+.nav-item {
+  display: block;
+  text-decoration: none;
+  border: 0;
+  width: 100%;
+  background: none;
+
+  .mat-icon {
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    margin: 0 auto 0;
+    opacity: 0.9;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .nav-link {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    padding: 0.8rem 0.4rem;
+    margin: 0;
+    height: 5.6rem;
+    text-align: center;
+    border: 0;
+    width: 100%;
+    background: none;
+    color: currentColor;
+
+    &.hidden {
+      display: none;
+    }
+
+    &-badge {
+      position: absolute;
+      right: 1em;
+      top: 0.2em;
+      border-radius: 20px;
+      font-size: 10px;
+      margin-left: 0;
+      padding: 1px 2px;
+      text-align: center;
+      display: block;
+    }
+
+    &-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      font-size: 1rem;
+      text-rendering: optimizeLegibility;
+      margin-top: -1.8rem;
+      text-decoration: none;
+      opacity: 0.63;
+    }
+  }
+}

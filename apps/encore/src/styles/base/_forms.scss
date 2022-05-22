@@ -1,0 +1,72 @@
+@import 'cosmos/scss/settings/';
+// .cos-form-field {
+//   position: relative;
+//   text-align: left;
+//   display: inline-flex;
+//   align-items: baseline;
+//   box-sizing: border-box;
+//   width: 100%;
+//   border: 1px solid #91949c;
+//   border-radius: 4px;
+//   background: #fff;
+
+//   &:focus {
+//     outline: none;
+//     box-shadow: 0 0 0 2px #0f8bff;
+//   }
+
+//   input {
+//     display: block;
+//     position: relative;
+//     flex: auto;
+//     min-width: 0;
+//     border: none;
+//     background: transparent;
+//     padding-left: 0;
+
+//     &:focus {
+//       outline: none;
+//       box-shadow: none;
+//     }
+//   }
+
+//   .form-field-prefix,
+//   .form-field-suffix {
+//     line-height: inherit;
+//     white-space: nowrap;
+//     flex: none;
+//     position: relative;
+//     width: 30px;
+//     text-align: center;
+//   }
+// }
+
+input[type='search'] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.panel-editable-row {
+  .form-row-value,
+  .form-row-icon {
+    color: $color-g-shark-54;
+  }
+
+  .form-row-icon {
+    font-size: $font-size-16;
+  }
+
+  .form-row-value {
+    font-size: $font-size-14;
+    font-family: 'Work Sans', sans-serif;
+  }
+}
+
+.date-picker {
+  max-width: 268px;
+}
+
+.select-all-label {
+  display: block;
+  @include input-label();
+}

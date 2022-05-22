@@ -1,0 +1,320 @@
+<div class="content-container">
+  <div class="presentation-product">
+    <ng-template
+      [ngIf]="!state.isLoading && state.hasLoaded && state.product"
+      [ngIfElse]="loader"
+    >
+      <div class="presentation-product-header">
+        <div
+          class="presentation-product__pg-title flex items-end justify-between"
+        >
+          <div>
+            <h1 class="header-style-24">Edit Product Details</h1>
+          </div>
+          <div class="mb-16">
+            <div class="presentation-product__desktop-controls">
+              <ng-template [ngTemplateOutlet]="productControls"></ng-template>
+            </div>
+
+            <button
+              class="presentation-product__mobile-menu"
+              [matMenuTriggerFor]="sortMenu"
+              cos-icon-button
+            >
+              <i class="fa fa-ellipsis-v"></i>
+              <span class="cos-accessibly-hidden">Product Detail Menu</span>
+            </button>
+
+            <mat-menu
+              class="cos-menu"
+              #sortMenu
+              backdropClass="cos-backdrop"
+              yPosition="below"
+            >
+              <div class="presentation-product__mobile-controls">
+                <ng-template [ngTemplateOutlet]="productControls"></ng-template>
+              </div>
+            </mat-menu>
+
+            <ng-template #productControls>
+              <button (click)="save()" cos-flat-button color="primary">
+                <i class="fa fa-save"></i>
+                Save Changes
+              </button>
+
+              <button cos-stroked-button color="primary">
+                <i class="fa fa-eye"></i>
+                Preview
+              </button>
+
+              <button cos-stroked-button color="primary">
+                Next Product <i class="fa fa-arrow-right"></i>
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <cos-product-navigation
+        *ngIf="state?.presentation"
+        [backLinkText]="'Back to Presentation'"
+        [products]="state?.presentation?.Products"
+        [selectedProductId]="state?.product?.Id"
+        (goBack)="backToPresentation()"
+      >
+        <div class="navigation-menu">
+          <button
+            [matMenuTriggerFor]="actionsMenu"
+            aria-label="Actions"
+            class="actions-button"
+            click.stop
+            color="primary"
+            cos-stroked-button
+            data-cy="actions-menu"
+          >
+            <i class="fa fa-ellipsis-h"></i>
+            <span class="cos-accessibly-hidden">Menu</span>
+          </button>
+          <mat-menu
+            #actionsMenu="matMenu"
+            backdropClass="cos-global-menu-backdrop"
+            class="cos-global-menu-panel"
+            yPosition="below"
+          >
+            <button
+              class="cos-menu-item"
+              mat-menu-item
+              type="button"
+              data-cy="save-changes-button"
+              (click)="save()"
+            >
+              <i class="fas fa-save"></i>Save Changes
+            </button>
+            <button
+              class="cos-menu-item"
+              data-cy="preview-button"
+              mat-menu-item
+              type="button"
+            >
+              <i class="fas fa-eye"></i>Preview
+            </button>
+            <button
+              class="cos-menu-item"
+              data-cy="cancel-button"
+              mat-menu-item
+              type="button"
+            >
+              <i class="fas fa-times"></i>Cancel
+            </button>
+          </mat-menu>
+        </div>
+      </cos-product-navigation>
+      <div [formGroup]="form">
+        <main class="presentation-product__pg-content">
+          <h2 class="header-style-22">{{ state.product.Name }}</h2>
+          <div class="presentation-product__pg-content-body">
+            <div>
+              <esp-presentation-product-image
+                [image]="defaultMedia?.Url"
+              ></esp-presentation-product-image>
+              <cos-card
+                class="supplier-info mt-16"
+                *ngIf="state.product.Supplier?.AsiSupplierId"
+              >
+                <p class="header-style-12-shark caption">
+                  <i class="fa fa-eye-slash mr-8"></i> All supplier information
+                  is hidden from the customer presentation.
+                </p>
+                <hr class="card-divider" />
+                <cos-supplier
+                  [supplier]="this.state.supplier"
+                  [showImage]="true"
+                  [showPreferredGroup]="true"
+                  (click)="goToSupplier()"
+                ></cos-supplier>
+              </cos-card>
+            </div>
+            <div>
+              <h2 class="header-style-18">Product Details</h2>
+
+              <section>
+                <esp-presentation-product-images
+                  [(images)]="productImages"
+                ></esp-presentation-product-images>
+              </section>
+              <section>
+                <cos-form-field>
+                  <cos-label>Product Name</cos-label>
+                  <input
+                    id="productName"
+                    #productNameRef
+                    cos-input
+                    placeholder="Enter a Product Name"
+                    maxlength="60"
+                    required
+                    formControlName="Name"
+                  />
+                  <cos-hint align="start">
+                    {{ productNameRef.value?.length || 0 }}/{{
+                    productNameRef.maxLength }}
+                  </cos-hint>
+                  <cos-error></cos-error>
+                </cos-form-field>
+
+                <cos-form-field>
+                  <cos-label>Summary</cos-label>
+                  <textarea
+                    class="product-description w-full"
+                    id="productDescription"
+                    #productSummaryRef
+                    cos-input
+                    placeholder="Enter a Summary"
+                    rows="6"
+                    maxlength="130"
+                    formControlName="Summary"
+                  ></textarea>
+                  <cos-hint align="start">
+                    {{ productSummaryRef.value?.length || 0 }}/{{
+                    productSummaryRef.maxLength }}
+                  </cos-hint>
+                  <cos-error></cos-error>
+                </cos-form-field>
+
+                <cos-form-field>
+                  <cos-label>Note to Customer</cos-label>
+                  <textarea
+                    class="customer-note w-full"
+                    id="customerNote"
+                    #customerNote
+                    cos-input
+                    placeholder="Enter a Note to Customer"
+                    rows="6"
+                    maxlength="250"
+                    formControlName="Note"
+                  ></textarea>
+                  <cos-hint align="start">
+                    {{ customerNote.value?.length || 0 }}/{{
+                    customerNote.maxLength }}
+                  </cos-hint>
+                  <cos-error></cos-error>
+                </cos-form-field>
+              </section>
+
+              <hr class="mt-24 mb-24" />
+
+              <section>
+                <h2 class="header-style-18">Product Variants</h2>
+                <esp-presentation-product-variant
+                  *ngIf="color"
+                  [variant]="color"
+                  label="Colors"
+                  (updateAttribute)="updateAttribute($event)"
+                ></esp-presentation-product-variant>
+                <esp-presentation-product-variant
+                  *ngIf="size"
+                  [variant]="size"
+                  label="Sizes"
+                  (updateAttribute)="updateAttribute($event)"
+                ></esp-presentation-product-variant>
+                <esp-presentation-product-variant
+                  *ngIf="shape"
+                  [variant]="shape"
+                  label="Shapes"
+                  (updateAttribute)="updateAttribute($event)"
+                ></esp-presentation-product-variant>
+                <esp-presentation-product-variant
+                  *ngIf="material"
+                  [variant]="material"
+                  label="Materials"
+                  (updateAttribute)="updateAttribute($event)"
+                ></esp-presentation-product-variant>
+              </section>
+              <section>
+                <esp-presentation-product-imprint></esp-presentation-product-imprint>
+              </section>
+              <hr class="mb-16" />
+              <section>
+                <cos-toggle class="block w-full mb-16">
+                  <span class="header-style-18">Pricing</span>
+                </cos-toggle>
+                <div class="mb-32">
+                  <div class="flex items-end">
+                    <cos-form-field class="mr-16">
+                      <span cosLabel>Adjust all prices based on</span>
+                      <select matNativeControl>
+                        <option class="empty-option"></option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                      </select>
+                    </cos-form-field>
+                    <cos-form-field>
+                      <span class="cos-accessibly-hidden" cosLabel>Amount</span>
+                      <input
+                        id="priceAdjustmentValue"
+                        cos-input
+                        type="text"
+                        name="priceAdjustmentValue"
+                        placeholder="Enter amount"
+                      />
+                    </cos-form-field>
+                  </div>
+
+                  <cos-checkbox
+                    class="checkbox-products"
+                    id="checkbox-products"
+                    [checked]="checked"
+                    name="checkbox-products"
+                  >
+                    Round up to 2 decimal places
+                  </cos-checkbox>
+                </div>
+              </section>
+              <hr class="mb-16" />
+              <esp-presentation-product-price-grids
+                [visiblePriceGrids]="state.visiblePriceGrids"
+                [invisiblePriceGrids]="state.invisiblePriceGrids"
+              ></esp-presentation-product-price-grids>
+              <hr class="mb-16" />
+              <section>
+                <cos-toggle class="block w-full mb-16">
+                  <span class="header-style-18">Price Range</span>
+                </cos-toggle>
+                <p class="header-style-16">Price from $18.50 - $42.95</p>
+                <cos-toggle class="block w-full mb-16" size="small">
+                  <span>Show client discount</span>
+                </cos-toggle>
+                <p>
+                  Displays an indicator to the customer that the product is
+                  discounted for them.
+                </p>
+                <cos-form-field>
+                  <span cosLabel>Currency</span>
+                  <select matNativeControl>
+                    <option class="empty-option"></option>
+                    <option>USD</option>
+                    <option>CAD</option>
+                  </select>
+                </cos-form-field>
+                <cos-form-field>
+                  <span cosLabel>Price Includes</span>
+                  <input
+                    id="price-includes"
+                    cos-input
+                    type="text"
+                    name="priceIncludes"
+                    placeholder="Enter Description"
+                  />
+                </cos-form-field>
+              </section>
+              <hr class="mb-16" />
+              <esp-presentation-product-additional-charges></esp-presentation-product-additional-charges>
+            </div>
+          </div>
+        </main>
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-template #loader>
+    <esp-presentation-product-loader></esp-presentation-product-loader>
+  </ng-template>
+</div>

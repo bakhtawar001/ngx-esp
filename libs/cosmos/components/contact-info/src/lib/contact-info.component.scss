@@ -1,0 +1,83 @@
+@import '../../../../scss/settings';
+
+.cos-contact-info {
+  display: block;
+  @include spacing-inset-16();
+  background-color: $color-g-pearl-03;
+  .cos-contact-subhead {
+    @include type-style-header-14-bold();
+    margin: $spacing-stack-16 0 $spacing-stack-8 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .cos-contact-category {
+    display: flex;
+    align-items: baseline;
+    margin: $spacing-stack-16 0;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .cos-contact-icon {
+    flex: 0 0 28px;
+    font-size: 12px;
+    color: $color-g-shark-54;
+  }
+  .cos-contact-content {
+    flex: 1 1 auto;
+  }
+  .cos-contact-two-column {
+    display: flex;
+    flex-wrap: wrap;
+    .cos-contact-content {
+      flex: 1 1 50%;
+      margin-bottom: $spacing-stack-8;
+    }
+  }
+  .cos-contact-references {
+    width: 100%;
+  }
+  .cos-contact-reference {
+    display: flex;
+    margin-bottom: $spacing-stack-8;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .cos-contact-value {
+      flex: 1 0 50%;
+      padding-right: $spacing-inline-8;
+    }
+  }
+  .cos-contact-item {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .cos-contact-label {
+    flex: 0 1 auto;
+    margin: 0;
+    @include type-body-style-11();
+  }
+  .cos-contact-value {
+    display: block;
+    flex: 0 1 auto;
+    margin: 0;
+    @include type-body-style-12();
+    color: $color-g-mineshaft-88;
+    &.--smaller {
+      @include type-body-style-11();
+    }
+  }
+  .cos-social-link {
+    margin-right: $spacing-inline-8;
+  }
+  .cos-social-icon {
+    font-size: 20px;
+    color: $color-g-shark-54;
+  }
+}

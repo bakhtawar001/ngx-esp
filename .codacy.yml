@@ -1,0 +1,11 @@
+---
+engines:
+  duplication:
+    exclude_paths:
+      - 'apps/*-e2e/**'
+      - '**/*.stories.ts'
+      - '**/*.spec.ts'
+      - '**/*.test.js'
+      - '**/jest.config.js'
+exclude_paths:
+  - '**/tsconfig.*'

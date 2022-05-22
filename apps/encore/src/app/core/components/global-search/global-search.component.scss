@@ -1,0 +1,47 @@
+@import 'cosmos/scss/settings/';
+
+$mobile-breakpoint: $bp-large;
+
+.cos-search-container {
+  display: flex;
+  width: 100%;
+}
+
+.cos-global-search {
+  display: flex;
+  width: 100%;
+  padding: $spacing-stack-4;
+  border: $border-input;
+  border-radius: $border-radius-4;
+  background-color: $color-g-white-00;
+  @include wider-than($mobile-breakpoint) {
+    margin: 0 $spacing-inline-24;
+  }
+
+  > form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .cos-input {
+    flex: 1 1 auto;
+    border: none;
+    background-color: transparent;
+
+    &:not(:focus) {
+      box-shadow: none;
+    }
+  }
+
+  .cos-global-search-select {
+    flex: 1 1 auto;
+    min-width: 80px;
+    max-width: 130px;
+  }
+
+  .mat-divider {
+    height: 20px;
+    border-color: $color-g-moth-41;
+  }
+}

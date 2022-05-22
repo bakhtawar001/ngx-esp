@@ -1,0 +1,16 @@
+<div class="cos-iframe-video-wrapper">
+  <div>
+    <div *ngIf="!video && !noVideo" asi-loader></div>
+  </div>
+  <div *ngIf="video"></div>
+  <div *ngIf="noVideo" class="alert alert-warning">
+    <span>Sorry, there is no video associated to this product.</span>
+  </div>
+  <div *ngIf="videoError" class="alert alert-danger">
+    <p>Sorry, this video can not be played.</p>
+    <p *ngIf="video?.Url">
+      You can try viewing this video by clicking
+      <a href="{{ video!.Url }}" target="_blank">here</a>.
+    </p>
+  </div>
+</div>

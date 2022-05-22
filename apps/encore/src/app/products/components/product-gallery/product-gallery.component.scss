@@ -1,0 +1,96 @@
+@import 'cosmos/scss/settings/';
+
+.esp-product-gallery {
+  background-color: $color-g-pearl-03;
+
+  &--card {
+    box-shadow: none;
+
+    .cos-card-main {
+      padding: 8px;
+    }
+  }
+
+  &--products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-gap: 10px;
+
+    > a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .cos-card.cos-product-card {
+      box-shadow: none;
+      cursor: pointer;
+
+      .cos-badge {
+        left: 4px;
+        top: 4px;
+        bottom: auto;
+        right: auto;
+      }
+
+      .cos-product-card-variant-tag,
+      .cos-product-card-details {
+        display: none;
+      }
+
+      .cos-product-card-title {
+        @include type-style-header-14-bold;
+        min-height: calc(1rem * 2);
+        max-height: calc(1rem * 2);
+        padding: 0;
+        margin-bottom: 0;
+      }
+
+      .cos-product-card-attribute {
+        display: none;
+      }
+
+      .cos-supplier-name {
+        @include type-style-header-12-shark;
+      }
+
+      // stylelint-disable-next-line
+      .cos-supplier {
+        background: $color-g-white-00;
+
+        // @include wider-than($bp-medium) {
+        //   background-color: $color-g-white-00;
+        // }
+
+        &:hover {
+          .cos-supplier-name,
+          .cos-supplier-number {
+            text-decoration: underline;
+          }
+        }
+
+        .cos-supplier-content {
+          .cos-attribute-tag {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @include narrower-than($bp-large) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      a {
+        min-width: 104px;
+      }
+    }
+  }
+}

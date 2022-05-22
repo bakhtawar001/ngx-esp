@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { CosBadgeDemoComponent } from './badge.component.demo';
+import { CosBadgeDirective } from './badge.directive';
+
+<Meta
+  title="Attributes/Badge"
+  component={CosBadgeDemoComponent}
+  decorators={[
+    moduleMetadata({
+      declarations: [CosBadgeDirective, CosBadgeDemoComponent],
+    }),
+  ]}
+  argTypes={{
+    innerText: {
+      control: 'text',
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosBadgeDemoComponent,
+});
+
+# Product Ad badge
+
+The product badge is only ever used where a product has been paid to display. Ad badges are not shown in collections, presentation, orders, etc or when you are in a flow to add products.
+
+---
+
+<Canvas>
+  <Story name="Primary" args={{ innerText: 'Ad' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<div cosBadge>Ad</div>
+```
+
+<ArgsTable of={CosBadgeDirective} />
+
+## Placement
+
+### Small
+
+- Top-left, overlaying the product image
+
+### Primary / Standard
+
+- Bottom-right, overlaying the supplier information

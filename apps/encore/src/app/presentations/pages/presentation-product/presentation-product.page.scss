@@ -1,0 +1,127 @@
+@import 'cosmos/scss/settings/';
+
+.presentation-product {
+  max-width: 1550px;
+  padding: 0 $spacing-inline-16 0 $spacing-stack-16;
+
+  &-header {
+    padding: 24px 0 0;
+    width: 100%;
+    margin: 0 auto 25px;
+    border-bottom: $border-light;
+    background-color: $color-g-pearl-03;
+  }
+
+  &__pg-content {
+    width: 100%;
+    margin: 0 auto;
+
+    //padding: 0 16px;
+    // @include wider-than($bp-medium) {
+    //   padding: 0 48px;
+    // }
+
+    .cos-form-field-wrapper,
+    select {
+      width: 100%;
+      max-width: 100% !important;
+    }
+
+    .proj-product-detail-btn {
+      margin-bottom: $spacing-stack-16;
+      padding: 0;
+    }
+  }
+
+  &__back {
+    font-family: $font-stack-sans;
+    font-weight: bold;
+    font-size: $font-size-14;
+  }
+
+  &__pg-content-body {
+    @include wider-than($bp-medium) {
+      display: flex;
+
+      > div {
+        width: 50%;
+
+        &:first-of-type {
+          margin-right: 55px;
+        }
+      }
+    }
+  }
+
+  &__mobile-menu {
+    @include wider-than($bp-medium) {
+      display: none;
+    }
+  }
+
+  &__mobile-controls {
+    display: flex;
+    flex-direction: column;
+    @include spacing-inset-8();
+
+    .cos-stroked-button {
+      margin: 0 0 $spacing-stack-8;
+    }
+  }
+
+  &__desktop-controls {
+    @include narrower-than($bp-medium) {
+      display: none;
+    }
+  }
+
+  .supplier-info {
+    .caption {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .fa-eye-slash {
+      font-size: 18px;
+    }
+
+    .cos-supplier-body {
+      padding: 0;
+      margin-top: -8px;
+
+      .cos-supplier-name {
+        @include type-style-header-16;
+      }
+    }
+  }
+
+  .cos-card.proj-product-card-disabled {
+    background: $color-g-pearl-03;
+  }
+
+  .cos-table--wrapper .cos-table {
+    text-align: left;
+
+    td,
+    .cos-cell {
+      padding: 16px 8px;
+      border-bottom: $border-light;
+    }
+
+    .cos-row {
+      height: auto;
+
+      &:last-of-type {
+        td,
+        .cos-cell {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  .cos-table--wrapper {
+    margin-bottom: $spacing-stack-16;
+  }
+}

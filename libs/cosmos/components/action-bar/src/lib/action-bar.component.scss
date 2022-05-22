@@ -1,0 +1,73 @@
+@import '../../../../scss/settings';
+
+$action-bar-height: 64px !default;
+
+.cos-action-bar {
+  z-index: $z-index-modal;
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-g-white-00;
+  box-shadow: $box-shadow-menu;
+  min-height: $action-bar-height;
+  width: 100%;
+
+  .cos-action-bar-menu-button {
+    @include spacing-inset-8();
+  }
+}
+
+.cos-action-bar-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: $spacing-inline-16 $spacing-inline-8;
+
+  @include wider-than($bp-medium) {
+    padding: $spacing-inline-16 $spacing-inline-16;
+  }
+
+  @include wider-than($bp-large) {
+    padding: $spacing-inline-16 $spacing-inline-48;
+    max-width: $bp-xxlarge;
+  }
+}
+
+.cos-action-bar--products {
+  margin: 0;
+  padding-right: 0;
+  padding-left: 0;
+  background: $color-g-pearl-03;
+
+  .cos-action-bar-container {
+    max-width: 100%;
+  }
+}
+
+.cos-action-bar-menu-container {
+  position: relative;
+}
+
+.cos-action-bar-menu {
+  @include spacing-inset-16();
+  position: absolute;
+  bottom: 33px;
+  right: 0;
+  z-index: 10;
+  background: $color-g-white-00;
+  box-shadow: $box-shadow-menu;
+
+  button {
+    width: 100%;
+    margin-bottom: $spacing-stack-8;
+
+    & ~ button {
+      margin-left: 0 !important;
+    }
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,195 @@
+<cos-dialog>
+  <ng-container cosDialogHeader
+    ><span data-cy="header">Create Contact</span></ng-container
+  >
+  <ng-container cosDialogSubHeader
+    ><span data-cy="sub-header"
+      >Fill out the required fields below to add a contact. Additional
+      information can be added later.</span
+    ></ng-container
+  >
+
+  <ng-container cosDialogContent>
+    <form
+      [formGroup]="presenter.form"
+      *ngIf="presenter.form"
+      class="dialog-content-container"
+    >
+      <div class="contact-form">
+        <h5 class="header-style-12-shark mb-0" data-cy="content-header">
+          Contact Information
+        </h5>
+        <div class="md:grid contact-form__name">
+          <cos-form-field class="cos-form-row mb-16">
+            <cos-label data-cy="first-name-label">First Name</cos-label>
+            <input
+              data-cy="first-name-input"
+              cos-input
+              class="w-full"
+              type="text"
+              placeholder="Enter first name"
+              formControlName="GivenName"
+              maxlength="50"
+              required
+              #givenName
+            />
+            <cos-error data-cy="first-name-error"></cos-error>
+          </cos-form-field>
+          <cos-form-field class="cos-form-row mb-16">
+            <cos-label data-cy="last-name-label">Last Name</cos-label>
+            <input
+              data-cy="last-name-input"
+              cos-input
+              class="w-full"
+              type="text"
+              placeholder="Enter last name"
+              formControlName="FamilyName"
+              maxlength="50"
+              required
+              #familyName
+            />
+            <cos-error data-cy="last-name-error"></cos-error>
+          </cos-form-field>
+        </div>
+
+        <div formGroupName="PrimaryEmail">
+          <label class="cos-form-label" data-cy="email-label"
+            >Email
+            <span class="body-style-12-shark">(optional)</span>
+          </label>
+          <div class="md:grid contact-form__selectable-row">
+            <esp-lookup-select
+              type="Emails"
+              formControlName="Type"
+              placeholder="Select a type"
+              class="form-panel-field__type pr-0"
+              [showLabel]="false"
+            ></esp-lookup-select>
+            <cos-form-field class="cos-form-row mb-16">
+              <input
+                data-cy="email-input"
+                cos-input
+                class="w-full"
+                type="email"
+                placeholder="Enter email address"
+                formControlName="Address"
+                maxlength="100"
+                #primaryEmail
+              />
+              <cos-error data-cy="email-error"></cos-error>
+            </cos-form-field>
+          </div>
+        </div>
+
+        <div formGroupName="CompanyPayload">
+          <label class="cos-form-label" data-cy="company-label"
+            >Company
+            <span class="body-style-12-shark">(optional)</span>
+          </label>
+          <div class="md:grid contact-form__company">
+            <asi-party-autocomplete
+              data-cy="company-autocomplete"
+              [type]="'company'"
+              formControlName="Company"
+            >
+            </asi-party-autocomplete>
+            <cos-form-field class="cos-form-row mb-16">
+              <input
+                data-cy="company-title-input"
+                cos-input
+                class="w-full"
+                type="text"
+                placeholder="Title"
+                formControlName="Title"
+                maxlength="50"
+                #title
+              />
+              <cos-error></cos-error>
+            </cos-form-field>
+          </div>
+        </div>
+
+        <div formGroupName="Phone">
+          <label data-cy="phone-label" class="cos-form-label">
+            Phone <span class="body-style-12-shark">(optional)</span></label
+          >
+          <div class="md:grid contact-form__selectable-row">
+            <esp-lookup-select
+              type="Phones"
+              formControlName="Type"
+              placeholder="Select a type"
+              class="form-panel-field__type pr-0"
+              [showLabel]="false"
+            ></esp-lookup-select>
+            <cos-form-field>
+              <input
+                data-cy="phone-input"
+                placeholder="Enter phone number"
+                formControlName="Number"
+                cos-input
+                type="text"
+                maxlength="30"
+              />
+            </cos-form-field>
+          </div>
+        </div>
+
+        <div formGroupName="Website">
+          <cos-form-field class="cos-form-row mb-16">
+            <cos-label data-cy="website-label"
+              >Website
+              <span class="body-style-12-shark">(optional)</span></cos-label
+            >
+            <input
+              data-cy="website-input"
+              class="company-website-input w-full"
+              cos-input
+              id="website"
+              placeholder="Enter website address"
+              formControlName="Url"
+              maxlength="100"
+            />
+            <cos-error
+              data-cy="website-error"
+              [controlErrors]="{ validUrl: 'The Website url is invalid.' }"
+            >
+            </cos-error>
+          </cos-form-field>
+        </div>
+
+        <div>
+          <cos-address-form
+            data-cy="address-form"
+            [showAllFields]="
+          presenter.form.controls.Address!.dirty"
+            formGroupName="Address"
+          ></cos-address-form>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container cosDialogActions>
+    <div class="contact-form__actions-bar w-full">
+      <button
+        (click)="onCancel()"
+        cos-button
+        data-cy="cancel-button"
+        type="button"
+      >
+        <i class="fa fa-arrow-left"></i> Back
+      </button>
+
+      <button
+        (click)="onCreate()"
+        data-cy="submit-button"
+        [disabled]="!presenter.form?.valid || !presenter.form?.dirty"
+        cos-flat-button
+        color="primary"
+        type="button"
+      >
+        Create
+      </button>
+    </div>
+  </ng-container>
+</cos-dialog>

@@ -1,0 +1,95 @@
+@import 'cosmos/scss/settings/';
+
+.product {
+  &-details {
+    display: flex;
+    flex-direction: column;
+
+    @include wider-than($bp-large) {
+      display: grid;
+      grid-template-areas:
+        'a a a a a a a c c c c c'
+        'b b b b b b b c c c c c'
+        'd d d d d d d d d d d d'
+        'e e e e e e f f f f f f';
+    }
+    grid-template-rows: 620px auto;
+  }
+
+  &-info {
+    grid-area: c;
+  }
+
+  &-pricing-inventory {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+    grid-gap: $spacing-stack-16;
+
+    .pricing-header {
+      margin-bottom: $spacing-stack-16;
+    }
+  }
+
+  &-media {
+    grid-area: a;
+    margin-bottom: $spacing-stack-16;
+
+    @include wider-than($bp-large) {
+      margin-bottom: 0;
+    }
+  }
+
+  &-title {
+    margin-bottom: 0.25rem;
+  }
+
+  &-attribute-header {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  &-accordion {
+    .cos-card {
+      overflow: visible;
+    }
+  }
+
+  &-related {
+    grid-area: d;
+  }
+
+  &-supplier-more {
+    grid-area: e;
+  }
+
+  &-trending-category {
+    grid-area: f;
+  }
+}
+
+.prop-65-icon {
+  width: 40px;
+}
+
+.button-list {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+
+  li {
+    margin-right: $spacing-inline-8;
+  }
+}
+
+.property-item {
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.supplier-card {
+  padding: 0;
+}

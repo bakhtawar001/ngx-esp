@@ -1,0 +1,35 @@
+@import '../../../../../scss/settings';
+
+.cos-card-tree-parent {
+  display: block;
+  margin-bottom: $spacing-stack-16;
+  position: relative;
+  z-index: 2;
+}
+
+.cos-card-tree-child {
+  display: block;
+  margin-left: $spacing-inline-16;
+  margin-bottom: $spacing-stack-16;
+  position: relative;
+  z-index: 1;
+
+  .cos-card {
+    z-index: 2;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    border: 2px solid $color-g-moth-41;
+    position: absolute;
+    height: calc(100% + 16px);
+    bottom: 50%;
+    left: -8px;
+    z-index: 1;
+    width: 16px;
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0 0 0 5px;
+  }
+}

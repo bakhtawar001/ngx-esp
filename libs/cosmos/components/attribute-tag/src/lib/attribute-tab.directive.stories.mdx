@@ -1,0 +1,58 @@
+import { CommonModule } from '@angular/common';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { CosAttributeTagDemoComponent } from './attribute-tag.component.demo';
+import { CosAttributeTagDirective } from './attribute-tag.directive';
+import { CosAttributeTagModule } from './attribute-tag.module';
+
+<Meta
+  title="Attributes/Tag"
+  component={CosAttributeTagDemoComponent}
+  decorators={[
+    moduleMetadata({
+      declarations: [CosAttributeTagDemoComponent],
+      imports: [CommonModule, CosAttributeTagModule],
+    }),
+  ]}
+  argTypes={{
+    size: {
+      options: ['small', ''],
+      default: '',
+      control: {
+        type: 'select',
+      },
+    },
+    innerTextTag1: { table: { disable: true } },
+    iconTag1: { table: { disable: true } },
+    innerTextTag2: { table: { disable: true } },
+    iconTag2: { table: { disable: true } },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosAttributeTagDemoComponent,
+});
+
+# Attribute tag
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      innerTextTag1: 'Free Shipping',
+      iconTag1: 'truck',
+      innerTextTag2: 'Unassembled',
+      iconTag2: 'cog',
+      size: '',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<p cosAttributeTag><i class="fa fa-{{ iconTag1 }}"></i> {{ innerTextTag1 }}</p>
+```
+
+<ArgsTable of={CosAttributeTagDirective} />

@@ -1,0 +1,170 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+$metric-font-size: 32px;
+
+.text-shark {
+  color: $color-g-shark-54;
+}
+
+.proj-pres {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.bg-grey.cos-card {
+  padding: 0;
+  background: $color-g-pearl-03;
+
+  .cos-card-main {
+    @include spacing-inset-8();
+  }
+}
+
+.proj-pres__products {
+  margin-top: $spacing-stack-32;
+  line-height: 1.4;
+
+  &--empty {
+    padding: 200px 0;
+  }
+
+  // &--empty {
+  //   min-height: 350px;
+  // }
+
+  &-grid {
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    .cos-card.cos-product-card .cos-card-main {
+      max-width: 210px !important;
+    }
+  }
+}
+
+.proj-pres__ads {
+  display: flex;
+  .product-recos-card {
+    &:first-child {
+      margin-right: $spacing-inline-16;
+    }
+  }
+}
+
+.proj-quote-request {
+  @include spacing-inset-16();
+
+  box-shadow: $box-shadow-default;
+}
+
+.proj-quote-request-product-body {
+  @include wider-than($bp-medium) {
+    display: flex;
+  }
+
+  color: $color-g-shark-54;
+  font-size: $font-size-14;
+}
+
+.proj-quote-request-product-col1 {
+  display: flex;
+  align-items: flex-start;
+
+  @include wider-than($bp-large) {
+    width: 50%;
+  }
+
+  img {
+    width: 120px;
+    margin-right: $spacing-inline-16;
+  }
+
+  ul {
+    margin-top: 0;
+    font-size: $font-size-14;
+    padding: 0;
+    margin-right: $spacing-inline-16;
+    li {
+      margin-bottom: $spacing-stack-8;
+    }
+  }
+}
+
+.proj-quote-request-product-comments {
+  max-width: 420px;
+}
+
+.proj-quote-request-address {
+  font-size: $font-size-14;
+  span {
+    display: block;
+    margin-bottom: $spacing-stack-4;
+    color: $color-g-shark-54;
+    font-size: $font-size-12;
+  }
+}
+
+.proj-quote-request-preview {
+  position: relative;
+  &.cos-card {
+    display: inline-block;
+    span {
+      display: block;
+    }
+  }
+  i {
+    color: $color-bl-atoll-75;
+  }
+  .proj-quote-request-preview-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background: $color-g-white-00;
+  }
+}
+
+.proj-quote-request-customer-message {
+  display: flex;
+}
+
+.proj-quote-request-customer-message-body {
+  width: 100%;
+}
+
+.presentation-settings {
+  fieldset {
+    border-bottom: $border-light;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:not(:first-child) {
+      margin-top: $spacing-stack-16;
+    }
+
+    legend {
+      @include type-style-header-12-shark();
+      color: $color-g-shark-54;
+      margin-bottom: $spacing-stack-12;
+    }
+  }
+
+  &-include-signature {
+    margin-top: -8px;
+  }
+  // .cos-slide-toggle-label {
+  //   align-items: start;
+  // }
+  // .cos-slide-toggle-content {
+  //   white-space: break-spaces !important;
+  // }
+
+  &-note-actions {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 500px;
+  }
+}

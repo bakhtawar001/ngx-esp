@@ -1,0 +1,47 @@
+@import '../../../../../scss/settings';
+
+.cos-tree-demo-row {
+  display: flex;
+
+  > div {
+    width: 33.333%;
+  }
+}
+
+.cos-card-tree-child {
+  .cos-tree-demo-row {
+    & > div {
+      &:first-of-type {
+        width: calc(33.333% - 16px);
+      }
+      &:last-of-type {
+        width: 66.666%;
+      }
+    }
+
+    .cos-tree-child-with-tracker {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      > div {
+        width: calc(50% + 16px);
+
+        &:last-of-type {
+          width: 50%;
+        }
+      }
+    }
+
+    .cos-tree-child-tracker-container {
+      margin-top: $spacing-inline-16;
+      width: 50%;
+
+      .cos-tracker {
+        margin: 0 0 16px 16px;
+
+        display: block;
+      }
+    }
+  }
+}

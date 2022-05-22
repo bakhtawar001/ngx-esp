@@ -1,0 +1,16 @@
+@import 'cosmos/scss/settings/';
+
+mat-divider {
+  border-color: $color-g-pebble-09;
+}
+.w-4\/5,
+.w-2\/5 {
+  @include narrower-than($bp-large) {
+    width: 100%;
+  }
+}
+.flex {
+  @include narrower-than($bp-large) {
+    flex-direction: column;
+  }
+}

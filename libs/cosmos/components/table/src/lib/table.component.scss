@@ -1,0 +1,178 @@
+@import '../../../../scss/settings/';
+
+// horizontal scrollable wrapper
+.cos-table--wrapper,
+[role='region'][aria-labelledby] {
+  position: relative;
+  overflow: auto;
+
+  background: linear-gradient(to right, #fff 30%, rgba(255, 255, 255, 0)),
+    linear-gradient(to right, rgba(255, 255, 255, 0), #fff 70%) 0 100%,
+    radial-gradient(
+      farthest-side at 0% 50%,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+        farthest-side at 100% 50%,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      )
+      0 100%;
+  background-repeat: no-repeat;
+  background-color: $color-g-white-00;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+  background-position: 0 0, 100%, 0 0, 100%;
+  background-attachment: local, local, scroll, scroll;
+
+  cos-table,
+  table {
+    margin: 0;
+    border: none;
+    background: transparent;
+    caption {
+      text-align: center;
+      margin-bottom: $spacing-stack-8;
+    }
+  }
+}
+
+cos-table,
+table {
+  width: 100%;
+  margin-bottom: $spacing-stack-16;
+  background: $color-g-white-00;
+
+  &.cos-table {
+    overflow: hidden;
+    border-radius: $border-radius-2 $border-radius-2 0 0;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    tbody {
+      border: 1px solid $color-g-pebble-09;
+    }
+
+    i.fa-info-circle {
+      margin: 0 $spacing-inline-4;
+      font-size: $font-size-10;
+      color: $color-bl-atoll-75;
+    }
+  }
+}
+
+cos-row,
+cos-header-row,
+cos-footer-row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+cos-cell,
+cos-header-cell,
+cos-footer-cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  word-wrap: break-word;
+  min-height: inherit;
+}
+
+cos-header-row,
+.cos-header-row {
+  background: $color-g-pebble-09;
+  border: 1px solid $color-g-moth-41;
+}
+
+cos-header-row,
+cos-row,
+cos-footer-row,
+.cos-header-row,
+.cos-row,
+.cos-footer-row {
+  height: 24px;
+}
+
+cos-row {
+  border-left: 1px solid $color-g-pebble-09;
+  border-right: 1px solid $color-g-pebble-09;
+  &:last-of-type {
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+}
+
+cos-header-cell,
+cos-cell,
+cos-footer-cell,
+.cos-header-cell,
+.cos-cell,
+.cos-footer-cell {
+  vertical-align: middle;
+  padding: 0;
+}
+
+cos-header-cell,
+cos-cell,
+cos-footer-cell {
+  height: 100%;
+}
+
+.cos-header-cell {
+  text-align: left;
+  @include type-style-table-header();
+}
+
+cos-cell,
+.cos-cell {
+  font-size: $font-size-12;
+  font-weight: normal;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: $color-g-pebble-09;
+
+  &-text-right {
+    text-align: right;
+  }
+}
+
+cos-header-cell:first-of-type,
+cos-cell:first-of-type,
+cos-footer-cell:first-of-type,
+.cos-header-cell:first-of-type,
+.cos-cell:first-of-type,
+.cos-footer-cell:first-of-type {
+  padding-left: $spacing-inline-8;
+}
+
+cos-header-cell:last-of-type,
+cos-cell:last-of-type,
+cos-footer-cell:last-of-type,
+.cos-header-cell:last-of-type,
+.cos-cell:last-of-type,
+.cos-footer-cell:last-of-type {
+  padding-right: $spacing-inline-8;
+}
+
+cos-row,
+.cos-row {
+  &:last-of-type {
+    cos-cell,
+    .cos-cell {
+      border: 0;
+    }
+  }
+}
+
+.cos-table--striped,
+:host.cos-table--striped {
+  cos-row,
+  .cos-row {
+    /* stylelint-disable */
+    &:nth-of-type(even) {
+      background: $color-g-pearl-03;
+    }
+  }
+}

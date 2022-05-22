@@ -1,0 +1,125 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.cos-global-nav-mobile {
+  z-index: 1000;
+  border: 2px solid red;
+}
+.cos-presentation-main {
+  padding: 0px !important;
+}
+.hide-mobile {
+  @include narrower-than($bp-large) {
+    display: none;
+  }
+}
+.cos-card-sidebar {
+  @include narrower-than($bp-large) {
+    margin: 0 16px 16px;
+  }
+}
+.presentation-detail-body {
+  @include narrower-than($bp-large) {
+    margin: 1px auto 40px !important;
+  }
+}
+
+.presentation-orders {
+  &__pg-wrapper .grid-cols-2,
+  &__pg-wrapper .grid-cols-4-auto,
+  &__pg-section .grid-cols-2-auto,
+  &__pg-section .grid-cols-2 {
+    @include narrower-than($bp-large) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &__pg-section .flex {
+    @include narrower-than($bp-large) {
+      flex-direction: column;
+    }
+  }
+  &__pg-section .w-3\/5,
+  &__pg-section .w-1\/4 {
+    @include narrower-than($bp-large) {
+      width: 100%;
+    }
+  }
+  &__pg-wrapper {
+    @include narrower-than($bp-large) {
+      padding: 0px 16px;
+    }
+  }
+  &__pg-section {
+    box-shadow: 0px 1px 10px 0px rgb(0 0 0 / 5%);
+    background-color: #f7f8f9;
+    padding: 16px;
+  }
+  &__pg-section .cos-card:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  &__order input.cos-input {
+    width: 100%;
+  }
+  &__order .grid-border {
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+  &__order .grid-border > div {
+    &:nth-child(-n + 2) {
+      border-top: 0px;
+    }
+    &:not(:nth-child(-n + 2)) {
+      border-top: 1px solid $color-g-pebble-09;
+    }
+    &:nth-child(even) {
+      border-left: 1px solid $color-g-pebble-09;
+    }
+  }
+  &__tracker .flex .first,
+  &__tracker .flex .last {
+    width: 12%;
+  }
+  &__tracker .flex .track-label:not(.first):not(.last) {
+    width: 20%;
+  }
+  &__tracker .ml-32 {
+    @include narrower-than($bp-large) {
+      margin-left: 0px;
+    }
+  }
+  &__tracker {
+    @include narrower-than($bp-large) {
+      padding: 0 16px;
+    }
+  }
+}
+mat-divider {
+  border-color: $color-g-pebble-09;
+}
+
+.customer-portal {
+  &__products-grid {
+    padding: 0 16px;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(244px, 1fr));
+    grid-auto-flow: row;
+
+    width: 100%;
+    max-width: 1280px;
+    margin: 40px auto;
+  }
+}
+
+// Nicole's css
+
+.cos-tracker-step.active-step {
+  background: $color-bl-azure-57;
+  border: $color-bl-azure-57;
+  color: #ffffff;
+}
+.cos-pill-label.warn {
+  background-color: $color-rd-macaw-52;
+}
+.body-style-32 {
+  font-size: 32px;
+}

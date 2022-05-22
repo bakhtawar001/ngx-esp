@@ -1,0 +1,63 @@
+<section *ngIf="product">
+  <div class="content-section prop65" *ngIf="prop65Warnings.length">
+    <div class="flex justify-center mb-16">
+      <div class="mr-4 prop-65-icon">
+        <img
+          src="../../../../assets/images/prop65icon.png"
+          alt="Prop 65 Warning"
+          class="img-responsive"
+        />
+      </div>
+      <div class="flex-1">
+        <div class="mb-4" *ngFor="let warning of prop65Warnings">
+          <h2 class="header-style-14-bold product-attribute-header">
+            Prop 65 Warning
+          </h2>
+          <div
+            class="product-prop65-warning"
+            [innerHTML]="warning.Description | prop65"
+          ></div>
+        </div>
+        <small class="additional-info" *ngIf="product.Prop65AdditionalInfo">
+          {{ product.Prop65AdditionalInfo }}
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="content-section no-prop65" *ngIf="!product.HasProp65Warning">
+    <h2 class="header-style-14-bold">Prop 65 Warning</h2>
+    <p class="no-prop65-warning">Product does not contain Prop 65 chemicals</p>
+  </div>
+  <div class="content-section compliance" *ngIf="certifications?.length">
+    <h2 class="header-style-14-bold">Compliance and Certifications</h2>
+    <p class="certifications-value">
+      {{ certifications | formatArrayList: ', ':'Name' }}
+    </p>
+  </div>
+  <div class="content-section safety-warnings" *ngIf="safetyWarnings.length">
+    <h2 class="header-style-14-bold">Safety Warnings</h2>
+    <p
+      class="safety-warnings-description"
+      *ngFor="let warning of safetyWarnings"
+    >
+      {{ warning.Description }}
+    </p>
+  </div>
+  <!-- TODO: Add to Product Model
+  <div class="content-section" *ngIf="product.IsHazardous">
+    <h2 class="header-style-14-bold">Is Hazardous</h2>
+    <div>{{ product.IsHazardous | evalDisplayValue: 'Yes':'No':'No Safety warnings for this product' }}</div>
+  </div>
+  -->
+</section>
+<!--
+PROP 65 Warnings
+Display PROP 65 warnings along with the warning icon
+Call out when supplier has explicitly stated that PROP 65 warnings do not apply
+
+Compliance and Certifications (Comma Separated)
+
+Safety Warnings (List)
+
+Is Hazardous (Y/N/No Safety warnings for this product)  ?? what field ??
+-->

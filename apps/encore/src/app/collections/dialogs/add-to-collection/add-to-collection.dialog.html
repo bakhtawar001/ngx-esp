@@ -1,0 +1,57 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Use products in a Collection</h2>
+  <p class="body-style-14-shark">
+    Create a new Collection or add products to an existing one
+  </p>
+</header>
+
+<mat-dialog-content>
+  <form [formGroup]="searchForm">
+    <div class="search-keywords">
+      <div class="cos-search-field">
+        <span class="form-field-prefix"><i class="fa fa-search"></i></span>
+        <input
+          class="search-field-input"
+          cos-input
+          name="collectonKeywords"
+          placeholder="Search for a Collection"
+          formControlName="term"
+          (keydown.enter)="$event.preventDefault()"
+        />
+        <button
+          class="form-field-suffix"
+          cos-icon-button
+          aria-label="Clear"
+          *ngIf="searchForm.controls.term.value"
+          (click)="searchForm.controls.term.setValue('')"
+        >
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="collection-results">
+    <button cos-new-button class="create" (click)="create()">
+      <i class="fa fa-plus-circle"></i>Create a new Collection
+    </button>
+    <ng-container *ngIf="state.collections?.length">
+      <cos-collection
+        class="collection-item"
+        *ngFor="let collection of collections"
+        (handleClick)="cardClick(collection)"
+        [collection]="collection"
+        [size]="'small'"
+      ></cos-collection>
+    </ng-container>
+  </div>
+
+  <div class="show-more text-center" *ngIf="showMoreButtonVisible">
+    <button cos-button (click)="showMore()">Show more</button>
+  </div>
+</mat-dialog-content>

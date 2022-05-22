@@ -1,0 +1,53 @@
+<div [formGroup]="parentForm">
+  <label class="cos-form-label">{{ label }}</label>
+  <div [formArrayName]="type">
+    <ng-container
+      *ngFor="let control of multiTypeFormArray.controls; let i = index"
+    >
+      <div class="form-panel-row-list">
+        <div [formGroupName]="i" class="cos-input-row form-panel-row-list-item">
+          <esp-lookup-select
+            [type]="type"
+            formControlName="Type"
+            placeholder="Select a type"
+          ></esp-lookup-select>
+          <!--
+          <esp-lookup-select
+            type="Countries"
+            formControlName="PhoneCode"
+            placeholder="Select a type"
+          ></esp-lookup-select> 
+          -->
+          <input
+            class="w-full type-input"
+            cos-input
+            placeholder="{{ placeholder }}"
+            [formControlName]="controlName"
+            [attr.maxlength]="maxlength"
+          />
+        </div>
+        <p
+          class="error error-invalid"
+          *ngIf="
+            validator &&
+            control.get(controlName).errors &&
+            control.get(controlName).errors[validator]
+          "
+        >
+          {{ label }} is invalid.
+        </p>
+      </div>
+      <div class="delete-btn-col">
+        <button
+          cos-button
+          color="warn"
+          *ngIf="multiTypeFormArray.controls.length > 1"
+          (click)="remove(i)"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+  <ng-content select="[actions]"> </ng-content>
+</div>

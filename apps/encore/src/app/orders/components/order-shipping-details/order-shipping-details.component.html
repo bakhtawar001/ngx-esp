@@ -1,0 +1,98 @@
+<!-- Product Shipping card -->
+<section class="orders-shipping">
+  <cos-card *ngFor="let destination of order?.ShippingDestinations">
+    <cos-card-menu>
+      <button mat-menu-item>something</button>
+    </cos-card-menu>
+
+    <h2 class="header-style-18 mt-0 mb-16">Shipping Destination 1</h2>
+    <div
+      class="
+        grid-cols-2 grid-gap-20 grid
+        orders-shipping__shipping-details
+        mb-8
+      "
+    >
+      <!-- Ship From -->
+      <div>
+        <h4 class="header-style-14-bold mb-8">Ship from</h4>
+        <h3 class="header-style-16 orders-shipping__has-icon mt-16 mb-16">
+          TBD: {{ destination.ShippingDetail?.From?.Name }}
+          <i class="fas fa-arrow-right"></i>
+        </h3>
+        <esp-order-customer-address
+          class="mb-8"
+          [contact]="destination.ShippingDetail?.From"
+        ></esp-order-customer-address>
+        <span cosAttributeTag size="small">
+          <i class="fas fa-check"></i> Bdivnd Ship
+        </span>
+      </div>
+
+      <!-- Ship To -->
+      <div>
+        <h4 class="header-style-14-bold mb-8">Ship to</h4>
+        <h3 class="header-style-16 mt-16 mb-16">
+          TBD: {{ destination.ShippingDetail?.To?.Name }}
+        </h3>
+        <esp-order-customer-address
+          class="mb-8"
+          [contact]="destination.ShippingDetail?.To"
+        ></esp-order-customer-address>
+      </div>
+    </div>
+
+    <div
+      class="
+        grid-cols-2
+        orders-shipping__shipping-details
+        grid-gap-20
+        orders-shipping__top-border
+        grid
+        pt-8
+        pl-0
+        mt-16
+        mb-8
+      "
+    >
+      <div>
+        <h4 class="header-style-14-bold mt-8 mb-8">In Hands Date</h4>
+        <p class="mb-8">
+          TBD: {{ destination.ShippingDetail?.InHandsDate | date: 'longDate' }}
+        </p>
+        <h4 class="header-style-14-bold mt-8 mb-8">Ship Date</h4>
+        <p class="mb-8">
+          TBD: {{ destination.ShippingDetail?.ShipDate | date: 'longDate' }}
+        </p>
+      </div>
+      <div>
+        <h4 class="header-style-14-bold mt-8 mb-8">Ship with</h4>
+        <p class="mb-8">TBD: {{ destination.ShippingDetail?.CarrierName }}</p>
+
+        <h4 class="header-style-14-bold mt-8 mb-8">
+          Shipping membership account
+        </h4>
+        <p class="mb-8">TBD: {{ destination.ShippingDetail?.AccountNumber }}</p>
+
+        <!-- TBD: conditionally hide -->
+        <span cosAttributeTag size="small">
+          <i class="fas fa-check"></i> Hidden from customer
+        </span>
+      </div>
+    </div>
+
+    <!-- Product with shipping workflow -->
+    <div class="orders-shipping__top-border pt-16 pb-16 pr-16 pl-16 mt-16">
+      <h3 class="header-style-16 mb-0">Products with this shipping workflow</h3>
+
+      <esp-order-decoration-item-product
+        *ngFor="let product of destination.Products"
+      ></esp-order-decoration-item-product>
+
+      <!-- Add product button -->
+      <div class="orders-shipping__add-product-btn">
+        <button cos-button><i class="fa fa-plus mr-8"></i> Add Product</button>
+      </div>
+    </div>
+  </cos-card>
+</section>

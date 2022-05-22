@@ -1,0 +1,34 @@
+<ng-container *ngIf="contact">
+  <address class="body-style-12-mineshaft">
+    <span class="customer-address__name" *ngIf="contact?.Name">
+      {{ contact.Name }} <br />
+    </span>
+    <span class="customer-address__line1" *ngIf="contact?.Address?.Line1">
+      {{ contact.Address.Line1 }} <br />
+    </span>
+    <span class="customer-address__line2" *ngIf="contact?.Address?.Line2">
+      {{ contact.Address.Line2 }} <br />
+    </span>
+    <span class="customer-address__city" *ngIf="contact?.Address?.City">
+      {{ contact.Address.City }},
+    </span>
+    <span class="customer-address__state" *ngIf="contact?.Address?.State">
+      {{ contact.Address.State }} <br />
+    </span>
+    <span class="customer-address__zip" *ngIf="contact?.Address?.PostalCode">
+      {{ contact.Address.PostalCode }} <br />
+    </span>
+    <span class="customer-address__country" *ngIf="contact?.Address?.Country">
+      {{ contact.Address.Country }} <br />
+    </span>
+    <span
+      class="customer-address__phone"
+      *ngIf="contact?.Address?.Phone?.Number"
+    >
+      {{ contact.Address.Phone.Number }} <br />
+    </span>
+    <span class="customer-address__email" *ngIf="contact?.EmailAddress">
+      {{ contact.EmailAddress }} <br />
+    </span>
+  </address>
+</ng-container>

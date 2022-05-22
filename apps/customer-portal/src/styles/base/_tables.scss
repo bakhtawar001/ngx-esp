@@ -1,0 +1,100 @@
+@import 'cosmos/scss/settings/';
+
+// REMOVE THE FOLLOWING CLASSES WHEN COS TABLES ARE INTRODUCED
+table {
+  &.cos-table {
+    width: 100%;
+    margin-bottom: $spacing-stack-16;
+    background: $color-g-white-00;
+    overflow: hidden;
+    border-radius: $border-radius-2 $border-radius-2 0 0;
+    border-spacing: 0;
+    text-align: right;
+    border-collapse: collapse;
+
+    tbody {
+      border: 1px solid $color-g-pebble-09;
+    }
+
+    i.fa-info-circle {
+      margin: 0 $spacing-inline-4;
+      font-size: $font-size-10;
+      color: $color-bl-atoll-75;
+    }
+  }
+}
+
+.cos-row,
+.cos-header-row,
+.cos-footer-row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 24px;
+}
+
+.cos-cell,
+.cos-header-cell,
+.cos-footer-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+  min-height: inherit;
+  vertical-align: middle;
+  padding: 0;
+  height: 100%;
+}
+
+.cos-header-row {
+  background: $color-g-pebble-09;
+  border: 1px solid $color-g-moth-41;
+}
+
+.cos-header-cell {
+  @include type-style-table-header();
+}
+
+.cos-cell {
+  font-size: $font-size-12;
+  font-weight: normal;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: $color-g-pebble-09;
+  padding-top: $spacing-inline-4;
+}
+
+.cos-header-cell:first-of-type,
+.cos-cell:first-of-type,
+.cos-footer-cell:first-of-type {
+  text-align: left;
+  padding-left: $spacing-inline-8;
+  padding-right: $spacing-inline-8;
+}
+.cos-header-cell:last-of-type,
+.cos-cell:last-of-type,
+.cos-footer-cell:last-of-type {
+  padding-right: $spacing-inline-8;
+}
+
+.cos-table--striped,
+:host.cos-table--striped {
+  .cos-row {
+    /* stylelint-disable */
+    &:nth-of-type(even) {
+      background: $color-g-pearl-03;
+    }
+  }
+}
+
+.cos-row {
+  border-left: 1px solid $color-g-pebble-09;
+  border-right: 1px solid $color-g-pebble-09;
+
+  &:last-of-type {
+    border-bottom: 1px solid $color-g-pebble-09;
+
+    .cos-cell {
+      border: 0;
+    }
+  }
+}

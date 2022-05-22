@@ -1,0 +1,34 @@
+@import 'cosmos/scss/settings/';
+
+.cos-card--notification {
+  margin-bottom: 8px;
+  .cos-card-main {
+    display: flex;
+    justify-content: space-between;
+    .cos-card-controls-container {
+      position: inherit;
+      order: 2;
+      align-self: flex-end;
+      top: auto;
+      right: auto;
+      margin-top: -8px;
+    }
+    .cos-card-content {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 24px auto auto;
+      column-gap: 8px;
+    }
+  }
+}
+
+@include narrower-than($bp-large) {
+  .cos-card--notification {
+    padding-bottom: 28px;
+    .cos-card-controls {
+      position: absolute;
+      bottom: 16px;
+      left: 38px;
+    }
+  }
+}

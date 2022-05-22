@@ -1,0 +1,8 @@
+<div class="page-container">
+  <sponsored-content-article
+    [articleId]="articleId"
+    (productDetailClick)="navigateToProductDetails($event)"
+    (supplierDetailClick)="navigateToSupplierDetails($event)"
+    (addToCollectionClick)="addToCollection($event)"
+  ></sponsored-content-article>
+</div>

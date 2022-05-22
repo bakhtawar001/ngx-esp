@@ -1,0 +1,40 @@
+{
+  "root": "libs/esp/recently-viewed",
+  "sourceRoot": "libs/esp/recently-viewed/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "tsConfig": "libs/esp/recently-viewed/tsconfig.lib.json",
+        "project": "libs/esp/recently-viewed/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/recently-viewed/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/recently-viewed/**/*.ts",
+          "libs/esp/recently-viewed/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/esp/recently-viewed/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/esp/recently-viewed"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}

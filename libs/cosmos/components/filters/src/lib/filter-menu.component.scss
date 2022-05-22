@@ -1,0 +1,100 @@
+@import '../../../../scss/settings/';
+
+.cos-filter-menu-backdrop + .cdk-overlay-connected-position-bounding-box {
+  .cdk-overlay-pane {
+    max-height: 80vh !important;
+    margin-top: $spacing-stack-16;
+  }
+}
+.mat-menu-panel.cos-filter-menu-panel {
+  display: flex;
+  flex-direction: row;
+  max-height: none;
+  padding: 0;
+  padding-top: $spacing-stack-12;
+  .mat-menu-content:not(:empty) {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.cos-filter-menu-main {
+  overflow-y: auto;
+  @include spacing-inset-12();
+  padding-top: 0;
+}
+
+// Styles for form elements in filter menus
+.cos-filter-menu-panel {
+  position: absolute;
+  z-index: 10;
+  background: white;
+  padding-top: $spacing-stack-16;
+  margin-top: $spacing-stack-16;
+  box-shadow: $box-shadow-menu;
+  border-radius: 4px;
+}
+
+.cos-filter-menu-panel,
+.cos-mobile-filters-panel {
+  .cos-form-field-wrapper,
+  .cos-form-field-container,
+  .cos-input,
+  .cos-checkbox,
+  .cos-button-group-toggle {
+    display: block;
+    width: 100%;
+  }
+
+  @include narrower-than($bp-medium) {
+    .cos-form-field-container {
+      display: flex;
+      align-items: center;
+
+      .cos-form-field-label-wrapper {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .cos-inline {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    .cos-input {
+      flex: 1 1 auto;
+      margin: 0 $spacing-inline-4;
+      margin-bottom: $spacing-stack-8;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .cos-checkbox {
+    margin: $spacing-stack-16 0;
+  }
+  .cos-filter-menu-count {
+    color: $color-g-shark-54;
+  }
+  .cos-button-group.cos-button-group-toggle {
+    margin-bottom: $spacing-stack-12;
+  }
+}
+
+.cos-filter-menu-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex: 0 0 56px;
+  width: 100%;
+  @include spacing-inset-12();
+  border-top: $border-light;
+  background-color: $color-g-pearl-03;
+  button {
+    flex: 0 0 auto;
+    margin-right: 0;
+  }
+}

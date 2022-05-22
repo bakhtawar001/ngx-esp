@@ -1,0 +1,41 @@
+<div
+  class="flex items-center justify-center"
+  [ngClass]="{
+    'presentation-product-img-container': true,
+    'presentation-product-img-container--empty': !image
+  }"
+>
+  <ng-template [ngIf]="image" [ngIfElse]="noImage">
+    <img class="presentation-product-img mb-8" [src]="image" />
+
+    <div class="button-group">
+      <button class="presentation-product-img-edit" cos-icon-button size="lg">
+        <i class="fa fa-pencil-ruler"></i>
+        <span class="cos-accessibly-hidden"> Delete</span>
+      </button>
+
+      <button
+        class="presentation-product-img-delete"
+        cos-icon-button
+        color="warn"
+        size="lg"
+      >
+        <i class="fa fa-trash-alt"></i>
+        <span class="cos-accessibly-hidden"> Delete</span>
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template #noImage>
+    <p class="text-center">No images selected</p>
+    <cos-image-upload-form
+      [acceptedFileTypes]="'image/jpeg,image/jpg,image/png,image/gif'"
+      [maxFileBytes]="10485760"
+      (imgSelected)="selectImage()"
+    >
+      <p class="img-upload-reqs-content">
+        Images should be over 110px x 110px and under 10 MB in size.
+      </p>
+    </cos-image-upload-form>
+  </ng-template>
+</div>

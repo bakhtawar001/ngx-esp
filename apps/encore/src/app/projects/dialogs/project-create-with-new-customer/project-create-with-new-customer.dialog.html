@@ -1,0 +1,113 @@
+<cos-dialog [closeStrategy]="dialogCloseStrategy">
+  <ng-container cosDialogHeader
+    >Create a New Presentation for a New Customer</ng-container
+  >
+  <ng-container cosDialogSubHeader
+    >Enter your presentation details.</ng-container
+  >
+
+  <ng-container cosDialogContent>
+    <div class="dialog-content-container">
+      <div class="form-tracker">
+        <cos-tracker [currentStep]="currentStep">
+          <cos-tracker-step size="lg">
+            <span *ngIf="currentStep === 1;" data-cy="first-step">1</span>
+            <span *ngIf="currentStep !== 1" data-cy="first-step">
+              <i class="fa fa-check cos-text--white"></i
+            ></span>
+          </cos-tracker-step>
+          <cos-tracker-step size="lg"
+            ><span data-cy="second-step">2</span></cos-tracker-step
+          >
+        </cos-tracker>
+      </div>
+      <div class="form-tracker__labels flex justify-between">
+        <div
+          class="body-style-14"
+          data-cy="customer-information-label"
+          [ngClass]="{'body-style-14-shark': currentStep !== 1}"
+        >
+          Customer Information
+        </div>
+        <div
+          class="body-style-14"
+          data-cy="project-details-label"
+          [ngClass]="{'body-style-14-shark': currentStep !== 2}"
+        >
+          Project Details
+        </div>
+      </div>
+      <hr class="my-16" />
+      <asi-project-create-customer-form
+        *ngIf="currentStep === 1; else step2"
+        [data]="data.input.customer"
+        (formStatusChange)="onCustomerFormStatusChange($event)"
+        (formValueChange)="onCustomerFormValueChange($event)"
+      >
+        <div asiProjectCreateCustomerFormHeader class="form-header w-full">
+          <p data-cy="create-customer-form-header" class="body-style-14">
+            This customer and contact will appear in your directory where you
+            can add or update additional details.
+          </p>
+          <hr class="my-16" />
+        </div>
+      </asi-project-create-customer-form>
+
+      <ng-template #step2>
+        <asi-project-form
+          [data]="data.input.project"
+          (formValueChange)="onProjectFormValueChange($event)"
+          (formStatusChange)="onProjectFormStatusChange($event)"
+        >
+          <div asiProjectFormHeader class="form-header w-full">
+            <h2 class="header-style-18 project-creation-heading mb-8">
+              New Presentation
+            </h2>
+            <p class="body-style-14">
+              Presentations live within projects and share the same name.
+              Projects are a way to organize all of the things you share with
+              your customer and your vendors.
+            </p>
+          </div>
+        </asi-project-form>
+      </ng-template>
+    </div>
+  </ng-container>
+  <ng-container cosDialogActions>
+    <div class="project-create-customer-dialog__actions-bar w-full">
+      <button
+        (click)="onPreviousStep()"
+        data-cy="back-button"
+        [hidden]="!data.step.canGoPrevious()"
+        cos-button
+        type="button"
+      >
+        <i class="fa fa-arrow-left mr-8"></i> Back
+      </button>
+
+      <button
+        *ngIf="currentStep === 1"
+        (click)="goToStep(2)"
+        data-cy="next-button"
+        [disabled]="!customerFormStatus?.valid || !customerFormStatus.dirty"
+        cos-flat-button
+        type="submit"
+        color="primary"
+      >
+        Next <span class="ml-12"><i class="fa fa-arrow-right"></i></span>
+      </button>
+
+      <button
+        *ngIf="currentStep === 2"
+        (click)="submit()"
+        data-cy="submit-button"
+        [disabled]="!customerFormStatus?.valid || !projectFormStatus?.valid"
+        cos-flat-button
+        color="primary"
+        type="button"
+      >
+        <i class="fa fa-magic mr-8"></i> Create
+      </button>
+    </div>
+  </ng-container>
+</cos-dialog>

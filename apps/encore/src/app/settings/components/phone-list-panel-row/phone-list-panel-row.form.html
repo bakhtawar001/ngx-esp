@@ -1,0 +1,36 @@
+<asi-panel-editable-row
+  rowTitle="Telephone Numbers"
+  [formGroup]="form"
+  [isEditable]="isEditable"
+  [isLoading]="!state.partyIsReady"
+  (addNewEvent)="phoneList.addItem()"
+  (onSaveEvent)="save()"
+>
+  <div><i class="form-row-icon fa fa-phone mt-8 mr-16"></i></div>
+
+  <asi-panel-editable-row-inactive>
+    <ul
+      *ngIf="state.partyIsReady && phones?.length; else noPhones"
+      class="form-row-value-list"
+    >
+      <li *ngFor="let phone of phones">
+        <span>{{ phone.Type | findLookupTypeValue: 'Phones' }}:</span
+        ><span>
+          {{ phone.Number }}
+          <span *ngIf="phone.IsPrimary" cosPillLabel>Primary </span>
+        </span>
+      </li>
+    </ul>
+    <ng-template #noPhones>
+      <p class="form-row-value">No telephone numbers added</p>
+    </ng-template>
+  </asi-panel-editable-row-inactive>
+
+  <asi-panel-editable-row-active>
+    <esp-phone-list-form
+      formArrayName="Phones"
+      [defaultPhoneType]="defaultPhoneType"
+      #phoneList
+    ></esp-phone-list-form>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

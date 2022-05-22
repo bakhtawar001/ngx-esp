@@ -1,0 +1,72 @@
+<div class="product-pricing" *ngIf="pricingDisplay">
+  <div class="mb-8">
+    <table class="product-prices-table" cos-table [dataSource]="pricingDisplay">
+      <ng-container cosColumnDef="quantity">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Quantity</th>
+        <td cos-cell *cosCellDef="let element">
+          <span class="quantity">{{ element.Quantity.From }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="price">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Catalog Price</th>
+        <td cos-cell *cosCellDef="let element">
+          <span class="catalog-price">{{
+            element | formatPrice: 'Price'
+          }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="cost">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Net Cost</th>
+        <td cos-cell *cosCellDef="let element">
+          <span class="net-cost">{{ element | formatPrice: 'Cost' }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="preferred">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>
+          Preferred
+          <a
+            *ngIf="preferred?.Description"
+            title="{{ preferred?.Description }}"
+          >
+            <i class="fa fa-info-circle"></i>
+          </a>
+        </th>
+        <td cos-cell *cosCellDef="let element">
+          <span class="cos-text--blue preferred-price">
+            {{ element | formatPrice: 'PreferredPrice' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container cosColumnDef="profit">
+        <th cos-header-cell class="w-1/5" *cosHeaderCellDef>Profit</th>
+        <td cos-cell *cosCellDef="let element">
+          <span class="profit">{{ element | formatProfit }}</span>
+        </td>
+      </ng-container>
+
+      <tr cos-header-row *cosHeaderRowDef="pricingTableColumns"></tr>
+      <tr cos-row *cosRowDef="let row; columns: pricingTableColumns"></tr>
+    </table>
+  </div>
+  <div class="mb-16" *ngIf="showMorePricingLink">
+    <a class="show-more-link" (click)="showMorePricing()" cos-button>
+      <i class="fa fa-plus"></i> Show More
+    </a>
+  </div>
+  <div class="mb-16" *ngIf="showLessPricingLink">
+    <a class="show-more-link" (click)="showLessPricing()" cos-button>
+      <i class="fa fa-minus"></i> Show Less
+    </a>
+  </div>
+  <div class="body-style-12 price-includes" *ngIf="pricing.PriceIncludes">
+    <span>Price Includes:</span> {{ pricing.PriceIncludes }}
+  </div>
+  <div class="body-style-12 disclaimer">
+    {{ pricing.Prices | formatPriceCode }} Price subject to change without
+    notice, please verify with Supplier.
+  </div>
+</div>

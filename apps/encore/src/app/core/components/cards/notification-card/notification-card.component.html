@@ -1,0 +1,12 @@
+<cos-card class="cos-card--notification w-full">
+  <ng-content
+    select="cos-card-controls"
+    ngProjectAs="cos-card-controls"
+  ></ng-content>
+  <ng-content select="cos-card-menu" ngProjectAs="cos-card-menu"></ng-content>
+  <div class="cos-card-content flex" ngProjectAs="ng-content">
+    <ng-content select="cos-avatar, .fa"></ng-content>
+    <ng-content></ng-content>
+    <ng-content select="cosPillLabel"></ng-content>
+  </div>
+</cos-card>

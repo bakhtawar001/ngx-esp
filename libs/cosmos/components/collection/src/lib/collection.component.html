@@ -1,0 +1,41 @@
+<cos-card [ngClass]="'cos-collection-card'">
+  <cos-card-menu *ngIf="showMenu">
+    <ng-content></ng-content>
+  </cos-card-menu>
+  <button
+    type="button"
+    class="cos-collection-card-trigger"
+    (click)="handleClick.emit($event)"
+  >
+    <div class="cos-collection-header">
+      <cos-emoji-menu
+        *ngIf="collection.Emoji"
+        class="cos-collection-icon"
+        [emoji]="collection.Emoji"
+        readonly
+      ></cos-emoji-menu>
+      <div class="cos-collection-header-text">
+        <h2 class="cos-collection-title">{{ collection.Name }}</h2>
+        <span class="cos-collection-subtitle" *ngIf="collection.UpdateDate">
+          Updated {{ collection.UpdateDate | dateAgo }}
+          <span *ngIf="collection.UpdatedBy"
+            >by {{ collection.UpdatedBy }}</span
+          >
+        </span>
+      </div>
+    </div>
+    <cos-product-grid
+      [products]="collection.Products"
+      *ngIf="collection.Products"
+    ></cos-product-grid>
+    <div
+      class="cos-collection-product-avatars-container"
+      *ngIf="size !== 'small' && collection.Collaborators!.length > 0"
+    >
+      <p class="cos-collection-collaborators-title">Collaborators</p>
+      <div class="cos-collection-avatars">
+        <cos-avatar-list [avatars]="collaborators"></cos-avatar-list>
+      </div>
+    </div>
+  </button>
+</cos-card>

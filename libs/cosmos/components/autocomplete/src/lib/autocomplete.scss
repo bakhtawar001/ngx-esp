@@ -1,0 +1,78 @@
+@import '../../../../scss/settings/';
+// SEARCH MODE
+
+.mat-autocomplete-panel.cos-autocomplete-panel.mat-autocomplete-visible {
+  margin-top: $spacing-stack-4;
+}
+input[cos-input].mat-autocomplete-trigger {
+  width: 100%;
+
+  padding-left: $spacing-inline-24;
+  padding-right: $spacing-inline-24;
+}
+
+// SELECT MODE
+.cos-input-clearable .cos-input.mat-select {
+  padding-right: 0 !important;
+}
+
+.cos-input-clearable .cos-form-field-suffix {
+  top: 10px !important;
+}
+
+.mat-select {
+  padding: $spacing-stack-8 0;
+
+  .mat-select-trigger {
+    padding-left: $spacing-inline-8;
+  }
+}
+.cdk-overlay-pane {
+  // transform: translateX(0px) !important;
+
+  .mat-select-panel-wrap {
+    position: relative;
+    top: $spacing-stack-32;
+    .mat-select-panel {
+      min-width: 100% !important;
+      max-width: 100% !important;
+      box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+
+      .cos-form-field {
+        transform: translateX(0px) !important;
+        margin: 0;
+
+        padding: $spacing-stack-8 $spacing-inline-16;
+
+        .cos-input[type='text'] {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.mat-select-panel.cos-autocomplete-panel {
+  background: #fff !important;
+
+  .mat-option {
+    &.mat-active {
+      background: $color-g-pearl-03;
+      &:hover {
+        background: $color-g-pebble-09;
+      }
+    }
+  }
+}
+
+mat-option {
+  line-height: unset !important;
+  &:hover {
+    background: $color-g-pebble-09;
+  }
+}
+
+.options-wrapper {
+  max-height: 224px;
+  overflow: auto;
+}

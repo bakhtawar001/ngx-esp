@@ -1,0 +1,28 @@
+<cos-card class="presentation-preview lg:block hidden">
+  <h3 class="header-style-18 mb-8">Presentation preview</h3>
+  <p class="text-shark mt-0">
+    Lorem ipsum dolor sit amet non consectiur adipiscing.
+  </p>
+  <div class="flex justify-center">
+    <cos-button-group
+      [toggleOptions]="previewOptions"
+      [defaultSelection]="selectedView"
+      (handleSelection)="updatePreview($event)"
+    ></cos-button-group>
+  </div>
+  <div class="presentation-preview-image w-full mt-16 flex">
+    <div class="iframe-wrapper">
+      <iframe
+        *ngIf="selectedView; else configure"
+        allowfullscreen="true"
+        allowtransparency="true"
+        [src]="sanitizer.bypassSecurityTrustResourceUrl(selectedView)"
+      ></iframe>
+    </div>
+    <ng-template #configure>
+      <p class="presentation-preview-placeholder body-style-14 text-shark">
+        Configure your Presentation and add products to see a preview.
+      </p>
+    </ng-template>
+  </div>
+</cos-card>

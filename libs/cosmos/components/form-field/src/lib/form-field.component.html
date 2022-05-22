@@ -1,0 +1,43 @@
+<label
+  class="cos-form-field-label"
+  #label
+  *ngIf="_hasLabel()"
+  [id]="_labelId"
+  [attr.for]="_control.id"
+  [attr.aria-owns]="_control.id"
+  [class.cos-empty]="_control.empty"
+  [class.cos-form-field-empty]="_control.empty"
+>
+  <ng-content select="cos-label"></ng-content>
+
+  <span
+    class="cos-placeholder-required cos-form-field-required-marker"
+    aria-hidden="true"
+    *ngIf="!hideRequiredMarker && _control.required && !_control.disabled"
+    >&#32;*</span
+  >
+</label>
+<div class="cos-form-field-input-wrapper">
+  <div class="cos-form-field-prefix" *ngIf="_prefixChildren.length">
+    <ng-content select="[cosPrefix]"></ng-content>
+  </div>
+  <div class="cos-form-field-suffix" *ngIf="_suffixChildren.length">
+    <ng-content select="[cosSuffix]"></ng-content>
+  </div>
+  <ng-content></ng-content>
+</div>
+
+<div
+  class="cos-form-field-subscript-wrapper"
+  [ngSwitch]="_getDisplayedMessages()"
+>
+  <div *ngSwitchCase="'error'">
+    <ng-content select="cos-error"></ng-content>
+  </div>
+
+  <div class="cos-form-field-hint-wrapper" *ngSwitchCase="'hint'">
+    <ng-content select="cos-hint:not([align='end'])"></ng-content>
+    <div class="cos-form-field-hint-spacer"></div>
+    <ng-content select="cos-hint[align='end']"></ng-content>
+  </div>
+</div>

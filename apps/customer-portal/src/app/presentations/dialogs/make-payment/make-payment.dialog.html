@@ -1,0 +1,134 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Make a payment</h2>
+  <p class="body-style-12-shark">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt.
+  </p>
+</header>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <div class="w-4/5 mt-16 ml-auto mr-auto">
+    <p class="body-style-12-shark mb-8"><strong>Invoice information</strong></p>
+    <h3 class="header-style-16 mb-8">Order # 1001</h3>
+    <div class="grid grid-cols-2 mb-16">
+      <div>
+        <h4 class="header-style-14-semibold mb-4">Balance due</h4>
+        <h4 class="header-style-14-semibold mb-4">$3,488.23</h4>
+      </div>
+      <div>
+        <h4 class="header-style-14-semibold mb-4">Due date</h4>
+        <h4 class="header-style-14-semibold mb-4">11/20/2020</h4>
+      </div>
+    </div>
+    <p class="body-style-12-shark mb-8"><strong>Payment information</strong></p>
+    <p class="header-style-14-bold mb-8">
+      Payment amount <span class="cos-text--blue">*</span>
+    </p>
+    <!-- Cos radio group to go here -->
+    <p>Radio buttons to go here...</p>
+    <!-- End raiod group -->
+
+    <div class="billing-information w-full mb-16">
+      <p class="body-style-12-shark mb-8">
+        <strong>Billing information</strong>
+      </p>
+      <p class="header-style-14-bold mb-8">
+        Payment Method <span class="cos-text--blue">*</span>
+      </p>
+      <select
+        class="
+          cdk-text-field-autofill-monitored
+          ng-pristine ng-valid
+          cos-input cos-input--large
+          ng-touched
+          w-full
+        "
+      >
+        <option>Credit Card</option>
+      </select>
+      <p class="header-style-14-bold mt-16 mb-8">
+        Name on card <span class="cos-text--blue">*</span>
+      </p>
+      <input
+        placeholder="Name on card"
+        class="
+          cdk-text-field-autofill-monitored
+          ng-pristine ng-valid
+          cos-input
+          ng-touched
+          w-full
+        "
+        style="padding: 11px 12px"
+      />
+      <p class="header-style-14-bold mt-16 mb-8">
+        Credit card number <span class="cos-text--blue">*</span>
+      </p>
+      <input
+        placeholder="Credit card number"
+        class="
+          cdk-text-field-autofill-monitored
+          ng-untouched ng-pristine ng-valid
+          cos-input
+          w-full
+        "
+        style="padding: 11px 12px"
+      />
+      <div class="grid-gap-16 grid grid-cols-2 mt-16">
+        <div>
+          <p class="header-style-14-bold mb-8">
+            CVV <span class="cos-text--blue">*</span>
+          </p>
+          <input
+            placeholder="CVV"
+            class="
+              cdk-text-field-autofill-monitored
+              ng-untouched ng-pristine ng-valid
+              cos-input
+              w-full
+            "
+            style="padding: 11px 12px"
+          />
+        </div>
+        <div>
+          <p class="header-style-14-bold mb-8">
+            Expiration date <span class="cos-text--blue">*</span>
+          </p>
+          <input
+            cos-input=""
+            placeholder="mm/yyyy"
+            class="
+              mat-datepicker-input mat-select
+              cdk-text-field-autofill-monitored
+              cos-input cos-input--large
+              ng-pristine ng-valid ng-touched
+              w-full
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="billing-contact w-full mb-16">
+      <p class="body-style-12-shark mb-16"><strong>Billing contact</strong></p>
+      <p class="header-style-14-bold mb-0 mb-8">Leslie Knope</p>
+      <p class="body-style-12-shark mb-8">
+        DEPDIR Pawnee City Dept. of Parks and Rec.
+      </p>
+      <span class="body-style-14 mb-0">800-867-5309</span><br />
+      <span class="body-style-14 mb-0">lknope@pawneecity.com</span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<footer>
+  <div class="mt-16 mb-16 ml-16 mr-16 text-right">
+    <button type="button" cos-flat-button color="primary" disabled>
+      <i class="fa fa-dollar-sign mr-8"></i>Make payment
+    </button>
+  </div>
+</footer>

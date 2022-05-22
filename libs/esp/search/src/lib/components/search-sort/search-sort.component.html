@@ -1,0 +1,26 @@
+<a
+  cos-button
+  size="sm"
+  class="search-sort-button"
+  [matMenuTriggerFor]="sortMenu"
+>
+  Sort by:
+  <span class="sort-selection-name mr-4">{{ state.sort.name }}</span>
+  <i class="fa fa-chevron-down"></i>
+</a>
+<mat-menu
+  #sortMenu
+  class="cos-menu"
+  backdropClass="cos-backdrop"
+  yPosition="below"
+>
+  <button
+    type="button"
+    mat-menu-item
+    class="cos-menu-item"
+    *ngFor="let option of options"
+    (click)="setSort(option)"
+  >
+    {{ option.name }}
+  </button>
+</mat-menu>

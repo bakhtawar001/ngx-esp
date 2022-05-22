@@ -1,0 +1,116 @@
+<cos-segmented-panel>
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Addresses</h2>
+    <button
+      *ngIf="state.party?.IsEditable"
+      (click)="addItem()"
+      [disabled]="activeRow !== null"
+      cos-flat-button
+      color="primary"
+      data-cy="add-address-button"
+      size="sm"
+      type="button"
+    >
+      <i class="fas fa-plus"></i> Add Address
+    </button>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row
+    *ngFor="let address of groups; let i = index;"
+    [formGroup]="address"
+  >
+    <asi-panel-editable-row
+      [editingIsActive]="activeRow === i"
+      [isEditable]="state.party?.IsEditable && (activeRow === null || activeRow === i)"
+      [isLoading]="!state.partyIsReady"
+      (onCancelEvent)="cancelEdit()"
+      (onEditEvent)="activeRow = i"
+      (onSaveEvent)="save(address.value, i)"
+    >
+      <i
+        class="form-row-icon fa fa-map-marker-alt mt-8 mr-16"
+        data-cy="pin-icon"
+      ></i>
+
+      <asi-panel-editable-row-inactive>
+        <esp-address-display
+          nameClass="form-row-title"
+          bodyClass="form-row-value"
+          data-cy="address-display"
+          [address]="address.value"
+        >
+          <h4 *ngIf="i === 0" class="form-row-title">Primary address</h4>
+          <p class="form-row-value">No address provided</p>
+        </esp-address-display>
+      </asi-panel-editable-row-inactive>
+
+      <asi-panel-editable-row-active>
+        <div class="address-row">
+          <div class="address-row-display">
+            <cos-address-form
+              [formGroup]="address"
+              data-cy="address-form"
+            ></cos-address-form>
+            <div
+              class="cos-form-row cos-address-form-appened-fields"
+              [formGroup]="address"
+            >
+              <span
+                *ngIf="!address.value.IsPrimary"
+                class="cos-form-label cos-accessibly-hidden"
+                >Primary
+              </span>
+
+              <cos-checkbox
+                formControlName="IsPrimary"
+                data-cy="make-as-primary-address"
+              >
+                Make Primary
+              </cos-checkbox>
+
+              <!-- <ng-template #isPrimary>
+                  <p class="form-panel-field__primary-msg">
+                    This is my primary address
+                  </p>
+                </ng-template> -->
+            </div>
+            <div class="cos-form-row cos-address-form-appened-fields">
+              <span
+                *ngIf="address.value.Type !== 'BLNG'"
+                class="cos-form-label cos-accessibly-hidden"
+                >Billing
+              </span>
+
+              <cos-checkbox
+                [checked]="address.value.Type === 'BLNG'"
+                (change)="setAddressType(address, $event.checked ? 'BLNG' : 'GNRL')"
+                data-cy="make-as-billing-address"
+              >
+                Make Billing
+              </cos-checkbox>
+              <!-- <ng-template #isBilling>
+                  <p class="form-panel-field__primary-msg">
+                    This is my billing address
+                  </p>
+                </ng-template> -->
+            </div>
+          </div>
+          <div class="address-row-actions">
+            <button
+              *ngIf="isAddressExisting"
+              (click)="removeItem(address)"
+              aria-label="Remove"
+              cos-button
+              color="warn"
+              data-cy="remove-address-button"
+              type="button"
+            >
+              <i class="fa fa-trash md:hidden mr-8"></i>
+              Remove
+            </button>
+          </div>
+        </div>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

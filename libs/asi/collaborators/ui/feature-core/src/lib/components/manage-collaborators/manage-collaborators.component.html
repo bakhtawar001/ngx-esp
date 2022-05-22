@@ -1,0 +1,41 @@
+<div class="flex justify-items-stretch">
+  <cos-avatar-list
+    [avatars]="avatarList"
+    class="manage-collaborators__avatar-list"
+  ></cos-avatar-list>
+
+  <div class="manage-collaborators__container flex flex-col">
+    <p
+      *ngIf="state.party?.AccessLevel === 'Everyone'"
+      class="body-style-12 mb-0"
+      data-cy="everyone-message"
+    >
+      Anyone within your company can
+      {{
+        isOnlyReadWrite
+          ? 'edit'
+          : state.party?.Access?.[0]?.AccessType === 'ReadWrite'
+          ? 'edit'
+          : 'view'
+      }}
+    </p>
+    <p
+      *ngIf="state.party?.AccessLevel === 'Owner'"
+      class="body-style-12 mb-0"
+      data-cy="owner-message"
+    >
+      Only the owner and admins can edit or view
+    </p>
+
+    <button
+      *ngIf="canEdit || state.party?.IsEditable"
+      (click)="onManageCollaborators()"
+      cos-button
+      class="manage-collaborators__button"
+      data-cy="manage-collaborators-button"
+      type="button"
+    >
+      Manage
+    </button>
+  </div>
+</div>

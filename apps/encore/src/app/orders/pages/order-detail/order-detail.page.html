@@ -1,0 +1,64 @@
+<div class="proj-orders grid-layout-1" *ngIf="state.isFirstTimeLoading">
+  <!-- TODO: Need to determine how this is going to be handled visually -->
+  Loading...
+</div>
+
+<div class="flex flex-row" *ngIf="state.loadErrorMessage">
+  <!-- TODO: Need to determine how this is going to be handled visually -->
+  <span *ngIf="state.orderViewModel">Could not refresh order:</span>
+  <span *ngIf="!state.orderViewModel">Could not load order:</span>
+  {{state.loadErrorMessage}}
+</div>
+
+<div class="proj-orders grid-layout-1" *ngIf="state.orderViewModel">
+  <esp-order-detail-title
+    [componentWithActions]="componentWithActions"
+  ></esp-order-detail-title>
+
+  <esp-order-detail-sidebar
+    [order]="state.orderViewModel"
+  ></esp-order-detail-sidebar>
+
+  <main class="proj-orders__pg-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Mark's old stuff below -->
+<!-- <ng-container class="page-container flex flex-col" *ngIf="state.orderViewModel">
+  <br /><br />
+  <br /><br />
+  <br /><br />
+  <hr />
+  <div class="flex flex-row">
+    <div class="flex-initial">
+      <div>
+        <esp-order-status [order]="state.orderViewModel"></esp-order-status>
+      </div>
+      <div>
+        <esp-order-quote-summary
+          [order]="state.orderViewModel"
+        ></esp-order-quote-summary>
+      </div>
+      <esp-order-side-menu [order]="state.orderViewModel"></esp-order-side-menu>
+    </div>
+    <div
+      class="order-detail grid-layout-1 justify-start flex-auto"
+      *ngIf="state.orderViewModel"
+    >
+      <div>
+        <hr />
+        <div>
+          <b>Customer message</b>
+        </div>
+        <hr />
+
+        <div
+          *ngFor="let item of state.orderViewModel?.LineItems; trackBy: trackOrderLineItem"
+        >
+          <esp-order-line-item [lineItem]="item"></esp-order-line-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container> -->

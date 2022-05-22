@@ -1,0 +1,33 @@
+@import '../../../../../scss/settings';
+
+:host {
+  z-index: 0;
+}
+
+.cos-avatar-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  transform: rotateY(1deg);
+  transform-style: preserve-3d;
+  -webkit-transform: rotateY(1deg) translateZ(-1px);
+}
+
+.cos-avatar-list-item {
+  list-style: none;
+  margin-left: -$spacing-inline-4;
+  transform: rotateY(-1deg);
+  position: relative;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.cos-avatar {
+  box-shadow: $color-g-pearl-03 0px 0px 0px 2px;
+}
+
+.tooltip-multi-line {
+  white-space: pre;
+}

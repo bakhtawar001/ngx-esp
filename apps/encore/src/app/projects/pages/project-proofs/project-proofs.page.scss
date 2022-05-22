@@ -1,0 +1,57 @@
+@import 'cosmos/scss/settings/';
+$mobile-breakpoint: $bp-large;
+
+.project-proofs {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  @include wider-than($bp-large) {
+    display: grid;
+
+    grid-template-areas:
+      'a a a a a a a a a a a a'
+      'b b b c c c c c c c c c';
+  }
+
+  .header {
+    grid-area: a;
+    padding-bottom: rem($spacing-stack-16);
+    border-bottom: $border-light;
+  }
+
+  &__sidebar {
+    @include wider-than($bp-large) {
+      flex: 0 0 500px !important;
+    }
+  }
+
+  &__image-upload .img-upload-dropzone {
+    height: 200px !important;
+  }
+}
+
+.cos-card-main.p-0 {
+  padding: 0px !important;
+}
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  height: 100%;
+
+  &__col1 {
+    min-width: 64%;
+  }
+
+  &__align-center {
+    align-items: center;
+  }
+
+  &__align-top {
+    align-items: flex-start;
+  }
+}
+.flexbox li {
+  list-style: none;
+}

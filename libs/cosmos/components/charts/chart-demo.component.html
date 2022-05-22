@@ -1,0 +1,64 @@
+<div class="cos-chart-wrapper">
+  <div class="cos-form-filters">
+    <cos-form-field>
+      <cos-label class="cos-accessibly-hidden">Category</cos-label>
+      <select
+        matNativeControl
+        id="year-to-date-select"
+        (click)="$event.stopPropagation()"
+        formControlName="category"
+      >
+        <option>Year to date</option>
+      </select>
+    </cos-form-field>
+    <cos-form-field>
+      <cos-label class="cos-accessibly-hidden">Category</cos-label>
+      <select
+        matNativeControl
+        id="revenue-select"
+        (click)="$event.stopPropagation()"
+        formControlName="category"
+      >
+        <option>Revenue</option>
+      </select>
+    </cos-form-field>
+    <cos-form-field>
+      <cos-label class="cos-accessibly-hidden">Category</cos-label>
+      <select
+        matNativeControl
+        id="category-select"
+        (click)="$event.stopPropagation()"
+        formControlName="category"
+      >
+        <option>All Sales People</option>
+      </select>
+    </cos-form-field>
+  </div>
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [options]="chartOptions"
+    style="width: 100%; height: 400px; display: block"
+  ></highcharts-chart>
+</div>
+<div class="cos-data-summary">
+  <div>
+    <h2 class="header-style-14-bold">Yearly Order Totals</h2>
+    <p class="header-style-22">2020</p>
+  </div>
+  <div>
+    <h2 class="header-style-16">Year to Date</h2>
+    <span>01 Jan 2020 - 01 Oct 2020</span>
+    <p class="header-style-22 cos-data-blue">$300.0k</p>
+  </div>
+  <div>
+    <h2 class="header-style-16">Prior Year to Date</h2>
+
+    <span>01 Jan 2020 - 01 Oct 2020</span>
+    <p class="header-style-22 cos-data-blue">$100.5k</p>
+  </div>
+  <div>
+    <h2 class="header-style-16">Prior Full Year</h2>
+    <span>2019</span>
+    <p class="header-style-22 cos-data-blue">$205.3k</p>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.content-section {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgb(231, 232, 233);
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}

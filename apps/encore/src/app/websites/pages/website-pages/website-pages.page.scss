@@ -1,0 +1,89 @@
+@import 'cosmos/scss/settings/';
+
+.website-pages {
+  display: flex;
+  flex-direction: column;
+
+  @include wider-than($bp-large) {
+    display: grid;
+    grid-template-areas:
+      'a a a a a a a a a a a a'
+      'b b b b b b b b b b b b';
+  }
+
+  .header {
+    grid-area: a;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-g-pebble-09;
+  }
+
+  &-content {
+    grid-area: b;
+  }
+}
+
+.cos-pill-label.shark {
+  background-color: $color-g-shark-54 !important;
+}
+.nested-grid {
+  &-col1 {
+    @include wider-than($bp-large) {
+      width: 600px;
+    }
+  }
+  &-col2 {
+    @include wider-than($bp-large) {
+      width: 100px;
+      float: right;
+    }
+  }
+  &-col3 {
+    @include wider-than($bp-large) {
+      width: 370px;
+      float: right;
+    }
+  }
+}
+cos-card-tree-parent .nested-grid {
+  &-col1 {
+    @include wider-than($bp-large) {
+      width: 600px;
+    }
+  }
+  &-col2 {
+    @include wider-than($bp-large) {
+      width: 100px;
+      float: right;
+    }
+  }
+  &-col3 {
+    @include wider-than($bp-large) {
+      width: 370px;
+      float: right;
+    }
+  }
+}
+cos-card-tree-child .nested-grid {
+  &-col1 {
+    @include wider-than($bp-large) {
+      width: 584px;
+    }
+  }
+  &-col2 {
+    @include wider-than($bp-large) {
+      width: 100px;
+      float: right;
+    }
+  }
+  &-col3 {
+    @include wider-than($bp-large) {
+      width: 370px;
+      float: right;
+    }
+  }
+}
+//Not working from _utils.scss
+.bg-important {
+  background-color: $color-yl-viper-38;
+  color: $color-g-mineshaft-88;
+}

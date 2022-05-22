@@ -1,0 +1,218 @@
+<div *ngIf="product">
+  <div class="content-section" *ngIf="product.HasRushService">
+    <h2 class="header-style-14-bold">Rush Service</h2>
+    <p class="product-rush-service">
+      {{ product.HasRushService | evalDisplayValue }}
+    </p>
+  </div>
+
+  <esp-product-charges
+    class="content-section product-rush-time"
+    *ngIf="product.RushTime"
+    [attributes]="product.RushTime"
+  >
+    <ng-template let-charges>
+      <h2 class="header-style-14-bold">Rush Time</h2>
+      <div *ngIf="charges && charges.length" class="content-section">
+        <div *ngFor="let charge of charges">
+          <div class="product-rush-time-container mb-16 flex">
+            <div class="w-1/2">
+              <div class="product-rush-time-name">{{ charge.Name }}</div>
+            </div>
+            <div class="w-1/2">
+              <div class="product-rush-time-description">
+                {{ charge.Description }}
+              </div>
+            </div>
+          </div>
+
+          <esp-product-charges-table
+            [method]="charge"
+          ></esp-product-charges-table>
+
+          <esp-product-charges
+            class="content-section product-rush-time"
+            *ngIf="charge.Groups?.length"
+            [attributes]="charge.Groups"
+          >
+            <ng-template let-groupCharges>
+              <div *ngFor="let charge of groupCharges">
+                <esp-product-charges-table
+                  [method]="charge"
+                ></esp-product-charges-table>
+              </div> </ng-template
+          ></esp-product-charges>
+        </div>
+      </div>
+    </ng-template>
+  </esp-product-charges>
+
+  <esp-product-charges
+    class="content-section product-production-time"
+    *ngIf="product.ProductionTime"
+    [attributes]="product.ProductionTime"
+  >
+    <ng-template let-charges>
+      <h2 class="header-style-14-bold">Production Time</h2>
+      <div *ngIf="charges && charges.length" class="content-section">
+        <div *ngFor="let charge of charges">
+          <div class="product-production-time-container mb-16 flex">
+            <div class="w-1/2">
+              <div class="product-production-time-name">{{ charge.Name }}</div>
+            </div>
+            <div class="w-1/2">
+              <div class="product-production-time-description">
+                {{ charge.Description }}
+              </div>
+            </div>
+          </div>
+
+          <esp-product-charges-table
+            [method]="charge"
+          ></esp-product-charges-table>
+
+          <esp-product-charges
+            class="content-section product-production-time"
+            *ngIf="charge.Groups?.length"
+            [attributes]="charge.Groups"
+          >
+            <ng-template let-groupCharges>
+              <div *ngFor="let charge of groupCharges">
+                <esp-product-charges-table
+                  [method]="charge"
+                ></esp-product-charges-table>
+              </div> </ng-template
+          ></esp-product-charges>
+        </div>
+      </div>
+    </ng-template>
+  </esp-product-charges>
+
+  <div
+    class="content-section product-shipping-point"
+    *ngIf="
+      product.Shipping?.FOBPoints && product.Shipping?.FOBPoints.Values?.length
+    "
+  >
+    <h2 class="header-style-14-bold">FOB Points</h2>
+    <div *ngFor="let point of product.Shipping.FOBPoints.Values">
+      <div class="product-shipping-point-fob-points">{{ point.Name }}</div>
+      <esp-product-charges [attributes]="[point]">
+        <ng-template let-charges>
+          <div *ngIf="charges && charges.length" class="content-section">
+            <div *ngFor="let charge of charges">
+              <esp-product-charges-table
+                [method]="charge"
+              ></esp-product-charges-table>
+            </div>
+          </div>
+        </ng-template>
+      </esp-product-charges>
+    </div>
+  </div>
+
+  <esp-product-charges
+    class="content-section"
+    *ngIf="product.Packaging"
+    [attributes]="product.Packaging"
+  >
+    <ng-template let-charges>
+      <h2 class="product-packaging-header header-style-14-bold">Packaging</h2>
+      <div class="product-packaging">{{ packaging }}</div>
+      <div *ngIf="charges && charges.length" class="content-section">
+        <div *ngFor="let charge of charges">
+          <esp-product-charges-table
+            [method]="charge"
+          ></esp-product-charges-table>
+
+          <esp-product-charges
+            class="content-section product-packaging"
+            *ngIf="charge.Groups?.length"
+            [attributes]="charge.Groups"
+          >
+            <ng-template let-groupCharges>
+              <div *ngFor="let charge of groupCharges">
+                <esp-product-charges-table
+                  [method]="charge"
+                ></esp-product-charges-table>
+              </div> </ng-template
+          ></esp-product-charges>
+        </div>
+      </div>
+    </ng-template>
+  </esp-product-charges>
+
+  <div class="content-section" *ngIf="weights && weights.length">
+    <h2 class="header-style-14-bold">Shipping Weight</h2>
+    <p class="product-weight">{{ weights }}</p>
+  </div>
+
+  <div
+    class="content-section product-shipping-estimate"
+    *ngIf="product.Shipping?.ItemsPerPackage"
+  >
+    <h2 class="header-style-14-bold">Shipping Estimate</h2>
+    <p class="item-per-package">
+      {{ product.Shipping.ItemsPerPackage }}
+      <span class="product-packaging-unit" *ngIf="product.Shipping.PackageUnit">
+        {{ ' ' }}per {{ product.Shipping.PackageUnit }}
+      </span>
+    </p>
+  </div>
+
+  <div
+    class="content-section product-shipping-dimension"
+    *ngIf="product.Shipping?.Dimensions"
+  >
+    <h2 class="header-style-14-bold">Shipping Dimensions</h2>
+    <p class="product-shipping-dimension">
+      {{ product.Shipping.Dimensions.Description }}
+    </p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="header-style-14-bold">Can be Shipped in a Plain Box</h2>
+    <p class="packaging-in-plain-box">
+      {{
+        product.Shipping?.PackageInPlainBox
+          | evalDisplayValue: 'Yes':'No':'Supplier has not specified'
+      }}
+    </p>
+  </div>
+
+  <esp-product-charges
+    class="content-section"
+    *ngIf="product.Shipping?.Options?.Values"
+    [attributes]="product.Shipping?.Options?.Values"
+  >
+    <ng-template let-charges>
+      <div
+        *ngIf="charges && charges.length"
+        class="content-section product-shipping-option mb-16"
+      >
+        <h2 class="product-shipping-options-label header-style-14-bold">
+          Shipping Options
+        </h2>
+        <div class="product-shipping-options">{{ options }}</div>
+        <div *ngFor="let charge of charges">
+          <esp-product-charges-table
+            [method]="charge"
+          ></esp-product-charges-table>
+        </div>
+      </div>
+    </ng-template>
+  </esp-product-charges>
+
+  <div class="content-section">
+    <h2 class="made-in-USA-label header-style-14-bold">Made in USA</h2>
+    <p class="product-origin-title">{{ product.Origin | madeInUSA }}</p>
+  </div>
+
+  <div
+    class="content-section product-origin-section"
+    *ngIf="product.Origin && product.Origin.length"
+  >
+    <h2 class="header-style-14-bold">Origin</h2>
+    <p class="product-origin">{{ product.Origin?.join(', ') }}</p>
+  </div>
+</div>

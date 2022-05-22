@@ -1,0 +1,118 @@
+@import '../../../../scss/settings';
+
+.cos-supplier {
+  display: block;
+  position: relative;
+  text-decoration: none;
+
+  .cos-supplier-img {
+    max-width: 64px;
+    height: auto;
+    width: 100%;
+    border: $border-white-s-4;
+    border-radius: $border-radius-2;
+    margin-right: $spacing-inline-8;
+  }
+}
+
+.cos-supplier-number {
+  color: $color-g-shark-54;
+  font-size: $font-size-12;
+  font-weight: normal;
+}
+
+.cos-supplier-name {
+  color: $color-g-mineshaft-88;
+  font-size: $font-size-12;
+  font-weight: 600;
+
+  .supplier-card & {
+    @include type-style-header-16;
+  }
+}
+
+.cos-supplier-wrapper {
+  .cos-attribute-tag,
+  .cos-supplier-number,
+  .cos-supplier-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: calc(1em + 2px);
+    margin-bottom: $spacing-stack-4;
+  }
+
+  .cos-attribute-tag {
+    height: 1em;
+  }
+}
+
+.cos-supplier-body {
+  display: flex;
+  @include spacing-inset-16();
+}
+
+.cos-supplier-img-container {
+  flex-shrink: 0;
+}
+
+.cos-supplier-container {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.cos-supplier-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 1;
+  overflow: hidden;
+}
+
+.cos-supplier-footer {
+  background: $color-g-pearl-03;
+
+  .cos-button {
+    width: 100%;
+    margin: $spacing-stack-8 0;
+  }
+}
+
+.cos-supplier-details {
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    width: calc(100% - 32px);
+    height: 1px;
+    background: $color-g-pebble-09;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+  }
+
+  .cos-supplier-contact-categories {
+    @include wider-than($bp-medium) {
+      margin-left: 84px;
+      margin-right: $spacing-inline-16;
+    }
+  }
+}
+
+.cos-supplier-no-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-g-pearl-03;
+  color: $color-g-shark-54;
+  width: 64px;
+  height: 64px;
+  margin-right: $spacing-inline-8;
+  padding: 4px;
+  text-align: center;
+  flex-shrink: 0;
+}

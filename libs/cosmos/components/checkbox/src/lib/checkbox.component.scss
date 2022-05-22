@@ -1,0 +1,135 @@
+@import '../../../../scss/settings/';
+
+$cos-disabled-text: $color-g-moth-41;
+$cos-disabled-bg: $color-g-pebble-09;
+
+:host {
+  display: inline-block;
+}
+
+.cos-checkbox-layout {
+  display: inline-flex;
+  align-items: baseline;
+  vertical-align: middle;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cos-checkbox-inner-container {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  line-height: 0;
+  margin: auto;
+  margin-right: $spacing-inline-8;
+  order: 0;
+  position: relative;
+  vertical-align: middle;
+  flex-shrink: 0;
+
+  &.cos-checkbox-label-hidden {
+    margin: auto 0;
+  }
+
+  .cos-checkbox--small & {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.cos-checkbox-background {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: rem(14px);
+  border: 1px solid $color-g-stone-41;
+  border-radius: 2px;
+  color: $color-g-white-00;
+
+  .cos-checkbox--small & {
+    width: 14px;
+    height: 14px;
+    font-size: rem(10px);
+  }
+}
+
+.cos-checkbox-checkmark,
+.cos-checkbox-mixedmark {
+  display: none;
+}
+
+.cos-checkbox-checked {
+  .cos-checkbox-background {
+    background: $color-bl-azure-57;
+    border-color: $color-bl-azure-57;
+  }
+  .cos-checkbox-checkmark {
+    display: block;
+  }
+
+  .cos-checkbox-mixedmark {
+    display: none;
+  }
+}
+
+.cos-checkbox-disabled,
+.cos-checkbox-input:disabled {
+  .cos-checkbox-background {
+    background: $cos-disabled-bg;
+    border-color: $cos-disabled-text;
+    color: $cos-disabled-text;
+  }
+
+  &.cos-checkbox-checked {
+    .cos-checkbox-background {
+      // background: $color-g-shark-54;
+      background: $cos-disabled-bg;
+      border-color: $cos-disabled-text;
+
+      // border-color: transparent;
+    }
+  }
+}
+
+.cos-checkbox-indeterminate {
+  .cos-checkbox-checkmark {
+    display: none;
+  }
+
+  .cos-checkbox-mixedmark {
+    display: block;
+  }
+}
+
+.cos-checkbox-label {
+  @include type-body-style-14-mineshaft();
+  line-height: 16px;
+  user-select: none;
+  .cos-checkbox--small & {
+    @include type-body-style-12();
+    line-height: 14px;
+    color: $color-g-mineshaft-88;
+  }
+}
+
+.cos-checkbox-label-before {
+  .cos-checkbox-layout {
+    flex-direction: row-reverse;
+  }
+  .cos-checkbox-inner-container {
+    margin: auto;
+    margin-left: $spacing-inline-8;
+  }
+}
+
+.cos-checkbox {
+  display: inline-block;
+
+  &.cdk-focused {
+    .cos-checkbox-layout {
+      @include cos-focus();
+    }
+  }
+}

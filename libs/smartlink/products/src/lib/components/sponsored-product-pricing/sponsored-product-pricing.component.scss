@@ -1,0 +1,9 @@
+@import 'cosmos/scss/settings/';
+
+.sponsored-product-pricing {
+  &__price {
+    color: $color-g-mineshaft-88;
+    font-weight: $font-weight-600;
+    font-size: $font-size-14;
+  }
+}

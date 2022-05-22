@@ -1,0 +1,67 @@
+<div class="page-container">
+  <div class="collection-search grid-layout-1">
+    <div class="collection-filters">
+      <h1 class="header-style-24 collection-header mb-2">Collections</h1>
+      <div class="collection-actions">
+        <button
+          type="button"
+          cos-flat-button
+          color="primary"
+          (click)="createCollection()"
+          class="create-collection-btn"
+        >
+          <span class="mr-12"><i class="fa fa-plus"></i></span>
+          <span class="lg:inline-block hidden">Create new Collection</span>
+          <span class="lg:hidden">Create new</span>
+        </button>
+      </div>
+
+      <div class="collection-search-keywords">
+        <esp-search-box placeholder="Search Collections"></esp-search-box>
+      </div>
+
+      <div class="collection-tabs mb-8">
+        <esp-search-tab-group [tabs]="tabs"></esp-search-tab-group>
+      </div>
+      <esp-search-sort
+        class="collection-sort mb-8"
+        [options]="sortMenuOptions"
+      ></esp-search-sort>
+    </div>
+    <ng-template
+      [ngIf]="!state.isLoading && state.hasLoaded && state.collections"
+      [ngIfElse]="loader"
+    >
+      <ng-template
+        [ngIf]="state.collections?.length"
+        [ngIfElse]="noCollections"
+      >
+        <div class="collection-results">
+          <cos-collection
+            [collection]="collection"
+            [showMenu]="true"
+            *ngFor="let collection of state.collections; trackBy: trackCollection"
+            (handleClick)="navigateToCollection(collection)"
+          >
+            <esp-collection-card-menu
+              [collection]="collection"
+            ></esp-collection-card-menu>
+          </cos-collection>
+        </div>
+        <div>
+          <esp-search-pagination></esp-search-pagination>
+        </div>
+      </ng-template>
+    </ng-template>
+    <ng-template #loader>
+      <esp-collection-search-loader
+        class="collection-results"
+      ></esp-collection-search-loader>
+    </ng-template>
+    <ng-template #noCollections>
+      <div class="empty-results-msg">
+        <p class="body-style-14-shark">No collections found.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

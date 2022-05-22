@@ -1,0 +1,15 @@
+@mixin background-linear-gradiant($value) {
+  background-image: -webkit-linear-gradient($value);
+  background-image: -moz-linear-gradient($value);
+  background-image: -ms-linear-gradient($value);
+  background-image: -o-linear-gradient($value);
+  background-image: linear-gradient($value);
+}
+
+@mixin background_gradient_img($gradiant, $img) {
+  background: linear-gradient($gradiant), $img;
+  background: -webkit-linear-gradient($gradiant), $img;
+  background: -moz-linear-gradient($gradiant), $img;
+  background: -o-linear-gradient($gradiant), $img;
+  background: -ms-linear-gradient($gradiant), $img;
+}

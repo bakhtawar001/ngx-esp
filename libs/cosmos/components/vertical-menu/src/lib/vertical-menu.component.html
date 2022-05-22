@@ -1,0 +1,48 @@
+<button
+  [ngClass]="'cos-vertical-menu--trigger'"
+  cos-button
+  [matMenuTriggerFor]="verticalNav"
+  #matMenu="matMenuTrigger"
+  (menuClosed)="toggleMenu()"
+  (menuOpened)="toggleMenu()"
+>
+  <i *ngIf="activeItem?.icon" class="mr-8" [ngClass]="activeItem!.icon!"></i>
+  {{ activeItem?.title }}
+  <i
+    [ngClass]="{
+      fas: true,
+      'fa-chevron-up': matMenu.menuOpen,
+      'fa-chevron-down': !matMenu.menuOpen,
+      'ml-16': true
+    }"
+  ></i>
+</button>
+<mat-menu
+  #verticalNav="matMenu"
+  [overlapTrigger]="'false'"
+  class="cos-global-menu-panel cos-vertical-menu"
+  backdropClass="cos-vertical-menu-backdrop"
+  xPosition="before"
+>
+  <div overlapTrigger="true">
+    <ng-template matMenuContent>
+      <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+        <cos-navigation
+          (keydown.tab)="$event.preventDefault()"
+          [navigation]="menu"
+          layout="vertical"
+          role="tablist"
+          [attr.aria-label]="label"
+        ></cos-navigation>
+      </div>
+    </ng-template>
+  </div>
+</mat-menu>
+
+<cos-navigation
+  class="cos-vertical-menu--desktop"
+  [navigation]="menu"
+  layout="vertical"
+  role="tablist"
+  [attr.aria-label]="label"
+></cos-navigation>

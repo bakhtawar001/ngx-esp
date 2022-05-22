@@ -1,0 +1,82 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CosButtonGroupModule } from './button-group.module';
+import { CosButtonGroupComponent } from './button-group.component';
+
+<Meta
+  title="Controls &amp; Inputs/Segmented Control"
+  component={CosButtonGroupComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [CosButtonGroupModule],
+    }),
+  ]}
+  args={{
+    toggleAriaLabel: 'Choose a Segment',
+    toggleOptions: [
+      { name: 'Segment 1', value: 'Segment 1', disabled: false },
+      { name: 'Segment 2', value: 'Segment 2', disabled: false },
+      { name: 'Segment 3', value: 'Segment 3', disabled: false },
+    ],
+    groupName: 'segmentSelection',
+    defaultSelection: 'Segment 2',
+  }}
+  argTypes={{
+    toggleOptions: { control: 'object' },
+    toggleAriaLabel: { control: 'text' },
+    groupName: { control: 'text' },
+    defaultSelection: {
+      control: {
+        type: 'select',
+        options: ['Segment 1', 'Segment 2', 'Segment 3'],
+      },
+    },
+  }}
+/>
+
+export const Template = (props) => ({
+  component: CosButtonGroupComponent,
+  props,
+});
+
+# Segmented control
+
+Segmented controls can be used to group related options. To emphasize groups of related toggle buttons, a group should share a common container.
+
+### When to use
+
+Segmented controls can be used in two different ways
+
+1. Like tabs, where it controls the display of inputs below, like in share modals
+2. Like radio buttons where it controls a selection, like in acivity privacy settings
+
+### When not to use
+
+- Where the control is on or off; use toggles in those instances
+- Where the control is displaying different content that is not a collection of inputs, use tabs in those instances
+
+<Canvas>
+  <Story name="Primary">{Template.bind({})}</Story>
+</Canvas>
+
+```html
+<cos-button-group
+  toggleOptions="[
+  { name: 'Segment 1', value: 'Segment 1', disabled: false },
+  { name: 'Segment 2', value: 'Segment 2', disabled: false },
+  { name: 'Segment 3', value: 'Segment 3', disabled: false },
+]"
+  defaultSelection="Segment 2"
+  toggleAriaLabel="Segment Options"
+  groupName="segmentOptions"
+></cos-button-group>
+```
+
+<ArgsTable of={CosButtonGroupComponent} />
+
+## How it works
+
+- Segmented controls can contain text only, icons only, or text with an icon as long as all segments are using the same treatment (all segments text only or icon only etc.)
+- Only one option in a group of toggle buttons can be selected and active at a time. Selecting one option deselects any other.
+- Segments must be a minimum of two and should not exceed five

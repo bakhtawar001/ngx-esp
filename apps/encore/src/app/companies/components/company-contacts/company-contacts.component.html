@@ -1,0 +1,210 @@
+<cos-segmented-panel class="company-settings-panel">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0" data-cy="company-contacts-header-title">
+      Company Contacts ({{ state.company?.Links.length }})
+    </h2>
+    <button
+      (click)="addItem()"
+      *ngIf="state.company?.IsEditable"
+      [disabled]="activeRow !== null"
+      data-cy="company-contacts-add-contact-button"
+      cos-flat-button
+      color="primary"
+      size="sm"
+    >
+      <i class="fas fa-plus"></i> Add Contact
+    </button>
+  </cos-segmented-panel-header>
+  <cos-segmented-panel-row
+    *ngIf="state.company?.Links?.length === 0"
+    data-cy="company-contacts-no-contacts-row"
+  >
+    <div class="text-center">
+      <div>No contacts found for this customer</div>
+    </div>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row
+    *ngFor="let contactLinkGroup of groups; let i = index"
+  >
+    <asi-panel-editable-row
+      [editingIsActive]="activeRow === i"
+      [isEditable]="
+        contactLinkGroup?.value?.Link.To?.IsEditable &&
+        (activeRow === null || activeRow === i)
+      "
+      (onCancelEvent)="cancelEdit()"
+      (onSaveEvent)="save(contactLinkGroup)"
+    >
+      <esp-party-avatar
+        class="mr-12"
+        [iconUrl]="contactLinkGroup?.value?.Link.To?.IconMediaLink?.FileUrl"
+        [name]="contactLinkGroup.value?.Link.To?.Name || 'New Contact'"
+        data-cy="company-contacts-contact-avatar"
+      ></esp-party-avatar>
+      <asi-panel-editable-row-title>
+        <p class="form-row-title">
+          <strong data-cy="company-contacts-contact-name">{{
+            contactLinkGroup.value?.Link.To?.Name || 'New Contact'
+          }}</strong>
+          <asi-contact-role-pills
+            data-cy="company-contacts-contact-role"
+            [contactId]="contactLinkGroup.value?.Link.To?.Id"
+            [company]="state.company"
+          ></asi-contact-role-pills>
+        </p>
+      </asi-panel-editable-row-title>
+
+      <asi-panel-editable-row-inactive
+        data-cy="company-contacts-contact-inactive-row"
+      >
+        <esp-contact-card-row
+          [link]="contactLinkGroup.value?.Link"
+        ></esp-contact-card-row>
+      </asi-panel-editable-row-inactive>
+
+      <asi-panel-editable-row-controls
+        *ngIf="activeRow !== i"
+        class="flex justify-end font-medium"
+      >
+        <button
+          cos-button
+          data-cy="company-contacts-view-full-contact-button"
+          *ngIf="state.company?.IsEditable"
+          [routerLink]="['/contacts', contactLinkGroup.value?.Link?.To?.Id]"
+        >
+          View Full Contact
+        </button>
+        <button
+          cos-button
+          data-cy="company-contacts-edit-contact-button"
+          *ngIf="activeRow === null && state.company?.IsEditable"
+          (click)="activeRow = i"
+        >
+          Edit
+        </button>
+      </asi-panel-editable-row-controls>
+
+      <asi-panel-editable-row-active
+        [formGroup]="contactLinkGroup"
+        data-cy="company-contacts-contact-active-row"
+      >
+        <div class="contact-row">
+          <div class="contact-row-display">
+            <div>
+              <div
+                class="grid grid-cols-2 mt-16 cos-form-row"
+                *ngIf="!creatingMode; else createFlow"
+              >
+                <div>
+                  <span
+                    class="cos-form-label"
+                    data-cy="company-contacts-contact-phone-title"
+                    >Phone</span
+                  >
+                  <span data-cy="company-contacts-contact-phone">{{
+                    contactLinkGroup.value?.Link.To | asiDisplayPrimaryPhone
+                  }}</span>
+                </div>
+                <div>
+                  <span
+                    class="cos-form-label"
+                    data-cy="company-contacts-contact-email-title"
+                    >Email</span
+                  >
+                  <span data-cy="company-contacts-contact-email">{{
+                    contactLinkGroup.value?.Link.To | asiDisplayPrimaryEmail
+                  }}</span>
+                </div>
+              </div>
+              <ng-template #createFlow>
+                <div formGroupName="Link">
+                  <label
+                    class="cos-form-label"
+                    data-cy="company-contacts-contact-name-label"
+                    >Contact name
+                    <span class="body-style-12-shark"></span>
+                  </label>
+                  <div class="md:grid">
+                    <asi-party-autocomplete
+                      data-cy="company-contacts-contact-autocomplete"
+                      [type]="'contact'"
+                      formControlName="To"
+                      [excludeList]="excludedList"
+                    >
+                      <button
+                        autocompleteAction
+                        cos-button
+                        (click)="createContact()"
+                        type="button"
+                        data-cy="company-contacts-contact-autocomplete-create-button"
+                      >
+                        Create Contact
+                      </button>
+                    </asi-party-autocomplete>
+                  </div>
+                </div>
+              </ng-template>
+
+              <div class="cos-form-row" formGroupName="Link">
+                <cos-form-field>
+                  <cos-label data-cy="company-contacts-link-title-label"
+                    >Title</cos-label
+                  >
+                  <input
+                    data-cy="company-contacts-link-title-input"
+                    cos-input
+                    placeholder="Title"
+                    maxlength="50"
+                    formControlName="Title"
+                  />
+                </cos-form-field>
+              </div>
+
+              <div class="cos-form-row flex flex-col">
+                <span
+                  class="cos-form-label"
+                  data-cy="company-contacts-role-label"
+                  >Primary Contact Role
+                  <i
+                    [matTooltip]="contactRoleTooltip"
+                    matTooltipPosition="below"
+                    matTooltipHideDelay="100"
+                    class="fa fa-info-circle"
+                  ></i
+                ></span>
+                <ng-container *ngFor="let role of contactRoles">
+                  <div formGroupName="ContactRole">
+                    <cos-checkbox
+                      [formControlName]="role.controlName"
+                      [required]="false"
+                      id="checkbox{{ role.name }}"
+                      name="checkbox{{ role.name }}"
+                      class="mb-8"
+                      data-cy="company-contacts-role"
+                    >
+                      {{ role.name }}
+                    </cos-checkbox>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="contact-row-actions">
+            <button
+              *ngIf="!creatingMode"
+              (click)="removeItem(contactLinkGroup)"
+              aria-label="Remove"
+              cos-button
+              color="warn"
+              data-cy="company-contacts-remove-contact-button"
+              type="button"
+            >
+              <i class="fa fa-trash md:hidden mr-8"></i>
+              Remove
+            </button>
+          </div>
+        </div>
+      </asi-panel-editable-row-active>
+    </asi-panel-editable-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>

@@ -1,0 +1,26 @@
+<!-- Customer / Order information -->
+<section class="mb-32">
+  <esp-order-quote-header
+    [order]="state.orderViewModel"
+    [locked]="state.isLocked"
+  ></esp-order-quote-header>
+</section>
+
+<!-- Customer messages -->
+<!-- TODO: show customer messages? -->
+<!-- <section class="mb-32">
+  <esp-order-customer-messages
+    [order]="state.orderViewModel"
+  ></esp-order-customer-messages>
+</section> -->
+
+<!-- Order products list -->
+<section
+  class="mb-32"
+  *ngFor="let item of state.orderViewModel?.LineItems; trackBy: trackBy"
+>
+  <esp-order-line-item
+    [lineItem]="item"
+    [locked]="state.isLocked"
+  ></esp-order-line-item>
+</section>

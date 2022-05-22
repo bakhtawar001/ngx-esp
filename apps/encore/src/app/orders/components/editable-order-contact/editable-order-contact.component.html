@@ -1,0 +1,13 @@
+<div class="flex flex-row">
+  <button class="h-8 mt-8 mr-4" (click)="onEdit()" type="button">Edit</button>
+  <asi-party-autocomplete
+    [type]="type"
+    [filters]="filters"
+    [formControl]="selectedPartyControl"
+  >
+    <!--
+      [label]="label" [placeholder]="placeholder" name="primaryContact"
+      [(ngModel)]="orderContact" [excludeList]="state.owner.UserId"
+      -->
+  </asi-party-autocomplete>
+</div>

@@ -1,0 +1,26 @@
+<asi-panel-editable-row
+  class="company-settings-name"
+  rowTitle="Company Name"
+  [isEditable]="isEditable"
+  [isLoading]="state.isLoading && !state.hasLoaded"
+  (onSaveEvent)="state.save(control.value)"
+>
+  <div><i class="form-row-icon fa fa-sign mt-8 mr-16"></i></div>
+  <asi-panel-editable-row-inactive>
+    <p class="form-row-value">{{ control.value }}</p>
+  </asi-panel-editable-row-inactive>
+  <asi-panel-editable-row-active>
+    <cos-form-field>
+      <cos-label>Company Name</cos-label>
+      <input
+        cos-input
+        type="text"
+        class="w-full"
+        [formControl]="control"
+        maxlength="50"
+        required
+      />
+      <cos-error></cos-error>
+    </cos-form-field>
+  </asi-panel-editable-row-active>
+</asi-panel-editable-row>

@@ -1,0 +1,25 @@
+<ng-container *ngIf="licenseAgreement$ | async as la">
+  <button class="cos-modal-close" mat-dialog-close>
+    <i class="fas fa-times"></i>
+    <span class="cos-accessibly-hidden">Close</span>
+  </button>
+
+  <mat-dialog-content>
+    <div class="content-wrapper" [innerHtml]="la.Text | trustHtml"></div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="text-right">
+      <button
+        cos-flat-button
+        size="sm"
+        type="submit"
+        color="primary"
+        cdkFocusInitial
+        (click)="print()"
+      >
+        <span class="mr-8"><i class="fa fa-print"></i></span>
+        Print
+      </button>
+    </div>
+  </mat-dialog-actions>
+</ng-container>

@@ -1,0 +1,160 @@
+<ng-template [ngIf]="!state.isLoading && state.hasLoaded" [ngIfElse]="loader">
+  <div
+    class="collection-detail-products"
+    *ngIf="state.products?.Results?.length; else noProducts"
+  >
+    <hr />
+    <div class="mb-12 text-right">
+      <esp-search-sort [options]="sortMenuOptions"></esp-search-sort>
+    </div>
+    <div class="product-results">
+      <a
+        *ngFor="let product of state.products.Results; let i = index"
+        (click)="productDetailClick(product)"
+        target="_blank"
+        [ngClass]="{ disabled: product.IsDeleted }"
+      >
+        <cos-product-card
+          [product]="mapProduct(product)"
+          [status]="
+            product.IsDeleted
+              ? { Label: 'No longer available', Type: 'unavailable' }
+              : null
+          "
+          [isDraggable]="false"
+          [selected]="checkedProducts.has(product.Id)"
+          [productActionsTemplate]="
+            state.collection?.IsEditable ? productCardActions : null
+          "
+          (selectedChanged)="toggleChecked(product)"
+          (click)="captureProductCardClickEvent(product, i)"
+          (cosHover)="productHovered(product, i)"
+        >
+          <cos-supplier
+            *ngIf="product.Supplier"
+            [routerLink]="['/suppliers', product.Supplier.Id]"
+            [state]="{ navigationName: 'Back to Collection' }"
+            (click)="$event.stopPropagation()"
+            [supplier]="product.Supplier"
+            [showPreferredGroup]="true"
+          ></cos-supplier>
+        </cos-product-card>
+      </a>
+    </div>
+    <esp-search-pagination></esp-search-pagination>
+  </div>
+  <ng-template #noProducts>
+    <p class="body-style-14-shark no-items">
+      There are no products in this collection. Add products by starting a
+      search.
+    </p>
+  </ng-template>
+</ng-template>
+<ng-template #loader>
+  <esp-collection-products-loader></esp-collection-products-loader>
+</ng-template>
+
+<cos-action-bar *ngIf="checkedProducts.size">
+  <div class="card-actions">
+    <cos-checkbox
+      class="checkbox-products"
+      id="checkbox-products"
+      name="checkbox-products"
+      [checked]="allChecked"
+      [indeterminate]="!allChecked"
+      (change)="selectAll($event)"
+    >
+      <span cosPill>{{ checkedProducts.size | number }}</span> Product Selected
+    </cos-checkbox>
+
+    <cos-action-bar-controls>
+      <div class="action-btns">
+        <button
+          class="action-remove-from-collection"
+          cos-stroked-button
+          color="warn"
+          (click)="removeProducts()"
+          *ngIf="state.collection?.IsEditable"
+          [disabled]="!state.canEdit"
+        >
+          <i class="fa fa-trash-alt mr-8"></i>
+          Remove from Collection
+        </button>
+
+        <button cos-stroked-button color="primary" (click)="addToCollection()">
+          <i class="fa fa-share mr-8"></i>
+          Add to Collection
+        </button>
+
+        <button
+          cos-flat-button
+          color="primary"
+          (click)="addToPresentation()"
+          *cosIfFeatureFlags="{ matches: ['presentations'] }"
+        >
+          <i class="fa fa-images mr-8"></i> Add to Presentation
+        </button>
+
+        <button
+          cos-flat-button
+          color="primary"
+          (click)="addToOrder()"
+          *cosIfFeatureFlags="{ matches: ['orders'] }"
+        >
+          <i class="fa fa-file-invoice mr-8"></i> Add to Order
+        </button>
+      </div>
+    </cos-action-bar-controls>
+  </div>
+</cos-action-bar>
+
+<!-- Card actions -->
+<ng-template #productCardActions let-product="product">
+  <!-- Add to collection button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-collection"
+    (click)="addToCollection(product)"
+  >
+    <i class="fa fa-archive"></i>
+    <span>Add to Collection</span>
+  </button>
+  <!-- /Add to collection button -->
+
+  <!-- Add to presentation button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-presentation"
+    *cosIfFeatureFlags="{ matches: ['presentations'] }"
+    (click)="addToPresentation(product)"
+  >
+    <i class="fa fa-images"></i>
+    <span>Add to Presentation</span>
+  </button>
+  <!-- /Add to presentation button -->
+
+  <!-- Add to order button -->
+  <button
+    mat-menu-item
+    class="cos-menu-item add-to-order"
+    *cosIfFeatureFlags="{ matches: ['orders'] }"
+  >
+    <i class="fa fa-file-invoice"></i>
+    <span>Add to Order</span>
+  </button>
+  <!-- /Add to order button -->
+
+  <!-- Delete button -->
+  <button
+    type="button"
+    (click)="removeProduct(product.Id)"
+    mat-menu-item
+    class="cos-menu-item text-warning remove-from-collection"
+    [disabled]="!state.canEdit"
+  >
+    <i class="fa fa-trash-alt"></i>
+    <span>Delete</span>
+  </button>
+  <!-- /Delete button -->
+</ng-template>
+<!-- /Card actions -->

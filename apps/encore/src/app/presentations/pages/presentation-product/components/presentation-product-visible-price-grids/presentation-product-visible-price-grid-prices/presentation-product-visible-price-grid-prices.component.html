@@ -1,0 +1,91 @@
+<cos-table [dataSource]="priceGrid.Prices" class="mb-16">
+  <ng-container cosColumnDef="Quantity">
+    <cos-header-cell *cosHeaderCellDef>Quantity</cos-header-cell>
+    <cos-cell *cosCellDef="let price">
+      <cos-form-field>
+        <input cos-input [value]="price?.Quantity?.From" />
+      </cos-form-field>
+    </cos-cell>
+  </ng-container>
+
+  <ng-container cosColumnDef="Cost">
+    <cos-header-cell *cosHeaderCellDef>Net Cost</cos-header-cell>
+    <cos-cell *cosCellDef="let price">
+      <cos-form-field>
+        <input
+          cos-input
+          [inputMask]="netCostMask"
+          [ngModel]="price.Cost"
+          (blur)="onNetCostChange(priceGrid, price, $any($event.target).value)"
+        />
+      </cos-form-field>
+    </cos-cell>
+  </ng-container>
+
+  <ng-container cosColumnDef="CostPerUnit">
+    <cos-header-cell *cosHeaderCellDef>Original</cos-header-cell>
+    <cos-cell *cosCellDef="let price">
+      <div class="py-8">$25.00</div>
+    </cos-cell>
+  </ng-container>
+
+  <ng-container cosColumnDef="DiscountPercent">
+    <cos-header-cell *cosHeaderCellDef>Margin</cos-header-cell>
+    <cos-cell *cosCellDef="let price">
+      <cos-form-field>
+        <input
+          cos-input
+          disabled
+          [inputMask]="marginMask"
+          [value]="price.DiscountPercent | percent"
+        />
+      </cos-form-field>
+    </cos-cell>
+  </ng-container>
+
+  <ng-container cosColumnDef="Price">
+    <cos-header-cell *cosHeaderCellDef>Price</cos-header-cell>
+    <cos-cell *cosCellDef="let price">
+      <cos-form-field>
+        <input
+          cos-input
+          [ngModel]="price.Price"
+          (blur)="onPriceChange(priceGrid, price, $any($event.target).value)"
+        />
+      </cos-form-field>
+    </cos-cell>
+  </ng-container>
+
+  <ng-container cosColumnDef="IsVisible">
+    <cos-header-cell *cosHeaderCellDef>
+      <cos-checkbox
+        labelPosition="before"
+        size="small"
+        [checked]="true"
+        (change)="hidePriceGrid(priceGrid)"
+      >
+        Visible
+      </cos-checkbox>
+    </cos-header-cell>
+    <cos-cell *cosCellDef="let price">
+      <button
+        *ngIf="price.IsCustomPrice; else eyeButton"
+        cos-icon-button
+        (click)="removePrice(priceGrid, price)"
+      >
+        <i class="fa fa-trash"></i>
+        <span class="cos-accessibly-hidden">Remove</span>
+      </button>
+
+      <ng-template #eyeButton>
+        <button cos-icon-button (click)="hidePrice(priceGrid, price)">
+          <i class="fa fa-eye"></i>
+          <span class="cos-accessibly-hidden">View</span>
+        </button>
+      </ng-template>
+    </cos-cell>
+  </ng-container>
+
+  <cos-header-row *cosHeaderRowDef="priceGridColumns"></cos-header-row>
+  <cos-row *cosRowDef="let row; columns: priceGridColumns"></cos-row>
+</cos-table>

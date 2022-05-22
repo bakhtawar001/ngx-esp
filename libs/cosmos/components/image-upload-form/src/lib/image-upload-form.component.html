@@ -1,0 +1,37 @@
+<div class="img-upload-container">
+  <ngx-dropzone
+    class="img-upload-dropzone cos-dropzone"
+    [multiple]="allowMultipleUploads"
+    [accept]="acceptedFileTypes"
+    [maxFileSize]="maxFileBytes"
+    (change)="onSelect($event)"
+  >
+    <ngx-dropzone-label>
+      <div class="cos-dropzone-display">
+        <i class="fa fa-cloud-upload-alt"></i>
+        <span class="cos-dropzone-upload">
+          {{ size === 'sm' ? 'Upload' : 'Choose image to upload' }}
+        </span>
+        <span
+          [ngClass]="{ 'cos-accessibly-hidden': size === 'sm' }"
+          class="body-style-12"
+          >or drag and drop here.</span
+        >
+      </div>
+    </ngx-dropzone-label>
+  </ngx-dropzone>
+
+  <div *ngIf="errors" class="error error-invalid">
+    Error:
+    <ng-container *ngFor="let err of errors">{{ err }}</ng-container>
+  </div>
+  <div class="img-upload-reqs">
+    <ng-content select=".img-upload-reqs-content"></ng-content>
+    <p *ngIf="acceptedFileTypes.length && acceptedFileTypes !== '*'">
+      Allowed file types are
+      <ng-container *ngFor="let type of fileTypes; let i = index"
+        >{{ type }}{{ i + 1 !== fileTypes.length ? ', ' : '' }}
+      </ng-container>
+    </p>
+  </div>
+</div>

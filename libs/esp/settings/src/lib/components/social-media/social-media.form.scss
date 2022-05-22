@@ -1,0 +1,13 @@
+.social-media-form-field {
+  .input-prefix {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    letter-spacing: -0.2px;
+    color: #c1c0c4;
+  }
+
+  &--with-value .input-prefix {
+    color: #000000;
+  }
+}

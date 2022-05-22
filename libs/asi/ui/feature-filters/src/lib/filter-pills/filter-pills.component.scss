@@ -1,0 +1,25 @@
+@import '../../../../../../cosmos/scss/settings/';
+
+.filter-pills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  grid-row-gap: 8px;
+  align-items: center;
+
+  .cos-pill {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-right: 8px;
+    background-color: $color-bl-azure-06;
+  }
+
+  span {
+    margin: 0 5px 5px 0;
+  }
+
+  .remove-all-button {
+    max-height: 28px;
+  }
+}

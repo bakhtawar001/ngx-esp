@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/ui/details-card",
+  "sourceRoot": "libs/asi/ui/details-card/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/ui/details-card"],
+      "options": {
+        "project": "libs/asi/ui/details-card/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/ui/details-card/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/ui/details-card/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/ui/details-card"],
+      "options": {
+        "jestConfig": "libs/asi/ui/details-card/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/ui/details-card/src/**/*.ts",
+          "libs/asi/ui/details-card/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "type:ui", "platform:web"]
+}

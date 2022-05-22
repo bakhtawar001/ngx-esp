@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Documentation/File Structure" />
+
+# File Structure
+
+The list below shows the basic structure of the Pattern Library. All components and consumable code should be included in the src folder.
+
+```
+- cosmos/
+  - assets/
+  - components/
+    - _primitives/
+    - button/
+      button.component.html
+      button.component.scss
+      button.component.spec.ts
+      button.component.stories.mdx
+      button.component.ts
+      button.constants.ts
+      button.module.spec.ts
+      button.module.ts
+      button.vis.test.js
+      index.ts
+      public-api.ts
+  - scss/
+    - settings/
+    - base/
+    - _global_.scss
+  - tokens/
+```
+
+The `components` folder contains all Typescript, HTML, SCSS and storybook files necessary to create each individual component and display in storybook. The `_primitives` subfolder contains all base level styles that are used globally and not tied to a specific component. Primitive components do not require angular to be used in projects.
+
+All **global** SCSS should be placed in the proper folder (settings or base) and imported into the `_global.scss`. Files in the settings folder should be SCSS that does not output into CSS rules. This means that only mixins, functions, or variable declarations should go in this folder. Any global SCSS that applies to many components and **does** output as CSS can be added to the `base` scss folder.
+
+The visual tests folder contains set up for the Jest/Puppeteer visual regression testing system. Read More about it at [Testing Linting](?path=/story/documentation-linting--page)

@@ -1,0 +1,97 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CosInlineEditComponent } from './inline-edit.component';
+import { CosInlineEditModule } from './inline-edit.module';
+
+<Meta
+  title="Controls &amp; Inputs/Inline Edit"
+  component={CosInlineEditComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, CosInlineEditModule],
+    }),
+  ]}
+  args={{
+    initialValue: 'Favorite Office Products',
+  }}
+  argTypes={{
+    initialValue: { control: 'text' },
+    maxLength: { control: 'number' },
+    inputType: {
+      table: {
+        disable: true,
+      },
+    },
+    changeEvent: {
+      action: 'change',
+    },
+    displayClass: {
+      control: 'text',
+    },
+  }}
+/>
+
+export const Template = (props) => ({
+  template: `
+    <div style="width: 100%; max-width:320px;">
+      <cos-inline-edit [ngClass]="displayClass" [required]="required" [inputType]="inputType" [maxLength]="maxLength" (change)="changeEvent($event)">
+        {{initialValue}}
+      </cos-inline-edit>
+    </div>
+  `,
+  props,
+});
+
+# Inline Edit
+
+There are two types of inline edit fields, the title and the description.
+
+## How it works
+
+Inline editable fields do not include labels.
+
+### When to use
+
+They may only be used when the title and description of the entity are also the title and description of the page and are the only editable attributes for an entity, like Collections and Preferred Supplier Lists.
+
+### When not to use
+
+- Anywhere the page title and/or description of the entity is not also the title and/or description of the page
+- When an entity has additional attributes that are editable such as assigining a Customer.
+
+<Canvas>
+  <Story
+    name="Textarea"
+    args={{
+      inputType: 'textarea',
+      initialValue:
+        'Quisque euismod, tellus et tincidunt interdum, massa tortor mollis felis, quis lobortis lectus urna ac tellus. Sed lacinia venenatis massa nec porttitor. Praesent ut tincidunt elit. In vulputate eleifend tellus, nec venenatis lorem feugiat a. Etiam vel mollis lectus, eu eleifend mi. Ut ac pellentesque odio. Donec quis ipsum in tellus laoreet laoreet a eget lectus.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    args={{ displayClass: 'header-style-24', inputType: 'text' }}
+    name="Text Input"
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```html
+<cos-inline-edit class="header-style-24" [inputType]="text"> </cos-inline-edit>
+```
+
+<ArgsTable of={CosInlineEditComponent} />
+
+## Title
+
+The title inline edit input is different than regular text inputs in that it uses the large input style with the Header Style 24 text style instead Work Sans Regular 16 in G88 - Mineshaft. This is to reduce visual shifting when activated.
+
+The active state uses the width of 5 columns.
+
+## Description
+
+The description inline edit input uses the standard text area field and uses the width of 5 columns. On mobile, move the save and cancel buttons below the text area, aligned right.

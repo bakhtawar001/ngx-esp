@@ -1,0 +1,55 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import { moduleMetadata } from '@storybook/angular';
+import { CosColorPickerDemoComponent } from './color-picker.component.demo';
+
+<Meta
+  title="Controls &amp; Inputs/Color Picker"
+  component={CosColorPickerDemoComponent}
+  decorators={[
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, ColorPickerModule],
+      declarations: [CosColorPickerDemoComponent],
+    }),
+  ]}
+  argTypes={{
+    title: {
+      table: {
+        disable: true,
+      },
+    },
+    subtitle: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => ({
+  props: args,
+  component: CosColorPickerDemoComponent,
+});
+
+# Color Picker
+
+The color picker implements NGX Color Picker: https://www.npmjs.com/package/ngx-color-picker
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      title: 'Favorite Office Products',
+      subtitle: 'Last updated 2 days ago by Lisa',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Example Usage
+
+```html
+<input [(colorPicker)]="color" [value]="color" />
+```

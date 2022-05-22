@@ -1,0 +1,73 @@
+@import 'cosmos/scss/settings/';
+
+.form-row-value-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    > span {
+      font-family: Work Sans, sans-serif;
+      font-size: $font-size-14;
+      margin-bottom: $spacing-stack-8;
+
+      &:first-of-type {
+        display: inline-block;
+        width: 130px;
+        margin-right: $spacing-inline-16;
+
+        color: $color-g-shark-54;
+      }
+    }
+  }
+}
+
+.task-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+.task-edit-row {
+}
+
+.task-edit-row-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cos-input {
+  width: 100%;
+}
+
+.cos-form-row {
+  width: 100%;
+}
+
+@include wider-than($bp-large) {
+  .tracking-2-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .tracking-3-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.remove-task {
+  width: 100px;
+}
+
+.tracking-task-days-input {
+  display: flex;
+  align-items: center;
+
+  .cos-input {
+    width: 40px;
+  }
+}

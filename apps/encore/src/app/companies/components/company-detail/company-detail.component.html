@@ -1,0 +1,82 @@
+<cos-segmented-panel data-cy="company-details">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Company & Brand Information</h2>
+  </cos-segmented-panel-header>
+  <cos-segmented-panel-row>
+    <esp-company-name-row> </esp-company-name-row>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row>
+    <esp-company-type-row></esp-company-type-row>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row>
+    <esp-company-logo-row></esp-company-logo-row>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row>
+    <esp-company-favicon-panel-row-form></esp-company-favicon-panel-row-form>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row>
+    <esp-company-brand-color-panel-row-form></esp-company-brand-color-panel-row-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<esp-address-list-panel-form data-cy="addresses"></esp-address-list-panel-form>
+
+<cos-segmented-panel data-cy="contact-information">
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Contact Information</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row>
+    <esp-email-list-panel-row-form
+      [isEditable]="isEditable"
+    ></esp-email-list-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-phone-list-panel-row-form
+      [defaultPhoneType]="defaultPhoneType"
+    ></esp-phone-list-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-website-list-panel-row-form></esp-company-website-list-panel-row-form>
+  </cos-segmented-panel-row>
+
+  <cos-segmented-panel-row>
+    <esp-company-social-media-row></esp-company-social-media-row>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<cos-segmented-panel
+  *ngIf="company?.IsCustomer || company?.IsSupplier || company?.IsDecorator"
+  data-cy="financial-details"
+>
+  <cos-segmented-panel-header>
+    <h2 class="header-style-16 mb-0">Financial Details</h2>
+  </cos-segmented-panel-header>
+
+  <cos-segmented-panel-row
+    *ngIf="company?.IsCustomer || company?.IsSupplier || company?.IsDecorator"
+  >
+    <asi-credit-terms-panel-form
+      data-cy="default-terms-panel"
+    ></asi-credit-terms-panel-form>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row *ngIf="company?.IsCustomer">
+    <asi-tax-panel-form data-cy="tax-panel"></asi-tax-panel-form>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row *ngIf="company?.IsCustomer">
+    <asi-sales-target-panel-form
+      data-cy="sales-target-panel"
+    ></asi-sales-target-panel-form>
+  </cos-segmented-panel-row>
+  <cos-segmented-panel-row *ngIf="company?.IsCustomer">
+    <asi-minimum-margin-panel-form
+      data-cy="minimum-margin-panel"
+    ></asi-minimum-margin-panel-form>
+  </cos-segmented-panel-row>
+</cos-segmented-panel>
+
+<asi-linked-companies-panel-form
+  [companyId]="company?.Id"
+></asi-linked-companies-panel-form>

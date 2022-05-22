@@ -1,0 +1,60 @@
+<ng-content select="cos-card"></ng-content>
+<cos-card
+  class="image-upload-card"
+  *ngFor="let file of shownFiles"
+  [ngClass]="{
+    'image-upload-card--small': size === 'sm'
+  }"
+>
+  <ng-template
+    [ngTemplateOutlet]="userProvidedImg || imgDefaultTemplate"
+    [ngTemplateOutletContext]="{ imgUrl: file, file: file }"
+  ></ng-template>
+
+  <cos-card-controls>
+    <ng-template
+      [ngTemplateOutlet]="
+        userProvidedPreviewControls || previewControlsDefaultTemplate
+      "
+      [ngTemplateOutletContext]="{ removeImage: removeImage, file: file }"
+    ></ng-template>
+  </cos-card-controls>
+</cos-card>
+
+<button
+  class="img-upload-previews-toggle"
+  cos-button
+  *ngIf="files?.length! > showMaxPreviews"
+  [ngClass]="{
+    'img-upload-previews-toggle--small': size === 'sm'
+  }"
+  (click)="togglePreviews()"
+>
+  <ng-container *ngIf="previewsHidden">
+    <span class="fa fa-plus"></span> Show all ({{ files.length }})
+  </ng-container>
+  <ng-container *ngIf="!previewsHidden">
+    <span class="fa fa-minus"></span> Show less
+  </ng-container>
+</button>
+
+<ng-content select="cos-image-upload-form"></ng-content>
+
+<ng-template #imgDefaultTemplate let-file="file">
+  <img
+    [ngClass]="[imgClass]"
+    alt="{{ file }} - image uploaded by user"
+    [attr.src]="file"
+  />
+</ng-template>
+
+<ng-template #previewControlsDefaultTemplate let-file="file">
+  <button
+    cos-icon-button
+    aria-label="Remove image"
+    color="warn"
+    (click)="removeImage(file)"
+  >
+    <i class="fa fa-trash"></i>
+  </button>
+</ng-template>

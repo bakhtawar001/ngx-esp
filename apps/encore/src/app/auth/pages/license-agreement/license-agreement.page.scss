@@ -1,0 +1,86 @@
+@import 'cosmos/scss/settings';
+
+a {
+  &.cos-button {
+    padding: 0px;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.content {
+  padding-top: 25px;
+  margin: 0 auto;
+  @include narrower-than($bp-large) {
+    justify-content: center;
+  }
+
+  div {
+    padding-top: 10px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-start;
+
+    span {
+      padding-right: 40px;
+    }
+
+    @include narrower-than($bp-large) {
+      flex-direction: column;
+      span {
+        padding-bottom: 5px;
+      }
+    }
+  }
+
+  .agreement {
+    padding: 25px;
+    background: $color-g-white-00;
+    border-radius: 4px;
+    border: 1px solid $color-g-pebble-09;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    .left {
+      margin-right: auto;
+    }
+
+    @include narrower-than($bp-large) {
+      flex-direction: column;
+      a,
+      button,
+      span {
+        margin-bottom: 15px;
+      }
+      .left {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  @media print {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+    .agreement {
+      padding: 0;
+      border: none;
+      background: none;
+      border-radius: 0;
+      margin-top: -5rem;
+    }
+
+    :not(.printable) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+<cos-card class="lg:block hidden mt-16 mb-16 presentation-info">
+  <h4 class="header-style-14-bold">Presentation information</h4>
+  <p
+    class="header-style-16-bold"
+    *ngIf="
+      ['PostShare', 'Quote Requested'].includes(state.presentation?.Status)
+    "
+  >
+    <ng-container
+      *ngIf="state.presentation?.Customer && state.presentation?.SharedDate"
+    >
+      Shared with
+      <strong>{{ state.presentation?.Customer?.Name }}</strong>
+      on
+      {{ state.presentation?.SharedDate | date: 'longDate' }}.
+      <br />
+    </ng-container>
+    Presentation has not been viewed yet.
+    <ng-container *ngIf="state.presentation?.ExpirationDate"
+      >Link expires
+      {{ state.presentation?.ExpirationDate | date: 'longDate' }}</ng-container
+    >
+  </p>
+  <h3 class="header-style-16" *ngIf="state.presentation?.Status === 'PreShare'">
+    This presentation has not been shared with the Customer yet.
+  </h3>
+  <h4 class="header-style-14-bold mt-32 mb-8">Customer Engagement</h4>
+  <div class="proj-pres__metrics flex self-end justify-between w-1/2">
+    <div>
+      <h5 class="header-style-12">Last Viewed</h5>
+      <span class="header-style-14-bold">{{
+        state.presentation?.LastViewDate ?? 'Not Viewed'
+      }}</span>
+    </div>
+    <div>
+      <h5 class="header-style-12">Quotes requested</h5>
+      <span class="proj-pres__metric">{{
+        state.presentation?.NumberOfProductsQuoted
+      }}</span>
+    </div>
+    <div>
+      <h5 class="header-style-12">Products disliked</h5>
+      <span class="proj-pres__metric">{{
+        state.presentation?.NumberOfProductsDisliked
+      }}</span>
+    </div>
+  </div>
+  <div cos-card-sidebar>
+    <div class="flex justify-between items-start">
+      <h3 class="header-style-14-bold">Project Details</h3>
+      <button
+        cos-icon-button
+        (click)="openEditDialog()"
+        size="sm"
+        type="button"
+        class="edit-project-botton"
+      >
+        <i class="fa fa-pen"></i>
+      </button>
+    </div>
+    <ul class="project-info-grid">
+      <li>
+        <i class="fa fa-user-clock"></i> Project created on
+        {{ state.project?.CreateDate | date: 'longDate' }}
+      </li>
+      <li>
+        <i class="fa fa-hand-paper"></i>
+        {{
+          state.project?.InHandsDate
+            ? 'Needed in-hands by ' +
+              (state.project?.InHandsDate | date: 'longDate')
+            : '-'
+        }}
+      </li>
+      <li>
+        <i class="fa fa-calendar-alt"></i>
+        {{
+          state.project?.EventDate
+            ? 'Event scheduled for ' +
+              (state.project?.EventDate | date: 'longDate')
+            : '-'
+        }}
+      </li>
+      <li>
+        <i class="fa fa-calendar-week"></i>
+        {{ state.project?.EventType ?? '-' }}
+      </li>
+      <li>
+        <i class="fa fa-money-check-alt"></i>
+        {{ state.project?.Budget ? 'Budget of ' + state.project?.Budget : '-' }}
+      </li>
+      <li>
+        <i class="fa fa-users"></i>
+        {{
+          state.project?.NumberOfAssignees > 0
+            ? state.project?.NumberOfAssignees + ' attendees'
+            : '-'
+        }}
+      </li>
+    </ul>
+  </div>
+</cos-card>

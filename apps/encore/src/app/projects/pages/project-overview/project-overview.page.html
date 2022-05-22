@@ -1,0 +1,444 @@
+<div class="proj-overview grid-layout-1">
+  <div class="project__pg-title proj-overview__pg-title flex justify-between">
+    <h1 class="header-style-24 mb-2">Project Overview</h1>
+  </div>
+
+  <esp-project-detail-sidebar
+    [project]="state.project"
+  ></esp-project-detail-sidebar>
+
+  <main
+    class="proj-overview__pg-content"
+    *ngIf="currentRoute !== '/projects/1/activity-notes'"
+  >
+    <section class="proj-overview__pg-section">
+      <h3 class="header-style-16">Alerts</h3>
+      <esp-notification-card>
+        <cos-card-controls>
+          <button cos-button size="sm">Send Message</button>
+        </cos-card-controls>
+        <cos-card-menu>
+          <ul class="cos-list-no-style px-16 my-0">
+            <li class="mb-8">
+              <a class="cos-text--black" href="#"><i class="fa"></i> </a>
+            </li>
+            <li>
+              <a class="cos-text--red" href="#"> <i class="fa"></i> </a>
+            </li>
+          </ul>
+        </cos-card-menu>
+
+        <span class="fa fa-exclamation-triangle text-alert"></span>
+        <h4 class="header-style-13 mb-0">
+          SIMBA has reported a Back Order Hold for PO#34224
+        </h4>
+      </esp-notification-card>
+    </section>
+
+    <section class="proj-overview__pg-section">
+      <h3 class="header-style-16">Tasks and reminders (2)</h3>
+      <esp-notification-card>
+        <cos-card-controls>
+          <button cos-button size="sm">
+            <span class="fa fa-check"></span> Mark as complete
+          </button>
+        </cos-card-controls>
+        <cos-card-menu>
+          <ul class="cos-list-no-style px-16 my-0">
+            <li class="mb-8">
+              <a class="cos-text--black" href="#"><i class="fa"></i> </a>
+            </li>
+            <li>
+              <a class="cos-text--red" href="#"> <i class="fa"></i> </a>
+            </li>
+          </ul>
+        </cos-card-menu>
+
+        <cos-avatar size="sm"></cos-avatar>
+        <h4 class="header-style-13 mb-0">
+          Send reminder to Adam for Invoice #23421 and this goes on two lines
+          wow
+        </h4>
+        <span cosPillLabel>High</span>
+      </esp-notification-card>
+
+      <esp-notification-card>
+        <cos-card-controls>
+          <button cos-button size="sm">
+            <span class="fa fa-check"></span> Mark as complete
+          </button>
+        </cos-card-controls>
+        <cos-card-menu>
+          <ul class="cos-list-no-style px-16 my-0">
+            <li class="mb-8">
+              <a class="cos-text--black" href="#"><i class="fa"></i> </a>
+            </li>
+            <li>
+              <a class="cos-text--red" href="#"> <i class="fa"></i> </a>
+            </li>
+          </ul>
+        </cos-card-menu>
+
+        <cos-avatar size="sm"></cos-avatar>
+        <h4 class="header-style-13 mb-0">
+          Send reminder to Adam for Invoice #23421 and this goes on two lines
+          wow
+        </h4>
+        <span cosPillLabel>High</span>
+      </esp-notification-card>
+    </section>
+
+    <section class="proj-overview__pg-section">
+      <h3 class="header-style-16">Open Items</h3>
+
+      <cos-card-tree *ngFor="let parent of openItems; let parentIdx = index">
+        <cos-card-tree-parent>
+          <esp-project-card>
+            <esp-card-metadata-list [cols]="4">
+              <li>
+                <ul class="project-info-grid grid-rows-3-auto">
+                  <li>
+                    <i class="fa fa-check"></i><span> Quote Approved </span>
+                  </li>
+                  <li>
+                    <i class="fa fa-file-invoice"></i
+                    ><span> All POs sent to vendors</span>
+                  </li>
+                  <li>
+                    <i class="fa fa-file-invoice-dollar"></i
+                    ><span> Not Invoiced</span>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <h5 class="header-style-12 mb-8">In Hands Date</h5>
+                <p class="mb-0">November 23, 2020</p>
+              </li>
+
+              <li>
+                <h5 class="header-style-12 mb-8">Order Total</h5>
+                <p class="mb-0">$5,000</p>
+              </li>
+
+              <li class="entity-last-action">
+                <div class="last-action--avatar entity-last-action--avatar">
+                  <span>
+                    <cos-avatar> </cos-avatar>
+                    <cos-context-icon> </cos-context-icon>
+                  </span>
+                </div>
+
+                <span class="last-action--info entity-last-action--info">
+                  <p class="last-action-title entity-last-action--title mb-0">
+                    Axe Me About T-shirts PO marked as shipped
+                  </p>
+                  <p class="last-action-time entity-last-action--time">
+                    Just Now
+                  </p>
+                </span>
+              </li>
+            </esp-card-metadata-list>
+          </esp-project-card>
+        </cos-card-tree-parent>
+
+        <cos-card-tree-child *ngFor="let child of parent.children">
+          <esp-sales-order-card>
+            <esp-card-metadata-list>
+              <li class="sales-order-card__proofs-status">
+                <ul class="project-info-grid">
+                  <li>
+                    <i class="fa fa-stamp"></i
+                    ><span>3 of 4 proofs created</span>
+                  </li>
+                  <li>
+                    <i class="fa fa-stamp"></i
+                    ><span> 3 of 4 proofs approved</span>
+                  </li>
+                  <li><i class="fa fa-dolly"></i><span> Not shipped</span></li>
+                </ul>
+              </li>
+              <li>
+                <h5 class="header-style-12 mb-8">Order Date</h5>
+                <p class="mb-0">November 23, 2020</p>
+              </li>
+
+              <li>
+                <h5 class="header-style-12 mb-8">Ship Date</h5>
+                <p class="mb-0">November 23, 2020</p>
+              </li>
+
+              <li>
+                <h5 class="header-style-12 mb-8">Order Total</h5>
+                <p class="mb-0">$5,000</p>
+              </li>
+
+              <li>
+                <ul class="project-info-grid sales-order-card__contact-info">
+                  <li><i class="fa fa-hashtag"></i><span> asi/87294 </span></li>
+                  <li>
+                    <i class="fa fa-phone"></i><span> (888) 347-4622</span>
+                  </li>
+                  <li>
+                    <button class="send-msg-btn" cos-button size="sm">
+                      <i class="fa fa-paper-plane mr-8"></i
+                      ><span> Send Message</span>
+                    </button>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="flex justify-end">
+                <div class="lg:block hidden">
+                  <button cos-icon-button class="inbox-btn">
+                    <span class="fa fa-inbox"></span>
+                    <p class="sbody-style-12 inline ml-8">1</p>
+                  </button>
+                </div>
+              </li>
+            </esp-card-metadata-list>
+          </esp-sales-order-card>
+        </cos-card-tree-child>
+      </cos-card-tree>
+    </section>
+
+    <section class="proj-overview__pg-section">
+      <h3 class="header-style-16">Closed Items</h3>
+
+      <esp-sales-order-card [orderClosed]="true">
+        <esp-card-metadata-list>
+          <li class="sales-order-card__proofs-status">
+            <ul class="project-info-grid">
+              <li>
+                <i class="fa fa-stamp"></i><span>3 of 4 proofs created</span>
+              </li>
+              <li>
+                <i class="fa fa-stamp"></i><span> 3 of 4 proofs approved</span>
+              </li>
+              <li><i class="fa fa-dolly"></i><span> Not shipped</span></li>
+            </ul>
+          </li>
+
+          <li>
+            <h5 class="header-style-12 mb-8">Created Date</h5>
+            <p class="mb-0">November 23, 2020</p>
+          </li>
+
+          <li>
+            <h5 class="header-style-12 mb-8">In Hands Date</h5>
+            <p class="mb-0">November 23, 2020</p>
+          </li>
+
+          <li>
+            <h5 class="header-style-12 mb-8">Share Date</h5>
+            <p class="mb-0">November 23, 2020</p>
+          </li>
+        </esp-card-metadata-list>
+      </esp-sales-order-card>
+    </section>
+  </main>
+
+  <main
+    class="proj-overview__pg-content"
+    *ngIf="currentRoute === '/projects/1/activity-notes'"
+  >
+    <section class="proj-overview__pg-section pl-16">
+      <cos-tracker-accordion
+        accordionTitle="Negotiation & Pitching"
+        [expanded]="true"
+        status="complete"
+      >
+        <cos-tracker-accordion-label>1</cos-tracker-accordion-label>
+        <cos-card>
+          <div class="activity-card-body">
+            <div class="mr-8">
+              <cos-context-icon icon="fa fa-users">
+                <cos-avatar>
+                  <span>
+                    <img
+                      class="cos-avatar-image"
+                      src="https://via.placeholder.com/36"
+                    />
+                  </span>
+                </cos-avatar>
+              </cos-context-icon>
+            </div>
+            <div>
+              <p class="mb-4">
+                Jean-Ralphio Saperstein created Quote #12345 from the
+                presentation.
+              </p>
+              <p class="activity-details mb-8">
+                Message: This is a message attached to the status update Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                pretium augue et metus tempor ultricies. Nulla blandit odio
+                eros, nec finibus nisl aliquet ut. Fusce nec quam maximus...
+              </p>
+              <p class="activity-time">2 hour ago</p>
+            </div>
+          </div>
+        </cos-card>
+
+        <div class="activity-separator">
+          <div class="activity-separator-body">
+            <p class="mb-0">
+              Order # 12345 sent to Axe Me About T-shirts on 11/3/2020 at
+              12:00PM EST
+            </p>
+            <a class="p-0.25" href="#"><strong>View PO</strong></a>
+          </div>
+        </div>
+
+        <div class="activity-control-row">
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Add A Note</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Add A Reminder</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Flag</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Update PO Status</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="warn"
+            (click)="openDialog('addnote')"
+          >
+            <span>Report Problem to Customer</span>
+          </button>
+        </div>
+      </cos-tracker-accordion>
+      <cos-tracker-accordion
+        accordionTitle="Negotiation & Pitching"
+        [expanded]="true"
+        status="complete"
+      >
+        <cos-tracker-accordion-label>2</cos-tracker-accordion-label>
+        <cos-card>
+          <div class="activity-card-body">
+            <div class="mr-8">
+              <cos-context-icon icon="fa fa-users">
+                <cos-avatar>
+                  <span>
+                    <img
+                      class="cos-avatar-image"
+                      src="https://via.placeholder.com/36"
+                    />
+                  </span>
+                </cos-avatar>
+              </cos-context-icon>
+            </div>
+            <div>
+              <p class="mb-4">
+                Jean-Ralphio Saperstein created Quote #12345 from the
+                presentation.
+              </p>
+              <p class="activity-details mb-8">
+                Message: This is a message attached to the status update Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                pretium augue et metus tempor ultricies. Nulla blandit odio
+                eros, nec finibus nisl aliquet ut. Fusce nec quam maximus...
+              </p>
+              <p class="activity-time">2 hour ago</p>
+            </div>
+          </div>
+        </cos-card>
+
+        <div class="activity-separator">
+          <div class="activity-separator-body">
+            <p class="mb-0">
+              Order # 12345 sent to Axe Me About T-shirts on 11/3/2020 at
+              12:00PM EST
+            </p>
+            <a class="p-0.25" href="#"><strong>View PO</strong></a>
+          </div>
+        </div>
+
+        <div class="activity-control-row">
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Add A Note</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Add A Reminder</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Flag</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="primary"
+            (click)="openDialog('addnote')"
+          >
+            <span>Update PO Status</span>
+          </button>
+
+          <button
+            class="select-button"
+            type="button"
+            cos-stroked-button
+            color="warn"
+            (click)="openDialog('addnote')"
+          >
+            <span>Report Problem to Customer</span>
+          </button>
+        </div>
+      </cos-tracker-accordion>
+    </section>
+  </main>
+</div>

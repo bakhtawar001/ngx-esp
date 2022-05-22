@@ -1,0 +1,286 @@
+@import '../../../../scss/settings';
+
+.cdk-drop-list-dragging {
+  cursor: grabbing;
+
+  .cos-product-card-handle,
+  a,
+  button,
+  input {
+    cursor: grabbing !important;
+  }
+}
+
+.cos-card {
+  &.cos-product-card {
+    .cos-card-main {
+      position: relative;
+      @include spacing-inset-8();
+
+      > div[cosbadge] {
+        color: $color-g-mineshaft-88;
+      }
+
+      .cos-product-card-handle {
+        display: none;
+        top: 16px; //padding offset included
+        margin: 0 auto;
+        width: auto;
+        text-align: center;
+        cursor: grab;
+        line-height: 1;
+        background: $color-g-white-00;
+
+        &:active {
+          cursor: grabbing;
+        }
+      }
+    }
+
+    &:not(.cos-product-card--disabled):hover,
+    &:not(.cos-product-card--disabled):active {
+      z-index: 1;
+      box-shadow: $box-shadow-card;
+    }
+
+    .cos-supplier {
+      background-color: $color-g-pearl-03;
+      border-radius: 0 0 $border-radius-4 $border-radius-4;
+    }
+
+    .cos-supplier-body {
+      @include spacing-inset-8();
+    }
+
+    &--disabled {
+      .cos-card-main {
+        > * {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        > .cos-product-card-actions {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+
+    cos-supplier {
+      display: block;
+      margin: 0 -8px -8px;
+    }
+
+    .cos-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+    }
+
+    // Styles for Drag and Drop Feature
+    // .cos-product-card-drag-boundary {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   min-width: 600px;
+    //   max-width: 900px;
+    // }
+
+    &.cos-product-card--draggable:hover {
+      .cos-product-card-handle {
+        display: block;
+      }
+
+      .cos-product-card-indicator {
+        display: none;
+      }
+    }
+
+    &.cdk-drag-placeholder {
+      display: block;
+      opacity: 0.3;
+      border: dashed 2px $color-g-stone-41;
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+}
+
+.cos-product-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-stack-8;
+
+  .cos-checkbox {
+    margin-right: $spacing-inline-8;
+  }
+  .cos-checkbox-inner-container {
+    margin: 0;
+  }
+  .cos-icon-button {
+    &[aria-expanded='true'] {
+      @include cos-menu-pointer();
+      background-color: $color-g-pearl-03;
+    }
+  }
+}
+
+.cos-product-card-indicator-label {
+  display: block;
+  text-align: center;
+  padding: $spacing-stack-2 $spacing-stack-4;
+  border-radius: $border-radius-16;
+  border: 0;
+  background-color: $color-g-shark-54;
+  color: $color-g-white-00;
+  font-size: $font-size-11;
+  text-decoration: none;
+  font-weight: bold;
+
+  &--blue,
+  &--azure {
+    background-color: $color-bl-azure-57;
+  }
+
+  &--shark,
+  &--gray {
+    background-color: $color-g-shark-54;
+  }
+
+  &--macaw,
+  &--red {
+    background-color: $color-rd-macaw-52;
+  }
+
+  i {
+    font-size: $font-size-11;
+  }
+}
+
+.cos-product-card-img-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 168px;
+  overflow: hidden;
+}
+
+esp-product-image {
+  margin: 0 auto;
+}
+
+.cos-product-card-img {
+  width: 100%;
+}
+
+// This will not add an ellipse in IE11 (approved by Design)
+.cos-product-card-title {
+  @include type-style-header-16();
+  min-height: calc(18px * 2);
+  max-height: calc(18px * 2);
+  margin: $spacing-stack-8 0;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  border-radius: $border-radius-4;
+  overflow: hidden;
+  &:focus-within {
+    @include cos-focus;
+  }
+  .cos-product-card-title-link {
+    display: block;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+.cos-product-card-indicator {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.cos-product-card-indicator-icon {
+  display: inline-block;
+  margin: auto 0;
+  color: $color-g-shark-54;
+
+  &--blue,
+  &--azure {
+    color: $color-bl-azure-57;
+  }
+
+  &--shark,
+  &--gray {
+    color: $color-g-shark-54;
+  }
+
+  &--macaw,
+  &--red {
+    color: $color-rd-macaw-52;
+  }
+}
+
+.cos-product-card-details {
+  padding-top: $spacing-stack-8;
+  border-top: 1px solid $color-g-pebble-09;
+}
+
+.cos-product-card-variant-tag {
+  width: 100%;
+  padding: 0 $spacing-inline-4;
+  position: absolute;
+  bottom: 0;
+  background-color: transparentize($color-g-mineshaft-88, 0.2);
+  color: $color-g-white-00;
+  font-size: $font-size-12;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.cos-product-card-unit {
+  margin: 0;
+  color: $color-g-shark-54;
+}
+
+.cos-product-card-unit-label {
+  margin: 0;
+  margin-bottom: $spacing-stack-2;
+  @include type-body-style-11();
+}
+
+.cos-product-card-unit-label--client-facing {
+  @include type-body-style-12();
+}
+
+.cos-product-card-unit-value {
+  color: $color-g-mineshaft-88;
+  font-weight: $font-weight-600;
+}
+
+// Product Gallery-specific styles
+.cos-product-gallery .cos-product-card {
+  box-shadow: none;
+  max-width: 100%;
+
+  @include narrower-than($bp-medium) {
+    background: none;
+  }
+}
+
+.cos-product-card--unavailable.cos-card {
+  background: $color-g-pearl-03;
+  color: $color-g-shark-54;
+
+  a {
+    color: $color-g-shark-54;
+  }
+
+  .cos-product-card-unit-value {
+    color: $color-g-shark-54;
+  }
+
+  .cos-product-card-img-container {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,49 @@
+<mat-menu
+  #menu="matMenu"
+  class="cos-global-menu-panel"
+  backdropClass="cos-global-header-menu-backdrop"
+  yPosition="below"
+>
+  <ng-template matMenuContent let-clientSafeMode="clientSafeMode">
+    <a href="#" mat-menu-item class="cos-menu-item">
+      <i class="fa fa-user"></i>
+      <span>Manage my account</span>
+    </a>
+    <a routerLink="/settings" mat-menu-item class="cos-menu-item">
+      <i class="fa fa-cog"></i>
+      <span>Settings</span>
+    </a>
+    <mat-divider></mat-divider>
+    <a href="#" mat-menu-item class="cos-menu-item">
+      <i class="fa fa-align-left"></i>
+      <span>Suppliers and Notes</span>
+    </a>
+    <a href="#" mat-menu-item class="cos-menu-item">
+      <i class="fa fa-newspaper"></i>
+      <span>ESP updates</span>
+    </a>
+    <mat-divider></mat-divider>
+    <button
+      mat-menu-item
+      class="cos-menu-item"
+      (click)="toggleClientSafeMode(!clientSafeMode)"
+    >
+      <cos-toggle
+        cos-menu-item
+        id="client-safe-toggle"
+        name="client-safe-toggle"
+        size="small"
+        [checked]="clientSafeMode"
+        >Client Safe Mode</cos-toggle
+      >
+    </button>
+    <a
+      (click)="logout()"
+      mat-menu-item
+      class="cos-menu-item cos-menu-item--unique"
+    >
+      <i class="fa fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </ng-template>
+</mat-menu>

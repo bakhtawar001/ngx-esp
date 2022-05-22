@@ -1,0 +1,36 @@
+@import 'cosmos/scss/settings';
+
+.project-info {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-stack-16;
+  }
+
+  &__grid {
+    font-size: $font-size-12;
+    display: grid;
+    flex-direction: row;
+    grid-template-rows: repeat(6, auto);
+    row-gap: 8px;
+
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: grid;
+      color: $color-g-shark-54;
+      grid-template-columns: 25px 1fr;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+
+  &__event-type-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

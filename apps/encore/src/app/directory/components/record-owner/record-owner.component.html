@@ -1,0 +1,21 @@
+<ng-container *ngIf="owner">
+  <div class="record-owner">
+    <cos-avatar>
+      <ng-container>{{ owner.Name | initials }}</ng-container>
+      <img
+        *ngIf="owner.IconImageUrl"
+        [attr.src]="owner.IconImageUrl"
+        [attr.alt]="owner.Name"
+      />
+    </cos-avatar>
+    <div>
+      <div>Record Managed by:</div>
+      <div
+        class="record-owner-name body-style-12-shark ellipsis"
+        [attr.title]="owner.Name"
+      >
+        {{ owner.Name }}
+      </div>
+    </div>
+  </div>
+</ng-container>

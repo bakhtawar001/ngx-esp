@@ -1,0 +1,78 @@
+<ng-container *ngIf="productOptions">
+  <div class="flex mb-4">
+    <div *ngFor="let item of productOptions | keyvalue" class="mr-4">
+      <label class="cos-form-label">
+        {{ item.key }}
+      </label>
+      <select
+        matNativeControl
+        class="cos-input"
+        (change)="criteriaChange(item.key, $event)"
+        [value]="selectedValues[item.key]"
+      >
+        <option *ngFor="let option of item.value" [value]="option.Name">
+          {{ option.Name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="flex mb-2">
+    <div class="w-2/3">
+      <div *ngFor="let option of variantOptions">
+        <span class="body-style-12-shark pr-1">{{ option.name }} </span>
+        <span>{{ option.value }}</span>
+      </div>
+    </div>
+    <div
+      class="w-1/3 flex justify-end items-end"
+      *ngIf="productPricing?.Number"
+    >
+      <span class="body-style-12-shark pr-1">Product #: </span>
+      <span>{{ productPricing.Number }}</span>
+    </div>
+  </div>
+</ng-container>
+
+<esp-product-pricing-table
+  *ngIf="productPricing; else noPricing"
+  [preferred]="product?.Supplier?.Preferred"
+  [pricing]="productPricing"
+>
+</esp-product-pricing-table>
+
+<ng-template #noPricing>
+  <div class="cos-container cos-container--pearl">
+    <p>
+      No pricing available. Select another combination to view product pricing
+      or, <a (click)="viewAll.next()">view all price grids</a>
+    </p>
+
+    <div class="flex space-between">
+      <div *ngFor="let item of productOptions | keyvalue">
+        <ng-container
+          *ngIf="getOppositeOptionFilter(item.key) as oppositeOptionFilter"
+        >
+          <p>{{ item.key }} available in {{ oppositeOptionFilter }}</p>
+          <p>
+            <ng-container
+              *ngIf="
+                getAvailabilityForValue(
+                  item.key,
+                  oppositeOptionFilter
+                ) as availableValues
+              "
+            >
+              <a
+                *ngFor="let val of availableValues; index as i"
+                (click)="criteriaChange(item.key, val)"
+              >
+                {{ val }},
+              </a>
+            </ng-container>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>

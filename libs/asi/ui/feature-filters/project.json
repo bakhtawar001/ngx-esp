@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/asi/ui/feature-filters",
+  "sourceRoot": "libs/asi/ui/feature-filters/src",
+  "prefix": "asi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/asi/ui/feature-filters"],
+      "options": {
+        "project": "libs/asi/ui/feature-filters/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/asi/ui/feature-filters/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/asi/ui/feature-filters/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/asi/ui/feature-filters"],
+      "options": {
+        "jestConfig": "libs/asi/ui/feature-filters/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/asi/ui/feature-filters/src/**/*.ts",
+          "libs/asi/ui/feature-filters/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:asi", "platform:web"]
+}

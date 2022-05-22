@@ -1,0 +1,8 @@
+<esp-product-gallery
+  [products]="products"
+  *ngIf="products?.length"
+  (clicked)="productCardClicked($event)"
+  [source]="getSource()"
+>
+  <ng-content></ng-content>
+</esp-product-gallery>

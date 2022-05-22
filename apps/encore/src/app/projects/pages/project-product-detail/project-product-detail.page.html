@@ -1,0 +1,805 @@
+<div class="proj-product-detail-header">
+  <div
+    class="
+      project__pg-title
+      proj-product-detail__pg-title
+      flex
+      items-end
+      justify-between
+    "
+  >
+    <div>
+      <a class="proj-product-detail__back" cos-link-button href="#"
+        ><i class="fa fa-arrow-left"></i> Back to Presentation</a
+      >
+      <h1 class="header-style-24">Edit Product Details</h1>
+    </div>
+    <div class="mb-16">
+      <div class="proj-product-detail__desktop-controls">
+        <ng-container *ngTemplateOutlet="productcontrols"></ng-container>
+      </div>
+
+      <button
+        class="proj-product-detail__mobile-menu"
+        cos-icon-button
+        [matMenuTriggerFor]="sortMenu"
+      >
+        <i class="fa fa-ellipsis-v"></i>
+        <span class="cos-accessibly-hidden">Product Detail Menu</span>
+      </button>
+
+      <mat-menu
+        #sortMenu
+        class="cos-menu"
+        backdropClass="cos-backdrop"
+        yPosition="below"
+      >
+        <div class="proj-product-detail__mobile-controls">
+          <ng-container *ngTemplateOutlet="productcontrols"></ng-container>
+        </div>
+      </mat-menu>
+
+      <ng-template #productcontrols>
+        <button cos-stroked-button color="primary">
+          <i class="fa fa-eye"></i>
+          Preview
+        </button>
+
+        <button cos-stroked-button color="primary">
+          Next Product <i class="fa fa-arrow-right"></i>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<div>
+  <main class="proj-product-detail__pg-content">
+    <h2 class="header-style-22">Adult Softspun Semi-Fitted Tee</h2>
+    <div class="proj-product-detail__pg-content-body">
+      <div>
+        <div
+          class="flex items-center justify-center"
+          [ngClass]="{'proj-product-detail-img-container': true, 'proj-product-detail-img-container--empty':!imageIsSelected.value}"
+        >
+          <div *ngIf="!imageIsSelected.value">
+            <p class="text-center">No images selected</p>
+            <cos-image-upload-form
+              [files]="uploadedProductImages"
+              [acceptedFileTypes]="'image/jpeg,image/jpg,image/png,image/gif'"
+              [maxFileBytes]="512000000000"
+              (imgSelected)="selectImage()"
+            >
+              <p class="img-upload-reqs-content">
+                Images should be over 50px x 50px and under 512 GB in size.
+              </p>
+            </cos-image-upload-form>
+          </div>
+          <esp-product-image
+            *ngIf="imageIsSelected.value"
+            class="proj-product-detail-img mb-8"
+            [imgSrc]="image"
+          ></esp-product-image>
+
+          <button
+            *ngIf="imageIsSelected.value"
+            class="proj-product-detail-img-edit"
+            cos-icon-button
+          >
+            <i class="fa fa-pencil-ruler"></i>
+            <span class="cos-accessibly-hidden"> Delete</span>
+          </button>
+
+          <button
+            *ngIf="imageIsSelected.value"
+            class="proj-product-detail-img-delete"
+            cos-icon-button
+            color="warn"
+          >
+            <i class="fa fa-trash-alt"></i>
+            <span class="cos-accessibly-hidden"> Delete</span>
+          </button>
+        </div>
+        <cos-card class="proj-product-card-disabled mb-8">
+          <p class="body-style-12-shark">
+            <i class="fa fa-eye-slash mr-8"></i> All supplier information is
+            hidden from the customer presentation.
+          </p>
+          <hr />
+          <div class="flex">
+            <div>
+              <p class="mb-8">
+                <span cosAttributeTag size="small">Prefferred List</span>
+              </p>
+
+              <p class="mb-4">
+                <span class="header-style-14-bold">BellRinger Promotional</span>
+              </p>
+
+              <p class="mb-8"><span class="body-style-11">asi/57956</span></p>
+
+              <p><span>(123) 456-7890</span></p>
+
+              <p class="mb-0">
+                <span cosAttributeTag size="small"
+                  >$ EQP Applied to Net Cost</span
+                >
+              </p>
+
+              Exceptions: Golf/Polo Shirts, Jackets, Performance Apparel,
+              Shirts, Sweat shirts
+            </div>
+            <div></div>
+          </div>
+          <div></div>
+        </cos-card>
+      </div>
+      <div>
+        <h2 class="header-style-18">Product Details</h2>
+
+        <section>
+          <p class="header-style-14-bold">Product Image</p>
+
+          <cos-image-upload-previews-list
+            class="proj-product-detail__img-thumbs grid"
+            [files]="uploadedProductImages"
+            [showMaxPreviews]="0"
+            size="sm"
+          >
+            <cos-card
+              class="img-upload-preview--small"
+              [inlineControls]="true"
+              *ngFor="let defaultImageUrl of defaultProductImages"
+            >
+              <div class="img-upload-preview-body">
+                <div class="img-upload-preview-container">
+                  <img
+                    alt="{{defaultImageUrl}} - image uploaded by user"
+                    src="{{defaultImageUrl}}"
+                  />
+                </div>
+              </div>
+              <cos-card-controls
+                ><button cos-icon-button aria-label="Remove image">
+                  <i class="fa fa-eye-slash"></i>
+                </button>
+              </cos-card-controls>
+            </cos-card>
+
+            <cos-image-upload-form
+              [files]="uploadedProductImages"
+              size="sm"
+            ></cos-image-upload-form>
+          </cos-image-upload-previews-list>
+        </section>
+        <section>
+          <cos-autocomplete
+            [data]="data"
+            [label]="'Product Name'"
+            [mode]="'search'"
+            placeholder="placeholder"
+            searchPlaceholder="searchPlaceholder"
+          >
+            <ng-template let-option>
+              <div>{{ option.name }}</div>
+            </ng-template>
+          </cos-autocomplete>
+
+          <cos-form-field>
+            <label cosLabel for="description"> Product Summary </label>
+            <textarea
+              class="collection-description w-full"
+              cos-input
+              id="description"
+              placeholder="Enter description..."
+              rows="6"
+              maxlength="100"
+            >
+            </textarea>
+          </cos-form-field>
+
+          <cos-form-field>
+            <label cosLabel for="description"> Destributor note </label>
+            <textarea
+              class="collection-description w-full"
+              cos-input
+              id="description"
+              placeholder="Enter description..."
+              rows="6"
+              maxlength="100"
+            >
+            </textarea>
+          </cos-form-field>
+        </section>
+
+        <hr class="mt-24 mb-24" />
+
+        <section>
+          <h2 class="header-style-18">Product Variants</h2>
+
+          <div class="proj-product-detail-variants mb-24">
+            <cos-toggle class="block w-full mb-16">
+              <span class="header-style-18">Colors</span>
+            </cos-toggle>
+            <cos-card>
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  <div class="flex items-center">
+                    <img
+                      class="mr-8"
+                      src="https://via.placeholder.com/36"
+                      alt=""
+                    />
+                    <span>Basic White</span>
+                  </div>
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  <div class="flex items-center">
+                    <img
+                      class="mr-8"
+                      src="https://via.placeholder.com/36"
+                      alt=""
+                    />
+                    <span>Heathered Grey</span>
+                  </div>
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  <div class="flex items-center">
+                    <img
+                      class="mr-8"
+                      src="https://via.placeholder.com/36"
+                      alt=""
+                    />
+                    <span>Deep Blue Sea</span>
+                  </div>
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  <div class="flex items-center">
+                    <img
+                      class="mr-8"
+                      src="https://via.placeholder.com/36"
+                      alt=""
+                    />
+                    <span>Sandy Sand</span>
+                  </div>
+                </cos-checkbox>
+              </div>
+            </cos-card>
+          </div>
+          <div class="proj-product-detail-variants mb-24">
+            <cos-toggle class="block w-full mb-16">
+              <span class="header-style-18">Sizes</span>
+            </cos-toggle>
+
+            <cos-card>
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  Small
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  Medium
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  Large
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  X Large
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  XX Large
+                </cos-checkbox>
+              </div>
+
+              <div class="mb-8">
+                <cos-checkbox
+                  class="checkbox-products"
+                  id="checkbox-products"
+                  name="checkbox-products"
+                  [checked]="checked"
+                >
+                  XXX Large
+                </cos-checkbox>
+              </div>
+            </cos-card>
+          </div>
+          <div class="proj-product-detail-variants mb-24">
+            <cos-toggle class="block w-full mb-16"> </cos-toggle>
+            <cos-card>
+              <p class="header-style-18">Imprint Options</p>
+
+              <fieldset>
+                <legend class="p-0">
+                  <p class="header-style-14-bold">Vendor Imprint Methods</p>
+                </legend>
+                <div class="mb-8">
+                  <cos-checkbox
+                    class="checkbox-products"
+                    id="checkbox-products"
+                    name="checkbox-products"
+                    [checked]="checked"
+                  >
+                    Silk screen
+                  </cos-checkbox>
+                </div>
+
+                <div class="mb-8">
+                  <cos-checkbox
+                    class="checkbox-products"
+                    id="checkbox-products"
+                    name="checkbox-products"
+                    [checked]="checked"
+                  >
+                    Unimprinted
+                  </cos-checkbox>
+                </div>
+              </fieldset>
+
+              <cos-form-field>
+                <span cosLabel>Category</span>
+                <select matNativeControl>
+                  <option class="empty-option">1</option>
+                  <option>2</option>
+                </select>
+              </cos-form-field>
+
+              <cos-form-field>
+                <span cosLabel>Imprint Sizes</span>
+                <input
+                  id="imprint-sizes"
+                  cos-input
+                  type="text"
+                  name="imprintSizes"
+                  placeholder="Enter sizes"
+                />
+              </cos-form-field>
+
+              <cos-form-field>
+                <span cosLabel>Imprint Locations</span>
+                <input
+                  id="imprint-locations"
+                  cos-input
+                  type="text"
+                  name="imprintLocations"
+                  placeholder="Enter locations"
+                />
+              </cos-form-field>
+
+              <cos-form-field>
+                <span cosLabel>Imprint Colors</span>
+                <input
+                  id="imprint-colors"
+                  cos-input
+                  type="text"
+                  name="imprintColors"
+                  placeholder="Enter colors"
+                />
+              </cos-form-field>
+
+              <p class="header-style-14-bold">Imprint Charges</p>
+
+              <cos-table [dataSource]="dataSource">
+                <ng-container cosColumnDef="quantity">
+                  <cos-header-cell *cosHeaderCellDef>
+                    Quantity
+                  </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.quantity }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="catalogPrice">
+                  <cos-header-cell *cosHeaderCellDef>
+                    Catalog Price
+                  </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.catalogPrice }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="netCost">
+                  <cos-header-cell *cosHeaderCellDef>
+                    Net Cost
+                  </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.netCost }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="eqp">
+                  <cos-header-cell *cosHeaderCellDef>
+                    EQP <i class="fa fa-info-circle"></i>
+                  </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    <span class="cos-text--blue">{{ element.eqp }}</span>
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="profit">
+                  <cos-header-cell *cosHeaderCellDef> Profit </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.profit }}
+                  </cos-cell>
+                </ng-container>
+
+                <cos-header-row
+                  *cosHeaderRowDef="displayedColumns"
+                ></cos-header-row>
+                <cos-row
+                  *cosRowDef="let row; columns: displayedColumns"
+                ></cos-row>
+              </cos-table>
+
+              <button cos-button class="proj-product-detail-btn">
+                <i class="fa fa-plus"></i> Add a custom charge
+              </button>
+            </cos-card>
+          </div>
+        </section>
+        <section>
+          <cos-card class="proj-product-card-disabled mb-16">
+            <h2 class="header-style-18">Add Vendor Imprint Charges</h2>
+            <p class="body-style-12-shark">
+              <i class="fa fa-eye-slash"></i> Available vendor imprint charges
+              are hidden from the customer presentation until they are added.
+            </p>
+
+            <table cos-table [dataSource]="dataSource2">
+              <ng-container cosColumnDef="imprintCharges">
+                <th cosHeaderCell *cosHeaderCellDef>imprintCharges</th>
+                <td cosCell *cosCellDef="let element">
+                  {{ element.imprintCharges }}
+                </td>
+              </ng-container>
+              <ng-container cosColumnDef="chargeQty">
+                <th cosHeaderCell *cosHeaderCellDef>chargeQty</th>
+                <td cosCell *cosCellDef="let element">
+                  {{ element.chargeQty }}
+                </td>
+              </ng-container>
+              <ng-container cosColumnDef="price">
+                <th cosHeaderCell *cosHeaderCellDef>price</th>
+                <td cosCell *cosCellDef="let element">{{ element.price }}</td>
+              </ng-container>
+
+              <ng-container cosColumnDef="action">
+                <th cosHeaderCell *cosHeaderCellDef></th>
+                <td cosCell *cosCellDef="let element">
+                  <button cos-icon-button>
+                    <i class="fa fa-plus"></i>
+                    <span class="cos-accessibly-hidden">Add </span>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr cos-header-row *cosHeaderRowDef="displayedColumns2"></tr>
+              <tr cos-row *cosRowDef="let row; columns: displayedColumns2"></tr>
+            </table>
+          </cos-card>
+        </section>
+        <hr class="mb-16" />
+        <section>
+          <cos-toggle class="block w-full mb-16">
+            <span class="header-style-18">Price Range</span>
+          </cos-toggle>
+          <p class="header-style-16">Price from $18.50 - $42.95</p>
+          <cos-toggle class="block w-full mb-16" size="small">
+            <span>Show client discount</span>
+          </cos-toggle>
+          <p>
+            Displays an indicator to the customer that the product is discounted
+            for them.
+          </p>
+          <cos-form-field>
+            <span cosLabel>Currency</span>
+            <select matNativeControl>
+              <option class="empty-option"></option>
+              <option>USD</option>
+              <option>CAD</option>
+            </select>
+          </cos-form-field>
+          <cos-form-field>
+            <span cosLabel>Price Includes</span>
+            <input
+              id="price-includes"
+              cos-input
+              type="text"
+              name="priceIncludes"
+              placeholder="Enter Description"
+            />
+          </cos-form-field>
+        </section>
+
+        <hr class="mb-16" />
+
+        <section>
+          <cos-toggle class="block w-full mb-16">
+            <span class="header-style-18">Pricing and charges</span>
+          </cos-toggle>
+          <div class="mb-32">
+            <div class="flex items-end">
+              <cos-form-field class="mr-16">
+                <span cosLabel>Adjust all prices based on</span>
+                <select matNativeControl>
+                  <option class="empty-option"></option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </cos-form-field>
+              <cos-form-field>
+                <span class="cos-accessibly-hidden" cosLabel>Amount</span>
+                <input
+                  id="priceAdjustmentValue"
+                  cos-input
+                  type="text"
+                  name="priceAdjustmentValue"
+                  placeholder="Enter amount"
+                />
+              </cos-form-field>
+            </div>
+
+            <cos-checkbox
+              class="checkbox-products"
+              id="checkbox-products"
+              name="checkbox-products"
+              [checked]="checked"
+            >
+              Round up to 2 decimal places
+            </cos-checkbox>
+          </div>
+
+          <div>
+            <cos-toggle class="block w-full mb-16" size="small">
+              <span class="header-style-16">Price Grid</span>
+            </cos-toggle>
+            <cos-card class="proj-product-card-disabled mb-16">
+              <span class="header-style-16">Add Price Grids</span>
+              <p class="body-style-12-shark">
+                <i class="fa fa-eye-slash mr-8"></i> Available price grids are
+                hidden from the customer presentation until they are added.
+              </p>
+
+              <p class="header-style-16">
+                Recommended based on variant selection
+              </p>
+
+              <cos-table [dataSource]="dataSource3" class="mb-16">
+                <ng-container cosColumnDef="size">
+                  <cos-header-cell *cosHeaderCellDef> Size </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.size }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="color">
+                  <cos-header-cell *cosHeaderCellDef> Color </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.color }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="minprice">
+                  <cos-header-cell *cosHeaderCellDef>
+                    Min Price
+                  </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.minprice }}
+                  </cos-cell>
+                </ng-container>
+
+                <cos-header-row
+                  *cosHeaderRowDef="displayedColumns3"
+                ></cos-header-row>
+                <cos-row
+                  *cosRowDef="let row; columns: displayedColumns3"
+                ></cos-row>
+              </cos-table>
+
+              <button cos-button class="proj-product-detail-btn">
+                <i class="fa fa-redo"></i> Generate recommendations
+              </button>
+
+              <hr class="mt-16 mb-16" />
+
+              <p class="header-style-16 mb-16">All Price Grids</p>
+
+              <cos-table [dataSource]="dataSource4" class="mb-16">
+                <ng-container cosColumnDef="size">
+                  <cos-header-cell *cosHeaderCellDef> Size </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.size }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="color">
+                  <cos-header-cell *cosHeaderCellDef> Color </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.color }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="minprice">
+                  <cos-header-cell *cosHeaderCellDef>
+                    Min Price
+                  </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    {{ element.minprice }}
+                  </cos-cell>
+                </ng-container>
+
+                <ng-container cosColumnDef="action">
+                  <cos-header-cell *cosHeaderCellDef> </cos-header-cell>
+                  <cos-cell *cosCellDef="let element">
+                    <button cos-icon-button>
+                      <i class="fa fa-plus"></i>
+                      <span class="cos-accessibly-hidden">Add </span>
+                    </button>
+                  </cos-cell>
+                </ng-container>
+
+                <cos-header-row
+                  *cosHeaderRowDef="displayedColumns4"
+                ></cos-header-row>
+                <cos-row
+                  *cosRowDef="let row; columns: displayedColumns4"
+                ></cos-row>
+              </cos-table>
+
+              <button cos-button class="proj-product-detail-btn">
+                <i class="fa fa-plus"></i> Add all price grids
+              </button>
+            </cos-card>
+          </div>
+
+          <div>
+            <cos-toggle class="block w-full mb-16">
+              <span class="header-style-18">Additional Charges</span>
+            </cos-toggle>
+
+            <cos-card class="mb-16">
+              <table cos-table [dataSource]="dataSource5">
+                <ng-container cosColumnDef="chargename">
+                  <th cosHeaderCell *cosHeaderCellDef>Charge Name</th>
+                  <td cosCell *cosCellDef="let element">
+                    {{ element.chargename }}
+                  </td>
+                </ng-container>
+                <ng-container cosColumnDef="chargeqty">
+                  <th cosHeaderCell *cosHeaderCellDef>Charge Qty</th>
+                  <td cosCell *cosCellDef="let element">
+                    {{ element.chargeqty }}
+                  </td>
+                </ng-container>
+                <ng-container cosColumnDef="price">
+                  <th cosHeaderCell *cosHeaderCellDef>Price</th>
+                  <td cosCell *cosCellDef="let element">{{ element.price }}</td>
+                </ng-container>
+                <tr cos-header-row *cosHeaderRowDef="displayedColumns5"></tr>
+                <tr
+                  cos-row
+                  *cosRowDef="let row; columns: displayedColumns5"
+                ></tr>
+              </table>
+
+              <button cos-button class="proj-product-detail-btn">
+                <i class="fa fa-plus"></i> Add a custom charge
+              </button>
+
+              <hr class="mb-16" />
+            </cos-card>
+            <cos-card class="proj-product-card-disabled mb-16">
+              <span class="header-style-16">Add Vendor Charges</span>
+
+              <p class="body-style-12-shark">
+                <i class="fa fa-eye-slash mr-8"></i> Available vendor charges
+                are hidden from the customer presentation until they are added.
+              </p>
+
+              <table cos-table [dataSource]="dataSource6">
+                <ng-container cosColumnDef="charges">
+                  <th cosHeaderCell *cosHeaderCellDef>
+                    Available Vendor Charges
+                  </th>
+                  <td cosCell *cosCellDef="let element">
+                    {{ element.charges }}
+                  </td>
+                </ng-container>
+                <ng-container cosColumnDef="chargeqty">
+                  <th cosHeaderCell *cosHeaderCellDef>chargeqty</th>
+                  <td cosCell *cosCellDef="let element">
+                    {{ element.chargeqty }}
+                  </td>
+                </ng-container>
+                <ng-container cosColumnDef="price">
+                  <th cosHeaderCell *cosHeaderCellDef>price</th>
+                  <td cosCell *cosCellDef="let element">{{ element.price }}</td>
+                </ng-container>
+
+                <ng-container cosColumnDef="action">
+                  <th cosHeaderCell *cosHeaderCellDef></th>
+                  <td cosCell *cosCellDef="let element">
+                    <button cos-icon-button>
+                      <i class="fa fa-plus"></i>
+                      <span class="cos-accessibly-hidden">Add </span>
+                    </button>
+                  </td>
+                </ng-container>
+                <tr cos-header-row *cosHeaderRowDef="displayedColumns6"></tr>
+                <tr
+                  cos-row
+                  *cosRowDef="let row; columns: displayedColumns6"
+                ></tr>
+              </table>
+
+              <hr />
+            </cos-card>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

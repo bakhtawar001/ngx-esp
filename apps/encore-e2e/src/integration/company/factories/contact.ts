@@ -1,0 +1,53 @@
+import { Contact } from '@esp/models';
+import { getRandomNumbers, randomStringGenerator } from '../../../utils';
+export const generateContact = (data?: {}): Contact => ({
+  GivenName: randomStringGenerator(5),
+  FamilyName: randomStringGenerator(5),
+  IsUser: false,
+  IsSalesperson: false,
+  IsProspect: false,
+  IsCompany: false,
+  IsPerson: true,
+  Id: getRandomNumbers(4, 1)[0],
+  Name: randomStringGenerator(5),
+  IsActive: true,
+  CreateDate: '2021-12-09T16:40:27.967Z',
+  UpdateDate: '2021-12-09T16:40:27.967Z',
+  LastActivityDate: '2021-12-09T16:40:27.9193891Z',
+  Version: 1772501,
+  Tags: [],
+  Addresses: [
+    {
+      Id: getRandomNumbers(4, 1)[0],
+      Name: randomStringGenerator(5),
+      City: '',
+      State: '',
+      PostalCode: '',
+      CountryType: '',
+      Phone: {
+        Id: getRandomNumbers(4, 1)[0],
+        Type: 'Other',
+        PhoneCode: '1',
+        Country: 'US',
+        IsPrimary: false,
+      },
+      IsPrimary: true,
+      Type: 'GNRL',
+    },
+  ],
+  Phones: [],
+  Emails: [],
+  Websites: [],
+  Owner: {
+    Id: 0,
+    Name: '(Unknown)',
+  },
+  Creator: {
+    Id: 0,
+    Name: '(Unknown)',
+  },
+  OwnerId: 5826,
+  AccessLevel: 'Everyone',
+  IsVisible: true,
+  IsEditable: true,
+});

@@ -1,0 +1,127 @@
+<header>
+  <div>
+    <button class="cos-modal-close" mat-dialog-close>
+      <i class="fas fa-times"></i>
+      <span class="cos-accessibly-hidden">Close</span>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Edit Customer Information</h2>
+</header>
+
+<mat-dialog-content>
+  <div class="content-wrapper project-contact-info-dialog-content">
+    <h2 class="header-style-12-shark">Customer Information</h2>
+
+    <cos-autocomplete
+      mode="select"
+      [label]="'Order Approver'"
+      [data]="contacts"
+      [displayKey]="'first_name'"
+      [filterFn]="fuzzySearch"
+      [formControl]="orderApproverControl"
+    >
+      <ng-template let-option>
+        {{option.first_name}} {{option.last_name}}
+      </ng-template>
+    </cos-autocomplete>
+
+    <div class="order-approver-val flex mb-24" *ngIf="selectedOrderApprover">
+      <cos-avatar>
+        <img src="{{selectedOrderApprover.avatar}}" alt="" />
+      </cos-avatar>
+      <div class="ml-8">
+        <p class="header-style-14-bold mb-0">
+          {{selectedOrderApprover.first_name}}
+          {{selectedOrderApprover.last_name}}
+        </p>
+        <p class="body-style-11 mt-0 mb-8">
+          {{selectedOrderApprover.company_role}}
+        </p>
+        <p class="mb-0">{{selectedOrderApprover.phone}}</p>
+        <p class="mb-0">{{selectedOrderApprover.email}}</p>
+      </div>
+    </div>
+    <div class="project-contact-info-addresses flex w-full">
+      <div class="mr-16">
+        <cos-autocomplete
+          mode="select"
+          [label]="'Shipping Address'"
+          [data]="contacts"
+          [displayKey]="'first_name'"
+          [filterFn]="addressSearch"
+          [formControl]="shippingAddressControl"
+        >
+          <ng-template let-option>
+            <small class="body-style-11-bold"
+              >{{option.first_name}} {{option.last_name}}</small
+            >
+            <small class="body-style-11">
+              {{option.address.Line1 }}
+              <span *ngIf="option.address.Line2">
+                {{option.address.Line2 }}
+              </span>
+              {{option.address.City }}, {{option.address.State }}
+              {{option.address.PostalCode }}
+            </small>
+          </ng-template>
+        </cos-autocomplete>
+        <address *ngIf="shippingAddressControl.value">
+          {{shippingAddressControl.value.first_name}}
+          {{shippingAddressControl.value.last_name}} <br />
+          {{shippingAddressControl.value.address.Line1 }} <br />
+          <span *ngIf="shippingAddressControl.value.address.Line2">
+            {{shippingAddressControl.value.address.Line2 }} <br />
+          </span>
+          {{shippingAddressControl.value.address.City }},
+          {{shippingAddressControl.value.address.State }} <br />
+          {{shippingAddressControl.value.address.PostalCode }}
+        </address>
+      </div>
+      <div>
+        <cos-autocomplete
+          mode="select"
+          [label]="'Billing Address'"
+          [data]="contacts"
+          [displayKey]="'first_name'"
+          [filterFn]="addressSearch"
+          [formControl]="billingAddressControl"
+        >
+          <ng-template let-option>
+            <small class="body-style-11-bold"
+              >{{option.first_name}} {{option.last_name}}</small
+            >
+            <small class="body-style-11">
+              {{option.address.Line1 }}
+              <span *ngIf="option.address.Line2">
+                {{option.address.Line2 }}
+              </span>
+              {{option.address.City }}, {{option.address.State }}
+              {{option.address.PostalCode }}
+            </small>
+          </ng-template>
+        </cos-autocomplete>
+        <address *ngIf="billingAddressControl.value">
+          {{billingAddressControl.value.first_name}}
+          {{billingAddressControl.value.last_name}} <br />
+          {{billingAddressControl.value.address.Line1 }} <br />
+          <span *ngIf="billingAddressControl.value.address.Line2">
+            {{billingAddressControl.value.address.Line2 }} <br />
+          </span>
+          {{billingAddressControl.value.address.City }},
+          {{billingAddressControl.value.address.State }} <br />
+          {{billingAddressControl.value.address.PostalCode }}
+        </address>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="flex justify-between w-full">
+    <button cos-button><span class="fa fa-arrow-left"></span> Back</button>
+
+    <button cos-flat-button type="submit" color="primary" cdkFocusInitial>
+      Save
+    </button>
+  </div>
+</mat-dialog-actions>

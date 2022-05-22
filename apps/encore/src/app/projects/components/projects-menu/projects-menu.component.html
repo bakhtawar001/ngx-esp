@@ -1,0 +1,105 @@
+<mat-menu
+  class="cos-global-menu-panel"
+  backdropClass="cos-global-header-menu-backdrop"
+  yPosition="below"
+>
+  <div class="projects-menu">
+    <div class="cos-search-field mb-8" (click.stop)="onClickStopPropagation()">
+      <span class="form-field-prefix"><i class="fa fa-search"></i></span>
+      <input
+        cos-input
+        [formControl]="searchControl"
+        placeholder="Search Projects"
+      />
+      <button
+        cos-icon-button
+        [hidden]="!searchControl.value"
+        (click)="onClearSearch()"
+        type="button"
+        class="form-field-suffix"
+        aria-label="Clear"
+      >
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <ng-container
+      *ngIf="!state.isLoading && state.hasLoaded && !state.projects?.length"
+    >
+      <div
+        *ngIf="state.criteria?.term; else noProjectsAvailable"
+        class="not-found"
+        data-cy="projects-not-found"
+      >
+        <p class="body-style-14-shark">
+          No projects found. Try changing the search term.
+        </p>
+      </div>
+
+      <ng-template #noProjectsAvailable>
+        <div class="not-found" data-cy="no-projects-available">
+          <p class="body-style-14-shark">
+            You don't have any Projects available to view.
+          </p>
+        </div>
+      </ng-template>
+    </ng-container>
+
+    <h5
+      *ngIf="!searchControl.value"
+      (click.stop)="onClickStopPropagation()"
+      class="header-style-12-shark recent-col-heading mb-8"
+    >
+      Recent Projects
+    </h5>
+
+    <a
+      *ngFor="let project of state.projects; trackBy: trackByProjectFn"
+      [routerLink]="['projects', project.Id]"
+      class="global-menu-list-item cursor-pointer"
+      mat-menu-item
+    >
+      <div class="global-menu-list-item__icon flex items-center justify-center">
+        <asi-company-avatar
+          [customer]="project.Customer"
+          [showAvatarIcon]="true"
+          [iconSize]="20"
+        ></asi-company-avatar>
+      </div>
+      <div class="global-menu-list-item__content">
+        <h4
+          class="header-style-14-bold ellipsis"
+          [matTooltip]="project.Name"
+          data-cy="title"
+        >
+          {{ project.Name }}
+        </h4>
+        <p class="body-style-12 ellipsis" data-cy="subtitle">
+          {{ project.Customer?.Name }}
+        </p>
+      </div>
+    </a>
+
+    <ng-container
+      *ngFor="
+        let link of links;
+        let isLast = last;
+        let isFirst = first;
+        trackBy: trackByLinkFn
+      "
+    >
+      <mat-divider *ngIf="isFirst"></mat-divider>
+
+      <a
+        [routerLink]="[link.url]"
+        [id]="link.id"
+        class="link-menu-item"
+        mat-menu-item
+      >
+        <span class="cos-button">{{ link.label }}</span>
+      </a>
+
+      <mat-divider *ngIf="!isLast"></mat-divider>
+    </ng-container>
+  </div>
+</mat-menu>

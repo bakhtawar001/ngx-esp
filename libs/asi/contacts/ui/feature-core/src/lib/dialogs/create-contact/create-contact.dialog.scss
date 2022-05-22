@@ -1,0 +1,37 @@
+@import 'cosmos/scss/settings/';
+
+$mobile-breakpoint: $bp-medium;
+$field-margin-top: 20px;
+
+.dialog-content-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 16px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: $field-margin-top;
+
+  &__actions-bar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__company,
+  &__name {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  &__selectable-row {
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+  }
+}
+
+esp-lookup-select .cos-form-field {
+  margin-bottom: 0px;
+}

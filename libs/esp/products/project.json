@@ -1,0 +1,43 @@
+{
+  "projectType": "library",
+  "root": "libs/esp/products",
+  "sourceRoot": "libs/esp/products/src",
+  "prefix": "nx-esp-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/esp/products"],
+      "options": {
+        "project": "libs/esp/products/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/esp/products/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/esp/products/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/esp/products"],
+      "options": {
+        "jestConfig": "libs/esp/products/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/esp/products/src/**/*.ts",
+          "libs/esp/products/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:esp", "type:library", "platform:web"]
+}
